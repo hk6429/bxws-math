@@ -4,74 +4,344 @@
     {
       "id": "growing-pattern-bm-1",
       "type": "basic-mastery",
+      "challenge": "2-1",
+      "errorPath": 1,
       "stem": "觀察數列 4、7、10、13、（　），括號中應填多少？",
-      "options": ["14", "15", "16", "17"],
+      "options": [
+        "14",
+        "15",
+        "16",
+        "17"
+      ],
       "answer": 2,
       "explanation": "相鄰兩數都增加 3，所以 13+3=16。"
     },
     {
+      "id": "growing-pattern-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "2-1",
+      "errorPath": 2,
+      "stem": "數列5、9、13、17、？",
+      "options": [
+        "21",
+        "18",
+        "20",
+        "22"
+      ],
+      "answer": 0,
+      "explanation": "相鄰兩項都加4。"
+    },
+    {
+      "id": "growing-pattern-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "2-1",
+      "errorPath": 3,
+      "stem": "數列12、17、22、27、？",
+      "options": [
+        "29",
+        "32",
+        "31",
+        "34"
+      ],
+      "answer": 1,
+      "explanation": "相鄰兩項都加5。"
+    },
+    {
       "id": "growing-pattern-bm-2",
       "type": "basic-mastery",
+      "challenge": "2-2",
+      "errorPath": 1,
       "stem": "第 1 個圖有 2 顆星，第 2 個有 4 顆，第 3 個有 6 顆。照此規律，第 5 個有幾顆星？",
-      "options": ["8 顆", "10 顆", "12 顆", "14 顆"],
+      "options": [
+        "8 顆",
+        "10 顆",
+        "12 顆",
+        "14 顆"
+      ],
       "answer": 1,
-      "explanation": "每次增加 2 顆，第 4 個有 8 顆，第 5 個有 10 顆。"
+      "explanation": "每個圖形依序增加 2 顆星，第 4 個有 8 顆，第 5 個有 10 顆。"
+    },
+    {
+      "id": "growing-pattern-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "2-2",
+      "errorPath": 2,
+      "stem": "第1圖3顆，每圖多2顆，第6圖幾顆？",
+      "options": [
+        "11",
+        "15",
+        "13",
+        "18"
+      ],
+      "answer": 2,
+      "explanation": "3+2×5=13。"
+    },
+    {
+      "id": "growing-pattern-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "2-2",
+      "errorPath": 3,
+      "stem": "第1排5人，每排多3人，第5排幾人？",
+      "options": [
+        "15",
+        "20",
+        "25",
+        "17"
+      ],
+      "answer": 3,
+      "explanation": "5+3×4=17。"
     }
   ],
   "conceptId": [
     {
       "id": "growing-pattern-ci-1",
       "type": "concept-id",
+      "challenge": "2-3",
+      "errorPath": 1,
       "statement": "數列 3、6、9、12、……中，相鄰兩項的差都相同。",
       "correctAnswer": true,
       "explanation": "後一項都比前一項多 3，因此相鄰兩項的差固定是 3。"
     },
     {
+      "id": "growing-pattern-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "2-3",
+      "errorPath": 2,
+      "statement": "2、5、8、11的相鄰差都是3。",
+      "correctAnswer": true,
+      "explanation": "逐項相減皆為3。"
+    },
+    {
+      "id": "growing-pattern-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "2-3",
+      "errorPath": 3,
+      "statement": "等差規律可用固定增加量預測後項。",
+      "correctAnswer": true,
+      "explanation": "固定差可逐項遞推。"
+    },
+    {
       "id": "growing-pattern-ci-2",
       "type": "concept-id",
+      "challenge": "2-4",
+      "errorPath": 1,
       "statement": "只要數列中的數愈來愈大，每次增加的數量就一定相同。",
       "correctAnswer": false,
-      "explanation": "愈來愈大不代表每次增加量相同，例如 1、2、4、7 分別增加 1、2、3。"
+      "explanation": "數列愈來愈大，不代表每次增加量相同；仍要逐項比較相鄰兩項的差。"
+    },
+    {
+      "id": "growing-pattern-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "2-4",
+      "errorPath": 2,
+      "statement": "2、4、8、16每次都增加2。",
+      "correctAnswer": false,
+      "explanation": "增加量依序為2、4、8。"
+    },
+    {
+      "id": "growing-pattern-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "2-4",
+      "errorPath": 3,
+      "statement": "數列一直變大，就一定是等差數列。",
+      "correctAnswer": false,
+      "explanation": "變大不代表相鄰差固定。"
     }
   ],
   "errorDiagnosis": [
     {
       "id": "growing-pattern-ed-1",
       "type": "error-diagnosis",
+      "challenge": "2-5",
+      "errorPath": 1,
       "problem": "依規律求數列 5、9、13、17、……的下一項",
       "wrongSolution": "小明算成 17+5=22。",
-      "errorOptions": ["把第一項 5 當成每次增加量；實際每次增加 4", "17 應改成 16", "應該用減法", "9-5 算錯"],
+      "errorOptions": [
+        "把第一項 5 當成每次增加量；實際每次增加 4",
+        "17 應改成 16",
+        "應該用減法",
+        "9-5 算錯"
+      ],
       "correctErrorIndex": 0,
       "explanation": "相鄰兩項的差是 9-5=4、13-9=4，所以應算 17+4=21。"
     },
     {
+      "id": "growing-pattern-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "2-5",
+      "errorPath": 2,
+      "problem": "求7、12、17的下一項",
+      "wrongSolution": "小明算17+7=24。",
+      "errorOptions": [
+        "把首項當增加量",
+        "應改用減法",
+        "17抄錯",
+        "12減7錯"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "固定增加量是5，答案22。"
+    },
+    {
+      "id": "growing-pattern-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "2-5",
+      "errorPath": 3,
+      "problem": "求10、16、22的下一項",
+      "wrongSolution": "小華算22+10=32。",
+      "errorOptions": [
+        "應加16",
+        "把首項當增加量",
+        "應用乘法",
+        "22抄錯"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "固定增加量是6，答案28。"
+    },
+    {
       "id": "growing-pattern-ed-2",
       "type": "error-diagnosis",
+      "challenge": "2-6",
+      "errorPath": 1,
       "problem": "火柴棒圖形第 1 個用 3 根，之後每多一個圖形就增加 2 根，求第 4 個所需根數",
       "wrongSolution": "小琪算成 3+2×4=11 根。",
-      "errorOptions": ["乘法算錯", "第 1 個已有 3 根，到第 4 個只增加 3 次，應算3+2×3", "應把 3 和 2 相乘", "第 4 個應增加 4 根"],
+      "errorOptions": [
+        "乘法算錯",
+        "第 1 個已有 3 根，到第 4 個只增加 3 次，應算3+2×3",
+        "應把 3 和 2 相乘",
+        "第 4 個應增加 4 根"
+      ],
       "correctErrorIndex": 1,
-      "explanation": "從第 1 個到第 4 個共經過 3 次增加，所以需要 3+2×3=9 根。"
+      "explanation": "第 1 個已有 3 根，到第 4 個只增加 3 次，所以應算 3+2×3=9 根。"
+    },
+    {
+      "id": "growing-pattern-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "2-6",
+      "errorPath": 2,
+      "problem": "第1圖4根，每圖多3根，求第5圖",
+      "wrongSolution": "小琪算4+3×5=19。",
+      "errorOptions": [
+        "應乘4×3",
+        "3應改成5",
+        "只增加4次",
+        "不能用乘法"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "4+3×(5-1)=16。"
+    },
+    {
+      "id": "growing-pattern-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "2-6",
+      "errorPath": 3,
+      "problem": "第1排6個，每排多2個，求第4排",
+      "wrongSolution": "小恩算6+2×4=14。",
+      "errorOptions": [
+        "應算6×2",
+        "增加量是4",
+        "不能列式",
+        "只增加3次"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "6+2×(4-1)=12。"
     }
   ],
   "contextApplication": [
     {
       "id": "growing-pattern-ca-1",
       "type": "context-application",
+      "challenge": "2-7",
+      "errorPath": 1,
       "scenario": "小恩第一週存 20 元，之後每週都比前一週多存 10 元。",
       "question": "小恩第 4 週存多少元？",
-      "options": ["40 元", "50 元", "60 元", "80 元"],
+      "options": [
+        "40 元",
+        "50 元",
+        "60 元",
+        "80 元"
+      ],
       "answer": 1,
       "explanation": "各週依序存 20、30、40、50 元，所以第 4 週存 50 元。"
     },
     {
+      "id": "growing-pattern-ca-v7-2",
+      "type": "context-application",
+      "challenge": "2-7",
+      "errorPath": 2,
+      "scenario": "首週存30元，以後每週多存5元。",
+      "question": "第6週存多少元？",
+      "options": [
+        "55",
+        "50",
+        "60",
+        "65"
+      ],
+      "answer": 0,
+      "explanation": "30+5×5=55。"
+    },
+    {
+      "id": "growing-pattern-ca-v7-3",
+      "type": "context-application",
+      "challenge": "2-7",
+      "errorPath": 3,
+      "scenario": "首日跑2圈，以後每天多跑2圈。",
+      "question": "第7天跑幾圈？",
+      "options": [
+        "12",
+        "14",
+        "16",
+        "18"
+      ],
+      "answer": 1,
+      "explanation": "2+2×6=14。"
+    },
+    {
       "id": "growing-pattern-ca-2",
       "type": "context-application",
+      "challenge": "2-8",
+      "errorPath": 1,
       "scenario": "觀眾席第 1 排有 12 個座位，每往後一排就增加 3 個座位。",
       "question": "第 6 排有幾個座位？",
-      "options": ["27 個", "30 個", "18 個", "33 個"],
+      "options": [
+        "27 個",
+        "30 個",
+        "18 個",
+        "33 個"
+      ],
       "answer": 0,
-      "explanation": "從第 1 排到第 6 排增加 5 次，所以有 12+3×5=27 個座位。"
+      "explanation": "第 6 排比第 1 排增加 5 次，12+3×5=27 個座位。"
+    },
+    {
+      "id": "growing-pattern-ca-v8-2",
+      "type": "context-application",
+      "challenge": "2-8",
+      "errorPath": 2,
+      "scenario": "首排10席，每後一排多4席。",
+      "question": "第5排有幾席？",
+      "options": [
+        "22",
+        "24",
+        "26",
+        "30"
+      ],
+      "answer": 2,
+      "explanation": "10+4×4=26。"
+    },
+    {
+      "id": "growing-pattern-ca-v8-3",
+      "type": "context-application",
+      "challenge": "2-8",
+      "errorPath": 3,
+      "scenario": "首層放8罐，每層多3罐。",
+      "question": "第6層放幾罐？",
+      "options": [
+        "20",
+        "21",
+        "26",
+        "23"
+      ],
+      "answer": 3,
+      "explanation": "8+3×5=23。"
     }
   ]
 }

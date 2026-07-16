@@ -56,15 +56,15 @@ globalThis.localStorage = {
   setItem: (key, value) => storage.set(key, value),
 };
 
-test("quiz-loader 可載入全庫 94 個節點題庫，且容忍頂層 curriculum", async () => {
+test("quiz-loader 可載入全庫 94 個已完成節點題庫，且容忍頂層 curriculum", async () => {
   const banks = await Promise.all(nodeIds.map(loadQuestionBank));
   assert.equal(banks.length, 94);
   for (const [index, bank] of banks.entries()) {
     const questions = questionArrays.flatMap((key) => bank[key] ?? []);
     if (newNodeIds.has(nodeIds[index])) {
-      assert.equal(questions.length, 8, `${nodeIds[index]} 應精確為 8 題`);
+      assert.equal(questions.length, 24, `${nodeIds[index]} 應精確為 24 題`);
       for (const key of questionArrays) {
-        assert.equal(bank[key]?.length, 2, `${nodeIds[index]} ${key} 應精確為 2 題`);
+        assert.equal(bank[key]?.length, 6, `${nodeIds[index]} ${key} 應精確為 6 題`);
       }
     } else {
       assert.ok(questions.length >= 24, `${nodeIds[index]} 題數不足`);
@@ -78,7 +78,7 @@ test("quiz-loader 可載入全庫 94 個節點題庫，且容忍頂層 curriculu
       if (!ids.has(nodeId)) return sum;
       return sum + questionArrays.reduce((count, key) => count + (banks[index][key]?.length ?? 0), 0);
     }, 0);
-    assert.equal(total, 64, `${strandId} 應精確為 64 題`);
+    assert.equal(total, 192, `${strandId} 應精確為 192 題`);
   }
   assert.ok(banks.some((bank) => bank.curriculum));
 });

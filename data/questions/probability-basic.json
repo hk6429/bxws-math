@@ -1,19 +1,347 @@
 {
   "nodeId": "probability-basic",
   "basicMastery": [
-    {"id":"probability-basic-bm-1","type":"basic-mastery","stem":"袋中有 3 顆紅球、2 顆藍球，每顆被取出的機會相同。任取一顆，取到紅球的機率是多少？","options":["2/5","3/5","2/3","3/2"],"answer":1,"explanation":"共有 5 顆球，其中 3 顆紅球，機率為 3/5。"},
-    {"id":"probability-basic-bm-2","type":"basic-mastery","stem":"擲一顆公平六面骰子一次，出現偶數的機率是多少？","options":["1/6","1/3","1/2","2/3"],"answer":2,"explanation":"偶數結果為 2、4、6，共 3 種；全部有 6 種，所以機率為 3/6=1/2。"}
+    {
+      "id": "probability-basic-bm-1",
+      "type": "basic-mastery",
+      "challenge": "8-1",
+      "errorPath": 1,
+      "stem": "袋中有 3 顆紅球、2 顆藍球，每顆被取出的機會相同。任取一顆，取到紅球的機率是多少？",
+      "options": [
+        "2/5",
+        "3/5",
+        "2/3",
+        "3/2"
+      ],
+      "answer": 1,
+      "explanation": "共有 5 顆球，其中 3 顆紅球，機率為 3/5。"
+    },
+    {
+      "id": "probability-basic-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "8-1",
+      "errorPath": 2,
+      "stem": "袋中有 4 顆紅球、3 顆藍球。任取一顆，紅球機率是多少？",
+      "options": [
+        "3/7",
+        "4/7",
+        "3/4",
+        "4/3"
+      ],
+      "answer": 1,
+      "explanation": "共 7 顆，其中 4 顆紅球，機率為 4/7。"
+    },
+    {
+      "id": "probability-basic-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "8-1",
+      "errorPath": 3,
+      "stem": "袋中有 2 顆紅球、5 顆藍球。任取一顆，紅球機率是多少？",
+      "options": [
+        "2/7",
+        "5/7",
+        "2/5",
+        "5/2"
+      ],
+      "answer": 0,
+      "explanation": "共 7 顆，其中 2 顆紅球，機率為 2/7。"
+    },
+    {
+      "id": "probability-basic-bm-2",
+      "type": "basic-mastery",
+      "challenge": "8-2",
+      "errorPath": 1,
+      "stem": "擲一顆公平六面骰子一次，出現偶數的機率是多少？",
+      "options": [
+        "1/6",
+        "1/3",
+        "1/2",
+        "2/3"
+      ],
+      "answer": 2,
+      "explanation": "偶數結果為 2、4、6，共 3 種；全部有 6 種，所以機率為 3/6=1/2。"
+    },
+    {
+      "id": "probability-basic-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "8-2",
+      "errorPath": 2,
+      "stem": "擲一顆公平六面骰子一次，出現偶數的機率是幾？",
+      "options": [
+        "1/3",
+        "1/2",
+        "2/3",
+        "1/6"
+      ],
+      "answer": 1,
+      "explanation": "偶數結果為 2、4、6，共 3 種；全部有 6 種，所以機率為 3/6=1/2。"
+    },
+    {
+      "id": "probability-basic-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "8-2",
+      "errorPath": 3,
+      "stem": "擲一顆公平六面骰子一次，出現偶數的機率是幾？",
+      "options": [
+        "1/2",
+        "2/3",
+        "1/6",
+        "1/3"
+      ],
+      "answer": 0,
+      "explanation": "偶數結果為 2、4、6，共 3 種；全部有 6 種，所以機率為 3/6=1/2。"
+    }
   ],
   "conceptId": [
-    {"id":"probability-basic-ci-1","type":"concept-id","statement":"在每種基本結果機會相同時，事件機率可用「符合條件的結果數÷所有可能結果數」計算。","correctAnswer":true,"explanation":"先完整列出等可能結果，再以有利結果數除以總結果數。"},
-    {"id":"probability-basic-ci-2","type":"concept-id","statement":"事件的機率可能是 5/4。","correctAnswer":false,"explanation":"機率介於 0 與 1 之間，5/4 大於 1，不可能是機率。"}
+    {
+      "id": "probability-basic-ci-1",
+      "type": "concept-id",
+      "challenge": "8-3",
+      "errorPath": 1,
+      "statement": "在每種基本結果機會相同時，事件機率可用「符合條件的結果數÷所有可能結果數」計算。",
+      "correctAnswer": true,
+      "explanation": "先完整列出等可能結果，再以有利結果數除以總結果數。"
+    },
+    {
+      "id": "probability-basic-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "8-3",
+      "errorPath": 2,
+      "statement": "等可能時，機率是符合數除以總結果數。",
+      "correctAnswer": true,
+      "explanation": "先完整列出等可能結果，再以有利結果數除以總結果數。"
+    },
+    {
+      "id": "probability-basic-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "8-3",
+      "errorPath": 3,
+      "statement": "等可能時，機率是符合數除以總結果數。",
+      "correctAnswer": true,
+      "explanation": "先完整列出等可能結果，再以有利結果數除以總結果數。"
+    },
+    {
+      "id": "probability-basic-ci-2",
+      "type": "concept-id",
+      "challenge": "8-4",
+      "errorPath": 1,
+      "statement": "事件的機率可能是 5/4。",
+      "correctAnswer": false,
+      "explanation": "機率介於 0 與 1 之間，5/4 大於 1，不可能是機率。"
+    },
+    {
+      "id": "probability-basic-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "8-4",
+      "errorPath": 2,
+      "statement": "事件的機率可能是 7/6。",
+      "correctAnswer": false,
+      "explanation": "機率介於 0 與 1，7/6 大於 1。"
+    },
+    {
+      "id": "probability-basic-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "8-4",
+      "errorPath": 3,
+      "statement": "事件的機率可能是 9/8。",
+      "correctAnswer": false,
+      "explanation": "機率介於 0 與 1，9/8 大於 1。"
+    }
   ],
   "errorDiagnosis": [
-    {"id":"probability-basic-ed-1","type":"error-diagnosis","problem":"袋中有 1 顆黃球、4 顆綠球，求取到黃球的機率","wrongSolution":"小柏算成 1/4","errorOptions":["分母應是球的總數 5，不是綠球數 4","分子應是 4","應把 1 和 4 相乘","機率應大於 1"],"correctErrorIndex":0,"explanation":"總共有 1+4=5 顆球，黃球 1 顆，所以機率是 1/5。"},
-    {"id":"probability-basic-ed-2","type":"error-diagnosis","problem":"擲一顆六面骰子，求出現大於 4 點的機率","wrongSolution":"小涵說符合的結果只有 5，所以機率是 1/6","errorOptions":["還漏了點數 6，符合結果有 2 種","分母應是 4","骰子不會出現 5","應把 4 算進去"],"correctErrorIndex":0,"explanation":"大於 4 的點數為 5、6，共 2 種，所以機率為 2/6=1/3。"}
+    {
+      "id": "probability-basic-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "8-5",
+      "errorPath": 1,
+      "problem": "袋中有 1 顆黃球、4 顆綠球，求取到黃球的機率",
+      "wrongSolution": "小柏算成 1/4",
+      "errorOptions": [
+        "分母應是球的總數 5，不是綠球數 4",
+        "分子應是 4",
+        "應把 1 和 4 相乘",
+        "機率應大於 1"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "總共有 1+4=5 顆球，黃球 1 顆，所以機率是 1/5。"
+    },
+    {
+      "id": "probability-basic-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "8-5",
+      "errorPath": 2,
+      "problem": "袋中有 2 顆黃球、5 顆綠球，求黃球機率",
+      "wrongSolution": "小柏算成 2/5",
+      "errorOptions": [
+        "分子應為 5",
+        "分母應是總數 7，不是綠球數 5",
+        "應把 2、5 相乘",
+        "機率應大於 1"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "共有 7 顆球，黃球 2 顆，機率是 2/7。"
+    },
+    {
+      "id": "probability-basic-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "8-5",
+      "errorPath": 3,
+      "problem": "袋中有 3 顆黃球、7 顆綠球，求黃球機率",
+      "wrongSolution": "小柏算成 3/7",
+      "errorOptions": [
+        "機率應大於 1",
+        "應把 3、7 相乘",
+        "分子應為 7",
+        "分母應是總數 10，不是綠球數 7"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "共有 10 顆球，黃球 3 顆，機率是 3/10。"
+    },
+    {
+      "id": "probability-basic-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "8-6",
+      "errorPath": 1,
+      "problem": "擲一顆六面骰子，求出現大於 4 點的機率",
+      "wrongSolution": "小涵說符合的結果只有 5，所以機率是 1/6",
+      "errorOptions": [
+        "還漏了點數 6，符合結果有 2 種",
+        "分母應是 4",
+        "骰子不會出現 5",
+        "應把 4 算進去"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "大於 4 的點數為 5、6，共 2 種，所以機率為 2/6=1/3。"
+    },
+    {
+      "id": "probability-basic-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "8-6",
+      "errorPath": 2,
+      "problem": "擲公平八面骰，求出現大於 6 點的機率",
+      "wrongSolution": "小涵只列 7，算成 1/8",
+      "errorOptions": [
+        "分母應是 6",
+        "還漏點數 8，符合結果有 2 種",
+        "骰子不會出現 7",
+        "應把 6 算入"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "大於 6 的點數是 7、8，機率為 2/8=1/4。"
+    },
+    {
+      "id": "probability-basic-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "8-6",
+      "errorPath": 3,
+      "problem": "從 1 至 10 號卡抽一張，求號碼大於 8 的機率",
+      "wrongSolution": "小涵只列 9，算成 1/10",
+      "errorOptions": [
+        "應把 8 算入",
+        "卡片沒有 9",
+        "分母應是 8",
+        "還漏號碼 10，符合結果有 2 種"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "大於 8 的號碼是 9、10，機率為 2/10=1/5。"
+    }
   ],
   "contextApplication": [
-    {"id":"probability-basic-ca-1","type":"context-application","scenario":"班級抽籤箱中有 10 張籤，其中 4 張可獲得小禮物，每張籤被抽中的機會相同。","question":"抽一張獲得小禮物的機率是多少？","options":["1/10","2/5","3/5","4/5"],"answer":1,"explanation":"機率為 4/10，約分後是 2/5。"},
-    {"id":"probability-basic-ca-2","type":"context-application","scenario":"公平轉盤分成 8 個等大的區域，其中 3 格藍色、5 格白色。","question":"轉到不是藍色的機率是多少？","options":["3/8","5/8","3/5","5/3"],"answer":1,"explanation":"不是藍色就是白色，共 5 格，所以機率為 5/8。"}
+    {
+      "id": "probability-basic-ca-1",
+      "type": "context-application",
+      "challenge": "8-7",
+      "errorPath": 1,
+      "scenario": "班級抽籤箱中有 10 張籤，其中 4 張可獲得小禮物，每張籤被抽中的機會相同。",
+      "question": "抽一張獲得小禮物的機率是多少？",
+      "options": [
+        "1/10",
+        "2/5",
+        "3/5",
+        "4/5"
+      ],
+      "answer": 1,
+      "explanation": "機率為 4/10，約分後是 2/5。"
+    },
+    {
+      "id": "probability-basic-ca-v7-2",
+      "type": "context-application",
+      "challenge": "8-7",
+      "errorPath": 2,
+      "scenario": "班級抽籤箱中有 10 張籤，其中 4 張可獲得小禮物，每張籤被抽中的機會相同。",
+      "question": "抽一張獲得小禮物的機率是幾？",
+      "options": [
+        "2/5",
+        "3/5",
+        "4/5",
+        "1/10"
+      ],
+      "answer": 0,
+      "explanation": "機率為 4/10，約分後是 2/5。"
+    },
+    {
+      "id": "probability-basic-ca-v7-3",
+      "type": "context-application",
+      "challenge": "8-7",
+      "errorPath": 3,
+      "scenario": "班級抽籤箱中有 10 張籤，其中 4 張可獲得小禮物，每張籤被抽中的機會相同。",
+      "question": "抽一張獲得小禮物的機率是幾？",
+      "options": [
+        "3/5",
+        "4/5",
+        "1/10",
+        "2/5"
+      ],
+      "answer": 3,
+      "explanation": "機率為 4/10，約分後是 2/5。"
+    },
+    {
+      "id": "probability-basic-ca-2",
+      "type": "context-application",
+      "challenge": "8-8",
+      "errorPath": 1,
+      "scenario": "公平轉盤分成 8 個等大的區域，其中 3 格藍色、5 格白色。",
+      "question": "轉到不是藍色的機率是多少？",
+      "options": [
+        "3/8",
+        "5/8",
+        "3/5",
+        "5/3"
+      ],
+      "answer": 1,
+      "explanation": "不是藍色就是白色，共 5 格，所以機率為 5/8。"
+    },
+    {
+      "id": "probability-basic-ca-v8-2",
+      "type": "context-application",
+      "challenge": "8-8",
+      "errorPath": 2,
+      "scenario": "公平轉盤分成 8 個等大的區域，其中 3 格藍色、5 格白色。",
+      "question": "轉到不是藍色的機率是幾？",
+      "options": [
+        "5/8",
+        "3/5",
+        "5/3",
+        "3/8"
+      ],
+      "answer": 0,
+      "explanation": "不是藍色就是白色，共 5 格，所以機率為 5/8。"
+    },
+    {
+      "id": "probability-basic-ca-v8-3",
+      "type": "context-application",
+      "challenge": "8-8",
+      "errorPath": 3,
+      "scenario": "公平轉盤分成 8 個等大的區域，其中 3 格藍色、5 格白色。",
+      "question": "轉到不是藍色的機率是幾？",
+      "options": [
+        "3/5",
+        "5/3",
+        "3/8",
+        "5/8"
+      ],
+      "answer": 3,
+      "explanation": "不是藍色就是白色，共 5 格，所以機率為 5/8。"
+    }
   ]
 }

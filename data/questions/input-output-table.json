@@ -4,24 +4,118 @@
     {
       "id": "input-output-table-bm-1",
       "type": "basic-mastery",
+      "challenge": "3-1",
+      "errorPath": 1,
       "stem": "輸入 1、2、3 時，輸出分別為 4、7、10；輸入每增加 1，輸出固定增加 3。輸入 4 時輸出多少？",
-      "options": ["11", "12", "13", "14"],
+      "options": [
+        "11",
+        "12",
+        "13",
+        "14"
+      ],
       "answer": 2,
+      "explanation": "輸出依序增加 3，所以輸入 4 時輸出 13；規則也可寫成輸出=3×輸入+1。"
+    },
+    {
+      "id": "input-output-table-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "3-1",
+      "errorPath": 2,
+      "stem": "輸入1、2、3輸出4、7、10，輸入4呢？",
+      "options": [
+        "12",
+        "13",
+        "14",
+        "11"
+      ],
+      "answer": 1,
+      "explanation": "輸出依序增加 3，所以輸入 4 時輸出 13；規則也可寫成輸出=3×輸入+1。"
+    },
+    {
+      "id": "input-output-table-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "3-1",
+      "errorPath": 3,
+      "stem": "輸入1、2、3輸出4、7、10，輸入4呢？",
+      "options": [
+        "13",
+        "14",
+        "11",
+        "12"
+      ],
+      "answer": 0,
       "explanation": "輸出依序增加 3，所以輸入 4 時輸出 13；規則也可寫成輸出=3×輸入+1。"
     },
     {
       "id": "input-output-table-bm-2",
       "type": "basic-mastery",
+      "challenge": "3-2",
+      "errorPath": 1,
       "stem": "某機器的規則是「輸入數×2-3」。輸入 8，輸出是多少？",
-      "options": ["10", "13", "16", "19"],
+      "options": [
+        "10",
+        "13",
+        "16",
+        "19"
+      ],
       "answer": 1,
       "explanation": "依序運算：8×2-3=16-3=13。"
+    },
+    {
+      "id": "input-output-table-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "3-2",
+      "errorPath": 2,
+      "stem": "某機器規則是「輸入數×3+1」。輸入 6，輸出多少？",
+      "options": [
+        "16",
+        "17",
+        "19",
+        "21"
+      ],
+      "answer": 2,
+      "explanation": "6×3+1=19。"
+    },
+    {
+      "id": "input-output-table-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "3-2",
+      "errorPath": 3,
+      "stem": "某機器規則是「輸入數×4-5」。輸入 7，輸出多少？",
+      "options": [
+        "19",
+        "21",
+        "23",
+        "28"
+      ],
+      "answer": 2,
+      "explanation": "7×4-5=23。"
     }
   ],
   "conceptId": [
     {
       "id": "input-output-table-ci-1",
       "type": "concept-id",
+      "challenge": "3-3",
+      "errorPath": 1,
+      "statement": "同一張輸入輸出表中，相同的輸入依固定規則應得到相同的輸出。",
+      "correctAnswer": true,
+      "explanation": "固定規則不變時，同一個輸入值不會同時對應兩個不同輸出值。"
+    },
+    {
+      "id": "input-output-table-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "3-3",
+      "errorPath": 2,
+      "statement": "同一張輸入輸出表中，相同的輸入依固定規則應得到相同的輸出。",
+      "correctAnswer": true,
+      "explanation": "固定規則不變時，同一個輸入值不會同時對應兩個不同輸出值。"
+    },
+    {
+      "id": "input-output-table-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "3-3",
+      "errorPath": 3,
       "statement": "同一張輸入輸出表中，相同的輸入依固定規則應得到相同的輸出。",
       "correctAnswer": true,
       "explanation": "固定規則不變時，同一個輸入值不會同時對應兩個不同輸出值。"
@@ -29,6 +123,26 @@
     {
       "id": "input-output-table-ci-2",
       "type": "concept-id",
+      "challenge": "3-4",
+      "errorPath": 1,
+      "statement": "只看一組輸入與輸出，就一定能判定唯一的對應規則。",
+      "correctAnswer": false,
+      "explanation": "例如輸入 2、輸出 4，可能是乘以 2，也可能是加 2；通常需要多組資料才能判斷。"
+    },
+    {
+      "id": "input-output-table-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "3-4",
+      "errorPath": 2,
+      "statement": "只看一組輸入與輸出，就一定能判定唯一的對應規則。",
+      "correctAnswer": false,
+      "explanation": "例如輸入 2、輸出 4，可能是乘以 2，也可能是加 2；通常需要多組資料才能判斷。"
+    },
+    {
+      "id": "input-output-table-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "3-4",
+      "errorPath": 3,
       "statement": "只看一組輸入與輸出，就一定能判定唯一的對應規則。",
       "correctAnswer": false,
       "explanation": "例如輸入 2、輸出 4，可能是乘以 2，也可能是加 2；通常需要多組資料才能判斷。"
@@ -38,39 +152,195 @@
     {
       "id": "input-output-table-ed-1",
       "type": "error-diagnosis",
+      "challenge": "3-5",
+      "errorPath": 1,
       "problem": "規則是「輸出=輸入×3+2」，求輸入 5 的輸出",
       "wrongSolution": "小威算成 (5+2)×3=21。",
-      "errorOptions": ["把運算順序改成先加 2 再乘 3", "5×3 算錯", "輸入值抄錯", "輸出應除以 3"],
+      "errorOptions": [
+        "把運算順序改成先加 2 再乘 3",
+        "5×3 算錯",
+        "輸入值抄錯",
+        "輸出應除以 3"
+      ],
       "correctErrorIndex": 0,
       "explanation": "應照規則先算 5×3，再加 2，得到 15+2=17。"
     },
     {
+      "id": "input-output-table-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "3-5",
+      "errorPath": 2,
+      "problem": "規則為「輸出=輸入×4+3」，求輸入 6 的輸出",
+      "wrongSolution": "小威算成 (6+3)×4=36。",
+      "errorOptions": [
+        "輸入值抄錯",
+        "把先乘後加改成先加後乘",
+        "6×4 算錯",
+        "輸出應除以 4"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "應先算 6×4 再加 3，正確輸出是 27。"
+    },
+    {
+      "id": "input-output-table-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "3-5",
+      "errorPath": 3,
+      "problem": "規則為「輸出=輸入×2+5」，求輸入 8 的輸出",
+      "wrongSolution": "小威算成 (8+5)×2=26。",
+      "errorOptions": [
+        "8×2 算錯",
+        "輸出應除以 2",
+        "輸入值抄錯",
+        "把先乘後加改成先加後乘"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "應先算 8×2 再加 5，正確輸出是 21。"
+    },
+    {
       "id": "input-output-table-ed-2",
       "type": "error-diagnosis",
+      "challenge": "3-6",
+      "errorPath": 1,
       "problem": "表中輸入 2、4、6，輸出 5、9、13，判斷規則",
       "wrongSolution": "小芸說規則是「輸出=輸入+3」。",
-      "errorOptions": ["只用第一組資料判斷，沒有檢查其他組；應是輸出=2×輸入+1", "加法算錯", "輸入都應是奇數", "輸出順序應顛倒"],
+      "errorOptions": [
+        "只用第一組資料判斷，沒有檢查其他組；應是輸出=2×輸入+1",
+        "加法算錯",
+        "輸入都應是奇數",
+        "輸出順序應顛倒"
+      ],
       "correctErrorIndex": 0,
       "explanation": "輸入 2 時加 3 確實得 5，但輸入 4 時加 3 得 7，不是 9。2×輸入+1 可符合三組資料。"
+    },
+    {
+      "id": "input-output-table-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "3-6",
+      "errorPath": 2,
+      "problem": "輸入 1、3、5，輸出 5、11、17，判斷規則",
+      "wrongSolution": "小芸說規則是「輸出=輸入+4」。",
+      "errorOptions": [
+        "加法算錯",
+        "只驗第一組；應為 3×輸入+2",
+        "輸入應為偶數",
+        "輸出順序顛倒"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "加 4 只符合第一組；3×輸入+2 才符合三組。"
+    },
+    {
+      "id": "input-output-table-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "3-6",
+      "errorPath": 3,
+      "problem": "輸入 2、5、8，輸出 7、16、25，判斷規則",
+      "wrongSolution": "小芸說規則是「輸出=輸入+5」。",
+      "errorOptions": [
+        "輸出順序顛倒",
+        "輸入應連續",
+        "只驗第一組；應為 3×輸入+1",
+        "加法算錯"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "加 5 只符合第一組；3×輸入+1 才符合三組。"
     }
   ],
   "contextApplication": [
     {
       "id": "input-output-table-ca-1",
       "type": "context-application",
+      "challenge": "3-7",
+      "errorPath": 1,
       "scenario": "影印店每印 1 張收 2 元，另收一次裝訂費 10 元。",
       "question": "印 15 張並裝訂，共需多少元？",
-      "options": ["25 元", "30 元", "40 元", "150 元"],
+      "options": [
+        "25 元",
+        "30 元",
+        "40 元",
+        "150 元"
+      ],
       "answer": 2,
+      "explanation": "總費用=2×張數+10，所以 2×15+10=40 元。"
+    },
+    {
+      "id": "input-output-table-ca-v7-2",
+      "type": "context-application",
+      "challenge": "3-7",
+      "errorPath": 2,
+      "scenario": "影印店每印 1 張收 2 元，另收一次裝訂費 10 元。",
+      "question": "印 15 張並裝訂，共需幾元？",
+      "options": [
+        "30 元",
+        "40 元",
+        "150 元",
+        "25 元"
+      ],
+      "answer": 1,
+      "explanation": "總費用=2×張數+10，所以 2×15+10=40 元。"
+    },
+    {
+      "id": "input-output-table-ca-v7-3",
+      "type": "context-application",
+      "challenge": "3-7",
+      "errorPath": 3,
+      "scenario": "影印店每印 1 張收 2 元，另收一次裝訂費 10 元。",
+      "question": "印 15 張並裝訂，共需幾元？",
+      "options": [
+        "40 元",
+        "150 元",
+        "25 元",
+        "30 元"
+      ],
+      "answer": 0,
       "explanation": "總費用=2×張數+10，所以 2×15+10=40 元。"
     },
     {
       "id": "input-output-table-ca-2",
       "type": "context-application",
+      "challenge": "3-8",
+      "errorPath": 1,
       "scenario": "攝氏溫度 x 與華氏溫度 y 的簡化對照如下：x=0 時 y=32，x=5 時 y=41，x=10 時 y=50；攝氏每增加 5 度，華氏固定增加 9 度。",
       "question": "依表中規律，攝氏 15 度對應華氏幾度？",
-      "options": ["54 度", "59 度", "60 度", "65 度"],
+      "options": [
+        "54 度",
+        "59 度",
+        "60 度",
+        "65 度"
+      ],
       "answer": 1,
+      "explanation": "攝氏每增加 5 度，華氏增加 9 度；50+9=59 度。"
+    },
+    {
+      "id": "input-output-table-ca-v8-2",
+      "type": "context-application",
+      "challenge": "3-8",
+      "errorPath": 2,
+      "scenario": "攝氏溫度 x 與華氏溫度 y 的簡化對照如下：x=0 時 y=32，x=5 時 y=41，x=10 時 y=50；攝氏每增加 5 度，華氏固定增加 9 度。",
+      "question": "依表中規律，攝氏 15 度對應華氏幾度？",
+      "options": [
+        "59 度",
+        "60 度",
+        "65 度",
+        "54 度"
+      ],
+      "answer": 0,
+      "explanation": "攝氏每增加 5 度，華氏增加 9 度；50+9=59 度。"
+    },
+    {
+      "id": "input-output-table-ca-v8-3",
+      "type": "context-application",
+      "challenge": "3-8",
+      "errorPath": 3,
+      "scenario": "攝氏溫度 x 與華氏溫度 y 的簡化對照如下：x=0 時 y=32，x=5 時 y=41，x=10 時 y=50；攝氏每增加 5 度，華氏固定增加 9 度。",
+      "question": "依表中規律，攝氏 15 度對應華氏幾度？",
+      "options": [
+        "60 度",
+        "65 度",
+        "54 度",
+        "59 度"
+      ],
+      "answer": 3,
       "explanation": "攝氏每增加 5 度，華氏增加 9 度；50+9=59 度。"
     }
   ]

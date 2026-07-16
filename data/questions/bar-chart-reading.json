@@ -1,19 +1,347 @@
 {
   "nodeId": "bar-chart-reading",
   "basicMastery": [
-    {"id":"bar-chart-reading-bm-1","type":"basic-mastery","stem":"長條圖中每一格代表 2 人，某長條高 6 格，代表多少人？","options":["3 人","8 人","12 人","16 人"],"answer":2,"explanation":"每格 2 人，共 6 格，所以 2×6=12 人。"},
-    {"id":"bar-chart-reading-bm-2","type":"basic-mastery","stem":"長條圖顯示甲班 24 人、乙班 18 人參加運動會。甲班比乙班多幾人？","options":["4 人","6 人","12 人","42 人"],"answer":1,"explanation":"24-18=6 人。"}
+    {
+      "id": "bar-chart-reading-bm-1",
+      "type": "basic-mastery",
+      "challenge": "2-1",
+      "errorPath": 1,
+      "stem": "長條圖中每一格代表 2 人，某長條高 6 格，代表多少人？",
+      "options": [
+        "3 人",
+        "8 人",
+        "12 人",
+        "16 人"
+      ],
+      "answer": 2,
+      "explanation": "每格 2 人，共 6 格，所以 2×6=12 人。"
+    },
+    {
+      "id": "bar-chart-reading-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "2-1",
+      "errorPath": 2,
+      "stem": "長條圖每格代表 3 人，長條高 5 格，代表多少人？",
+      "options": [
+        "8 人",
+        "15 人",
+        "18 人",
+        "20 人"
+      ],
+      "answer": 1,
+      "explanation": "3×5=15 人。"
+    },
+    {
+      "id": "bar-chart-reading-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "2-1",
+      "errorPath": 3,
+      "stem": "長條圖每格代表 4 人，長條高 7 格，代表多少人？",
+      "options": [
+        "11 人",
+        "24 人",
+        "28 人",
+        "32 人"
+      ],
+      "answer": 2,
+      "explanation": "4×7=28 人。"
+    },
+    {
+      "id": "bar-chart-reading-bm-2",
+      "type": "basic-mastery",
+      "challenge": "2-2",
+      "errorPath": 1,
+      "stem": "長條圖顯示甲班 24 人、乙班 18 人參加運動會。甲班比乙班多幾人？",
+      "options": [
+        "4 人",
+        "6 人",
+        "12 人",
+        "42 人"
+      ],
+      "answer": 1,
+      "explanation": "24-18=6 人。"
+    },
+    {
+      "id": "bar-chart-reading-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "2-2",
+      "errorPath": 2,
+      "stem": "甲班 31 人、乙班 24 人參加活動。甲班多幾人？",
+      "options": [
+        "5 人",
+        "7 人",
+        "9 人",
+        "55 人"
+      ],
+      "answer": 1,
+      "explanation": "31-24=7 人。"
+    },
+    {
+      "id": "bar-chart-reading-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "2-2",
+      "errorPath": 3,
+      "stem": "甲班 26 人、乙班 17 人參加活動。甲班多幾人？",
+      "options": [
+        "7 人",
+        "9 人",
+        "11 人",
+        "43 人"
+      ],
+      "answer": 1,
+      "explanation": "26-17=9 人。"
+    }
   ],
   "conceptId": [
-    {"id":"bar-chart-reading-ci-1","type":"concept-id","statement":"讀長條圖前，要先確認圖名、橫軸、縱軸及每一格代表的數量。","correctAnswer":true,"explanation":"這些資訊決定長條所表示的類別與正確數值。"},
-    {"id":"bar-chart-reading-ci-2","type":"concept-id","statement":"長條愈高一定代表該類別的名稱愈長。","correctAnswer":false,"explanation":"長條高度表示數量大小，和類別名稱的字數無關。"}
+    {
+      "id": "bar-chart-reading-ci-1",
+      "type": "concept-id",
+      "challenge": "2-3",
+      "errorPath": 1,
+      "statement": "讀長條圖前，要先確認圖名、橫軸、縱軸及每一格代表的數量。",
+      "correctAnswer": true,
+      "explanation": "這些資訊決定長條所表示的類別與正確數值。"
+    },
+    {
+      "id": "bar-chart-reading-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "2-3",
+      "errorPath": 2,
+      "statement": "讀長條圖前，要先確認圖名、橫軸、縱軸及每一格代表的數量。",
+      "correctAnswer": true,
+      "explanation": "這些資訊決定長條所表示的類別與正確數值。"
+    },
+    {
+      "id": "bar-chart-reading-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "2-3",
+      "errorPath": 3,
+      "statement": "讀長條圖前，要先確認圖名、橫軸、縱軸及每一格代表的數量。",
+      "correctAnswer": true,
+      "explanation": "這些資訊決定長條所表示的類別與正確數值。"
+    },
+    {
+      "id": "bar-chart-reading-ci-2",
+      "type": "concept-id",
+      "challenge": "2-4",
+      "errorPath": 1,
+      "statement": "長條愈高一定代表該類別的名稱愈長。",
+      "correctAnswer": false,
+      "explanation": "長條高度表示數量大小，和類別名稱的字數無關。"
+    },
+    {
+      "id": "bar-chart-reading-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "2-4",
+      "errorPath": 2,
+      "statement": "長條愈高一定代表該類別的名稱愈長。",
+      "correctAnswer": false,
+      "explanation": "長條高度表示數量大小，和類別名稱的字數無關。"
+    },
+    {
+      "id": "bar-chart-reading-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "2-4",
+      "errorPath": 3,
+      "statement": "長條愈高一定代表該類別的名稱愈長。",
+      "correctAnswer": false,
+      "explanation": "長條高度表示數量大小，和類別名稱的字數無關。"
+    }
   ],
   "errorDiagnosis": [
-    {"id":"bar-chart-reading-ed-1","type":"error-diagnosis","problem":"每格代表 5 本，科學書長條高 4 格","wrongSolution":"小凱回答科學書有 9 本，因為 5+4=9","errorOptions":["應用乘法計算每格數量，卻用了加法","把長條高度少數一格","把每格看成 4 本","應該用減法"],"correctErrorIndex":0,"explanation":"4 格、每格 5 本，應算 4×5=20 本。"},
-    {"id":"bar-chart-reading-ed-2","type":"error-diagnosis","problem":"比較長條圖中甲 30 人與乙 20 人","wrongSolution":"小真說乙比甲多 10 人","errorOptions":["減法計算錯誤","把比較方向顛倒，應是甲比乙多 10 人","漏看單位","兩數應該相加"],"correctErrorIndex":1,"explanation":"甲是 30 人、乙是 20 人；差雖然算成 10 人，卻把比較方向說反了。"}
+    {
+      "id": "bar-chart-reading-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "2-5",
+      "errorPath": 1,
+      "problem": "每格代表 5 本，科學書長條高 4 格",
+      "wrongSolution": "小凱回答科學書有 9 本，因為 5+4=9",
+      "errorOptions": [
+        "應用乘法計算每格數量，卻用了加法",
+        "把長條高度少數一格",
+        "把每格看成 4 本",
+        "應該用減法"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "4 格、每格 5 本，應算 4×5=20 本。"
+    },
+    {
+      "id": "bar-chart-reading-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "2-5",
+      "errorPath": 2,
+      "problem": "每格代表 6 本，故事書長條高 3 格",
+      "wrongSolution": "小凱回答有 9 本，因為 6+3=9",
+      "errorOptions": [
+        "少數一格",
+        "應用乘法，卻用了加法",
+        "每格看成 3 本",
+        "應用減法"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "每格 6 本、共 3 格，應算 6×3=18 本。"
+    },
+    {
+      "id": "bar-chart-reading-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "2-5",
+      "errorPath": 3,
+      "problem": "每格代表 4 本，歷史書長條高 7 格",
+      "wrongSolution": "小凱回答有 11 本，因為 4+7=11",
+      "errorOptions": [
+        "應用減法",
+        "每格看成 7 本",
+        "少數一格",
+        "應用乘法，卻用了加法"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "每格 4 本、共 7 格，應算 4×7=28 本。"
+    },
+    {
+      "id": "bar-chart-reading-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "2-6",
+      "errorPath": 1,
+      "problem": "比較長條圖中甲 30 人與乙 20 人",
+      "wrongSolution": "小真說乙比甲多 10 人",
+      "errorOptions": [
+        "減法計算錯誤",
+        "把比較方向顛倒，應是甲比乙多 10 人",
+        "漏看單位",
+        "兩數應該相加"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "甲是 30 人、乙是 20 人；差雖然算成 10 人，卻把比較方向說反了。"
+    },
+    {
+      "id": "bar-chart-reading-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "2-6",
+      "errorPath": 2,
+      "problem": "比較長條圖中甲 42 人與乙 27 人",
+      "wrongSolution": "小真說乙比甲多 15 人",
+      "errorOptions": [
+        "減法算錯",
+        "把比較方向顛倒；甲多 15 人",
+        "漏看單位",
+        "兩數應相加"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "42-27=15，但應是甲比乙多 15 人。"
+    },
+    {
+      "id": "bar-chart-reading-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "2-6",
+      "errorPath": 3,
+      "problem": "比較長條圖中甲 35 人與乙 19 人",
+      "wrongSolution": "小真說乙比甲多 16 人",
+      "errorOptions": [
+        "兩數應相加",
+        "漏看單位",
+        "減法算錯",
+        "把比較方向顛倒；甲多 16 人"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "35-19=16，但應是甲比乙多 16 人。"
+    }
   ],
   "contextApplication": [
-    {"id":"bar-chart-reading-ca-1","type":"context-application","scenario":"資源回收長條圖顯示：週一 15 公斤、週二 25 公斤、週三 20 公斤。","question":"三天共回收多少公斤？","options":["45 公斤","50 公斤","60 公斤","75 公斤"],"answer":2,"explanation":"15+25+20=60 公斤。"},
-    {"id":"bar-chart-reading-ca-2","type":"context-application","scenario":"社團人數長條圖中，籃球 16 人、羽球 12 人、桌球 8 人。","question":"如果要選出人數最少的社團，是哪一個？","options":["籃球","羽球","桌球","無法判斷"],"answer":2,"explanation":"8<12<16，所以桌球社人數最少。"}
+    {
+      "id": "bar-chart-reading-ca-1",
+      "type": "context-application",
+      "challenge": "2-7",
+      "errorPath": 1,
+      "scenario": "資源回收長條圖顯示：週一 15 公斤、週二 25 公斤、週三 20 公斤。",
+      "question": "三天共回收多少公斤？",
+      "options": [
+        "45 公斤",
+        "50 公斤",
+        "60 公斤",
+        "75 公斤"
+      ],
+      "answer": 2,
+      "explanation": "15+25+20=60 公斤。"
+    },
+    {
+      "id": "bar-chart-reading-ca-v7-2",
+      "type": "context-application",
+      "challenge": "2-7",
+      "errorPath": 2,
+      "scenario": "資源回收長條圖顯示：週一 15 公斤、週二 25 公斤、週三 20 公斤。",
+      "question": "三天共回收幾公斤？",
+      "options": [
+        "50 公斤",
+        "60 公斤",
+        "75 公斤",
+        "45 公斤"
+      ],
+      "answer": 1,
+      "explanation": "15+25+20=60 公斤。"
+    },
+    {
+      "id": "bar-chart-reading-ca-v7-3",
+      "type": "context-application",
+      "challenge": "2-7",
+      "errorPath": 3,
+      "scenario": "資源回收長條圖顯示：週一 15 公斤、週二 25 公斤、週三 20 公斤。",
+      "question": "三天共回收幾公斤？",
+      "options": [
+        "60 公斤",
+        "75 公斤",
+        "45 公斤",
+        "50 公斤"
+      ],
+      "answer": 0,
+      "explanation": "15+25+20=60 公斤。"
+    },
+    {
+      "id": "bar-chart-reading-ca-2",
+      "type": "context-application",
+      "challenge": "2-8",
+      "errorPath": 1,
+      "scenario": "社團人數長條圖中，籃球 16 人、羽球 12 人、桌球 8 人。",
+      "question": "如果要選出人數最少的社團，是哪一個？",
+      "options": [
+        "籃球",
+        "羽球",
+        "桌球",
+        "無法判斷"
+      ],
+      "answer": 2,
+      "explanation": "8<12<16，所以桌球社人數最少。"
+    },
+    {
+      "id": "bar-chart-reading-ca-v8-2",
+      "type": "context-application",
+      "challenge": "2-8",
+      "errorPath": 2,
+      "scenario": "社團人數長條圖中，籃球 16 人、羽球 12 人、桌球 8 人。",
+      "question": "如果要選出人數最少的社團，是哪一個？",
+      "options": [
+        "羽球",
+        "桌球",
+        "無法判斷",
+        "籃球"
+      ],
+      "answer": 1,
+      "explanation": "8<12<16，所以桌球社人數最少。"
+    },
+    {
+      "id": "bar-chart-reading-ca-v8-3",
+      "type": "context-application",
+      "challenge": "2-8",
+      "errorPath": 3,
+      "scenario": "社團人數長條圖中，籃球 16 人、羽球 12 人、桌球 8 人。",
+      "question": "如果要選出人數最少的社團，是哪一個？",
+      "options": [
+        "桌球",
+        "無法判斷",
+        "籃球",
+        "羽球"
+      ],
+      "answer": 0,
+      "explanation": "8<12<16，所以桌球社人數最少。"
+    }
   ]
 }

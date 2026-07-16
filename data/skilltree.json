@@ -81,7 +81,10 @@
         { "id": "speed", "name": "速度", "tier": "elem-high", "prereq": ["time-mul-div", "ratio-rate"], "gateChallenges": ["5", "7"] },
 
         { "id": "negative-number", "name": "負數", "tier": "jhs-g7", "prereq": ["decimal-mul"] },
-        { "id": "proportion-eq", "name": "比例式", "tier": "jhs-g7", "prereq": ["ratio-rate"] }
+        { "id": "proportion-eq", "name": "比例式", "tier": "jhs-g7", "prereq": ["ratio-rate"] },
+        { "id": "prime-factorization-app", "name": "質因數標準分解與應用", "tier": "jhs-g7", "prereq": ["prime-factor", "gcd-lcm"], "gateChallenges": ["1-6", "1-8"], "contentPending": true },
+        { "id": "exponent-laws", "name": "指數與指數律", "tier": "jhs-g7", "prereq": ["negative-number", "prime-factor"], "gateChallenges": ["2-6", "2-7"], "contentPending": true },
+        { "id": "scientific-notation", "name": "科學記號", "tier": "jhs-g7", "prereq": ["exponent-laws", "decimal-mul"], "gateChallenges": ["3-6", "3-8"], "contentPending": true }
       ]
     },
     {
@@ -89,7 +92,10 @@
       "name": "代數",
       "nodes": [
         { "id": "algebra-symbol", "name": "代數符號", "tier": "jhs-g7", "prereq": ["negative-number"] },
-        { "id": "linear-eq-1var", "name": "一元一次方程式", "tier": "jhs-g7", "prereq": ["algebra-symbol"] }
+        { "id": "linear-eq-1var", "name": "一元一次方程式", "tier": "jhs-g7", "prereq": ["algebra-symbol"] },
+        { "id": "linear-equation-modeling", "name": "一元一次方程式建模", "tier": "jhs-g7", "prereq": ["linear-eq-1var"], "gateChallenges": ["4-6", "4-8"], "contentPending": true },
+        { "id": "linear-inequality-meaning", "name": "一元一次不等式的意義", "tier": "jhs-g7", "prereq": ["linear-eq-1var", "negative-number"], "gateChallenges": ["5-6", "5-8"], "contentPending": true },
+        { "id": "linear-inequality-solving", "name": "一元一次不等式的解與應用", "tier": "jhs-g7", "prereq": ["linear-inequality-meaning"], "gateChallenges": ["6-6", "6-8"], "contentPending": true }
       ]
     },
     {
@@ -113,7 +119,11 @@
         { "id": "solids-nets", "name": "柱體錐體與展開圖", "tier": "elem-high", "prereq": ["shape-feature"], "gateChallenges": ["15-7", "15-6"], "lessonMedia": { "src": "assets/geometry/geometry-nets.png", "alt": "立體形體與展開圖的對應示意圖" } },
         { "id": "scale-map", "name": "放大縮小與比例尺", "tier": "elem-high", "prereq": ["tri-quad-property", "ratio-rate"], "gateChallenges": ["16-7", "16-5"], "lessonMedia": { "src": "assets/geometry/geometry-scale.png", "alt": "圖形縮放與地圖比例尺示意圖" } },
         { "id": "circle-measure", "name": "圓周長與圓面積", "tier": "elem-high", "prereq": ["circle-parts", "plane-area-formula", "sector-basic", "decimal-mul"], "gateChallenges": ["7", "4"], "lessonMedia": { "src": "assets/geometry/geometry-circle-family.png", "alt": "圓周與圓面積測量關係示意圖" } },
-        { "id": "prism-volume", "name": "柱體體積與表面積", "tier": "elem-high", "prereq": ["cuboid-volume", "circle-measure"], "gateChallenges": ["18-7", "18-5"], "lessonMedia": { "src": "assets/geometry/geometry-box-volume.png", "alt": "柱體底面、高與表面的構成示意圖" } }
+        { "id": "prism-volume", "name": "柱體體積與表面積", "tier": "elem-high", "prereq": ["cuboid-volume", "circle-measure"], "gateChallenges": ["18-7", "18-5"], "lessonMedia": { "src": "assets/geometry/geometry-box-volume.png", "alt": "柱體底面、高與表面的構成示意圖" } },
+        { "id": "geometry-symbols", "name": "幾何圖形與符號", "tier": "jhs-g7", "prereq": ["tri-quad-property", "angle-degree"], "gateChallenges": ["7-6", "7-7"], "contentPending": true },
+        { "id": "three-views", "name": "立體圖形三視圖", "tier": "jhs-g7", "prereq": ["solids-nets"], "gateChallenges": ["8-6", "8-8"], "contentPending": true },
+        { "id": "perpendicular-bisector", "name": "垂直、中垂線與點線距離", "tier": "jhs-g7", "prereq": ["geometry-symbols", "perp-parallel"], "gateChallenges": ["9-6", "9-8"], "contentPending": true },
+        { "id": "symmetry-properties-jhs", "name": "線對稱性質與基本圖形", "tier": "jhs-g7", "prereq": ["perpendicular-bisector", "line-symmetry"], "gateChallenges": ["10-6", "10-8"], "contentPending": true }
       ]
     },
     {
@@ -141,7 +151,9 @@
         { "id": "median-mode", "name": "中位數與眾數", "tier": "jhs-g7", "prereq": ["data-table-basic"], "gateChallenges": ["5-6", "5-7"] },
         { "id": "range-data-interpretation", "name": "全距與資料判讀", "tier": "jhs-g7", "prereq": ["mean-basic", "median-mode"], "gateChallenges": ["6-6", "6-7"] },
         { "id": "chance-sample-space", "name": "可能性與樣本空間", "tier": "elem-high", "prereq": ["fraction-equivalent"], "gateChallenges": ["7-6", "7-7"] },
-        { "id": "probability-basic", "name": "基礎機率", "tier": "jhs-g7", "prereq": ["chance-sample-space", "fraction-equivalent"], "gateChallenges": ["8-6", "8-7"] }
+        { "id": "probability-basic", "name": "基礎機率", "tier": "jhs-g7", "prereq": ["chance-sample-space", "fraction-equivalent"], "gateChallenges": ["8-6", "8-7"] },
+        { "id": "statistical-chart-design", "name": "資料蒐集與統計圖表", "tier": "jhs-g7", "prereq": ["data-table-basic", "bar-chart-reading", "line-chart-reading"], "gateChallenges": ["11-6", "11-8"], "contentPending": true },
+        { "id": "histogram-contingency", "name": "直方圖與列聯表", "tier": "jhs-g7", "prereq": ["statistical-chart-design", "median-mode"], "gateChallenges": ["12-6", "12-8"], "contentPending": true }
       ]
     }
   ]

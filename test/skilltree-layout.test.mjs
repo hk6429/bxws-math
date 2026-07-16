@@ -46,6 +46,8 @@ test("跨 strand 的全域深度會壓密成連續畫布列", () => {
   const algebra = tree.strands.find((strand) => strand.id === "algebra");
   const { positions, height } = layoutNodes(algebra.nodes, nodesById);
   assert.ok(positions["algebra-symbol"].y < positions["linear-eq-1var"].y);
+  assert.ok(positions["linear-eq-1var"].y < positions["linear-equation-modeling"].y);
+  assert.ok(positions["linear-inequality-meaning"].y < positions["linear-inequality-solving"].y);
   assert.ok(Math.max(...Object.values(positions).map((pos) => pos.y)) < height);
-  assert.ok(height < 600, `代數 strand 畫布不應因全域深度撲高：${height}`);
+  assert.ok(height < 800, `5 個代數節點的畫布不應因全域深度撲高：${height}`);
 });

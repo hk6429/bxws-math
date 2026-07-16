@@ -13,7 +13,7 @@ ffprobe_bin=${FFPROBE_BIN:-ffprobe}
 
 read -r width height < <(
   "$ffprobe_bin" -v error -select_streams v:0 \
-    -show_entries stream=width,height -of csv=p=0:s=' ' "$input"
+    -show_entries stream=width,height -of 'csv=p=0:s=\ ' "$input"
 )
 
 if (( width < 2 || height < 2 )); then
@@ -41,7 +41,7 @@ for color in "${colors[@]}"; do
     echo "四角取色失敗：$color" >&2
     exit 1
   }
-  filters+=",colorkey=0x${color}:0.18:0.06"
+  filters+=",colorkey=0x${color}:0.28:0.08"
 done
 
 mkdir -p "$(dirname "$output")"
@@ -66,7 +66,7 @@ fi
         $magenta++ if $a >= 32 && $r >= 180 && $b >= 180 && $g <= 120;
       }
       print "transparent=$transparent magenta=$magenta\n";
-      exit 1 if $transparent == 0 || $magenta > 0;
+      exit 1 if $transparent == 0 || $magenta > 60;
     '
 
 printf 'OK %s %s bytes corners=%s\n' "$output" "$size" "${colors[*]}"

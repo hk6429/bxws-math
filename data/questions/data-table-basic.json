@@ -1,19 +1,347 @@
 {
   "nodeId": "data-table-basic",
   "basicMastery": [
-    {"id":"data-table-basic-bm-1","type":"basic-mastery","stem":"調查同學最喜歡的水果，結果為：蘋果、香蕉、蘋果、芭樂、蘋果。蘋果出現幾次？","options":["2 次","3 次","4 次","5 次"],"answer":1,"explanation":"逐一計數，蘋果出現在第 1、3、5 筆，共 3 次。"},
-    {"id":"data-table-basic-bm-2","type":"basic-mastery","stem":"表格記錄四天借書量：週一 12 本、週二 15 本、週三 9 本、週四 14 本。哪一天最多？","options":["週一","週二","週三","週四"],"answer":1,"explanation":"比較 12、15、9、14，最大值是 15，所以週二最多。"}
+    {
+      "id": "data-table-basic-bm-1",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "errorPath": 1,
+      "stem": "調查同學最喜歡的水果，結果為：蘋果、香蕉、蘋果、芭樂、蘋果。蘋果出現幾次？",
+      "options": [
+        "2 次",
+        "3 次",
+        "4 次",
+        "5 次"
+      ],
+      "answer": 1,
+      "explanation": "逐一計數，蘋果出現在第 1、3、5 筆，共 3 次。"
+    },
+    {
+      "id": "data-table-basic-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "errorPath": 2,
+      "stem": "蘋果、香蕉、蘋果、芭樂、蘋果，共幾個蘋果？",
+      "options": [
+        "3 次",
+        "4 次",
+        "5 次",
+        "2 次"
+      ],
+      "answer": 0,
+      "explanation": "逐一計數，蘋果出現在第 1、3、5 筆，共 3 次。"
+    },
+    {
+      "id": "data-table-basic-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "errorPath": 3,
+      "stem": "蘋果、香蕉、蘋果、芭樂、蘋果，共幾個蘋果？",
+      "options": [
+        "4 次",
+        "5 次",
+        "2 次",
+        "3 次"
+      ],
+      "answer": 3,
+      "explanation": "逐一計數，蘋果出現在第 1、3、5 筆，共 3 次。"
+    },
+    {
+      "id": "data-table-basic-bm-2",
+      "type": "basic-mastery",
+      "challenge": "1-2",
+      "errorPath": 1,
+      "stem": "表格記錄四天借書量：週一 12 本、週二 15 本、週三 9 本、週四 14 本。哪一天最多？",
+      "options": [
+        "週一",
+        "週二",
+        "週三",
+        "週四"
+      ],
+      "answer": 1,
+      "explanation": "比較 12、15、9、14，最大值是 15，所以週二最多。"
+    },
+    {
+      "id": "data-table-basic-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "1-2",
+      "errorPath": 2,
+      "stem": "四天借書量：週一 8 本、週二 17 本、週三 13 本、週四 15 本。哪天最多？",
+      "options": [
+        "週一",
+        "週三",
+        "週四",
+        "週二"
+      ],
+      "answer": 3,
+      "explanation": "17 最大，所以週二最多。"
+    },
+    {
+      "id": "data-table-basic-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "1-2",
+      "errorPath": 3,
+      "stem": "四天借書量：週一 21 本、週二 14 本、週三 19 本、週四 23 本。哪天最多？",
+      "options": [
+        "週四",
+        "週一",
+        "週二",
+        "週三"
+      ],
+      "answer": 0,
+      "explanation": "23 最大，所以週四最多。"
+    }
   ],
   "conceptId": [
-    {"id":"data-table-basic-ci-1","type":"concept-id","statement":"整理類別資料時，可用正字記號或次數表記錄每一類出現的次數。","correctAnswer":true,"explanation":"分類後逐筆計數，可以減少遺漏並方便比較。"},
-    {"id":"data-table-basic-ci-2","type":"concept-id","statement":"在每筆資料只歸入一類的次數表中，各類次數相加可以大於原始資料總筆數。","correctAnswer":false,"explanation":"每筆資料只歸入一類時，各類次數總和應等於原始資料總筆數。"}
+    {
+      "id": "data-table-basic-ci-1",
+      "type": "concept-id",
+      "challenge": "1-3",
+      "errorPath": 1,
+      "statement": "整理類別資料時，可用正字記號或次數表記錄每一類出現的次數。",
+      "correctAnswer": true,
+      "explanation": "分類後逐筆計數，可以減少遺漏並方便比較。"
+    },
+    {
+      "id": "data-table-basic-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "1-3",
+      "errorPath": 2,
+      "statement": "整理類別資料時，可用正字記號或次數表記錄每一類出現的次數。",
+      "correctAnswer": true,
+      "explanation": "分類後逐筆計數，可以減少遺漏並方便比較。"
+    },
+    {
+      "id": "data-table-basic-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "1-3",
+      "errorPath": 3,
+      "statement": "整理類別資料時，可用正字記號或次數表記錄每一類出現的次數。",
+      "correctAnswer": true,
+      "explanation": "分類後逐筆計數，可以減少遺漏並方便比較。"
+    },
+    {
+      "id": "data-table-basic-ci-2",
+      "type": "concept-id",
+      "challenge": "1-4",
+      "errorPath": 1,
+      "statement": "在每筆資料只歸入一類的次數表中，各類次數相加可以大於原始資料總筆數。",
+      "correctAnswer": false,
+      "explanation": "每筆資料只歸入一類時，各類次數總和應等於原始資料總筆數。"
+    },
+    {
+      "id": "data-table-basic-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "1-4",
+      "errorPath": 2,
+      "statement": "在每筆資料只歸入一類的次數表中，各類次數相加可以大於原始資料總筆數。",
+      "correctAnswer": false,
+      "explanation": "每筆資料只歸入一類時，各類次數總和應等於原始資料總筆數。"
+    },
+    {
+      "id": "data-table-basic-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "1-4",
+      "errorPath": 3,
+      "statement": "在每筆資料只歸入一類的次數表中，各類次數相加可以大於原始資料總筆數。",
+      "correctAnswer": false,
+      "explanation": "每筆資料只歸入一類時，各類次數總和應等於原始資料總筆數。"
+    }
   ],
   "errorDiagnosis": [
-    {"id":"data-table-basic-ed-1","type":"error-diagnosis","problem":"把紅、藍、紅、綠、藍、紅整理成次數表","wrongSolution":"小安記成紅 2 次、藍 2 次、綠 1 次，共 5 次","errorOptions":["漏數了一筆紅色資料","把藍色多算一次","把綠色多算一次","總和應是 7 次"],"correctErrorIndex":0,"explanation":"原始資料共有 6 筆，其中紅色出現 3 次；小安漏數了一筆紅色。"},
-    {"id":"data-table-basic-ed-2","type":"error-diagnosis","problem":"比較表格中的 8、13、11、9 四個次數","wrongSolution":"小美說 9 最大，因為 9 排在最後","errorOptions":["把資料位置當成數值大小的依據","漏看表格標題","把 13 看成 31","加法計算錯誤"],"correctErrorIndex":0,"explanation":"比較次數要比較數值，不是資料出現的位置；13 才是最大值。"}
+    {
+      "id": "data-table-basic-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "1-5",
+      "errorPath": 1,
+      "problem": "把紅、藍、紅、綠、藍、紅整理成次數表",
+      "wrongSolution": "小安記成紅 2 次、藍 2 次、綠 1 次，共 5 次",
+      "errorOptions": [
+        "漏數了一筆紅色資料",
+        "把藍色多算一次",
+        "把綠色多算一次",
+        "總和應是 7 次"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "原始資料共有 6 筆，其中紅色出現 3 次；小安漏數了一筆紅色。"
+    },
+    {
+      "id": "data-table-basic-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "1-5",
+      "errorPath": 2,
+      "problem": "把紅、藍、紅、綠、藍、紅整理成次數表",
+      "wrongSolution": "小安記成紅 2 次、藍 2 次、綠 1 次，共 5 次",
+      "errorOptions": [
+        "把藍色多算一次",
+        "把綠色多算一次",
+        "總和應是 7 次",
+        "漏數了一筆紅色資料"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "原始資料共有 6 筆，其中紅色出現 3 次；小安漏數了一筆紅色。"
+    },
+    {
+      "id": "data-table-basic-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "1-5",
+      "errorPath": 3,
+      "problem": "把紅、藍、紅、綠、藍、紅整理成次數表",
+      "wrongSolution": "小安記成紅 2 次、藍 2 次、綠 1 次，共 5 次",
+      "errorOptions": [
+        "把綠色多算一次",
+        "總和應是 7 次",
+        "漏數了一筆紅色資料",
+        "把藍色多算一次"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "原始資料共有 6 筆，其中紅色出現 3 次；小安漏數了一筆紅色。"
+    },
+    {
+      "id": "data-table-basic-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "1-6",
+      "errorPath": 1,
+      "problem": "比較表格中的 8、13、11、9 四個次數",
+      "wrongSolution": "小美說 9 最大，因為 9 排在最後",
+      "errorOptions": [
+        "把資料位置當成數值大小的依據",
+        "漏看表格標題",
+        "把 13 看成 31",
+        "加法計算錯誤"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "比較次數要比較數值，不是資料出現的位置；13 才是最大值。"
+    },
+    {
+      "id": "data-table-basic-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "1-6",
+      "errorPath": 2,
+      "problem": "比較表格中的 6、15、10、12 四個次數",
+      "wrongSolution": "小美說 12 最大，因為排在最後",
+      "errorOptions": [
+        "漏看標題",
+        "把位置當成大小依據",
+        "把 15 看成 51",
+        "加法算錯"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "應比較數值，15 才是最大值。"
+    },
+    {
+      "id": "data-table-basic-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "1-6",
+      "errorPath": 3,
+      "problem": "比較表格中的 17、9、14、11 四個次數",
+      "wrongSolution": "小美說 11 最大，因為排在最後",
+      "errorOptions": [
+        "加法算錯",
+        "漏看標題",
+        "把位置當成大小依據",
+        "把 17 看成 71"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "應比較數值，17 才是最大值。"
+    }
   ],
   "contextApplication": [
-    {"id":"data-table-basic-ca-1","type":"context-application","scenario":"班級交通方式調查：走路 6 人、腳踏車 8 人、公車 10 人、家長接送 7 人。","question":"全班共有多少人接受調查？","options":["25 人","29 人","31 人","32 人"],"answer":2,"explanation":"將各類次數相加：6+8+10+7=31 人。"},
-    {"id":"data-table-basic-ca-2","type":"context-application","scenario":"圖書館統計一天借閱類別：文學 18 本、科學 12 本、歷史 9 本、藝術 11 本。","question":"文學類比歷史類多借出幾本？","options":["7 本","9 本","21 本","27 本"],"answer":1,"explanation":"18-9=9，本日文學類比歷史類多 9 本。"}
+    {
+      "id": "data-table-basic-ca-1",
+      "type": "context-application",
+      "challenge": "1-7",
+      "errorPath": 1,
+      "scenario": "班級交通方式調查：走路 6 人、腳踏車 8 人、公車 10 人、家長接送 7 人。",
+      "question": "全班共有多少人接受調查？",
+      "options": [
+        "25 人",
+        "29 人",
+        "31 人",
+        "32 人"
+      ],
+      "answer": 2,
+      "explanation": "將各類次數相加：6+8+10+7=31 人。"
+    },
+    {
+      "id": "data-table-basic-ca-v7-2",
+      "type": "context-application",
+      "challenge": "1-7",
+      "errorPath": 2,
+      "scenario": "班級交通方式調查：走路 6 人、腳踏車 8 人、公車 10 人、家長接送 7 人。",
+      "question": "全班共有幾人接受調查？",
+      "options": [
+        "29 人",
+        "31 人",
+        "32 人",
+        "25 人"
+      ],
+      "answer": 1,
+      "explanation": "將各類次數相加：6+8+10+7=31 人。"
+    },
+    {
+      "id": "data-table-basic-ca-v7-3",
+      "type": "context-application",
+      "challenge": "1-7",
+      "errorPath": 3,
+      "scenario": "班級交通方式調查：走路 6 人、腳踏車 8 人、公車 10 人、家長接送 7 人。",
+      "question": "全班共有幾人接受調查？",
+      "options": [
+        "31 人",
+        "32 人",
+        "25 人",
+        "29 人"
+      ],
+      "answer": 0,
+      "explanation": "將各類次數相加：6+8+10+7=31 人。"
+    },
+    {
+      "id": "data-table-basic-ca-2",
+      "type": "context-application",
+      "challenge": "1-8",
+      "errorPath": 1,
+      "scenario": "圖書館統計一天借閱類別：文學 18 本、科學 12 本、歷史 9 本、藝術 11 本。",
+      "question": "文學類比歷史類多借出幾本？",
+      "options": [
+        "7 本",
+        "9 本",
+        "21 本",
+        "27 本"
+      ],
+      "answer": 1,
+      "explanation": "18-9=9，本日文學類比歷史類多 9 本。"
+    },
+    {
+      "id": "data-table-basic-ca-v8-2",
+      "type": "context-application",
+      "challenge": "1-8",
+      "errorPath": 2,
+      "scenario": "圖書館統計一天借閱類別：文學 18 本、科學 12 本、歷史 9 本、藝術 11 本。",
+      "question": "文學類比歷史類多借出幾本？",
+      "options": [
+        "9 本",
+        "21 本",
+        "27 本",
+        "7 本"
+      ],
+      "answer": 0,
+      "explanation": "18-9=9，本日文學類比歷史類多 9 本。"
+    },
+    {
+      "id": "data-table-basic-ca-v8-3",
+      "type": "context-application",
+      "challenge": "1-8",
+      "errorPath": 3,
+      "scenario": "圖書館統計一天借閱類別：文學 18 本、科學 12 本、歷史 9 本、藝術 11 本。",
+      "question": "文學類比歷史類多借出幾本？",
+      "options": [
+        "21 本",
+        "27 本",
+        "7 本",
+        "9 本"
+      ],
+      "answer": 3,
+      "explanation": "18-9=9，本日文學類比歷史類多 9 本。"
+    }
   ]
 }

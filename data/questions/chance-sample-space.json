@@ -1,19 +1,347 @@
 {
   "nodeId": "chance-sample-space",
   "basicMastery": [
-    {"id":"chance-sample-space-bm-1","type":"basic-mastery","stem":"擲一顆一般六面骰子一次，所有可能點數共有幾種？","options":["2 種","3 種","6 種","12 種"],"answer":2,"explanation":"可能點數為 1、2、3、4、5、6，共 6 種。"},
-    {"id":"chance-sample-space-bm-2","type":"basic-mastery","stem":"公平轉盤只有面積相同的紅、藍兩區。轉一次，轉到紅色與藍色的可能性如何？","options":["紅色較大","藍色較大","兩者相同","兩者都不可能"],"answer":2,"explanation":"兩區面積相同，且轉盤公平，因此兩種結果的可能性相同。"}
+    {
+      "id": "chance-sample-space-bm-1",
+      "type": "basic-mastery",
+      "challenge": "7-1",
+      "errorPath": 1,
+      "stem": "擲一顆一般六面骰子一次，所有可能點數共有幾種？",
+      "options": [
+        "2 種",
+        "3 種",
+        "6 種",
+        "12 種"
+      ],
+      "answer": 2,
+      "explanation": "可能點數為 1、2、3、4、5、6，共 6 種。"
+    },
+    {
+      "id": "chance-sample-space-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "7-1",
+      "errorPath": 2,
+      "stem": "擲一顆一般六面骰子一次，所有可能點數共有幾種？",
+      "options": [
+        "3 種",
+        "6 種",
+        "12 種",
+        "2 種"
+      ],
+      "answer": 1,
+      "explanation": "可能點數為 1、2、3、4、5、6，共 6 種。"
+    },
+    {
+      "id": "chance-sample-space-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "7-1",
+      "errorPath": 3,
+      "stem": "擲一顆一般六面骰子一次，所有可能點數共有幾種？",
+      "options": [
+        "6 種",
+        "12 種",
+        "2 種",
+        "3 種"
+      ],
+      "answer": 0,
+      "explanation": "可能點數為 1、2、3、4、5、6，共 6 種。"
+    },
+    {
+      "id": "chance-sample-space-bm-2",
+      "type": "basic-mastery",
+      "challenge": "7-2",
+      "errorPath": 1,
+      "stem": "公平轉盤只有面積相同的紅、藍兩區。轉一次，轉到紅色與藍色的可能性如何？",
+      "options": [
+        "紅色較大",
+        "藍色較大",
+        "兩者相同",
+        "兩者都不可能"
+      ],
+      "answer": 2,
+      "explanation": "兩區面積相同，且轉盤公平，因此兩種結果的可能性相同。"
+    },
+    {
+      "id": "chance-sample-space-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "7-2",
+      "errorPath": 2,
+      "stem": "公平轉盤只有面積相同的紅、藍兩區。轉一次，轉到紅色與藍色的可能性如何？",
+      "options": [
+        "藍色較大",
+        "兩者相同",
+        "兩者都不可能",
+        "紅色較大"
+      ],
+      "answer": 1,
+      "explanation": "兩區面積相同，且轉盤公平，因此兩種結果的可能性相同。"
+    },
+    {
+      "id": "chance-sample-space-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "7-2",
+      "errorPath": 3,
+      "stem": "公平轉盤只有面積相同的紅、藍兩區。轉一次，轉到紅色與藍色的可能性如何？",
+      "options": [
+        "兩者相同",
+        "兩者都不可能",
+        "紅色較大",
+        "藍色較大"
+      ],
+      "answer": 0,
+      "explanation": "兩區面積相同，且轉盤公平，因此兩種結果的可能性相同。"
+    }
   ],
   "conceptId": [
-    {"id":"chance-sample-space-ci-1","type":"concept-id","statement":"不可能事件的發生機率是 0。","correctAnswer":true,"explanation":"不可能事件沒有任何符合條件的結果，所以機率為 0。"},
-    {"id":"chance-sample-space-ci-2","type":"concept-id","statement":"公平硬幣昨天擲出正面，今天擲一次就一定也是正面。","correctAnswer":false,"explanation":"每次擲公平硬幣都可能出現正面或反面，前一次結果不會保證下一次結果。"}
+    {
+      "id": "chance-sample-space-ci-1",
+      "type": "concept-id",
+      "challenge": "7-3",
+      "errorPath": 1,
+      "statement": "不可能事件的發生機率是 0。",
+      "correctAnswer": true,
+      "explanation": "不可能事件沒有任何符合條件的結果，所以機率為 0。"
+    },
+    {
+      "id": "chance-sample-space-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "7-3",
+      "errorPath": 2,
+      "statement": "六面骰不可能擲出 8 點，所以其機率是 0。",
+      "correctAnswer": true,
+      "explanation": "六面骰只有 1 至 6 點，擲出 8 點是不可能事件。"
+    },
+    {
+      "id": "chance-sample-space-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "7-3",
+      "errorPath": 3,
+      "statement": "從 1 至 4 號卡中抽到 9 號卡的機率是 0。",
+      "correctAnswer": true,
+      "explanation": "卡片中沒有 9 號，因此是不可能事件。"
+    },
+    {
+      "id": "chance-sample-space-ci-2",
+      "type": "concept-id",
+      "challenge": "7-4",
+      "errorPath": 1,
+      "statement": "公平硬幣昨天擲出正面，今天擲一次就一定也是正面。",
+      "correctAnswer": false,
+      "explanation": "每次擲公平硬幣都可能出現正面或反面，前一次結果不會保證下一次結果。"
+    },
+    {
+      "id": "chance-sample-space-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "7-4",
+      "errorPath": 2,
+      "statement": "公平硬幣昨天擲出正面，今天擲一次就一定也是正面。",
+      "correctAnswer": false,
+      "explanation": "每次擲公平硬幣都可能出現正面或反面，前一次結果不會保證下一次結果。"
+    },
+    {
+      "id": "chance-sample-space-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "7-4",
+      "errorPath": 3,
+      "statement": "公平硬幣昨天擲出正面，今天擲一次就一定也是正面。",
+      "correctAnswer": false,
+      "explanation": "每次擲公平硬幣都可能出現正面或反面，前一次結果不會保證下一次結果。"
+    }
   ],
   "errorDiagnosis": [
-    {"id":"chance-sample-space-ed-1","type":"error-diagnosis","problem":"擲一顆六面骰子，列出可能結果","wrongSolution":"小哲只列 1、2、3、4、5，說共有 5 種","errorOptions":["漏列點數 6","多列點數 5","骰子只有 4 種結果","應列出 0"],"correctErrorIndex":0,"explanation":"一般六面骰子的點數為 1 到 6，小哲漏列了 6。"},
-    {"id":"chance-sample-space-ed-2","type":"error-diagnosis","problem":"袋中有 3 顆紅球、3 顆藍球，任取一顆","wrongSolution":"小萱說題目先提到紅球，所以紅球較可能被取到","errorOptions":["兩種球數量相同，可能性相同，和敘述順序無關","藍球一定先被取到","應把球數相加後再比較","顏色事件無法比較"],"correctErrorIndex":0,"explanation":"紅球與藍球各 3 顆，數量相同，因此被取到的可能性相同；題目敘述順序不影響抽取結果。"}
+    {
+      "id": "chance-sample-space-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "7-5",
+      "errorPath": 1,
+      "problem": "擲一顆六面骰子，列出可能結果",
+      "wrongSolution": "小哲只列 1、2、3、4、5，說共有 5 種",
+      "errorOptions": [
+        "漏列點數 6",
+        "多列點數 5",
+        "骰子只有 4 種結果",
+        "應列出 0"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "一般六面骰子的點數為 1 到 6，小哲漏列了 6。"
+    },
+    {
+      "id": "chance-sample-space-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "7-5",
+      "errorPath": 2,
+      "problem": "擲一顆六面骰子，列出可能結果",
+      "wrongSolution": "小哲只列 1、2、3、4、5，說共有 5 種",
+      "errorOptions": [
+        "多列點數 5",
+        "骰子只有 4 種結果",
+        "應列出 0",
+        "漏列點數 6"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "一般六面骰子的點數為 1 到 6，小哲漏列了 6。"
+    },
+    {
+      "id": "chance-sample-space-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "7-5",
+      "errorPath": 3,
+      "problem": "擲一顆六面骰子，列出可能結果",
+      "wrongSolution": "小哲只列 1、2、3、4、5，說共有 5 種",
+      "errorOptions": [
+        "骰子只有 4 種結果",
+        "應列出 0",
+        "漏列點數 6",
+        "多列點數 5"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "一般六面骰子的點數為 1 到 6，小哲漏列了 6。"
+    },
+    {
+      "id": "chance-sample-space-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "7-6",
+      "errorPath": 1,
+      "problem": "袋中有 3 顆紅球、3 顆藍球，任取一顆",
+      "wrongSolution": "小萱說題目先提到紅球，所以紅球較可能被取到",
+      "errorOptions": [
+        "兩種球數量相同，可能性相同，和敘述順序無關",
+        "藍球一定先被取到",
+        "應把球數相加後再比較",
+        "顏色事件無法比較"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "紅球與藍球各 3 顆，數量相同，因此被取到的可能性相同；題目敘述順序不影響抽取結果。"
+    },
+    {
+      "id": "chance-sample-space-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "7-6",
+      "errorPath": 2,
+      "problem": "袋中有 4 顆紅球、4 顆藍球，任取一顆",
+      "wrongSolution": "小萱說先提紅球，所以紅球較可能被取到",
+      "errorOptions": [
+        "藍球一定先出",
+        "兩色數量相同，可能性相同",
+        "應把球數相加",
+        "顏色不能比較"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "紅、藍球各 4 顆，可能性相同，與敘述順序無關。"
+    },
+    {
+      "id": "chance-sample-space-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "7-6",
+      "errorPath": 3,
+      "problem": "袋中有 5 顆黃球、5 顆綠球，任取一顆",
+      "wrongSolution": "小萱說先提黃球，所以黃球較可能被取到",
+      "errorOptions": [
+        "顏色不能比較",
+        "應把球數相加",
+        "綠球一定先出",
+        "兩色數量相同，可能性相同"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "黃、綠球各 5 顆，可能性相同，與敘述順序無關。"
+    }
   ],
   "contextApplication": [
-    {"id":"chance-sample-space-ca-1","type":"context-application","scenario":"箱中只有寫著 1、2、3、4 的四張卡，每張被抽中的機會相同。","question":"抽一張卡，下列哪個事件不可能發生？","options":["抽到偶數","抽到小於 5 的數","抽到 5","抽到大於 1 的數"],"answer":2,"explanation":"箱中沒有寫著 5 的卡片，所以抽到 5 不可能發生。"},
-    {"id":"chance-sample-space-ca-2","type":"context-application","scenario":"抽獎箱有 8 張中獎券和 2 張未中獎券，每張被抽中的機會相同。","question":"抽一張券，哪一種結果較可能發生？","options":["中獎","未中獎","兩者相同","兩者都不可能"],"answer":0,"explanation":"中獎券有 8 張，多於未中獎券 2 張，所以中獎較可能發生。"}
+    {
+      "id": "chance-sample-space-ca-1",
+      "type": "context-application",
+      "challenge": "7-7",
+      "errorPath": 1,
+      "scenario": "箱中只有寫著 1、2、3、4 的四張卡，每張被抽中的機會相同。",
+      "question": "抽一張卡，下列哪個事件不可能發生？",
+      "options": [
+        "抽到偶數",
+        "抽到小於 5 的數",
+        "抽到 5",
+        "抽到大於 1 的數"
+      ],
+      "answer": 2,
+      "explanation": "箱中沒有寫著 5 的卡片，所以抽到 5 不可能發生。"
+    },
+    {
+      "id": "chance-sample-space-ca-v7-2",
+      "type": "context-application",
+      "challenge": "7-7",
+      "errorPath": 2,
+      "scenario": "箱中只有寫著 1、2、3、4 的四張卡，每張被抽中的機會相同。",
+      "question": "抽一張卡，以下哪個事件不可能發生？",
+      "options": [
+        "抽到小於 5 的數",
+        "抽到 5",
+        "抽到大於 1 的數",
+        "抽到偶數"
+      ],
+      "answer": 1,
+      "explanation": "箱中沒有寫著 5 的卡片，所以抽到 5 不可能發生。"
+    },
+    {
+      "id": "chance-sample-space-ca-v7-3",
+      "type": "context-application",
+      "challenge": "7-7",
+      "errorPath": 3,
+      "scenario": "箱中只有寫著 1、2、3、4 的四張卡，每張被抽中的機會相同。",
+      "question": "抽一張卡，哪個哪個事件不可能發生？",
+      "options": [
+        "抽到 5",
+        "抽到大於 1 的數",
+        "抽到偶數",
+        "抽到小於 5 的數"
+      ],
+      "answer": 0,
+      "explanation": "箱中沒有寫著 5 的卡片，所以抽到 5 不可能發生。"
+    },
+    {
+      "id": "chance-sample-space-ca-2",
+      "type": "context-application",
+      "challenge": "7-8",
+      "errorPath": 1,
+      "scenario": "抽獎箱有 8 張中獎券和 2 張未中獎券，每張被抽中的機會相同。",
+      "question": "抽一張券，哪一種結果較可能發生？",
+      "options": [
+        "中獎",
+        "未中獎",
+        "兩者相同",
+        "兩者都不可能"
+      ],
+      "answer": 0,
+      "explanation": "中獎券有 8 張，多於未中獎券 2 張，所以中獎較可能發生。"
+    },
+    {
+      "id": "chance-sample-space-ca-v8-2",
+      "type": "context-application",
+      "challenge": "7-8",
+      "errorPath": 2,
+      "scenario": "抽獎箱有 8 張中獎券和 2 張未中獎券，每張被抽中的機會相同。",
+      "question": "抽一張券，哪一種結果較可能發生？",
+      "options": [
+        "未中獎",
+        "兩者相同",
+        "兩者都不可能",
+        "中獎"
+      ],
+      "answer": 3,
+      "explanation": "中獎券有 8 張，多於未中獎券 2 張，所以中獎較可能發生。"
+    },
+    {
+      "id": "chance-sample-space-ca-v8-3",
+      "type": "context-application",
+      "challenge": "7-8",
+      "errorPath": 3,
+      "scenario": "抽獎箱有 8 張中獎券和 2 張未中獎券，每張被抽中的機會相同。",
+      "question": "抽一張券，哪一種結果較可能發生？",
+      "options": [
+        "兩者相同",
+        "兩者都不可能",
+        "中獎",
+        "未中獎"
+      ],
+      "answer": 2,
+      "explanation": "中獎券有 8 張，多於未中獎券 2 張，所以中獎較可能發生。"
+    }
   ]
 }

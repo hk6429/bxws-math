@@ -4,74 +4,344 @@
     {
       "id": "repeat-pattern-bm-1",
       "type": "basic-mastery",
+      "challenge": "1-1",
+      "errorPath": 1,
       "stem": "觀察規律：○、△、○、△、○、（　），括號中應填什麼？",
-      "options": ["○", "△", "□", "☆"],
+      "options": [
+        "○",
+        "△",
+        "□",
+        "☆"
+      ],
       "answer": 1,
       "explanation": "這個圖形以「○、△」兩個為一組重複，所以 ○ 後面接 △。"
     },
     {
+      "id": "repeat-pattern-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "errorPath": 2,
+      "stem": "規律：紅、藍、紅、藍、紅、？",
+      "options": [
+        "藍",
+        "紅",
+        "綠",
+        "黃"
+      ],
+      "answer": 0,
+      "explanation": "最短單位是紅、藍。"
+    },
+    {
+      "id": "repeat-pattern-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "errorPath": 3,
+      "stem": "規律：□、○、□、○、□、？",
+      "options": [
+        "□",
+        "○",
+        "△",
+        "☆"
+      ],
+      "answer": 1,
+      "explanation": "最短單位是□、○。"
+    },
+    {
       "id": "repeat-pattern-bm-2",
       "type": "basic-mastery",
+      "challenge": "1-2",
+      "errorPath": 1,
       "stem": "數列 2、5、2、5、2、5、……的第 9 個數是多少？",
-      "options": ["2", "5", "7", "9"],
+      "options": [
+        "2",
+        "5",
+        "7",
+        "9"
+      ],
       "answer": 0,
       "explanation": "每 2 個數重複一次，奇數位置都是 2；9 是奇數，所以第 9 個數是 2。"
+    },
+    {
+      "id": "repeat-pattern-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "1-2",
+      "errorPath": 2,
+      "stem": "3、8 重複排列，第12個數是？",
+      "options": [
+        "3",
+        "5",
+        "8",
+        "12"
+      ],
+      "answer": 2,
+      "explanation": "12除以2餘0，取每組第2個。"
+    },
+    {
+      "id": "repeat-pattern-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "1-2",
+      "errorPath": 3,
+      "stem": "甲乙丙重複排列，第11個是？",
+      "options": [
+        "甲",
+        "丙",
+        "丁",
+        "乙"
+      ],
+      "answer": 3,
+      "explanation": "11除以3餘2，取每組第2個。"
     }
   ],
   "conceptId": [
     {
       "id": "repeat-pattern-ci-1",
       "type": "concept-id",
+      "challenge": "1-3",
+      "errorPath": 1,
       "statement": "找重複規律時，要先確認最短的重複單位。",
       "correctAnswer": true,
       "explanation": "例如「紅、藍、紅、藍」的最短重複單位是「紅、藍」，用最短單位才能正確判斷後續項目。"
     },
     {
+      "id": "repeat-pattern-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "1-3",
+      "errorPath": 2,
+      "statement": "找規律時，最短重複單位可用來預測後項。",
+      "correctAnswer": true,
+      "explanation": "最短單位能完整描述循環。"
+    },
+    {
+      "id": "repeat-pattern-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "1-3",
+      "errorPath": 3,
+      "statement": "紅藍紅藍的最短重複單位是紅藍。",
+      "correctAnswer": true,
+      "explanation": "紅藍每兩項重複。"
+    },
+    {
       "id": "repeat-pattern-ci-2",
       "type": "concept-id",
+      "challenge": "1-4",
+      "errorPath": 1,
       "statement": "規律「甲、乙、丙」每 3 個一組，所以第 8 個一定是甲。",
       "correctAnswer": false,
       "explanation": "8÷3 餘 2，表示第 8 個對應一組中的第 2 個，也就是乙。"
+    },
+    {
+      "id": "repeat-pattern-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "1-4",
+      "errorPath": 2,
+      "statement": "甲乙丙重複排列，第10個是丙。",
+      "correctAnswer": false,
+      "explanation": "10除以3餘1，第10個是甲。"
+    },
+    {
+      "id": "repeat-pattern-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "1-4",
+      "errorPath": 3,
+      "statement": "1、2、3重複排列，第8個是2。",
+      "correctAnswer": true,
+      "explanation": "8除以3餘2。"
     }
   ],
   "errorDiagnosis": [
     {
       "id": "repeat-pattern-ed-1",
       "type": "error-diagnosis",
+      "challenge": "1-5",
+      "errorPath": 1,
       "problem": "找出「□、○、△、□、○、△、……」的第 10 個圖形",
       "wrongSolution": "小安說：10÷3=3 餘 1，所以第 10 個是△。",
-      "errorOptions": ["除法算錯", "餘 1 應對應一組中的第 1 個□，不是第 3 個△", "重複單位應有 2 個圖形", "題目不能用除法判斷"],
+      "errorOptions": [
+        "除法算錯",
+        "餘 1 應對應一組中的第 1 個□，不是第 3 個△",
+        "重複單位應有 2 個圖形",
+        "題目不能用除法判斷"
+      ],
       "correctErrorIndex": 1,
       "explanation": "每 3 個圖形一組，餘 1 代表落在下一組的第 1 個，因此第 10 個是□。"
     },
     {
+      "id": "repeat-pattern-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "1-5",
+      "errorPath": 2,
+      "problem": "求甲乙丙循環的第7個",
+      "wrongSolution": "小光答丙。",
+      "errorOptions": [
+        "餘1應取甲",
+        "除法不可用",
+        "循環有2項",
+        "應取乙"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "7除以3餘1，所以是甲。"
+    },
+    {
+      "id": "repeat-pattern-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "1-5",
+      "errorPath": 3,
+      "problem": "求紅藍循環的第9個",
+      "wrongSolution": "小芸答藍。",
+      "errorOptions": [
+        "應取綠",
+        "餘1應取紅",
+        "循環有3項",
+        "9不能除2"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "9除以2餘1，所以是紅。"
+    },
+    {
       "id": "repeat-pattern-ed-2",
       "type": "error-diagnosis",
+      "challenge": "1-6",
+      "errorPath": 1,
       "problem": "判斷「紅、紅、藍、紅、紅、藍、……」的最短重複單位",
       "wrongSolution": "小華認為最短重複單位是「紅、藍」。",
-      "errorOptions": ["把顏色名稱寫錯", "漏掉每組中的第二個紅，最短單位應是「紅、紅、藍」", "重複單位應是「藍、紅」", "不能用顏色形成規律"],
+      "errorOptions": [
+        "把顏色名稱寫錯",
+        "漏掉每組中的第二個紅，最短單位應是「紅、紅、藍」",
+        "重複單位應是「藍、紅」",
+        "不能用顏色形成規律"
+      ],
       "correctErrorIndex": 1,
       "explanation": "原排列每次都是兩個紅後接一個藍，因此最短重複單位是「紅、紅、藍」。"
+    },
+    {
+      "id": "repeat-pattern-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "1-6",
+      "errorPath": 2,
+      "problem": "找紅紅藍的最短單位",
+      "wrongSolution": "小杰答紅藍。",
+      "errorOptions": [
+        "多寫一個藍",
+        "顏色不能循環",
+        "漏掉第二個紅",
+        "應為藍紅"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "完整單位是紅、紅、藍。"
+    },
+    {
+      "id": "repeat-pattern-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "1-6",
+      "errorPath": 3,
+      "problem": "找甲乙乙的最短單位",
+      "wrongSolution": "小安答甲乙。",
+      "errorOptions": [
+        "應為乙甲",
+        "不能用文字",
+        "多寫一個甲",
+        "漏掉第二個乙"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "完整單位是甲、乙、乙。"
     }
   ],
   "contextApplication": [
     {
       "id": "repeat-pattern-ca-1",
       "type": "context-application",
+      "challenge": "1-7",
+      "errorPath": 1,
       "scenario": "教室布置依序掛上「黃、綠、藍」三色旗子，並不斷重複。",
       "question": "第 14 面旗子是什麼顏色？",
-      "options": ["黃", "綠", "藍", "無法判斷"],
+      "options": [
+        "黃",
+        "綠",
+        "藍",
+        "無法判斷"
+      ],
       "answer": 1,
       "explanation": "14÷3=4 餘 2，所以第 14 面是每組第 2 面的綠色旗子。"
     },
     {
+      "id": "repeat-pattern-ca-v7-2",
+      "type": "context-application",
+      "challenge": "1-7",
+      "errorPath": 2,
+      "scenario": "彩旗依紅、黃、綠循環懸掛。",
+      "question": "第17面是什麼顏色？",
+      "options": [
+        "黃",
+        "紅",
+        "綠",
+        "藍"
+      ],
+      "answer": 0,
+      "explanation": "17除以3餘2。"
+    },
+    {
+      "id": "repeat-pattern-ca-v7-3",
+      "type": "context-application",
+      "challenge": "1-7",
+      "errorPath": 3,
+      "scenario": "貼紙依星、月、雲循環黏貼。",
+      "question": "第20張是哪一種？",
+      "options": [
+        "星",
+        "月",
+        "雲",
+        "太陽"
+      ],
+      "answer": 1,
+      "explanation": "20除以3餘2。"
+    },
+    {
       "id": "repeat-pattern-ca-2",
       "type": "context-application",
+      "challenge": "1-8",
+      "errorPath": 1,
       "scenario": "交通號誌依「綠燈 40 秒、黃燈 5 秒、紅燈 45 秒」的順序循環。",
       "question": "紅燈結束後，下一個亮起的是哪一種燈？",
-      "options": ["綠燈", "黃燈", "紅燈", "三種同時亮"],
+      "options": [
+        "綠燈",
+        "黃燈",
+        "紅燈",
+        "三種同時亮"
+      ],
       "answer": 0,
       "explanation": "循環順序是綠、黃、紅，紅燈結束一輪後會回到綠燈。"
+    },
+    {
+      "id": "repeat-pattern-ca-v8-2",
+      "type": "context-application",
+      "challenge": "1-8",
+      "errorPath": 2,
+      "scenario": "燈號依綠、黃、紅循環。",
+      "question": "黃燈後面是哪一種燈？",
+      "options": [
+        "綠燈",
+        "黃燈",
+        "紅燈",
+        "同時亮"
+      ],
+      "answer": 2,
+      "explanation": "依循環順序，黃後是紅。"
+    },
+    {
+      "id": "repeat-pattern-ca-v8-3",
+      "type": "context-application",
+      "challenge": "1-8",
+      "errorPath": 3,
+      "scenario": "值日依甲、乙、丙循環。",
+      "question": "丙組後面輪到哪一組？",
+      "options": [
+        "乙組",
+        "丙組",
+        "丁組",
+        "甲組"
+      ],
+      "answer": 3,
+      "explanation": "一輪結束後回到甲組。"
     }
   ]
 }

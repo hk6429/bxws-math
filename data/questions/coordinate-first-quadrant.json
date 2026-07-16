@@ -4,24 +4,118 @@
     {
       "id": "coordinate-first-quadrant-bm-1",
       "type": "basic-mastery",
+      "challenge": "5-1",
+      "errorPath": 1,
       "stem": "平面上某點從原點向右 4 格、向上 3 格，這個點的座標是什麼？",
-      "options": ["(3,4)", "(4,3)", "(-4,3)", "(4,-3)"],
+      "options": [
+        "(3,4)",
+        "(4,3)",
+        "(-4,3)",
+        "(4,-3)"
+      ],
       "answer": 1,
       "explanation": "座標先寫水平位置 x，再寫垂直位置 y，所以是 (4,3)。"
     },
     {
+      "id": "coordinate-first-quadrant-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "5-1",
+      "errorPath": 2,
+      "stem": "某點從原點向右 7 格、向上 2 格，座標是什麼？",
+      "options": [
+        "(2,7)",
+        "(7,2)",
+        "(-7,2)",
+        "(7,-2)"
+      ],
+      "answer": 1,
+      "explanation": "先寫水平再寫垂直，所以是 (7,2)。"
+    },
+    {
+      "id": "coordinate-first-quadrant-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "5-1",
+      "errorPath": 3,
+      "stem": "某點從原點向右 3 格、向上 6 格，座標是什麼？",
+      "options": [
+        "(3,6)",
+        "(6,3)",
+        "(-3,6)",
+        "(3,-6)"
+      ],
+      "answer": 0,
+      "explanation": "先寫水平再寫垂直，所以是 (3,6)。"
+    },
+    {
       "id": "coordinate-first-quadrant-bm-2",
       "type": "basic-mastery",
+      "challenge": "5-2",
+      "errorPath": 1,
       "stem": "點 A 的座標是 (2,5)，它在原點的哪個方向？",
-      "options": ["右 2、上 5", "右 5、上 2", "左 2、上 5", "右 2、下 5"],
+      "options": [
+        "右 2、上 5",
+        "右 5、上 2",
+        "左 2、上 5",
+        "右 2、下 5"
+      ],
       "answer": 0,
       "explanation": "(2,5) 表示 x=2、y=5，也就是從原點向右 2 格、向上 5 格。"
+    },
+    {
+      "id": "coordinate-first-quadrant-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "5-2",
+      "errorPath": 2,
+      "stem": "點 B(6,3) 在原點的哪個方向？",
+      "options": [
+        "右 3、上 6",
+        "左 6、上 3",
+        "右 6、上 3",
+        "右 6、下 3"
+      ],
+      "answer": 2,
+      "explanation": "(6,3) 表示向右 6 格、向上 3 格。"
+    },
+    {
+      "id": "coordinate-first-quadrant-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "5-2",
+      "errorPath": 3,
+      "stem": "點 C(4,8) 在原點的哪個方向？",
+      "options": [
+        "右 4、上 8",
+        "右 8、上 4",
+        "左 4、上 8",
+        "右 4、下 8"
+      ],
+      "answer": 0,
+      "explanation": "(4,8) 表示向右 4 格、向上 8 格。"
     }
   ],
   "conceptId": [
     {
       "id": "coordinate-first-quadrant-ci-1",
       "type": "concept-id",
+      "challenge": "5-3",
+      "errorPath": 1,
+      "statement": "座標 (a,b) 中，a 表示水平方向的位置，b 表示垂直方向的位置。",
+      "correctAnswer": true,
+      "explanation": "有序數對的順序固定為先 x 後 y，也就是先水平、後垂直。"
+    },
+    {
+      "id": "coordinate-first-quadrant-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "5-3",
+      "errorPath": 2,
+      "statement": "座標 (a,b) 中，a 表示水平方向的位置，b 表示垂直方向的位置。",
+      "correctAnswer": true,
+      "explanation": "有序數對的順序固定為先 x 後 y，也就是先水平、後垂直。"
+    },
+    {
+      "id": "coordinate-first-quadrant-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "5-3",
+      "errorPath": 3,
       "statement": "座標 (a,b) 中，a 表示水平方向的位置，b 表示垂直方向的位置。",
       "correctAnswer": true,
       "explanation": "有序數對的順序固定為先 x 後 y，也就是先水平、後垂直。"
@@ -29,48 +123,224 @@
     {
       "id": "coordinate-first-quadrant-ci-2",
       "type": "concept-id",
+      "challenge": "5-4",
+      "errorPath": 1,
       "statement": "座標 (3,7) 和 (7,3) 表示同一個位置。",
       "correctAnswer": false,
       "explanation": "座標有順序，(3,7) 是右 3、上 7；(7,3) 是右 7、上 3，位置不同。"
+    },
+    {
+      "id": "coordinate-first-quadrant-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "5-4",
+      "errorPath": 2,
+      "statement": "座標 (2,8) 和 (8,2) 表示同一位置。",
+      "correctAnswer": false,
+      "explanation": "座標有順序，交換 x、y 後位置不同。"
+    },
+    {
+      "id": "coordinate-first-quadrant-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "5-4",
+      "errorPath": 3,
+      "statement": "座標 (5,9) 和 (9,5) 表示同一位置。",
+      "correctAnswer": false,
+      "explanation": "座標有順序，兩點的水平與垂直位置不同。"
     }
   ],
   "errorDiagnosis": [
     {
       "id": "coordinate-first-quadrant-ed-1",
       "type": "error-diagnosis",
+      "challenge": "5-5",
+      "errorPath": 1,
       "problem": "讀出從原點向右 6 格、向上 2 格的點",
       "wrongSolution": "小美寫成 (2,6)。",
-      "errorOptions": ["把 x、y 座標的順序顛倒", "兩個數都應加 1", "向右應寫負數", "向上應寫 0"],
+      "errorOptions": [
+        "把 x、y 座標的順序顛倒",
+        "兩個數都應加 1",
+        "向右應寫負數",
+        "向上應寫 0"
+      ],
       "correctErrorIndex": 0,
       "explanation": "座標先寫水平的 6，再寫垂直的 2，正確為 (6,2)。"
     },
     {
+      "id": "coordinate-first-quadrant-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "5-5",
+      "errorPath": 2,
+      "problem": "讀出從原點向右 7 格、向上 4 格的點",
+      "wrongSolution": "小美寫成 (4,7)。",
+      "errorOptions": [
+        "向右應寫負數",
+        "把 x、y 順序顛倒",
+        "兩數都加 1",
+        "向上應寫 0"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "應先寫水平的 7，再寫垂直的 4，正確為 (7,4)。"
+    },
+    {
+      "id": "coordinate-first-quadrant-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "5-5",
+      "errorPath": 3,
+      "problem": "讀出從原點向右 3 格、向上 8 格的點",
+      "wrongSolution": "小美寫成 (8,3)。",
+      "errorOptions": [
+        "向上應寫 0",
+        "兩數都減 1",
+        "向右應寫負數",
+        "把 x、y 順序顛倒"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "應先寫水平的 3，再寫垂直的 8，正確為 (3,8)。"
+    },
+    {
       "id": "coordinate-first-quadrant-ed-2",
       "type": "error-diagnosis",
+      "challenge": "5-6",
+      "errorPath": 1,
       "problem": "在方格圖上標示點 (0,4)",
       "wrongSolution": "小哲認為 x=0，所以這個點就是原點。",
-      "errorOptions": ["把只有 x=0 誤認成 x、y 都是0；此點應在 y 軸上方4格", "0 不能當座標", "y=4 應向右移", "座標順序應交換"],
+      "errorOptions": [
+        "把只有 x=0 誤認成 x、y 都是0；此點應在 y 軸上方4格",
+        "0 不能當座標",
+        "y=4 應向右移",
+        "座標順序應交換"
+      ],
       "correctErrorIndex": 0,
       "explanation": "原點是 (0,0)。點 (0,4) 的水平位置為 0，但仍需向上 4 格，位於 y 軸上。"
+    },
+    {
+      "id": "coordinate-first-quadrant-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "5-6",
+      "errorPath": 2,
+      "problem": "在方格圖上標示點 (0,7)",
+      "wrongSolution": "小哲認為 x=0，所以這個點就是原點。",
+      "errorOptions": [
+        "0 不能當座標",
+        "只看 x=0；應在 y 軸上方 7 格",
+        "y=7 應向右",
+        "座標應交換"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "原點是 (0,0)；(0,7) 位於 y 軸上方 7 格。"
+    },
+    {
+      "id": "coordinate-first-quadrant-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "5-6",
+      "errorPath": 3,
+      "problem": "在方格圖上標示點 (0,3)",
+      "wrongSolution": "小哲認為 x=0，所以這個點就是原點。",
+      "errorOptions": [
+        "座標應交換",
+        "y=3 應向右",
+        "只看 x=0；應在 y 軸上方 3 格",
+        "0 不能當座標"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "原點是 (0,0)；(0,3) 位於 y 軸上方 3 格。"
     }
   ],
   "contextApplication": [
     {
       "id": "coordinate-first-quadrant-ca-1",
       "type": "context-application",
+      "challenge": "5-7",
+      "errorPath": 1,
       "scenario": "校園平面圖以校門為原點，向東為 x 正方向，向北為 y 正方向。圖書館在校門東方 5 格、北方 2 格。",
       "question": "圖書館的座標是多少？",
-      "options": ["(5,2)", "(2,5)", "(-5,2)", "(5,-2)"],
+      "options": [
+        "(5,2)",
+        "(2,5)",
+        "(-5,2)",
+        "(5,-2)"
+      ],
       "answer": 0,
+      "explanation": "向東 5 格是 x=5，向北 2 格是 y=2，所以座標為 (5,2)。"
+    },
+    {
+      "id": "coordinate-first-quadrant-ca-v7-2",
+      "type": "context-application",
+      "challenge": "5-7",
+      "errorPath": 2,
+      "scenario": "校園平面圖以校門為原點，向東為 x 正方向，向北為 y 正方向。圖書館在校門東方 5 格、北方 2 格。",
+      "question": "圖書館的座標是幾？",
+      "options": [
+        "(2,5)",
+        "(-5,2)",
+        "(5,-2)",
+        "(5,2)"
+      ],
+      "answer": 3,
+      "explanation": "向東 5 格是 x=5，向北 2 格是 y=2，所以座標為 (5,2)。"
+    },
+    {
+      "id": "coordinate-first-quadrant-ca-v7-3",
+      "type": "context-application",
+      "challenge": "5-7",
+      "errorPath": 3,
+      "scenario": "校園平面圖以校門為原點，向東為 x 正方向，向北為 y 正方向。圖書館在校門東方 5 格、北方 2 格。",
+      "question": "圖書館的座標是幾？",
+      "options": [
+        "(-5,2)",
+        "(5,-2)",
+        "(5,2)",
+        "(2,5)"
+      ],
+      "answer": 2,
       "explanation": "向東 5 格是 x=5，向北 2 格是 y=2，所以座標為 (5,2)。"
     },
     {
       "id": "coordinate-first-quadrant-ca-2",
       "type": "context-application",
+      "challenge": "5-8",
+      "errorPath": 1,
       "scenario": "棋盤以左下角為 (0,0)，一枚棋子位在 (3,6)。",
       "question": "棋子向右移 2 格後，新座標是多少？",
-      "options": ["(3,8)", "(1,6)", "(5,6)", "(5,8)"],
+      "options": [
+        "(3,8)",
+        "(1,6)",
+        "(5,6)",
+        "(5,8)"
+      ],
       "answer": 2,
+      "explanation": "向右移只改變 x 座標：3+2=5，y 座標仍是 6，所以是 (5,6)。"
+    },
+    {
+      "id": "coordinate-first-quadrant-ca-v8-2",
+      "type": "context-application",
+      "challenge": "5-8",
+      "errorPath": 2,
+      "scenario": "棋盤以左下角為 (0,0)，一枚棋子位在 (3,6)。",
+      "question": "棋子向右移 2 格後，新座標是幾？",
+      "options": [
+        "(1,6)",
+        "(5,6)",
+        "(5,8)",
+        "(3,8)"
+      ],
+      "answer": 1,
+      "explanation": "向右移只改變 x 座標：3+2=5，y 座標仍是 6，所以是 (5,6)。"
+    },
+    {
+      "id": "coordinate-first-quadrant-ca-v8-3",
+      "type": "context-application",
+      "challenge": "5-8",
+      "errorPath": 3,
+      "scenario": "棋盤以左下角為 (0,0)，一枚棋子位在 (3,6)。",
+      "question": "棋子向右移 2 格後，新座標是幾？",
+      "options": [
+        "(5,6)",
+        "(5,8)",
+        "(3,8)",
+        "(1,6)"
+      ],
+      "answer": 0,
       "explanation": "向右移只改變 x 座標：3+2=5，y 座標仍是 6，所以是 (5,6)。"
     }
   ]
