@@ -39,7 +39,7 @@ function maybeShowOnboardingTip() {
   const root = document.getElementById("tip-bubble-root");
   const box = document.createElement("div");
   box.className = "tip-bubble";
-  box.innerHTML = `數字精靈在等你！點一下發亮的節點開始第一場挑戰吧。<br /><button>知道了</button>`;
+  box.innerHTML = `大師的草稿本攤開了！點一下發亮的手稿，接下達文西畫到一半的題目吧。<br /><button>知道了</button>`;
   box.querySelector("button").addEventListener("click", () => {
     box.remove();
     sessionStorage.setItem("bxws:seenTip", "1");
@@ -172,7 +172,7 @@ function makeSummary(stats, newBadges) {
     mascotBox.className = "summary-mascot";
     const img = document.createElement("img");
     img.src = `assets/mascot/${session.mascot}-${mascotState}.png`;
-    img.alt = "數字精靈";
+    img.alt = "大師吉祥物";
     img.onerror = () => { mascotBox.style.display = "none"; };
     mascotBox.appendChild(img);
     box.appendChild(mascotBox);
@@ -205,7 +205,7 @@ function makeSummary(stats, newBadges) {
   if (newBadges.length > 0) {
     const badgeList = document.createElement("div");
     badgeList.className = "badge-unlock";
-    badgeList.textContent = "叮！你解鎖了新徽章：" + newBadges.map((b) => b.name).join("、");
+    badgeList.textContent = "【蓋章認證】" + newBadges.map((b) => b.name).join("、");
     box.appendChild(badgeList);
   }
   return box;

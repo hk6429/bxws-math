@@ -70,7 +70,31 @@ function lockReasonText(node, tree, nodesById) {
   return `先精熟「${names.join("、")}」解鎖`;
 }
 
+let sketchDefsInjected = false;
+function makeSketchDefs() {
+  // 手繪抖動 filter：CSS 以 url(#sketch-mid)/url(#sketch-strong) 引用，全頁只需一份
+  const defs = svgEl("defs");
+  if (sketchDefsInjected) return defs;
+  sketchDefsInjected = true;
+  const specs = [
+    { id: "sketch-mid", freq: "0.03", scale: "3", seed: "13" },
+    { id: "sketch-strong", freq: "0.045", scale: "4.5", seed: "7" },
+  ];
+  specs.forEach(({ id, freq, scale, seed }) => {
+    const filter = svgEl("filter", { id, x: "-20%", y: "-20%", width: "140%", height: "140%" });
+    filter.appendChild(svgEl("feTurbulence", {
+      type: "fractalNoise", baseFrequency: freq, numOctaves: "2", seed, result: "noise",
+    }));
+    filter.appendChild(svgEl("feDisplacementMap", {
+      in: "SourceGraphic", in2: "noise", scale, xChannelSelector: "R", yChannelSelector: "G",
+    }));
+    defs.appendChild(filter);
+  });
+  return defs;
+}
+
 export function renderSkillTree(container, tree, onSelectNode) {
+  sketchDefsInjected = false;
   container.innerHTML = "";
   const nodesById = Object.fromEntries(allNodes(tree).map((n) => [n.id, n]));
   let frontierAssigned = false;
@@ -94,6 +118,7 @@ export function renderSkillTree(container, tree, onSelectNode) {
     const { positions, width, height } = layoutNodes(strand.nodes, nodesById);
 
     const svg = svgEl("svg", { viewBox: `0 0 ${width} ${height}` });
+    svg.appendChild(makeSketchDefs());
 
     strand.nodes.forEach((node) => {
       (node.prereq ?? []).forEach((prereqId) => {
@@ -180,7 +205,7 @@ export function renderSkillTree(container, tree, onSelectNode) {
       const mascot = el("div", "map-mascot");
       const img = document.createElement("img");
       img.src = `assets/mascot/${visuals.mascot}-idle.png`;
-      img.alt = "數字精靈";
+      img.alt = "大師吉祥物";
       img.onerror = () => { mascot.style.display = "none"; };
       mascot.appendChild(img);
       mascot.style.left = `${(pos.x / width) * 100}%`;
@@ -200,7 +225,7 @@ export function renderSkillTree(container, tree, onSelectNode) {
 
 function renderComingSoonStrand(strand) {
   const banner = el("div", "strand-soon-banner");
-  banner.appendChild(el("div", "soon-title", "這片國度的精靈還在沉睡…"));
+  banner.appendChild(el("div", "soon-title", "這幾頁草稿，大師還沒畫完…"));
   banner.appendChild(el("div", "", "敬請期待"));
   const tip = el("div", "soon-tip", "");
   banner.appendChild(tip);
@@ -208,7 +233,7 @@ function renderComingSoonStrand(strand) {
     banner.style.animation = "none";
     void banner.offsetWidth;
     banner.style.animation = "shake-x 0.3s";
-    tip.textContent = "這裡還在建造中，先去挑戰其他關卡吧！";
+    tip.textContent = "墨水未乾，先去別的手稿練功吧！";
   });
   return banner;
 }

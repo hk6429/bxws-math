@@ -6,11 +6,26 @@
   },
   "masteryThreshold": 0.8,
   "strandVisuals": {
-    "num-quantity": { "colorVar": "--strand-number", "mascot": "teal" },
-    "algebra": { "colorVar": "--strand-algebra", "mascot": "orange" },
-    "space-shape": { "colorVar": "--strand-geometry", "mascot": "geometry" },
-    "relation-pattern": { "colorVar": "--strand-pattern", "mascot": "pattern" },
-    "data-uncertainty": { "colorVar": "--strand-data", "mascot": "data" }
+    "num-quantity": {
+      "colorVar": "--strand-number",
+      "mascot": "davinci"
+    },
+    "algebra": {
+      "colorVar": "--strand-algebra",
+      "mascot": "gauss"
+    },
+    "space-shape": {
+      "colorVar": "--strand-geometry",
+      "mascot": "euclid"
+    },
+    "relation-pattern": {
+      "colorVar": "--strand-pattern",
+      "mascot": "fibonacci"
+    },
+    "data-uncertainty": {
+      "colorVar": "--strand-data",
+      "mascot": "pascal"
+    }
   },
   "strands": [
     {
@@ -27,7 +42,9 @@
           "id": "fraction-mul",
           "name": "分數乘除",
           "tier": "elem-high",
-          "prereq": ["fraction-unlike-denom"]
+          "prereq": [
+            "fraction-unlike-denom"
+          ]
         },
         {
           "id": "decimal-mul",
@@ -39,19 +56,25 @@
           "id": "ratio-rate",
           "name": "比與比值",
           "tier": "elem-high",
-          "prereq": ["fraction-mul"]
+          "prereq": [
+            "fraction-mul"
+          ]
         },
         {
           "id": "negative-number",
           "name": "負數",
           "tier": "jhs-g7",
-          "prereq": ["decimal-mul"]
+          "prereq": [
+            "decimal-mul"
+          ]
         },
         {
           "id": "proportion-eq",
           "name": "比例式",
           "tier": "jhs-g7",
-          "prereq": ["ratio-rate"]
+          "prereq": [
+            "ratio-rate"
+          ]
         }
       ]
     },
@@ -63,13 +86,17 @@
           "id": "algebra-symbol",
           "name": "代數符號",
           "tier": "jhs-g7",
-          "prereq": ["negative-number"]
+          "prereq": [
+            "negative-number"
+          ]
         },
         {
           "id": "linear-eq-1var",
           "name": "一元一次方程式",
           "tier": "jhs-g7",
-          "prereq": ["algebra-symbol"]
+          "prereq": [
+            "algebra-symbol"
+          ]
         }
       ]
     },

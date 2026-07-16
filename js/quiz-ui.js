@@ -26,7 +26,7 @@ function addMascotReaction(wrap, mascotVariant, isCorrect) {
   const box = el("div", `q-mascot-react react-${isCorrect ? "happy" : "sad"}`);
   const img = document.createElement("img");
   img.src = `assets/mascot/${mascotVariant}-${isCorrect ? "happy" : "sad"}.png`;
-  img.alt = "數字精靈反應";
+  img.alt = "大師吉祥物反應";
   img.onerror = () => { box.style.display = "none"; };
   box.appendChild(img);
   wrap.style.position = "relative";
