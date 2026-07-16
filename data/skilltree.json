@@ -5,6 +5,13 @@
     "jhs-g7": "國中七年級"
   },
   "masteryThreshold": 0.8,
+  "strandVisuals": {
+    "num-quantity": { "colorVar": "--strand-number", "mascot": "teal" },
+    "algebra": { "colorVar": "--strand-algebra", "mascot": "orange" },
+    "space-shape": { "colorVar": "--strand-geometry", "mascot": "geometry" },
+    "relation-pattern": { "colorVar": "--strand-pattern", "mascot": "pattern" },
+    "data-uncertainty": { "colorVar": "--strand-data", "mascot": "data" }
+  },
   "strands": [
     {
       "id": "num-quantity",

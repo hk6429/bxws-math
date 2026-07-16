@@ -21,8 +21,20 @@ function markResult(list, btn, isCorrect, correctBtn) {
   if (!isCorrect && correctBtn) correctBtn.classList.add("q-correct");
 }
 
-export function renderQuestion(question, onAnswered) {
-  const wrap = el("div", "q-card");
+function addMascotReaction(wrap, mascotVariant, isCorrect) {
+  if (!mascotVariant) return;
+  const box = el("div", `q-mascot-react react-${isCorrect ? "happy" : "sad"}`);
+  const img = document.createElement("img");
+  img.src = `assets/mascot/${mascotVariant}-${isCorrect ? "happy" : "sad"}.png`;
+  img.alt = "數字精靈反應";
+  img.onerror = () => { box.style.display = "none"; };
+  box.appendChild(img);
+  wrap.style.position = "relative";
+  wrap.appendChild(box);
+}
+
+export function renderQuestion(question, onAnswered, mascotVariant) {
+  const wrap = el("div", `q-card type-${question.type}`);
   const typeLabel = {
     "basic-mastery": "基本精熟題",
     "concept-id": "概念辨識題",
@@ -34,13 +46,18 @@ export function renderQuestion(question, onAnswered) {
   const explain = el("div", "q-explain", question.explanation);
   explain.style.display = "none";
 
+  const handleAnswered = (isCorrect) => {
+    explain.style.display = "block";
+    addMascotReaction(wrap, mascotVariant, isCorrect);
+    onAnswered(isCorrect);
+  };
+
   if (question.type === "basic-mastery") {
     wrap.appendChild(el("div", "q-stem", question.stem));
     renderChoiceList(wrap, question.options, (idx, btn, list) => {
       const isCorrect = idx === question.answer;
       markResult(list, btn, isCorrect, list.children[question.answer]);
-      explain.style.display = "block";
-      onAnswered(isCorrect);
+      handleAnswered(isCorrect);
     });
   }
 
@@ -51,8 +68,7 @@ export function renderQuestion(question, onAnswered) {
       const isCorrect = pickedTrue === question.correctAnswer;
       const correctIdx = question.correctAnswer ? 0 : 1;
       markResult(list, btn, isCorrect, list.children[correctIdx]);
-      explain.style.display = "block";
-      onAnswered(isCorrect);
+      handleAnswered(isCorrect);
     });
   }
 
@@ -62,8 +78,7 @@ export function renderQuestion(question, onAnswered) {
     renderChoiceList(wrap, question.errorOptions, (idx, btn, list) => {
       const isCorrect = idx === question.correctErrorIndex;
       markResult(list, btn, isCorrect, list.children[question.correctErrorIndex]);
-      explain.style.display = "block";
-      onAnswered(isCorrect);
+      handleAnswered(isCorrect);
     });
   }
 
@@ -73,8 +88,7 @@ export function renderQuestion(question, onAnswered) {
     renderChoiceList(wrap, question.options, (idx, btn, list) => {
       const isCorrect = idx === question.answer;
       markResult(list, btn, isCorrect, list.children[question.answer]);
-      explain.style.display = "block";
-      onAnswered(isCorrect);
+      handleAnswered(isCorrect);
     });
   }
 

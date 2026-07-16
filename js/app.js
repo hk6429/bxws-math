@@ -15,29 +15,79 @@ const views = {
 };
 
 let tree = null;
-let session = { queue: [], index: 0, node: null, streak: 0, roundCorrect: 0, roundTotal: 0 };
+let session = { queue: [], index: 0, node: null, mascot: null, streak: 0, roundCorrect: 0, roundTotal: 0 };
 
 function showView(name) {
   Object.entries(views).forEach(([key, el]) => el.classList.toggle("active", key === name));
+}
+
+function mascotVariantFor(nodeId) {
+  const full = allNodes(tree).find((n) => n.id === nodeId);
+  if (!full) return null;
+  return tree.strandVisuals?.[full.strandId]?.mascot ?? null;
 }
 
 async function goHome() {
   tree = tree ?? (await loadSkillTree());
   renderSkillTree(document.getElementById("skilltree-container"), tree, startQuiz);
   showView("home");
+  maybeShowOnboardingTip();
+}
+
+function maybeShowOnboardingTip() {
+  if (sessionStorage.getItem("bxws:seenTip")) return;
+  const root = document.getElementById("tip-bubble-root");
+  const box = document.createElement("div");
+  box.className = "tip-bubble";
+  box.innerHTML = `數字精靈在等你！點一下發亮的節點開始第一場挑戰吧。<br /><button>知道了</button>`;
+  box.querySelector("button").addEventListener("click", () => {
+    box.remove();
+    sessionStorage.setItem("bxws:seenTip", "1");
+  });
+  root.appendChild(box);
 }
 
 async function startQuiz(node) {
-  session = { queue: await buildSession(node.id), index: 0, node, streak: 0, roundCorrect: 0, roundTotal: 0 };
+  session = {
+    queue: await buildSession(node.id),
+    index: 0,
+    node,
+    mascot: mascotVariantFor(node.id),
+    streak: 0,
+    roundCorrect: 0,
+    roundTotal: 0,
+  };
   showView("quiz");
   renderCurrentQuestion();
+}
+
+function renderProgressBar() {
+  const bar = document.getElementById("quiz-progressbar");
+  bar.innerHTML = "";
+  session.queue.forEach((_, idx) => {
+    const seg = document.createElement("div");
+    seg.className = "seg" + (idx < session.index ? " filled" : "");
+    bar.appendChild(seg);
+  });
+}
+
+function renderStreakBadge() {
+  const el = document.getElementById("quiz-streak");
+  el.innerHTML = "";
+  if (session.streak >= 3) {
+    const badge = document.createElement("span");
+    badge.className = "streak-badge";
+    badge.textContent = `🔥 連對 ${session.streak}`;
+    el.appendChild(badge);
+  }
 }
 
 function renderCurrentQuestion() {
   const quizArea = document.getElementById("quiz-area");
   quizArea.innerHTML = "";
   document.getElementById("quiz-node-name").textContent = session.node.name;
-  document.getElementById("quiz-progress").textContent = `第 ${session.index + 1} / ${session.queue.length} 題`;
+  renderProgressBar();
+  renderStreakBadge();
 
   if (session.index >= session.queue.length) {
     finishSession();
@@ -45,7 +95,8 @@ function renderCurrentQuestion() {
   }
 
   const question = session.queue[session.index];
-  const card = renderQuestion(question, (isCorrect) => handleAnswer(question, isCorrect));
+  const card = renderQuestion(question, (isCorrect) => handleAnswer(question, isCorrect), session.mascot);
+  if (session.streak >= 3) card.classList.add("streak-active");
   quizArea.appendChild(card);
 
   const nextBtn = document.createElement("button");
@@ -69,6 +120,7 @@ function handleAnswer(question, isCorrect) {
     session.streak = 0;
     addWrongQuestion(session.node.id, question);
   }
+  renderStreakBadge();
 }
 
 function finishSession() {
@@ -81,6 +133,7 @@ function finishSession() {
   };
   const newBadges = evaluateBadges(ctx);
 
+  document.getElementById("quiz-streak").innerHTML = "";
   const quizArea = document.getElementById("quiz-area");
   quizArea.innerHTML = "";
   const stats = getNodeStats(session.node.id);
@@ -99,17 +152,60 @@ function finishSession() {
   quizArea.appendChild(backBtn);
 }
 
+function roundStars(roundTotal, roundCorrect) {
+  if (roundTotal === 0) return 0;
+  const pct = roundCorrect / roundTotal;
+  if (pct >= 0.95) return 3;
+  if (pct >= 0.8) return 2;
+  if (pct >= 0.6) return 1;
+  return 0;
+}
+
 function makeSummary(stats, newBadges) {
   const box = document.createElement("div");
   box.className = "q-summary";
-  box.innerHTML = `
-    <h3>本節點精熟度：${Math.round(stats.masteryPct * 100)}%</h3>
-    <p>累計作答 ${stats.totalAttempts} 題，答對 ${stats.correctAttempts} 題</p>
+
+  const stars = roundStars(session.roundTotal, session.roundCorrect);
+  const mascotState = stars >= 2 ? "celebrate" : stars >= 1 ? "happy" : "idle";
+  if (session.mascot) {
+    const mascotBox = document.createElement("div");
+    mascotBox.className = "summary-mascot";
+    const img = document.createElement("img");
+    img.src = `assets/mascot/${session.mascot}-${mascotState}.png`;
+    img.alt = "數字精靈";
+    img.onerror = () => { mascotBox.style.display = "none"; };
+    mascotBox.appendChild(img);
+    box.appendChild(mascotBox);
+  }
+
+  const starsBox = document.createElement("div");
+  starsBox.className = "summary-stars";
+  for (let i = 0; i < 3; i++) {
+    const s = document.createElement("span");
+    s.className = "star" + (i < stars ? " lit" : "");
+    s.textContent = "★";
+    s.style.animationDelay = `${i * 0.15}s`;
+    starsBox.appendChild(s);
+  }
+  box.appendChild(starsBox);
+
+  box.appendChild(Object.assign(document.createElement("h3"), {
+    textContent: `本節點戰力值：${Math.round(stats.masteryPct * 100)}%`,
+  }));
+
+  const reports = document.createElement("div");
+  reports.className = "summary-reports";
+  reports.innerHTML = `
+    <div class="report-tile"><strong>${Math.round((session.roundCorrect / session.roundTotal) * 100) || 0}%</strong><div>本輪正確率</div></div>
+    <div class="report-tile"><strong>${stats.totalAttempts}</strong><div>累計作答</div></div>
+    <div class="report-tile"><strong>${session.streak}</strong><div>最終連對</div></div>
   `;
+  box.appendChild(reports);
+
   if (newBadges.length > 0) {
     const badgeList = document.createElement("div");
     badgeList.className = "badge-unlock";
-    badgeList.innerHTML = "🏅 新徽章解鎖：" + newBadges.map((b) => b.name).join("、");
+    badgeList.textContent = "叮！你解鎖了新徽章：" + newBadges.map((b) => b.name).join("、");
     box.appendChild(badgeList);
   }
   return box;
@@ -125,7 +221,7 @@ async function showDashboard() {
 
   const summary = document.createElement("div");
   summary.className = "dash-summary";
-  summary.innerHTML = `<h3>整體精熟進度</h3><p>${overview.masteredCount} / ${overview.totalNodes} 個學習點已精熟</p>`;
+  summary.innerHTML = `<h3>整體戰力值</h3><p>${overview.masteredCount} / ${overview.totalNodes} 個學習點已開通</p>`;
   el.appendChild(summary);
 
   const badgeSection = document.createElement("div");
@@ -142,7 +238,7 @@ async function showDashboard() {
   const errorSection = document.createElement("div");
   errorSection.className = "dash-errorbook";
   const wrongList = listWrongQuestions();
-  errorSection.innerHTML = `<h3>錯題本（${wrongList.length} 題）</h3>`;
+  errorSection.innerHTML = `<h3>錯題復仇本（${wrongList.length} 題）</h3>`;
   wrongList.slice(0, 10).forEach((entry) => {
     const q = entry.question;
     const stem = q.stem || q.statement || q.problem || q.question;
