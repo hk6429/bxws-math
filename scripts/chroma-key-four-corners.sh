@@ -46,11 +46,11 @@ done
 
 mkdir -p "$(dirname "$output")"
 "$ffmpeg_bin" -y -v error -i "$input" -vf "$filters" \
-  -frames:v 1 -c:v png -compression_level 0 -pix_fmt rgba "$output"
+  -frames:v 1 -c:v png -compression_level 9 -pix_fmt rgba "$output"
 
 size=$(stat -f%z "$output")
-if (( size <= 1048576 )); then
-  echo "去背檔小於或等於 1MB：$output ($size bytes)" >&2
+if (( size <= 102400 )); then
+  echo "去背檔小於或等於 100KB，疑似截斷：$output ($size bytes)" >&2
   exit 1
 fi
 
