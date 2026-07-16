@@ -8,6 +8,8 @@ export const BADGES = [
   { id: "streak-3", name: "連對三題", desc: "連續答對 3 題", check: (ctx) => ctx.currentStreak >= 3 },
   { id: "master-trial", name: "大師真傳", desc: "大師試煉正確率達九成", check: (ctx) => ctx.masterTrialPassed },
   { id: "encounter-5", name: "奇遇獵人", desc: "答對 5 次靈光一閃題", check: (ctx) => ctx.encounterWins >= 5 },
+  { id: "workshop-friend", name: "工作室之友", desc: "讓目前已開放的大師工作室全數重光", check: (ctx) => ctx.workshopRestored },
+  { id: "sparring", name: "切磋章", desc: "完成同學的挑戰包或收到回擊碼", check: (ctx) => ctx.sparring },
 ];
 
 export function getUnlockedBadges() {
@@ -25,4 +27,13 @@ export function evaluateBadges(ctx) {
   }
   store.write("badges", [...unlocked]);
   return newlyUnlocked;
+}
+
+export function unlockBadge(id) {
+  if (!BADGES.some((badge) => badge.id === id)) return false;
+  const unlocked = new Set(getUnlockedBadges());
+  if (unlocked.has(id)) return false;
+  unlocked.add(id);
+  store.write("badges", [...unlocked]);
+  return true;
 }

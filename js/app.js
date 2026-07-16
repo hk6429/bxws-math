@@ -5,22 +5,29 @@ import { renderQuestion } from "./quiz-ui.js";
 import { recordAnswer, overallMasteryPct, getNodeStats } from "./scoreEngine.js";
 import { updateBox, hasRecord, isDue } from "./leitner.js";
 import { addWrongQuestion, listWrongQuestions, removeWrongQuestion } from "./errorbook.js";
-import { evaluateBadges, getUnlockedBadges, BADGES } from "./achievements.js";
+import { evaluateBadges, getUnlockedBadges, unlockBadge, BADGES } from "./achievements.js";
 import { getPlayerName, setPlayerName, submitScore, getLeaderboard } from "./leaderboard.js";
 import {
   MANUSCRIPTS, getCollection, evaluateCollection,
   RARE_STAMPS, stampForNode, getRareStamps, ownRareStamp,
+  manuscriptDustStatus, addManuscriptCare,
 } from "./collection.js";
 import { pickQuote, unlockedExtraQuotes } from "./quotes.js";
-import { store } from "./store.js";
+import { store, exportNamespace, importNamespace } from "./store.js";
 import { sfx, isSfxOn, setSfxOn } from "./sfx.js";
 import { getDaily, bumpDaily, dailyTasks, maybeDropInk, getInkDays, inkThisMonth } from "./daily.js";
 import { isoWeekKey, buildWeeklySession, getWeeklyBest, submitWeeklyResult, decodeResult } from "./weekly.js";
+import { computeWorkshop, WORKSHOP_STAGES } from "./workshop.js";
+import {
+  buildChallengeCatalog, decodeChallenge, decodeReply, encodeChallenge, encodeReply,
+  questionAccuracy, questionLabel,
+} from "./challenge.js";
 
 const views = {
   home: document.getElementById("view-home"),
   quiz: document.getElementById("view-quiz"),
   dashboard: document.getElementById("view-dashboard"),
+  workshop: document.getElementById("view-workshop"),
 };
 
 let tree = null;
@@ -66,6 +73,7 @@ function newSession(fields) {
     elapsedTotal: 0,
     perQuestion: [],
     rareDrops: [],
+    challengeCode: null,
     streak: 0,
     maxStreak: 0,
     roundCorrect: 0,
@@ -107,14 +115,15 @@ async function goHome() {
   makeWeeklyCard(container);
   makeResumeCard(container);
   await makeDailyBoard(container);
+  makeWorkshopTeaser(container);
   showView("home");
   maybeShowOnboardingTip();
 }
 
-// ── P0：今日修稿單＋墨水瓶 ──
+// ── P0：今日修稿單＋星墨瓶 ──
 async function makeDailyBoard(container) {
   const nodeIds = allNodes(tree)
-    .filter((n) => nodeState(tree, n.id) !== "locked")
+    .filter((n) => nodeState(n, tree) !== "locked")
     .map((n) => n.id);
   const dueCount = nodeIds.length > 0 ? await countDueReviews(nodeIds) : 0;
   const errorCount = listWrongQuestions().length;
@@ -157,7 +166,7 @@ async function makeDailyBoard(container) {
   }
   const ink = document.createElement("span");
   ink.className = "ink-bottle";
-  ink.textContent = `🫙 墨水瓶：本月 ${inkThisMonth()} 滴（共 ${getInkDays().length} 滴）`;
+  ink.textContent = `🫙 星墨瓶：本月 ${inkThisMonth()} 滴（共 ${getInkDays().length} 滴）`;
   actions.appendChild(ink);
   board.appendChild(actions);
 
@@ -180,9 +189,63 @@ async function makeDailyBoard(container) {
   container.prepend(board);
 }
 
+function workshopSnapshot() {
+  return computeWorkshop(tree, {
+    progress: store.read("progress", {}),
+    collection: getCollection(),
+    rareStamps: getRareStamps(),
+  });
+}
+
+function makeWorkshopTeaser(container) {
+  const workshop = workshopSnapshot();
+  const card = document.createElement("button");
+  card.className = "workshop-teaser";
+  card.innerHTML = `<span>🏛</span><strong>大師工作室修復計畫</strong><span>${workshop.overallPct}% 重光</span>`;
+  card.addEventListener("click", showWorkshop);
+  container.prepend(card);
+}
+
+async function showWorkshop() {
+  tree = tree ?? (await loadSkillTree());
+  const workshop = workshopSnapshot();
+  if (workshop.allRestored) unlockBadge("workshop-friend");
+  const root = document.getElementById("workshop-content");
+  root.innerHTML = "";
+
+  const hero = document.createElement("section");
+  hero.className = `workshop-hero${workshop.allRestored ? " workshop-complete" : ""}`;
+  hero.innerHTML = `<div class="workshop-kicker">每一頁你完成的手稿，都在把工作室修回來。</div>
+    <h2>${workshop.allRestored ? "大師工作室・全數重光" : "大師工作室修復計畫"}</h2>
+    <div class="workshop-meter"><span style="width:${workshop.overallPct}%"></span></div>
+    <p>目前已開放房間總修復度 ${workshop.overallPct}%。精熟手稿、獲得落款、找回稀有章，光就會一層層回來。</p>`;
+  if (workshop.allRestored) {
+    const finale = document.createElement("div");
+    finale.className = "workshop-finale";
+    finale.textContent = "✦ 燈一盞一盞亮起，大師把門牌翻到了「工作室之友」。這裡已經不只是大師的工作室，也是你的。";
+    hero.appendChild(finale);
+  }
+  root.appendChild(hero);
+
+  const grid = document.createElement("div");
+  grid.className = "workshop-grid";
+  workshop.rooms.forEach((room) => {
+    const stage = WORKSHOP_STAGES[room.stage];
+    const card = document.createElement("article");
+    card.className = `workshop-room room-${room.stage}`;
+    card.innerHTML = `<div class="room-scene"><span>${room.icon}</span></div>
+      <div class="room-copy"><div class="room-stage">${stage.label}</div><h3>${room.title}</h3>
+      <p>${stage.message}</p><div class="room-meter"><span style="width:${room.repairPct}%"></span></div>
+      <strong>${room.available ? `${room.repairPct}%` : "待開放"}</strong></div>`;
+    grid.appendChild(card);
+  });
+  root.appendChild(grid);
+  showView("workshop");
+}
+
 async function startReviewSession() {
   const nodeIds = allNodes(tree)
-    .filter((n) => nodeState(tree, n.id) !== "locked")
+    .filter((n) => nodeState(n, tree) !== "locked")
     .map((n) => n.id);
   const queue = await buildReviewSession(nodeIds, 6);
   if (queue.length === 0) return;
@@ -555,6 +618,7 @@ function handleAnswer(question, isCorrect, meta = {}) {
       session.repairedCount += 1;
       bumpDaily("repair");
     }
+    if (wasReviewDue && (getCollection()[nodeId]?.tier ?? 0) >= 2) addManuscriptCare(nodeId);
     if (meta.encounter) handleEncounterWin();
   } else {
     session.streak = 0;
@@ -604,6 +668,7 @@ function finishSession() {
   store.write("lastPlayed", { at: Date.now(), nodeName: session.node.name });
 
   const overview = computeOverview(tree);
+  const workshop = workshopSnapshot();
   const isMasterTrial = session.kind === "master";
   const roundPct = session.roundTotal > 0 ? session.roundCorrect / session.roundTotal : 0;
   const ctx = {
@@ -613,6 +678,8 @@ function finishSession() {
     currentStreak: session.maxStreak,
     masterTrialPassed: isMasterTrial && session.roundTotal > 0 && roundPct >= 0.9,
     encounterWins: store.read("encounterWins", 0),
+    workshopRestored: workshop.allRestored,
+    sparring: session.kind === "challenge",
   };
   const newBadges = evaluateBadges(ctx);
 
@@ -643,6 +710,17 @@ function finishSession() {
     );
   }
 
+  let challengeReply = null;
+  if (session.kind === "challenge" && session.challengeCode) {
+    challengeReply = {
+      code: encodeReply(session.challengeCode, Math.round(roundPct * 100), Math.round(session.elapsedTotal / 1000)),
+      pct: Math.round(roundPct * 100),
+      totalSec: Math.round(session.elapsedTotal / 1000),
+    };
+    store.write("lastChallengeResult", { ...challengeReply, challengeCode: session.challengeCode, at: Date.now() });
+    unlockBadge("sparring");
+  }
+
   document.getElementById("quiz-streak").innerHTML = "";
   document.getElementById("quiz-ghost")?.remove();
   const quizArea = document.getElementById("quiz-area");
@@ -653,7 +731,7 @@ function finishSession() {
   const newDrops = session.kind === "node" || isMasterTrial
     ? evaluateCollection(session.node.id, stats, ctx)
     : [];
-  quizArea.appendChild(makeSummary(stats, newBadges, newDrops, weeklyRecord));
+  quizArea.appendChild(makeSummary(stats, newBadges, newDrops, weeklyRecord, challengeReply));
 
   const player = getPlayerName();
   if (player) {
@@ -697,7 +775,7 @@ function strategySummaryBits() {
   };
 }
 
-function makeSummary(stats, newBadges, newDrops = [], weeklyRecord = null) {
+function makeSummary(stats, newBadges, newDrops = [], weeklyRecord = null, challengeReply = null) {
   const box = document.createElement("div");
   box.className = "q-summary";
 
@@ -763,6 +841,25 @@ function makeSummary(stats, newBadges, newDrops = [], weeklyRecord = null) {
     box.appendChild(w);
   }
 
+
+  if (challengeReply) {
+    const result = document.createElement("div");
+    result.className = "challenge-result";
+    result.innerHTML = `<div class="weekly-result-title">⚔ 回擊碼・${challengeReply.pct}% ・ ${challengeReply.totalSec} 秒</div>
+      <code>${challengeReply.code}</code><p>複製給出題同學，他輸入後也會獲得「切磋章」。</p>`;
+    const copy = document.createElement("button");
+    copy.className = "daily-btn";
+    copy.textContent = "複製回擊碼";
+    copy.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(challengeReply.code);
+        copy.textContent = "已複製！";
+      } catch { /* 剪貼簿不可用時仍可手動複製 */ }
+    });
+    result.appendChild(copy);
+    box.appendChild(result);
+  }
+
   // 稀有章出貨：結算頁鄭重重播（不再被下一題吃掉）
   session.rareDrops.forEach((stamp) => {
     const drop = document.createElement("div");
@@ -824,10 +921,191 @@ function makeSummary(stats, newBadges, newDrops = [], weeklyRecord = null) {
   return box;
 }
 
+let challengeCatalogPromise = null;
+function getChallengeCatalog() {
+  if (!challengeCatalogPromise) challengeCatalogPromise = buildChallengeCatalog(allNodes(tree).map((node) => node.id));
+  return challengeCatalogPromise;
+}
+
+function startChallengeSession(code, queue) {
+  session = newSession({
+    queue,
+    node: { id: "peer-challenge", name: "同學出題挑戰包" },
+    mascot: "gauss",
+    kind: "challenge",
+    challengeCode: code,
+  });
+  showView("quiz");
+  renderCurrentQuestion();
+}
+
+async function makeChallengeHub() {
+  const catalog = await getChallengeCatalog();
+  const collection = getCollection();
+  const sealedIds = new Set(Object.entries(collection)
+    .filter(([id, record]) => id !== MASTER_TRIAL_ID && record.tier >= 2)
+    .map(([id]) => id));
+  const eligible = catalog.filter((question) => sealedIds.has(question._nodeId));
+  const nodeNames = Object.fromEntries(allNodes(tree).map((node) => [node.id, node.name]));
+  const section = document.createElement("section");
+  section.className = "challenge-hub";
+  section.innerHTML = `<h3>🎯 學徒出題所・五題挑戰包</h3>
+    <p>手稿獲得大師落款後，你就有資格從該頁挑五題考同學。從自己最容易上當的題挑起，才是真正的出題人。</p>`;
+
+  const creator = document.createElement("div");
+  creator.className = "challenge-creator";
+  if (eligible.length === 0) {
+    creator.innerHTML = `<div class="challenge-locked">🔒 先讓任一張手稿獲得「大師落款」，就能解鎖學徒出題權。</div>`;
+  } else {
+    const selected = new Map();
+    const filter = document.createElement("select");
+    [...new Set(eligible.map((q) => q._nodeId))].forEach((id) => {
+      const option = document.createElement("option");
+      option.value = id;
+      option.textContent = nodeNames[id] ?? id;
+      filter.appendChild(option);
+    });
+    const count = document.createElement("strong");
+    count.textContent = "已挑 0 / 5 題";
+    const list = document.createElement("div");
+    list.className = "challenge-question-list";
+    const output = document.createElement("div");
+    output.className = "challenge-code-output";
+    const make = document.createElement("button");
+    make.className = "daily-btn";
+    make.textContent = "編成挑戰碼";
+    make.disabled = true;
+
+    const renderList = () => {
+      list.innerHTML = "";
+      eligible.filter((q) => q._nodeId === filter.value).forEach((question) => {
+        const label = document.createElement("label");
+        label.className = "challenge-question";
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = selected.has(question.id);
+        checkbox.disabled = !checkbox.checked && selected.size >= 5;
+        const accuracy = questionAccuracy(question.id, store.read("progress", {}));
+        const accuracyText = accuracy === null ? "尚未作答" : `歷史正確率 ${Math.round(accuracy * 100)}%`;
+        const copy = document.createElement("span");
+        copy.innerHTML = `<strong>${questionLabel(question)}</strong><small>${accuracyText}</small>`;
+        checkbox.addEventListener("change", () => {
+          if (checkbox.checked) selected.set(question.id, question);
+          else selected.delete(question.id);
+          count.textContent = `已挑 ${selected.size} / 5 題`;
+          make.disabled = selected.size !== 5;
+          renderList();
+        });
+        label.appendChild(checkbox);
+        label.appendChild(copy);
+        list.appendChild(label);
+      });
+    };
+    filter.addEventListener("change", renderList);
+    make.addEventListener("click", async () => {
+      const code = encodeChallenge([...selected.values()], catalog);
+      store.write("lastCreatedChallenge", { code, questionIds: [...selected.keys()], at: Date.now() });
+      output.innerHTML = `<strong>你的挑戰碼：</strong><code>${code}</code>`;
+      try { await navigator.clipboard.writeText(code); output.append("（已複製）"); } catch { /* 可手動複製 */ }
+    });
+    creator.append(filter, count, list, make, output);
+    renderList();
+  }
+  section.appendChild(creator);
+
+  const receiver = document.createElement("div");
+  receiver.className = "challenge-receiver";
+  receiver.innerHTML = "<h4>收下同學的挑戰</h4>";
+  const input = document.createElement("input");
+  input.placeholder = "輸入 BX- 開頭的挑戰碼";
+  const result = document.createElement("div");
+  result.className = "challenge-message";
+  const play = document.createElement("button");
+  play.className = "daily-btn";
+  play.textContent = "開始接招";
+  play.addEventListener("click", () => {
+    const queue = decodeChallenge(input.value, catalog);
+    if (!queue) { result.textContent = "這組挑戰碼看不懂，請再核對一次。"; return; }
+    startChallengeSession(input.value.trim().toUpperCase(), queue);
+  });
+  receiver.append(input, play, result);
+  section.appendChild(receiver);
+
+  const reply = document.createElement("div");
+  reply.className = "challenge-receiver";
+  reply.innerHTML = "<h4>查看同學的回擊</h4>";
+  const replyInput = document.createElement("input");
+  replyInput.placeholder = "輸入 XR- 開頭的回擊碼";
+  const replyResult = document.createElement("div");
+  replyResult.className = "challenge-message";
+  const inspect = document.createElement("button");
+  inspect.className = "daily-btn";
+  inspect.textContent = "拆開回擊";
+  inspect.addEventListener("click", () => {
+    const mine = store.read("lastCreatedChallenge", null);
+    const decoded = mine ? decodeReply(replyInput.value, mine.code) : null;
+    if (!decoded) { replyResult.textContent = mine ? "這不是這一包的回擊碼。" : "這台裝置還沒有你出過的挑戰包。"; return; }
+    unlockBadge("sparring");
+    replyResult.textContent = `同學答對 ${decoded.pct}%，用了 ${decoded.totalSec} 秒。你也獲得「切磋章」！`;
+  });
+  reply.append(replyInput, inspect, replyResult);
+  section.appendChild(reply);
+  return section;
+}
+
+function makeTravelCase() {
+  const section = document.createElement("section");
+  section.className = "travel-case";
+  section.innerHTML = `<h3>🧳 旅行皮箱</h3><p>把這台裝置上的手稿、精熟進度、印章與錯題全部打包，到另一台電腦繼續寫。</p>`;
+  const actions = document.createElement("div");
+  actions.className = "travel-actions";
+  const pack = document.createElement("button");
+  pack.className = "daily-btn";
+  pack.textContent = "📦 打包我的草稿本";
+  pack.addEventListener("click", () => {
+    const blob = new Blob([JSON.stringify(exportNamespace(), null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `步學吾數-草稿本-${new Date().toISOString().slice(0, 10)}.json`;
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 0);
+  });
+  const label = document.createElement("label");
+  label.className = "daily-btn travel-import";
+  label.textContent = "🧳 打開旅行皮箱";
+  const file = document.createElement("input");
+  file.type = "file";
+  file.accept = "application/json,.json";
+  file.hidden = true;
+  file.addEventListener("change", async () => {
+    const picked = file.files?.[0];
+    if (!picked) return;
+    try {
+      const bundle = JSON.parse(await picked.text());
+      if (!confirm("匯入會覆蓋這台裝置的同名進度，要繼續嗎？")) return;
+      const count = importNamespace(bundle);
+      alert(`已打開旅行皮箱，帶回 ${count} 項紀錄。`);
+      location.reload();
+    } catch (error) {
+      alert(error instanceof Error ? error.message : "這個檔案無法匯入。");
+    } finally {
+      file.value = "";
+    }
+  });
+  label.appendChild(file);
+  actions.append(pack, label);
+  section.appendChild(actions);
+  return section;
+}
+
 async function showDashboard() {
   tree = tree ?? (await loadSkillTree());
   const overview = computeOverview(tree);
   const unlocked = new Set(getUnlockedBadges());
+  const challengeCatalog = await getChallengeCatalog();
+  const leitnerState = store.read("leitner", {});
+  const careState = store.read("manuscriptCare", {});
 
   const el = document.getElementById("dashboard-content");
   el.innerHTML = "";
@@ -858,6 +1136,14 @@ async function showDashboard() {
     const tier = record?.tier ?? 0;
     const card = document.createElement("div");
     card.className = "ms-card" + (tier === 0 ? " locked" : "");
+    const dust = manuscriptDustStatus(
+      m.id,
+      col,
+      leitnerState,
+      challengeCatalog.filter((q) => q._nodeId === m.id).map((q) => q.id),
+      careState[m.id]
+    );
+    if (dust.dusty) card.classList.add("manuscript-dusty");
     const sym = document.createElement("div");
     sym.className = "ms-sym";
     sym.textContent = tier === 0 ? "？" : m.sym;
@@ -878,6 +1164,12 @@ async function showDashboard() {
     }
     if (tier >= 2) {
       card.appendChild(Object.assign(document.createElement("div"), { className: "ms-seal", textContent: "落款" }));
+    }
+    if (dust.dusty) {
+      card.appendChild(Object.assign(document.createElement("div"), {
+        className: "dust-note",
+        textContent: `手稿蒙塵・補 ${3 - dust.careCount} 題到期墨跡即重新發亮`,
+      }));
     }
     grid.appendChild(card);
   });
@@ -920,12 +1212,12 @@ async function showDashboard() {
   stampSection.appendChild(stampGrid);
   el.appendChild(stampSection);
 
-  // 墨水瓶與番外語錄
+  // 星墨瓶與番外語錄
   const inkTotal = getInkDays().length;
   const extras = unlockedExtraQuotes(inkTotal);
   const inkSection = document.createElement("div");
   inkSection.className = "dash-ink";
-  inkSection.innerHTML = `<h3>墨水瓶（共 ${inkTotal} 滴 · 每 7 滴解鎖一則大師番外）</h3>`;
+  inkSection.innerHTML = `<h3>星墨瓶（共 ${inkTotal} 滴 · 每 7 滴解鎖一則大師番外）</h3>`;
   if (extras.length === 0) {
     inkSection.appendChild(Object.assign(document.createElement("p"), {
       className: "ink-hint",
@@ -978,6 +1270,8 @@ async function showDashboard() {
   });
   el.appendChild(boardSection);
 
+  el.appendChild(await makeChallengeHub());
+  el.appendChild(makeTravelCase());
   el.appendChild(makeShareCard());
   el.appendChild(makeNameEditor());
 
@@ -1119,6 +1413,7 @@ function setupSfxToggle() {
 }
 
 document.getElementById("nav-home").addEventListener("click", goHome);
+document.getElementById("nav-workshop").addEventListener("click", showWorkshop);
 document.getElementById("nav-dashboard").addEventListener("click", showDashboard);
 setupSfxToggle();
 

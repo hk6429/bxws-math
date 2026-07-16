@@ -1114,6 +1114,7 @@ main { padding: 24px; max-width: 960px; margin: 0 auto; }
   padding: 8px 16px;
   font-family: var(--font-hand);
   font-size: 0.95rem;
+  color: var(--ink);
   background: var(--paper);
   border: var(--sketch-border);
   border-radius: var(--sketch-radius-b);
@@ -1384,4 +1385,833 @@ body {
     radial-gradient(ellipse 46% 30% at 16% 84%, rgba(140, 100, 48, 0.08), transparent 75%),
     var(--paper-bright);
   box-shadow: inset 0 0 0 1px rgba(96, 68, 30, 0.16), inset 0 0 26px rgba(96, 68, 30, 0.2);
+}
+
+/* ===== 星術工房改版（2026-07-16 文藝復興星術師工房・魔法星空批次）===== */
+/* 世界觀：暖羊皮紙 × 冷夜空。閱讀永遠在卷軸紙上，星空只當舞台。 */
+
+/* ---------- 1. 色彩 token 覆蓋 ---------- */
+:root {
+  /* 夜空 */
+  --night: #141b36;
+  --night-deep: #0d1226;
+  --night-mist: #1e2749;
+  /* 星光金／秘術紫／魔力青 */
+  --star-gold: #f2c94c;
+  --star-gold-core: #ffe9a8;
+  --star-gold-glow: rgba(242, 201, 76, 0.45);
+  --arcane: #8f6fd4;
+  --mana: #4fc3e8;
+  /* 星圖內 strand 提亮 glow 版（60% white 級） */
+  --strand-number-glow: color-mix(in srgb, var(--strand-number) 60%, white);
+  --strand-algebra-glow: color-mix(in srgb, var(--strand-algebra) 60%, white);
+  --strand-geometry-glow: color-mix(in srgb, var(--strand-geometry) 60%, white);
+  --strand-pattern-glow: color-mix(in srgb, var(--strand-pattern) 60%, white);
+  --strand-data-glow: color-mix(in srgb, var(--strand-data) 60%, white);
+  /* 夜空底上的亮文字階 */
+  --starlight-text: #f0e2bd;
+  --starlight-dim: #b9c2e0;
+  --starlight-faint: #9aa6cf;
+  /* 卷軸木軸桿 */
+  --rod-h: 22px;
+  /* a11y 債務：13px 小字加深 */
+  --ink-dim: #5d4c30;
+  /* 楷體筆刷字（只給大標題） */
+  --font-brush: "Kaiti TC", "BiauKai", "DFKai-SB", "Yuanti TC", "Chalkboard SE", serif;
+}
+
+/* ---------- 2. body 星空底（scroll 不用 fixed）---------- */
+body {
+  background:
+    radial-gradient(circle, rgba(255, 250, 235, 0.9) 0 1px, transparent 1.8px),
+    radial-gradient(circle, rgba(214, 226, 255, 0.75) 0 1px, transparent 1.6px),
+    radial-gradient(circle, rgba(242, 201, 76, 0.7) 0 1.2px, transparent 2px),
+    radial-gradient(circle, rgba(190, 200, 240, 0.45) 0 0.8px, transparent 1.4px),
+    radial-gradient(ellipse 55% 32% at 78% 10%, rgba(143, 111, 212, 0.16), transparent 70%),
+    radial-gradient(ellipse 48% 30% at 12% 44%, rgba(79, 195, 232, 0.1), transparent 70%),
+    radial-gradient(ellipse 40% 26% at 60% 86%, rgba(143, 111, 212, 0.1), transparent 70%),
+    linear-gradient(180deg, var(--night-deep) 0%, var(--night) 46%, #1a2244 100%);
+  /* 互質 background-size 防週期感 */
+  background-size:
+    97px 127px,
+    137px 113px,
+    211px 173px,
+    61px 79px,
+    auto, auto, auto, auto;
+  background-position: 0 0, 31px 47px, 67px 23px, 13px 89px, 0 0, 0 0, 0 0, 0 0;
+  background-attachment: scroll;
+}
+/* 單一偽元素 twinkle 層：只動 opacity */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle, rgba(255, 252, 240, 0.85) 0 1px, transparent 1.7px),
+    radial-gradient(circle, rgba(242, 201, 76, 0.6) 0 1px, transparent 1.8px);
+  background-size: 149px 167px, 233px 191px;
+  background-position: 53px 29px, 101px 137px;
+  animation: sky-twinkle 5.5s ease-in-out infinite;
+}
+@keyframes sky-twinkle {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.9; }
+}
+
+/* ---------- 3. topbar 夜空色系 ---------- */
+.topbar {
+  background:
+    radial-gradient(ellipse 60% 100% at 80% 0%, rgba(143, 111, 212, 0.14), transparent 70%),
+    linear-gradient(180deg, #1a2140, #10162e);
+  border-bottom: 2px solid rgba(242, 201, 76, 0.4);
+  box-shadow: 0 4px 18px rgba(5, 8, 22, 0.6);
+}
+
+/* ---------- 4. quiz 頁裸文字全翻亮（夜空底上禁深字）---------- */
+#quiz-node-name, #view-quiz h2 { color: var(--starlight-text); }
+.quiz-timer { color: #ffd27a; font-variant-numeric: tabular-nums; }
+.quiz-timer.timer-hot { color: #ff9c86; }
+.quiz-ghost { color: var(--starlight-dim); }
+.strategy-picker-title { color: var(--starlight-text); }
+.lock-reason { color: var(--starlight-dim); }
+.strategy-note { color: #9fe3a5; }
+.streak-badge {
+  color: #ffb49e;
+  border-color: #e8604f;
+  background: rgba(13, 18, 38, 0.55);
+}
+.streak-badge-hot { color: #ffcf7a; }
+.strand-soon-banner { border-color: rgba(150, 165, 215, 0.4); color: var(--starlight-dim); }
+.strand-soon-banner .soon-title { color: var(--starlight-text); }
+
+/* ---------- 5. 卷軸五面板（三層假元素法）---------- */
+/* 本體退為透明容器；::before 紙身（deckle 毛邊）；::after 上下木軸桿 */
+.q-card, .q-summary, .daily-board, .weekly-card, .endgame-banner {
+  position: relative;
+  border: none;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  clip-path: none;
+  padding: calc(var(--rod-h) + 20px) 30px;
+  /* clip-path 外陰影一律 drop-shadow（box-shadow 會被裁） */
+  filter: drop-shadow(0 10px 16px rgba(5, 8, 22, 0.55));
+}
+/* 紙身：左右內縮 10px，讓軸桿露出桿外 */
+.q-card::before, .q-summary::before, .daily-board::before,
+.weekly-card::before, .endgame-banner::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--rod-h) * 0.55);
+  bottom: calc(var(--rod-h) * 0.55);
+  left: 10px;
+  right: 10px;
+  width: auto;
+  height: auto;
+  transform: none;
+  border: none;
+  z-index: 0;
+  clip-path: var(--deckle-a);
+  background:
+    repeating-linear-gradient(0deg, transparent 0 33px, rgba(110, 80, 40, 0.1) 33px 34px),
+    radial-gradient(ellipse 60% 40% at 22% 18%, rgba(150, 112, 58, 0.07), transparent 75%),
+    radial-gradient(ellipse 46% 34% at 80% 78%, rgba(140, 100, 48, 0.09), transparent 75%),
+    var(--paper-bright);
+  box-shadow:
+    inset 0 0 0 1px rgba(96, 68, 30, 0.18),
+    inset 0 0 22px rgba(96, 68, 30, 0.22);
+}
+.q-summary::before, .daily-board::before, .weekly-card::before { clip-path: var(--deckle-b); }
+/* 上下木軸桿：木身圓柱漸層 ＋ 四個銅釦端頭 */
+.q-card::after, .q-summary::after, .daily-board::after,
+.weekly-card::after, .endgame-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  transform: none;
+  border: none;
+  opacity: 1;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 50%, #f3d488 0 32%, #c08a3e 60%, #74521e 78%, transparent 80%) left 0 top 0 / var(--rod-h) var(--rod-h) no-repeat,
+    radial-gradient(circle at 50% 50%, #f3d488 0 32%, #c08a3e 60%, #74521e 78%, transparent 80%) right 0 top 0 / var(--rod-h) var(--rod-h) no-repeat,
+    radial-gradient(circle at 50% 50%, #f3d488 0 32%, #c08a3e 60%, #74521e 78%, transparent 80%) left 0 bottom 0 / var(--rod-h) var(--rod-h) no-repeat,
+    radial-gradient(circle at 50% 50%, #f3d488 0 32%, #c08a3e 60%, #74521e 78%, transparent 80%) right 0 bottom 0 / var(--rod-h) var(--rod-h) no-repeat,
+    linear-gradient(180deg, #8a6432, #c99a58 40%, #a97e3e 60%, #59401a) left 0 top 0 / 100% var(--rod-h) no-repeat,
+    linear-gradient(0deg, #8a6432, #c99a58 40%, #a97e3e 60%, #59401a) left 0 bottom 0 / 100% var(--rod-h) no-repeat;
+}
+/* 子元素浮上紙面（絕對定位裝飾另行給 z-index，不動 position） */
+.q-card > :not(.encounter-stamp):not(.rare-stamp):not(.spark):not(.q-mascot-react):not(.pshaving),
+.q-summary > *,
+.daily-board > :not(.daily-stamp),
+.weekly-card > *,
+.endgame-banner > * {
+  position: relative;
+  z-index: 2;
+}
+.q-card > .encounter-stamp, .q-card > .rare-stamp, .q-card > .spark,
+.q-card > .q-mascot-react, .daily-board > .daily-stamp { z-index: 2; }
+
+/* 今日修稿單完成態：金染紙身 */
+.daily-board.daily-done { background: none; }
+.daily-board.daily-done::before {
+  background:
+    linear-gradient(135deg, rgba(242, 201, 76, 0.14), rgba(234, 217, 168, 0.35)),
+    repeating-linear-gradient(0deg, transparent 0 33px, rgba(110, 80, 40, 0.1) 33px 34px),
+    var(--paper-bright);
+}
+/* 終局邀請函：紙身加朱紅內框 */
+.endgame-banner::before {
+  box-shadow:
+    inset 0 0 0 2px rgba(200, 90, 60, 0.4),
+    inset 0 0 22px rgba(96, 68, 30, 0.22);
+}
+/* 連對狀態改到紙身，不再用外框 outline / box-shadow */
+.q-card.streak-active { outline: none; }
+.q-card.streak-active::before {
+  box-shadow:
+    inset 0 0 0 2px rgba(217, 123, 41, 0.45),
+    inset 0 0 22px rgba(96, 68, 30, 0.22);
+}
+.q-card.streak-hot { box-shadow: none; }
+.q-card.streak-hot::before {
+  box-shadow:
+    inset 0 0 0 2px rgba(242, 201, 76, 0.55),
+    inset 0 0 26px rgba(190, 140, 40, 0.28);
+}
+/* 題型色：紙膠帶退役，改懸掛緞帶承接 --tape-color */
+.q-card .q-type {
+  display: inline-block;
+  padding: 2px 14px 2px 10px;
+  color: var(--ink);
+  background: var(--tape-color, rgba(180, 180, 180, 0.45));
+  clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 50%, 100% 100%, 0 100%);
+  border-left: 3px solid rgba(96, 68, 30, 0.4);
+}
+
+@media (max-width: 600px) {
+  .q-card, .q-summary, .daily-board, .weekly-card, .endgame-banner {
+    --rod-h: 16px;
+    filter: none;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* ---------- 6. 測驗頁：詠唱成功／咒文潰散 ---------- */
+/* 答對＝符光暈染 */
+.q-correct {
+  border-color: #3f8f56 !important;
+  background:
+    radial-gradient(ellipse 70% 120% at 20px 50%, rgba(126, 217, 140, 0.35), transparent 70%),
+    linear-gradient(rgba(126, 217, 140, 0.12), rgba(126, 217, 140, 0.12)) !important;
+}
+.q-correct::after {
+  color: #2e7d43;
+  text-shadow: 0 0 6px rgba(126, 217, 140, 0.95), 0 0 12px rgba(126, 217, 140, 0.5);
+}
+/* 答錯＝咒文潰散（劃掉的認知功能保留） */
+.q-wrong {
+  text-decoration-style: wavy;
+  text-decoration-thickness: 1.5px;
+  filter: saturate(0.8);
+}
+.q-wrong::after {
+  color: #b23c2a;
+  text-shadow: 0 0 5px rgba(178, 60, 42, 0.5);
+}
+/* 眉批＝秘術紫左線 */
+.q-explain { border-left: 3px solid var(--arcane); }
+.q-explain::before { color: var(--arcane); }
+/* 粒子＝星塵（只換色票與尾段熄滅，不動 JS） */
+.pshaving {
+  --cp-red: #c9a7ff;
+  --cp-green: #7fe3ff;
+  --cp-blue: #ffffff;
+  --cp-orange: #ffd76a;
+  --cp-yellow: var(--star-gold);
+  text-shadow: 0 0 6px currentColor;
+  animation: stardust-burst 0.75s ease-out forwards;
+}
+@keyframes stardust-burst {
+  0% { transform: translate(0, 0) rotate(0deg) scale(var(--sc, 1)); opacity: 1; }
+  70% { opacity: 0.9; }
+  82% { opacity: 0.3; }
+  90% { opacity: 0.75; }
+  100% { transform: translate(var(--dx), var(--dy)) rotate(var(--rot)) scale(0.35); opacity: 0; }
+}
+/* 奇遇＝符文帶（廢除 gold-shimmer box-shadow 無限迴圈） */
+.q-card.q-encounter {
+  animation: none;
+  background: none;
+  border: none;
+}
+.q-card.q-encounter::before {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 33px, rgba(110, 80, 40, 0.1) 33px 34px),
+    linear-gradient(rgba(242, 201, 76, 0.1), rgba(242, 201, 76, 0.1)),
+    var(--paper-bright);
+  box-shadow:
+    inset 0 0 0 2px rgba(242, 201, 76, 0.5),
+    inset 0 0 26px rgba(190, 140, 40, 0.25);
+}
+.encounter-banner { color: #8a6414; }
+.encounter-banner::before { content: "✦ ✧ ⋆"; margin-right: 8px; }
+.encounter-banner::after { content: "⋆ ✧ ✦"; margin-left: 8px; }
+.encounter-banner::before, .encounter-banner::after {
+  color: #a87c14;
+  animation: rune-breathe 2.4s ease-in-out infinite;
+}
+@keyframes rune-breathe {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+/* 蓋章＝封蠟印（壓扁回彈＋熱蠟微光，落定 filter:none） */
+@keyframes wax-seal {
+  0% { transform: rotate(var(--seal-rot, -6deg)) scale(2); opacity: 0; }
+  55% { transform: rotate(var(--seal-rot, -6deg)) scale(0.86); opacity: 1; filter: drop-shadow(0 0 10px rgba(242, 166, 76, 0.85)); }
+  75% { transform: rotate(var(--seal-rot, -6deg)) scale(1.06); filter: drop-shadow(0 0 5px rgba(242, 166, 76, 0.4)); }
+  100% { transform: rotate(var(--seal-rot, -6deg)) scale(1); filter: none; }
+}
+.encounter-stamp, .rare-stamp, .daily-stamp.stamp-fresh, .badge-unlock {
+  background: radial-gradient(circle at 35% 30%, #d96a52, #a13327 62%, #7c2118);
+  color: #f7e3b0;
+  border: 2px solid rgba(110, 28, 16, 0.9);
+}
+.encounter-stamp, .rare-stamp, .badge-unlock {
+  border-radius: 48% 52% 50% 50% / 52% 48% 52% 48%;
+}
+.encounter-stamp { --seal-rot: -6deg; animation: wax-seal 0.5s cubic-bezier(0.34, 1.3, 0.64, 1) backwards; }
+.rare-stamp { --seal-rot: 4deg; animation: wax-seal 0.5s cubic-bezier(0.34, 1.3, 0.64, 1) 0.6s backwards; }
+.daily-stamp.stamp-fresh { --seal-rot: -12deg; animation: wax-seal 0.55s cubic-bezier(0.34, 1.3, 0.64, 1) both; }
+.badge-unlock { --seal-rot: -3deg; animation: wax-seal 0.5s cubic-bezier(0.34, 1.3, 0.64, 1) 0.8s backwards; }
+/* 進度條＝魔力水晶槽 */
+.quiz-progressbar .seg {
+  border-color: rgba(120, 140, 200, 0.5);
+  background: rgba(13, 18, 38, 0.55);
+}
+.quiz-progressbar .seg.filled {
+  border-color: var(--mana);
+  background: linear-gradient(180deg, #7fd8f2, #2e9ec7);
+  box-shadow: 0 0 8px rgba(79, 195, 232, 0.5), inset 0 0 4px rgba(255, 255, 255, 0.45);
+}
+
+/* ---------- 7. 結算：星夜三星／漂浮符紙／石板符文碼 ---------- */
+.summary-stars .star {
+  -webkit-text-stroke: 0;
+  color: #5a648f;
+  text-shadow: none;
+}
+.summary-stars .star.lit {
+  -webkit-text-stroke: 0;
+  color: var(--star-gold);
+  text-shadow: 0 0 8px var(--star-gold-glow), 0 0 3px rgba(184, 131, 31, 0.8);
+}
+/* 便利貼→漂浮符紙 */
+.quote-note {
+  background: linear-gradient(160deg, #efe7fb, #e2d5f5);
+  border: 1px solid rgba(143, 111, 212, 0.4);
+  box-shadow: 2px 3px 0 rgba(59, 44, 84, 0.18);
+  animation:
+    sticky-drop 0.4s cubic-bezier(0.34, 1.4, 0.64, 1) 0.5s backwards,
+    float-bob 4.5s ease-in-out 1.2s infinite;
+}
+@keyframes float-bob {
+  0%, 100% { transform: rotate(-2deg) translateY(0); }
+  50% { transform: rotate(-2deg) translateY(-4px); }
+}
+/* 手稿掉落：出土光柱 */
+.ms-drop::after {
+  content: "";
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  bottom: 96%;
+  height: 56px;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(242, 201, 76, 0.4));
+  animation: beam-fade 1.3s ease-out forwards;
+}
+@keyframes beam-fade {
+  0% { opacity: 0; }
+  30% { opacity: 1; }
+  100% { opacity: 0; }
+}
+/* 戰績碼／挑戰碼＝石板符文碼（深底金字） */
+.weekly-code-row code, .weekly-result code, .challenge-code-output code, .challenge-result code {
+  background: linear-gradient(180deg, #232c52, var(--night));
+  color: var(--star-gold);
+  border: 1px solid rgba(242, 201, 76, 0.45);
+  letter-spacing: 2px;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 6px rgba(242, 201, 76, 0.35);
+}
+
+/* ---------- 8. 儀表板三層 elevation ---------- */
+/* L1 夜色面板容器（dash-summary 唯一整卡保持亮卷軸不列入） */
+.dash-collection, .dash-stampbook, .dash-ink, .dash-badges,
+.dash-leaderboard, .dash-share, .dash-name,
+.challenge-hub, .travel-case {
+  clip-path: none;
+  border: 1px solid rgba(242, 201, 76, 0.22);
+  border-radius: 14px;
+  background:
+    radial-gradient(ellipse 70% 50% at 84% 8%, rgba(143, 111, 212, 0.12), transparent 70%),
+    linear-gradient(180deg, var(--night-mist), var(--night));
+  box-shadow: 0 6px 18px rgba(5, 8, 22, 0.5);
+  color: #d7dcf0;
+  padding: 18px;
+  margin-bottom: 18px;
+  transform: none;
+}
+.dash-collection h3, .dash-stampbook h3, .dash-ink h3, .dash-badges h3,
+.dash-leaderboard h3, .dash-share h3, .challenge-hub h3, .travel-case h3 {
+  color: var(--starlight-text);
+  font-family: var(--font-hand);
+  margin-top: 0;
+}
+.challenge-hub p, .travel-case p { color: #c9d0ea; }
+/* 錯題本＝偏暗紅調夜色面板 */
+.dash-errorbook {
+  clip-path: none;
+  border: 1px solid rgba(232, 96, 79, 0.35);
+  border-radius: 14px;
+  background:
+    radial-gradient(ellipse 70% 50% at 16% 8%, rgba(232, 96, 79, 0.12), transparent 70%),
+    linear-gradient(180deg, #2a1c33, #1d1428);
+  box-shadow: 0 6px 18px rgba(5, 8, 22, 0.5);
+  color: #e3d3d6;
+  transform: none;
+}
+.dash-errorbook h3 { color: #f2cdb9; }
+.errorbook-row { border-bottom-color: rgba(232, 150, 130, 0.3); }
+.leaderboard-row { border-bottom-color: rgba(180, 190, 230, 0.28); }
+.badge-row { color: var(--starlight-faint); }
+.badge-row.got { color: var(--star-gold); }
+.ink-hint { color: var(--starlight-faint); }
+.ink-bottle { color: #9adcf2; }
+/* 首頁修稿單是亮卷軸，星墨瓶行改深墨青 */
+.daily-board .ink-bottle { color: #145a70; }
+/* dash-records 落在亮卷軸 dash-summary 上，用深墨青保住對比 */
+.dash-records { color: #145a70; }
+.daily-lastplayed { color: rgba(74, 66, 56, 0.85); }
+.dash-name input {
+  color: var(--starlight-text);
+  border-bottom-color: rgba(242, 201, 76, 0.55);
+}
+.dash-name input:focus { border-bottom-color: var(--mana); }
+/* L2 亮卷軸內容卡維持羊皮紙（強化與夜色容器的落差） */
+.ms-card, .stamp-cell {
+  box-shadow:
+    inset 0 0 0 1px rgba(96, 68, 30, 0.16),
+    inset 0 0 14px rgba(96, 68, 30, 0.18),
+    0 3px 8px rgba(5, 8, 22, 0.45);
+}
+/* 蒙塵手稿：半透明塵埃 sepia 濾鏡 */
+.ms-card.manuscript-dusty {
+  filter: sepia(0.45) saturate(0.6) brightness(0.94);
+}
+.ms-card.manuscript-dusty::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 40% at 28% 18%, rgba(120, 100, 60, 0.2), transparent 65%),
+    repeating-linear-gradient(45deg, rgba(120, 100, 60, 0.06) 0 2px, transparent 2px 6px);
+}
+.dust-note {
+  margin-top: 6px;
+  font-size: var(--fs-caption);
+  color: #7a5c30;
+  font-family: var(--font-hand);
+}
+
+/* ---------- 9. 大師工作室（Codex 新功能補樣式）---------- */
+/* 首頁入口卡 */
+.workshop-teaser {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 52px;
+  margin: 0 0 16px;
+  padding: 12px 18px;
+  background: linear-gradient(135deg, var(--night-mist), var(--night));
+  border: 1px solid rgba(242, 201, 76, 0.35);
+  border-radius: 14px;
+  color: var(--starlight-text);
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(5, 8, 22, 0.45);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.workshop-teaser strong { color: var(--star-gold); }
+.workshop-teaser span:last-child {
+  margin-left: auto;
+  color: var(--mana);
+  font-variant-numeric: tabular-nums;
+}
+.workshop-teaser:hover {
+  border-color: rgba(242, 201, 76, 0.7);
+  box-shadow: 0 4px 18px rgba(242, 201, 76, 0.2);
+}
+/* 工作室主頁 hero */
+.workshop-hero {
+  padding: 24px;
+  border: 1px solid rgba(242, 201, 76, 0.3);
+  border-radius: 16px;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%, rgba(143, 111, 212, 0.16), transparent 70%),
+    linear-gradient(180deg, var(--night-mist), var(--night));
+  box-shadow: 0 8px 22px rgba(5, 8, 22, 0.5);
+  color: #c9d0ea;
+  text-align: center;
+  margin-bottom: 18px;
+}
+.workshop-hero h2 {
+  margin: 6px 0 14px;
+  color: var(--star-gold);
+  font-family: var(--font-brush);
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-shadow: 0 0 6px var(--star-gold-glow);
+}
+.workshop-kicker {
+  font-size: var(--fs-caption);
+  font-style: italic;
+  letter-spacing: 1px;
+  color: var(--starlight-dim);
+}
+.workshop-meter {
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(13, 18, 38, 0.85);
+  box-shadow: inset 0 0 0 1px rgba(159, 175, 220, 0.3);
+  overflow: hidden;
+  margin: 12px auto;
+  max-width: 520px;
+}
+.workshop-meter > span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--arcane), var(--star-gold));
+  box-shadow: 0 0 10px var(--star-gold-glow);
+  transition: width 0.6s ease;
+}
+.workshop-hero.workshop-complete {
+  border-color: rgba(242, 201, 76, 0.7);
+  box-shadow: 0 0 26px rgba(242, 201, 76, 0.22), 0 8px 22px rgba(5, 8, 22, 0.5);
+}
+.workshop-finale {
+  margin-top: 14px;
+  padding: 12px 16px;
+  border-top: 1px solid rgba(242, 201, 76, 0.35);
+  color: var(--star-gold);
+  font-family: var(--font-hand);
+}
+/* 工作室房間卡 */
+.workshop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+}
+.workshop-room {
+  border: 1px solid rgba(160, 170, 210, 0.22);
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #182042, #131a34);
+  box-shadow: 0 6px 16px rgba(5, 8, 22, 0.5);
+}
+.workshop-room .room-scene {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  padding: 26px 0;
+  background: radial-gradient(circle at 50% 72%, rgba(159, 175, 220, 0.1), transparent 65%);
+}
+.workshop-room .room-copy { padding: 14px 16px 18px; color: #d7dcf0; }
+.workshop-room .room-copy h3 {
+  margin: 4px 0 8px;
+  color: var(--starlight-text);
+  font-family: var(--font-hand);
+}
+.workshop-room .room-copy p { margin: 0 0 10px; font-size: 0.92rem; color: var(--starlight-faint); }
+.workshop-room .room-stage {
+  font-size: var(--fs-caption);
+  letter-spacing: 3px;
+  color: var(--starlight-faint);
+}
+.workshop-room .room-meter {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(13, 18, 38, 0.85);
+  box-shadow: inset 0 0 0 1px rgba(159, 175, 220, 0.25);
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.workshop-room .room-meter > span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--arcane), var(--star-gold));
+  transition: width 0.6s ease;
+}
+.workshop-room .room-copy strong {
+  color: var(--star-gold);
+  font-variant-numeric: tabular-nums;
+}
+/* 房間三態＋藍圖 */
+.workshop-room.room-dusty .room-scene { filter: grayscale(0.4) brightness(0.72); }
+.workshop-room.room-mending .room-scene {
+  background: radial-gradient(circle at 50% 72%, rgba(242, 201, 76, 0.2), transparent 65%);
+}
+.workshop-room.room-restored {
+  border-color: rgba(242, 201, 76, 0.55);
+  box-shadow: 0 0 18px rgba(242, 201, 76, 0.18), 0 6px 16px rgba(5, 8, 22, 0.5);
+}
+.workshop-room.room-restored .room-scene {
+  background: radial-gradient(circle at 50% 66%, rgba(255, 214, 120, 0.38), rgba(242, 201, 76, 0.08) 62%, transparent 80%);
+}
+.workshop-room.room-blueprint {
+  border-style: dashed;
+  opacity: 0.65;
+}
+
+/* ---------- 10. 學徒出題所／旅行皮箱 ---------- */
+.challenge-locked {
+  padding: 14px 16px;
+  border: 1.5px dashed rgba(160, 170, 210, 0.45);
+  border-radius: 10px;
+  background: rgba(13, 18, 38, 0.5);
+  color: #c9d0ea;
+  font-family: var(--font-hand);
+}
+.challenge-creator select {
+  min-height: 44px;
+  margin: 8px 8px 8px 0;
+  padding: 6px 12px;
+  border: 1px solid rgba(242, 201, 76, 0.4);
+  border-radius: 8px;
+  background: rgba(13, 18, 38, 0.7);
+  color: var(--starlight-text);
+  font-family: var(--font-hand);
+}
+.challenge-creator strong { color: var(--star-gold); font-variant-numeric: tabular-nums; }
+.challenge-question-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 320px;
+  overflow: auto;
+  margin: 10px 0;
+}
+.challenge-question {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(30, 39, 73, 0.75);
+  border: 1px solid rgba(160, 170, 210, 0.2);
+  color: #e6e9f7;
+  cursor: pointer;
+}
+.challenge-question input[type="checkbox"] { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--star-gold); }
+.challenge-question small { display: block; color: var(--starlight-faint); margin-top: 2px; }
+.challenge-code-output { margin-top: 10px; color: #c9d0ea; }
+.challenge-receiver { margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.challenge-receiver input {
+  flex: 1 1 220px;
+  min-height: 44px;
+  padding: 6px 12px;
+  border: 1px solid rgba(242, 201, 76, 0.4);
+  border-radius: 8px;
+  background: rgba(13, 18, 38, 0.7);
+  color: var(--starlight-text);
+  font-family: var(--font-hand);
+}
+.challenge-message { width: 100%; color: #9adcf2; font-weight: 700; min-height: 1.2em; }
+/* 回擊碼卡出現在亮卷軸結算頁上：維持褐墨字 */
+.challenge-result { color: var(--ink); font-family: var(--font-hand); margin: 10px 0; }
+/* 旅行皮箱 */
+.travel-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.travel-import { cursor: pointer; display: inline-flex; align-items: center; }
+
+/* ---------- 11. 技能樹容器＝星空圖（星星三態由 JS 端處理）---------- */
+.skill-map {
+  background:
+    radial-gradient(circle, rgba(255, 250, 235, 0.8) 0 1px, transparent 1.7px),
+    radial-gradient(circle, rgba(214, 226, 255, 0.55) 0 0.9px, transparent 1.5px),
+    radial-gradient(ellipse 60% 45% at 80% 10%, rgba(143, 111, 212, 0.18), transparent 70%),
+    radial-gradient(ellipse 50% 36% at 14% 86%, rgba(79, 195, 232, 0.12), transparent 70%),
+    linear-gradient(180deg, #121936, #0e142c);
+  background-size: 113px 127px, 167px 139px, auto, auto, auto;
+  box-shadow:
+    inset 0 0 0 1px rgba(242, 201, 76, 0.22),
+    inset 0 0 30px rgba(5, 8, 22, 0.6);
+}
+/* 節點標籤翻亮＋paint-order 標準描邊（取代 -webkit-text-stroke 路線） */
+.map-node .node-label {
+  fill: var(--starlight-text);
+  paint-order: stroke fill;
+  stroke: rgba(13, 18, 38, 0.9);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+.map-node.state-locked .node-label { fill: #8fa0c8; opacity: 0.85; }
+.map-node .node-lock-icon { fill: #8fa0c8; }
+.map-node.state-locked circle.node-body { stroke: #4a5878; }
+/* 星座線基調（雙層疊線由 JS 端組裝） */
+.map-path { stroke: rgba(148, 163, 210, 0.45); filter: none; }
+.map-path.path-active { stroke: color-mix(in srgb, var(--strand-color, var(--star-gold)) 60%, white); }
+/* 供 JS 使用的星圖動畫（SVG 動畫類固定 transform-box: fill-box） */
+@keyframes star-ignite {
+  0% { transform: scale(1); opacity: 1; }
+  35% { transform: scale(1.9); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes halo-ripple {
+  0% { transform: scale(0.4); opacity: 0.9; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+@keyframes constellation-draw {
+  from { stroke-dashoffset: var(--line-length, 600); }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes ray-breathe {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+.star-ignite {
+  animation: star-ignite 0.7s cubic-bezier(0.2, 1.4, 0.5, 1);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.halo-ripple {
+  animation: halo-ripple 0.9s ease-out forwards;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.constellation-draw {
+  stroke-dasharray: var(--line-length, 600);
+  animation: constellation-draw 1.1s ease-in-out forwards;
+}
+/* 星塵虛線的描線儀式：dasharray 由 JS 的 "1 7" 保留，僅淡入 */
+.constellation-dust.constellation-draw { stroke-dasharray: 1 7; animation: ray-breathe 1.1s ease-in-out; }
+.ray-breathe {
+  animation: ray-breathe 2.6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.twinkle {
+  animation: twinkle 3.2s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* ---------- 12. 排版：楷體標題／稿線／tabular-nums／utility ---------- */
+.topbar h1, .q-summary h3, .strand-name, .endgame-title {
+  font-family: var(--font-brush);
+  font-weight: 700;
+}
+#quiz-node-name { font-family: var(--font-brush); font-weight: 700; }
+.q-stem { line-height: 34px; }
+.report-tile strong, .weekly-best, .ms-date, .daily-lastplayed, code {
+  font-variant-numeric: tabular-nums;
+}
+/* 鎏金字（限亮紙面板上使用：深褐字＋金內光） */
+.gilded {
+  color: #4b3a16;
+  font-weight: 700;
+  text-shadow: 0 0 1px rgba(242, 201, 76, 0.8), 0 0 5px rgba(242, 201, 76, 0.55);
+}
+/* 符文分隔線 */
+.rune-divider {
+  position: relative;
+  height: 20px;
+  margin: 14px auto;
+  border: none;
+}
+.rune-divider::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%, rgba(242, 201, 76, 0.55) 22%, rgba(242, 201, 76, 0.55) 44%, transparent 47%,
+    transparent 53%, rgba(242, 201, 76, 0.55) 56%, rgba(242, 201, 76, 0.55) 78%, transparent 100%);
+}
+.rune-divider::after {
+  content: "✦";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--star-gold);
+  font-size: 0.8rem;
+}
+/* 疊式分數 */
+.frac {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+  padding: 0 2px;
+}
+.frac > :first-child { border-bottom: 1.5px solid currentColor; padding: 0 4px; }
+
+/* ---------- 13. a11y 債務順修 ---------- */
+/* 全站 focus-visible：夜空底亮描邊 */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--mana);
+  outline-offset: 2px;
+}
+/* 亮紙面板內改深藍描邊 */
+.q-card :focus-visible, .q-summary :focus-visible, .daily-board :focus-visible,
+.weekly-card :focus-visible, .dash-summary :focus-visible, .resume-card :focus-visible,
+.strategy-card:focus-visible, .q-option:focus-visible, .q-next:focus-visible {
+  outline: 3px solid #1e4f8f;
+  outline-offset: 2px;
+}
+/* 教學便利貼：按鈕 44px、讓出右下 220×240px 系統保留區（badge＋鵝毛筆） */
+.tip-bubble { bottom: 252px; right: 24px; }
+.tip-bubble button { min-height: 44px; }
+@media (max-width: 600px) {
+  .tip-bubble { bottom: 76px; }
+}
+/* visitor-badge 深底改亮環 */
+img[src*="visitor-badge"] {
+  box-shadow: 0 0 0 2px rgba(242, 201, 76, 0.75), 0 0 12px rgba(242, 201, 76, 0.4) !important;
+}
+/* 鵝毛筆深底隱形：亮暈＋呼吸（只動 opacity） */
+.quill-deco {
+  filter: drop-shadow(3px 5px 4px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 10px rgba(240, 226, 189, 0.55));
+  animation: quill-breath 4.5s ease-in-out infinite;
+}
+@keyframes quill-breath {
+  0%, 100% { opacity: 0.82; }
+  50% { opacity: 1; }
 }

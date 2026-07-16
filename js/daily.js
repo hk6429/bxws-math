@@ -1,6 +1,6 @@
 import { store } from "./store.js";
 
-// 今日修稿單（P0 每日循環）＋墨水瓶溫和連續（只加不罰、斷了不清零）
+// 今日修稿單（P0 每日循環）＋星墨瓶溫和連續（只加不罰、斷了不清零）
 
 export function todayKey() {
   const d = new Date();

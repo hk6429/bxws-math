@@ -54,6 +54,34 @@ export function getCollection() {
   return store.read("collection", {});
 }
 
+const DAY_MS = 24 * 60 * 60 * 1000;
+const BOX_INTERVAL_DAYS = [0, 1, 3, 7, 14];
+
+// 守護型 CD8：只改變顯示，不更動手稿 tier 或 Leitner 資料。
+export function manuscriptDustStatus(nodeId, collection, leitner, questionIds, careRecord, now = Date.now()) {
+  if ((collection[nodeId]?.tier ?? 0) < 2) return { dusty: false, careCount: 0, dustSince: null };
+  const dustThresholds = questionIds
+    .map((id) => leitner[id])
+    .filter(Boolean)
+    .map((record) => record.lastSeen + (BOX_INTERVAL_DAYS[record.box - 1] ?? 0) * DAY_MS + 3 * DAY_MS)
+    .filter((dustAt) => now >= dustAt);
+  if (dustThresholds.length === 0) return { dusty: false, careCount: 0, dustSince: null };
+  const dustSince = Math.max(...dustThresholds);
+  const careEvents = (careRecord?.events ?? []).filter((at) => at >= dustSince && at <= now);
+  const careCount = careEvents.length > 0
+    ? Math.min(3, careEvents.length)
+    : careRecord?.at >= dustSince ? Math.min(3, careRecord.count ?? 0) : 0;
+  return { dusty: careCount < 3, careCount, dustSince };
+}
+
+export function addManuscriptCare(nodeId) {
+  const all = store.read("manuscriptCare", {});
+  const events = [...(all[nodeId]?.events ?? []), Date.now()].slice(-20);
+  all[nodeId] = { events };
+  store.write("manuscriptCare", all);
+  return all[nodeId];
+}
+
 // 只升不降、冪等；同輪連跳兩階只回報最高階
 export function evaluateCollection(nodeId, stats, ctx) {
   const col = getCollection();
