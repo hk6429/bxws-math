@@ -1,0 +1,254 @@
+{
+  "nodeId": "area-large-units",
+  "basicMastery": [
+    {
+      "id": "area-large-units-bm-1",
+      "type": "basic-mastery",
+      "challenge": "18-1",
+      "errorPath": 2,
+      "stem": "1 公頃等於幾公畝？",
+      "options": ["10 公畝", "100 公畝", "1000 公畝", "10000 公畝"],
+      "answer": 1,
+      "explanation": "1 公頃 = 100 公畝。換算鏈：1 公頃 = 100 公畝 = 10000 平方公尺，每升一階都是 100 倍。"
+    },
+    {
+      "id": "area-large-units-bm-2",
+      "type": "basic-mastery",
+      "challenge": "18-1",
+      "errorPath": 2,
+      "stem": "1 平方公里等於幾公頃？",
+      "options": ["10 公頃", "1000 公頃", "100 公頃", "10000 公頃"],
+      "answer": 2,
+      "explanation": "1 平方公里 = 100 公頃。面積單位每升一階是 100 倍，不是 10 倍或 1000 倍。"
+    },
+    {
+      "id": "area-large-units-bm-3",
+      "type": "basic-mastery",
+      "challenge": "18-1",
+      "errorPath": 2,
+      "stem": "1 公畝等於幾平方公尺？",
+      "options": ["100 平方公尺", "10 平方公尺", "1000 平方公尺", "10000 平方公尺"],
+      "answer": 0,
+      "explanation": "1 公畝 = 100 平方公尺，也就是邊長 10 公尺的正方形土地：10 × 10 = 100 平方公尺。"
+    },
+    {
+      "id": "area-large-units-bm-4",
+      "type": "basic-mastery",
+      "challenge": "18-2",
+      "errorPath": 2,
+      "stem": "3 公頃等於幾平方公尺？",
+      "options": ["3000 平方公尺", "300 平方公尺", "30000 平方公尺", "300000 平方公尺"],
+      "answer": 2,
+      "explanation": "1 公頃 = 10000 平方公尺，3 公頃 = 3 × 10000 = 30000 平方公尺。"
+    },
+    {
+      "id": "area-large-units-bm-5",
+      "type": "basic-mastery",
+      "challenge": "18-2",
+      "errorPath": 2,
+      "stem": "25000 平方公尺等於幾公頃幾公畝？",
+      "options": ["2 公頃 5 公畝", "25 公頃", "2 公頃 50 公畝", "2 公頃 500 公畝"],
+      "answer": 2,
+      "explanation": "25000 平方公尺 = 20000 + 5000，20000 平方公尺是 2 公頃，5000 平方公尺是 50 公畝。"
+    },
+    {
+      "id": "area-large-units-bm-6",
+      "type": "basic-mastery",
+      "challenge": "18-2",
+      "errorPath": 2,
+      "stem": "0.6 平方公里等於幾公頃？",
+      "options": ["6 公頃", "600 公頃", "6000 公頃", "60 公頃"],
+      "answer": 3,
+      "explanation": "1 平方公里 = 100 公頃，0.6 平方公里 = 0.6 × 100 = 60 公頃。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "area-large-units-ci-1",
+      "type": "concept-id",
+      "challenge": "18-3",
+      "statement": "一個含跑道的標準操場，大約是 1 公頃。",
+      "correctAnswer": true,
+      "explanation": "1 公頃 = 10000 平方公尺，約等於一個含跑道的標準操場，是很好用的量感基準物。"
+    },
+    {
+      "id": "area-large-units-ci-2",
+      "type": "concept-id",
+      "challenge": "18-3",
+      "statement": "一間教室的地板面積大約是 2 公頃。",
+      "correctAnswer": false,
+      "explanation": "教室地板約 80 平方公尺；2 公頃 = 20000 平方公尺，是 250 間教室那麼大。選單位前先想基準物。"
+    },
+    {
+      "id": "area-large-units-ci-3",
+      "type": "concept-id",
+      "challenge": "18-3",
+      "statement": "描述一個縣市的土地面積，用平方公里比較方便。",
+      "correctAnswer": true,
+      "explanation": "縣市面積動輒上千平方公里，用平方公尺會出現一長串 0，選大單位表示比較方便。"
+    },
+    {
+      "id": "area-large-units-ci-4",
+      "type": "concept-id",
+      "challenge": "18-4",
+      "errorPath": 1,
+      "statement": "1 平方公里等於 1000 平方公尺。",
+      "correctAnswer": false,
+      "explanation": "1 公里 = 1000 公尺是長度的換算率；面積是 1000 × 1000 = 1000000 平方公尺，不能把長度率直接搬過來。"
+    },
+    {
+      "id": "area-large-units-ci-5",
+      "type": "concept-id",
+      "challenge": "18-4",
+      "errorPath": 1,
+      "statement": "邊長 1 公里的正方形土地，面積是 1000 平方公尺。",
+      "correctAnswer": false,
+      "explanation": "邊長 1 公里 = 1000 公尺，面積 = 1000 × 1000 = 1000000 平方公尺，也就是 1 平方公里。"
+    },
+    {
+      "id": "area-large-units-ci-6",
+      "type": "concept-id",
+      "challenge": "18-4",
+      "errorPath": 1,
+      "statement": "邊長 100 公尺的正方形土地，面積剛好是 1 公頃。",
+      "correctAnswer": true,
+      "explanation": "100 × 100 = 10000 平方公尺 = 1 公頃。用「邊長 100 公尺的正方形」記公頃最不容易錯。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "area-large-units-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "18-5",
+      "errorPath": 2,
+      "problem": "把 2 平方公里換算成公頃",
+      "wrongSolution": "小安算成 2 × 10000 = 20000 公頃。",
+      "errorOptions": ["平方公里根本不能換算成公頃", "1 平方公里是 100 公頃，應是 200 公頃", "應該用除法：2 ÷ 100 才對", "答案忘記寫上面積單位公頃"],
+      "correctErrorIndex": 1,
+      "explanation": "1 平方公里 = 100 公頃，2 平方公里 = 2 × 100 = 200 公頃。×10000 是平方公里跳到公畝的率，跳錯階了。"
+    },
+    {
+      "id": "area-large-units-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "18-5",
+      "errorPath": 2,
+      "problem": "把 5 公頃換算成公畝",
+      "wrongSolution": "小美算成 5 × 10000 = 50000 公畝。",
+      "errorOptions": ["換算率用錯：1 公頃是 100 公畝，應是 500 公畝", "公頃比公畝小，應該用除法", "乘法計算錯誤，5 × 10000 不是 50000", "公畝不是面積單位，不能這樣換"],
+      "correctErrorIndex": 0,
+      "explanation": "1 公頃 = 100 公畝，5 公頃 = 500 公畝。×10000 是公頃換平方公尺的率，用到公畝身上就跳錯階。"
+    },
+    {
+      "id": "area-large-units-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "18-5",
+      "errorPath": 2,
+      "problem": "把 40000 平方公尺換算成公頃",
+      "wrongSolution": "小哲算成 40000 ÷ 100 = 400 公頃。",
+      "errorOptions": ["應該用乘法，40000 × 100 才對", "除法計算錯誤，40000 ÷ 100 不是 400", "換算率用錯：1 公頃是 10000 平方公尺，應是 4 公頃", "平方公尺太小，不能換算成公頃"],
+      "correctErrorIndex": 2,
+      "explanation": "1 公頃 = 10000 平方公尺，40000 ÷ 10000 = 4 公頃。÷100 得到的 400 其實是公畝數。"
+    },
+    {
+      "id": "area-large-units-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "18-6",
+      "errorPath": 3,
+      "problem": "一塊農地 39800 平方公尺，用概數說大約是幾公頃",
+      "wrongSolution": "小凱把 39800 四捨五入到萬位得 40000，就說大約是 40 公頃。",
+      "errorOptions": ["取概數的結果換算錯：40000 平方公尺是 4 公頃", "不可以先取概數再換算單位", "四捨五入到萬位應該得 30000", "農地面積不能用概數表示"],
+      "correctErrorIndex": 0,
+      "explanation": "取概數 40000 平方公尺沒錯，但 1 公頃 = 10000 平方公尺，40000 ÷ 10000 = 4 公頃，不是 40 公頃。"
+    },
+    {
+      "id": "area-large-units-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "18-6",
+      "errorPath": 3,
+      "problem": "公園占地 98500 平方公尺，用概數說大約是幾公頃",
+      "wrongSolution": "小晴直接把 98500 的後三位去掉，說大約是 98 公頃。",
+      "errorOptions": ["公園面積太小，不能用公頃表示", "概數應無條件進位成 99 公頃才對", "98500 的後三位去掉應該剩 985", "1 公頃是 10000 平方公尺，應約 10 公頃"],
+      "correctErrorIndex": 3,
+      "explanation": "去掉三個 0 是 ÷1000，但公頃要 ÷10000：98500 ÷ 10000 = 9.85，約 10 公頃。"
+    },
+    {
+      "id": "area-large-units-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "18-6",
+      "errorPath": 3,
+      "problem": "掩埋場 24900 平方公尺，用概數說大約是幾公畝",
+      "wrongSolution": "小豪先四捨五入到萬位得 20000，再算 20000 ÷ 100 = 200，說大約 200 公畝。",
+      "errorOptions": ["概數取的位數太粗，應約 250 公畝比較接近", "公畝的換算應該用 ÷10000", "24900 四捨五入到萬位應該得 30000", "應該先換算成公頃再取概數"],
+      "correctErrorIndex": 0,
+      "explanation": "24900 ÷ 100 = 249 公畝，約 250 公畝。先粗暴進到萬位再換算，誤差被放大到 50 公畝。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "area-large-units-ca-1",
+      "type": "context-application",
+      "challenge": "18-7",
+      "errorPath": 2,
+      "scenario": "森林公園占地 12 公頃，學校占地 3 公畝。",
+      "question": "森林公園的面積是學校的幾倍？",
+      "options": ["4 倍", "40 倍", "4000 倍", "400 倍"],
+      "answer": 3,
+      "explanation": "先換同單位：12 公頃 = 1200 公畝，1200 ÷ 3 = 400 倍。不同單位不能直接拿 12 ÷ 3。"
+    },
+    {
+      "id": "area-large-units-ca-2",
+      "type": "context-application",
+      "challenge": "18-7",
+      "errorPath": 2,
+      "scenario": "甲農場占地 2 公頃，乙農場占地 150 公畝。",
+      "question": "哪個農場比較大？",
+      "options": ["甲農場比較大", "乙農場比較大", "兩個一樣大", "單位不同無法比較"],
+      "answer": 0,
+      "explanation": "2 公頃 = 200 公畝 > 150 公畝，甲農場比較大。換成同單位就能比較。"
+    },
+    {
+      "id": "area-large-units-ca-3",
+      "type": "context-application",
+      "challenge": "18-7",
+      "errorPath": 2,
+      "scenario": "牧場全部有 5 公頃，其中 120 公畝拿來養牛。",
+      "question": "沒養牛的部分是幾公畝？",
+      "options": ["38 公畝", "380 公畝", "3800 公畝", "480 公畝"],
+      "answer": 1,
+      "explanation": "5 公頃 = 500 公畝，500 − 120 = 380 公畝。若把 5 公頃誤換成 5000 公畝，就會錯算成 4880 或 3800。"
+    },
+    {
+      "id": "area-large-units-ca-4",
+      "type": "context-application",
+      "challenge": "18-8",
+      "errorPath": 3,
+      "scenario": "新聞報導：這次森林大火燒掉約 350 公頃的山林。",
+      "question": "大約等於幾個 1 公頃的操場？",
+      "options": ["約 35 個", "約 3500 個", "約 350 個", "約 5 個"],
+      "answer": 2,
+      "explanation": "350 公頃就是 350 個 1 公頃，用操場當基準物，約 350 個操場大。"
+    },
+    {
+      "id": "area-large-units-ca-5",
+      "type": "context-application",
+      "challenge": "18-8",
+      "errorPath": 2,
+      "scenario": "新聞說：新的科學園區占地約 0.8 平方公里。",
+      "question": "園區大約是幾公頃？",
+      "options": ["約 8 公頃", "約 80 公頃", "約 800 公頃", "約 8000 公頃"],
+      "answer": 1,
+      "explanation": "1 平方公里 = 100 公頃，0.8 × 100 = 80 公頃。"
+    },
+    {
+      "id": "area-large-units-ca-6",
+      "type": "context-application",
+      "challenge": "18-8",
+      "errorPath": 3,
+      "scenario": "水庫的集水區約 19700 公頃。",
+      "question": "用概數說，大約是幾平方公里？",
+      "options": ["約 200 平方公里", "約 20 平方公里", "約 2000 平方公里", "約 2 平方公里"],
+      "answer": 0,
+      "explanation": "19700 ÷ 100 = 197 平方公里，四捨五入約 200 平方公里。"
+    }
+  ]
+}

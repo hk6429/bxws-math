@@ -1,0 +1,362 @@
+{
+  "nodeId": "frac-dec-convert",
+  "basicMastery": [
+    {
+      "id": "frac-dec-convert-bm-1",
+      "type": "basic-mastery",
+      "challenge": "4-1",
+      "errorPath": 1,
+      "stem": "3 ÷ 4 的商用分數表示是？",
+      "options": [
+        "4/3",
+        "3/4",
+        "1又1/3",
+        "0.34"
+      ],
+      "answer": 1,
+      "explanation": "a÷b 的商可以寫成分數 a/b：3÷4 = 3/4，分子是被除數。"
+    },
+    {
+      "id": "frac-dec-convert-bm-2",
+      "type": "basic-mastery",
+      "challenge": "4-1",
+      "errorPath": 1,
+      "stem": "5 ÷ 8 的商用分數表示是？",
+      "options": [
+        "8/5",
+        "1又3/5",
+        "0.58",
+        "5/8"
+      ],
+      "answer": 3,
+      "explanation": "5÷8 = 5/8，被除數 5 當分子、除數 8 當分母，不能顛倒。"
+    },
+    {
+      "id": "frac-dec-convert-bm-3",
+      "type": "basic-mastery",
+      "challenge": "4-1",
+      "errorPath": 1,
+      "stem": "7/9 表示哪一個除法算式的商？",
+      "options": [
+        "7÷9",
+        "9÷7",
+        "7÷16",
+        "9÷16"
+      ],
+      "answer": 0,
+      "explanation": "分數就是除法的商：7/9 = 7÷9，分子÷分母。"
+    },
+    {
+      "id": "frac-dec-convert-bm-4",
+      "type": "basic-mastery",
+      "challenge": "4-2",
+      "errorPath": 1,
+      "stem": "3/4 化成小數是？",
+      "options": [
+        "1.33",
+        "0.34",
+        "0.75",
+        "0.43"
+      ],
+      "answer": 2,
+      "explanation": "3/4 = 3÷4 = 0.75，也可以擴分成 75/100 來看。"
+    },
+    {
+      "id": "frac-dec-convert-bm-5",
+      "type": "basic-mastery",
+      "challenge": "4-2",
+      "errorPath": 2,
+      "stem": "7/20 化成小數是？",
+      "options": [
+        "0.35",
+        "0.035",
+        "3.5",
+        "0.7"
+      ],
+      "answer": 0,
+      "explanation": "7/20 擴分成 35/100 = 0.35，位值要對準百分位。"
+    },
+    {
+      "id": "frac-dec-convert-bm-6",
+      "type": "basic-mastery",
+      "challenge": "4-2",
+      "errorPath": 1,
+      "stem": "5/8 化成小數是？",
+      "options": [
+        "1.6",
+        "0.58",
+        "0.625",
+        "0.85"
+      ],
+      "answer": 2,
+      "explanation": "5/8 = 5÷8 = 0.625；算成 8÷5 才會得到 1.6。"
+    },
+    {
+      "id": "frac-dec-convert-bm-7",
+      "type": "basic-mastery",
+      "challenge": "4-3",
+      "errorPath": 2,
+      "stem": "0.75 化成最簡分數是？",
+      "options": [
+        "75/10",
+        "7/5",
+        "3/40",
+        "3/4"
+      ],
+      "answer": 3,
+      "explanation": "0.75 = 75/100，分子分母同除以 25，約成 3/4。"
+    },
+    {
+      "id": "frac-dec-convert-bm-8",
+      "type": "basic-mastery",
+      "challenge": "4-3",
+      "errorPath": 2,
+      "stem": "0.6 化成最簡分數是？",
+      "options": [
+        "6/100",
+        "3/5",
+        "2/3",
+        "3/50"
+      ],
+      "answer": 1,
+      "explanation": "0.6 是十分位的 6，等於 6/10，約分成 3/5。"
+    },
+    {
+      "id": "frac-dec-convert-bm-9",
+      "type": "basic-mastery",
+      "challenge": "4-3",
+      "errorPath": 2,
+      "stem": "0.08 化成最簡分數是？",
+      "options": [
+        "4/5",
+        "8/10",
+        "2/25",
+        "1/8"
+      ],
+      "answer": 2,
+      "explanation": "0.08 有兩位小數，等於 8/100，同除以 4 約成 2/25。"
+    },
+    {
+      "id": "frac-dec-convert-bm-10",
+      "type": "basic-mastery",
+      "challenge": "4-4",
+      "errorPath": 2,
+      "stem": "3/8、0.35、2/5 由小到大排列，正確的是？",
+      "options": [
+        "0.35＜3/8＜2/5",
+        "3/8＜0.35＜2/5",
+        "2/5＜3/8＜0.35",
+        "0.35＜2/5＜3/8"
+      ],
+      "answer": 0,
+      "explanation": "統一化成小數：3/8 = 0.375、2/5 = 0.4，所以 0.35＜0.375＜0.4。"
+    },
+    {
+      "id": "frac-dec-convert-bm-11",
+      "type": "basic-mastery",
+      "challenge": "4-4",
+      "errorPath": 2,
+      "stem": "1/2、0.45、3/5 三個數中，最大的是？",
+      "options": [
+        "1/2",
+        "3/5",
+        "0.45",
+        "三個一樣大"
+      ],
+      "answer": 1,
+      "explanation": "化成小數比：1/2 = 0.5、3/5 = 0.6，最大的是 3/5。"
+    },
+    {
+      "id": "frac-dec-convert-bm-12",
+      "type": "basic-mastery",
+      "challenge": "4-4",
+      "errorPath": 3,
+      "stem": "0.7 和 2/3，哪一個比較大？",
+      "options": [
+        "2/3 比較大",
+        "兩個一樣大",
+        "沒辦法比較",
+        "0.7 比較大"
+      ],
+      "answer": 3,
+      "explanation": "2/3 = 0.666… 除不盡，比 0.7 小，所以 0.7 比較大。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "frac-dec-convert-ci-1",
+      "type": "concept-id",
+      "challenge": "4-5",
+      "errorPath": 3,
+      "statement": "1/3 可以化成有限小數。",
+      "correctAnswer": false,
+      "explanation": "1÷3 = 0.333… 除不盡。最簡分數的分母只含質因數 2 或 5，才能化成有限小數。"
+    },
+    {
+      "id": "frac-dec-convert-ci-2",
+      "type": "concept-id",
+      "challenge": "4-5",
+      "errorPath": 3,
+      "statement": "7/8 可以化成有限小數。",
+      "correctAnswer": true,
+      "explanation": "7/8 = 0.875。分母 8 = 2×2×2 只含質因數 2，可以化成有限小數。"
+    },
+    {
+      "id": "frac-dec-convert-ci-3",
+      "type": "concept-id",
+      "challenge": "4-5",
+      "errorPath": 3,
+      "statement": "任何分數都可以化成有限小數。",
+      "correctAnswer": false,
+      "explanation": "像 1/3、1/7 就除不盡。只有最簡分數的分母只含質因數 2、5 時才可以。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "frac-dec-convert-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "4-6",
+      "errorPath": 2,
+      "problem": "把 0.7 化成分數",
+      "wrongSolution": "小安寫成 7/100",
+      "errorOptions": [
+        "忘記約分成最簡分數",
+        "把一位小數當成百分之幾，位值錯了",
+        "把分子和分母寫顛倒",
+        "把 0.7 看成 0.07"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "0.7 是十分位的 7，等於 7/10；7/100 是 0.07。"
+    },
+    {
+      "id": "frac-dec-convert-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "4-6",
+      "errorPath": 2,
+      "problem": "把 0.09 化成分數",
+      "wrongSolution": "小柔寫成 9/10",
+      "errorOptions": [
+        "把百分之幾當成十分之幾，位值錯了",
+        "約分時除錯數字",
+        "分子 9 抄成別的數",
+        "答案沒化成最簡分數"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "0.09 是百分位的 9，等於 9/100；9/10 是 0.9。"
+    },
+    {
+      "id": "frac-dec-convert-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "4-6",
+      "errorPath": 2,
+      "problem": "把 0.25 化成分數",
+      "wrongSolution": "小哲寫成 25/10",
+      "errorOptions": [
+        "忘記把答案約分",
+        "分子應該寫 52",
+        "兩位小數的分母應該是 100，不是 10",
+        "把小數當成整數來算"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "0.25 有兩位小數，等於 25/100，約分成 1/4；25/10 是 2.5。"
+    },
+    {
+      "id": "frac-dec-convert-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "4-7",
+      "errorPath": 1,
+      "problem": "把 3/4 化成小數",
+      "wrongSolution": "小明算 4÷3，寫出 1.33…",
+      "errorOptions": [
+        "四捨五入的位數取錯",
+        "小數點忘記點",
+        "把 3/4 看成 3.4",
+        "除的方向顛倒了，應該算 3÷4"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "分數化小數是分子÷分母：3÷4 = 0.75。"
+    },
+    {
+      "id": "frac-dec-convert-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "4-7",
+      "errorPath": 1,
+      "problem": "把 2/5 化成小數",
+      "wrongSolution": "小婷算 5÷2 = 2.5",
+      "errorOptions": [
+        "除的方向弄反了，應該用 2÷5",
+        "小數點的位置點錯",
+        "答案沒有約分",
+        "把除法算成乘法"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "2/5 = 2÷5 = 0.4；5÷2 = 2.5 是分母除以分子，方向錯了。"
+    },
+    {
+      "id": "frac-dec-convert-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "4-7",
+      "errorPath": 1,
+      "problem": "把 7/8 化成小數",
+      "wrongSolution": "小凱算 8÷7，約等於 1.14",
+      "errorOptions": [
+        "四捨五入的位數取錯",
+        "忘記寫整數部分",
+        "除的方向顛倒，應該算 7÷8",
+        "把除法當成加法"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "7/8 = 7÷8 = 0.875，分子除以分母，方向不能顛倒。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "frac-dec-convert-ca-1",
+      "type": "context-application",
+      "challenge": "4-8",
+      "errorPath": 2,
+      "scenario": "小美喝了 1/4 瓶果汁，小弟喝了 0.3 瓶。",
+      "question": "誰喝得比較多？",
+      "options": [
+        "小美",
+        "兩人一樣多",
+        "沒辦法比較",
+        "小弟"
+      ],
+      "answer": 3,
+      "explanation": "1/4 = 0.25，0.3＞0.25，所以小弟喝得比較多。"
+    },
+    {
+      "id": "frac-dec-convert-ca-2",
+      "type": "context-application",
+      "challenge": "4-8",
+      "errorPath": 2,
+      "scenario": "一條繩子先剪去 0.5 公尺，再剪去 1/4 公尺。",
+      "question": "一共剪去多少公尺？",
+      "options": [
+        "0.9 公尺",
+        "0.75 公尺",
+        "0.6 公尺",
+        "1.5 公尺"
+      ],
+      "answer": 1,
+      "explanation": "1/4 = 0.25 公尺，0.5 + 0.25 = 0.75 公尺；把 1/4 當 0.4 才會得到 0.9。"
+    },
+    {
+      "id": "frac-dec-convert-ca-3",
+      "type": "context-application",
+      "challenge": "4-8",
+      "errorPath": 2,
+      "scenario": "跳遠比賽，小威跳 1.35 公尺，小翔跳 1又2/5 公尺。",
+      "question": "誰跳得比較遠？",
+      "options": [
+        "小翔",
+        "小威",
+        "兩人一樣遠",
+        "沒辦法比較"
+      ],
+      "answer": 0,
+      "explanation": "1又2/5 = 1.4 公尺，1.4＞1.35，小翔跳得比較遠。"
+    }
+  ]
+}

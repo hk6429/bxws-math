@@ -1,0 +1,251 @@
+{
+  "nodeId": "solids-nets",
+  "basicMastery": [
+    {
+      "id": "solids-nets-bm-1",
+      "type": "basic-mastery",
+      "challenge": "15-1",
+      "errorPath": 2,
+      "stem": "上下底面是全等三角形、側面都是長方形的立體是？",
+      "options": ["三角錐", "三角柱", "四角柱", "圓柱"],
+      "answer": 1,
+      "explanation": "兩個全等三角形底面加上長方形側面，就是三角柱。三角錐只有一個底面，側面是三角形。"
+    },
+    {
+      "id": "solids-nets-bm-2",
+      "type": "basic-mastery",
+      "challenge": "15-1",
+      "errorPath": 2,
+      "stem": "上下底面是全等圓形、側面是一個彎曲面的立體是？",
+      "options": ["圓柱", "球", "圓錐", "正方體"],
+      "answer": 0,
+      "explanation": "兩個全等的圓形底面加上彎曲的側面，是圓柱。圓錐只有一個圓形底面。"
+    },
+    {
+      "id": "solids-nets-bm-3",
+      "type": "basic-mastery",
+      "challenge": "15-1",
+      "errorPath": 2,
+      "stem": "底面是正方形、側面是 4 個三角形聚到一個頂點的立體是？",
+      "options": ["四角柱", "三角柱", "圓錐", "四角錐"],
+      "answer": 3,
+      "explanation": "角錐只有一個底面，側面都是三角形聚到頂點；底面是四邊形，所以叫四角錐。"
+    },
+    {
+      "id": "solids-nets-bm-4",
+      "type": "basic-mastery",
+      "challenge": "15-2",
+      "errorPath": 1,
+      "stem": "四角錐有幾個面？",
+      "options": ["4 個", "6 個", "5 個", "8 個"],
+      "answer": 2,
+      "explanation": "四角錐有 1 個四邊形底面和 4 個三角形側面，共 5 個面。"
+    },
+    {
+      "id": "solids-nets-bm-5",
+      "type": "basic-mastery",
+      "challenge": "15-2",
+      "errorPath": 1,
+      "stem": "三角柱有幾個面？",
+      "options": ["5 個", "3 個", "6 個", "9 個"],
+      "answer": 0,
+      "explanation": "三角柱有上下 2 個三角形底面和 3 個長方形側面，共 5 個面。"
+    },
+    {
+      "id": "solids-nets-bm-6",
+      "type": "basic-mastery",
+      "challenge": "15-2",
+      "errorPath": 1,
+      "stem": "四角錐有幾個頂點？",
+      "options": ["4 個", "5 個", "8 個", "6 個"],
+      "answer": 1,
+      "explanation": "底面四邊形有 4 個頂點，加上最上面尖尖的 1 個頂點，共 5 個。"
+    },
+    {
+      "id": "solids-nets-bm-7",
+      "type": "basic-mastery",
+      "challenge": "15-3",
+      "errorPath": 2,
+      "stem": "圓柱的展開圖中，側面攤開來是什麼形狀？",
+      "options": ["圓形", "三角形", "長方形", "扇形"],
+      "answer": 2,
+      "explanation": "把圓柱側面沿一條直線剪開攤平，會得到一個長方形；上下兩個底面才是圓形。"
+    },
+    {
+      "id": "solids-nets-bm-8",
+      "type": "basic-mastery",
+      "challenge": "15-3",
+      "errorPath": 2,
+      "stem": "圓錐的展開圖中，側面攤開來是什麼形狀？",
+      "options": ["扇形", "三角形", "長方形", "圓形"],
+      "answer": 0,
+      "explanation": "圓錐側面攤開是一個扇形，不是三角形；底面才是圓形。"
+    },
+    {
+      "id": "solids-nets-bm-9",
+      "type": "basic-mastery",
+      "challenge": "15-3",
+      "errorPath": 3,
+      "stem": "正方體的展開圖是由幾個正方形組成的？",
+      "options": ["4 個", "5 個", "8 個", "6 個"],
+      "answer": 3,
+      "explanation": "正方體有 6 個面，展開圖就是 6 個一樣大的正方形攤平相連。"
+    },
+    {
+      "id": "solids-nets-bm-10",
+      "type": "basic-mastery",
+      "challenge": "15-4",
+      "errorPath": 1,
+      "stem": "三角柱有幾條稜（邊）？",
+      "options": ["6 條", "9 條", "5 條", "12 條"],
+      "answer": 1,
+      "explanation": "上下兩個三角形各 3 條，加上直立的 3 條，共 3＋3＋3＝9 條稜。"
+    },
+    {
+      "id": "solids-nets-bm-11",
+      "type": "basic-mastery",
+      "challenge": "15-4",
+      "errorPath": 1,
+      "stem": "四角柱有幾條稜（邊）？",
+      "options": ["12 條", "8 條", "10 條", "16 條"],
+      "answer": 0,
+      "explanation": "上下兩個四邊形各 4 條，加上直立的 4 條，共 4＋4＋4＝12 條稜。"
+    },
+    {
+      "id": "solids-nets-bm-12",
+      "type": "basic-mastery",
+      "challenge": "15-4",
+      "errorPath": 1,
+      "stem": "四角錐有幾條稜（邊）？",
+      "options": ["5 條", "12 條", "8 條", "4 條"],
+      "answer": 2,
+      "explanation": "底面四邊形有 4 條，從底面 4 個頂點連到頂端還有 4 條，共 8 條稜。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "solids-nets-ci-1",
+      "type": "concept-id",
+      "challenge": "15-5",
+      "errorPath": 2,
+      "statement": "角柱的側面都是長方形，角錐的側面都是三角形。",
+      "correctAnswer": true,
+      "explanation": "柱體上下兩底面平行，側面攤開是長方形；錐體側面聚到一個頂點，都是三角形。"
+    },
+    {
+      "id": "solids-nets-ci-2",
+      "type": "concept-id",
+      "challenge": "15-5",
+      "errorPath": 1,
+      "statement": "三角柱的兩個底面是全等的三角形。",
+      "correctAnswer": true,
+      "explanation": "柱體上下兩個底面一定是全等的圖形，三角柱的底面就是兩個全等三角形。"
+    },
+    {
+      "id": "solids-nets-ci-3",
+      "type": "concept-id",
+      "challenge": "15-5",
+      "errorPath": 3,
+      "statement": "球也可以攤平畫出平面的展開圖。",
+      "correctAnswer": false,
+      "explanation": "球的表面整個是彎曲的，沒辦法攤平成平面圖形，所以球沒有展開圖。"
+    },
+    {
+      "id": "solids-nets-ci-4",
+      "type": "concept-id",
+      "challenge": "15-6",
+      "errorPath": 3,
+      "statement": "同一個正方體只有一種展開圖。",
+      "correctAnswer": false,
+      "explanation": "正方體展開圖有很多種不同排法（共 11 種），沿不同的稜剪開就得到不同的展開圖。"
+    },
+    {
+      "id": "solids-nets-ci-5",
+      "type": "concept-id",
+      "challenge": "15-6",
+      "errorPath": 3,
+      "statement": "6 個正方形排成一直線，可以摺成一個正方體。",
+      "correctAnswer": false,
+      "explanation": "排成一直線摺起來會有面互相重疊、有的地方蓋不到，摺不成正方體。"
+    },
+    {
+      "id": "solids-nets-ci-6",
+      "type": "concept-id",
+      "challenge": "15-6",
+      "errorPath": 3,
+      "statement": "正方體的展開圖有很多種不同的排法。",
+      "correctAnswer": true,
+      "explanation": "沿不同的稜剪開，可以得到不同形狀的展開圖，只要 6 個正方形能摺回正方體都算。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "solids-nets-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "15-7",
+      "errorPath": 2,
+      "problem": "說出圓錐的展開圖有哪些形狀",
+      "wrongSolution": "小杰說：「圓錐的展開圖是一個圓加一個三角形。」",
+      "errorOptions": ["底面說錯，應該是正方形", "側面攤開是扇形，不是三角形", "圓錐沒有展開圖", "應該是兩個圓加一個長方形"],
+      "correctErrorIndex": 1,
+      "explanation": "圓錐的展開圖是一個圓（底面）加一個扇形（側面）。側面是彎曲面，攤開後是扇形。"
+    },
+    {
+      "id": "solids-nets-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "15-7",
+      "errorPath": 2,
+      "problem": "說出圓柱的展開圖有哪些形狀",
+      "wrongSolution": "小華說：「圓柱側面攤開來是一個圓形。」",
+      "errorOptions": ["側面攤開是長方形，不是圓形", "圓柱只有一個底面", "側面攤開是三角形", "圓柱不能展開"],
+      "correctErrorIndex": 0,
+      "explanation": "圓柱的展開圖是兩個圓（上下底面）加一個長方形（側面攤平）。"
+    },
+    {
+      "id": "solids-nets-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "15-7",
+      "errorPath": 1,
+      "problem": "數一數三角柱有幾條稜",
+      "wrongSolution": "小庭數出 6 條稜",
+      "errorOptions": ["把面數當成稜數", "上下三角形只算了一個", "只數兩個底面的稜，漏掉 3 條直立的稜", "多數了頂點的數量"],
+      "correctErrorIndex": 2,
+      "explanation": "上下兩個三角形共 6 條，還要加上連接兩底面的 3 條直立稜，共 9 條。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "solids-nets-ca-1",
+      "type": "context-application",
+      "challenge": "15-8",
+      "errorPath": 3,
+      "scenario": "小恩把一個正方體的骰子紙盒沿著稜剪開，攤平成展開圖。",
+      "question": "攤平後的展開圖有幾個正方形？",
+      "options": ["6 個", "4 個", "8 個", "12 個"],
+      "answer": 0,
+      "explanation": "正方體有 6 個面，攤平後展開圖就是 6 個相連的正方形。"
+    },
+    {
+      "id": "solids-nets-ca-2",
+      "type": "context-application",
+      "challenge": "15-8",
+      "errorPath": 1,
+      "scenario": "美勞課要用厚紙板做一個三角柱形狀的紙盒。",
+      "question": "要剪出哪些形狀的紙板才拼得起來？",
+      "options": ["3 個長方形和 2 個三角形", "2 個長方形和 3 個三角形", "4 個長方形和 2 個三角形", "3 個長方形和 1 個三角形"],
+      "answer": 0,
+      "explanation": "三角柱有 3 個長方形側面和上下 2 個三角形底面，共 5 個面。"
+    },
+    {
+      "id": "solids-nets-ca-3",
+      "type": "context-application",
+      "challenge": "15-8",
+      "errorPath": 3,
+      "scenario": "小柔把 6 個一樣大的正方形紙板排成一直線黏起來。",
+      "question": "這排紙板能不能摺成一個正方體？",
+      "options": ["能，因為正好 6 個面", "不能，摺起來會重疊也有缺口", "能，但要先剪掉一個", "不能，因為少了 2 個面"],
+      "answer": 1,
+      "explanation": "數量對還不夠，位置也要對。排成一直線摺起來會有面重疊、有面蓋不到，摺不成正方體。"
+    }
+  ]
+}

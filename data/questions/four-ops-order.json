@@ -1,0 +1,258 @@
+{
+  "nodeId": "four-ops-order",
+  "curriculum": ["N-4-9", "R-4-2"],
+  "basicMastery": [
+    {
+      "id": "four-ops-order-bm-1",
+      "type": "basic-mastery",
+      "challenge": "9-1",
+      "errorPath": 1,
+      "stem": "3 ＋ 4 × 5 = ？",
+      "options": ["23", "35", "27", "60"],
+      "answer": 0,
+      "explanation": "先乘除後加減：先算 4×5＝20，再算 3＋20＝23。由左到右硬算才會得到 35。"
+    },
+    {
+      "id": "four-ops-order-bm-2",
+      "type": "basic-mastery",
+      "challenge": "9-1",
+      "errorPath": 1,
+      "stem": "50 − 6 × 7 = ？",
+      "options": ["308", "8", "44", "35"],
+      "answer": 1,
+      "explanation": "先算 6×7＝42，再算 50−42＝8。先算 50−6 再乘 7 會得到 308，順序錯了。"
+    },
+    {
+      "id": "four-ops-order-bm-3",
+      "type": "basic-mastery",
+      "challenge": "9-1",
+      "errorPath": 1,
+      "stem": "20 ＋ 36 ÷ 4 = ？",
+      "options": ["14", "56", "29", "9"],
+      "answer": 2,
+      "explanation": "先算 36÷4＝9，再算 20＋9＝29。先算 20＋36 再除以 4 會得到 14，順序錯了。"
+    },
+    {
+      "id": "four-ops-order-bm-4",
+      "type": "basic-mastery",
+      "challenge": "9-2",
+      "errorPath": 1,
+      "stem": "(3 ＋ 4) × 5 = ？",
+      "options": ["23", "12", "60", "35"],
+      "answer": 3,
+      "explanation": "括號最優先：先算 3＋4＝7，再算 7×5＝35。沒有括號的 3＋4×5 才是 23。"
+    },
+    {
+      "id": "four-ops-order-bm-5",
+      "type": "basic-mastery",
+      "challenge": "9-2",
+      "errorPath": 1,
+      "stem": "100 − (25 ＋ 15) = ？",
+      "options": ["60", "90", "40", "110"],
+      "answer": 0,
+      "explanation": "先算括號裡的 25＋15＝40，再算 100−40＝60。忽略括號由左到右算會得到 90。"
+    },
+    {
+      "id": "four-ops-order-bm-6",
+      "type": "basic-mastery",
+      "challenge": "9-2",
+      "errorPath": 1,
+      "stem": "72 ÷ (9 − 3) = ？",
+      "options": ["5", "12", "8", "24"],
+      "answer": 1,
+      "explanation": "先算括號裡的 9−3＝6，再算 72÷6＝12。忽略括號算 72÷9−3 會得到 5。"
+    },
+    {
+      "id": "four-ops-order-bm-7",
+      "type": "basic-mastery",
+      "challenge": "9-4",
+      "errorPath": 3,
+      "stem": "用簡便方法算 25 × 17 × 4 = ？",
+      "options": ["425", "170", "1700", "17000"],
+      "answer": 2,
+      "explanation": "乘法可以交換結合：先算 25×4＝100，再算 100×17＝1700，比從左算到右快。"
+    },
+    {
+      "id": "four-ops-order-bm-8",
+      "type": "basic-mastery",
+      "challenge": "9-4",
+      "errorPath": 3,
+      "stem": "用簡便方法算 8 × 36 × 125 = ？",
+      "options": ["3600", "288", "360000", "36000"],
+      "answer": 3,
+      "explanation": "先算 8×125＝1000，再算 1000×36＝36000，乘法交換結合讓計算變簡單。"
+    },
+    {
+      "id": "four-ops-order-bm-9",
+      "type": "basic-mastery",
+      "challenge": "9-4",
+      "errorPath": 3,
+      "stem": "用簡便方法算 47 ＋ 86 ＋ 53 = ？",
+      "options": ["186", "176", "196", "133"],
+      "answer": 0,
+      "explanation": "加法可以交換結合：先算 47＋53＝100，再算 100＋86＝186，湊整十整百較快。"
+    },
+    {
+      "id": "four-ops-order-bm-10",
+      "type": "basic-mastery",
+      "challenge": "9-5",
+      "errorPath": 2,
+      "stem": "用分配律算 102 × 35 = ？",
+      "options": ["3502", "3570", "3500", "3670"],
+      "answer": 1,
+      "explanation": "102×35＝(100＋2)×35＝3500＋70＝3570。選 3502 是漏乘：把 2×35 只算成 2。"
+    },
+    {
+      "id": "four-ops-order-bm-11",
+      "type": "basic-mastery",
+      "challenge": "9-5",
+      "errorPath": 2,
+      "stem": "用分配律算 99 × 46 = ？",
+      "options": ["4599", "4600", "4554", "4544"],
+      "answer": 2,
+      "explanation": "99×46＝(100−1)×46＝4600−46＝4554。選 4599 是漏乘：把 1×46 只算成 1。"
+    },
+    {
+      "id": "four-ops-order-bm-12",
+      "type": "basic-mastery",
+      "challenge": "9-5",
+      "errorPath": 2,
+      "stem": "用分配律算 25 × 44 = ？",
+      "options": ["1004", "1000", "1110", "1100"],
+      "answer": 3,
+      "explanation": "25×44＝25×(40＋4)＝1000＋100＝1100。選 1004 是漏乘：把 25×4 只算成 4。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "four-ops-order-ci-1",
+      "type": "concept-id",
+      "challenge": "9-3",
+      "errorPath": 3,
+      "statement": "計算 100−30＋20 時，要由左到右依序計算。",
+      "correctAnswer": true,
+      "explanation": "加減是同一級運算，由左到右算：100−30＝70，70＋20＝90。先算 30＋20 再減會錯。"
+    },
+    {
+      "id": "four-ops-order-ci-2",
+      "type": "concept-id",
+      "challenge": "9-3",
+      "errorPath": 3,
+      "statement": "計算 24÷6×2 時，可以先算 6×2 再用 24 去除。",
+      "correctAnswer": false,
+      "explanation": "乘除同級要由左到右：24÷6＝4，4×2＝8。先算 6×2 變成 24÷12＝2，答案就錯了。"
+    },
+    {
+      "id": "four-ops-order-ci-3",
+      "type": "concept-id",
+      "challenge": "9-3",
+      "errorPath": 3,
+      "statement": "計算 36÷4÷3 時，先算 4÷3 再用 36 去除也可以。",
+      "correctAnswer": false,
+      "explanation": "連除要由左到右：36÷4＝9，9÷3＝3。除法不能隨意結合後面兩個數。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "four-ops-order-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "9-6",
+      "errorPath": 1,
+      "problem": "計算 3＋4×5",
+      "wrongSolution": "小明先算 3＋4＝7，再算 7×5＝35",
+      "errorOptions": ["由左到右硬算，沒有先乘除後加減", "乘法計算錯誤", "抄錯題目數字", "忘記算最後一步"],
+      "correctErrorIndex": 0,
+      "explanation": "沒有括號時要先乘除後加減：4×5＝20，3＋20＝23 才對。"
+    },
+    {
+      "id": "four-ops-order-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "9-6",
+      "errorPath": 1,
+      "problem": "計算 40−24÷8",
+      "wrongSolution": "小華先算 40−24＝16，再算 16÷8＝2",
+      "errorOptions": ["除法計算錯誤", "減法退位錯誤", "應該先算 24÷8，再用 40 去減", "把除法看成乘法"],
+      "correctErrorIndex": 2,
+      "explanation": "先乘除後加減：24÷8＝3，40−3＝37 才是正確答案。"
+    },
+    {
+      "id": "four-ops-order-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "9-6",
+      "errorPath": 1,
+      "problem": "計算 5×6＋4×2",
+      "wrongSolution": "小杰由左到右算：5×6＝30，30＋4＝34，34×2＝68",
+      "errorOptions": ["乘法背錯九九乘法表", "應該先算兩個乘法，再把結果相加", "加法進位錯誤", "抄錯題目符號"],
+      "correctErrorIndex": 1,
+      "explanation": "兩邊的乘法都要先算：5×6＝30，4×2＝8，再算 30＋8＝38。"
+    },
+    {
+      "id": "four-ops-order-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "9-7",
+      "errorPath": 3,
+      "problem": "計算 200−50＋30",
+      "wrongSolution": "小庭先算 50＋30＝80，再算 200−80＝120",
+      "errorOptions": ["加法計算錯誤", "減號後面不能把兩數先結合，要由左到右算", "減法退位錯誤", "應該先算 200＋30"],
+      "correctErrorIndex": 1,
+      "explanation": "加減同級由左到右：200−50＝150，150＋30＝180。先合併 50＋30 等於多減了 30。"
+    },
+    {
+      "id": "four-ops-order-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "9-7",
+      "errorPath": 3,
+      "problem": "計算 120÷6×2",
+      "wrongSolution": "小威先算 6×2＝12，再算 120÷12＝10",
+      "errorOptions": ["乘除同級要由左到右，不能先把後面兩數相乘", "除法計算錯誤", "把 120 看成 12", "應該先算 120×2"],
+      "correctErrorIndex": 0,
+      "explanation": "由左到右：120÷6＝20，20×2＝40。先算 6×2 等於把乘變成除，答案就錯了。"
+    },
+    {
+      "id": "four-ops-order-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "9-7",
+      "errorPath": 3,
+      "problem": "計算 300−80−20",
+      "wrongSolution": "小妤先算 80−20＝60，再算 300−60＝240",
+      "errorOptions": ["減法退位錯誤", "抄錯題目數字", "連減要由左到右算，不能先把後面兩數相減", "應該改成加法計算"],
+      "correctErrorIndex": 2,
+      "explanation": "由左到右：300−80＝220，220−20＝200。先算 80−20 等於少減了 40。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "four-ops-order-ca-1",
+      "type": "context-application",
+      "challenge": "9-8",
+      "errorPath": 1,
+      "scenario": "一枝原子筆 12 元，小美買了 3 枝，付給老闆 50 元。",
+      "question": "老闆應該找小美幾元？",
+      "options": ["14 元", "114 元", "36 元", "24 元"],
+      "answer": 0,
+      "explanation": "併式：50−12×3，先算 12×3＝36，再算 50−36＝14 元。列成 (50−12)×3 順序就錯了。"
+    },
+    {
+      "id": "four-ops-order-ca-2",
+      "type": "context-application",
+      "challenge": "9-8",
+      "errorPath": 1,
+      "scenario": "每盒裝 6 顆蘋果，媽媽買了 4 盒，又另外多買 3 顆。",
+      "question": "媽媽一共買了幾顆蘋果？",
+      "options": ["42 顆", "27 顆", "13 顆", "72 顆"],
+      "answer": 1,
+      "explanation": "併式：6×4＋3，先算 6×4＝24，再加 3＝27 顆。算成 6×(4＋3) 會多出 15 顆。"
+    },
+    {
+      "id": "four-ops-order-ca-3",
+      "type": "context-application",
+      "challenge": "9-8",
+      "errorPath": 1,
+      "scenario": "小丁帶 100 元去商店，買了 2 包每包 30 元的餅乾。",
+      "question": "小丁還剩下幾元？",
+      "options": ["2940 元", "60 元", "40 元", "160 元"],
+      "answer": 2,
+      "explanation": "併式：100−2×30，先算 2×30＝60，再算 100−60＝40 元。列成 (100−2)×30 就完全不合理了。"
+    }
+  ]
+}

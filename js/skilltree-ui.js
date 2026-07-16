@@ -108,6 +108,7 @@ function starCount(masteryPct, threshold) {
 }
 
 function lockReasonText(node, tree, nodesById) {
+  if (node.contentPending) return "星墨未乾，這頁手稿尚待題庫完稿";
   if (!node.prereq || node.prereq.length === 0) return "";
   const names = node.prereq.map((id) => nodesById[id]?.name ?? id);
   return `先精熟「${names.join("、")}」解鎖`;
@@ -341,6 +342,7 @@ export function renderSkillTree(container, tree, onSelectNode) {
     let frontierNode = null;
     strand.nodes.forEach((node) => {
       const state = nodeState(node, tree);
+      const visualState = state === "content-pending" ? "locked" : state;
       const pos = positions[node.id];
       const mastery = getNodeMastery(node.id);
       const stars = starCount(mastery, tree.masteryThreshold ?? 0.8);
@@ -351,7 +353,8 @@ export function renderSkillTree(container, tree, onSelectNode) {
       }
 
       const g = svgEl("g", {
-        class: `map-node state-${state}${frontierNode === node ? " is-frontier" : ""}`,
+        class: `map-node state-${visualState}${frontierNode === node ? " is-frontier" : ""}`,
+        "data-state": state,
         transform: `translate(${pos.x}, ${pos.y})`,
       });
 
@@ -373,12 +376,12 @@ export function renderSkillTree(container, tree, onSelectNode) {
       }
 
       // 星星本體
-      const star = makeNodeStar(state, strand.id, twinkleIndex++);
+      const star = makeNodeStar(visualState, strand.id, twinkleIndex++);
       if (justMastered.has(node.id)) star.classList.add("star-ignite");
       g.appendChild(star);
 
       // 伴星冠冕（locked 不顯示星等）
-      if (state !== "locked" && stars > 0) g.appendChild(makeCrown(stars));
+      if (visualState !== "locked" && stars > 0) g.appendChild(makeCrown(stars));
 
       const label = svgEl("text", { class: "node-label", y: HALO_R + 18, "paint-order": "stroke" });
       label.textContent = node.name;
@@ -388,7 +391,7 @@ export function renderSkillTree(container, tree, onSelectNode) {
       g.appendChild(svgEl("circle", { class: "node-hit", r: HIT_R, fill: "transparent" }));
 
       g.addEventListener("click", () => {
-        if (state !== "locked") onSelectNode(node);
+        if (state === "unlocked" || state === "mastered") onSelectNode(node);
       });
       svg.appendChild(g);
     });
@@ -397,7 +400,7 @@ export function renderSkillTree(container, tree, onSelectNode) {
 
     strand.nodes.forEach((node) => {
       const state = nodeState(node, tree);
-      if (state === "locked") {
+      if (state === "locked" || state === "content-pending") {
         const pos = positions[node.id];
         const reason = lockReasonText(node, tree, nodesById);
         if (reason) {
@@ -450,7 +453,7 @@ function renderComingSoonStrand(strand) {
 }
 
 export function computeOverview(tree) {
-  const nodes = allNodes(tree);
+  const nodes = allNodes(tree).filter((node) => !node.contentPending);
   const masteredCount = nodes.filter((n) => nodeState(n, tree) === "mastered").length;
   return { totalNodes: nodes.length, masteredCount, nodes };
 }

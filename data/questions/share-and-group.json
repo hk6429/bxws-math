@@ -1,0 +1,263 @@
+{
+  "nodeId": "share-and-group",
+  "basicMastery": [
+    {
+      "id": "share-and-group-bm-1",
+      "type": "basic-mastery",
+      "challenge": "11-3",
+      "errorPath": 1,
+      "stem": "下面哪一題，是在問「每人分到幾個」？",
+      "options": ["12顆糖平分給4人", "12顆糖每袋裝3顆", "12顆糖每盒放4顆", "12顆糖每人發3顆，可發幾人"],
+      "answer": 0,
+      "explanation": "「平分給4人」問的是每人分到幾顆；「每袋裝3顆」「每盒放4顆」問的是可以分成幾袋、幾盒，意思不一樣。"
+    },
+    {
+      "id": "share-and-group-bm-2",
+      "type": "basic-mastery",
+      "challenge": "11-3",
+      "errorPath": 1,
+      "stem": "「15顆球每箱放5顆，可以放幾箱？」答案的單位是什麼？",
+      "options": ["箱", "顆", "人", "次"],
+      "answer": 0,
+      "explanation": "分裝問題問「幾箱」，答案的單位是箱，不是顆。搞清楚單位，就不會把兩種分法弄混。"
+    },
+    {
+      "id": "share-and-group-bm-3",
+      "type": "basic-mastery",
+      "challenge": "11-3",
+      "errorPath": 1,
+      "stem": "「15顆球平分給3人，每人分到幾顆？」答案的單位是什麼？",
+      "options": ["顆", "人", "箱", "袋"],
+      "answer": 0,
+      "explanation": "平分問題問「每人幾顆」，答案的單位是顆。分裝問「幾袋幾箱」、平分問「每人幾顆」，單位不同。"
+    },
+    {
+      "id": "share-and-group-bm-4",
+      "type": "basic-mastery",
+      "challenge": "11-4",
+      "errorPath": 3,
+      "stem": "12顆糖平分給4人，可以想「4×幾=12」，每人分到幾顆？",
+      "options": ["3顆", "4顆", "8顆", "48顆"],
+      "answer": 0,
+      "explanation": "4×3=12，所以每人分到 3 顆。用乘法回想，就能解決分的問題。48 是誤把 12×4。"
+    },
+    {
+      "id": "share-and-group-bm-5",
+      "type": "basic-mastery",
+      "challenge": "11-4",
+      "errorPath": 3,
+      "stem": "12顆糖每袋裝3顆，可以想「3×幾=12」，可以裝幾袋？",
+      "options": ["4袋", "3袋", "36袋", "9袋"],
+      "answer": 0,
+      "explanation": "3×4=12，所以可以裝 4 袋。36 是誤把 12×3，袋數不可能比糖還多。"
+    },
+    {
+      "id": "share-and-group-bm-6",
+      "type": "basic-mastery",
+      "challenge": "11-4",
+      "errorPath": 3,
+      "stem": "20個蘋果平分給5人，可以想「5×幾=20」，每人分到幾個？",
+      "options": ["4個", "5個", "15個", "100個"],
+      "answer": 0,
+      "explanation": "5×4=20，所以每人分到 4 個。100 是誤把 20×5，愈分愈多就不對了。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "share-and-group-ci-1",
+      "type": "concept-id",
+      "challenge": "11-5",
+      "errorPath": 1,
+      "statement": "12顆每袋裝3顆和12顆平分成3袋，答案同是4但意思不同。",
+      "correctAnswer": true,
+      "explanation": "前者答案是 4「袋」，後者是每袋 4「顆」。數字一樣，問的東西完全不同。"
+    },
+    {
+      "id": "share-and-group-ci-2",
+      "type": "concept-id",
+      "challenge": "11-5",
+      "errorPath": 2,
+      "statement": "平分的時候，每個人拿到的數量一定一樣多。",
+      "correctAnswer": true,
+      "explanation": "「平分」就是每份一樣多；如果有人多有人少，就不叫平分。分不完的要留下來當剩餘。"
+    },
+    {
+      "id": "share-and-group-ci-3",
+      "type": "concept-id",
+      "challenge": "11-5",
+      "errorPath": 1,
+      "statement": "分裝問題的答案，單位一定和原來的東西一樣。",
+      "correctAnswer": false,
+      "explanation": "分裝問「可以裝幾袋、幾盒」，答案單位是袋或盒，不是原來的顆或個。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "share-and-group-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "11-7",
+      "errorPath": 2,
+      "problem": "13顆糖平分給4人，每人最多分到幾顆？",
+      "wrongSolution": "小池說：「每人分到4顆。」",
+      "errorOptions": ["沒用乘法檢查，4×4=16比13還多", "看錯糖的顆數", "看錯人數", "答案單位寫錯"],
+      "correctErrorIndex": 0,
+      "explanation": "每人 4 顆要 4×4=16 顆，可是只有 13 顆，不夠分。每人 3 顆用掉 4×3=12 顆，剩 1 顆才對。"
+    },
+    {
+      "id": "share-and-group-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "11-7",
+      "errorPath": 2,
+      "problem": "11個蘋果平分給3人，每人最多分到幾個？",
+      "wrongSolution": "小海說：「每人分到4個。」",
+      "errorOptions": ["沒用乘法檢查，3×4=12比11還多", "加法算錯", "看錯蘋果數量", "把人數當成蘋果數"],
+      "correctErrorIndex": 0,
+      "explanation": "每人 4 個要 3×4=12 個，可是只有 11 個。每人 3 個用掉 3×3=9 個，剩 2 個才對。"
+    },
+    {
+      "id": "share-and-group-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "11-7",
+      "errorPath": 2,
+      "problem": "14枝筆每袋裝5枝，可以裝滿幾袋？",
+      "wrongSolution": "小竹說：「可以裝滿3袋，剛好裝完。」",
+      "errorOptions": ["沒檢查5×3=15比14還多，裝不滿3袋", "乘法口訣背錯", "看錯每袋枝數", "答案單位寫錯"],
+      "correctErrorIndex": 0,
+      "explanation": "裝滿 3 袋要 5×3=15 枝，可是只有 14 枝。只能裝滿 2 袋用掉 10 枝，剩 4 枝。"
+    },
+    {
+      "id": "share-and-group-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "11-8",
+      "errorPath": 3,
+      "problem": "12顆糖每袋裝3顆，可以裝幾袋？",
+      "wrongSolution": "小塘列出 12×3=36，回答「36袋」。",
+      "errorOptions": ["分裝問題誤用乘法，袋數比糖還多", "乘法算錯", "看錯每袋顆數", "忘了算剩下的糖"],
+      "correctErrorIndex": 0,
+      "explanation": "只有 12 顆糖，不可能裝出 36 袋。應該想「3×幾=12」，3×4=12，可以裝 4 袋。"
+    },
+    {
+      "id": "share-and-group-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "11-8",
+      "errorPath": 3,
+      "problem": "15個包子平分給5人，每人分到幾個？",
+      "wrongSolution": "小海列出 15×5=75，回答「每人75個」。",
+      "errorOptions": ["平分問題誤用乘法，愈分愈多", "乘法口訣背錯", "看錯包子數量", "把人數寫成包子數"],
+      "correctErrorIndex": 0,
+      "explanation": "分東西不會愈分愈多。應該想「5×幾=15」，5×3=15，每人分到 3 個。"
+    },
+    {
+      "id": "share-and-group-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "11-8",
+      "errorPath": 3,
+      "problem": "18張卡片每盒放6張，可以放幾盒？",
+      "wrongSolution": "小池列出 18×6=108，回答「108盒」。",
+      "errorOptions": ["分裝問題誤用乘法，盒數比卡片還多", "加法進位錯誤", "看錯每盒張數", "答案單位寫錯"],
+      "correctErrorIndex": 0,
+      "explanation": "18 張卡片放不出 108 盒。應該想「6×幾=18」，6×3=18，可以放 3 盒。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "share-and-group-ca-1",
+      "type": "context-application",
+      "challenge": "11-1",
+      "errorPath": 3,
+      "scenario": "媽媽買了12顆糖，平分給4個小朋友。",
+      "question": "每個小朋友分到幾顆？",
+      "options": ["3顆", "4顆", "48顆", "16顆"],
+      "answer": 0,
+      "explanation": "想「4×幾=12」，4×3=12，每人分到 3 顆。48 是誤用乘法，糖不會愈分愈多。"
+    },
+    {
+      "id": "share-and-group-ca-2",
+      "type": "context-application",
+      "challenge": "11-1",
+      "errorPath": 3,
+      "scenario": "老師有15枝鉛筆，平分給5個小組。",
+      "question": "每個小組分到幾枝？",
+      "options": ["3枝", "5枝", "75枝", "10枝"],
+      "answer": 0,
+      "explanation": "想「5×幾=15」，5×3=15，每組分到 3 枝。75 是誤用乘法算出來的。"
+    },
+    {
+      "id": "share-and-group-ca-3",
+      "type": "context-application",
+      "challenge": "11-1",
+      "errorPath": 3,
+      "scenario": "18張貼紙平分給6個同學。",
+      "question": "每個同學分到幾張？",
+      "options": ["3張", "6張", "108張", "12張"],
+      "answer": 0,
+      "explanation": "想「6×幾=18」，6×3=18，每人分到 3 張。108 是誤用乘法，12 是 18−6 亂減。"
+    },
+    {
+      "id": "share-and-group-ca-4",
+      "type": "context-application",
+      "challenge": "11-2",
+      "errorPath": 3,
+      "scenario": "小安有12顆糖，每個袋子裝3顆。",
+      "question": "可以裝滿幾袋？",
+      "options": ["4袋", "3袋", "36袋", "9袋"],
+      "answer": 0,
+      "explanation": "想「3×幾=12」，3×4=12，可以裝 4 袋。36 是誤用乘法，9 是 12−3 亂減。"
+    },
+    {
+      "id": "share-and-group-ca-5",
+      "type": "context-application",
+      "challenge": "11-2",
+      "errorPath": 3,
+      "scenario": "果園採了20個橘子，每盒裝5個。",
+      "question": "可以裝滿幾盒？",
+      "options": ["4盒", "5盒", "100盒", "15盒"],
+      "answer": 0,
+      "explanation": "想「5×幾=20」，5×4=20，可以裝 4 盒。100 是誤用乘法，15 是 20−5 亂減。"
+    },
+    {
+      "id": "share-and-group-ca-6",
+      "type": "context-application",
+      "challenge": "11-2",
+      "errorPath": 3,
+      "scenario": "圖書角有16本故事書，每疊放4本。",
+      "question": "可以放成幾疊？",
+      "options": ["4疊", "64疊", "12疊", "20疊"],
+      "answer": 0,
+      "explanation": "想「4×幾=16」，4×4=16，可以放 4 疊。64 是誤用乘法，疊數不會比書還多。"
+    },
+    {
+      "id": "share-and-group-ca-7",
+      "type": "context-application",
+      "challenge": "11-6",
+      "errorPath": 2,
+      "scenario": "小美有14顆糖，每個袋子裝4顆。",
+      "question": "可以裝滿幾袋？還剩幾顆？",
+      "options": ["裝滿3袋，剩2顆", "裝滿4袋，剛好裝完", "裝滿2袋，剩6顆", "裝滿3袋，剩4顆"],
+      "answer": 0,
+      "explanation": "4×3=12，裝滿 3 袋用掉 12 顆，14−12=2，剩 2 顆。裝 4 袋要 16 顆，不夠。"
+    },
+    {
+      "id": "share-and-group-ca-8",
+      "type": "context-application",
+      "challenge": "11-6",
+      "errorPath": 2,
+      "scenario": "13顆糖果平分給4個小朋友。",
+      "question": "每人最多分到幾顆？還剩幾顆？",
+      "options": ["每人3顆，剩1顆", "每人4顆，剛好分完", "每人2顆，剩5顆", "每人3顆，剩2顆"],
+      "answer": 0,
+      "explanation": "4×3=12，每人 3 顆用掉 12 顆，13−12=1，剩 1 顆。每人 4 顆要 16 顆，不夠分。"
+    },
+    {
+      "id": "share-and-group-ca-9",
+      "type": "context-application",
+      "challenge": "11-6",
+      "errorPath": 2,
+      "scenario": "17個橘子，每個籃子放5個。",
+      "question": "可以放滿幾籃？還剩幾個？",
+      "options": ["放滿3籃，剩2個", "放滿4籃，剛好放完", "放滿2籃，剩7個", "放滿3籃，剩3個"],
+      "answer": 0,
+      "explanation": "5×3=15，放滿 3 籃用掉 15 個，17−15=2，剩 2 個。放 4 籃要 20 個，不夠。"
+    }
+  ]
+}

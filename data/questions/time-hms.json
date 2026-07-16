@@ -1,0 +1,246 @@
+{
+  "nodeId": "time-hms",
+  "basicMastery": [
+    {
+      "id": "time-hms-bm-1",
+      "type": "basic-mastery",
+      "challenge": "12-1",
+      "errorPath": 1,
+      "stem": "1時等於幾分？",
+      "options": ["100分", "60分", "30分", "24分"],
+      "answer": 1,
+      "explanation": "1時＝60分。時間是60進位，不是100進位。"
+    },
+    {
+      "id": "time-hms-bm-2",
+      "type": "basic-mastery",
+      "challenge": "12-1",
+      "stem": "1日等於幾時？",
+      "options": ["12時", "60時", "24時", "100時"],
+      "answer": 2,
+      "explanation": "1日＝24時，從半夜0時到隔天半夜0時，共24小時。"
+    },
+    {
+      "id": "time-hms-bm-3",
+      "type": "basic-mastery",
+      "challenge": "12-1",
+      "errorPath": 1,
+      "stem": "1分等於幾秒？",
+      "options": ["60秒", "100秒", "10秒", "30秒"],
+      "answer": 0,
+      "explanation": "1分＝60秒。分和秒之間也是60進位。"
+    },
+    {
+      "id": "time-hms-bm-4",
+      "type": "basic-mastery",
+      "challenge": "12-2",
+      "stem": "2時20分＋1時30分＝幾時幾分？",
+      "options": ["3時50分", "4時50分", "2時50分", "3時10分"],
+      "answer": 0,
+      "explanation": "時和時相加：2＋1＝3時；分和分相加：20＋30＝50分，合起來是3時50分。"
+    },
+    {
+      "id": "time-hms-bm-5",
+      "type": "basic-mastery",
+      "challenge": "12-2",
+      "stem": "4時50分－1時20分＝幾時幾分？",
+      "options": ["3時70分", "2時30分", "3時30分", "4時30分"],
+      "answer": 2,
+      "explanation": "時減時：4－1＝3時；分減分：50－20＝30分，答案是3時30分。"
+    },
+    {
+      "id": "time-hms-bm-6",
+      "type": "basic-mastery",
+      "challenge": "12-2",
+      "stem": "3時15分＋2時40分＝幾時幾分？",
+      "options": ["5時25分", "5時55分", "6時55分", "4時55分"],
+      "answer": 1,
+      "explanation": "3＋2＝5時，15＋40＝55分，合起來是5時55分。"
+    },
+    {
+      "id": "time-hms-bm-7",
+      "type": "basic-mastery",
+      "challenge": "12-3",
+      "errorPath": 1,
+      "stem": "150秒等於幾分幾秒？",
+      "options": ["1分50秒", "15分0秒", "2分50秒", "2分30秒"],
+      "answer": 3,
+      "explanation": "1分＝60秒，150秒＝60＋60＋30，是2分30秒。用100進位算成1分50秒是錯的。"
+    },
+    {
+      "id": "time-hms-bm-8",
+      "type": "basic-mastery",
+      "challenge": "12-3",
+      "errorPath": 1,
+      "stem": "200秒等於幾分幾秒？",
+      "options": ["2分0秒", "3分20秒", "20分0秒", "3分40秒"],
+      "answer": 1,
+      "explanation": "200秒＝60＋60＋60＋20，是3分20秒。3×60＝180，200－180＝20秒。"
+    },
+    {
+      "id": "time-hms-bm-9",
+      "type": "basic-mastery",
+      "challenge": "12-3",
+      "errorPath": 1,
+      "stem": "95分等於幾時幾分？",
+      "options": ["1時45分", "9時5分", "1時35分", "1時25分"],
+      "answer": 2,
+      "explanation": "1時＝60分，95－60＝35，所以95分＝1時35分。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "time-hms-ci-1",
+      "type": "concept-id",
+      "challenge": "12-4",
+      "statement": "眨一下眼睛，大約用1秒。",
+      "correctAnswer": true,
+      "explanation": "眨眼、拍一下手都大約1秒，是「秒」的生活量感基準。"
+    },
+    {
+      "id": "time-hms-ci-2",
+      "type": "concept-id",
+      "challenge": "12-4",
+      "statement": "在學校上一節課的時間，大約是40分。",
+      "correctAnswer": true,
+      "explanation": "國小一節課通常是40分鐘，是「分」的生活量感基準。"
+    },
+    {
+      "id": "time-hms-ci-3",
+      "type": "concept-id",
+      "challenge": "12-4",
+      "statement": "睡一個晚上的覺，大約是8秒。",
+      "correctAnswer": false,
+      "explanation": "睡一晚大約是8「時」。8秒只夠眨8次眼，選單位前先想生活基準。"
+    },
+    {
+      "id": "time-hms-ci-4",
+      "type": "concept-id",
+      "challenge": "12-5",
+      "errorPath": 1,
+      "statement": "1.5時就是1時50分。",
+      "correctAnswer": false,
+      "explanation": "0.5時是半小時＝30分，所以1.5時是1時30分。時間是60進位，不能照著十進位讀。"
+    },
+    {
+      "id": "time-hms-ci-5",
+      "type": "concept-id",
+      "challenge": "12-5",
+      "statement": "半小時就是30分。",
+      "correctAnswer": true,
+      "explanation": "1時＝60分，一半就是60÷2＝30分。"
+    },
+    {
+      "id": "time-hms-ci-6",
+      "type": "concept-id",
+      "challenge": "12-5",
+      "errorPath": 2,
+      "statement": "1時20分就是120分。",
+      "correctAnswer": false,
+      "explanation": "1時＝60分，1時20分＝60＋20＝80分。直接把數字併在一起寫成120是錯的。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "time-hms-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "12-6",
+      "errorPath": 1,
+      "problem": "計算 2時40分＋30分",
+      "wrongSolution": "小明算出2時70分，就直接寫上答案交卷。",
+      "errorOptions": ["滿60分要進1時，應化成3時10分", "加法算錯了，應該是2時60分", "時和分不一樣，不能加在一起", "應該先把2時都換成秒再相加"],
+      "correctErrorIndex": 0,
+      "explanation": "40＋30＝70分，70分滿60要進位：70－60＝10，進1時，所以是3時10分。"
+    },
+    {
+      "id": "time-hms-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "12-6",
+      "errorPath": 1,
+      "problem": "計算 1時50分＋20分",
+      "wrongSolution": "小庭算出1時70分，就直接寫上答案。",
+      "errorOptions": ["答案應該是1時30分才對", "70分滿60要進位，應是2時10分", "應該先把20分換成秒再加", "答案應該是3時70分才對"],
+      "correctErrorIndex": 1,
+      "explanation": "50＋20＝70分，滿60分進1時：70－60＝10，所以正確答案是2時10分。"
+    },
+    {
+      "id": "time-hms-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "12-6",
+      "errorPath": 1,
+      "problem": "計算 3時55分＋10分",
+      "wrongSolution": "小威算出3時65分，就直接寫上答案。",
+      "errorOptions": ["答案應該是3時45分才對", "3時65分沒有錯，不用再改", "65分＝1時5分，應進位成4時5分", "答案應該是4時65分才對"],
+      "correctErrorIndex": 2,
+      "explanation": "55＋10＝65分，滿60要進位：65－60＝5，進1時，正確答案是4時5分。"
+    },
+    {
+      "id": "time-hms-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "12-7",
+      "errorPath": 2,
+      "problem": "把3分20秒換算成秒",
+      "wrongSolution": "小杰直接把數字併起來，寫成320秒。",
+      "errorOptions": ["1分是60秒，應是3×60＋20＝200秒", "答案應該是32秒才對", "應該用3＋20＝23秒來算", "後面的20秒不需要算進去"],
+      "correctErrorIndex": 0,
+      "explanation": "3分＝3×60＝180秒，再加20秒是200秒。把「3」和「20」併成320是100進位的錯誤想法。"
+    },
+    {
+      "id": "time-hms-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "12-7",
+      "errorPath": 2,
+      "problem": "把2分15秒換算成秒",
+      "wrongSolution": "小安直接把數字併起來，寫成215秒。",
+      "errorOptions": ["應該用2×10＋15＝35秒來算", "應該寫成21秒又5秒才對", "15秒要先換成分才能相加", "2分＝120秒，加15秒應是135秒"],
+      "correctErrorIndex": 3,
+      "explanation": "2分＝2×60＝120秒，120＋15＝135秒。不能把2和15直接併成215。"
+    },
+    {
+      "id": "time-hms-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "12-7",
+      "errorPath": 2,
+      "problem": "把1時40分換算成分",
+      "wrongSolution": "小柔直接把數字併起來，寫成140分。",
+      "errorOptions": ["答案應該是14分才對", "1時＝60分，應是60＋40＝100分", "應該用1×40＝40分來算", "40分要先換成秒才能相加"],
+      "correctErrorIndex": 1,
+      "explanation": "1時＝60分，60＋40＝100分。寫成140分是把1時當成100分的錯誤。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "time-hms-ca-1",
+      "type": "context-application",
+      "challenge": "12-8",
+      "errorPath": 3,
+      "scenario": "煮一包麵要4分30秒，計時器已經走了2分50秒。",
+      "question": "還要再煮幾分幾秒？",
+      "options": ["2分20秒", "1分40秒", "1分80秒", "2分40秒"],
+      "answer": 1,
+      "explanation": "4分30秒－2分50秒：30不夠減50，向4分借1分當60秒，60＋30－50＝40秒，分剩3－2＝1，答案是1分40秒。"
+    },
+    {
+      "id": "time-hms-ca-2",
+      "type": "context-application",
+      "challenge": "12-8",
+      "errorPath": 1,
+      "scenario": "小捷跑操場，第一圈用3分40秒，第二圈用2分30秒。",
+      "question": "兩圈一共跑了幾分幾秒？",
+      "options": ["5分10秒", "6分70秒", "6分10秒", "5分40秒"],
+      "answer": 2,
+      "explanation": "40＋30＝70秒，滿60進1分剩10秒；3＋2＝5分再進1分是6分，共6分10秒。忘了把進位加進去會錯算成5分10秒。"
+    },
+    {
+      "id": "time-hms-ca-3",
+      "type": "context-application",
+      "challenge": "12-8",
+      "errorPath": 3,
+      "scenario": "烤一盤餅乾要1時20分，已經烤了40分。",
+      "question": "還要再烤幾分？",
+      "options": ["80分", "60分", "20分", "40分"],
+      "answer": 3,
+      "explanation": "1時20分＝60＋20＝80分，80－40＝40分。把1時當成100分會錯算成120－40＝80分。"
+    }
+  ]
+}

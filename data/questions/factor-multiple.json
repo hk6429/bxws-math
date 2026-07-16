@@ -1,0 +1,255 @@
+{
+  "nodeId": "factor-multiple",
+  "curriculum": "N-5-3",
+  "basicMastery": [
+    {
+      "id": "factor-multiple-bm-1",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "errorPath": 2,
+      "stem": "24 的因數共有幾個？",
+      "options": ["6 個", "8 個", "7 個", "10 個"],
+      "answer": 1,
+      "explanation": "成對找：1×24、2×12、3×8、4×6，所以 24 的因數是 1、2、3、4、6、8、12、24，共 8 個。"
+    },
+    {
+      "id": "factor-multiple-bm-2",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "errorPath": 2,
+      "stem": "下列哪一組是 20 的全部因數？",
+      "options": ["1、2、4、5、10、20", "2、4、5、10", "1、2、4、5、10", "1、2、4、5、10、20、40"],
+      "answer": 0,
+      "explanation": "成對找：1×20、2×10、4×5，因數是 1、2、4、5、10、20。不能漏掉 1 和 20 本身，40 是倍數不是因數。"
+    },
+    {
+      "id": "factor-multiple-bm-3",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "errorPath": 2,
+      "stem": "36 的因數中，最大的和最小的相加是多少？",
+      "options": ["45", "38", "37", "36"],
+      "answer": 2,
+      "explanation": "36 最小的因數是 1，最大的因數是 36 自己，1 + 36 = 37。"
+    },
+    {
+      "id": "factor-multiple-bm-4",
+      "type": "basic-mastery",
+      "challenge": "1-2",
+      "errorPath": 1,
+      "stem": "下列敘述哪一個正確？",
+      "options": ["42 是 6 的因數", "6 是 42 的因數", "6 是 42 的倍數", "7 是 42 的倍數"],
+      "answer": 1,
+      "explanation": "42 ÷ 6 = 7 整除，所以 6 是 42 的因數、42 是 6 的倍數。方向不能說反：小的數當因數，大的數當倍數。"
+    },
+    {
+      "id": "factor-multiple-bm-5",
+      "type": "basic-mastery",
+      "challenge": "1-2",
+      "errorPath": 1,
+      "stem": "56 是 8 的什麼？",
+      "options": ["因數", "質數", "倍數", "公因數"],
+      "answer": 2,
+      "explanation": "56 = 8 × 7，56 能被 8 整除，所以 56 是 8 的倍數；反過來說，8 是 56 的因數。"
+    },
+    {
+      "id": "factor-multiple-bm-6",
+      "type": "basic-mastery",
+      "challenge": "1-2",
+      "errorPath": 1,
+      "stem": "下列敘述哪一個錯誤？",
+      "options": ["15 是 5 的倍數", "3 是 15 的因數", "15 是 15 的因數", "5 是 15 的倍數"],
+      "answer": 3,
+      "explanation": "5 比 15 小，5 是 15 的因數，不是倍數；15 才是 5 的倍數。每個數也都是自己的因數和倍數。"
+    },
+    {
+      "id": "factor-multiple-bm-7",
+      "type": "basic-mastery",
+      "challenge": "1-3",
+      "errorPath": 2,
+      "stem": "12 和 18 的公因數共有幾個？",
+      "options": ["2 個", "3 個", "4 個", "6 個"],
+      "answer": 2,
+      "explanation": "12 的因數：1、2、3、4、6、12；18 的因數：1、2、3、6、9、18。共同的有 1、2、3、6，共 4 個。"
+    },
+    {
+      "id": "factor-multiple-bm-8",
+      "type": "basic-mastery",
+      "challenge": "1-3",
+      "errorPath": 3,
+      "stem": "4 和 6 的公倍數中，最小的是多少？",
+      "options": ["2", "24", "48", "12"],
+      "answer": 3,
+      "explanation": "4 的倍數：4、8、12、16…；6 的倍數：6、12、18…。最小的公倍數是 12。2 是公因數，別和公倍數搞混。"
+    },
+    {
+      "id": "factor-multiple-bm-9",
+      "type": "basic-mastery",
+      "challenge": "1-3",
+      "errorPath": 2,
+      "stem": "下列哪一個是 6 和 9 的公倍數？",
+      "options": ["27", "36", "12", "45"],
+      "answer": 1,
+      "explanation": "公倍數要同時是 6 和 9 的倍數：36 = 6×6 = 9×4。27 和 45 只是 9 的倍數，12 只是 6 的倍數。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "factor-multiple-ci-1",
+      "type": "concept-id",
+      "challenge": "1-4",
+      "errorPath": 2,
+      "statement": "1 是每一個整數的因數。",
+      "correctAnswer": true,
+      "explanation": "任何整數都能被 1 整除，所以 1 是所有整數的因數。找因數時千萬別漏掉 1。"
+    },
+    {
+      "id": "factor-multiple-ci-2",
+      "type": "concept-id",
+      "challenge": "1-4",
+      "errorPath": 2,
+      "statement": "任何一個整數的因數都至少有兩個。",
+      "correctAnswer": false,
+      "explanation": "1 的因數只有 1 自己，只有一個。質數才恰好有兩個因數（1 和自己）。"
+    },
+    {
+      "id": "factor-multiple-ci-3",
+      "type": "concept-id",
+      "challenge": "1-4",
+      "errorPath": 2,
+      "statement": "找 16 的因數時，1 和 16 本身也要算進去。",
+      "correctAnswer": true,
+      "explanation": "16 ÷ 1 = 16、16 ÷ 16 = 1 都整除，所以 1 和 16 都是 16 的因數：1、2、4、8、16。"
+    },
+    {
+      "id": "factor-multiple-ci-4",
+      "type": "concept-id",
+      "challenge": "1-5",
+      "errorPath": 1,
+      "statement": "如果甲是乙的因數，那麼乙就是甲的倍數。",
+      "correctAnswer": true,
+      "explanation": "因數和倍數是互逆的關係：3 是 12 的因數，12 就是 3 的倍數，兩句話說的是同一件事。"
+    },
+    {
+      "id": "factor-multiple-ci-5",
+      "type": "concept-id",
+      "challenge": "1-5",
+      "errorPath": 1,
+      "statement": "36 是 4 的倍數，所以 36 也是 4 的因數。",
+      "correctAnswer": false,
+      "explanation": "方向相反了：36 是 4 的倍數，而 4 是 36 的因數。倍數和因數的身分不能互換著說。"
+    },
+    {
+      "id": "factor-multiple-ci-6",
+      "type": "concept-id",
+      "challenge": "1-5",
+      "errorPath": 1,
+      "statement": "12 是 6 的倍數，所以 6 也是 12 的倍數。",
+      "correctAnswer": false,
+      "explanation": "12 是 6 的倍數沒錯，但 6 比 12 小，6 是 12 的因數，不是倍數。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "factor-multiple-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "1-6",
+      "errorPath": 2,
+      "problem": "找出 36 的所有因數",
+      "wrongSolution": "小安寫出 1、2、3、4、9、12、18、36",
+      "errorOptions": ["6×6 成對時只寫一次的 6 漏掉了", "多寫了不是因數的數", "漏掉了 1 和 36", "把 36 的倍數也列進去了"],
+      "correctErrorIndex": 0,
+      "explanation": "36 = 6×6，成對找因數時 6 只寫一次，但不能漏。正確答案：1、2、3、4、6、9、12、18、36，共 9 個。"
+    },
+    {
+      "id": "factor-multiple-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "1-6",
+      "errorPath": 2,
+      "problem": "找出 28 的所有因數",
+      "wrongSolution": "小杰寫出 2、4、7、14",
+      "errorOptions": ["把 8 誤當成因數", "漏掉了 1 和 28 本身", "漏掉了 6", "把 28 拆成質因數了"],
+      "correctErrorIndex": 1,
+      "explanation": "找因數要從 1×28 開始成對找：1、2、4、7、14、28。1 和自己本身都是因數，最容易被漏掉。"
+    },
+    {
+      "id": "factor-multiple-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "1-6",
+      "errorPath": 2,
+      "problem": "找出 45 的所有因數",
+      "wrongSolution": "小美寫出 1、3、5、9、45",
+      "errorOptions": ["45 不能被 5 整除", "多寫了 9", "成對找時 3×15 的 15 漏掉了", "漏掉了 7"],
+      "correctErrorIndex": 2,
+      "explanation": "成對找：1×45、3×15、5×9，因數是 1、3、5、9、15、45。3 的搭檔 15 被漏掉了。"
+    },
+    {
+      "id": "factor-multiple-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "1-7",
+      "errorPath": 3,
+      "problem": "找出 8 和 12 的公因數",
+      "wrongSolution": "小華答：24",
+      "errorOptions": ["漏掉了負數", "計算 8×12 時算錯", "把 8 看成 6 來計算", "把公因數找成了公倍數"],
+      "correctErrorIndex": 3,
+      "explanation": "公因數是兩數共同的因數：8 和 12 的公因數是 1、2、4。24 是它們的最小公倍數，方向找反了。"
+    },
+    {
+      "id": "factor-multiple-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "1-7",
+      "errorPath": 3,
+      "problem": "找出 6 和 9 的公倍數",
+      "wrongSolution": "小婷答：3",
+      "errorOptions": ["把公倍數找成了公因數", "3 不是 9 的因數", "公倍數應該是 54", "6 和 9 沒有公倍數"],
+      "correctErrorIndex": 0,
+      "explanation": "3 是 6 和 9 的公因數。公倍數要比兩數都大或相等：6 和 9 的公倍數是 18、36、54…。"
+    },
+    {
+      "id": "factor-multiple-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "1-7",
+      "errorPath": 1,
+      "problem": "判斷 4 和 32 的關係",
+      "wrongSolution": "小強說：4 是 32 的倍數",
+      "errorOptions": ["32 除以 4 除不盡", "因數和倍數的方向說反了", "4 和 32 沒有關係", "4 是 32 的公因數"],
+      "correctErrorIndex": 1,
+      "explanation": "32 = 4 × 8，所以 4 是 32 的因數，32 才是 4 的倍數。小的當因數、大的當倍數，方向不能反。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "factor-multiple-ca-1",
+      "type": "context-application",
+      "challenge": "1-8",
+      "errorPath": 3,
+      "scenario": "老師要把 48 顆糖果平分給小朋友，每人一樣多，剛好分完。",
+      "question": "小朋友的人數可能是幾人？",
+      "options": ["5 人", "7 人", "9 人", "6 人"],
+      "answer": 3,
+      "explanation": "平分不剩，人數必須是 48 的因數。48 的因數有 1、2、3、4、6、8、12、16、24、48，選項中只有 6。"
+    },
+    {
+      "id": "factor-multiple-ca-2",
+      "type": "context-application",
+      "challenge": "1-8",
+      "errorPath": 3,
+      "scenario": "甲公車每 6 分鐘發一班，乙公車每 8 分鐘發一班，剛剛同時發車。",
+      "question": "至少再過幾分鐘，兩車會再次同時發車？",
+      "options": ["24 分鐘", "2 分鐘", "14 分鐘", "48 分鐘"],
+      "answer": 0,
+      "explanation": "週期同步要找公倍數：6 和 8 的最小公倍數是 24。2 是公因數，工具選反了；14 是兩數相加，也不對。"
+    },
+    {
+      "id": "factor-multiple-ca-3",
+      "type": "context-application",
+      "challenge": "1-8",
+      "errorPath": 3,
+      "scenario": "一條 36 公分的緞帶要剪成一樣長的小段，剛好剪完不剩。",
+      "question": "每一小段可能是幾公分？",
+      "options": ["5 公分", "9 公分", "7 公分", "8 公分"],
+      "answer": 1,
+      "explanation": "剛好剪完，每段長必須是 36 的因數。36 的因數有 1、2、3、4、6、9、12、18、36，選項中只有 9。"
+    }
+  ]
+}

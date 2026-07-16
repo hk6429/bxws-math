@@ -1,0 +1,343 @@
+{
+  "nodeId": "div-by-1digit",
+  "curriculum": [
+    "N-3-4",
+    "N-3-5",
+    "R-3-1"
+  ],
+  "basicMastery": [
+    {
+      "id": "div-by-1digit-bm-1",
+      "type": "basic-mastery",
+      "stem": "84÷4＝？",
+      "options": [
+        "21",
+        "20 餘 4",
+        "12",
+        "22"
+      ],
+      "answer": 0,
+      "explanation": "80÷4＝20，4÷4＝1，合起來是 21。驗算：21×4＝84。",
+      "challenge": "4-2",
+      "errorPath": 1
+    },
+    {
+      "id": "div-by-1digit-bm-2",
+      "type": "basic-mastery",
+      "stem": "96÷8＝？",
+      "options": [
+        "11 餘 8",
+        "12",
+        "13",
+        "16"
+      ],
+      "answer": 1,
+      "explanation": "96÷8＝12。餘數 8 和除數一樣大，表示還能再分，不能寫 11 餘 8。",
+      "challenge": "4-2",
+      "errorPath": 1
+    },
+    {
+      "id": "div-by-1digit-bm-3",
+      "type": "basic-mastery",
+      "stem": "91÷7＝？",
+      "options": [
+        "14",
+        "12 餘 7",
+        "13",
+        "12"
+      ],
+      "answer": 2,
+      "explanation": "91÷7＝13。驗算：13×7＝91。餘數 7 等於除數，表示商估太小。",
+      "challenge": "4-2",
+      "errorPath": 1
+    },
+    {
+      "id": "div-by-1digit-bm-4",
+      "type": "basic-mastery",
+      "stem": "74÷3＝？",
+      "options": [
+        "24 餘 2",
+        "23 餘 5",
+        "25 餘 2",
+        "24 餘 1"
+      ],
+      "answer": 0,
+      "explanation": "74÷3＝24 餘 2。驗算：24×3＋2＝74。餘數 2 比除數 3 小才合法。",
+      "challenge": "4-3",
+      "errorPath": 1
+    },
+    {
+      "id": "div-by-1digit-bm-5",
+      "type": "basic-mastery",
+      "stem": "89÷4＝？",
+      "options": [
+        "21 餘 5",
+        "22 餘 3",
+        "23 餘 1",
+        "22 餘 1"
+      ],
+      "answer": 3,
+      "explanation": "89÷4＝22 餘 1。驗算：22×4＋1＝89。餘數 5 比除數大就要再分。",
+      "challenge": "4-3",
+      "errorPath": 1
+    },
+    {
+      "id": "div-by-1digit-bm-6",
+      "type": "basic-mastery",
+      "stem": "58÷7＝？",
+      "options": [
+        "8 餘 4",
+        "8 餘 2",
+        "7 餘 9",
+        "9 餘 2"
+      ],
+      "answer": 1,
+      "explanation": "58÷7＝8 餘 2。驗算：8×7＋2＝58。7 餘 9 的餘數比除數大，不合法。",
+      "challenge": "4-3",
+      "errorPath": 1
+    },
+    {
+      "id": "div-by-1digit-bm-7",
+      "type": "basic-mastery",
+      "stem": "612÷6＝？",
+      "options": [
+        "12",
+        "102",
+        "120",
+        "112"
+      ],
+      "answer": 1,
+      "explanation": "6÷6＝1，十位 1 不夠除要補 0，12÷6＝2，商是 102。驗算：102×6＝612。",
+      "challenge": "4-4",
+      "errorPath": 2
+    },
+    {
+      "id": "div-by-1digit-bm-8",
+      "type": "basic-mastery",
+      "stem": "840÷4＝？",
+      "options": [
+        "21",
+        "201",
+        "210",
+        "24"
+      ],
+      "answer": 2,
+      "explanation": "8÷4＝2，4÷4＝1，個位 0÷4＝0 要補 0，商是 210。驗算：210×4＝840。",
+      "challenge": "4-4",
+      "errorPath": 2
+    },
+    {
+      "id": "div-by-1digit-bm-9",
+      "type": "basic-mastery",
+      "stem": "618÷3＝？",
+      "options": [
+        "206",
+        "26",
+        "260",
+        "216"
+      ],
+      "answer": 0,
+      "explanation": "6÷3＝2，十位 1 不夠除補 0，18÷3＝6，商是 206。驗算：206×3＝618。",
+      "challenge": "4-4",
+      "errorPath": 2
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "div-by-1digit-ci-1",
+      "type": "concept-id",
+      "statement": "「12 顆糖平分給 4 人，每人分到幾顆」可以用 12÷4 來算。",
+      "correctAnswer": true,
+      "explanation": "把總數平分成 4 份，求一份是多少，就是除法的「平分」情境。",
+      "challenge": "4-1"
+    },
+    {
+      "id": "div-by-1digit-ci-2",
+      "type": "concept-id",
+      "statement": "「18 枝筆每 6 枝裝一盒，可以裝幾盒」不能用除法，只能用加法慢慢數。",
+      "correctAnswer": false,
+      "explanation": "求「18 裡面有幾個 6」是除法的「分裝」情境，18÷6＝3 盒。",
+      "challenge": "4-1"
+    },
+    {
+      "id": "div-by-1digit-ci-3",
+      "type": "concept-id",
+      "statement": "15÷3 可以表示 15 顆彈珠每 3 顆一堆，總共分成幾堆。",
+      "correctAnswer": true,
+      "explanation": "除法有兩種情境：平分（求一份多少）和分裝（求有幾份），這是分裝。",
+      "challenge": "4-1"
+    },
+    {
+      "id": "div-by-1digit-ci-4",
+      "type": "concept-id",
+      "statement": "想檢查 74÷3＝24 餘 2 對不對，可以算 24×3＋2 是不是等於 74。",
+      "correctAnswer": true,
+      "explanation": "商×除數＋餘數＝被除數，乘除互逆是除法的標準驗算方法。",
+      "challenge": "4-5"
+    },
+    {
+      "id": "div-by-1digit-ci-5",
+      "type": "concept-id",
+      "statement": "驗算有餘數的除法時，只要商乘以除數等於被除數就對了，餘數不用管。",
+      "correctAnswer": false,
+      "explanation": "有餘數時，商×除數會比被除數小，必須再加上餘數才等於被除數。",
+      "challenge": "4-5"
+    },
+    {
+      "id": "div-by-1digit-ci-6",
+      "type": "concept-id",
+      "statement": "61÷7＝8 餘 5 是正確的，因為 8×7＋5＝61，而且餘數 5 比除數 7 小。",
+      "correctAnswer": true,
+      "explanation": "驗算要兩個條件都成立：商×除數＋餘數＝被除數，且餘數小於除數。",
+      "challenge": "4-5"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "div-by-1digit-ed-1",
+      "type": "error-diagnosis",
+      "problem": "計算 58÷7",
+      "wrongSolution": "小安算成 58÷7＝7 餘 9",
+      "errorOptions": [
+        "餘數 9 比除數 7 大，商估太小沒調整",
+        "把除法算成乘法了",
+        "餘數忘記寫出來",
+        "被除數 58 抄成 85"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "餘數必須比除數小。9 裡面還有一個 7，商要調成 8：58÷7＝8 餘 2。",
+      "challenge": "4-6",
+      "errorPath": 1
+    },
+    {
+      "id": "div-by-1digit-ed-2",
+      "type": "error-diagnosis",
+      "problem": "計算 75÷8",
+      "wrongSolution": "小柏算成 75÷8＝8 餘 11",
+      "errorOptions": [
+        "除數 8 看成 9 了",
+        "餘數 11 比除數 8 大，應把商調成 9",
+        "商乘除數的時候算錯",
+        "答案忘了做驗算"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "餘數 11 還能再分一個 8，商要往上調：75÷8＝9 餘 3。",
+      "challenge": "4-6",
+      "errorPath": 1
+    },
+    {
+      "id": "div-by-1digit-ed-3",
+      "type": "error-diagnosis",
+      "problem": "計算 46÷5",
+      "wrongSolution": "小晴算成 46÷5＝8 餘 6",
+      "errorOptions": [
+        "把 46 看成 64 了",
+        "商和餘數寫顛倒了",
+        "餘數 6 比除數 5 大，商要再加 1",
+        "減法退位算錯了"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "餘數 6 比除數 5 大，表示還能再分：46÷5＝9 餘 1。",
+      "challenge": "4-6",
+      "errorPath": 1
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "div-by-1digit-ca-1",
+      "type": "context-application",
+      "scenario": "全班 34 人要搭纜車，每台車廂最多坐 4 人。",
+      "question": "至少要幾台車廂才能全部坐上去？",
+      "options": [
+        "8 台",
+        "9 台",
+        "10 台",
+        "7 台"
+      ],
+      "answer": 1,
+      "explanation": "34÷4＝8 餘 2，剩下的 2 人也需要一台車廂，所以要 8＋1＝9 台。",
+      "challenge": "4-7",
+      "errorPath": 3
+    },
+    {
+      "id": "div-by-1digit-ca-2",
+      "type": "context-application",
+      "scenario": "小凱帶 50 元去買鉛筆，一枝鉛筆 8 元。",
+      "question": "他最多能買幾枝鉛筆？",
+      "options": [
+        "7 枝",
+        "5 枝",
+        "6 枝",
+        "8 枝"
+      ],
+      "answer": 2,
+      "explanation": "50÷8＝6 餘 2，剩下 2 元不夠再買一枝，所以最多買 6 枝（去尾）。",
+      "challenge": "4-7",
+      "errorPath": 3
+    },
+    {
+      "id": "div-by-1digit-ca-3",
+      "type": "context-application",
+      "scenario": "農場採了 62 顆蘋果，每 5 顆裝滿一盒。",
+      "question": "最多能裝滿幾盒？",
+      "options": [
+        "13 盒",
+        "11 盒",
+        "14 盒",
+        "12 盒"
+      ],
+      "answer": 3,
+      "explanation": "62÷5＝12 餘 2，剩 2 顆裝不滿一盒，所以最多裝滿 12 盒（去尾）。",
+      "challenge": "4-7",
+      "errorPath": 3
+    },
+    {
+      "id": "div-by-1digit-ca-4",
+      "type": "context-application",
+      "scenario": "老師把 72 顆彈珠平分給 6 位小朋友。",
+      "question": "每位小朋友分到幾顆？",
+      "options": [
+        "12 顆",
+        "11 顆餘 6 顆",
+        "13 顆",
+        "11 顆"
+      ],
+      "answer": 0,
+      "explanation": "72÷6＝12 顆。若算成 11 餘 6，餘數和除數一樣大，表示還能再分。",
+      "challenge": "4-8",
+      "errorPath": 1
+    },
+    {
+      "id": "div-by-1digit-ca-5",
+      "type": "context-application",
+      "scenario": "小美有 95 張貼紙，每位同學分 4 張。",
+      "question": "可以分給幾位同學？還剩幾張？",
+      "options": [
+        "22 位剩 7 張",
+        "23 位剩 3 張",
+        "21 位剩 11 張",
+        "23 位剩 7 張"
+      ],
+      "answer": 1,
+      "explanation": "95÷4＝23 餘 3。驗算：23×4＋3＝95。餘數要比除數 4 小才合法。",
+      "challenge": "4-8",
+      "errorPath": 1
+    },
+    {
+      "id": "div-by-1digit-ca-6",
+      "type": "context-application",
+      "scenario": "624 毫升的豆漿平分裝進 6 個杯子。",
+      "question": "每杯裝多少毫升？",
+      "options": [
+        "14 毫升",
+        "140 毫升",
+        "104 毫升",
+        "124 毫升"
+      ],
+      "answer": 2,
+      "explanation": "624÷6＝104。十位 2 不夠除要補 0，別把商寫成 14。驗算：104×6＝624。",
+      "challenge": "4-8",
+      "errorPath": 2
+    }
+  ]
+}

@@ -1,0 +1,254 @@
+{
+  "nodeId": "angle-degree",
+  "basicMastery": [
+    {
+      "id": "angle-degree-bm-1",
+      "type": "basic-mastery",
+      "challenge": "1",
+      "errorPath": 1,
+      "stem": "平角是幾度？",
+      "options": ["90 度", "180 度", "270 度", "360 度"],
+      "answer": 1,
+      "explanation": "平角的兩邊剛好成一直線，是 180 度，等於 2 個直角。"
+    },
+    {
+      "id": "angle-degree-bm-2",
+      "type": "basic-mastery",
+      "challenge": "1",
+      "errorPath": 3,
+      "stem": "周角是幾度？",
+      "options": ["90 度", "180 度", "270 度", "360 度"],
+      "answer": 3,
+      "explanation": "一邊繞著頂點轉一整圈回到原位，形成周角，是 360 度。"
+    },
+    {
+      "id": "angle-degree-bm-3",
+      "type": "basic-mastery",
+      "challenge": "1",
+      "errorPath": 3,
+      "stem": "一個周角等於幾個直角合起來？",
+      "options": ["2 個", "3 個", "4 個", "6 個"],
+      "answer": 2,
+      "explanation": "周角 360 度，直角 90 度，360 ÷ 90 = 4，周角等於 4 個直角。"
+    },
+    {
+      "id": "angle-degree-bm-4",
+      "type": "basic-mastery",
+      "challenge": "2",
+      "errorPath": 1,
+      "stem": "一個角是 135 度，它是什麼角？",
+      "options": ["銳角", "直角", "鈍角", "平角"],
+      "answer": 2,
+      "explanation": "135 度比 90 度大、比 180 度小，是鈍角。"
+    },
+    {
+      "id": "angle-degree-bm-5",
+      "type": "basic-mastery",
+      "challenge": "2",
+      "errorPath": 1,
+      "stem": "一個角是 65 度，它是什麼角？",
+      "options": ["銳角", "鈍角", "直角", "平角"],
+      "answer": 0,
+      "explanation": "65 度比 90 度小，是銳角。"
+    },
+    {
+      "id": "angle-degree-bm-6",
+      "type": "basic-mastery",
+      "challenge": "2",
+      "errorPath": 3,
+      "stem": "一個角是 300 度，下面哪句話是對的？",
+      "options": ["比平角大、比周角小", "它比直角小", "它剛好是平角", "它比周角大"],
+      "answer": 0,
+      "explanation": "300 度在 180 度和 360 度之間，所以比平角大、比周角小。這種角是存在的。"
+    },
+    {
+      "id": "angle-degree-bm-7",
+      "type": "basic-mastery",
+      "challenge": "3",
+      "errorPath": 2,
+      "stem": "一個直角加上 35 度的角，合起來是幾度？",
+      "options": ["125 度", "115 度", "55 度", "145 度"],
+      "answer": 0,
+      "explanation": "直角是 90 度，90 + 35 = 125 度。"
+    },
+    {
+      "id": "angle-degree-bm-8",
+      "type": "basic-mastery",
+      "challenge": "3",
+      "errorPath": 2,
+      "stem": "兩個角合起來剛好是平角，一個是 65 度，另一個？",
+      "options": ["105 度", "115 度", "125 度", "135 度"],
+      "answer": 1,
+      "explanation": "平角是 180 度，180 − 65 = 115 度。"
+    },
+    {
+      "id": "angle-degree-bm-9",
+      "type": "basic-mastery",
+      "challenge": "3",
+      "errorPath": 3,
+      "stem": "一個 240 度的角，還差幾度才是周角？",
+      "options": ["60 度", "100 度", "120 度", "140 度"],
+      "answer": 2,
+      "explanation": "周角是 360 度，360 − 240 = 120 度。小心別算成 240 − 180 = 60。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "angle-degree-ci-1",
+      "type": "concept-id",
+      "challenge": "4",
+      "errorPath": 1,
+      "statement": "量角器的內圈和外圈刻度，讀哪一圈數字都一樣。",
+      "correctAnswer": false,
+      "explanation": "內外圈的數字方向相反，要看角的一邊對齊 0 的那一圈讀，讀錯圈會把 60 度讀成 120 度。"
+    },
+    {
+      "id": "angle-degree-ci-2",
+      "type": "concept-id",
+      "challenge": "4",
+      "errorPath": 1,
+      "statement": "讀量角器時，要看角的一邊對齊 0 的那一圈刻度。",
+      "correctAnswer": true,
+      "explanation": "從對齊 0 度的那一邊出發，沿同一圈刻度讀到另一邊，才是正確的度數。"
+    },
+    {
+      "id": "angle-degree-ci-3",
+      "type": "concept-id",
+      "challenge": "4",
+      "errorPath": 2,
+      "statement": "用量角器量角時，中心點要對準角的頂點。",
+      "correctAnswer": true,
+      "explanation": "量角器的中心點對準頂點、0 度線對齊一邊，是量角的兩個必要步驟。"
+    },
+    {
+      "id": "angle-degree-ci-4",
+      "type": "concept-id",
+      "challenge": "5",
+      "errorPath": 3,
+      "statement": "比 180 度大、比 360 度小的角是不存在的。",
+      "correctAnswer": false,
+      "explanation": "這種角是存在的，例如 270 度的角，比平角大、比周角小。"
+    },
+    {
+      "id": "angle-degree-ci-5",
+      "type": "concept-id",
+      "challenge": "5",
+      "errorPath": 3,
+      "statement": "周角是 360 度，等於 4 個直角合起來。",
+      "correctAnswer": true,
+      "explanation": "360 ÷ 90 = 4，轉一整圈的周角剛好是 4 個直角。"
+    },
+    {
+      "id": "angle-degree-ci-6",
+      "type": "concept-id",
+      "challenge": "5",
+      "errorPath": 3,
+      "statement": "一個 200 度的角，比平角大 20 度。",
+      "correctAnswer": true,
+      "explanation": "平角是 180 度，200 − 180 = 20，所以比平角大 20 度。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "angle-degree-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "6",
+      "errorPath": 1,
+      "problem": "量一個比直角小的角",
+      "wrongSolution": "角的一邊對齊右側 0，另一邊指著內圈 60、外圈 120，小明讀成 120 度。",
+      "errorOptions": ["量角器放反了", "內外圈讀反了，應讀 60 度", "兩圈刻度要相加才對", "銳角不能用量角器量"],
+      "correctErrorIndex": 1,
+      "explanation": "這個角比直角小，度數一定小於 90，應該讀對齊 0 那圈的 60 度，不是 120 度。"
+    },
+    {
+      "id": "angle-degree-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "6",
+      "errorPath": 1,
+      "problem": "量一個比直角大的角",
+      "wrongSolution": "另一邊指著的刻度一圈是 130、另一圈是 50，小妤讀成 50 度。",
+      "errorOptions": ["鈍角比 90 度大，應讀 130 度", "量角器的刻度印錯了", "應該把 50 加上 90 才對", "要先把角剪下來再量"],
+      "correctErrorIndex": 0,
+      "explanation": "先判斷角的種類再讀數：這個角比直角大，度數必大於 90，正確答案是 130 度。"
+    },
+    {
+      "id": "angle-degree-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "6",
+      "errorPath": 1,
+      "problem": "用量角器量一個銳角",
+      "wrongSolution": "小杰讀了沒有對齊 0 度線那一圈的刻度，讀出 140 度。",
+      "errorOptions": ["應該換一個更大的量角器", "銳角要改用三角板來量", "角畫得太小，沒辦法量", "要讀對齊 0 度線那一圈的刻度"],
+      "correctErrorIndex": 3,
+      "explanation": "銳角一定小於 90 度，讀出 140 度就表示讀錯圈了，要從對齊 0 的那一圈讀起。"
+    },
+    {
+      "id": "angle-degree-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "7",
+      "errorPath": 2,
+      "problem": "用量角器量三角形的一個角",
+      "wrongSolution": "小華的量角器中心點沒對準角的頂點，就讀出刻度。",
+      "errorOptions": ["中心點要對準角的頂點", "應該量三角形最大的角", "量角器要放在紙的下面", "要先把三角形剪下來"],
+      "correctErrorIndex": 0,
+      "explanation": "量角的第一步是把量角器的中心點對準頂點，沒對準的話讀出來的度數不可靠。"
+    },
+    {
+      "id": "angle-degree-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "7",
+      "errorPath": 2,
+      "problem": "量課本上畫的一個角",
+      "wrongSolution": "小庭的 0 度線沒有對齊角的任何一邊，就直接讀數。",
+      "errorOptions": ["課本上的角不能直接量", "0 度線要對齊角的一條邊", "要先把角描到白紙上", "應該讀內外圈的平均值"],
+      "correctErrorIndex": 1,
+      "explanation": "中心對頂點之後，還要讓 0 度線對齊角的一邊，再讀另一邊指的刻度。"
+    },
+    {
+      "id": "angle-degree-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "7",
+      "errorPath": 2,
+      "problem": "量一個角，檢查操作對不對",
+      "wrongSolution": "小威把角的一邊對齊 90 度的刻度線，從 90 開始讀。",
+      "errorOptions": ["90 度線比較準，這樣做對", "應該對齊 180 度線才對", "角的一邊要對齊 0 度線", "要把角放在量角器上方"],
+      "correctErrorIndex": 2,
+      "explanation": "角的一邊要對齊 0 度線，從 0 讀起；對齊 90 度線讀出來的數字要再換算，容易出錯。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "angle-degree-ca-1",
+      "type": "context-application",
+      "challenge": "8",
+      "errorPath": 2,
+      "scenario": "時鐘的分針從 12 出發，順時針走到 3。",
+      "question": "分針一共轉了幾度？",
+      "options": ["45 度", "90 度", "180 度", "270 度"],
+      "answer": 1,
+      "explanation": "分針從 12 到 3 走了一圈的四分之一，360 ÷ 4 = 90 度。"
+    },
+    {
+      "id": "angle-degree-ca-2",
+      "type": "context-application",
+      "challenge": "8",
+      "errorPath": 3,
+      "scenario": "摩天輪逆時針轉了半圈，又多轉了四分之一圈。",
+      "question": "摩天輪一共轉了幾度？",
+      "options": ["225 度", "180 度", "270 度", "315 度"],
+      "answer": 2,
+      "explanation": "半圈是 180 度，四分之一圈是 90 度，180 + 90 = 270 度。"
+    },
+    {
+      "id": "angle-degree-ca-3",
+      "type": "context-application",
+      "challenge": "8",
+      "errorPath": 3,
+      "scenario": "電風扇的頭從正面順時針轉了半圈，再多轉 30 度。",
+      "question": "電風扇的頭一共轉了幾度？",
+      "options": ["150 度", "180 度", "240 度", "210 度"],
+      "answer": 3,
+      "explanation": "半圈是 180 度，180 + 30 = 210 度。"
+    }
+  ]
+}

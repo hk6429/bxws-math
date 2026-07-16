@@ -1,0 +1,249 @@
+{
+  "nodeId": "estimation-round",
+  "curriculum": ["N-3-8", "N-4-4"],
+  "basicMastery": [
+    {
+      "id": "estimation-round-bm-1",
+      "type": "basic-mastery",
+      "challenge": "8-1",
+      "errorPath": 1,
+      "stem": "用四捨五入法把 3672 取概數到百位，是多少？",
+      "options": ["3700", "3600", "3670", "4000"],
+      "answer": 0,
+      "explanation": "取到百位要看十位：十位是 7，滿 5 進上去，3672≈3700。"
+    },
+    {
+      "id": "estimation-round-bm-2",
+      "type": "basic-mastery",
+      "challenge": "8-1",
+      "errorPath": 1,
+      "stem": "用四捨五入法把 48350 取概數到千位，是多少？",
+      "options": ["50000", "48000", "48400", "49000"],
+      "answer": 1,
+      "explanation": "取到千位要看百位：百位是 3，不滿 5 捨去，48350≈48000。看千位的 8 就會錯選 50000。"
+    },
+    {
+      "id": "estimation-round-bm-3",
+      "type": "basic-mastery",
+      "challenge": "8-1",
+      "errorPath": 1,
+      "stem": "用四捨五入法把 65499 取概數到萬位，是多少？",
+      "options": ["60000", "65000", "70000", "66000"],
+      "answer": 2,
+      "explanation": "取到萬位要看千位：千位是 5，滿 5 進上去，65499≈70000。"
+    },
+    {
+      "id": "estimation-round-bm-4",
+      "type": "basic-mastery",
+      "challenge": "8-2",
+      "errorPath": 1,
+      "stem": "用無條件進入法把 2314 取概數到百位，是多少？",
+      "options": ["2300", "2320", "3000", "2400"],
+      "answer": 3,
+      "explanation": "無條件進入：百位以下只要不是 0 就往前進 1，2314≈2400。"
+    },
+    {
+      "id": "estimation-round-bm-5",
+      "type": "basic-mastery",
+      "challenge": "8-2",
+      "errorPath": 1,
+      "stem": "用無條件進入法把 56021 取概數到千位，是多少？",
+      "options": ["57000", "56000", "56100", "60000"],
+      "answer": 0,
+      "explanation": "千位以下是 021，不是 0，就往千位進 1：56021≈57000。"
+    },
+    {
+      "id": "estimation-round-bm-6",
+      "type": "basic-mastery",
+      "challenge": "8-2",
+      "errorPath": 1,
+      "stem": "用無條件進入法把 7005 取概數到十位，是多少？",
+      "options": ["7000", "7010", "7100", "7005"],
+      "answer": 1,
+      "explanation": "十位以下的個位是 5，不是 0，就往十位進 1：7005≈7010。"
+    },
+    {
+      "id": "estimation-round-bm-7",
+      "type": "basic-mastery",
+      "challenge": "8-3",
+      "errorPath": 1,
+      "stem": "用無條件捨去法把 4890 取概數到千位，是多少？",
+      "options": ["5000", "4800", "4000", "4900"],
+      "answer": 2,
+      "explanation": "無條件捨去：千位以下全部去掉換成 0，4890≈4000，不管百位的 8 有多大。"
+    },
+    {
+      "id": "estimation-round-bm-8",
+      "type": "basic-mastery",
+      "challenge": "8-3",
+      "errorPath": 1,
+      "stem": "用無條件捨去法把 63970 取概數到百位，是多少？",
+      "options": ["64000", "63000", "63970", "63900"],
+      "answer": 3,
+      "explanation": "百位以下的 70 直接去掉換成 0：63970≈63900。"
+    },
+    {
+      "id": "estimation-round-bm-9",
+      "type": "basic-mastery",
+      "challenge": "8-3",
+      "errorPath": 1,
+      "stem": "用無條件捨去法把 285 取概數到十位，是多少？",
+      "options": ["280", "290", "300", "200"],
+      "answer": 0,
+      "explanation": "十位以下的個位 5 直接捨去換成 0：285≈280，捨去法不管 5 要不要進位。"
+    },
+    {
+      "id": "estimation-round-bm-10",
+      "type": "basic-mastery",
+      "challenge": "8-5",
+      "errorPath": 1,
+      "stem": "把 398 和 513 各取概數到百位再相加，大約是多少？",
+      "options": ["大約 800", "大約 900", "大約 1000", "大約 700"],
+      "answer": 1,
+      "explanation": "398≈400，513≈500，400＋500＝900。精算值：398＋513＝911，和估算很接近。"
+    },
+    {
+      "id": "estimation-round-bm-11",
+      "type": "basic-mastery",
+      "challenge": "8-5",
+      "errorPath": 1,
+      "stem": "把 812 和 396 各取概數到百位再相減，大約是多少？",
+      "options": ["大約 500", "大約 300", "大約 400", "大約 1200"],
+      "answer": 2,
+      "explanation": "812≈800，396≈400，800−400＝400。精算值：812−396＝416，和估算很接近。"
+    },
+    {
+      "id": "estimation-round-bm-12",
+      "type": "basic-mastery",
+      "challenge": "8-5",
+      "errorPath": 1,
+      "stem": "把 49 和 21 各取概數到十位再相乘，大約是多少？",
+      "options": ["大約 100", "大約 1500", "大約 800", "大約 1000"],
+      "answer": 3,
+      "explanation": "49≈50，21≈20，50×20＝1000。精算值：49×21＝1029，和估算很接近。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "estimation-round-ci-1",
+      "type": "concept-id",
+      "challenge": "8-6",
+      "statement": "小安算 396＋508＝904，先估 400＋500＝900，可以判斷答案合理。",
+      "correctAnswer": true,
+      "explanation": "先取概數估算出 900，精算結果 904 很接近，表示答案合理，這就是估算檢驗。"
+    },
+    {
+      "id": "estimation-round-ci-2",
+      "type": "concept-id",
+      "challenge": "8-6",
+      "statement": "287×3 估算大約是 900，所以算出 561 也算合理。",
+      "correctAnswer": false,
+      "explanation": "287≈300，300×3＝900，算出 561 和 900 差太多，一定有計算錯誤，要重新檢查。"
+    },
+    {
+      "id": "estimation-round-ci-3",
+      "type": "concept-id",
+      "challenge": "8-6",
+      "statement": "503−298 估算大約是 200，算出 205 是合理的。",
+      "correctAnswer": true,
+      "explanation": "503≈500，298≈300，500−300＝200，精算 503−298＝205，和估算接近，答案合理。"
+    },
+    {
+      "id": "estimation-round-ci-4",
+      "type": "concept-id",
+      "challenge": "8-8",
+      "errorPath": 3,
+      "statement": "「約 3000 人參加園遊會」表示 3000 是概數，人數不一定剛好 3000。",
+      "correctAnswer": true,
+      "explanation": "「約」表示這是取過概數的大概數量，實際人數可能是 2967 或 3021 等接近的數。"
+    },
+    {
+      "id": "estimation-round-ci-5",
+      "type": "concept-id",
+      "challenge": "8-8",
+      "errorPath": 3,
+      "statement": "兩個數取概數後相等，原來的兩個數一定也相等。",
+      "correctAnswer": false,
+      "explanation": "2967 和 3021 取概數到千位都是 3000，但原數不相等，概數相同不代表原數相同。"
+    },
+    {
+      "id": "estimation-round-ci-6",
+      "type": "concept-id",
+      "challenge": "8-8",
+      "errorPath": 3,
+      "statement": "4675 四捨五入到千位是 5000，所以 4675 就等於 5000。",
+      "correctAnswer": false,
+      "explanation": "5000 只是 4675 的概數，用「≈」表示接近，不能寫成等於，概數不是精確值。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "estimation-round-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "8-7",
+      "errorPath": 1,
+      "problem": "把 2649 四捨五入到百位",
+      "wrongSolution": "小明看百位的 6 比 5 大，就進上去，答 2700",
+      "errorOptions": ["判斷位看錯，取到百位應該看十位的 4", "忘記把後面的位數改成 0", "用成無條件進入法", "加法進位計算錯誤"],
+      "correctErrorIndex": 0,
+      "explanation": "取到百位要看十位：十位是 4，不滿 5 捨去，正確答案是 2600。"
+    },
+    {
+      "id": "estimation-round-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "8-7",
+      "errorPath": 1,
+      "problem": "把 78321 四捨五入到千位",
+      "wrongSolution": "小華看千位的 8 比 5 大，就進上去，答 79000",
+      "errorOptions": ["用成無條件捨去法", "取到千位應該看百位的 3，不是看千位本身", "抄錯題目數字", "萬位進位時算錯"],
+      "correctErrorIndex": 1,
+      "explanation": "取到千位要看百位：百位是 3，不滿 5 捨去，正確答案是 78000。"
+    },
+    {
+      "id": "estimation-round-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "8-7",
+      "errorPath": 1,
+      "problem": "把 5473 四捨五入到十位",
+      "wrongSolution": "小杰看十位的 7 比 5 大，就進上去，答 5480",
+      "errorOptions": ["忘記把個位改成 0", "用成無條件進入法", "取到十位應該看個位的 3，不是看十位本身", "百位判斷錯誤"],
+      "correctErrorIndex": 2,
+      "explanation": "取到十位要看個位：個位是 3，不滿 5 捨去，正確答案是 5470。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "estimation-round-ca-1",
+      "type": "context-application",
+      "challenge": "8-4",
+      "errorPath": 2,
+      "scenario": "全班 58 人要搭車出遊，每輛車最多坐 8 人。",
+      "question": "至少要租幾輛車才夠所有人搭？",
+      "options": ["8 輛", "7 輛", "9 輛", "6 輛"],
+      "answer": 0,
+      "explanation": "58÷8＝7 餘 2，剩下 2 人也要搭車，要用無條件進入法多租 1 輛，共 8 輛。用四捨五入會漏載人。"
+    },
+    {
+      "id": "estimation-round-ca-2",
+      "type": "context-application",
+      "challenge": "8-4",
+      "errorPath": 2,
+      "scenario": "一條繩子長 250 公分，每 40 公分剪成一段做跳繩。",
+      "question": "最多可以剪成幾段完整的跳繩？",
+      "options": ["7 段", "6 段", "5 段", "8 段"],
+      "answer": 1,
+      "explanation": "250÷40＝6 餘 10，剩下 10 公分不夠一段，要用無條件捨去法，最多 6 段。進位會多算一段不夠長的。"
+    },
+    {
+      "id": "estimation-round-ca-3",
+      "type": "context-application",
+      "challenge": "8-4",
+      "errorPath": 2,
+      "scenario": "遊樂園門票一張 195 元，小美帶了 1000 元。",
+      "question": "小美最多可以買幾張門票？",
+      "options": ["6 張", "4 張", "5 張", "10 張"],
+      "answer": 2,
+      "explanation": "195×5＝975，還剩 25 元不夠再買一張，用無條件捨去法最多買 5 張。把 195 概數成 200 想成剛好也是 5 張。"
+    }
+  ]
+}

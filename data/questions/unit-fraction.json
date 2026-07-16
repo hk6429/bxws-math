@@ -1,0 +1,253 @@
+{
+  "nodeId": "unit-fraction",
+  "basicMastery": [
+    {
+      "id": "unit-fraction-bm-1",
+      "type": "basic-mastery",
+      "challenge": "12-1",
+      "errorPath": 1,
+      "stem": "哪一種切法，是把披薩「平分」成4份？",
+      "options": ["每塊都一樣大的4塊", "1塊大、3塊小的4塊", "2塊大、2塊小的4塊", "隨便切出來的4塊"],
+      "answer": 0,
+      "explanation": "平分的重點是每份一樣大，不是只有塊數對。大小不同的 4 塊不算平分。"
+    },
+    {
+      "id": "unit-fraction-bm-2",
+      "type": "basic-mastery",
+      "challenge": "12-1",
+      "errorPath": 1,
+      "stem": "把一條吐司平分成2份，這2份要怎麼樣？",
+      "options": ["一樣大", "一大一小", "差一點點沒關係", "隨便分就好"],
+      "answer": 0,
+      "explanation": "平分成 2 份，兩份必須一樣大，才能說每份是二分之一。"
+    },
+    {
+      "id": "unit-fraction-bm-3",
+      "type": "basic-mastery",
+      "challenge": "12-1",
+      "errorPath": 1,
+      "stem": "下面哪一種分法，才算是「平分」？",
+      "options": ["每一份都一樣多", "年紀大的先多拿", "份數一樣就可以", "剩下的不用算"],
+      "answer": 0,
+      "explanation": "平分＝每份一樣多。「份數一樣」不夠，還要每份的大小、數量都相同。"
+    },
+    {
+      "id": "unit-fraction-bm-4",
+      "type": "basic-mastery",
+      "challenge": "12-2",
+      "errorPath": 3,
+      "stem": "把一條吐司平分成8份，一份是全部的？",
+      "options": ["八分之一", "八分之八", "一分之八", "四分之一"],
+      "answer": 0,
+      "explanation": "平分成 8 份，每一份就是全部的八分之一。份數 8 寫在「分之」的前面。"
+    },
+    {
+      "id": "unit-fraction-bm-5",
+      "type": "basic-mastery",
+      "challenge": "12-2",
+      "errorPath": 3,
+      "stem": "把一張色紙平分成4份，一份是全部的？",
+      "options": ["四分之一", "四分之四", "一分之四", "二分之一"],
+      "answer": 0,
+      "explanation": "平分成 4 份，每一份是全部的四分之一。四分之四是全部，不是一份。"
+    },
+    {
+      "id": "unit-fraction-bm-6",
+      "type": "basic-mastery",
+      "challenge": "12-2",
+      "errorPath": 3,
+      "stem": "把一盒蛋糕平分成6份，一份是全部的？",
+      "options": ["六分之一", "三分之一", "一分之六", "六分之六"],
+      "answer": 0,
+      "explanation": "平分成 6 份，每一份是全部的六分之一。唸法是「份數」分之一。"
+    },
+    {
+      "id": "unit-fraction-bm-7",
+      "type": "basic-mastery",
+      "challenge": "12-3",
+      "errorPath": 3,
+      "stem": "巧克力平分成10格，塗色1格，塗色部分是全部的？",
+      "options": ["十分之一", "一分之十", "九分之一", "五分之一"],
+      "answer": 0,
+      "explanation": "全部有 10 格，塗色 1 格，就是十分之一。九分之一是誤數「沒塗色的格子」。"
+    },
+    {
+      "id": "unit-fraction-bm-8",
+      "type": "basic-mastery",
+      "challenge": "12-3",
+      "errorPath": 3,
+      "stem": "畫紙平分成5格，其中1格塗紅色，紅色是全部的？",
+      "options": ["五分之一", "四分之一", "一分之五", "二分之一"],
+      "answer": 0,
+      "explanation": "全部平分成 5 格，紅色佔 1 格，是五分之一。四分之一是誤數了沒塗色的 4 格。"
+    },
+    {
+      "id": "unit-fraction-bm-9",
+      "type": "basic-mastery",
+      "challenge": "12-3",
+      "errorPath": 3,
+      "stem": "一條緞帶平分成3段，拿走1段，拿走的是全部的？",
+      "options": ["三分之一", "二分之一", "三分之二", "一分之三"],
+      "answer": 0,
+      "explanation": "全部平分成 3 段，拿走 1 段是三分之一。二分之一是誤數了剩下的段數。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "unit-fraction-ci-1",
+      "type": "concept-id",
+      "challenge": "12-4",
+      "statement": "日常說的「一半」，就是二分之一。",
+      "correctAnswer": true,
+      "explanation": "把東西平分成 2 份，其中 1 份就是一半，也就是二分之一，兩種說法一樣。"
+    },
+    {
+      "id": "unit-fraction-ci-2",
+      "type": "concept-id",
+      "challenge": "12-4",
+      "errorPath": 1,
+      "statement": "把蛋糕切成2塊，每塊一定是二分之一。",
+      "correctAnswer": false,
+      "explanation": "要「平分」成 2 塊才行。如果一塊大一塊小，就不能說每塊是二分之一。"
+    },
+    {
+      "id": "unit-fraction-ci-3",
+      "type": "concept-id",
+      "challenge": "12-4",
+      "errorPath": 1,
+      "statement": "把一張紙平分成2份，每份都是這張紙的一半。",
+      "correctAnswer": true,
+      "explanation": "平分成 2 份，每份一樣大，各是這張紙的一半，也就是二分之一。"
+    },
+    {
+      "id": "unit-fraction-ci-4",
+      "type": "concept-id",
+      "challenge": "12-5",
+      "errorPath": 3,
+      "statement": "四分之一的「4」，表示全部平分成4份。",
+      "correctAnswer": true,
+      "explanation": "四分之一的 4 是「平分的份數」，一是「拿其中的一份」。"
+    },
+    {
+      "id": "unit-fraction-ci-5",
+      "type": "concept-id",
+      "challenge": "12-5",
+      "errorPath": 2,
+      "statement": "八分之一比四分之一大，因為8比4大。",
+      "correctAnswer": false,
+      "explanation": "分成 8 份，每份反而比分成 4 份更小。份數越多，每一份越小，不能用整數的大小來比。"
+    },
+    {
+      "id": "unit-fraction-ci-6",
+      "type": "concept-id",
+      "challenge": "12-5",
+      "errorPath": 2,
+      "statement": "同一個蛋糕，平分的份數越多，每一份就越小。",
+      "correctAnswer": true,
+      "explanation": "一樣大的蛋糕，分給越多份，每份當然越小。所以八分之一比四分之一小。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "unit-fraction-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "12-6",
+      "errorPath": 1,
+      "problem": "判斷每塊披薩是不是四分之一。",
+      "wrongSolution": "小竹把披薩切成大小不同的4塊，說每塊都是四分之一。",
+      "errorOptions": ["沒有平分，就不能叫四分之一", "塊數數錯了", "分數名稱唸錯", "披薩切太小塊"],
+      "correctErrorIndex": 0,
+      "explanation": "四分之一的前提是「平分」成 4 塊。大小不同的 4 塊，塊數對了但沒平分，不能叫四分之一。"
+    },
+    {
+      "id": "unit-fraction-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "12-6",
+      "errorPath": 1,
+      "problem": "判斷每段緞帶是不是二分之一。",
+      "wrongSolution": "小海把緞帶剪成一長一短2段，說每段是二分之一。",
+      "errorOptions": ["兩段不一樣長，沒有平分", "段數數錯了", "緞帶太短", "名稱寫成三分之一"],
+      "correctErrorIndex": 0,
+      "explanation": "剪成 2 段但一長一短，不是平分，所以不能說每段是二分之一。"
+    },
+    {
+      "id": "unit-fraction-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "12-6",
+      "errorPath": 1,
+      "problem": "判斷每人是不是拿到餅乾的三分之一。",
+      "wrongSolution": "小塘把餅乾分成3塊，自己拿最大塊，說大家都拿到三分之一。",
+      "errorOptions": ["三塊大小不同，沒有平分", "人數數錯了", "餅乾不能分成三塊", "應該說四分之一"],
+      "correctErrorIndex": 0,
+      "explanation": "有大有小就不是平分，拿最大塊的人拿到的比三分之一多。"
+    },
+    {
+      "id": "unit-fraction-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "12-7",
+      "errorPath": 2,
+      "problem": "比較六分之一和三分之一，哪個大？",
+      "wrongSolution": "小海說六分之一比較大，因為6比3大。",
+      "errorOptions": ["份數越多每份越小，不能用6比3來比", "數字抄錯了", "應該把6和3相加", "兩個一樣大"],
+      "correctErrorIndex": 0,
+      "explanation": "分成 6 份的每一份，比分成 3 份的每一份小，所以六分之一比三分之一小。"
+    },
+    {
+      "id": "unit-fraction-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "12-7",
+      "errorPath": 2,
+      "problem": "比較十分之一和五分之一，哪個大？",
+      "wrongSolution": "小池說十分之一比較大，因為10比5大。",
+      "errorOptions": ["分成10份每份更小，不能只看數字大", "數字看錯了", "應該把10和5相減", "兩個一樣大"],
+      "correctErrorIndex": 0,
+      "explanation": "同一個東西分成 10 份，每份比分成 5 份更小，所以十分之一比五分之一小。"
+    },
+    {
+      "id": "unit-fraction-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "12-7",
+      "errorPath": 2,
+      "problem": "同一個蛋糕，八分之一和二分之一哪塊大？",
+      "wrongSolution": "小竹說八分之一那塊比較大，因為8比2大。",
+      "errorOptions": ["分成8份每塊更小，整數比法用錯地方", "蛋糕大小不一樣", "應該把8和2相乘", "兩塊一樣大"],
+      "correctErrorIndex": 0,
+      "explanation": "分成 8 塊的每塊，比分成 2 塊的每塊小很多，所以八分之一比二分之一小。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "unit-fraction-ca-1",
+      "type": "context-application",
+      "challenge": "12-8",
+      "errorPath": 3,
+      "scenario": "4個人平分一盒披薩，每人拿到一樣多。",
+      "question": "每人吃到這盒的幾分之一？",
+      "options": ["四分之一", "四分之四", "一分之四", "二分之一"],
+      "answer": 0,
+      "explanation": "平分成 4 份，每人拿 1 份，是這盒的四分之一。"
+    },
+    {
+      "id": "unit-fraction-ca-2",
+      "type": "context-application",
+      "challenge": "12-8",
+      "errorPath": 3,
+      "scenario": "小安和哥哥2人平分一條巧克力。",
+      "question": "每人拿到這條的多少？",
+      "options": ["這條的二分之一", "這條的一分之二", "這條的二分之二", "這條的四分之一"],
+      "answer": 0,
+      "explanation": "2 人平分，每人拿到二分之一，也就是一半。二分之二是整條，不是一人份。"
+    },
+    {
+      "id": "unit-fraction-ca-3",
+      "type": "context-application",
+      "challenge": "12-8",
+      "errorPath": 2,
+      "scenario": "同一條巧克力，小美說要吃「一半」，小安說要吃「二分之一條」。",
+      "question": "兩人說的份量一樣多嗎？",
+      "options": ["一樣多", "小安比較多", "小美比較多", "沒辦法比較"],
+      "answer": 0,
+      "explanation": "「一半」就是二分之一，兩人說法不同、份量相同，都是把整條平分成 2 份拿 1 份。"
+    }
+  ]
+}

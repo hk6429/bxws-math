@@ -1,0 +1,344 @@
+{
+  "nodeId": "mixed-four-ops",
+  "basicMastery": [
+    {
+      "id": "mixed-four-ops-bm-1",
+      "type": "basic-mastery",
+      "challenge": "6-1",
+      "errorPath": 1,
+      "stem": "12 + 8 × 5 = ？",
+      "options": [
+        "100",
+        "25",
+        "60",
+        "52"
+      ],
+      "answer": 3,
+      "explanation": "先乘除後加減：8×5 = 40，12+40 = 52；由左到右硬算才會得到 100。"
+    },
+    {
+      "id": "mixed-four-ops-bm-2",
+      "type": "basic-mastery",
+      "challenge": "6-1",
+      "errorPath": 1,
+      "stem": "(30 − 6) ÷ 4 = ？",
+      "options": [
+        "6",
+        "28.5",
+        "24",
+        "7.5"
+      ],
+      "answer": 0,
+      "explanation": "括號先算：30−6 = 24，24÷4 = 6。"
+    },
+    {
+      "id": "mixed-four-ops-bm-3",
+      "type": "basic-mastery",
+      "challenge": "6-1",
+      "errorPath": 1,
+      "stem": "50 − (14 + 6) × 2 = ？",
+      "options": [
+        "84",
+        "48",
+        "10",
+        "30"
+      ],
+      "answer": 2,
+      "explanation": "括號先算 14+6 = 20，再算乘法 20×2 = 40，最後 50−40 = 10。"
+    },
+    {
+      "id": "mixed-four-ops-bm-4",
+      "type": "basic-mastery",
+      "challenge": "6-2",
+      "errorPath": 3,
+      "stem": "0.5 + 1/4 = ？",
+      "options": [
+        "0.9",
+        "0.75",
+        "0.54",
+        "1.5"
+      ],
+      "answer": 1,
+      "explanation": "1/4 = 0.25，0.5+0.25 = 0.75；把 1/4 當 0.4 才會得到 0.9。"
+    },
+    {
+      "id": "mixed-four-ops-bm-5",
+      "type": "basic-mastery",
+      "challenge": "6-2",
+      "errorPath": 3,
+      "stem": "3/5 × 0.5 = ？",
+      "options": [
+        "0.3",
+        "0.35",
+        "1.1",
+        "0.15"
+      ],
+      "answer": 0,
+      "explanation": "3/5 = 0.6，0.6×0.5 = 0.3。"
+    },
+    {
+      "id": "mixed-four-ops-bm-6",
+      "type": "basic-mastery",
+      "challenge": "6-2",
+      "errorPath": 3,
+      "stem": "1.2 − 1/2 = ？",
+      "options": [
+        "1",
+        "0.6",
+        "1.15",
+        "0.7"
+      ],
+      "answer": 3,
+      "explanation": "1/2 = 0.5，1.2−0.5 = 0.7；把 1/2 當 0.2 才會得到 1。"
+    },
+    {
+      "id": "mixed-four-ops-bm-7",
+      "type": "basic-mastery",
+      "challenge": "6-3",
+      "errorPath": 1,
+      "stem": "4.8 × 25 + 5.2 × 25 = ？",
+      "options": [
+        "240",
+        "250",
+        "260",
+        "2500"
+      ],
+      "answer": 1,
+      "explanation": "用分配律：(4.8+5.2)×25 = 10×25 = 250。"
+    },
+    {
+      "id": "mixed-four-ops-bm-8",
+      "type": "basic-mastery",
+      "challenge": "6-3",
+      "errorPath": 1,
+      "stem": "9.9 × 8 = ？（用簡算想想看）",
+      "options": [
+        "72.9",
+        "80",
+        "79.2",
+        "79.8"
+      ],
+      "answer": 2,
+      "explanation": "9.9×8 = (10−0.1)×8 = 80−0.8 = 79.2。"
+    },
+    {
+      "id": "mixed-four-ops-bm-9",
+      "type": "basic-mastery",
+      "challenge": "6-3",
+      "errorPath": 1,
+      "stem": "25 × 32 × 0.125 = ？",
+      "options": [
+        "100",
+        "10",
+        "1000",
+        "80"
+      ],
+      "answer": 0,
+      "explanation": "先算 32×0.125 = 4，再算 25×4 = 100，交換結合更好算。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "mixed-four-ops-ci-1",
+      "type": "concept-id",
+      "challenge": "6-4",
+      "errorPath": 1,
+      "statement": "計算 8 + 4 × 3 時，要先算 4 × 3。",
+      "correctAnswer": true,
+      "explanation": "先乘除後加減：8+4×3 = 8+12 = 20。"
+    },
+    {
+      "id": "mixed-four-ops-ci-2",
+      "type": "concept-id",
+      "challenge": "6-4",
+      "errorPath": 1,
+      "statement": "只有加法和減法的算式，由左到右依序計算就可以。",
+      "correctAnswer": true,
+      "explanation": "同級運算（只有加減）由左到右計算即可，例如 10−3+2 = 9。"
+    },
+    {
+      "id": "mixed-four-ops-ci-3",
+      "type": "concept-id",
+      "challenge": "6-4",
+      "errorPath": 1,
+      "statement": "計算 20 − 10 ÷ 5 時，要先算 20 − 10。",
+      "correctAnswer": false,
+      "explanation": "除法要先算：20−10÷5 = 20−2 = 18，不是 10÷5 = 2。"
+    },
+    {
+      "id": "mixed-four-ops-ci-4",
+      "type": "concept-id",
+      "challenge": "6-5",
+      "errorPath": 2,
+      "statement": "10 − (4 − 1) 和 10 − 4 − 1 的答案相同。",
+      "correctAnswer": false,
+      "explanation": "10−(4−1) = 10−3 = 7，10−4−1 = 5；去掉括號時後面的減號要變號。"
+    },
+    {
+      "id": "mixed-four-ops-ci-5",
+      "type": "concept-id",
+      "challenge": "6-5",
+      "errorPath": 2,
+      "statement": "15 − (5 + 3) 和 15 − 5 − 3 的答案相同。",
+      "correctAnswer": true,
+      "explanation": "減掉一個和，等於連減兩個數：兩邊都是 7。"
+    },
+    {
+      "id": "mixed-four-ops-ci-6",
+      "type": "concept-id",
+      "challenge": "6-5",
+      "errorPath": 2,
+      "statement": "12 − (7 − 2) 和 12 − 7 + 2 的答案相同。",
+      "correctAnswer": true,
+      "explanation": "去括號要變號：12−(7−2) = 12−7+2 = 7。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "mixed-four-ops-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "6-6",
+      "errorPath": 1,
+      "problem": "計算 6 + 4 × 5",
+      "wrongSolution": "小新算成 (6+4)×5 = 50",
+      "errorOptions": [
+        "乘法直式計算錯誤",
+        "先算了加法，應該先算乘法",
+        "把數字 6 抄成 5",
+        "答案忘記寫單位"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "先乘除後加減：4×5 = 20，6+20 = 26。"
+    },
+    {
+      "id": "mixed-four-ops-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "6-6",
+      "errorPath": 1,
+      "problem": "計算 36 ÷ 6 + 3",
+      "wrongSolution": "小力先算 6+3 = 9，再算 36÷9 = 4",
+      "errorOptions": [
+        "除法計算錯誤",
+        "把除號看成加號",
+        "先算了加法，應該先算除法",
+        "答案忘記進位"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "先算除法 36÷6 = 6，再加 3 得 9。"
+    },
+    {
+      "id": "mixed-four-ops-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "6-6",
+      "errorPath": 1,
+      "problem": "計算 40 − 20 ÷ 4",
+      "wrongSolution": "小田算成 (40−20)÷4 = 5",
+      "errorOptions": [
+        "先算了減法，應該先算除法",
+        "除法計算錯誤",
+        "減法計算錯誤",
+        "把題目的數字抄錯"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "先算除法 20÷4 = 5，再算 40−5 = 35。"
+    },
+    {
+      "id": "mixed-four-ops-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "6-7",
+      "errorPath": 3,
+      "problem": "計算 0.5 + 1/2",
+      "wrongSolution": "小柏把 1/2 當成 0.2，算出 0.7",
+      "errorOptions": [
+        "加法直式計算錯誤",
+        "應該先通分才能加",
+        "把 0.5 抄成 0.7",
+        "1/2 化成小數應該是 0.5，不是 0.2"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "1/2 = 0.5，0.5+0.5 = 1。"
+    },
+    {
+      "id": "mixed-four-ops-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "6-7",
+      "errorPath": 3,
+      "problem": "計算 3/4 × 8",
+      "wrongSolution": "小雨把 3/4 當成 0.34，算出 2.72",
+      "errorOptions": [
+        "乘法直式計算錯誤",
+        "8 要先化成分數才能乘",
+        "3/4 化成小數應該是 0.75",
+        "答案忘記約分"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "3/4 = 0.75，0.75×8 = 6；也可以直接算 3×8÷4 = 6。"
+    },
+    {
+      "id": "mixed-four-ops-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "6-7",
+      "errorPath": 3,
+      "problem": "計算 25% × 400",
+      "wrongSolution": "小威把 25% 當成 2.5，算出 1000",
+      "errorOptions": [
+        "應該用除法來算",
+        "25% 應該是 0.25，位值弄錯了",
+        "400 要先打折",
+        "乘法進位錯誤"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "25% = 0.25，0.25×400 = 100。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "mixed-four-ops-ca-1",
+      "type": "context-application",
+      "challenge": "6-8",
+      "errorPath": 1,
+      "scenario": "小庭帶 500 元去文具店，買 3 盒彩色筆，每盒 120 元。",
+      "question": "應該找回多少元？",
+      "options": [
+        "380 元",
+        "260 元",
+        "140 元",
+        "40 元"
+      ],
+      "answer": 2,
+      "explanation": "先算 3 盒共 120×3 = 360 元，500−360 = 140 元。"
+    },
+    {
+      "id": "mixed-four-ops-ca-2",
+      "type": "context-application",
+      "challenge": "6-8",
+      "errorPath": 1,
+      "scenario": "一瓶 2 公升的果汁，倒掉 0.8 公升，剩下的平分成 3 杯。",
+      "question": "每杯是多少公升？",
+      "options": [
+        "1.2 公升",
+        "0.67 公升",
+        "0.27 公升",
+        "0.4 公升"
+      ],
+      "answer": 3,
+      "explanation": "剩下 2−0.8 = 1.2 公升，1.2÷3 = 0.4 公升；要先減再除。"
+    },
+    {
+      "id": "mixed-four-ops-ca-3",
+      "type": "context-application",
+      "challenge": "6-8",
+      "errorPath": 1,
+      "scenario": "原子筆一枝 19 元，小捷要買 21 枝，先用概數估算。",
+      "question": "總價大約是多少元？",
+      "options": [
+        "約 400 元",
+        "約 300 元",
+        "約 500 元",
+        "約 200 元"
+      ],
+      "answer": 0,
+      "explanation": "19≈20、21≈20，20×20 = 400；實際 19×21 = 399，估得很接近。"
+    }
+  ]
+}

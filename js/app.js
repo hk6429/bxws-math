@@ -1,4 +1,4 @@
-import { loadSkillTree, allNodes, nodeState, getNodeMastery } from "./schema.js";
+import { loadSkillTree, allNodes, nodeState, getNodeMastery, isNodePlayable } from "./schema.js";
 import { renderSkillTree, computeOverview } from "./skilltree-ui.js";
 import { buildSession, buildMasterSession, buildReviewSession, countDueReviews } from "./quiz-loader.js";
 import { renderQuestion } from "./quiz-ui.js";
@@ -123,7 +123,7 @@ async function goHome() {
 // ── P0：今日修稿單＋星墨瓶 ──
 async function makeDailyBoard(container) {
   const nodeIds = allNodes(tree)
-    .filter((n) => nodeState(n, tree) !== "locked")
+    .filter((n) => isNodePlayable(n, tree))
     .map((n) => n.id);
   const dueCount = nodeIds.length > 0 ? await countDueReviews(nodeIds) : 0;
   const errorCount = listWrongQuestions().length;
@@ -245,7 +245,7 @@ async function showWorkshop() {
 
 async function startReviewSession() {
   const nodeIds = allNodes(tree)
-    .filter((n) => nodeState(n, tree) !== "locked")
+    .filter((n) => isNodePlayable(n, tree))
     .map((n) => n.id);
   const queue = await buildReviewSession(nodeIds, 6);
   if (queue.length === 0) return;
@@ -371,7 +371,7 @@ function makeWeeklyCard(container) {
 }
 
 async function startWeeklySession() {
-  const nodeIds = allNodes(tree).map((n) => n.id);
+  const nodeIds = allNodes(tree).filter((n) => !n.contentPending).map((n) => n.id);
   session = newSession({
     queue: await buildWeeklySession(nodeIds, 10),
     node: { id: WEEKLY_ID, name: `本週大師盃 ${isoWeekKey()}` },
@@ -401,7 +401,7 @@ function maybeShowEndgame(container) {
 }
 
 async function startMasterTrial() {
-  const nodeIds = allNodes(tree).map((n) => n.id);
+  const nodeIds = allNodes(tree).filter((n) => !n.contentPending).map((n) => n.id);
   session = newSession({
     queue: await buildMasterSession(nodeIds),
     node: { id: MASTER_TRIAL_ID, name: "大師試煉" },
@@ -463,6 +463,7 @@ function maybeShowOnboardingTip() {
 
 // 進節點先翻「心法頁」選策略，再開局
 function startQuiz(node) {
+  if (!isNodePlayable(node, tree)) return;
   showView("quiz");
   clearSprintTimer();
   document.getElementById("quiz-node-name").textContent = node.name;
@@ -503,7 +504,7 @@ async function startQuizWithStrategy(node, strategyId) {
   const errorEntries = strategyId === "repair"
     ? listWrongQuestions().filter((e) => e.nodeId === node.id)
     : [];
-  const queue = await buildSession(node.id, 8, strategyId, errorEntries);
+  const queue = await buildSession(node.id, 8, strategyId, errorEntries, node);
   session = newSession({
     queue,
     node,
@@ -596,7 +597,8 @@ function handleAnswer(question, isCorrect, meta = {}) {
   const nodeId = question._nodeId ?? session.node.id;
   const elapsed = Math.max(0, Date.now() - session.qStartAt);
   const wasReviewDue = hasRecord(question.id) && isDue(question.id);
-  recordAnswer(nodeId, question.id, isCorrect, elapsed);
+  const node = allNodes(tree).find((item) => item.id === nodeId) ?? {};
+  recordAnswer(nodeId, question, isCorrect, elapsed, node);
   updateBox(question.id, isCorrect);
   session.roundTotal += 1;
   session.elapsedTotal += elapsed;
@@ -735,7 +737,7 @@ function finishSession() {
 
   const player = getPlayerName();
   if (player) {
-    const nodeIds = allNodes(tree).map((n) => n.id);
+    const nodeIds = allNodes(tree).filter((n) => !n.contentPending).map((n) => n.id);
     submitScore(player, overallMasteryPct(nodeIds));
   }
 
@@ -818,6 +820,13 @@ function makeSummary(stats, newBadges, newDrops = [], weeklyRecord = null, chall
   box.appendChild(Object.assign(document.createElement("h3"), {
     textContent: `本節點戰力值：${Math.round(stats.masteryPct * 100)}%`,
   }));
+
+  if (stats.feedback && !stats.mastered) {
+    box.appendChild(Object.assign(document.createElement("div"), {
+      className: "strategy-note",
+      textContent: stats.feedback,
+    }));
+  }
 
   // 每週大師盃戰績碼（結算頁最顯眼位置）
   if (weeklyRecord) {
@@ -923,7 +932,11 @@ function makeSummary(stats, newBadges, newDrops = [], weeklyRecord = null, chall
 
 let challengeCatalogPromise = null;
 function getChallengeCatalog() {
-  if (!challengeCatalogPromise) challengeCatalogPromise = buildChallengeCatalog(allNodes(tree).map((node) => node.id));
+  if (!challengeCatalogPromise) {
+    challengeCatalogPromise = buildChallengeCatalog(
+      allNodes(tree).filter((node) => !node.contentPending).map((node) => node.id)
+    );
+  }
   return challengeCatalogPromise;
 }
 

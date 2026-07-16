@@ -1,0 +1,252 @@
+{
+  "nodeId": "calendar-units",
+  "basicMastery": [
+    {
+      "id": "calendar-units-bm-1",
+      "type": "basic-mastery",
+      "challenge": "6-1",
+      "stem": "1星期有幾日？",
+      "options": ["5日", "6日", "10日", "7日"],
+      "answer": 3,
+      "explanation": "1星期有7日：星期日、一、二、三、四、五、六。"
+    },
+    {
+      "id": "calendar-units-bm-2",
+      "type": "basic-mastery",
+      "challenge": "6-1",
+      "stem": "1年有幾個月？",
+      "options": ["10個月", "12個月", "7個月", "24個月"],
+      "answer": 1,
+      "explanation": "1年有12個月，從1月到12月。"
+    },
+    {
+      "id": "calendar-units-bm-3",
+      "type": "basic-mastery",
+      "challenge": "6-1",
+      "errorPath": 3,
+      "stem": "2星期一共有幾日？",
+      "options": ["14日", "9日", "12日", "7日"],
+      "answer": 0,
+      "explanation": "1星期是7日，2星期就是7＋7＝14日。"
+    },
+    {
+      "id": "calendar-units-bm-4",
+      "type": "basic-mastery",
+      "challenge": "6-2",
+      "errorPath": 2,
+      "stem": "7月1日到7月10日，一共是幾天？",
+      "options": ["9天", "11天", "10天", "8天"],
+      "answer": 2,
+      "explanation": "從1日數到10日，1、2、3……10，共10天。用10－1＝9會把第一天漏掉。"
+    },
+    {
+      "id": "calendar-units-bm-5",
+      "type": "basic-mastery",
+      "challenge": "6-2",
+      "errorPath": 2,
+      "stem": "7月有31天。暑假7月1日到8月29日，共幾天？",
+      "options": ["59天", "60天", "61天", "29天"],
+      "answer": 1,
+      "explanation": "7月整月31天，8月從1日到29日是29天，31＋29＝60天。"
+    },
+    {
+      "id": "calendar-units-bm-6",
+      "type": "basic-mastery",
+      "challenge": "6-2",
+      "errorPath": 2,
+      "stem": "8月有31天。露營從8月30日到9月2日，共幾天？",
+      "options": ["3天", "5天", "4天", "2天"],
+      "answer": 2,
+      "explanation": "一天一天數：8月30日、31日、9月1日、2日，共4天。"
+    },
+    {
+      "id": "calendar-units-bm-7",
+      "type": "basic-mastery",
+      "challenge": "6-3",
+      "errorPath": 3,
+      "stem": "這個月的1日是星期三，8日是星期幾？",
+      "options": ["星期二", "星期三", "星期四", "星期五"],
+      "answer": 1,
+      "explanation": "1日到8日剛好過了7天，一星期是7天，所以8日又回到星期三。"
+    },
+    {
+      "id": "calendar-units-bm-8",
+      "type": "basic-mastery",
+      "challenge": "6-3",
+      "errorPath": 3,
+      "stem": "這個月的2日是星期一，9日是星期幾？",
+      "options": ["星期一", "星期二", "星期日", "星期三"],
+      "answer": 0,
+      "explanation": "2日過7天是9日，過一整個星期後還是星期一。"
+    },
+    {
+      "id": "calendar-units-bm-9",
+      "type": "basic-mastery",
+      "challenge": "6-3",
+      "errorPath": 3,
+      "stem": "這個月的1日是星期二，15日是星期幾？",
+      "options": ["星期三", "星期四", "星期二", "星期一"],
+      "answer": 2,
+      "explanation": "1日到15日過了14天，剛好是2個星期，所以15日還是星期二。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "calendar-units-ci-1",
+      "type": "concept-id",
+      "challenge": "6-4",
+      "errorPath": 1,
+      "statement": "每個月都是30天。",
+      "correctAnswer": false,
+      "explanation": "月份的天數不一樣：有31天的大月、30天的小月，2月只有28或29天。"
+    },
+    {
+      "id": "calendar-units-ci-2",
+      "type": "concept-id",
+      "challenge": "6-4",
+      "errorPath": 1,
+      "statement": "一年裡有的月是31天，有的月是30天。",
+      "correctAnswer": true,
+      "explanation": "1、3、5、7、8、10、12月是31天；4、6、9、11月是30天；2月最特別，只有28或29天。"
+    },
+    {
+      "id": "calendar-units-ci-3",
+      "type": "concept-id",
+      "challenge": "6-4",
+      "errorPath": 1,
+      "statement": "一年裡只有一個月是31天。",
+      "correctAnswer": false,
+      "explanation": "一年裡有7個月是31天：1、3、5、7、8、10、12月。"
+    },
+    {
+      "id": "calendar-units-ci-4",
+      "type": "concept-id",
+      "challenge": "6-5",
+      "errorPath": 1,
+      "statement": "2月有時是28天，有時是29天。",
+      "correctAnswer": true,
+      "explanation": "平年的2月是28天，閏年的2月是29天，大約每4年出現一次29天。"
+    },
+    {
+      "id": "calendar-units-ci-5",
+      "type": "concept-id",
+      "challenge": "6-5",
+      "errorPath": 1,
+      "statement": "2月每年都是30天。",
+      "correctAnswer": false,
+      "explanation": "2月從來沒有30天，只有28天或29天，是一年裡天數最少的月。"
+    },
+    {
+      "id": "calendar-units-ci-6",
+      "type": "concept-id",
+      "challenge": "6-5",
+      "errorPath": 1,
+      "statement": "每年2月的天數都一樣多。",
+      "correctAnswer": false,
+      "explanation": "2月的天數不固定：平年28天、閏年29天，所以不是每年都一樣。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "calendar-units-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "6-6",
+      "errorPath": 2,
+      "problem": "算從星期三到下星期三經過幾天",
+      "wrongSolution": "小明把頭尾兩個星期三都數進去，說經過8天。",
+      "errorOptions": ["頭尾重複多算1天，應該是7天", "其實應該是9天才對", "星期三不能當開始的那一天", "應該改用月份的天數來算"],
+      "correctErrorIndex": 0,
+      "explanation": "從星期三「經過」到下星期三是7天；把開始那天也數進去就會多算1天變8天。"
+    },
+    {
+      "id": "calendar-units-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "6-6",
+      "errorPath": 2,
+      "problem": "算5月3日到5月6日一共是幾天",
+      "wrongSolution": "小華用6－3＝3，說一共是3天。",
+      "errorOptions": ["應該用6＋3＝9天來算", "相減會漏掉第一天，共4天", "3日和6日都不能算進去", "應該是2天才對"],
+      "correctErrorIndex": 1,
+      "explanation": "數數看：3日、4日、5日、6日共4天。直接相減6－3＝3會把3日這一天漏掉。"
+    },
+    {
+      "id": "calendar-units-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "6-6",
+      "errorPath": 3,
+      "problem": "算7天後是星期幾",
+      "wrongSolution": "今天星期一，小美說7天後是星期二。",
+      "errorOptions": ["應該是星期日才對", "7天後應該是星期三", "一星期7天，7天後還是星期一", "星期幾不能用加法來算"],
+      "correctErrorIndex": 2,
+      "explanation": "一星期是7天，過7天會回到同一個星期幾，所以7天後還是星期一。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "calendar-units-ca-1",
+      "type": "context-application",
+      "challenge": "6-7",
+      "errorPath": 3,
+      "scenario": "今天是星期五，6月20日。",
+      "question": "下星期五去露營，露營是幾月幾日？",
+      "options": ["6月27日", "6月26日", "6月25日", "6月28日"],
+      "answer": 0,
+      "explanation": "下星期五是7天後，20＋7＝27，所以是6月27日。"
+    },
+    {
+      "id": "calendar-units-ca-2",
+      "type": "context-application",
+      "challenge": "6-7",
+      "errorPath": 3,
+      "scenario": "今天是星期二，3月4日。",
+      "question": "下星期二要考試，考試是幾月幾日？",
+      "options": ["3月10日", "3月12日", "3月11日", "3月9日"],
+      "answer": 2,
+      "explanation": "下星期二是7天後，4＋7＝11，所以是3月11日。"
+    },
+    {
+      "id": "calendar-units-ca-3",
+      "type": "context-application",
+      "challenge": "6-7",
+      "errorPath": 3,
+      "scenario": "今天是星期日，9月7日。",
+      "question": "下星期日開運動會，那天是幾月幾日？",
+      "options": ["9月13日", "9月12日", "9月15日", "9月14日"],
+      "answer": 3,
+      "explanation": "下星期日是7天後，7＋7＝14，所以是9月14日。"
+    },
+    {
+      "id": "calendar-units-ca-4",
+      "type": "context-application",
+      "challenge": "6-8",
+      "errorPath": 1,
+      "scenario": "今天是12月31日，是一年的最後一天。",
+      "question": "明天是幾月幾日？",
+      "options": ["12月32日", "13月1日", "1月2日", "1月1日"],
+      "answer": 3,
+      "explanation": "12月31日是一年的最後一天，隔天就跨到新的一年，是1月1日。"
+    },
+    {
+      "id": "calendar-units-ca-5",
+      "type": "context-application",
+      "challenge": "6-8",
+      "errorPath": 1,
+      "scenario": "6月只有30天。今天是6月30日。",
+      "question": "明天是幾月幾日？",
+      "options": ["7月1日", "6月31日", "7月2日", "6月29日"],
+      "answer": 0,
+      "explanation": "6月只到30日，沒有6月31日，所以明天是7月1日。"
+    },
+    {
+      "id": "calendar-units-ca-6",
+      "type": "context-application",
+      "challenge": "6-8",
+      "errorPath": 1,
+      "scenario": "4月只有30天。今天是4月30日。",
+      "question": "明天是幾月幾日？",
+      "options": ["4月31日", "5月2日", "5月1日", "4月29日"],
+      "answer": 2,
+      "explanation": "4月是30天的小月，30日是最後一天，明天就是5月1日。"
+    }
+  ]
+}

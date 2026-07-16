@@ -1,0 +1,254 @@
+{
+  "nodeId": "length-compare",
+  "basicMastery": [
+    {
+      "id": "length-compare-bm-1",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "errorPath": 2,
+      "stem": "鉛筆排了6個迴紋針長，蠟筆排了4個，鉛筆比蠟筆長幾個迴紋針？",
+      "options": ["10個", "2個", "4個", "6個"],
+      "answer": 1,
+      "explanation": "用同樣的迴紋針當單位：6 − 4 = 2，鉛筆比蠟筆長 2 個迴紋針。10 個是把兩個數加起來了。"
+    },
+    {
+      "id": "length-compare-bm-2",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "errorPath": 2,
+      "stem": "桌子排了8個手掌長，椅子排了5個，桌子比椅子長幾個手掌？",
+      "options": ["3個", "13個", "5個", "8個"],
+      "answer": 0,
+      "explanation": "用同樣的手掌當單位：8 − 5 = 3，桌子比椅子長 3 個手掌。13 個是加起來，不是比多少。"
+    },
+    {
+      "id": "length-compare-bm-3",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "errorPath": 2,
+      "stem": "繩子甲排了7塊積木長，繩子乙排了9塊，乙比甲長幾塊積木？",
+      "options": ["7塊", "16塊", "2塊", "9塊"],
+      "answer": 2,
+      "explanation": "用同樣的積木當單位：9 − 7 = 2，繩子乙比繩子甲長 2 塊積木。"
+    },
+    {
+      "id": "length-compare-bm-4",
+      "type": "basic-mastery",
+      "challenge": "1-2",
+      "errorPath": 2,
+      "stem": "三條線：紅線5格長、藍線8格長、綠線3格長，哪一條最長？",
+      "options": ["紅線", "藍線", "綠線", "一樣長"],
+      "answer": 1,
+      "explanation": "用同樣的方格數一數：8 格最多，所以藍線最長。比長短要數格子，不能用猜的。"
+    },
+    {
+      "id": "length-compare-bm-5",
+      "type": "basic-mastery",
+      "challenge": "1-2",
+      "errorPath": 2,
+      "stem": "三枝筆：甲4格長、乙6格長、丙7格長，哪一枝最短？",
+      "options": ["乙", "丙", "都一樣", "甲"],
+      "answer": 3,
+      "explanation": "數格子比一比：4 格最少，所以甲最短。丙 7 格是最長的那一枝。"
+    },
+    {
+      "id": "length-compare-bm-6",
+      "type": "basic-mastery",
+      "challenge": "1-2",
+      "errorPath": 2,
+      "stem": "紙條甲10格長、乙10格長、丙9格長，哪兩條一樣長？",
+      "options": ["甲和丙", "乙和丙", "甲和乙", "都不一樣"],
+      "answer": 2,
+      "explanation": "甲和乙都是 10 格，一樣長；丙只有 9 格，比較短。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "length-compare-ci-1",
+      "type": "concept-id",
+      "challenge": "1-3",
+      "statement": "彎彎的繩子拉直以後，長度不會改變。",
+      "correctAnswer": true,
+      "explanation": "繩子彎著看起來比較短，但拉直後還是原來的長度，長度不會因為彎曲而改變。"
+    },
+    {
+      "id": "length-compare-ci-2",
+      "type": "concept-id",
+      "challenge": "1-3",
+      "statement": "把長長的毛線捲成一小團，毛線就變短了。",
+      "correctAnswer": false,
+      "explanation": "毛線捲起來只是看起來變小團，把它拉開還是一樣長，長度沒有改變。"
+    },
+    {
+      "id": "length-compare-ci-3",
+      "type": "concept-id",
+      "challenge": "1-3",
+      "statement": "紙條對摺後看起來變短，其實紙條的長度沒有變。",
+      "correctAnswer": true,
+      "explanation": "對摺只是把紙條疊在一起，打開來還是原來的長度。"
+    },
+    {
+      "id": "length-compare-ci-4",
+      "type": "concept-id",
+      "challenge": "1-4",
+      "errorPath": 3,
+      "statement": "甲比乙長，乙比丙長，那丙有可能比甲長。",
+      "correctAnswer": false,
+      "explanation": "甲比乙長、乙又比丙長，一個接一個想下去：甲一定比丙長，丙不可能比甲長。"
+    },
+    {
+      "id": "length-compare-ci-5",
+      "type": "concept-id",
+      "challenge": "1-4",
+      "errorPath": 3,
+      "statement": "小明比小華高，小華比小安高，所以小明比小安高。",
+      "correctAnswer": true,
+      "explanation": "小明＞小華、小華＞小安，接起來想：小明一定比小安高。"
+    },
+    {
+      "id": "length-compare-ci-6",
+      "type": "concept-id",
+      "challenge": "1-4",
+      "errorPath": 3,
+      "statement": "跳繩比棍子長，棍子比尺長，所以尺比跳繩長。",
+      "correctAnswer": false,
+      "explanation": "跳繩＞棍子、棍子＞尺，接起來是跳繩最長、尺最短，方向不能想反。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "length-compare-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "1-5",
+      "errorPath": 1,
+      "problem": "比較兩枝鉛筆的長短",
+      "wrongSolution": "小明把兩枝鉛筆放在桌上，沒有把一端對齊，看到右邊多出一截，就說那枝比較長。",
+      "errorOptions": ["比長短要先把一端對齊才能看另一端", "鉛筆不可以放在桌上比", "應該比哪枝鉛筆比較新", "右邊多出來的那枝一定比較長"],
+      "correctErrorIndex": 0,
+      "explanation": "沒對齊起點，多出來的那截不能代表比較長。先把兩枝筆的一端對齊，再看另一端誰多出來。"
+    },
+    {
+      "id": "length-compare-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "1-5",
+      "errorPath": 1,
+      "problem": "比較兩條繩子的長短",
+      "wrongSolution": "小花把一條繩子拉直、另一條彎彎的放著，直接看兩端說彎的那條比較短。",
+      "errorOptions": ["繩子太軟本來就不能比較", "兩條繩子都要拉直、一端對齊才能比", "應該用眼睛瞄一下就好", "拉直的那條一定比較長"],
+      "correctErrorIndex": 1,
+      "explanation": "彎著的繩子看起來短，不代表真的短。要把兩條都拉直、一端對齊，再比另一端。"
+    },
+    {
+      "id": "length-compare-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "1-5",
+      "errorPath": 1,
+      "problem": "比較哥哥和弟弟誰比較高",
+      "wrongSolution": "弟弟站在小椅子上、哥哥站在地上，兩人比頭頂，弟弟的頭比較高，就說弟弟比較高。",
+      "errorOptions": ["比身高要背對背才行", "頭頂高的人一定比較高", "兩人要站在一樣高的地面上比", "弟弟年紀小不可以比身高"],
+      "correctErrorIndex": 2,
+      "explanation": "弟弟站在椅子上，起點就不一樣了。比身高要站在同樣高的地面上，這就是對齊起點。"
+    },
+    {
+      "id": "length-compare-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "1-6",
+      "errorPath": 2,
+      "problem": "用腳步量教室的長度",
+      "wrongSolution": "弟弟量出20步、爸爸量出12步，弟弟說：「我量的教室比較長！」",
+      "errorOptions": ["兩人的腳步大小不同，步數不能直接比", "步數多的教室一定比較長", "爸爸量錯了，應該重量一次", "教室不能用腳步來量"],
+      "correctErrorIndex": 0,
+      "explanation": "是同一間教室！弟弟的腳步小、爸爸的腳步大，單位不一樣，量出的步數當然不同，不能直接比。"
+    },
+    {
+      "id": "length-compare-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "1-6",
+      "errorPath": 2,
+      "problem": "用手掌量兩張桌子的長度",
+      "wrongSolution": "小美用自己的手掌量甲桌是7個，老師用手掌量乙桌是5個，小美說甲桌比較長。",
+      "errorOptions": ["桌子太大不能用手掌量", "手掌量出來的數字都不準", "5個手掌的桌子一定比較長", "兩人手掌大小不同，要用同一個人的手掌量"],
+      "correctErrorIndex": 3,
+      "explanation": "小美的手掌比老師的小，單位不同不能直接比。要用同一個人的手掌量兩張桌子才公平。"
+    },
+    {
+      "id": "length-compare-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "1-6",
+      "errorPath": 2,
+      "problem": "量兩條繩子再比長短",
+      "wrongSolution": "甲繩用迴紋針量出10個長，乙繩用積木量出6塊長，小丁說甲繩比較長。",
+      "errorOptions": ["繩子要用尺量才可以", "兩條繩子用的單位不同，數字不能直接比", "10比6大，所以甲繩一定比較長", "應該把兩條繩子加在一起量"],
+      "correctErrorIndex": 1,
+      "explanation": "迴紋針短、積木長，單位不一樣。要用同一種東西量兩條繩子，數字才能拿來比。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "length-compare-ca-1",
+      "type": "context-application",
+      "challenge": "1-7",
+      "errorPath": 3,
+      "scenario": "小熊剪了一條繩子：繩子和門一樣高；拿繩子去比桌子，繩子比桌子高很多。",
+      "question": "門和桌子誰比較高？",
+      "options": ["門", "桌子", "一樣高", "不能比較"],
+      "answer": 0,
+      "explanation": "門＝繩子，繩子＞桌子，所以門＞桌子。這就是用繩子當幫手的間接比較。"
+    },
+    {
+      "id": "length-compare-ca-2",
+      "type": "context-application",
+      "challenge": "1-7",
+      "errorPath": 3,
+      "scenario": "妹妹拿一條緞帶去比：緞帶和書桌一樣長；再去比窗台，緞帶比窗台短。",
+      "question": "書桌和窗台誰比較長？",
+      "options": ["書桌", "一樣長", "窗台", "不能比較"],
+      "answer": 2,
+      "explanation": "書桌＝緞帶，緞帶＜窗台，所以窗台比書桌長。"
+    },
+    {
+      "id": "length-compare-ca-3",
+      "type": "context-application",
+      "challenge": "1-7",
+      "errorPath": 3,
+      "scenario": "小丁拿竹竿去比：竹竿和溜滑梯一樣高；再去比籃球架，竹竿比籃球架矮。",
+      "question": "溜滑梯和籃球架誰比較高？",
+      "options": ["溜滑梯", "籃球架", "一樣高", "不能比較"],
+      "answer": 1,
+      "explanation": "溜滑梯＝竹竿，竹竿＜籃球架，所以籃球架比溜滑梯高。"
+    },
+    {
+      "id": "length-compare-ca-4",
+      "type": "context-application",
+      "challenge": "1-8",
+      "errorPath": 2,
+      "scenario": "小安想比較兩條走廊哪一條比較長，但是沒有尺。",
+      "question": "哪一種方法最好？",
+      "options": ["用眼睛看一看就好", "各走一次感覺看看", "小安走一條、爸爸走一條數步數", "用同一條繩子分別去比"],
+      "answer": 3,
+      "explanation": "用同一條繩子去比，單位相同才公平。兩人腳步大小不同，各走一條數步數是不能比的。"
+    },
+    {
+      "id": "length-compare-ca-5",
+      "type": "context-application",
+      "challenge": "1-8",
+      "errorPath": 2,
+      "scenario": "小治想知道客廳的桌子和房間的桌子哪張比較長，桌子都搬不動。",
+      "question": "哪一種方法最好？",
+      "options": ["用同一枝掃把分別去量兩張桌子", "站在中間看一看", "一張用手掌量、一張用鉛筆量", "問問看誰家的桌子比較貴"],
+      "answer": 0,
+      "explanation": "搬不動就用同一枝掃把當幫手，分別去量再比。兩張桌子用不同的單位量是不能比的。"
+    },
+    {
+      "id": "length-compare-ca-6",
+      "type": "context-application",
+      "challenge": "1-8",
+      "errorPath": 2,
+      "scenario": "小美想比較家裡兩個水桶哪個比較高，水桶放在不同的房間。",
+      "question": "哪一種方法最好？",
+      "options": ["記住樣子再去看另一個", "甲桶用吸管量、乙桶用湯匙量", "用同一枝筷子分別去比兩個水桶", "選比較重的那一個"],
+      "answer": 2,
+      "explanation": "用同一枝筷子分別去比，單位相同才能比較。重的水桶不一定比較高。"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "nodeId": "weight-kg-g",
+  "basicMastery": [
+    {
+      "id": "weight-kg-g-bm-1",
+      "type": "basic-mastery",
+      "challenge": "11-1",
+      "errorPath": 3,
+      "stem": "秤上高麗菜的指針指到 1 公斤 600 公克，是幾公克？",
+      "options": ["160 公克", "1060 公克", "1600 公克", "16000 公克"],
+      "answer": 2,
+      "explanation": "1 公斤 = 1000 公克，1000 + 600 = 1600 公克。"
+    },
+    {
+      "id": "weight-kg-g-bm-2",
+      "type": "basic-mastery",
+      "challenge": "11-1",
+      "errorPath": 3,
+      "stem": "秤上西瓜的指針指到 2 公斤 300 公克，是幾公克？",
+      "options": ["2300 公克", "230 公克", "2030 公克", "23000 公克"],
+      "answer": 0,
+      "explanation": "2 公斤 = 2000 公克，2000 + 300 = 2300 公克。"
+    },
+    {
+      "id": "weight-kg-g-bm-3",
+      "type": "basic-mastery",
+      "challenge": "11-1",
+      "errorPath": 3,
+      "stem": "秤上一袋麵粉的指針指到 1 公斤 50 公克，是幾公克？",
+      "options": ["150 公克", "1500 公克", "105 公克", "1050 公克"],
+      "answer": 3,
+      "explanation": "1 公斤 = 1000 公克，1000 + 50 = 1050 公克。50 要放在十位和個位，不能寫成 150。"
+    },
+    {
+      "id": "weight-kg-g-bm-4",
+      "type": "basic-mastery",
+      "challenge": "11-2",
+      "errorPath": 3,
+      "stem": "1 公斤等於幾公克？",
+      "options": ["100 公克", "1000 公克", "10 公克", "10000 公克"],
+      "answer": 1,
+      "explanation": "1 公斤 = 1000 公克。公斤和公克是千進關係。"
+    },
+    {
+      "id": "weight-kg-g-bm-5",
+      "type": "basic-mastery",
+      "challenge": "11-2",
+      "errorPath": 3,
+      "stem": "3 公斤等於幾公克？",
+      "options": ["3000 公克", "300 公克", "30000 公克", "30 公克"],
+      "answer": 0,
+      "explanation": "1 公斤 = 1000 公克，3 公斤 = 3 × 1000 = 3000 公克。"
+    },
+    {
+      "id": "weight-kg-g-bm-6",
+      "type": "basic-mastery",
+      "challenge": "11-2",
+      "errorPath": 3,
+      "stem": "5000 公克等於幾公斤？",
+      "options": ["50 公斤", "500 公斤", "5 公斤", "15 公斤"],
+      "answer": 2,
+      "explanation": "1000 公克 = 1 公斤，5000 公克 = 5000 ÷ 1000 = 5 公斤。"
+    },
+    {
+      "id": "weight-kg-g-bm-7",
+      "type": "basic-mastery",
+      "challenge": "11-3",
+      "errorPath": 3,
+      "stem": "1 公斤 400 公克加 800 公克是多少？",
+      "options": ["1 公斤 200 公克", "2 公斤 200 公克", "2 公斤 20 公克", "1 公斤 120 公克"],
+      "answer": 1,
+      "explanation": "1400 + 800 = 2200 公克 = 2 公斤 200 公克。公克相加滿 1000 要進成 1 公斤。"
+    },
+    {
+      "id": "weight-kg-g-bm-8",
+      "type": "basic-mastery",
+      "challenge": "11-3",
+      "errorPath": 3,
+      "stem": "2 公斤 500 公克減 700 公克是多少？",
+      "options": ["1 公斤 800 公克", "2 公斤 200 公克", "1 公斤 200 公克", "800 公克"],
+      "answer": 0,
+      "explanation": "2500 − 700 = 1800 公克 = 1 公斤 800 公克。500 不夠減 700，要向公斤借 1000 公克。"
+    },
+    {
+      "id": "weight-kg-g-bm-9",
+      "type": "basic-mastery",
+      "challenge": "11-3",
+      "errorPath": 3,
+      "stem": "1 公斤 700 公克加 600 公克是多少？",
+      "options": ["1 公斤 300 公克", "2 公斤 130 公克", "1 公斤 130 公克", "2 公斤 300 公克"],
+      "answer": 3,
+      "explanation": "1700 + 600 = 2300 公克 = 2 公斤 300 公克。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "weight-kg-g-ci-1",
+      "type": "concept-id",
+      "challenge": "11-4",
+      "statement": "一顆雞蛋的重量大約是 60 公斤。",
+      "correctAnswer": false,
+      "explanation": "一顆雞蛋約 60「公克」。60 公斤大約是一個大人的體重，選單位前先想生活基準物。"
+    },
+    {
+      "id": "weight-kg-g-ci-2",
+      "type": "concept-id",
+      "challenge": "11-4",
+      "statement": "一包家庭號的白米大約是 5 公斤。",
+      "correctAnswer": true,
+      "explanation": "市售家庭號白米常見 5 公斤裝，是公斤的生活量感基準物。"
+    },
+    {
+      "id": "weight-kg-g-ci-3",
+      "type": "concept-id",
+      "challenge": "11-4",
+      "statement": "一枝鉛筆的重量大約是 5 公克。",
+      "correctAnswer": true,
+      "explanation": "鉛筆很輕，大約 5 公克，適合用公克來表示。"
+    },
+    {
+      "id": "weight-kg-g-ci-4",
+      "type": "concept-id",
+      "challenge": "11-5",
+      "errorPath": 1,
+      "statement": "1 公斤的棉花比 1 公斤的鐵輕。",
+      "correctAnswer": false,
+      "explanation": "都是 1 公斤，一樣重。棉花只是體積比較大、看起來蓬鬆，重量並沒有比較輕。"
+    },
+    {
+      "id": "weight-kg-g-ci-5",
+      "type": "concept-id",
+      "challenge": "11-5",
+      "errorPath": 1,
+      "statement": "1 公斤的棉花和 1 公斤的鐵一樣重。",
+      "correctAnswer": true,
+      "explanation": "重量都是 1 公斤，當然一樣重。比較重量要看數值，不是看體積大小。"
+    },
+    {
+      "id": "weight-kg-g-ci-6",
+      "type": "concept-id",
+      "challenge": "11-5",
+      "errorPath": 1,
+      "statement": "體積比較大的箱子，一定比較重。",
+      "correctAnswer": false,
+      "explanation": "大箱子可能裝棉被、空氣，小箱子可能裝書。大小和輕重是兩回事。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "weight-kg-g-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "11-6",
+      "errorPath": 2,
+      "problem": "用天平比較蘋果和橘子的重量",
+      "wrongSolution": "小華把蘋果放左盤、橘子放右盤，左盤下沉，他說「橘子比較重」。",
+      "errorOptions": ["下沉的那邊比較重，應是蘋果較重", "天平不能用來比較重量", "應該先秤蘋果再秤橘子", "左右盤要對調後才能下結論"],
+      "correctErrorIndex": 0,
+      "explanation": "天平哪一盤下沉，那一盤的東西就比較重。左盤（蘋果）下沉，所以蘋果比橘子重。"
+    },
+    {
+      "id": "weight-kg-g-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "11-6",
+      "errorPath": 2,
+      "problem": "用天平比較鉛筆盒和水壺的重量",
+      "wrongSolution": "鉛筆盒和水壺放上天平後，兩邊剛好平衡，小明說「水壺比較重」。",
+      "errorOptions": ["平衡時要再多秤一次才準", "水壺放右盤，所以比較重", "天平平衡表示兩邊一樣重", "應該改用磅秤才能比較"],
+      "correctErrorIndex": 2,
+      "explanation": "天平平衡代表兩邊重量相等，鉛筆盒和水壺一樣重，不能說誰比較重。"
+    },
+    {
+      "id": "weight-kg-g-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "11-6",
+      "errorPath": 2,
+      "problem": "用天平比較木瓜和 3 顆橘子的重量",
+      "wrongSolution": "木瓜放左盤、3 顆橘子放右盤，木瓜那盤下沉，小美說「3 顆橘子比較重」。",
+      "errorOptions": ["3 顆橘子不能一起放上天平", "下沉的是木瓜那盤，應是木瓜較重", "應該一顆一顆橘子分開比", "木瓜太大顆，天平會不準"],
+      "correctErrorIndex": 1,
+      "explanation": "下沉的一盤比較重。木瓜那盤下沉，代表木瓜比 3 顆橘子加起來還重。"
+    },
+    {
+      "id": "weight-kg-g-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "11-7",
+      "errorPath": 2,
+      "problem": "讀磅秤上南瓜的重量",
+      "wrongSolution": "秤面一大格是 100 公克，指針過 1 公斤後再走 3 大格，小豪讀成 1 公斤 3 公克。",
+      "errorOptions": ["一大格是 100 公克，應是 1 公斤 300 公克", "指針過 1 公斤就只能讀 1 公斤", "應該讀成 3 公斤 100 公克", "應該讀成 1 公斤 30 公克"],
+      "correctErrorIndex": 0,
+      "explanation": "3 大格 = 3 × 100 = 300 公克，所以是 1 公斤 300 公克。讀秤面要先確認一大格代表多少。"
+    },
+    {
+      "id": "weight-kg-g-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "11-7",
+      "errorPath": 2,
+      "problem": "讀磅秤上一袋橘子的重量",
+      "wrongSolution": "秤面一大格是 200 公克，指針從 0 走了 4 大格，小婷讀成 4 公克。",
+      "errorOptions": ["應該讀成 40 公克", "指針走 4 大格就是 4 公斤", "橘子要一顆一顆分開秤", "一大格是 200 公克，應是 800 公克"],
+      "correctErrorIndex": 3,
+      "explanation": "4 大格 = 4 × 200 = 800 公克。把格數直接當公克數，會少算兩百倍。"
+    },
+    {
+      "id": "weight-kg-g-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "11-7",
+      "errorPath": 2,
+      "problem": "讀磅秤上一袋地瓜的重量",
+      "wrongSolution": "秤面一大格是 100 公克，指針過 2 公斤後再走 5 大格，小杰讀成 2 公斤 5 公克。",
+      "errorOptions": ["應該讀成 5 公斤 200 公克", "5 大格是 500 公克，應是 2 公斤 500 公克", "指針過 2 公斤，只能讀 2 公斤", "應該讀成 2 公斤 50 公克"],
+      "correctErrorIndex": 1,
+      "explanation": "5 大格 = 5 × 100 = 500 公克，所以是 2 公斤 500 公克，不是 2 公斤 5 公克。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "weight-kg-g-ca-1",
+      "type": "context-application",
+      "challenge": "11-8",
+      "errorPath": 2,
+      "scenario": "沒有秤，小美用同一包糖當砝碼：書包和 4 包糖一樣重，水壺和 2 包糖一樣重。",
+      "question": "書包的重量是水壺的幾倍？",
+      "options": ["4 倍", "2 倍", "6 倍", "8 倍"],
+      "answer": 1,
+      "explanation": "以一包糖為單位：書包 4 單位、水壺 2 單位，4 ÷ 2 = 2 倍。"
+    },
+    {
+      "id": "weight-kg-g-ca-2",
+      "type": "context-application",
+      "challenge": "11-8",
+      "errorPath": 2,
+      "scenario": "用同樣大小的蘋果當砝碼：南瓜和 8 顆蘋果一樣重，鳳梨和 2 顆蘋果一樣重。",
+      "question": "南瓜的重量是鳳梨的幾倍？",
+      "options": ["2 倍", "6 倍", "4 倍", "10 倍"],
+      "answer": 2,
+      "explanation": "南瓜 8 顆蘋果重、鳳梨 2 顆蘋果重，8 ÷ 2 = 4 倍。"
+    },
+    {
+      "id": "weight-kg-g-ca-3",
+      "type": "context-application",
+      "challenge": "11-8",
+      "errorPath": 2,
+      "scenario": "用同款粉筆盒當砝碼：字典和 6 盒粉筆一樣重，鉛筆盒和 2 盒粉筆一樣重。",
+      "question": "字典的重量是鉛筆盒的幾倍？",
+      "options": ["3 倍", "4 倍", "8 倍", "12 倍"],
+      "answer": 0,
+      "explanation": "字典 6 盒、鉛筆盒 2 盒，6 ÷ 2 = 3 倍。用同一種個別單位才能直接比較。"
+    }
+  ]
+}

@@ -1,4 +1,6 @@
 import { isDue, getBox, hasRecord } from "./leitner.js";
+import { store } from "./store.js";
+import { buildAdaptiveSequence } from "./mastery-engine.js";
 
 const bankCache = {};
 
@@ -12,10 +14,10 @@ export async function loadQuestionBank(nodeId) {
 
 function flattenBank(bank) {
   return [
-    ...bank.basicMastery,
-    ...bank.conceptId,
-    ...bank.errorDiagnosis,
-    ...bank.contextApplication,
+    ...(bank.basicMastery ?? []),
+    ...(bank.conceptId ?? []),
+    ...(bank.errorDiagnosis ?? []),
+    ...(bank.contextApplication ?? []),
   ];
 }
 
@@ -32,7 +34,7 @@ export async function buildMasterSession(nodeIds, sessionSize = 10) {
   return all.slice(0, Math.min(sessionSize, all.length));
 }
 
-export async function buildSession(nodeId, sessionSize = 8, strategy = "slow", errorEntries = []) {
+export async function buildSession(nodeId, sessionSize = 8, strategy = "slow", errorEntries = [], node = {}) {
   const bank = await loadQuestionBank(nodeId);
   const all = flattenBank(bank);
   // 補筆修稿：錯題本優先（標記 _fromErrorbook 供清帳），不足再以一般順序補滿
@@ -41,18 +43,35 @@ export async function buildSession(nodeId, sessionSize = 8, strategy = "slow", e
     : [];
   const repairIds = new Set(repairQuestions.map((q) => q.id));
   const rest = all.filter((q) => !repairIds.has(q.id));
-  const due = rest.filter((q) => isDue(q.id));
-  const notDue = rest.filter((q) => !isDue(q.id));
+  const attempts = store.read("progress", {})[nodeId]?.attempts ?? [];
+  const challengeIds = [...new Set(rest.map((question) => question.challenge).filter(Boolean))];
+  const isInitialChallengeScan = challengeIds.length > 0
+    && !attempts.some((attempt) => attempt.challenge);
+  const targetSize = isInitialChallengeScan
+    ? Math.max(sessionSize, challengeIds.length)
+    : sessionSize;
+  const adaptive = rest.some((question) => question.challenge)
+    ? buildAdaptiveSequence(
+      rest,
+      attempts,
+      Math.max(0, targetSize - repairQuestions.length),
+      Math.random,
+      node
+    ).map((question) => ({ ...question, _challengeIds: challengeIds }))
+    : rest;
+  const due = adaptive.filter((q) => isDue(q.id));
+  const notDue = adaptive.filter((q) => !isDue(q.id));
   const dueIds = new Set(due.map((q) => q.id));
   const ordered = [...repairQuestions, ...due, ...notDue].sort((a, b) => {
     if (!!a._fromErrorbook !== !!b._fromErrorbook) return a._fromErrorbook ? -1 : 1;
+    if (!!a._remediation !== !!b._remediation) return a._remediation ? -1 : 1;
     const aDue = dueIds.has(a.id);
     const bDue = dueIds.has(b.id);
     if (aDue !== bDue) return aDue ? -1 : 1;
     if (aDue) return getBox(b.id) - getBox(a.id); // 到期題中，記憶最成熟（高盒）者最急
     return getBox(a.id) - getBox(b.id);
   });
-  return ordered.slice(0, Math.min(sessionSize, ordered.length));
+  return ordered.slice(0, Math.min(targetSize, ordered.length));
 }
 
 // 今日補墨：跨節點蒐集「作答過且到期」的複習題（高盒優先）

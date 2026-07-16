@@ -1,0 +1,254 @@
+{
+  "nodeId": "cuboid-volume",
+  "basicMastery": [
+    {
+      "id": "cuboid-volume-bm-1",
+      "type": "basic-mastery",
+      "challenge": "1",
+      "errorPath": 1,
+      "stem": "長 5 公分、寬 4 公分、高 3 公分的長方體，體積是？",
+      "options": ["94 立方公分", "12 立方公分", "60 立方公分", "20 立方公分"],
+      "answer": 2,
+      "explanation": "長方體體積＝長×寬×高＝5×4×3＝60 立方公分。94 是表面積，不要把兩個公式弄混。"
+    },
+    {
+      "id": "cuboid-volume-bm-2",
+      "type": "basic-mastery",
+      "challenge": "1",
+      "errorPath": 3,
+      "stem": "長 4 公尺、寬 3 公尺、高 2 公尺的長方體，體積是？",
+      "options": ["24 立方公尺", "24 平方公尺", "52 立方公尺", "9 立方公尺"],
+      "answer": 0,
+      "explanation": "體積＝4×3×2＝24，邊長用公尺量，體積單位就是立方公尺，不能寫成平方公尺。"
+    },
+    {
+      "id": "cuboid-volume-bm-3",
+      "type": "basic-mastery",
+      "challenge": "1",
+      "errorPath": 1,
+      "stem": "長 8 公分、寬 5 公分、高 2 公分的長方體，體積是？",
+      "options": ["40 立方公分", "80 立方公分", "15 立方公分", "132 立方公分"],
+      "answer": 1,
+      "explanation": "體積＝8×5×2＝80 立方公分。132 是表面積；40 只算了長×寬，忘了乘高。"
+    },
+    {
+      "id": "cuboid-volume-bm-4",
+      "type": "basic-mastery",
+      "challenge": "2",
+      "errorPath": 1,
+      "stem": "邊長 5 公分的正方體，體積是？",
+      "options": ["25 立方公分", "20 立方公分", "150 立方公分", "125 立方公分"],
+      "answer": 3,
+      "explanation": "正方體體積＝邊長×邊長×邊長＝5×5×5＝125 立方公分。150 是表面積。"
+    },
+    {
+      "id": "cuboid-volume-bm-5",
+      "type": "basic-mastery",
+      "challenge": "2",
+      "errorPath": 1,
+      "stem": "邊長 3 公分的正方體，表面積是？",
+      "options": ["54 平方公分", "27 平方公分", "36 平方公分", "18 平方公分"],
+      "answer": 0,
+      "explanation": "正方體有 6 個一樣大的正方形面，每面 3×3＝9 平方公分，表面積＝9×6＝54 平方公分。27 是體積。"
+    },
+    {
+      "id": "cuboid-volume-bm-6",
+      "type": "basic-mastery",
+      "challenge": "2",
+      "errorPath": 2,
+      "stem": "邊長 4 公分的正方體，體積是？",
+      "options": ["16 立方公分", "48 立方公分", "64 立方公分", "96 立方公分"],
+      "answer": 2,
+      "explanation": "體積＝4×4×4＝64 立方公分。96 是表面積（16×6）；48 是只算 3 個面的面積和。"
+    },
+    {
+      "id": "cuboid-volume-bm-7",
+      "type": "basic-mastery",
+      "challenge": "3",
+      "errorPath": 3,
+      "stem": "長方體體積 120 立方公分，長 6 公分、寬 5 公分，高是？",
+      "options": ["6 公分", "4 公分", "10 公分", "30 公分"],
+      "answer": 1,
+      "explanation": "高＝體積÷（長×寬）＝120÷（6×5）＝120÷30＝4 公分。30 是底面積，不是高。"
+    },
+    {
+      "id": "cuboid-volume-bm-8",
+      "type": "basic-mastery",
+      "challenge": "3",
+      "errorPath": 3,
+      "stem": "正方體體積 27 立方公分，邊長是幾公分？",
+      "options": ["9 公分", "6 公分", "3 公分", "13.5 公分"],
+      "answer": 2,
+      "explanation": "3×3×3＝27，所以邊長是 3 公分。9 是 27÷3，但體積要連除兩次邊長，不能只除一次。"
+    },
+    {
+      "id": "cuboid-volume-bm-9",
+      "type": "basic-mastery",
+      "challenge": "3",
+      "errorPath": 3,
+      "stem": "長方體體積 90 立方公尺，底面積 18 平方公尺，高是？",
+      "options": ["72 公尺", "4 公尺", "6 公尺", "5 公尺"],
+      "answer": 3,
+      "explanation": "體積＝底面積×高，所以高＝90÷18＝5 公尺。72 是用減法算的，體積和底面積要用除法。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "cuboid-volume-ci-1",
+      "type": "concept-id",
+      "challenge": "4",
+      "errorPath": 3,
+      "statement": "1 立方公尺大約是一台洗衣機的大小。",
+      "correctAnswer": true,
+      "explanation": "邊長 1 公尺的正方體體積就是 1 立方公尺，大約和一台洗衣機差不多大，可以拿來當量感的參考。"
+    },
+    {
+      "id": "cuboid-volume-ci-2",
+      "type": "concept-id",
+      "challenge": "4",
+      "errorPath": 3,
+      "statement": "量游泳池裝水的體積，用立方公尺比用立方公分方便。",
+      "correctAnswer": true,
+      "explanation": "游泳池很大，用立方公尺表示數字才不會太長；小東西才用立方公分。依大小挑合適的單位。"
+    },
+    {
+      "id": "cuboid-volume-ci-3",
+      "type": "concept-id",
+      "challenge": "4",
+      "errorPath": 3,
+      "statement": "量一個鉛筆盒的體積，用立方公尺最適合。",
+      "correctAnswer": false,
+      "explanation": "鉛筆盒很小，用立方公分才適合；立方公尺是量房間、貨櫃這種大空間用的單位。"
+    },
+    {
+      "id": "cuboid-volume-ci-4",
+      "type": "concept-id",
+      "challenge": "5",
+      "errorPath": 2,
+      "statement": "長方體有 3 組相對的面，每組相對的面形狀大小都一樣。",
+      "correctAnswer": true,
+      "explanation": "長方體 6 個面兩兩相對，共 3 組，每組全等。算表面積時就是先算 3 個不同的面再乘 2。"
+    },
+    {
+      "id": "cuboid-volume-ci-5",
+      "type": "concept-id",
+      "challenge": "5",
+      "errorPath": 2,
+      "statement": "正方體相鄰的兩個面互相垂直，相對的兩個面互相平行。",
+      "correctAnswer": true,
+      "explanation": "正方體（和長方體）中，有公共稜的相鄰面互相垂直，沒有相交的相對面互相平行。"
+    },
+    {
+      "id": "cuboid-volume-ci-6",
+      "type": "concept-id",
+      "challenge": "5",
+      "errorPath": 1,
+      "statement": "只要是立體形體，體積都可以用長×寬×高來計算。",
+      "correctAnswer": false,
+      "explanation": "長×寬×高只適用長方體和正方體；球、圓柱等其他形體不能直接套這個公式。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "cuboid-volume-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "6",
+      "errorPath": 1,
+      "problem": "求長 4 公分、寬 3 公分、高 2 公分的長方體表面積",
+      "wrongSolution": "小華算成 4×3×2＝24 平方公分",
+      "errorOptions": ["把體積公式當成表面積公式", "只算 3 個面忘記乘 2", "長寬高相乘時算錯", "抄錯題目數字"],
+      "correctErrorIndex": 0,
+      "explanation": "4×3×2 算出來的是體積。表面積要算 6 個面：（4×3＋4×2＋3×2）×2＝（12＋8＋6）×2＝52 平方公分。"
+    },
+    {
+      "id": "cuboid-volume-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "6",
+      "errorPath": 1,
+      "problem": "求長 5 公分、寬 2 公分、高 2 公分的長方體體積",
+      "wrongSolution": "小明算成（10＋10＋4）×2＝48 立方公分",
+      "errorOptions": ["三個面的面積算錯", "把表面積的算法當成體積", "忘記把答案乘 2", "單位寫錯"],
+      "correctErrorIndex": 1,
+      "explanation": "他算的是表面積的算法。體積要用長×寬×高＝5×2×2＝20 立方公分。"
+    },
+    {
+      "id": "cuboid-volume-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "6",
+      "errorPath": 1,
+      "problem": "求長 7 公分、寬 4 公分、高 3 公分的長方體表面積",
+      "wrongSolution": "小杰算成 7×4×6＝168 平方公分",
+      "errorOptions": ["六個面的個數數錯", "把一個面的面積乘 6，但長方體六面不全等", "7×4 相乘算錯", "應該用體積公式來算"],
+      "correctErrorIndex": 1,
+      "explanation": "「一面×6」只有正方體可以用。長方體要算 3 種不同的面：（7×4＋7×3＋4×3）×2＝（28＋21＋12）×2＝122 平方公分。"
+    },
+    {
+      "id": "cuboid-volume-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "7",
+      "errorPath": 2,
+      "problem": "求長 4 公分、寬 3 公分、高 2 公分的長方體表面積",
+      "wrongSolution": "小庭算成 4×3＋4×2＋3×2＝26 平方公分",
+      "errorOptions": ["三個面的面積算錯", "把表面積算成體積", "只算 3 個面，忘記另外 3 個相對的面", "加法進位錯誤"],
+      "correctErrorIndex": 2,
+      "explanation": "長方體有 3 組相對的面，26 只是其中 3 個面的和，還要乘 2：26×2＝52 平方公分。"
+    },
+    {
+      "id": "cuboid-volume-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "7",
+      "errorPath": 3,
+      "problem": "求長 5 公分、寬 4 公分、高 3 公分的長方體體積",
+      "wrongSolution": "小威算 5×4×3＝60，答案寫「60 平方公分」",
+      "errorOptions": ["體積數值算錯", "應該寫 60 公分", "體積單位寫成面積單位，應為立方公分", "應該再乘 2 才是體積"],
+      "correctErrorIndex": 2,
+      "explanation": "計算正確，但體積是三個長度相乘，單位要用「立方公分」；「平方公分」是面積的單位。"
+    },
+    {
+      "id": "cuboid-volume-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "7",
+      "errorPath": 2,
+      "problem": "求邊長 5 公分的正方體表面積",
+      "wrongSolution": "小妤算成 5×5×5＝125 平方公分",
+      "errorOptions": ["5×5 算錯", "把體積算法當表面積，正方體有 6 個面", "答案應該除以 2", "單位應該用立方公尺"],
+      "correctErrorIndex": 1,
+      "explanation": "5×5×5 是體積的算法。表面積是 6 個面：5×5×6＝150 平方公分。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "cuboid-volume-ca-1",
+      "type": "context-application",
+      "challenge": "8",
+      "errorPath": 3,
+      "scenario": "用 1 立方公分的小方塊，堆一個長 5、寬 3、高 2 公分的長方體。",
+      "question": "一共需要幾塊小方塊？",
+      "options": ["10 塊", "30 塊", "62 塊", "15 塊"],
+      "answer": 1,
+      "explanation": "每層 5×3＝15 塊，堆 2 層共 15×2＝30 塊，正好等於體積 30 立方公分。"
+    },
+    {
+      "id": "cuboid-volume-ca-2",
+      "type": "context-application",
+      "challenge": "8",
+      "errorPath": 3,
+      "scenario": "貨櫃內部長 6 公尺、寬 2 公尺、高 2 公尺。",
+      "question": "貨櫃內部可容納的體積是多少？",
+      "options": ["24 立方公尺", "10 立方公尺", "56 立方公尺", "24 平方公尺"],
+      "answer": 0,
+      "explanation": "6×2×2＝24，內部空間的體積是 24 立方公尺。單位是立方公尺，不是平方公尺。"
+    },
+    {
+      "id": "cuboid-volume-ca-3",
+      "type": "context-application",
+      "challenge": "8",
+      "errorPath": 1,
+      "scenario": "甲箱長 2、寬 2、高 3 公尺；乙箱長 3、寬 3、高 1 公尺。",
+      "question": "哪一個箱子的體積比較大？",
+      "options": ["乙箱比較大", "兩箱一樣大", "甲箱比較大", "沒辦法比較"],
+      "answer": 2,
+      "explanation": "甲＝2×2×3＝12 立方公尺，乙＝3×3×1＝9 立方公尺，甲比較大。要實際算，不能只看哪個邊長數字大。"
+    }
+  ]
+}

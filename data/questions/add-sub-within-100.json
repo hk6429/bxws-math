@@ -1,0 +1,255 @@
+{
+  "nodeId": "add-sub-within-100",
+  "basicMastery": [
+    {
+      "id": "add-sub-within-100-bm-1",
+      "type": "basic-mastery",
+      "stem": "34 + 25 = ？",
+      "options": ["59", "69", "49", "58"],
+      "answer": 0,
+      "explanation": "個位 4 + 5 = 9，十位 3 + 2 = 5，答案是 59。這題沒有進位，69 是多進了 1。",
+      "challenge": "3-1",
+      "errorPath": 1
+    },
+    {
+      "id": "add-sub-within-100-bm-2",
+      "type": "basic-mastery",
+      "stem": "57 − 23 = ？",
+      "options": ["24", "34", "44", "80"],
+      "answer": 1,
+      "explanation": "個位 7 − 3 = 4，十位 5 − 2 = 3，答案是 34。這題不用借位，24 是十位多減了 1。",
+      "challenge": "3-1",
+      "errorPath": 3
+    },
+    {
+      "id": "add-sub-within-100-bm-3",
+      "type": "basic-mastery",
+      "stem": "42 + 36 = ？",
+      "options": ["68", "88", "78", "76"],
+      "answer": 2,
+      "explanation": "個位 2 + 6 = 8，十位 4 + 3 = 7，答案是 78。個位對個位、十位對十位。",
+      "challenge": "3-1",
+      "errorPath": 1
+    },
+    {
+      "id": "add-sub-within-100-bm-4",
+      "type": "basic-mastery",
+      "stem": "38 + 27 = ？",
+      "options": ["65", "55", "66", "515"],
+      "answer": 0,
+      "explanation": "個位 8 + 7 = 15，寫 5 向十位進 1；十位 3 + 2 + 1 = 6，答案是 65。答 55 是忘了進位。",
+      "challenge": "3-2",
+      "errorPath": 1
+    },
+    {
+      "id": "add-sub-within-100-bm-5",
+      "type": "basic-mastery",
+      "stem": "46 + 39 = ？",
+      "options": ["75", "85", "95", "715"],
+      "answer": 1,
+      "explanation": "個位 6 + 9 = 15，寫 5 進 1；十位 4 + 3 + 1 = 8，答案是 85。答 75 是忘了加進位的 1。",
+      "challenge": "3-2",
+      "errorPath": 1
+    },
+    {
+      "id": "add-sub-within-100-bm-6",
+      "type": "basic-mastery",
+      "stem": "58 + 34 = ？",
+      "options": ["82", "102", "92", "812"],
+      "answer": 2,
+      "explanation": "個位 8 + 4 = 12，寫 2 進 1；十位 5 + 3 + 1 = 9，答案是 92。答 82 是忘了進位。",
+      "challenge": "3-2",
+      "errorPath": 1
+    },
+    {
+      "id": "add-sub-within-100-bm-7",
+      "type": "basic-mastery",
+      "stem": "52 − 17 = ？",
+      "options": ["35", "45", "25", "69"],
+      "answer": 0,
+      "explanation": "個位 2 不夠減 7，向十位借 1 變 12 − 7 = 5；十位剩 4 − 1 = 3，答案是 35。答 45 是反過來用 7 減 2。",
+      "challenge": "3-3",
+      "errorPath": 2
+    },
+    {
+      "id": "add-sub-within-100-bm-8",
+      "type": "basic-mastery",
+      "stem": "63 − 28 = ？",
+      "options": ["45", "35", "91", "25"],
+      "answer": 1,
+      "explanation": "個位借 1 變 13 − 8 = 5；十位剩 5 − 2 = 3，答案是 35。答 45 是個位反過來用 8 減 3。",
+      "challenge": "3-3",
+      "errorPath": 2
+    },
+    {
+      "id": "add-sub-within-100-bm-9",
+      "type": "basic-mastery",
+      "stem": "70 − 26 = ？",
+      "options": ["56", "54", "44", "96"],
+      "answer": 2,
+      "explanation": "個位借 1 變 10 − 6 = 4；十位剩 6 − 2 = 4，答案是 44。答 54 是借了 1 卻忘了讓十位少 1。",
+      "challenge": "3-3",
+      "errorPath": 3
+    },
+    {
+      "id": "add-sub-within-100-bm-10",
+      "type": "basic-mastery",
+      "stem": "63 再加多少就是 70？",
+      "options": ["7", "17", "13", "3"],
+      "answer": 0,
+      "explanation": "63 再往上數 7 個就到 70，因為 3 和 7 合起來是 10。",
+      "challenge": "3-7",
+      "errorPath": 3
+    },
+    {
+      "id": "add-sub-within-100-bm-11",
+      "type": "basic-mastery",
+      "stem": "45 再加多少就是 60？",
+      "options": ["25", "15", "5", "20"],
+      "answer": 1,
+      "explanation": "45 先加 5 到 50，再加 10 到 60，一共要加 15。",
+      "challenge": "3-7",
+      "errorPath": 2
+    },
+    {
+      "id": "add-sub-within-100-bm-12",
+      "type": "basic-mastery",
+      "stem": "29 再加多少就是 40？",
+      "options": ["21", "29", "11", "1"],
+      "answer": 2,
+      "explanation": "29 先加 1 到 30，再加 10 到 40，一共要加 11。只加 1 才到 30 而已。",
+      "challenge": "3-7",
+      "errorPath": 3
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "add-sub-within-100-ci-1",
+      "type": "concept-id",
+      "statement": "直式計算時，個位要對齊個位、十位要對齊十位。",
+      "correctAnswer": true,
+      "explanation": "一樣大的位才能加在一起，所以直式要把個位對個位、十位對十位。",
+      "challenge": "3-4"
+    },
+    {
+      "id": "add-sub-within-100-ci-2",
+      "type": "concept-id",
+      "statement": "45 + 30，只要把 3 加在個位就可以了。",
+      "correctAnswer": false,
+      "explanation": "30 的 3 是 3 個十，要加在十位：45 + 30 = 75。加在個位就變成 45 + 3 了。",
+      "challenge": "3-4"
+    },
+    {
+      "id": "add-sub-within-100-ci-3",
+      "type": "concept-id",
+      "statement": "個位相加滿十的時候，要向十位進 1。",
+      "correctAnswer": true,
+      "explanation": "10 個一就是 1 個十，所以個位滿十要進到十位，這個 1 代表 1 個十。",
+      "challenge": "3-4",
+      "errorPath": 1
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "add-sub-within-100-ed-1",
+      "type": "error-diagnosis",
+      "problem": "用直式計算 38 + 27",
+      "wrongSolution": "答案寫 55",
+      "errorOptions": ["個位滿十，忘了向十位進 1", "個位加錯了", "十位抄錯數字", "把加法看成減法"],
+      "correctErrorIndex": 0,
+      "explanation": "個位 8 + 7 = 15，要寫 5 進 1，正確答案是 65。答 55 就是忘了那個進位的 1。",
+      "challenge": "3-5",
+      "errorPath": 1
+    },
+    {
+      "id": "add-sub-within-100-ed-2",
+      "type": "error-diagnosis",
+      "problem": "用直式計算 56 + 35",
+      "wrongSolution": "答案寫 81",
+      "errorOptions": ["個位加錯了", "個位滿十，忘了向十位進 1", "把 35 看成 25", "十位少寫一個數"],
+      "correctErrorIndex": 1,
+      "explanation": "個位 6 + 5 = 11，寫 1 進 1，正確答案是 91。答 81 是十位忘了加進位的 1。",
+      "challenge": "3-5",
+      "errorPath": 1
+    },
+    {
+      "id": "add-sub-within-100-ed-3",
+      "type": "error-diagnosis",
+      "problem": "用直式計算 49 + 23",
+      "wrongSolution": "答案寫 62",
+      "errorOptions": ["把 23 看成 13", "把加法看成減法", "個位滿十，忘了向十位進 1", "十位加錯了"],
+      "correctErrorIndex": 2,
+      "explanation": "個位 9 + 3 = 12，寫 2 進 1，正確答案是 72。答 62 是忘了進位的 1。",
+      "challenge": "3-5",
+      "errorPath": 1
+    },
+    {
+      "id": "add-sub-within-100-ed-4",
+      "type": "error-diagnosis",
+      "problem": "用直式計算 52 − 17",
+      "wrongSolution": "答案寫 45",
+      "errorOptions": ["個位不夠減，反過來用 7 減 2", "十位加錯了", "把減法看成加法", "抄錯題目數字"],
+      "correctErrorIndex": 0,
+      "explanation": "個位 2 不夠減 7，要向十位借 1，正確答案是 35。答 45 是偷偷反過來算 7 − 2。",
+      "challenge": "3-6",
+      "errorPath": 2
+    },
+    {
+      "id": "add-sub-within-100-ed-5",
+      "type": "error-diagnosis",
+      "problem": "用直式計算 83 − 46",
+      "wrongSolution": "答案寫 47",
+      "errorOptions": ["個位減錯了", "向十位借 1 後，十位忘了少 1", "把減法看成加法", "把 46 看成 36"],
+      "correctErrorIndex": 1,
+      "explanation": "個位借 1 變 13 − 6 = 7，十位要剩 7 − 4 = 3，正確答案是 37。答 47 是借了卻沒讓十位少 1。",
+      "challenge": "3-6",
+      "errorPath": 3
+    },
+    {
+      "id": "add-sub-within-100-ed-6",
+      "type": "error-diagnosis",
+      "problem": "用直式計算 61 − 35",
+      "wrongSolution": "答案寫 34",
+      "errorOptions": ["把 61 看成 64", "十位多減了 1", "個位不夠減，反過來用 5 減 1", "忘了寫個位"],
+      "correctErrorIndex": 2,
+      "explanation": "個位借 1 變 11 − 5 = 6，十位剩 5 − 3 = 2，正確答案是 26。答 34 是個位反過來算 5 − 1。",
+      "challenge": "3-6",
+      "errorPath": 2
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "add-sub-within-100-ca-1",
+      "type": "context-application",
+      "scenario": "公車上有 46 位乘客，到站時下車 18 位。",
+      "question": "車上還剩下幾位乘客？",
+      "options": ["28", "32", "38", "64"],
+      "answer": 0,
+      "explanation": "下車是變少，用減法：46 − 18 = 28 位。32 是個位反過來減，38 是借位後十位沒少 1。",
+      "challenge": "3-8",
+      "errorPath": 2
+    },
+    {
+      "id": "add-sub-within-100-ca-2",
+      "type": "context-application",
+      "scenario": "圖書館原本有 37 本繪本，這週又買進 25 本。",
+      "question": "圖書館現在共有幾本繪本？",
+      "options": ["52", "62", "512", "12"],
+      "answer": 1,
+      "explanation": "買進是變多，用加法：37 + 25 = 62 本。答 52 是個位滿十忘了進位。",
+      "challenge": "3-8",
+      "errorPath": 1
+    },
+    {
+      "id": "add-sub-within-100-ca-3",
+      "type": "context-application",
+      "scenario": "小華摺了 53 隻紙鶴，送給學弟妹 29 隻。",
+      "question": "小華還剩下幾隻紙鶴？",
+      "options": ["34", "24", "36", "82"],
+      "answer": 1,
+      "explanation": "送出去用減法：53 − 29 = 24 隻。答 34 是借位後十位忘了少 1，36 是個位反過來減。",
+      "challenge": "3-8",
+      "errorPath": 3
+    }
+  ]
+}

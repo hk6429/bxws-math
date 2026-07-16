@@ -1,0 +1,251 @@
+{
+  "nodeId": "shape-recognize",
+  "basicMastery": [
+    {
+      "id": "shape-recognize-bm-1",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "errorPath": 1,
+      "stem": "皮球的形狀最像哪一種形體？",
+      "options": ["圓形", "球", "圓柱", "正方體"],
+      "answer": 1,
+      "explanation": "皮球是立體的「球」。「圓形」是畫在紙上平平的圖形，和立體的球不一樣。"
+    },
+    {
+      "id": "shape-recognize-bm-2",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "errorPath": 1,
+      "stem": "柳丁的形狀最像哪一種形體？",
+      "options": ["圓柱", "長方體", "圓形", "球"],
+      "answer": 3,
+      "explanation": "柳丁圓滾滾的，是立體的「球」。「圓形」是平面圖形，不能用來說立體的柳丁。"
+    },
+    {
+      "id": "shape-recognize-bm-3",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "errorPath": 1,
+      "stem": "彈珠的形狀最像哪一種形體？",
+      "options": ["球", "圓形", "正方體", "圓柱"],
+      "answer": 0,
+      "explanation": "彈珠是立體的「球」，放在哪個方向看都是圓滾滾的。"
+    },
+    {
+      "id": "shape-recognize-bm-4",
+      "type": "basic-mastery",
+      "challenge": "1-2",
+      "errorPath": 2,
+      "stem": "骰子的形狀是哪一種形體？",
+      "options": ["長方體", "正方體", "圓柱", "球"],
+      "answer": 1,
+      "explanation": "骰子每一個面都是一樣大的正方形，是「正方體」。"
+    },
+    {
+      "id": "shape-recognize-bm-5",
+      "type": "basic-mastery",
+      "challenge": "1-2",
+      "errorPath": 2,
+      "stem": "魔術方塊的形狀是哪一種形體？",
+      "options": ["圓柱", "球", "長方體", "正方體"],
+      "answer": 3,
+      "explanation": "魔術方塊每個面都是一樣大的正方形，是「正方體」。"
+    },
+    {
+      "id": "shape-recognize-bm-6",
+      "type": "basic-mastery",
+      "challenge": "1-2",
+      "errorPath": 2,
+      "stem": "一盒抽取式面紙的形狀最像哪一種形體？",
+      "options": ["圓柱", "球", "長方體", "正方體"],
+      "answer": 2,
+      "explanation": "面紙盒有長有短、平平的六個面，是「長方體」。"
+    },
+    {
+      "id": "shape-recognize-bm-7",
+      "type": "basic-mastery",
+      "challenge": "1-3",
+      "errorPath": 3,
+      "stem": "一個圖形有 3 條邊、3 個角，它是什麼形？",
+      "options": ["三角形", "正方形", "長方形", "圓形"],
+      "answer": 0,
+      "explanation": "有 3 條邊、3 個角的圖形就是三角形。"
+    },
+    {
+      "id": "shape-recognize-bm-8",
+      "type": "basic-mastery",
+      "challenge": "1-3",
+      "errorPath": 3,
+      "stem": "三角形有幾個角？",
+      "options": ["2個", "3個", "4個", "5個"],
+      "answer": 1,
+      "explanation": "三角形有 3 條邊，也有 3 個角，數一數不要多算或漏算。"
+    },
+    {
+      "id": "shape-recognize-bm-9",
+      "type": "basic-mastery",
+      "challenge": "1-3",
+      "errorPath": 3,
+      "stem": "正方形有幾條邊？",
+      "options": ["3條", "5條", "4條", "6條"],
+      "answer": 2,
+      "explanation": "正方形有 4 條邊，也有 4 個角。"
+    },
+    {
+      "id": "shape-recognize-bm-10",
+      "type": "basic-mastery",
+      "challenge": "1-8",
+      "errorPath": 2,
+      "stem": "一張卡片四條邊一樣長、有四個角，它是什麼形？",
+      "options": ["長方形", "三角形", "正方形", "圓形"],
+      "answer": 2,
+      "explanation": "四條邊一樣長、有四個角的圖形是正方形。"
+    },
+    {
+      "id": "shape-recognize-bm-11",
+      "type": "basic-mastery",
+      "challenge": "1-8",
+      "errorPath": 2,
+      "stem": "一張卡片有兩條長邊、兩條短邊、四個角，它是什麼形？",
+      "options": ["正方形", "長方形", "三角形", "圓形"],
+      "answer": 1,
+      "explanation": "兩條邊長、兩條邊短，共有四條邊四個角，是長方形。"
+    },
+    {
+      "id": "shape-recognize-bm-12",
+      "type": "basic-mastery",
+      "challenge": "1-8",
+      "errorPath": 3,
+      "stem": "一張卡片圓圓的、沒有一個角，它是什麼形？",
+      "options": ["三角形", "正方形", "長方形", "圓形"],
+      "answer": 3,
+      "explanation": "圓形由一條彎彎的線圍成，沒有直直的邊，也沒有角。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "shape-recognize-ci-1",
+      "type": "concept-id",
+      "challenge": "1-4",
+      "errorPath": 3,
+      "statement": "三角形有 4 條邊。",
+      "correctAnswer": false,
+      "explanation": "三角形只有 3 條邊、3 個角，「三」就是它的名字由來。"
+    },
+    {
+      "id": "shape-recognize-ci-2",
+      "type": "concept-id",
+      "challenge": "1-4",
+      "errorPath": 3,
+      "statement": "正方形有 4 個角。",
+      "correctAnswer": true,
+      "explanation": "正方形有 4 條邊、4 個角。"
+    },
+    {
+      "id": "shape-recognize-ci-3",
+      "type": "concept-id",
+      "challenge": "1-4",
+      "errorPath": 3,
+      "statement": "圓形有 1 個角。",
+      "correctAnswer": false,
+      "explanation": "圓形由一條彎彎的線圍成，沒有直直的邊，一個角也沒有。"
+    },
+    {
+      "id": "shape-recognize-ci-4",
+      "type": "concept-id",
+      "challenge": "1-5",
+      "errorPath": 2,
+      "statement": "罐頭盒的形狀像圓柱，可以在桌上滾動。",
+      "correctAnswer": true,
+      "explanation": "圓柱側面是彎彎的曲面，橫放在桌上就能滾動。"
+    },
+    {
+      "id": "shape-recognize-ci-5",
+      "type": "concept-id",
+      "challenge": "1-5",
+      "errorPath": 2,
+      "statement": "球放在斜斜的木板上會自己滾下去。",
+      "correctAnswer": true,
+      "explanation": "球整個表面都是彎彎的曲面，放在斜坡上會滾動。"
+    },
+    {
+      "id": "shape-recognize-ci-6",
+      "type": "concept-id",
+      "challenge": "1-5",
+      "errorPath": 2,
+      "statement": "正方體像球一樣，輕輕一推就會滾動。",
+      "correctAnswer": false,
+      "explanation": "正方體每個面都平平的，放在桌上很穩，推它會滑不會滾。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "shape-recognize-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "1-6",
+      "errorPath": 2,
+      "problem": "說一說時鐘圓圓鐘面的形狀",
+      "wrongSolution": "小明說：「時鐘的鐘面是正方形。」",
+      "errorOptions": ["把圓形說成正方形", "把圓形說成三角形", "把鐘面看成立體的球", "鐘面沒有形狀"],
+      "correctErrorIndex": 0,
+      "explanation": "鐘面是圓圓的，由一條彎彎的線圍成，沒有邊也沒有角，是圓形不是正方形。"
+    },
+    {
+      "id": "shape-recognize-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "1-6",
+      "errorPath": 1,
+      "problem": "認一認：畫在紙上的圓和皮球",
+      "wrongSolution": "小美說：「紙上的圓形就是球。」",
+      "errorOptions": ["圓形畫得不夠圓", "球比圓形大", "把平面的圓形和立體的球混在一起", "紙的顏色不對"],
+      "correctErrorIndex": 2,
+      "explanation": "圓形是畫在紙上平平的圖形，球是立體的形體，兩個名字不能混用。"
+    },
+    {
+      "id": "shape-recognize-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "1-6",
+      "errorPath": 3,
+      "problem": "數一數正方形有幾個角",
+      "wrongSolution": "小安數一數，說有 3 個角。",
+      "errorOptions": ["多數了一個角", "漏數了一個角", "把邊當成角來數", "正方形沒有角"],
+      "correctErrorIndex": 1,
+      "explanation": "正方形有 4 個角，小安只數出 3 個，是漏數了一個角。數角時可以邊數邊做記號。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "shape-recognize-ca-1",
+      "type": "context-application",
+      "challenge": "1-7",
+      "errorPath": 2,
+      "scenario": "桌上有球、圓柱和正方體三種積木。",
+      "question": "哪一種疊得穩、又不會滾動？",
+      "options": ["球", "圓柱", "正方體", "三種都一樣穩"],
+      "answer": 2,
+      "explanation": "正方體每個面都平平的，疊起來最穩；球和圓柱有彎彎的面，容易滾動。"
+    },
+    {
+      "id": "shape-recognize-ca-2",
+      "type": "context-application",
+      "challenge": "1-7",
+      "errorPath": 2,
+      "scenario": "小豪把積木放在斜斜的木板上。",
+      "question": "哪一種積木會自己滾下去？",
+      "options": ["正方體", "球", "長方體", "每一種都會"],
+      "answer": 1,
+      "explanation": "球整個表面都是彎彎的曲面，放在斜坡上會自己滾下去；正方體和長方體的面平平的，只會滑不會滾。"
+    },
+    {
+      "id": "shape-recognize-ca-3",
+      "type": "context-application",
+      "challenge": "1-7",
+      "errorPath": 1,
+      "scenario": "美勞課要在紙上描出一個圓形。",
+      "question": "用哪個東西的底面來描最合適？",
+      "options": ["骰子", "長方形的盒子", "三角尺", "圓形的罐頭盒"],
+      "answer": 3,
+      "explanation": "罐頭盒是圓柱，它的底面是圓形，沿著底面描一圈就是圓形。"
+    }
+  ]
+}

@@ -1,0 +1,255 @@
+{
+  "nodeId": "multiplication-intro",
+  "basicMastery": [
+    {
+      "id": "multiplication-intro-bm-1",
+      "type": "basic-mastery",
+      "challenge": "8-1",
+      "errorPath": 1,
+      "stem": "4 ＋ 4 ＋ 4 用乘法寫是哪一個？",
+      "options": ["4 × 3", "4 × 4", "3 × 3", "4 ＋ 3"],
+      "answer": 0,
+      "explanation": "3 個 4 相加，就是 4 的 3 倍，寫成 4 × 3。"
+    },
+    {
+      "id": "multiplication-intro-bm-2",
+      "type": "basic-mastery",
+      "challenge": "8-1",
+      "errorPath": 1,
+      "stem": "6 ＋ 6 ＋ 6 ＋ 6 ＋ 6 是幾個幾相加？",
+      "options": ["5 個 6", "6 個 6", "6 個 5", "5 個 5"],
+      "answer": 0,
+      "explanation": "數一數，一共有 5 個 6 在相加，可以寫成 6 × 5。"
+    },
+    {
+      "id": "multiplication-intro-bm-3",
+      "type": "basic-mastery",
+      "challenge": "8-1",
+      "errorPath": 1,
+      "stem": "2 × 7 和哪個算式的答案一樣多？",
+      "options": ["7 ＋ 7", "2 ＋ 7", "2 ＋ 2", "7 × 7"],
+      "answer": 0,
+      "explanation": "2 × 7 是 7 個 2，等於 14；7 ＋ 7 是 2 個 7，也是 14，一樣多。"
+    },
+    {
+      "id": "multiplication-intro-bm-4",
+      "type": "basic-mastery",
+      "challenge": "8-2",
+      "errorPath": 3,
+      "stem": "一盒有 6 顆蛋，買 4 盒，算全部顆數的算式是？",
+      "options": ["6 × 4", "6 ＋ 4", "6 × 6", "4 × 4"],
+      "answer": 0,
+      "explanation": "每盒 6 顆是一份的量，共 4 盒，就是 4 個 6：6 × 4。"
+    },
+    {
+      "id": "multiplication-intro-bm-5",
+      "type": "basic-mastery",
+      "challenge": "8-2",
+      "errorPath": 3,
+      "stem": "每人發 5 張貼紙，發給 3 個人，算式是？",
+      "options": ["5 × 3", "5 ＋ 3", "5 × 5", "3 × 3"],
+      "answer": 0,
+      "explanation": "一人 5 張是一份的量，共 3 人，就是 3 個 5：5 × 3。"
+    },
+    {
+      "id": "multiplication-intro-bm-6",
+      "type": "basic-mastery",
+      "challenge": "8-2",
+      "errorPath": 1,
+      "stem": "2 × 6 的意思是幾個 2 合起來？",
+      "options": ["6 個", "2 個", "8 個", "12 個"],
+      "answer": 0,
+      "explanation": "2 × 6 表示 2 的 6 倍，也就是 6 個 2 合起來。"
+    },
+    {
+      "id": "multiplication-intro-bm-7",
+      "type": "basic-mastery",
+      "challenge": "8-3",
+      "errorPath": 2,
+      "stem": "弟弟有 3 顆糖，哥哥是弟弟的 4 倍，哥哥有幾顆？",
+      "options": ["12 顆", "7 顆", "34 顆", "9 顆"],
+      "answer": 0,
+      "explanation": "4 倍就是 4 個 3：3 × 4 ＝ 12 顆。算 3 ＋ 4 就把「倍」當成「多」了。"
+    },
+    {
+      "id": "multiplication-intro-bm-8",
+      "type": "basic-mastery",
+      "challenge": "8-3",
+      "errorPath": 2,
+      "stem": "一段緞帶長 2 公尺，它的 5 倍是幾公尺？",
+      "options": ["10 公尺", "7 公尺", "25 公尺", "3 公尺"],
+      "answer": 0,
+      "explanation": "5 倍就是 5 個 2：2 × 5 ＝ 10 公尺。"
+    },
+    {
+      "id": "multiplication-intro-bm-9",
+      "type": "basic-mastery",
+      "challenge": "8-3",
+      "errorPath": 2,
+      "stem": "妹妹摺 5 隻紙鶴，姊姊摺的是妹妹的 3 倍，姊姊摺幾隻？",
+      "options": ["15 隻", "8 隻", "53 隻", "2 隻"],
+      "answer": 0,
+      "explanation": "3 倍就是 3 個 5：5 × 3 ＝ 15 隻。"
+    },
+    {
+      "id": "multiplication-intro-bm-10",
+      "type": "basic-mastery",
+      "challenge": "8-7",
+      "errorPath": 3,
+      "stem": "點點圖每排 5 個，共 3 排，全部有幾個點？",
+      "options": ["15 個", "8 個", "53 個", "12 個"],
+      "answer": 0,
+      "explanation": "3 排、每排 5 個，就是 3 個 5：5 × 3 ＝ 15 個。"
+    },
+    {
+      "id": "multiplication-intro-bm-11",
+      "type": "basic-mastery",
+      "challenge": "8-7",
+      "errorPath": 3,
+      "stem": "巧克力每排 4 顆，共 6 排，哪個算式對？",
+      "options": ["4 × 6", "4 ＋ 6", "4 × 4", "6 × 6"],
+      "answer": 0,
+      "explanation": "6 排、每排 4 顆，就是 6 個 4：4 × 6 ＝ 24 顆。"
+    },
+    {
+      "id": "multiplication-intro-bm-12",
+      "type": "basic-mastery",
+      "challenge": "8-7",
+      "errorPath": 3,
+      "stem": "貼紙每排 2 張，排成 8 排，全部有幾張？",
+      "options": ["16 張", "10 張", "28 張", "6 張"],
+      "answer": 0,
+      "explanation": "8 排、每排 2 張，就是 8 個 2：2 × 8 ＝ 16 張。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "multiplication-intro-ci-1",
+      "type": "concept-id",
+      "challenge": "8-4",
+      "statement": "2 × 7 和 7 ＋ 7 一樣多。",
+      "correctAnswer": true,
+      "explanation": "2 × 7 ＝ 14，7 ＋ 7 也是 14，兩個算式的答案一樣多。"
+    },
+    {
+      "id": "multiplication-intro-ci-2",
+      "type": "concept-id",
+      "challenge": "8-4",
+      "errorPath": 1,
+      "statement": "3 × 4 就是 3 ＋ 4。",
+      "correctAnswer": false,
+      "explanation": "3 × 4 是 4 個 3 相加，等於 12；3 ＋ 4 只有 7，兩個不一樣。"
+    },
+    {
+      "id": "multiplication-intro-ci-3",
+      "type": "concept-id",
+      "challenge": "8-4",
+      "statement": "0 × 5 ＝ 0，因為 5 個 0 合起來還是 0。",
+      "correctAnswer": true,
+      "explanation": "0 ＋ 0 ＋ 0 ＋ 0 ＋ 0 還是 0，所以 0 乘任何數都是 0。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "multiplication-intro-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "8-5",
+      "errorPath": 3,
+      "problem": "一人發 5 張貼紙，發給 3 個人，共發幾張？",
+      "wrongSolution": "小光列 5 ＋ 3 ＝ 8",
+      "errorOptions": ["把 3 個 5 相加的情境算成一次加法", "九九乘法背錯", "抄錯題目的數字", "把人數多算了一次"],
+      "correctErrorIndex": 0,
+      "explanation": "3 個人各拿 5 張，是 3 個 5：5 × 3 ＝ 15 張，不是把 5 和 3 加起來。"
+    },
+    {
+      "id": "multiplication-intro-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "8-5",
+      "errorPath": 3,
+      "problem": "一盒有 6 顆糖，買 4 盒，共有幾顆？",
+      "wrongSolution": "小竹列 6 ＋ 4 ＝ 10",
+      "errorOptions": ["進位加法算錯", "應是 4 個 6 相加，卻把盒數直接加上去", "抄錯題目的數字", "忘記算其中一盒"],
+      "correctErrorIndex": 1,
+      "explanation": "4 盒、每盒 6 顆，是 4 個 6：6 × 4 ＝ 24 顆。盒數是「幾份」，不能直接加。"
+    },
+    {
+      "id": "multiplication-intro-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "8-5",
+      "errorPath": 3,
+      "problem": "每張桌子坐 4 人，7 張桌子共坐幾人？",
+      "wrongSolution": "小海列 4 ＋ 7 ＝ 11",
+      "errorOptions": ["把桌子數少算了一張", "抄錯題目的數字", "加法進位算錯", "把 7 個 4 相加算成一次加法"],
+      "correctErrorIndex": 3,
+      "explanation": "7 張桌子、每桌 4 人，是 7 個 4：4 × 7 ＝ 28 人。"
+    },
+    {
+      "id": "multiplication-intro-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "8-6",
+      "errorPath": 2,
+      "problem": "弟弟有 3 顆糖，哥哥是弟弟的 4 倍，哥哥有幾顆？",
+      "wrongSolution": "小真列 3 ＋ 4 ＝ 7",
+      "errorOptions": ["把「4 倍」當成「多 4 個」", "九九乘法背錯", "抄錯題目的數字", "把弟弟的糖多算了一次"],
+      "correctErrorIndex": 0,
+      "explanation": "4 倍是 4 個 3：3 × 4 ＝ 12 顆。「倍」是乘法，不是加 4。"
+    },
+    {
+      "id": "multiplication-intro-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "8-6",
+      "errorPath": 2,
+      "problem": "短繩長 2 公尺，長繩是短繩的 6 倍，長繩幾公尺？",
+      "wrongSolution": "小丘列 2 ＋ 6 ＝ 8",
+      "errorOptions": ["加法算錯", "把「6 倍」當成「多 6 公尺」", "抄錯題目的數字", "把公尺和公分弄混"],
+      "correctErrorIndex": 1,
+      "explanation": "6 倍是 6 個 2：2 × 6 ＝ 12 公尺。"
+    },
+    {
+      "id": "multiplication-intro-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "8-6",
+      "errorPath": 2,
+      "problem": "妹妹存 5 元，姊姊存的是妹妹的 3 倍，姊姊存幾元？",
+      "wrongSolution": "小塘列 5 ＋ 3 ＝ 8",
+      "errorOptions": ["抄錯題目的數字", "加法算錯", "把「3 倍」當成「多 3 元」", "忘記算妹妹的錢"],
+      "correctErrorIndex": 2,
+      "explanation": "3 倍是 3 個 5：5 × 3 ＝ 15 元。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "multiplication-intro-ca-1",
+      "type": "context-application",
+      "challenge": "8-8",
+      "errorPath": 1,
+      "scenario": "一輛三輪車有 3 個輪子，公園裡停了 5 輛三輪車。",
+      "question": "一共有幾個輪子？",
+      "options": ["15 個", "8 個", "35 個", "12 個"],
+      "answer": 0,
+      "explanation": "5 輛、每輛 3 個輪子，是 5 個 3：3 × 5 ＝ 15 個。"
+    },
+    {
+      "id": "multiplication-intro-ca-2",
+      "type": "context-application",
+      "challenge": "8-8",
+      "errorPath": 1,
+      "scenario": "一隻章魚有 8 隻腳，水族館裡有 2 隻章魚。",
+      "question": "一共有幾隻腳？",
+      "options": ["16 隻", "10 隻", "82 隻", "6 隻"],
+      "answer": 0,
+      "explanation": "2 隻章魚、每隻 8 隻腳，是 2 個 8：8 × 2 ＝ 16 隻。"
+    },
+    {
+      "id": "multiplication-intro-ca-3",
+      "type": "context-application",
+      "challenge": "8-8",
+      "errorPath": 1,
+      "scenario": "一枝棒棒糖賣 9 元，小乃買了 3 枝。",
+      "question": "一共要付幾元？",
+      "options": ["27 元", "12 元", "93 元", "6 元"],
+      "answer": 0,
+      "explanation": "3 枝、每枝 9 元，是 3 個 9：9 × 3 ＝ 27 元。"
+    }
+  ]
+}

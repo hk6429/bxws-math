@@ -1,0 +1,245 @@
+{
+  "nodeId": "big-number-10k",
+  "basicMastery": [
+    {
+      "id": "big-number-10k-bm-1",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "errorPath": 1,
+      "stem": "「四千零六十」用阿拉伯數字寫是多少？",
+      "options": ["4600", "4060", "460", "40060"],
+      "answer": 1,
+      "explanation": "四千是 4 在千位，零表示百位是 0，六十是 6 在十位，個位是 0，寫成 4060。"
+    },
+    {
+      "id": "big-number-10k-bm-2",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "errorPath": 1,
+      "stem": "3508 這個數怎麼讀？",
+      "options": ["三千五百八", "三百五十八", "三千五百零八", "三千五十八"],
+      "answer": 2,
+      "explanation": "3508 的十位是 0，要讀出「零」：三千五百零八。"
+    },
+    {
+      "id": "big-number-10k-bm-3",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "errorPath": 1,
+      "stem": "「七千零五」用阿拉伯數字寫是多少？",
+      "options": ["7005", "705", "7050", "70005"],
+      "answer": 0,
+      "explanation": "七千是 7 在千位，百位和十位都是 0 要佔位，五在個位，寫成 7005。"
+    },
+    {
+      "id": "big-number-10k-bm-4",
+      "type": "basic-mastery",
+      "challenge": "1-3",
+      "errorPath": 2,
+      "stem": "下列哪個數最大？",
+      "options": ["3999", "989", "4099", "4100"],
+      "answer": 3,
+      "explanation": "都是先比位數：989 只有三位數最小；四位數再從千位比，4100 的千位是 4、百位是 1，比 4099 大。"
+    },
+    {
+      "id": "big-number-10k-bm-5",
+      "type": "basic-mastery",
+      "challenge": "1-3",
+      "errorPath": 2,
+      "stem": "下列哪個數比 5208 大？",
+      "options": ["5199", "5088", "5210", "5028"],
+      "answer": 2,
+      "explanation": "千位都是 5，比百位：5210 的百位是 2、十位是 1，比 5208 的十位 0 大，所以 5210 > 5208。"
+    },
+    {
+      "id": "big-number-10k-bm-6",
+      "type": "basic-mastery",
+      "challenge": "1-3",
+      "errorPath": 2,
+      "stem": "下列哪個數比 6050 小？",
+      "options": ["6500", "6005", "6055", "6100"],
+      "answer": 1,
+      "explanation": "千位都是 6，比百位：6005 的百位是 0，再比十位 0 < 5，所以 6005 < 6050，其他三個都比 6050 大。"
+    },
+    {
+      "id": "big-number-10k-bm-7",
+      "type": "basic-mastery",
+      "challenge": "1-4",
+      "errorPath": 3,
+      "stem": "數線從 0 開始，每格是 100，第 7 個刻度是多少？",
+      "options": ["7", "70", "700", "7000"],
+      "answer": 2,
+      "explanation": "每格代表 100，跳 7 格就是 7 個 100，也就是 700。"
+    },
+    {
+      "id": "big-number-10k-bm-8",
+      "type": "basic-mastery",
+      "challenge": "1-4",
+      "errorPath": 3,
+      "stem": "數線上 2000 到 3000 分成 10 格，第 3 個刻度是多少？",
+      "options": ["2003", "2030", "3000", "2300"],
+      "answer": 3,
+      "explanation": "2000 到 3000 相差 1000，平分成 10 格，每格是 100。2000 往右 3 格是 2000 + 300 = 2300。"
+    },
+    {
+      "id": "big-number-10k-bm-9",
+      "type": "basic-mastery",
+      "challenge": "1-4",
+      "errorPath": 3,
+      "stem": "數線從 0 開始，每格是 500，第 6 個刻度是多少？",
+      "options": ["600", "2500", "3000", "3500"],
+      "answer": 2,
+      "explanation": "每格代表 500，跳 6 格就是 6 個 500，500 × 6 = 3000。"
+    },
+    {
+      "id": "big-number-10k-bm-10",
+      "type": "basic-mastery",
+      "challenge": "1-8",
+      "errorPath": 3,
+      "stem": "2480、2580、2680，下一個數是多少？",
+      "options": ["2690", "2780", "2880", "3680"],
+      "answer": 1,
+      "explanation": "這串數每次加 100（百位加 1），2680 再加 100 是 2780。"
+    },
+    {
+      "id": "big-number-10k-bm-11",
+      "type": "basic-mastery",
+      "challenge": "1-8",
+      "errorPath": 3,
+      "stem": "4700、5700、6700，這串數每次加多少？",
+      "options": ["1000", "100", "10", "10000"],
+      "answer": 0,
+      "explanation": "只有千位在變：4、5、6，每次加 1 個千，也就是加 1000。"
+    },
+    {
+      "id": "big-number-10k-bm-12",
+      "type": "basic-mastery",
+      "challenge": "1-8",
+      "errorPath": 3,
+      "stem": "3060 加 1000 是多少？",
+      "options": ["3160", "3070", "4060", "13060"],
+      "answer": 2,
+      "explanation": "加 1000 是千位加 1：3060 的千位 3 變成 4，其他位不變，得到 4060。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "big-number-10k-ci-1",
+      "type": "concept-id",
+      "challenge": "1-2",
+      "statement": "10 個一百合起來是 1 個一千。",
+      "correctAnswer": true,
+      "explanation": "位值是十進位：10 個一百就是 1000，也就是 1 個一千。"
+    },
+    {
+      "id": "big-number-10k-ci-2",
+      "type": "concept-id",
+      "challenge": "1-2",
+      "statement": "10 個十合起來是 1000。",
+      "correctAnswer": false,
+      "explanation": "10 個十是 100，不能一次跳兩級。要 100 個十才是 1000。"
+    },
+    {
+      "id": "big-number-10k-ci-3",
+      "type": "concept-id",
+      "challenge": "1-2",
+      "statement": "8 個一千和 3 個十合起來是 8030。",
+      "correctAnswer": true,
+      "explanation": "8 個一千是 8000，3 個十是 30，百位和個位都是 0 佔位，合起來是 8030。"
+    },
+    {
+      "id": "big-number-10k-ci-4",
+      "type": "concept-id",
+      "challenge": "1-6",
+      "statement": "比較兩個數的大小，只要看最前面的數字誰大就可以。",
+      "correctAnswer": false,
+      "explanation": "要先比位數：998 開頭是 9，1002 開頭是 1，但 1002 是四位數，反而比較大。位數相同才從高位逐位比。"
+    },
+    {
+      "id": "big-number-10k-ci-5",
+      "type": "concept-id",
+      "challenge": "1-6",
+      "statement": "998 比 1002 小，因為 998 只有三位數，1002 有四位數。",
+      "correctAnswer": true,
+      "explanation": "位數多的整數比較大：四位數 1002 一定比三位數 998 大。"
+    },
+    {
+      "id": "big-number-10k-ci-6",
+      "type": "concept-id",
+      "challenge": "1-6",
+      "statement": "在一萬以內的整數中，四位數一定比三位數大。",
+      "correctAnswer": true,
+      "explanation": "最小的四位數是 1000，最大的三位數是 999，所以四位數一定比三位數大。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "big-number-10k-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "1-5",
+      "errorPath": 1,
+      "problem": "把「三千零五」寫成阿拉伯數字",
+      "wrongSolution": "小安寫成 305",
+      "errorOptions": ["百位和十位的 0 沒有寫出來佔位", "千位的數字寫錯了", "多寫了一個 0", "個位的數字寫錯了"],
+      "correctErrorIndex": 0,
+      "explanation": "三千零五是四位數：千位 3、百位 0、十位 0、個位 5，兩個 0 都要寫出來佔位，正確是 3005。"
+    },
+    {
+      "id": "big-number-10k-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "1-5",
+      "errorPath": 1,
+      "problem": "把「五千零七十」寫成阿拉伯數字",
+      "wrongSolution": "小柔寫成 50070",
+      "errorOptions": ["十位和個位的數字對調了", "多寫一個 0，把數變成五位數", "少寫一個 0，位數不夠", "千位的數字抄錯了"],
+      "correctErrorIndex": 1,
+      "explanation": "五千零七十是四位數：千位 5、百位 0、十位 7、個位 0，正確是 5070。「零」只表示百位是 0，不用多補一個 0。"
+    },
+    {
+      "id": "big-number-10k-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "1-5",
+      "errorPath": 1,
+      "problem": "把 6008 讀出來",
+      "wrongSolution": "小杰讀成「六百零八」",
+      "errorOptions": ["個位的 8 讀錯了", "0 應該一個一個讀出來", "沒注意 6008 是四位數，把 6 的位值看錯", "把 6 看成 8 了"],
+      "correctErrorIndex": 2,
+      "explanation": "6008 是四位數，6 在千位，要讀成「六千零八」；讀成六百零八是把 6 當成百位了。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "big-number-10k-ca-1",
+      "type": "context-application",
+      "challenge": "1-7",
+      "errorPath": 2,
+      "scenario": "平板電腦 A 賣 9980 元，平板電腦 B 賣 10200 元。",
+      "question": "哪一台比較便宜？",
+      "options": ["A 比較便宜", "B 比較便宜", "兩台一樣貴", "沒辦法比較"],
+      "answer": 0,
+      "explanation": "9980 是四位數，10200 是五位數，位數少的比較小，所以 A 比較便宜。不能只看開頭 9 比 1 大就選 B。"
+    },
+    {
+      "id": "big-number-10k-ca-2",
+      "type": "context-application",
+      "challenge": "1-7",
+      "errorPath": 2,
+      "scenario": "小美存了 3405 元，哥哥存了 3450 元。",
+      "question": "誰存的錢比較多？",
+      "options": ["小美存的比較多", "哥哥存的比較多", "兩人存的一樣多", "沒辦法比較"],
+      "answer": 1,
+      "explanation": "千位、百位都相同，比十位：3450 的十位是 5，3405 的十位是 0，所以哥哥的 3450 元比較多。"
+    },
+    {
+      "id": "big-number-10k-ca-3",
+      "type": "context-application",
+      "challenge": "1-7",
+      "errorPath": 2,
+      "scenario": "演唱會去年來了 8900 人，今年來了 10100 人。",
+      "question": "哪一年來的人比較多？",
+      "options": ["今年比較多", "去年比較多", "兩年一樣多", "看不出來"],
+      "answer": 0,
+      "explanation": "10100 是五位數，8900 是四位數，位數多的比較大，所以今年比較多。開頭數字 8 比 1 大不代表整個數比較大。"
+    }
+  ]
+}

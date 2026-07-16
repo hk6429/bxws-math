@@ -1,0 +1,251 @@
+{
+  "nodeId": "tri-quad-types",
+  "basicMastery": [
+    {
+      "id": "tri-quad-types-bm-1",
+      "type": "basic-mastery",
+      "challenge": "9-1",
+      "errorPath": 1,
+      "stem": "三條邊都等長的三角形叫做什麼？",
+      "options": ["等腰三角形", "直角三角形", "正三角形", "鈍角三角形"],
+      "answer": 2,
+      "explanation": "三邊等長的三角形叫正三角形，它同時也是等腰三角形的一種。"
+    },
+    {
+      "id": "tri-quad-types-bm-2",
+      "type": "basic-mastery",
+      "challenge": "9-1",
+      "errorPath": 1,
+      "stem": "正三角形的三個角大小怎麼樣？",
+      "options": ["三個角都相等", "只有兩個角相等", "三個角都不相等", "有一個是直角"],
+      "answer": 0,
+      "explanation": "正三角形三邊等長，三個角也都相等。"
+    },
+    {
+      "id": "tri-quad-types-bm-3",
+      "type": "basic-mastery",
+      "challenge": "9-1",
+      "errorPath": 1,
+      "stem": "恰好只有兩條邊等長的三角形叫做什麼？",
+      "options": ["正三角形", "等腰三角形", "直角三角形", "銳角三角形"],
+      "answer": 1,
+      "explanation": "有兩邊等長的三角形叫等腰三角形；若三邊都等長就是正三角形。"
+    },
+    {
+      "id": "tri-quad-types-bm-4",
+      "type": "basic-mastery",
+      "challenge": "9-2",
+      "errorPath": 1,
+      "stem": "有一個角是直角的三角形叫做什麼？",
+      "options": ["銳角三角形", "鈍角三角形", "直角三角形", "正三角形"],
+      "answer": 2,
+      "explanation": "有一個直角的三角形叫直角三角形，另外兩個角都是銳角。"
+    },
+    {
+      "id": "tri-quad-types-bm-5",
+      "type": "basic-mastery",
+      "challenge": "9-2",
+      "errorPath": 1,
+      "stem": "三個角都比直角小的三角形叫做什麼？",
+      "options": ["銳角三角形", "直角三角形", "鈍角三角形", "等腰三角形"],
+      "answer": 0,
+      "explanation": "三個角都是銳角（比直角小）的三角形叫銳角三角形。"
+    },
+    {
+      "id": "tri-quad-types-bm-6",
+      "type": "basic-mastery",
+      "challenge": "9-2",
+      "errorPath": 1,
+      "stem": "有一個角比直角大的三角形叫做什麼？",
+      "options": ["直角三角形", "銳角三角形", "正三角形", "鈍角三角形"],
+      "answer": 3,
+      "explanation": "有一個鈍角（比直角大）的三角形叫鈍角三角形。"
+    },
+    {
+      "id": "tri-quad-types-bm-7",
+      "type": "basic-mastery",
+      "challenge": "9-3",
+      "errorPath": 2,
+      "stem": "兩組對邊分別平行的四邊形叫做什麼？",
+      "options": ["梯形", "平行四邊形", "五邊形", "三角形"],
+      "answer": 1,
+      "explanation": "兩組對邊分別平行的四邊形叫平行四邊形；只有一組對邊平行的是梯形。"
+    },
+    {
+      "id": "tri-quad-types-bm-8",
+      "type": "basic-mastery",
+      "challenge": "9-3",
+      "errorPath": 2,
+      "stem": "平行四邊形有幾組對邊互相平行？",
+      "options": ["1 組", "3 組", "2 組", "4 組"],
+      "answer": 2,
+      "explanation": "平行四邊形有 2 組對邊，每一組都互相平行。"
+    },
+    {
+      "id": "tri-quad-types-bm-9",
+      "type": "basic-mastery",
+      "challenge": "9-3",
+      "errorPath": 1,
+      "stem": "菱形的四條邊長度怎麼樣？",
+      "options": ["四條邊都相等", "兩長兩短", "都不相等", "只有三邊相等"],
+      "answer": 0,
+      "explanation": "菱形四條邊都等長，但四個角不一定是直角。"
+    },
+    {
+      "id": "tri-quad-types-bm-10",
+      "type": "basic-mastery",
+      "challenge": "9-4",
+      "errorPath": 2,
+      "stem": "只有一組對邊平行的四邊形叫做什麼？",
+      "options": ["平行四邊形", "菱形", "梯形", "正方形"],
+      "answer": 2,
+      "explanation": "只有一組對邊平行的四邊形叫梯形；兩組都平行的才是平行四邊形。"
+    },
+    {
+      "id": "tri-quad-types-bm-11",
+      "type": "basic-mastery",
+      "challenge": "9-4",
+      "errorPath": 2,
+      "stem": "梯形有幾組對邊互相平行？",
+      "options": ["恰好 1 組", "2 組", "0 組", "4 組"],
+      "answer": 0,
+      "explanation": "梯形恰好有 1 組對邊平行，這是它和平行四邊形最大的差別。"
+    },
+    {
+      "id": "tri-quad-types-bm-12",
+      "type": "basic-mastery",
+      "challenge": "9-4",
+      "errorPath": 2,
+      "stem": "一個四邊形有兩組對邊平行，它是梯形嗎？",
+      "options": ["是，只要平行就是梯形", "不是，它是平行四邊形", "不是，它是三角形", "資料不夠，無法判斷"],
+      "answer": 1,
+      "explanation": "兩組對邊都平行的是平行四邊形；梯形只能有一組對邊平行。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "tri-quad-types-ci-1",
+      "type": "concept-id",
+      "challenge": "9-5",
+      "errorPath": 1,
+      "statement": "正三角形也是一種等腰三角形。",
+      "correctAnswer": true,
+      "explanation": "三邊等長的三角形，一定有兩邊等長，所以正三角形也算等腰三角形。"
+    },
+    {
+      "id": "tri-quad-types-ci-2",
+      "type": "concept-id",
+      "challenge": "9-5",
+      "errorPath": 1,
+      "statement": "正方形也是一種菱形，因為四條邊都等長。",
+      "correctAnswer": true,
+      "explanation": "菱形的條件是四邊等長，正方形符合，所以正方形是特別的菱形。"
+    },
+    {
+      "id": "tri-quad-types-ci-3",
+      "type": "concept-id",
+      "challenge": "9-5",
+      "errorPath": 1,
+      "statement": "等腰三角形一定是正三角形。",
+      "correctAnswer": false,
+      "explanation": "等腰只保證兩邊等長，第三邊不一定一樣長，所以不一定是正三角形。"
+    },
+    {
+      "id": "tri-quad-types-ci-4",
+      "type": "concept-id",
+      "challenge": "9-6",
+      "errorPath": 3,
+      "statement": "兩個全等的圖形，對應邊相等、對應角也相等。",
+      "correctAnswer": true,
+      "explanation": "全等表示形狀、大小完全相同，疊起來會完全疊合，對應邊和對應角都相等。"
+    },
+    {
+      "id": "tri-quad-types-ci-5",
+      "type": "concept-id",
+      "challenge": "9-6",
+      "errorPath": 3,
+      "statement": "兩個三角形形狀相同但一大一小，它們也算全等。",
+      "correctAnswer": false,
+      "explanation": "全等要形狀和大小都相同；一大一小疊不起來，就不是全等。"
+    },
+    {
+      "id": "tri-quad-types-ci-6",
+      "type": "concept-id",
+      "challenge": "9-6",
+      "errorPath": 3,
+      "statement": "一張三角形卡片旋轉或翻面後，和原本的圖形仍然全等。",
+      "correctAnswer": true,
+      "explanation": "旋轉或翻面不會改變形狀和大小，圖形仍能完全疊合，所以仍然全等。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "tri-quad-types-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "9-7",
+      "errorPath": 1,
+      "problem": "判斷四邊等長的四邊形是不是正方形",
+      "wrongSolution": "小杰說：「菱形四條邊等長，所以菱形就是正方形。」",
+      "errorOptions": ["邊長其實量錯了", "只檢查邊等長，漏檢查四個角是否直角", "菱形其實只有兩條邊等長", "正方形的邊不需要等長"],
+      "correctErrorIndex": 1,
+      "explanation": "正方形要四邊等長「而且」四個角都是直角；菱形的角不一定是直角。"
+    },
+    {
+      "id": "tri-quad-types-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "9-7",
+      "errorPath": 2,
+      "problem": "幫四邊形卡片分類",
+      "wrongSolution": "小美看到卡片有一組對邊平行，就把它歸到平行四邊形那一堆。",
+      "errorOptions": ["平行四邊形要兩組對邊平行，一組是梯形", "一組對邊平行的是菱形", "應該先量四邊的長度", "對邊平行的一定是正方形"],
+      "correctErrorIndex": 0,
+      "explanation": "只有一組對邊平行是梯形；要兩組對邊都平行，才是平行四邊形。"
+    },
+    {
+      "id": "tri-quad-types-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "9-7",
+      "errorPath": 3,
+      "problem": "判斷兩個三角形是否全等",
+      "wrongSolution": "小豪說兩個三角形形狀一樣就全等，但其中一個的邊長是另一個的 2 倍。",
+      "errorOptions": ["形狀一樣就一定全等", "全等只要角相等就好", "全等要形狀、大小都相同，只看形狀不夠", "邊長變 2 倍還是全等"],
+      "correctErrorIndex": 2,
+      "explanation": "全等的圖形疊起來要完全疊合；形狀相同但大小不同，只是放大縮小，不是全等。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "tri-quad-types-ca-1",
+      "type": "context-application",
+      "challenge": "9-8",
+      "errorPath": 2,
+      "scenario": "美勞課有三張卡片：甲有兩組對邊平行，乙只有一組對邊平行，丙三條邊等長。",
+      "question": "哪一張卡片是梯形？",
+      "options": ["甲", "乙", "丙", "都不是"],
+      "answer": 1,
+      "explanation": "梯形只有一組對邊平行，所以是乙；甲是平行四邊形，丙是正三角形。"
+    },
+    {
+      "id": "tri-quad-types-ca-2",
+      "type": "context-application",
+      "challenge": "9-8",
+      "errorPath": 1,
+      "scenario": "分類三角形：甲有一個直角，乙三條邊等長，丙有一個角比直角大。",
+      "question": "哪一個是正三角形？",
+      "options": ["甲", "丙", "乙", "無法判斷"],
+      "answer": 2,
+      "explanation": "三邊等長的乙是正三角形；甲是直角三角形，丙是鈍角三角形。"
+    },
+    {
+      "id": "tri-quad-types-ca-3",
+      "type": "context-application",
+      "challenge": "9-8",
+      "errorPath": 1,
+      "scenario": "桌上有一張四邊等長、但四個角都不是直角的卡片。",
+      "question": "這張卡片是什麼四邊形？",
+      "options": ["正方形", "長方形", "梯形", "菱形"],
+      "answer": 3,
+      "explanation": "四邊等長但角不是直角，是菱形；若四個角都是直角才是正方形。"
+    }
+  ]
+}

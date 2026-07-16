@@ -1,0 +1,247 @@
+{
+  "nodeId": "decimal-1place",
+  "basicMastery": [
+    {
+      "id": "decimal-1place-bm-1",
+      "type": "basic-mastery",
+      "challenge": "12-1",
+      "errorPath": 2,
+      "stem": "0.6 的 6 在哪一個位數？",
+      "options": ["個位", "十分位", "十位", "百分位"],
+      "answer": 1,
+      "explanation": "小數點右邊第一位是十分位，0.6 的 6 表示 6 個 0.1。"
+    },
+    {
+      "id": "decimal-1place-bm-2",
+      "type": "basic-mastery",
+      "challenge": "12-1",
+      "errorPath": 2,
+      "stem": "3 個 1 和 4 個 0.1 合起來是多少？",
+      "options": ["3.4", "34", "3.04", "0.34"],
+      "answer": 0,
+      "explanation": "3 個 1 是 3，4 個 0.1 是 0.4，合起來是 3.4。"
+    },
+    {
+      "id": "decimal-1place-bm-3",
+      "type": "basic-mastery",
+      "challenge": "12-1",
+      "errorPath": 2,
+      "stem": "「零點八」用數字寫出來是？",
+      "options": ["8", "0.08", "0.8", "1.8"],
+      "answer": 2,
+      "explanation": "零點八表示 0 個 1 和 8 個 0.1，寫成 0.8。"
+    },
+    {
+      "id": "decimal-1place-bm-4",
+      "type": "basic-mastery",
+      "challenge": "12-2",
+      "errorPath": 1,
+      "stem": "0.7 等於哪一個分數？",
+      "options": ["1/7", "7/10", "7/100", "70/10"],
+      "answer": 1,
+      "explanation": "0.7 是 7 個 0.1，也就是十分之七，寫成分數是 7/10。"
+    },
+    {
+      "id": "decimal-1place-bm-5",
+      "type": "basic-mastery",
+      "challenge": "12-2",
+      "errorPath": 1,
+      "stem": "9/10 等於哪一個小數？",
+      "options": ["0.9", "0.09", "9.1", "9"],
+      "answer": 0,
+      "explanation": "十分之九就是 9 個 0.1，寫成小數是 0.9。"
+    },
+    {
+      "id": "decimal-1place-bm-6",
+      "type": "basic-mastery",
+      "challenge": "12-2",
+      "errorPath": 1,
+      "stem": "0.3 是幾個 1/10 合起來的？",
+      "options": ["30 個", "13 個", "1 個", "3 個"],
+      "answer": 3,
+      "explanation": "0.3 就是十分之三，是 3 個 1/10 合起來的。"
+    },
+    {
+      "id": "decimal-1place-bm-7",
+      "type": "basic-mastery",
+      "challenge": "12-4",
+      "errorPath": 1,
+      "stem": "0.9 和 1.2，哪個比較大？",
+      "options": ["0.9", "1.2", "一樣大", "無法比較"],
+      "answer": 1,
+      "explanation": "先比整數部分：1 比 0 大，所以 1.2 比較大。不能只比小數部分的 9 和 2。"
+    },
+    {
+      "id": "decimal-1place-bm-8",
+      "type": "basic-mastery",
+      "challenge": "12-4",
+      "errorPath": 1,
+      "stem": "0.5 和 0.8，哪個比較小？",
+      "options": ["0.5", "0.8", "一樣大", "無法比較"],
+      "answer": 0,
+      "explanation": "整數部分都是 0，比十分位：5 比 8 小，所以 0.5 比較小。"
+    },
+    {
+      "id": "decimal-1place-bm-9",
+      "type": "basic-mastery",
+      "challenge": "12-4",
+      "errorPath": 1,
+      "stem": "2.4、2.7、2.1 中，最大的是？",
+      "options": ["2.4", "2.1", "2.7", "一樣大"],
+      "answer": 2,
+      "explanation": "整數部分都是 2，比十分位：7 最大，所以 2.7 最大。"
+    },
+    {
+      "id": "decimal-1place-bm-10",
+      "type": "basic-mastery",
+      "challenge": "12-5",
+      "errorPath": 3,
+      "stem": "2.5 + 0.8 = ？",
+      "options": ["2.13", "3.3", "3.4", "2.3"],
+      "answer": 1,
+      "explanation": "5 個 0.1 加 8 個 0.1 是 13 個 0.1，滿十進位到個位：2.5 + 0.8 = 3.3。"
+    },
+    {
+      "id": "decimal-1place-bm-11",
+      "type": "basic-mastery",
+      "challenge": "12-5",
+      "errorPath": 2,
+      "stem": "6 + 0.7 = ？",
+      "options": ["6.7", "1.3", "6.07", "13"],
+      "answer": 0,
+      "explanation": "直式要對齊小數點：6 是 6 個 1，0.7 是 7 個 0.1，合起來是 6.7。"
+    },
+    {
+      "id": "decimal-1place-bm-12",
+      "type": "basic-mastery",
+      "challenge": "12-5",
+      "errorPath": 3,
+      "stem": "4.2 - 1.5 = ？",
+      "options": ["3.3", "2.3", "3.7", "2.7"],
+      "answer": 3,
+      "explanation": "十分位 2 不夠減 5，向個位借 1 當 10 個 0.1：4.2 - 1.5 = 2.7。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "decimal-1place-ci-1",
+      "type": "concept-id",
+      "challenge": "12-3",
+      "statement": "10 個 0.1 合起來是 1。",
+      "correctAnswer": true,
+      "explanation": "0.1 是把 1 平分成 10 份的其中 1 份，10 份合起來剛好是 1。"
+    },
+    {
+      "id": "decimal-1place-ci-2",
+      "type": "concept-id",
+      "challenge": "12-3",
+      "errorPath": 3,
+      "statement": "13 個 0.1 合起來是 0.13。",
+      "correctAnswer": false,
+      "explanation": "13 個 0.1 中，10 個先合成 1，再加 3 個 0.1，是 1.3，不是 0.13。"
+    },
+    {
+      "id": "decimal-1place-ci-3",
+      "type": "concept-id",
+      "challenge": "12-3",
+      "statement": "2.5 是 25 個 0.1 合起來的。",
+      "correctAnswer": true,
+      "explanation": "2 是 20 個 0.1，再加 5 個 0.1，一共 25 個 0.1。"
+    },
+    {
+      "id": "decimal-1place-ci-4",
+      "type": "concept-id",
+      "challenge": "12-7",
+      "statement": "0.1 和 1/10 一樣大。",
+      "correctAnswer": true,
+      "explanation": "0.1 和 1/10 都表示「把 1 平分成 10 份取 1 份」，是同一個數的兩種寫法。"
+    },
+    {
+      "id": "decimal-1place-ci-5",
+      "type": "concept-id",
+      "challenge": "12-7",
+      "statement": "0.9 公尺和 9/10 公尺一樣長。",
+      "correctAnswer": true,
+      "explanation": "0.9 就是十分之九，兩種寫法表示同樣的長度。"
+    },
+    {
+      "id": "decimal-1place-ci-6",
+      "type": "concept-id",
+      "challenge": "12-7",
+      "errorPath": 1,
+      "statement": "3/10 比 0.3 大。",
+      "correctAnswer": false,
+      "explanation": "3/10 和 0.3 是同一個數：都是 3 個 0.1，一樣大。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "decimal-1place-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "12-6",
+      "errorPath": 3,
+      "problem": "計算 0.8 + 0.5",
+      "wrongSolution": "小竹算成 0.8 + 0.5 = 0.13",
+      "errorOptions": ["小數部分滿十沒有進位到個位", "小數點忘記寫了", "把加法看成減法", "抄錯題目的數字"],
+      "correctErrorIndex": 0,
+      "explanation": "8 個 0.1 加 5 個 0.1 是 13 個 0.1，滿十要進位成 1.3，不能拼成 0.13。"
+    },
+    {
+      "id": "decimal-1place-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "12-6",
+      "errorPath": 3,
+      "problem": "計算 0.6 + 0.7",
+      "wrongSolution": "小海算成 0.6 + 0.7 = 0.13",
+      "errorOptions": ["把 6 和 7 相乘了", "看錯題目的數字", "忘記寫小數點", "6 加 7 滿十，沒有進位成 1.3"],
+      "correctErrorIndex": 3,
+      "explanation": "6 個 0.1 加 7 個 0.1 是 13 個 0.1 = 1.3。小數部分滿十要進到個位。"
+    },
+    {
+      "id": "decimal-1place-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "12-6",
+      "errorPath": 3,
+      "problem": "計算 2.9 + 0.4",
+      "wrongSolution": "小池算成 2.9 + 0.4 = 2.13",
+      "errorOptions": ["整數部分抄錯了", "小數相加滿十沒有進位到個位", "把加法看成減法", "小數點位置寫錯"],
+      "correctErrorIndex": 1,
+      "explanation": "9 個 0.1 加 4 個 0.1 是 13 個 0.1，進位後 2.9 + 0.4 = 3.3，不是 2.13。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "decimal-1place-ca-1",
+      "type": "context-application",
+      "challenge": "12-8",
+      "errorPath": 2,
+      "scenario": "水壺裡有 0.6 公升的水，小竹再倒進 0.3 公升。",
+      "question": "水壺裡現在有多少公升的水？",
+      "options": ["0.9 公升", "0.3 公升", "9 公升", "0.63 公升"],
+      "answer": 0,
+      "explanation": "6 個 0.1 加 3 個 0.1 是 9 個 0.1：0.6 + 0.3 = 0.9 公升。"
+    },
+    {
+      "id": "decimal-1place-ca-2",
+      "type": "context-application",
+      "challenge": "12-8",
+      "errorPath": 3,
+      "scenario": "一條繩子長 1.5 公尺，剪掉 0.7 公尺做吊飾。",
+      "question": "繩子還剩下多少公尺？",
+      "options": ["1.2 公尺", "0.8 公尺", "2.2 公尺", "0.2 公尺"],
+      "answer": 1,
+      "explanation": "十分位 5 不夠減 7，向個位借 1：1.5 - 0.7 = 0.8 公尺。"
+    },
+    {
+      "id": "decimal-1place-ca-3",
+      "type": "context-application",
+      "challenge": "12-8",
+      "errorPath": 3,
+      "scenario": "妹妹身高 0.9 公尺，哥哥比妹妹高 0.4 公尺。",
+      "question": "哥哥的身高是多少公尺？",
+      "options": ["0.13 公尺", "0.5 公尺", "1.3 公尺", "1.4 公尺"],
+      "answer": 2,
+      "explanation": "0.9 + 0.4 = 1.3 公尺。9 加 4 滿十，要進位到個位，不是 0.13。"
+    }
+  ]
+}

@@ -1,0 +1,254 @@
+{
+  "nodeId": "time-mul-div",
+  "basicMastery": [
+    {
+      "id": "time-mul-div-bm-1",
+      "type": "basic-mastery",
+      "challenge": "22-1",
+      "errorPath": 3,
+      "stem": "15 分鐘是幾分之幾小時？",
+      "options": ["1/4 小時", "1/5 小時", "4 小時", "1/15 小時"],
+      "answer": 0,
+      "explanation": "1 小時 = 60 分，15 分 = 15/60 小時，約分成最簡分數 = 1/4 小時。"
+    },
+    {
+      "id": "time-mul-div-bm-2",
+      "type": "basic-mastery",
+      "challenge": "22-1",
+      "errorPath": 3,
+      "stem": "20 分鐘是幾分之幾小時？",
+      "options": ["1/2 小時", "1/3 小時", "3 小時", "1/20 小時"],
+      "answer": 1,
+      "explanation": "20 分 = 20/60 小時，分子分母同除以 20，約分成 1/3 小時。"
+    },
+    {
+      "id": "time-mul-div-bm-3",
+      "type": "basic-mastery",
+      "challenge": "22-1",
+      "errorPath": 3,
+      "stem": "45 分鐘是幾分之幾小時？",
+      "options": ["4/5 小時", "1/4 小時", "3/4 小時", "4/3 小時"],
+      "answer": 2,
+      "explanation": "45 分 = 45/60 小時，分子分母同除以 15，約分成 3/4 小時。"
+    },
+    {
+      "id": "time-mul-div-bm-4",
+      "type": "basic-mastery",
+      "challenge": "22-2",
+      "errorPath": 3,
+      "stem": "1/5 小時是幾分鐘？",
+      "options": ["5 分鐘", "20 分鐘", "12 分鐘", "15 分鐘"],
+      "answer": 2,
+      "explanation": "1 小時 = 60 分，1/5 小時 = 60 × 1/5 = 12 分鐘。"
+    },
+    {
+      "id": "time-mul-div-bm-5",
+      "type": "basic-mastery",
+      "challenge": "22-2",
+      "errorPath": 2,
+      "stem": "2/3 小時是幾分鐘？",
+      "options": ["40 分鐘", "30 分鐘", "23 分鐘", "90 分鐘"],
+      "answer": 0,
+      "explanation": "2/3 小時 = 60 × 2/3 = 40 分鐘。分數的時間要乘以 60 才是分鐘數。"
+    },
+    {
+      "id": "time-mul-div-bm-6",
+      "type": "basic-mastery",
+      "challenge": "22-2",
+      "errorPath": 1,
+      "stem": "3/4 小時是幾分鐘？",
+      "options": ["34 分鐘", "40 分鐘", "75 分鐘", "45 分鐘"],
+      "answer": 3,
+      "explanation": "3/4 小時 = 60 × 3/4 = 45 分鐘。不能把 3/4 直接讀成 34 分。"
+    },
+    {
+      "id": "time-mul-div-bm-7",
+      "type": "basic-mastery",
+      "challenge": "22-3",
+      "errorPath": 1,
+      "stem": "0.75 小時是幾分鐘？",
+      "options": ["75 分鐘", "45 分鐘", "70 分鐘", "50 分鐘"],
+      "answer": 1,
+      "explanation": "0.75 小時 = 60 × 0.75 = 45 分鐘。小數的時間要乘以 60，不能直接把 75 當分鐘。"
+    },
+    {
+      "id": "time-mul-div-bm-8",
+      "type": "basic-mastery",
+      "challenge": "22-3",
+      "errorPath": 1,
+      "stem": "2.5 小時是幾分鐘？",
+      "options": ["250 分鐘", "130 分鐘", "150 分鐘", "125 分鐘"],
+      "answer": 2,
+      "explanation": "2.5 小時 = 60 × 2.5 = 150 分鐘。0.5 小時是 30 分，不是 50 分。"
+    },
+    {
+      "id": "time-mul-div-bm-9",
+      "type": "basic-mastery",
+      "challenge": "22-3",
+      "errorPath": 1,
+      "stem": "1.2 小時是幾分鐘？",
+      "options": ["72 分鐘", "120 分鐘", "62 分鐘", "80 分鐘"],
+      "answer": 0,
+      "explanation": "1.2 小時 = 60 × 1.2 = 72 分鐘。0.2 小時是 12 分，不是 20 分。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "time-mul-div-ci-1",
+      "type": "concept-id",
+      "challenge": "22-4",
+      "errorPath": 1,
+      "statement": "2.5 小時就是 2 小時 50 分。",
+      "correctAnswer": false,
+      "explanation": "0.5 小時 = 0.5 × 60 = 30 分，所以 2.5 小時是 2 小時 30 分。小時和分是 60 進位，不是 10 進位。"
+    },
+    {
+      "id": "time-mul-div-ci-2",
+      "type": "concept-id",
+      "challenge": "22-4",
+      "errorPath": 1,
+      "statement": "1.5 小時就是 1 小時 30 分。",
+      "correctAnswer": true,
+      "explanation": "0.5 小時 = 0.5 × 60 = 30 分，所以 1.5 小時 = 1 小時 30 分。"
+    },
+    {
+      "id": "time-mul-div-ci-3",
+      "type": "concept-id",
+      "challenge": "22-4",
+      "errorPath": 1,
+      "statement": "3.2 小時就是 3 小時 20 分。",
+      "correctAnswer": false,
+      "explanation": "0.2 小時 = 0.2 × 60 = 12 分，所以 3.2 小時是 3 小時 12 分，不是 3 小時 20 分。"
+    },
+    {
+      "id": "time-mul-div-ci-4",
+      "type": "concept-id",
+      "challenge": "22-5",
+      "errorPath": 3,
+      "statement": "40 分鐘是 2/3 小時。",
+      "correctAnswer": true,
+      "explanation": "40 分 = 40/60 小時，約分成 2/3 小時。"
+    },
+    {
+      "id": "time-mul-div-ci-5",
+      "type": "concept-id",
+      "challenge": "22-5",
+      "errorPath": 3,
+      "statement": "30 分鐘是 1/3 小時。",
+      "correctAnswer": false,
+      "explanation": "30 分 = 30/60 小時 = 1/2 小時，不是 1/3 小時。"
+    },
+    {
+      "id": "time-mul-div-ci-6",
+      "type": "concept-id",
+      "challenge": "22-5",
+      "errorPath": 3,
+      "statement": "12 分鐘是 1/5 小時。",
+      "correctAnswer": true,
+      "explanation": "12 分 = 12/60 小時，分子分母同除以 12，約分成 1/5 小時。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "time-mul-div-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "22-6",
+      "errorPath": 2,
+      "problem": "計算 1.2 小時 × 3，並化成幾小時幾分",
+      "wrongSolution": "小明算出 3.6 小時，說答案是「3 小時 60 分」。",
+      "errorOptions": ["1.2 × 3 的乘法算錯了", "應該先把小時換成秒再乘", "0.6 小時 = 0.6 × 60 = 36 分，應是 3 小時 36 分", "3.6 小時應該是 6 小時 30 分"],
+      "correctErrorIndex": 2,
+      "explanation": "1.2 × 3 = 3.6 小時沒錯，但 0.6 小時要乘以 60 化成 36 分，答案是 3 小時 36 分。"
+    },
+    {
+      "id": "time-mul-div-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "22-6",
+      "errorPath": 1,
+      "problem": "把 2.4 小時化成幾小時幾分",
+      "wrongSolution": "小華說 2.4 小時就是 2 小時 40 分。",
+      "errorOptions": ["0.4 小時 = 0.4 × 60 = 24 分，應是 2 小時 24 分", "2.4 小時應該是 2 小時 4 分", "小時沒有辦法化成分鐘", "2.4 × 60 的乘法答案算錯了"],
+      "correctErrorIndex": 0,
+      "explanation": "小數的時間是 60 進位：0.4 小時 = 0.4 × 60 = 24 分，所以 2.4 小時是 2 小時 24 分。"
+    },
+    {
+      "id": "time-mul-div-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "22-6",
+      "errorPath": 2,
+      "problem": "計算 0.5 小時 × 5，並化成幾小時幾分",
+      "wrongSolution": "小杰算出 2.5 小時，寫成「2 小時 5 分」。",
+      "errorOptions": ["0.5 × 5 的乘法算錯了", "0.5 小時 = 30 分，2.5 小時是 2 小時 30 分", "答案應該要用秒來表示", "2.5 小時應該是 2 小時 15 分"],
+      "correctErrorIndex": 1,
+      "explanation": "0.5 × 5 = 2.5 小時沒錯，但 0.5 小時 = 0.5 × 60 = 30 分，答案是 2 小時 30 分。"
+    },
+    {
+      "id": "time-mul-div-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "22-7",
+      "errorPath": 2,
+      "problem": "每圈跑 4 分 30 秒，跑 4 圈共花多久",
+      "wrongSolution": "小美算成 16 分 120 秒，就直接當作答案。",
+      "errorOptions": ["120 秒 = 2 分，應化簡成 18 分", "4 分 × 4 的乘法算錯了", "30 秒 × 4 應該是 90 秒", "應該先把分全部換成小時"],
+      "correctErrorIndex": 0,
+      "explanation": "16 分 120 秒還要化簡：120 秒 = 2 分，16 分 + 2 分 = 18 分，答案是 18 分。"
+    },
+    {
+      "id": "time-mul-div-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "22-7",
+      "errorPath": 2,
+      "problem": "每首歌長 3 分 20 秒，連續聽 6 首共多久",
+      "wrongSolution": "小安算成 18 分 120 秒，把 120 秒當成 1 分，答 19 分。",
+      "errorOptions": ["3 分 × 6 的乘法算錯了", "20 秒 × 6 應該是 100 秒", "秒數本來就不可以超過 60", "120 秒 = 2 分，總共應是 20 分"],
+      "correctErrorIndex": 3,
+      "explanation": "18 分 120 秒的 120 秒 = 120 ÷ 60 = 2 分，18 分 + 2 分 = 20 分，答案是 20 分。"
+    },
+    {
+      "id": "time-mul-div-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "22-7",
+      "errorPath": 1,
+      "problem": "把 2 小時 15 分平均分成 3 段，每段多久",
+      "wrongSolution": "小庭把 2 小時 15 分寫成 215 分，再除以 3。",
+      "errorOptions": ["215 ÷ 3 的除法答案算錯了", "2 小時 15 分 = 135 分，每段 45 分", "應該只要把 15 分除以 3 就好", "時間沒有辦法做除法"],
+      "correctErrorIndex": 1,
+      "explanation": "1 小時 = 60 分，2 小時 15 分 = 120 + 15 = 135 分，135 ÷ 3 = 45 分。不能把 2 小時 15 分直接寫成 215 分。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "time-mul-div-ca-1",
+      "type": "context-application",
+      "challenge": "22-8",
+      "errorPath": 3,
+      "scenario": "一個水龍頭開 1 小時，可以裝滿水池的 1/3。",
+      "question": "裝滿整個水池要幾小時？",
+      "options": ["1/3 小時", "6 小時", "2 小時", "3 小時"],
+      "answer": 3,
+      "explanation": "1 小時裝 1/3 池，裝滿 1 池要 1 ÷ 1/3 = 3 小時。"
+    },
+    {
+      "id": "time-mul-div-ca-2",
+      "type": "context-application",
+      "challenge": "22-8",
+      "errorPath": 1,
+      "scenario": "小捷每天練琴 3/4 小時，連續練了 4 天。",
+      "question": "小捷一共練琴幾小時？",
+      "options": ["4 小時", "3 小時", "2 小時", "3.4 小時"],
+      "answer": 1,
+      "explanation": "3/4 × 4 = 3，一共練了 3 小時。"
+    },
+    {
+      "id": "time-mul-div-ca-3",
+      "type": "context-application",
+      "challenge": "22-8",
+      "errorPath": 1,
+      "scenario": "一部影片長 1.5 小時，小翔分 3 天看完，每天看的時間一樣長。",
+      "question": "小翔每天看影片幾分鐘？",
+      "options": ["30 分鐘", "50 分鐘", "15 分鐘", "45 分鐘"],
+      "answer": 0,
+      "explanation": "1.5 小時 = 90 分鐘，90 ÷ 3 = 30 分鐘。注意 1.5 小時是 90 分，不是 150 分。"
+    }
+  ]
+}

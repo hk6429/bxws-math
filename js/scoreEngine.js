@@ -1,22 +1,32 @@
 import { store } from "./store.js";
+import { evaluateMastery } from "./mastery-engine.js";
 
-const RECENT_WINDOW = 10;
-
-export function recordAnswer(nodeId, questionId, correct, msElapsed) {
+export function recordAnswer(nodeId, questionOrId, correct, msElapsed, node = {}) {
   const progress = store.read("progress", {});
   const entry = progress[nodeId] ?? { attempts: [], masteryPct: 0 };
-  entry.attempts.push({ questionId, correct, msElapsed, at: Date.now() });
-  entry.masteryPct = computeMastery(entry.attempts);
+  const question = typeof questionOrId === "string" ? { id: questionOrId } : questionOrId;
+  const attempt = {
+    questionId: question.id,
+    ...(question.challenge ? { challenge: question.challenge } : {}),
+    ...(question.type ? { type: question.type } : {}),
+    ...(question.errorPath !== undefined ? { errorPath: question.errorPath } : {}),
+    correct,
+    msElapsed,
+    at: Date.now(),
+  };
+  entry.attempts.push(attempt);
+  const challengeIds = question._challengeIds ?? entry.challengeIds ?? node.challengeIds;
+  if (Array.isArray(challengeIds) && challengeIds.length > 0) {
+    entry.challengeIds = [...new Set(challengeIds)];
+  }
+  const evaluationNode = entry.challengeIds
+    ? { ...node, challengeIds: entry.challengeIds }
+    : node;
+  const result = evaluateMastery(entry.attempts, evaluationNode, 0.8, entry.mastered === true);
+  Object.assign(entry, result, { masteryVersion: 2 });
   progress[nodeId] = entry;
   store.write("progress", progress);
   return entry.masteryPct;
-}
-
-function computeMastery(attempts) {
-  const recent = attempts.slice(-RECENT_WINDOW);
-  if (recent.length === 0) return 0;
-  const correctCount = recent.filter((a) => a.correct).length;
-  return Math.round((correctCount / recent.length) * 100) / 100;
 }
 
 export function getNodeStats(nodeId) {
@@ -24,6 +34,12 @@ export function getNodeStats(nodeId) {
   const entry = progress[nodeId] ?? { attempts: [], masteryPct: 0 };
   return {
     masteryPct: entry.masteryPct,
+    mastered: entry.mastered === true,
+    stars: entry.stars ?? 0,
+    conditions: entry.conditions ?? null,
+    missingChallenges: entry.missingChallenges ?? [],
+    feedback: entry.feedback ?? "",
+    errorLocks: entry.errorLocks ?? [],
     totalAttempts: entry.attempts.length,
     correctAttempts: entry.attempts.filter((a) => a.correct).length,
   };

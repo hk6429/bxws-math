@@ -1,0 +1,254 @@
+{
+  "nodeId": "angle-basic",
+  "basicMastery": [
+    {
+      "id": "angle-basic-bm-1",
+      "type": "basic-mastery",
+      "challenge": "1",
+      "errorPath": 3,
+      "stem": "一個角是由 1 個頂點和幾條邊組成的？",
+      "options": ["1 條", "2 條", "3 條", "4 條"],
+      "answer": 1,
+      "explanation": "角是由 1 個頂點和 2 條邊組成的，兩條邊從頂點張開，形成角。"
+    },
+    {
+      "id": "angle-basic-bm-2",
+      "type": "basic-mastery",
+      "challenge": "1",
+      "errorPath": 1,
+      "stem": "用三角板的直角去比，比直角小的角叫做什麼？",
+      "options": ["平角", "鈍角", "銳角", "直角"],
+      "answer": 2,
+      "explanation": "兩邊張開得比直角窄的角叫銳角；比直角開的角叫鈍角。"
+    },
+    {
+      "id": "angle-basic-bm-3",
+      "type": "basic-mastery",
+      "challenge": "1",
+      "errorPath": 1,
+      "stem": "兩邊張開得比直角更開的角，叫做什麼角？",
+      "options": ["鈍角", "銳角", "直角", "尖角"],
+      "answer": 0,
+      "explanation": "比直角張得更開的角是鈍角。角的大小看兩邊張開的程度。"
+    },
+    {
+      "id": "angle-basic-bm-4",
+      "type": "basic-mastery",
+      "challenge": "2",
+      "errorPath": 1,
+      "stem": "教室的門越開越大，角的大小和什麼有關？",
+      "options": ["門板的重量", "門把的高度", "門板的長度", "兩邊張開的程度"],
+      "answer": 3,
+      "explanation": "角的大小只和兩邊張開的程度有關，和邊的長短、大小都沒有關係。"
+    },
+    {
+      "id": "angle-basic-bm-5",
+      "type": "basic-mastery",
+      "challenge": "2",
+      "errorPath": 1,
+      "stem": "甲角兩邊張得比直角開，乙角比直角窄，誰大？",
+      "options": ["乙角比較大", "甲角比較大", "兩角一樣大", "沒辦法比較"],
+      "answer": 1,
+      "explanation": "甲角比直角大、乙角比直角小，所以甲角比較大。用直角當中間標準來比。"
+    },
+    {
+      "id": "angle-basic-bm-6",
+      "type": "basic-mastery",
+      "challenge": "2",
+      "errorPath": 1,
+      "stem": "甲角比直角大，乙角是直角，丙角比直角小，哪個最小？",
+      "options": ["甲角", "乙角", "丙角", "一樣小"],
+      "answer": 2,
+      "explanation": "丙角比直角小，乙角等於直角，甲角比直角大，所以丙角最小。"
+    },
+    {
+      "id": "angle-basic-bm-7",
+      "type": "basic-mastery",
+      "challenge": "3",
+      "errorPath": 3,
+      "stem": "正方形有幾個直角？",
+      "options": ["4 個", "1 個", "2 個", "3 個"],
+      "answer": 0,
+      "explanation": "正方形的 4 個角都是直角，所以有 4 個直角。"
+    },
+    {
+      "id": "angle-basic-bm-8",
+      "type": "basic-mastery",
+      "challenge": "3",
+      "errorPath": 3,
+      "stem": "圖形裡的直角，通常用什麼記號標出來？",
+      "options": ["小圓圈記號", "打勾記號", "小三角形記號", "小正方形記號"],
+      "answer": 3,
+      "explanation": "直角會在角的地方畫一個小正方形記號，看到這個記號就知道是直角。"
+    },
+    {
+      "id": "angle-basic-bm-9",
+      "type": "basic-mastery",
+      "challenge": "3",
+      "errorPath": 3,
+      "stem": "乙角剛好和三角板的直角完全疊合，乙角是？",
+      "options": ["銳角", "直角", "鈍角", "平角"],
+      "answer": 1,
+      "explanation": "用三角板的直角去比，剛好完全疊合的角就是直角。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "angle-basic-ci-1",
+      "type": "concept-id",
+      "challenge": "4",
+      "errorPath": 1,
+      "statement": "角的兩條邊畫得越長，角就越大。",
+      "correctAnswer": false,
+      "explanation": "角的大小只看兩邊張開的程度，和邊畫多長沒有關係。"
+    },
+    {
+      "id": "angle-basic-ci-2",
+      "type": "concept-id",
+      "challenge": "4",
+      "errorPath": 2,
+      "statement": "角度比較大的圖形，面積一定也比較大。",
+      "correctAnswer": false,
+      "explanation": "角度和面積是兩回事：小張紙片上也能畫出很大的角，大圖形裡也可能只有很小的角。"
+    },
+    {
+      "id": "angle-basic-ci-3",
+      "type": "concept-id",
+      "challenge": "4",
+      "errorPath": 1,
+      "statement": "把角的兩條邊延長，角的大小不會改變。",
+      "correctAnswer": true,
+      "explanation": "延長邊只是把邊畫長，兩邊張開的程度沒變，所以角的大小不變。"
+    },
+    {
+      "id": "angle-basic-ci-4",
+      "type": "concept-id",
+      "challenge": "5",
+      "errorPath": 3,
+      "statement": "用三角板的直角去比，剛好疊合的角就是直角。",
+      "correctAnswer": true,
+      "explanation": "三角板的直角可以當「直角的樣本」，剛好疊合表示這個角和直角一樣大。"
+    },
+    {
+      "id": "angle-basic-ci-5",
+      "type": "concept-id",
+      "challenge": "5",
+      "errorPath": 3,
+      "statement": "長方形的 4 個角都是直角。",
+      "correctAnswer": true,
+      "explanation": "長方形和正方形的 4 個角都是直角，可以用三角板的直角去比對確認。"
+    },
+    {
+      "id": "angle-basic-ci-6",
+      "type": "concept-id",
+      "challenge": "5",
+      "errorPath": 3,
+      "statement": "直角斜著放之後，就不是直角了。",
+      "correctAnswer": false,
+      "explanation": "把角轉個方向，兩邊張開的程度沒有改變，斜放的直角還是直角。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "angle-basic-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "6",
+      "errorPath": 1,
+      "problem": "比較甲、乙兩個角的大小",
+      "wrongSolution": "小豪看到甲角的兩條邊畫得比較長，就說甲角比較大。",
+      "errorOptions": ["沒有用尺量出邊的長度", "把邊的長短當成角的大小", "把甲角和乙角看反了", "忘記把兩個角疊起來比"],
+      "correctErrorIndex": 1,
+      "explanation": "角的大小要比兩邊張開的程度，邊畫得長不代表角大。"
+    },
+    {
+      "id": "angle-basic-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "6",
+      "errorPath": 1,
+      "problem": "比較兩個角誰比較大",
+      "wrongSolution": "小云把乙角的兩條邊用尺延長，然後說乙角變大了。",
+      "errorOptions": ["延長邊不會改變角的大小", "延長得還不夠長", "應該延長甲角才公平", "尺沒有對齊頂點"],
+      "correctErrorIndex": 0,
+      "explanation": "延長邊只是把線畫長，兩邊張開的程度沒變，角的大小不會改變。"
+    },
+    {
+      "id": "angle-basic-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "6",
+      "errorPath": 2,
+      "problem": "比較兩張三角形紙片上的角",
+      "wrongSolution": "小安說：大張紙片上的角，一定比小張紙片上的角大。",
+      "errorOptions": ["沒有先量紙片的周長", "紙片的顏色不一樣", "把紙片大小當成角的大小", "應該比紙片的重量"],
+      "correctErrorIndex": 2,
+      "explanation": "紙片大小是面積，角的大小是兩邊張開的程度，小紙片上的角也可能比較大。"
+    },
+    {
+      "id": "angle-basic-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "7",
+      "errorPath": 3,
+      "problem": "把兩張角形紙片疊合比大小",
+      "wrongSolution": "小庭疊合時頂點沒有對齊，就直接比開口說甲角大。",
+      "errorOptions": ["紙片要一樣大才能比", "開口要朝相反方向才算數", "要先畫在方格紙上再比", "疊合要先對齊頂點和一條邊"],
+      "correctErrorIndex": 3,
+      "explanation": "疊合比較角時，要先把兩個角的頂點對齊、一條邊重合，再看另一邊誰張得開。"
+    },
+    {
+      "id": "angle-basic-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "7",
+      "errorPath": 3,
+      "problem": "用疊合的方法比較兩個角",
+      "wrongSolution": "小威只對齊了頂點，兩角的邊都沒有重合就開始比。",
+      "errorOptions": ["對齊頂點後，還要讓一條邊重合", "應該先對齊開口再對頂點", "兩個角要先剪成一樣長的邊", "要改用繩子繞一圈來比"],
+      "correctErrorIndex": 0,
+      "explanation": "疊合比較的步驟是：頂點對頂點、一條邊重合，再比另一條邊的張開程度。"
+    },
+    {
+      "id": "angle-basic-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "7",
+      "errorPath": 3,
+      "problem": "用三角板檢查窗框的角是不是直角",
+      "wrongSolution": "小杰的三角板直角頂點沒對準窗框的角就下結論。",
+      "errorOptions": ["應該檢查窗框的四個邊長", "窗框太大，不能用三角板比", "三角板的直角頂點要對準角的頂點", "要先把窗框拆下來平放"],
+      "correctErrorIndex": 2,
+      "explanation": "用三角板比直角時，直角的頂點要對準角的頂點、一邊貼齊，才能正確判斷。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "angle-basic-ca-1",
+      "type": "context-application",
+      "challenge": "8",
+      "errorPath": 2,
+      "scenario": "時鐘 3 點整，時針指著 3，分針指著 12。",
+      "question": "時針和分針張開的角是什麼角？",
+      "options": ["銳角", "鈍角", "直角", "平角"],
+      "answer": 2,
+      "explanation": "3 點整時，時針和分針張開的程度剛好和三角板的直角一樣，是直角。"
+    },
+    {
+      "id": "angle-basic-ca-2",
+      "type": "context-application",
+      "challenge": "8",
+      "errorPath": 2,
+      "scenario": "時鐘 4 點整，時針指著 4，分針指著 12。",
+      "question": "時針和分針張開的角和直角比，如何？",
+      "options": ["比直角大", "比直角小", "剛好是直角", "沒辦法比較"],
+      "answer": 0,
+      "explanation": "3 點整剛好是直角，4 點整時針又多走了一格，張開得比直角更開，所以比直角大。"
+    },
+    {
+      "id": "angle-basic-ca-3",
+      "type": "context-application",
+      "challenge": "8",
+      "errorPath": 1,
+      "scenario": "小美的摺扇只打開一條小縫，形成一個很窄的角。",
+      "question": "這個角和直角比，是什麼角？",
+      "options": ["直角", "鈍角", "平角", "銳角"],
+      "answer": 3,
+      "explanation": "扇子只張開一條小縫，張開程度比直角窄很多，是銳角。扇骨再長也不會讓角變大。"
+    }
+  ]
+}

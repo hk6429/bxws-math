@@ -1,0 +1,246 @@
+{
+  "nodeId": "times-table",
+  "basicMastery": [
+    {
+      "id": "times-table-bm-1",
+      "type": "basic-mastery",
+      "challenge": "9-1",
+      "errorPath": 1,
+      "stem": "5 × 8 ＝ ？",
+      "options": ["40", "45", "35", "48"],
+      "answer": 0,
+      "explanation": "5 × 8 ＝ 40。5 的乘法答案個位只會是 0 或 5，可以用來檢查。"
+    },
+    {
+      "id": "times-table-bm-2",
+      "type": "basic-mastery",
+      "challenge": "9-1",
+      "errorPath": 2,
+      "stem": "2 × 9 ＝ ？",
+      "options": ["18", "16", "20", "11"],
+      "answer": 0,
+      "explanation": "2 × 9 ＝ 18。比 2 × 8 ＝ 16 多 2。"
+    },
+    {
+      "id": "times-table-bm-3",
+      "type": "basic-mastery",
+      "challenge": "9-1",
+      "errorPath": 2,
+      "stem": "10 × 7 ＝ ？",
+      "options": ["70", "60", "80", "17"],
+      "answer": 0,
+      "explanation": "10 × 7 ＝ 70。10 的乘法就是在後面加一個 0。"
+    },
+    {
+      "id": "times-table-bm-4",
+      "type": "basic-mastery",
+      "challenge": "9-2",
+      "errorPath": 2,
+      "stem": "4 × 7 ＝ ？",
+      "options": ["28", "24", "32", "21"],
+      "answer": 0,
+      "explanation": "4 × 7 ＝ 28。4 × 6 ＝ 24 再多一個 4，就是 28；背到 32 是跳到 4 × 8 了。"
+    },
+    {
+      "id": "times-table-bm-5",
+      "type": "basic-mastery",
+      "challenge": "9-2",
+      "errorPath": 1,
+      "stem": "6 × 6 ＝ ？",
+      "options": ["36", "30", "42", "35"],
+      "answer": 0,
+      "explanation": "6 × 6 ＝ 36。30 是 6 × 5、42 是 6 × 7，別和隔壁的答案記混。"
+    },
+    {
+      "id": "times-table-bm-6",
+      "type": "basic-mastery",
+      "challenge": "9-2",
+      "errorPath": 2,
+      "stem": "3 × 8 ＝ ？",
+      "options": ["24", "21", "27", "32"],
+      "answer": 0,
+      "explanation": "3 × 8 ＝ 24。21 是 3 × 7、27 是 3 × 9，多背一句或少背一句都會錯。"
+    },
+    {
+      "id": "times-table-bm-7",
+      "type": "basic-mastery",
+      "challenge": "9-3",
+      "errorPath": 1,
+      "stem": "7 × 8 ＝ ？",
+      "options": ["56", "54", "48", "63"],
+      "answer": 0,
+      "explanation": "7 × 8 ＝ 56。54 是 6 × 9，這兩個最容易記混，要特別小心。"
+    },
+    {
+      "id": "times-table-bm-8",
+      "type": "basic-mastery",
+      "challenge": "9-3",
+      "errorPath": 1,
+      "stem": "9 × 7 ＝ ？",
+      "options": ["63", "56", "54", "72"],
+      "answer": 0,
+      "explanation": "9 × 7 ＝ 63。9 × 6 ＝ 54 再多一個 9 就是 63。"
+    },
+    {
+      "id": "times-table-bm-9",
+      "type": "basic-mastery",
+      "challenge": "9-3",
+      "errorPath": 1,
+      "stem": "8 × 6 ＝ ？",
+      "options": ["48", "42", "54", "56"],
+      "answer": 0,
+      "explanation": "8 × 6 ＝ 48。42 是 7 × 6、56 是 8 × 7，都是隔壁的答案。"
+    },
+    {
+      "id": "times-table-bm-10",
+      "type": "basic-mastery",
+      "challenge": "9-5",
+      "errorPath": 3,
+      "stem": "□ × 6 ＝ 42，□ 是多少？",
+      "options": ["7", "36", "6", "8"],
+      "answer": 0,
+      "explanation": "想「幾個 6 是 42」：7 × 6 ＝ 42，所以是 7。算 42 − 6 ＝ 36 就用錯方法了。"
+    },
+    {
+      "id": "times-table-bm-11",
+      "type": "basic-mastery",
+      "challenge": "9-5",
+      "errorPath": 3,
+      "stem": "8 × □ ＝ 56，□ 是多少？",
+      "options": ["7", "48", "6", "8"],
+      "answer": 0,
+      "explanation": "想「8 乘幾是 56」：8 × 7 ＝ 56，所以是 7，不是 56 − 8。"
+    },
+    {
+      "id": "times-table-bm-12",
+      "type": "basic-mastery",
+      "challenge": "9-5",
+      "errorPath": 3,
+      "stem": "□ × 9 ＝ 54，□ 是多少？",
+      "options": ["6", "45", "7", "5"],
+      "answer": 0,
+      "explanation": "想「幾個 9 是 54」：6 × 9 ＝ 54，所以是 6。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "times-table-ci-1",
+      "type": "concept-id",
+      "challenge": "9-4",
+      "statement": "6 × 9 和 9 × 6 的答案相同。",
+      "correctAnswer": true,
+      "explanation": "乘法交換兩個數，答案不變：6 × 9 ＝ 9 × 6 ＝ 54。"
+    },
+    {
+      "id": "times-table-ci-2",
+      "type": "concept-id",
+      "challenge": "9-4",
+      "statement": "背了 7 × 8 ＝ 56，就知道 8 × 7 也是 56。",
+      "correctAnswer": true,
+      "explanation": "交換前後兩個數答案一樣，會一句就等於會兩句。"
+    },
+    {
+      "id": "times-table-ci-3",
+      "type": "concept-id",
+      "challenge": "9-4",
+      "statement": "4 × 5 和 5 × 4 的答案不一樣。",
+      "correctAnswer": false,
+      "explanation": "4 × 5 ＝ 20，5 × 4 也是 20。乘法交換兩數，答案相同。"
+    },
+    {
+      "id": "times-table-ci-4",
+      "type": "concept-id",
+      "challenge": "9-7",
+      "statement": "5 的乘法，答案的個位只會是 0 或 5。",
+      "correctAnswer": true,
+      "explanation": "5、10、15、20……個位輪流出現 5 和 0，可以用來檢查答案。"
+    },
+    {
+      "id": "times-table-ci-5",
+      "type": "concept-id",
+      "challenge": "9-7",
+      "statement": "9 × 6 比 9 × 5 多 9。",
+      "correctAnswer": true,
+      "explanation": "多乘一次就多一個 9：45 ＋ 9 ＝ 54。忘記口訣時可以往上推一格。"
+    },
+    {
+      "id": "times-table-ci-6",
+      "type": "concept-id",
+      "challenge": "9-7",
+      "errorPath": 2,
+      "statement": "4 × 7 比 4 × 6 多 6。",
+      "correctAnswer": false,
+      "explanation": "多乘一次是多一個 4，不是多 6：24 ＋ 4 ＝ 28。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "times-table-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "9-6",
+      "errorPath": 1,
+      "problem": "計算 7 × 8",
+      "wrongSolution": "小竹背成 7 × 8 ＝ 54",
+      "errorOptions": ["和 6 × 9 的答案 54 記混了", "把乘法算成加法", "抄錯題目的數字", "忘記進位"],
+      "correctErrorIndex": 0,
+      "explanation": "7 × 8 ＝ 56，6 × 9 才是 54。這兩句最容易互相記混，要分開記牢。"
+    },
+    {
+      "id": "times-table-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "9-6",
+      "errorPath": 1,
+      "problem": "計算 6 × 7",
+      "wrongSolution": "小海背成 6 × 7 ＝ 48",
+      "errorOptions": ["把乘法算成加法", "和 6 × 8 的答案 48 記混了", "抄錯題目的數字", "加法進位算錯"],
+      "correctErrorIndex": 1,
+      "explanation": "6 × 7 ＝ 42，6 × 8 才是 48。可以用 6 × 6 ＝ 36 再加 6 來檢查。"
+    },
+    {
+      "id": "times-table-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "9-6",
+      "errorPath": 2,
+      "problem": "計算 4 × 7",
+      "wrongSolution": "小池背口訣時從 4 × 6 ＝ 24 直接接 32",
+      "errorOptions": ["把乘法算成加法", "抄錯題目的數字", "口訣跳一句，把4×8當4×7", "加法進位算錯"],
+      "correctErrorIndex": 2,
+      "explanation": "4 × 6 ＝ 24 的下一句是 4 × 7 ＝ 28，跳過它才會接到 32（4 × 8）。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "times-table-ca-1",
+      "type": "context-application",
+      "challenge": "9-8",
+      "errorPath": 2,
+      "scenario": "一個星期有 7 天，暑假輔導課要上 4 個星期。",
+      "question": "一共要上幾天？",
+      "options": ["28 天", "21 天", "35 天", "11 天"],
+      "answer": 0,
+      "explanation": "4 個星期、每星期 7 天：7 × 4 ＝ 28 天。"
+    },
+    {
+      "id": "times-table-ca-2",
+      "type": "context-application",
+      "challenge": "9-8",
+      "errorPath": 1,
+      "scenario": "每盒有 8 枝彩色筆，老師買了 6 盒。",
+      "question": "一共買了幾枝？",
+      "options": ["48 枝", "42 枝", "56 枝", "14 枝"],
+      "answer": 0,
+      "explanation": "6 盒、每盒 8 枝：8 × 6 ＝ 48 枝。42 和 56 都是隔壁句的答案。"
+    },
+    {
+      "id": "times-table-ca-3",
+      "type": "context-application",
+      "challenge": "9-8",
+      "errorPath": 2,
+      "scenario": "美勞課每人發 9 張色紙，這組有 5 個人。",
+      "question": "一共要發幾張？",
+      "options": ["45 張", "36 張", "54 張", "14 張"],
+      "answer": 0,
+      "explanation": "5 個人、每人 9 張：9 × 5 ＝ 45 張。"
+    }
+  ]
+}

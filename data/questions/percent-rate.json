@@ -1,0 +1,361 @@
+{
+  "nodeId": "percent-rate",
+  "basicMastery": [
+    {
+      "id": "percent-rate-bm-1",
+      "type": "basic-mastery",
+      "challenge": "5-1",
+      "errorPath": 2,
+      "stem": "0.35 化成百分率是？",
+      "options": [
+        "3.5%",
+        "0.35%",
+        "35%",
+        "350%"
+      ],
+      "answer": 2,
+      "explanation": "小數化百分率要乘 100：0.35×100 = 35，即 35%。"
+    },
+    {
+      "id": "percent-rate-bm-2",
+      "type": "basic-mastery",
+      "challenge": "5-1",
+      "errorPath": 2,
+      "stem": "6% 化成小數是？",
+      "options": [
+        "0.06",
+        "0.6",
+        "6.0",
+        "0.006"
+      ],
+      "answer": 0,
+      "explanation": "百分率化小數要除以 100：6÷100 = 0.06。"
+    },
+    {
+      "id": "percent-rate-bm-3",
+      "type": "basic-mastery",
+      "challenge": "5-1",
+      "errorPath": 2,
+      "stem": "3/5 化成百分率是？",
+      "options": [
+        "35%",
+        "6%",
+        "3.5%",
+        "60%"
+      ],
+      "answer": 3,
+      "explanation": "3/5 = 60/100 = 60%。"
+    },
+    {
+      "id": "percent-rate-bm-4",
+      "type": "basic-mastery",
+      "challenge": "5-2",
+      "errorPath": 2,
+      "stem": "全班 40 人，戴眼鏡的有 12 人，佔全班的百分之幾？",
+      "options": [
+        "12%",
+        "30%",
+        "3%",
+        "28%"
+      ],
+      "answer": 1,
+      "explanation": "12÷40 = 0.3 = 30%，基準量是全班 40 人。"
+    },
+    {
+      "id": "percent-rate-bm-5",
+      "type": "basic-mastery",
+      "challenge": "5-2",
+      "errorPath": 2,
+      "stem": "小捷投籃 20 次，投進 13 次，命中率是百分之幾？",
+      "options": [
+        "13%",
+        "6.5%",
+        "35%",
+        "65%"
+      ],
+      "answer": 3,
+      "explanation": "13÷20 = 0.65 = 65%；35% 是沒投進的比率。"
+    },
+    {
+      "id": "percent-rate-bm-6",
+      "type": "basic-mastery",
+      "challenge": "5-2",
+      "errorPath": 2,
+      "stem": "數學考卷 50 題，小恩答對 43 題，答對率是？",
+      "options": [
+        "43%",
+        "86%",
+        "8.6%",
+        "14%"
+      ],
+      "answer": 1,
+      "explanation": "43÷50 = 0.86 = 86%。"
+    },
+    {
+      "id": "percent-rate-bm-7",
+      "type": "basic-mastery",
+      "challenge": "5-3",
+      "errorPath": 2,
+      "stem": "200 元的 15% 是多少元？",
+      "options": [
+        "30 元",
+        "15 元",
+        "3 元",
+        "300 元"
+      ],
+      "answer": 0,
+      "explanation": "200×0.15 = 30 元，百分率先化成小數再當乘數。"
+    },
+    {
+      "id": "percent-rate-bm-8",
+      "type": "basic-mastery",
+      "challenge": "5-3",
+      "errorPath": 2,
+      "stem": "全校 600 人，男生佔 45%，男生有幾人？",
+      "options": [
+        "27 人",
+        "330 人",
+        "270 人",
+        "450 人"
+      ],
+      "answer": 2,
+      "explanation": "600×0.45 = 270 人；330 人是女生（55%）。"
+    },
+    {
+      "id": "percent-rate-bm-9",
+      "type": "basic-mastery",
+      "challenge": "5-3",
+      "errorPath": 2,
+      "stem": "80 公斤的 25% 是多少公斤？",
+      "options": [
+        "25 公斤",
+        "20 公斤",
+        "2 公斤",
+        "60 公斤"
+      ],
+      "answer": 1,
+      "explanation": "80×0.25 = 20 公斤；60 公斤是剩下的 75%。"
+    },
+    {
+      "id": "percent-rate-bm-10",
+      "type": "basic-mastery",
+      "challenge": "5-4",
+      "errorPath": 1,
+      "stem": "定價 500 元的球鞋打 8 折，要付多少元？",
+      "options": [
+        "100 元",
+        "480 元",
+        "250 元",
+        "400 元"
+      ],
+      "answer": 3,
+      "explanation": "打 8 折是付原價的 80%：500×0.8 = 400 元；×0.2 算的是只付 2 成。"
+    },
+    {
+      "id": "percent-rate-bm-11",
+      "type": "basic-mastery",
+      "challenge": "5-4",
+      "errorPath": 2,
+      "stem": "「三成」等於百分之幾？",
+      "options": [
+        "3%",
+        "13%",
+        "30%",
+        "70%"
+      ],
+      "answer": 2,
+      "explanation": "一成是 10%，三成就是 3×10% = 30%。"
+    },
+    {
+      "id": "percent-rate-bm-12",
+      "type": "basic-mastery",
+      "challenge": "5-4",
+      "errorPath": 1,
+      "stem": "定價 900 元的外套打 75 折，要付多少元？",
+      "options": [
+        "675 元",
+        "225 元",
+        "825 元",
+        "750 元"
+      ],
+      "answer": 0,
+      "explanation": "打 75 折是付 75%：900×0.75 = 675 元。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "percent-rate-ci-1",
+      "type": "concept-id",
+      "challenge": "5-5",
+      "errorPath": 2,
+      "statement": "50% 和 0.5 一樣大。",
+      "correctAnswer": true,
+      "explanation": "50% = 50/100 = 0.5，兩種寫法表示同一個數。"
+    },
+    {
+      "id": "percent-rate-ci-2",
+      "type": "concept-id",
+      "challenge": "5-5",
+      "statement": "百分率不可能超過 100%。",
+      "correctAnswer": false,
+      "explanation": "百分率可以超過 100%，例如今年產量是去年的 120%。"
+    },
+    {
+      "id": "percent-rate-ci-3",
+      "type": "concept-id",
+      "challenge": "5-5",
+      "errorPath": 1,
+      "statement": "打 6 折表示只要付原價的 60%。",
+      "correctAnswer": true,
+      "explanation": "打 6 折就是付原價的 60%，少付 40%。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "percent-rate-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "5-6",
+      "errorPath": 1,
+      "problem": "定價 300 元的外套打 8 折，求售價",
+      "wrongSolution": "小豪算 300×0.2 = 60 元",
+      "errorOptions": [
+        "把打 8 折當成付 2 成，應該付 80%",
+        "把 8 折當成減 8 元",
+        "小數點的位置點錯",
+        "乘法直式計算錯誤"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "打 8 折是付原價的 80%：300×0.8 = 240 元。"
+    },
+    {
+      "id": "percent-rate-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "5-6",
+      "errorPath": 1,
+      "problem": "定價 1200 元的背包打 9 折，求售價",
+      "wrongSolution": "小蓁算 1200×0.1 = 120 元",
+      "errorOptions": [
+        "應該用除法來算",
+        "0.1 應該寫成 0.01",
+        "打 9 折是付 90%，不是付 10%",
+        "忘記把答案加回定價"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "打 9 折是付 90%：1200×0.9 = 1080 元；×0.1 算的是折掉的錢。"
+    },
+    {
+      "id": "percent-rate-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "5-6",
+      "errorPath": 1,
+      "problem": "定價 250 元的玩具打 6 折，求便宜了多少元",
+      "wrongSolution": "小安算 250×0.6 = 150 元，回答便宜 150 元",
+      "errorOptions": [
+        "打 6 折應該乘以 6",
+        "150 元是售價，便宜的是 250−150 = 100 元",
+        "答案要再除以 100",
+        "定價的數字抄錯了"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "250×0.6 = 150 元是打折後要付的錢；便宜的錢是 250−150 = 100 元。"
+    },
+    {
+      "id": "percent-rate-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "5-7",
+      "errorPath": 2,
+      "problem": "把 35% 化成小數",
+      "wrongSolution": "小妤寫成 3.5",
+      "errorOptions": [
+        "應該乘以 100 才對",
+        "要先約分才能換",
+        "小數點忘記寫上去",
+        "去掉 % 要除以 100，不是除以 10"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "35% = 35÷100 = 0.35；除以 10 會差一個位值。"
+    },
+    {
+      "id": "percent-rate-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "5-7",
+      "errorPath": 2,
+      "problem": "把 4% 化成小數",
+      "wrongSolution": "小碩寫成 0.4",
+      "errorOptions": [
+        "應該寫成 4.0 才對",
+        "要先化成分數 4/10",
+        "4% 是 4÷100 = 0.04，位值差了一位",
+        "把 % 當成小數點來用"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "4% = 4÷100 = 0.04；0.4 是 40%。"
+    },
+    {
+      "id": "percent-rate-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "5-7",
+      "errorPath": 2,
+      "problem": "把 0.08 化成百分率",
+      "wrongSolution": "小晴寫成 0.8%",
+      "errorOptions": [
+        "多乘了 10 變成 80%",
+        "化百分率要乘 100：0.08 應是 8%",
+        "忘記加上 % 符號",
+        "應該先約分再乘 100"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "0.08×100 = 8，所以是 8%；0.8% 只乘了 10。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "percent-rate-ca-1",
+      "type": "context-application",
+      "challenge": "5-8",
+      "errorPath": 3,
+      "scenario": "同一款書包，甲店打 75 折，乙店買四送一。",
+      "question": "哪一家買起來比較便宜？",
+      "options": [
+        "乙店",
+        "甲店",
+        "兩家一樣便宜",
+        "沒辦法比較"
+      ],
+      "answer": 1,
+      "explanation": "甲店付 75%；乙店付 4 件的錢拿 5 件，平均付 4/5 = 80%。75%＜80%，甲店便宜。"
+    },
+    {
+      "id": "percent-rate-ca-2",
+      "type": "context-application",
+      "challenge": "5-8",
+      "errorPath": 3,
+      "scenario": "一件 1000 元的外套，先漲價 10%，再打 9 折。",
+      "question": "現在賣多少元？",
+      "options": [
+        "990 元",
+        "1000 元",
+        "1100 元",
+        "900 元"
+      ],
+      "answer": 0,
+      "explanation": "1000×1.1 = 1100 元，再打 9 折：1100×0.9 = 990 元。漲跌的基準量不同，不會回到原價。"
+    },
+    {
+      "id": "percent-rate-ca-3",
+      "type": "context-application",
+      "challenge": "5-8",
+      "errorPath": 2,
+      "scenario": "全班 50 人投票選班長，小捷的得票率是 60%。",
+      "question": "小捷得到幾票？",
+      "options": [
+        "20 票",
+        "60 票",
+        "3 票",
+        "30 票"
+      ],
+      "answer": 3,
+      "explanation": "50×60% = 50×0.6 = 30 票。"
+    }
+  ]
+}

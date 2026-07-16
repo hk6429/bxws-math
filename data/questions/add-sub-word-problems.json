@@ -1,0 +1,264 @@
+{
+  "nodeId": "add-sub-word-problems",
+  "basicMastery": [
+    {
+      "id": "add-sub-word-problems-bm-1",
+      "type": "basic-mastery",
+      "challenge": "7-5",
+      "errorPath": 3,
+      "stem": "有 35 顆糖，吃掉 12 顆，剩幾顆？哪個算式對？",
+      "options": ["35 − 12", "35 ＋ 12", "12 − 35", "12 ＋ 12"],
+      "answer": 0,
+      "explanation": "吃掉是拿走，從 35 顆裡減掉 12 顆，用 35 − 12。"
+    },
+    {
+      "id": "add-sub-word-problems-bm-2",
+      "type": "basic-mastery",
+      "challenge": "7-5",
+      "errorPath": 2,
+      "stem": "吃掉 8 顆後剩 27 顆，求原來有幾顆的算式是？",
+      "options": ["27 ＋ 8", "27 − 8", "8 − 27", "27 ＋ 27"],
+      "answer": 0,
+      "explanation": "原來的糖＝剩下的加上吃掉的，把 27 和 8 加回去才是原來的數。"
+    },
+    {
+      "id": "add-sub-word-problems-bm-3",
+      "type": "basic-mastery",
+      "challenge": "7-5",
+      "errorPath": 1,
+      "stem": "哥哥 52 張卡，比弟弟多 17 張，求弟弟的算式是？",
+      "options": ["52 − 17", "52 ＋ 17", "17 − 52", "17 ＋ 17"],
+      "answer": 0,
+      "explanation": "哥哥比較多，弟弟比較少，所以用哥哥的 52 減掉 17。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "add-sub-word-problems-ci-1",
+      "type": "concept-id",
+      "challenge": "7-6",
+      "statement": "求「原來有多少」時，可以用加法把數量加回去。",
+      "correctAnswer": true,
+      "explanation": "東西被拿走一些才剩下現在的量，把剩下的和拿走的加起來，就回到原來的量。"
+    },
+    {
+      "id": "add-sub-word-problems-ci-2",
+      "type": "concept-id",
+      "challenge": "7-6",
+      "errorPath": 1,
+      "statement": "題目裡有「多」這個字，就一定要用加法。",
+      "correctAnswer": false,
+      "explanation": "要先看是誰比較多。像「哥哥比弟弟多 17 張」求弟弟時，反而要用減法。"
+    },
+    {
+      "id": "add-sub-word-problems-ci-3",
+      "type": "concept-id",
+      "challenge": "7-6",
+      "statement": "知道全部的數量和其中一部分，用減法可以求另一部分。",
+      "correctAnswer": true,
+      "explanation": "全部減掉知道的那一部分，剩下的就是另一部分。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "add-sub-word-problems-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "7-7",
+      "errorPath": 1,
+      "problem": "哥哥有 52 張卡，比弟弟多 17 張，弟弟有幾張？",
+      "wrongSolution": "小丁列 52 ＋ 17 ＝ 69",
+      "errorOptions": ["看到「多」就用加法，沒想是誰比較多", "抄錯題目的數字", "進位算錯", "把卡片多數了一次"],
+      "correctErrorIndex": 0,
+      "explanation": "多 17 張的是哥哥，弟弟比較少，應該用 52 − 17 ＝ 35 張。"
+    },
+    {
+      "id": "add-sub-word-problems-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "7-7",
+      "errorPath": 1,
+      "problem": "小池有 38 元，比小竹少 13 元，小竹有幾元？",
+      "wrongSolution": "小池列 38 − 13 ＝ 25",
+      "errorOptions": ["退位減法算錯", "看到「少」就用減法，沒想是誰比較少", "抄錯題目的數字", "把元和角弄混了"],
+      "correctErrorIndex": 1,
+      "explanation": "少 13 元的是小池，小竹比較多，應該用 38 ＋ 13 ＝ 51 元。"
+    },
+    {
+      "id": "add-sub-word-problems-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "7-7",
+      "errorPath": 1,
+      "problem": "小溪摺了 24 隻紙鶴，比小海多 9 隻，小海摺幾隻？",
+      "wrongSolution": "小真列 24 ＋ 9 ＝ 33",
+      "errorOptions": ["進位加法算錯", "抄錯題目的數字", "看到「多」就加，沒發現小海比較少", "把紙鶴數成兩倍"],
+      "correctErrorIndex": 2,
+      "explanation": "多 9 隻的是小溪，小海比較少，應該用 24 − 9 ＝ 15 隻。"
+    },
+    {
+      "id": "add-sub-word-problems-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "7-8",
+      "errorPath": 2,
+      "problem": "吃掉 8 顆糖後剩 27 顆，原來有幾顆？",
+      "wrongSolution": "小蓉列 27 − 8 ＝ 19",
+      "errorOptions": ["把「原來的數」誤當成剩下的再去減", "退位減法算錯", "抄錯題目的數字", "把顆數多算了一次"],
+      "correctErrorIndex": 0,
+      "explanation": "原來的糖最多，等於剩下的加吃掉的：27 ＋ 8 ＝ 35 顆。"
+    },
+    {
+      "id": "add-sub-word-problems-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "7-8",
+      "errorPath": 2,
+      "problem": "小安送出 16 張貼紙後剩 29 張，原來有幾張？",
+      "wrongSolution": "小安列 29 − 16 ＝ 13",
+      "errorOptions": ["抄錯題目的數字", "求原來的數卻拿剩下的去減，方向弄反", "退位減法算錯", "把貼紙多數了一次"],
+      "correctErrorIndex": 1,
+      "explanation": "原來的貼紙＝剩下的加送出的：29 ＋ 16 ＝ 45 張。"
+    },
+    {
+      "id": "add-sub-word-problems-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "7-8",
+      "errorPath": 2,
+      "problem": "小丘買了 25 元的麵包後剩 30 元，原來帶幾元？",
+      "wrongSolution": "小丘列 30 − 25 ＝ 5",
+      "errorOptions": ["把找回的錢算錯", "抄錯題目的數字", "求原來的錢卻把兩個數相減，應該加回去", "忘記算麵包的錢"],
+      "correctErrorIndex": 2,
+      "explanation": "原來帶的錢＝剩下的加花掉的：30 ＋ 25 ＝ 55 元。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "add-sub-word-problems-ca-1",
+      "type": "context-application",
+      "challenge": "7-1",
+      "errorPath": 3,
+      "scenario": "小乃有 35 顆糖，吃掉了 12 顆。",
+      "question": "還剩下幾顆？",
+      "options": ["23 顆", "47 顆", "22 顆", "13 顆"],
+      "answer": 0,
+      "explanation": "吃掉就是拿走：35 − 12 ＝ 23 顆。把兩個數加成 47 就錯了。"
+    },
+    {
+      "id": "add-sub-word-problems-ca-2",
+      "type": "context-application",
+      "challenge": "7-1",
+      "errorPath": 3,
+      "scenario": "公車上有 28 人，到站後又上來 15 人。",
+      "question": "現在車上有幾人？",
+      "options": ["43 人", "13 人", "33 人", "42 人"],
+      "answer": 0,
+      "explanation": "上車是變多：28 ＋ 15 ＝ 43 人。"
+    },
+    {
+      "id": "add-sub-word-problems-ca-3",
+      "type": "context-application",
+      "challenge": "7-1",
+      "errorPath": 3,
+      "scenario": "小美有 52 張貼紙，送給同學 17 張。",
+      "question": "小美剩下幾張？",
+      "options": ["35 張", "69 張", "45 張", "34 張"],
+      "answer": 0,
+      "explanation": "送出去是變少：52 − 17 ＝ 35 張。個位不夠減要向十位借 1。"
+    },
+    {
+      "id": "add-sub-word-problems-ca-4",
+      "type": "context-application",
+      "challenge": "7-2",
+      "errorPath": 3,
+      "scenario": "小安原本有 40 元，買東西後剩下 15 元。",
+      "question": "小安花了多少元？",
+      "options": ["25 元", "55 元", "35 元", "24 元"],
+      "answer": 0,
+      "explanation": "花掉的錢＝原有的減剩下的：40 − 15 ＝ 25 元。"
+    },
+    {
+      "id": "add-sub-word-problems-ca-5",
+      "type": "context-application",
+      "challenge": "7-2",
+      "errorPath": 3,
+      "scenario": "小凱原有 23 顆彈珠，玩完遊戲後變成 41 顆。",
+      "question": "他多了幾顆彈珠？",
+      "options": ["18 顆", "64 顆", "22 顆", "17 顆"],
+      "answer": 0,
+      "explanation": "多出來的＝後來的減原來的：41 − 23 ＝ 18 顆。"
+    },
+    {
+      "id": "add-sub-word-problems-ca-6",
+      "type": "context-application",
+      "challenge": "7-2",
+      "errorPath": 3,
+      "scenario": "姊姊原有 36 張卡片，媽媽再給她一些，變成 50 張。",
+      "question": "媽媽給了幾張？",
+      "options": ["14 張", "86 張", "24 張", "15 張"],
+      "answer": 0,
+      "explanation": "給的張數＝後來的減原來的：50 − 36 ＝ 14 張。"
+    },
+    {
+      "id": "add-sub-word-problems-ca-7",
+      "type": "context-application",
+      "challenge": "7-3",
+      "errorPath": 2,
+      "scenario": "小婷吃掉 8 顆草莓後，盤子裡剩 27 顆。",
+      "question": "原來有幾顆草莓？",
+      "options": ["35 顆", "19 顆", "34 顆", "36 顆"],
+      "answer": 0,
+      "explanation": "原來的＝剩下的加吃掉的：27 ＋ 8 ＝ 35 顆。算 27 − 8 就弄反了。"
+    },
+    {
+      "id": "add-sub-word-problems-ca-8",
+      "type": "context-application",
+      "challenge": "7-3",
+      "errorPath": 2,
+      "scenario": "小華送出 16 張遊戲卡後，還剩 29 張。",
+      "question": "他原來有幾張？",
+      "options": ["45 張", "13 張", "44 張", "35 張"],
+      "answer": 0,
+      "explanation": "原來的＝剩下的加送出的：29 ＋ 16 ＝ 45 張。"
+    },
+    {
+      "id": "add-sub-word-problems-ca-9",
+      "type": "context-application",
+      "challenge": "7-3",
+      "errorPath": 2,
+      "scenario": "公車到站下車 13 人後，車上剩 24 人。",
+      "question": "下車前車上有幾人？",
+      "options": ["37 人", "11 人", "36 人", "27 人"],
+      "answer": 0,
+      "explanation": "下車前的人數＝剩下的加下車的：24 ＋ 13 ＝ 37 人。"
+    },
+    {
+      "id": "add-sub-word-problems-ca-10",
+      "type": "context-application",
+      "challenge": "7-4",
+      "errorPath": 1,
+      "scenario": "哥哥有 52 張卡片，比弟弟多 17 張。",
+      "question": "弟弟有幾張？",
+      "options": ["35 張", "69 張", "45 張", "34 張"],
+      "answer": 0,
+      "explanation": "哥哥比較多，弟弟比較少：52 − 17 ＝ 35 張。看到「多」就加會答錯。"
+    },
+    {
+      "id": "add-sub-word-problems-ca-11",
+      "type": "context-application",
+      "challenge": "7-4",
+      "errorPath": 1,
+      "scenario": "小美有 28 顆糖，比小丁少 9 顆。",
+      "question": "小丁有幾顆？",
+      "options": ["37 顆", "19 顆", "36 顆", "38 顆"],
+      "answer": 0,
+      "explanation": "小美比較少，小丁比較多：28 ＋ 9 ＝ 37 顆。看到「少」就減會答錯。"
+    },
+    {
+      "id": "add-sub-word-problems-ca-12",
+      "type": "context-application",
+      "challenge": "7-4",
+      "errorPath": 1,
+      "scenario": "農場有 45 隻雞，雞比鴨多 12 隻。",
+      "question": "鴨有幾隻？",
+      "options": ["33 隻", "57 隻", "43 隻", "32 隻"],
+      "answer": 0,
+      "explanation": "雞比較多，鴨比較少：45 − 12 ＝ 33 隻。"
+    }
+  ]
+}

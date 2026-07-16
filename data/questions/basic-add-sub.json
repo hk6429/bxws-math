@@ -1,0 +1,255 @@
+{
+  "nodeId": "basic-add-sub",
+  "basicMastery": [
+    {
+      "id": "basic-add-sub-bm-1",
+      "type": "basic-mastery",
+      "stem": "3 和幾合起來是 10？",
+      "options": ["7", "6", "8", "13"],
+      "answer": 0,
+      "explanation": "3 和 7 合起來是 10。13 是把 3 和 10 加起來，方向想反了。",
+      "challenge": "2-1",
+      "errorPath": 3
+    },
+    {
+      "id": "basic-add-sub-bm-2",
+      "type": "basic-mastery",
+      "stem": "6 和 4 合起來是多少？",
+      "options": ["9", "10", "2", "24"],
+      "answer": 1,
+      "explanation": "6 和 4 合起來剛好是 10。2 是把兩數相減，合起來要用加的。",
+      "challenge": "2-1",
+      "errorPath": 3
+    },
+    {
+      "id": "basic-add-sub-bm-3",
+      "type": "basic-mastery",
+      "stem": "幾和 5 合起來是 10？",
+      "options": ["4", "6", "5", "15"],
+      "answer": 2,
+      "explanation": "5 和 5 合起來是 10。15 是把 5 和 10 加起來，想反了。",
+      "challenge": "2-1",
+      "errorPath": 3
+    },
+    {
+      "id": "basic-add-sub-bm-4",
+      "type": "basic-mastery",
+      "stem": "8 可以分成 5 和幾？",
+      "options": ["3", "2", "13", "4"],
+      "answer": 0,
+      "explanation": "5 和 3 合起來是 8，所以 8 可以分成 5 和 3。13 是把 8 和 5 加起來，分解要往回想。",
+      "challenge": "2-2",
+      "errorPath": 3
+    },
+    {
+      "id": "basic-add-sub-bm-5",
+      "type": "basic-mastery",
+      "stem": "10 可以分成 6 和幾？",
+      "options": ["5", "4", "16", "3"],
+      "answer": 1,
+      "explanation": "6 和 4 合起來是 10，所以 10 可以分成 6 和 4。",
+      "challenge": "2-2",
+      "errorPath": 3
+    },
+    {
+      "id": "basic-add-sub-bm-6",
+      "type": "basic-mastery",
+      "stem": "7 可以分成 2 和幾？",
+      "options": ["4", "9", "5", "6"],
+      "answer": 2,
+      "explanation": "2 和 5 合起來是 7。9 是把 7 和 2 加起來，分解不是加法。",
+      "challenge": "2-2",
+      "errorPath": 3
+    },
+    {
+      "id": "basic-add-sub-bm-7",
+      "type": "basic-mastery",
+      "stem": "6 + 7 = ？",
+      "options": ["13", "12", "10", "14"],
+      "answer": 0,
+      "explanation": "把 7 分成 4 和 3，6 加 4 湊成 10，再加 3 就是 13。只湊到 10 就停會答錯。",
+      "challenge": "2-3",
+      "errorPath": 1
+    },
+    {
+      "id": "basic-add-sub-bm-8",
+      "type": "basic-mastery",
+      "stem": "8 + 6 = ？",
+      "options": ["12", "14", "10", "15"],
+      "answer": 1,
+      "explanation": "把 6 分成 2 和 4，8 加 2 湊成 10，再加剩下的 4 得 14。忘了加 4 就會答成 10 或 12。",
+      "challenge": "2-3",
+      "errorPath": 1
+    },
+    {
+      "id": "basic-add-sub-bm-9",
+      "type": "basic-mastery",
+      "stem": "9 + 5 = ？",
+      "options": ["10", "13", "14", "15"],
+      "answer": 2,
+      "explanation": "把 5 分成 1 和 4，9 加 1 湊成 10，再加 4 得 14。湊到 10 別忘了還有 4。",
+      "challenge": "2-3",
+      "errorPath": 1
+    },
+    {
+      "id": "basic-add-sub-bm-10",
+      "type": "basic-mastery",
+      "stem": "13 − 5 = ？",
+      "options": ["8", "12", "18", "7"],
+      "answer": 0,
+      "explanation": "13 減 5 是 8。答 12 是反過來用 5 減 3；答 18 是把減法算成加法。",
+      "challenge": "2-4",
+      "errorPath": 2
+    },
+    {
+      "id": "basic-add-sub-bm-11",
+      "type": "basic-mastery",
+      "stem": "15 − 8 = ？",
+      "options": ["6", "7", "13", "23"],
+      "answer": 1,
+      "explanation": "15 減 8 是 7。答 13 是個位反過來用 8 減 5；不夠減不能顛倒過來減。",
+      "challenge": "2-4",
+      "errorPath": 2
+    },
+    {
+      "id": "basic-add-sub-bm-12",
+      "type": "basic-mastery",
+      "stem": "12 − 5 = ？",
+      "options": ["8", "13", "7", "17"],
+      "answer": 2,
+      "explanation": "12 減 5 是 7。答 13 是反過來用 5 減 2；答 17 是把減法算成加法。",
+      "challenge": "2-4",
+      "errorPath": 2
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "basic-add-sub-ci-1",
+      "type": "concept-id",
+      "statement": "因為 4 + 5 = 9，所以 9 − 5 = 4。",
+      "correctAnswer": true,
+      "explanation": "加法和減法是好朋友：4 和 5 合成 9，從 9 拿走 5 就剩 4。",
+      "challenge": "2-5"
+    },
+    {
+      "id": "basic-add-sub-ci-2",
+      "type": "concept-id",
+      "statement": "3 + 6 和 6 + 3 的答案不一樣。",
+      "correctAnswer": false,
+      "explanation": "加法交換兩個數，答案不變：3 + 6 和 6 + 3 都是 9。",
+      "challenge": "2-5"
+    },
+    {
+      "id": "basic-add-sub-ci-3",
+      "type": "concept-id",
+      "statement": "9 − 2 和 2 − 9 的答案一樣。",
+      "correctAnswer": false,
+      "explanation": "減法不能交換：9 − 2 是 7，2 − 9 不夠減，兩個算式不一樣。",
+      "challenge": "2-5",
+      "errorPath": 2
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "basic-add-sub-ed-1",
+      "type": "error-diagnosis",
+      "problem": "計算 8 + 6",
+      "wrongSolution": "把 6 分成 2 和 4，算 8 + 2 = 10，答案寫 10",
+      "errorOptions": ["忘了把剩下的 4 加進去", "把 6 分錯了", "8 加 2 算錯了", "把加法看成減法"],
+      "correctErrorIndex": 0,
+      "explanation": "湊成 10 之後還要加剩下的 4：10 + 4 = 14。只做到一半就停了。",
+      "challenge": "2-6",
+      "errorPath": 1
+    },
+    {
+      "id": "basic-add-sub-ed-2",
+      "type": "error-diagnosis",
+      "problem": "計算 7 + 5",
+      "wrongSolution": "把 5 分成 3 和 2，算 7 + 3 = 10，答案寫 10",
+      "errorOptions": ["7 加 3 算錯了", "忘了把剩下的 2 加進去", "把 5 分錯了", "把 7 看成 1"],
+      "correctErrorIndex": 1,
+      "explanation": "湊成 10 之後要再加剩下的 2：10 + 2 = 12。湊十法要做完整。",
+      "challenge": "2-6",
+      "errorPath": 1
+    },
+    {
+      "id": "basic-add-sub-ed-3",
+      "type": "error-diagnosis",
+      "problem": "計算 9 + 4",
+      "wrongSolution": "把 4 分成 1 和 3，算 9 + 1 = 10，再加 1，答案寫 11",
+      "errorOptions": ["9 加 1 算錯了", "把加法看成減法", "剩下要加的是 3，不是 1", "把 4 分錯了"],
+      "correctErrorIndex": 2,
+      "explanation": "4 分成 1 和 3，用掉 1 之後剩下 3：10 + 3 = 13。要加剩下的那一份。",
+      "challenge": "2-6",
+      "errorPath": 1
+    },
+    {
+      "id": "basic-add-sub-ed-4",
+      "type": "error-diagnosis",
+      "problem": "計算 12 − 5",
+      "wrongSolution": "答案寫 13",
+      "errorOptions": ["個位不夠減，反過來用 5 減 2", "把減法看成加法", "忘了寫十位", "數手指時數錯了"],
+      "correctErrorIndex": 0,
+      "explanation": "12 − 5 = 7。個位 2 不夠減 5，反過來算 5 − 2 = 3 再留著十位，才會寫成 13。",
+      "challenge": "2-7",
+      "errorPath": 2
+    },
+    {
+      "id": "basic-add-sub-ed-5",
+      "type": "error-diagnosis",
+      "problem": "計算 14 − 6",
+      "wrongSolution": "答案寫 20",
+      "errorOptions": ["個位顛倒相減", "把減號看成加號", "忘了退位", "抄錯數字"],
+      "correctErrorIndex": 1,
+      "explanation": "14 − 6 = 8。答 20 是算成 14 + 6，把減號看成加號了。",
+      "challenge": "2-7",
+      "errorPath": 3
+    },
+    {
+      "id": "basic-add-sub-ed-6",
+      "type": "error-diagnosis",
+      "problem": "計算 11 − 7",
+      "wrongSolution": "答案寫 16",
+      "errorOptions": ["把 11 看成 17", "加法算錯了", "數錯手指", "個位不夠減，反過來用 7 減 1"],
+      "correctErrorIndex": 3,
+      "explanation": "11 − 7 = 4。個位 1 不夠減 7，反過來算 7 − 1 = 6 再留著十位，才會寫成 16。",
+      "challenge": "2-7",
+      "errorPath": 2
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "basic-add-sub-ca-1",
+      "type": "context-application",
+      "scenario": "小安有 9 顆彈珠，送給好朋友 4 顆。",
+      "question": "小安還剩下幾顆彈珠？",
+      "options": ["5", "13", "4", "6"],
+      "answer": 0,
+      "explanation": "送出去就是拿走，用減法：9 − 4 = 5 顆。13 是誤用了加法。",
+      "challenge": "2-8",
+      "errorPath": 3
+    },
+    {
+      "id": "basic-add-sub-ca-2",
+      "type": "context-application",
+      "scenario": "兩盤蘋果合起來一共 10 顆，其中一盤有 6 顆。",
+      "question": "另一盤有幾顆蘋果？",
+      "options": ["16", "4", "6", "5"],
+      "answer": 1,
+      "explanation": "10 可以分成 6 和 4，另一盤是 4 顆。16 是看到「合起來」就把數字全加了。",
+      "challenge": "2-8",
+      "errorPath": 3
+    },
+    {
+      "id": "basic-add-sub-ca-3",
+      "type": "context-application",
+      "scenario": "樹上原本停了 7 隻小鳥，後來又飛來 6 隻。",
+      "question": "樹上現在有幾隻小鳥？",
+      "options": ["1", "12", "13", "14"],
+      "answer": 2,
+      "explanation": "飛來是變多，用加法：7 + 6 = 13 隻。1 是誤用了減法。",
+      "challenge": "2-8",
+      "errorPath": 3
+    }
+  ]
+}

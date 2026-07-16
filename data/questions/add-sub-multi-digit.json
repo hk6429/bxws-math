@@ -1,0 +1,241 @@
+{
+  "nodeId": "add-sub-multi-digit",
+  "basicMastery": [
+    {
+      "id": "add-sub-multi-digit-bm-1",
+      "type": "basic-mastery",
+      "challenge": "2-1",
+      "errorPath": 1,
+      "stem": "478 + 356 = ？",
+      "options": ["824", "834", "734", "934"],
+      "answer": 1,
+      "explanation": "個位 8+6=14 寫 4 進 1；十位 7+5+1=13 寫 3 進 1；百位 4+3+1=8，答案是 834。"
+    },
+    {
+      "id": "add-sub-multi-digit-bm-2",
+      "type": "basic-mastery",
+      "challenge": "2-1",
+      "errorPath": 1,
+      "stem": "567 + 789 = ？",
+      "options": ["1246", "1256", "1346", "1356"],
+      "answer": 3,
+      "explanation": "個位 7+9=16 寫 6 進 1；十位 6+8+1=15 寫 5 進 1；百位 5+7+1=13，答案是 1356。"
+    },
+    {
+      "id": "add-sub-multi-digit-bm-3",
+      "type": "basic-mastery",
+      "challenge": "2-1",
+      "errorPath": 1,
+      "stem": "605 + 398 = ？",
+      "options": ["1003", "903", "993", "1013"],
+      "answer": 0,
+      "explanation": "個位 5+8=13 寫 3 進 1；十位 0+9+1=10 寫 0 進 1；百位 6+3+1=10，答案是 1003。"
+    },
+    {
+      "id": "add-sub-multi-digit-bm-4",
+      "type": "basic-mastery",
+      "challenge": "2-2",
+      "errorPath": 2,
+      "stem": "302 - 158 = ？",
+      "options": ["154", "244", "144", "256"],
+      "answer": 2,
+      "explanation": "個位 2 不夠減 8，向十位借，十位是 0 要再向百位借：個位 12-8=4，十位 9-5=4，百位 2-1=1，答案是 144。"
+    },
+    {
+      "id": "add-sub-multi-digit-bm-5",
+      "type": "basic-mastery",
+      "challenge": "2-2",
+      "errorPath": 2,
+      "stem": "500 - 267 = ？",
+      "options": ["233", "243", "333", "367"],
+      "answer": 0,
+      "explanation": "個位向十位借、十位向百位借：個位 10-7=3，十位 9-6=3，百位 4-2=2，答案是 233。"
+    },
+    {
+      "id": "add-sub-multi-digit-bm-6",
+      "type": "basic-mastery",
+      "challenge": "2-2",
+      "errorPath": 2,
+      "stem": "807 - 429 = ？",
+      "options": ["388", "378", "422", "468"],
+      "answer": 1,
+      "explanation": "個位 7 不夠減 9，十位是 0 要向百位借：個位 17-9=8，十位 9-2=7，百位 7-4=3，答案是 378。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "add-sub-multi-digit-ci-1",
+      "type": "concept-id",
+      "challenge": "2-3",
+      "statement": "計算 456 + 78 的直式時，要把 78 的 8 對齊 456 的 6（個位對齊個位）。",
+      "correctAnswer": true,
+      "explanation": "直式加減要相同位值對齊：個位對個位、十位對十位，才不會加錯位。"
+    },
+    {
+      "id": "add-sub-multi-digit-ci-2",
+      "type": "concept-id",
+      "challenge": "2-3",
+      "statement": "計算 456 + 78 的直式時，可以把 7 對齊 4，從左邊開始對齊。",
+      "correctAnswer": false,
+      "explanation": "從左邊對齊會把 78 當成 780，位值全部錯位。直式一定要個位對齊個位。"
+    },
+    {
+      "id": "add-sub-multi-digit-ci-3",
+      "type": "concept-id",
+      "challenge": "2-3",
+      "statement": "計算 35 + 200 的直式時，200 的 2 要寫在百位的位置。",
+      "correctAnswer": true,
+      "explanation": "2 代表 2 個百，一定要放在百位；35 沒有百位，百位就空著或看成 0。"
+    },
+    {
+      "id": "add-sub-multi-digit-ci-4",
+      "type": "concept-id",
+      "challenge": "2-4",
+      "statement": "算完 623 - 287 = 336 之後，可以用 336 + 287 是不是等於 623 來驗算。",
+      "correctAnswer": true,
+      "explanation": "加減互逆：差 + 減數 = 被減數。336 + 287 = 623，表示算對了。"
+    },
+    {
+      "id": "add-sub-multi-digit-ci-5",
+      "type": "concept-id",
+      "challenge": "2-4",
+      "statement": "算完 415 + 379 之後，可以用「答案減 379 是不是等於 415」來驗算。",
+      "correctAnswer": true,
+      "explanation": "加減互逆：和 - 加數 = 另一個加數。794 - 379 = 415，表示算對了。"
+    },
+    {
+      "id": "add-sub-multi-digit-ci-6",
+      "type": "concept-id",
+      "challenge": "2-4",
+      "statement": "算完 500 - 123 = 377 之後，可以用 500 + 377 看是不是等於 123 來驗算。",
+      "correctAnswer": false,
+      "explanation": "驗算減法要用「差 + 減數 = 被減數」：377 + 123 = 500 才對；500 + 377 只會越加越大。"
+    },
+    {
+      "id": "add-sub-multi-digit-ci-7",
+      "type": "concept-id",
+      "challenge": "2-6",
+      "statement": "498 + 503 的答案大約是 1000，如果算出 601，一定是算錯了。",
+      "correctAnswer": true,
+      "explanation": "把 498 看成 500、503 看成 500，估算約 1000；601 差太多，一定有問題。"
+    },
+    {
+      "id": "add-sub-multi-digit-ci-8",
+      "type": "concept-id",
+      "challenge": "2-6",
+      "statement": "802 - 398 的答案大約是 400，所以算出 996 是合理的。",
+      "correctAnswer": false,
+      "explanation": "把 802 看成 800、398 看成 400，估算約 400；996 比被減數還大，一定錯了（可能誤按成加法）。"
+    },
+    {
+      "id": "add-sub-multi-digit-ci-9",
+      "type": "concept-id",
+      "challenge": "2-6",
+      "statement": "計算前先把數看成整百來估算，可以快速檢查答案合不合理。",
+      "correctAnswer": true,
+      "explanation": "先估後算是檢查合理性的好方法：估算值和答案差很多時，就要重算一次。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "add-sub-multi-digit-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "2-5",
+      "errorPath": 1,
+      "problem": "計算 456 + 267",
+      "wrongSolution": "小明算成 713",
+      "errorOptions": ["個位進上來的 1 忘記加到十位", "直式沒有對齊", "把加法算成減法", "百位數字抄錯了"],
+      "correctErrorIndex": 0,
+      "explanation": "個位 6+7=13 寫 3 進 1，十位應算 5+6+1=12；小明只算 5+6=11，忘了加進位的 1。正確答案是 723。"
+    },
+    {
+      "id": "add-sub-multi-digit-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "2-5",
+      "errorPath": 2,
+      "problem": "計算 703 - 258",
+      "wrongSolution": "小華算成 455",
+      "errorOptions": ["百位忘記借位給十位", "十位借 1 給個位後，忘記自己要少 1", "個位相減算錯了", "把減法算成加法"],
+      "correctErrorIndex": 1,
+      "explanation": "十位向百位借變 10，再借 1 給個位剩 9：十位應算 9-5=4；小華算 10-5=5，忘了十位已借出 1。正確答案是 445。"
+    },
+    {
+      "id": "add-sub-multi-digit-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "2-5",
+      "errorPath": 3,
+      "problem": "計算 385 + 49",
+      "wrongSolution": "小杰算成 875",
+      "errorOptions": ["進位的 1 忘記加", "個位相加算錯了", "直式從左邊對齊，49 被當成 490", "答案抄錯位置"],
+      "correctErrorIndex": 2,
+      "explanation": "小杰把 4 對齊 3、9 對齊 8，等於算 385 + 490 = 875。直式要個位對齊個位：385 + 49 = 434。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "add-sub-multi-digit-ca-1",
+      "type": "context-application",
+      "challenge": "2-7",
+      "errorPath": 2,
+      "scenario": "小恩帶 1000 元去買書包，書包賣 785 元。",
+      "question": "老闆應該找回多少元？",
+      "options": ["215 元", "225 元", "315 元", "325 元"],
+      "answer": 0,
+      "explanation": "1000 - 785：個位 10-5=5，十位 9-8=1，百位 9-7=2，找回 215 元。"
+    },
+    {
+      "id": "add-sub-multi-digit-ca-2",
+      "type": "context-application",
+      "challenge": "2-7",
+      "errorPath": 2,
+      "scenario": "一枝鋼筆賣 468 元，姐姐拿 500 元付錢。",
+      "question": "應該找回幾元？",
+      "options": ["42 元", "38 元", "32 元", "168 元"],
+      "answer": 2,
+      "explanation": "500 - 468：個位 10-8=2，十位 9-6=3，百位 4-4=0，找回 32 元。"
+    },
+    {
+      "id": "add-sub-multi-digit-ca-3",
+      "type": "context-application",
+      "challenge": "2-7",
+      "errorPath": 2,
+      "scenario": "媽媽買菜共花 356 元，拿 400 元給老闆。",
+      "question": "老闆要找回多少元？",
+      "options": ["156 元", "54 元", "144 元", "44 元"],
+      "answer": 3,
+      "explanation": "400 - 356：個位 10-6=4，十位 9-5=4，百位 3-3=0，找回 44 元。"
+    },
+    {
+      "id": "add-sub-multi-digit-ca-4",
+      "type": "context-application",
+      "challenge": "2-8",
+      "errorPath": 1,
+      "scenario": "圖書館原本有 458 本書，新買進 275 本，又借出 139 本。",
+      "question": "現在館內有幾本書？",
+      "options": ["594 本", "604 本", "584 本", "872 本"],
+      "answer": 0,
+      "explanation": "先加後減：458 + 275 = 733，733 - 139 = 594 本。三個數全部相加的 872 是錯的，借出要用減的。"
+    },
+    {
+      "id": "add-sub-multi-digit-ca-5",
+      "type": "context-application",
+      "challenge": "2-8",
+      "errorPath": 2,
+      "scenario": "火車上原有 305 人，到站後下車 128 人，又上車 96 人。",
+      "question": "現在火車上有多少人？",
+      "options": ["81 人", "263 人", "273 人", "283 人"],
+      "answer": 2,
+      "explanation": "先減後加：305 - 128 = 177，177 + 96 = 273 人。"
+    },
+    {
+      "id": "add-sub-multi-digit-ca-6",
+      "type": "context-application",
+      "challenge": "2-8",
+      "scenario": "小文摺紙鶴，第一天摺了 246 隻，第二天比第一天多摺 78 隻。",
+      "question": "兩天一共摺了幾隻？",
+      "options": ["324 隻", "570 隻", "492 隻", "560 隻"],
+      "answer": 1,
+      "explanation": "第二天摺 246 + 78 = 324 隻，兩天共 246 + 324 = 570 隻。324 只是第二天的數量，不是總和。"
+    }
+  ]
+}

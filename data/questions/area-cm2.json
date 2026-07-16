@@ -1,0 +1,255 @@
+{
+  "nodeId": "area-cm2",
+  "basicMastery": [
+    {
+      "id": "area-cm2-bm-1",
+      "type": "basic-mastery",
+      "challenge": "9-1",
+      "errorPath": 3,
+      "stem": "長方形在平方公分板上，每排蓋住5格、共蓋3排，面積是幾平方公分？",
+      "options": ["15 平方公分", "16 平方公分", "8 平方公分", "14 平方公分"],
+      "answer": 0,
+      "explanation": "每排 5 格 × 3 排 = 15 格，每格 1 平方公分，面積 15 平方公分。16 是把周界格數（2×(5+3)=16）當成面積。"
+    },
+    {
+      "id": "area-cm2-bm-2",
+      "type": "basic-mastery",
+      "challenge": "9-1",
+      "errorPath": 3,
+      "stem": "圖形在平方公分板上每排蓋住6格、共蓋4排，面積是幾平方公分？",
+      "options": ["20 平方公分", "10 平方公分", "24 平方公分", "23 平方公分"],
+      "answer": 2,
+      "explanation": "6 × 4 = 24 格，面積 24 平方公分。20 是周界格數（2×(6+4)=20），10 是 6+4，都不是面積。"
+    },
+    {
+      "id": "area-cm2-bm-3",
+      "type": "basic-mastery",
+      "challenge": "9-1",
+      "errorPath": 3,
+      "stem": "貼紙在平方公分板上每排蓋住7格、共蓋2排，面積是幾平方公分？",
+      "options": ["18 平方公分", "14 平方公分", "9 平方公分", "13 平方公分"],
+      "answer": 1,
+      "explanation": "7 × 2 = 14 格，面積 14 平方公分。18 是周界格數（2×(7+2)=18），9 是 7+2。"
+    },
+    {
+      "id": "area-cm2-bm-4",
+      "type": "basic-mastery",
+      "challenge": "9-2",
+      "errorPath": 1,
+      "stem": "圖形蓋住8個整格和4個半格，面積是幾平方公分？",
+      "options": ["12 平方公分", "8 平方公分", "10 平方公分", "9 平方公分"],
+      "answer": 2,
+      "explanation": "4 個半格＝2 個整格，8 + 2 = 10 平方公分。12 是把半格也當整格數的錯誤答案。"
+    },
+    {
+      "id": "area-cm2-bm-5",
+      "type": "basic-mastery",
+      "challenge": "9-2",
+      "errorPath": 1,
+      "stem": "圖形蓋住10個整格和6個半格，面積是幾平方公分？",
+      "options": ["16 平方公分", "13 平方公分", "10 平方公分", "12 平方公分"],
+      "answer": 1,
+      "explanation": "6 個半格＝3 個整格，10 + 3 = 13 平方公分。16 是半格當整格，10 是漏掉半格。"
+    },
+    {
+      "id": "area-cm2-bm-6",
+      "type": "basic-mastery",
+      "challenge": "9-2",
+      "errorPath": 1,
+      "stem": "圖形蓋住5個整格和8個半格，面積是幾平方公分？",
+      "options": ["13 平方公分", "5 平方公分", "8 平方公分", "9 平方公分"],
+      "answer": 3,
+      "explanation": "8 個半格＝4 個整格，5 + 4 = 9 平方公分。13 是把半格全當整格，5 是完全沒數半格。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "area-cm2-ci-1",
+      "type": "concept-id",
+      "challenge": "9-3",
+      "statement": "1平方公分是邊長1公分的正方形的大小。",
+      "correctAnswer": true,
+      "explanation": "邊長 1 公分的正方形，它的大小就是 1 平方公分，是面積的基本單位。"
+    },
+    {
+      "id": "area-cm2-ci-2",
+      "type": "concept-id",
+      "challenge": "9-3",
+      "errorPath": 1,
+      "statement": "兩個半格合起來，可以當作1個平方公分來數。",
+      "correctAnswer": true,
+      "explanation": "半格是整格的一半，兩個半格合起來剛好是 1 格，也就是 1 平方公分。數格子時半格不能直接當整格。"
+    },
+    {
+      "id": "area-cm2-ci-3",
+      "type": "concept-id",
+      "challenge": "9-3",
+      "statement": "數方格算面積時，每格是1平方公分，數出幾格就是幾平方公分。",
+      "correctAnswer": true,
+      "explanation": "平方公分板上每一格都是 1 平方公分，圖形蓋住幾格，面積就是幾平方公分。"
+    },
+    {
+      "id": "area-cm2-ci-4",
+      "type": "concept-id",
+      "challenge": "9-4",
+      "errorPath": 3,
+      "statement": "周界越長的圖形，面積一定越大。",
+      "correctAnswer": false,
+      "explanation": "周界長不代表面積大。細細長長的圖形周界很長，蓋住的格子卻可能很少，面積要看蓋住幾格。"
+    },
+    {
+      "id": "area-cm2-ci-5",
+      "type": "concept-id",
+      "challenge": "9-4",
+      "errorPath": 3,
+      "statement": "兩個圖形面積一樣大，它們的周界長度也一定一樣。",
+      "correctAnswer": false,
+      "explanation": "面積一樣、形狀不同的圖形，周界可以不一樣。例如同樣蓋 12 格，排成一長條的周界比排成方形的長。"
+    },
+    {
+      "id": "area-cm2-ci-6",
+      "type": "concept-id",
+      "challenge": "9-4",
+      "errorPath": 3,
+      "statement": "圖形拉得越細越長，面積就一定越小。",
+      "correctAnswer": false,
+      "explanation": "面積由蓋住的格數決定，和形狀細長或方正沒有關係。細長的圖形也可能蓋住很多格。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "area-cm2-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "9-5",
+      "errorPath": 1,
+      "problem": "數出圖形的面積：蓋住6個整格和4個半格",
+      "wrongSolution": "小明把半格也當成整格，數出 6 + 4 = 10 平方公分。",
+      "errorOptions": ["半格要2個合成1格，應是6+2=8平方公分", "忘記把整格數進去", "面積不能用數格子求", "應該數周界的格子數"],
+      "correctErrorIndex": 0,
+      "explanation": "4 個半格只等於 2 個整格，正確面積是 6 + 2 = 8 平方公分，不是 10。"
+    },
+    {
+      "id": "area-cm2-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "9-5",
+      "errorPath": 1,
+      "problem": "數出圖形的面積：蓋住7個整格和2個半格",
+      "wrongSolution": "小婷數出 7 + 2 = 9 平方公分。",
+      "errorOptions": ["整格數錯了，應該是6格", "抄錯題目的格數", "半格當成整格數，應是7+1=8平方公分", "單位寫錯了"],
+      "correctErrorIndex": 2,
+      "explanation": "2 個半格合起來是 1 個整格，正確面積是 7 + 1 = 8 平方公分。"
+    },
+    {
+      "id": "area-cm2-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "9-5",
+      "errorPath": 1,
+      "problem": "數出圖形的面積：蓋住9個整格和6個半格",
+      "wrongSolution": "小豪把每個半格都算1格，數出 9 + 6 = 15 平方公分。",
+      "errorOptions": ["面積要用乘法才能算", "把半格當整格，應是9+3=12平方公分", "漏數了被蓋住的格子", "周界算錯了"],
+      "correctErrorIndex": 1,
+      "explanation": "6 個半格＝3 個整格，正確面積是 9 + 3 = 12 平方公分。"
+    },
+    {
+      "id": "area-cm2-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "9-6",
+      "errorPath": 2,
+      "problem": "寫出圖形的面積：圖形蓋住12格",
+      "wrongSolution": "小華在答案寫「面積是 12 公分」。",
+      "errorOptions": ["12格數錯了", "答案應該再乘以2", "面積應該用加法算", "公分是長度單位，面積要寫12平方公分"],
+      "correctErrorIndex": 3,
+      "explanation": "格數 12 沒有錯，錯在單位：公分是量長度用的，面積要寫「平方公分」。"
+    },
+    {
+      "id": "area-cm2-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "9-6",
+      "errorPath": 2,
+      "problem": "寫出圖形的面積：圖形蓋住20格",
+      "wrongSolution": "小美數出 20 格，在答案卡寫「20 公分」。",
+      "errorOptions": ["面積單位是平方公分，不是公分", "格子數少算了", "應該寫20個格子就好", "要先算周界才能寫答案"],
+      "correctErrorIndex": 0,
+      "explanation": "數格子求面積時，答案的單位是平方公分。寫 20 公分變成長度，意思完全不同。"
+    },
+    {
+      "id": "area-cm2-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "9-6",
+      "errorPath": 2,
+      "problem": "量出貼紙的面積",
+      "wrongSolution": "小軒用尺量出貼紙一邊長4公分，就說「面積是4公分」。",
+      "errorOptions": ["尺量錯了", "把4公分改寫成4平方公分就對了", "面積是蓋住的格數，單位是平方公分", "貼紙不能量面積"],
+      "correctErrorIndex": 2,
+      "explanation": "量一邊的長度不是面積。面積要看貼紙蓋住幾個 1 平方公分，單位是平方公分，不是公分。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "area-cm2-ca-1",
+      "type": "context-application",
+      "challenge": "9-7",
+      "errorPath": 3,
+      "scenario": "甲、乙兩張貼紙形狀不同，甲蓋住12個平方公分格，乙也蓋住12格。",
+      "question": "兩張貼紙的面積關係是？",
+      "options": ["一樣大", "甲比較大", "乙比較大", "不能比較"],
+      "answer": 0,
+      "explanation": "面積看蓋住的格數：兩張都蓋 12 格，面積都是 12 平方公分，形狀不同也一樣大。"
+    },
+    {
+      "id": "area-cm2-ca-2",
+      "type": "context-application",
+      "challenge": "9-7",
+      "errorPath": 3,
+      "scenario": "甲圖形細細長長蓋住10格，乙圖形方方正正也蓋住10格。",
+      "question": "哪一個圖形的面積比較大？",
+      "options": ["乙比較大", "甲比較大", "一樣大", "不能比較"],
+      "answer": 2,
+      "explanation": "面積只看蓋住幾格，和細長或方正無關：都蓋 10 格，就是一樣大。"
+    },
+    {
+      "id": "area-cm2-ca-3",
+      "type": "context-application",
+      "challenge": "9-7",
+      "errorPath": 3,
+      "scenario": "乙圖形看起來比較寬，但甲蓋住14格、乙只蓋住11格。",
+      "question": "哪個面積大？大幾平方公分？",
+      "options": ["甲大，大3平方公分", "乙大，大3平方公分", "一樣大", "甲大，大25平方公分"],
+      "answer": 0,
+      "explanation": "比面積要數格子，不能只看外觀：14 − 11 = 3，甲比乙大 3 平方公分。"
+    },
+    {
+      "id": "area-cm2-ca-4",
+      "type": "context-application",
+      "challenge": "9-8",
+      "errorPath": 3,
+      "scenario": "小丁用1平方公分的紙片排長方形，每排放5張、共排4排。",
+      "question": "這個長方形的面積是幾平方公分？",
+      "options": ["18 平方公分", "20 平方公分", "9 平方公分", "19 平方公分"],
+      "answer": 1,
+      "explanation": "5 × 4 = 20 張紙片，每張 1 平方公分，面積 20 平方公分。18 是周界格數（2×(5+4)）。"
+    },
+    {
+      "id": "area-cm2-ca-5",
+      "type": "context-application",
+      "challenge": "9-8",
+      "errorPath": 3,
+      "scenario": "小可用1平方公分的紙片排長方形，每排放6張、共排5排。",
+      "question": "這個長方形的面積是幾平方公分？",
+      "options": ["22 平方公分", "11 平方公分", "30 平方公分", "28 平方公分"],
+      "answer": 2,
+      "explanation": "6 × 5 = 30 張，面積 30 平方公分。22 是周界格數（2×(6+5)），11 是 6+5。"
+    },
+    {
+      "id": "area-cm2-ca-6",
+      "type": "context-application",
+      "challenge": "9-8",
+      "errorPath": 3,
+      "scenario": "小善用1平方公分的紙片排長方形，每排放8張、只排2排。",
+      "question": "這個長方形的面積是幾平方公分？",
+      "options": ["20 平方公分", "10 平方公分", "15 平方公分", "16 平方公分"],
+      "answer": 3,
+      "explanation": "8 × 2 = 16 張，面積 16 平方公分。20 是周界格數（2×(8+2)），10 是 8+2。"
+    }
+  ]
+}

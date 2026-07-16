@@ -1,0 +1,266 @@
+{
+  "nodeId": "two-step-basic",
+  "basicMastery": [
+    {
+      "id": "two-step-basic-bm-1",
+      "type": "basic-mastery",
+      "challenge": "10-4",
+      "errorPath": 2,
+      "stem": "帶100元買6枝9元的鉛筆，要算剩多少元，第一步先算？",
+      "options": ["先算 6×9", "先算 100−6", "先算 100−9", "先算 100+9"],
+      "answer": 0,
+      "explanation": "要知道剩多少錢，得先算出鉛筆的總價：6×9=54，再用 100−54=46。100−6 是把枝數當成錢，對象配錯了。"
+    },
+    {
+      "id": "two-step-basic-bm-2",
+      "type": "basic-mastery",
+      "challenge": "10-4",
+      "errorPath": 2,
+      "stem": "一盒8顆裝4盒，另外散裝5顆，要算總數，第一步先算？",
+      "options": ["先算 8×4", "先算 8+5", "先算 4+5", "先算 8+4"],
+      "answer": 0,
+      "explanation": "要先算盒裝共幾顆：8×4=32，再加散裝的 5 顆：32+5=37。4+5 是把盒數和散裝顆數亂配在一起。"
+    },
+    {
+      "id": "two-step-basic-bm-3",
+      "type": "basic-mastery",
+      "challenge": "10-4",
+      "errorPath": 2,
+      "stem": "車上28人，下車9人再上車15人，想先算下車後剩幾人，要算？",
+      "options": ["28−9", "28+15", "9+15", "28+9"],
+      "answer": 0,
+      "explanation": "下車後剩的人數是 28−9=19，這是中間答案，接著再加上車的 15 人：19+15=34。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "two-step-basic-ci-1",
+      "type": "concept-id",
+      "challenge": "10-5",
+      "errorPath": 1,
+      "statement": "兩步驟應用題要算兩次，才會得到最後的答案。",
+      "correctAnswer": true,
+      "explanation": "兩步驟題有一個中間答案，算完第一步還要再算第二步，只做一步不算完成。"
+    },
+    {
+      "id": "two-step-basic-ci-2",
+      "type": "concept-id",
+      "challenge": "10-5",
+      "errorPath": 3,
+      "statement": "把題目裡所有的數字加起來，就是答案。",
+      "correctAnswer": false,
+      "explanation": "要先看清楚每個數字代表什麼：有的要加、有的要減、有的要乘，全部加起來是亂槍打鳥。"
+    },
+    {
+      "id": "two-step-basic-ci-3",
+      "type": "concept-id",
+      "challenge": "10-5",
+      "errorPath": 1,
+      "statement": "第一步算出來的中間答案，還要再用來算下一步。",
+      "correctAnswer": true,
+      "explanation": "中間答案不是最後答案，它是第二步的材料，例如先算出總價，再拿總價去算找零。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "two-step-basic-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "10-6",
+      "errorPath": 1,
+      "problem": "帶100元，買6枝9元的鉛筆，剩多少元？",
+      "wrongSolution": "小海算 6×9=54，就回答「剩54元」。",
+      "errorOptions": ["只算了一步就當成答案", "乘法口訣背錯", "看錯鉛筆的價錢", "加法進位錯誤"],
+      "correctErrorIndex": 0,
+      "explanation": "54 元是鉛筆的總價，不是剩下的錢。還要再算 100−54=46 元才是答案。"
+    },
+    {
+      "id": "two-step-basic-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "10-6",
+      "errorPath": 1,
+      "problem": "一盒8顆的糖裝了4盒，另外散裝5顆，共幾顆？",
+      "wrongSolution": "小塘算 8×4=32，就回答「共32顆」。",
+      "errorOptions": ["忘了把散裝的5顆加進去", "乘法算錯", "看錯盒數", "把顆數和盒數弄反"],
+      "correctErrorIndex": 0,
+      "explanation": "32 顆只是盒裝的部分，還要加散裝的 5 顆：32+5=37 顆。"
+    },
+    {
+      "id": "two-step-basic-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "10-6",
+      "errorPath": 1,
+      "problem": "車上有28人，下車9人，又上車15人，現在幾人？",
+      "wrongSolution": "小池算 28−9=19，就回答「19人」。",
+      "errorOptions": ["忘了把上車的15人加回來", "減法算錯", "看錯下車人數", "把上車當成下車"],
+      "correctErrorIndex": 0,
+      "explanation": "19 人只是下車後的人數，還有 15 人上車：19+15=34 人才是答案。"
+    },
+    {
+      "id": "two-step-basic-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "10-7",
+      "errorPath": 2,
+      "problem": "帶100元，買6枝9元的鉛筆，剩多少元？",
+      "wrongSolution": "小竹先算 100−6=94，再算 94×9。",
+      "errorOptions": ["把枝數拿去和錢相減，對象配錯", "乘法口訣背錯", "忘了算第二步", "答案單位寫錯"],
+      "correctErrorIndex": 0,
+      "explanation": "6 是枝數、100 是錢，不能直接相減。要先算鉛筆總價 6×9=54，再算 100−54=46。"
+    },
+    {
+      "id": "two-step-basic-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "10-7",
+      "errorPath": 2,
+      "problem": "帶80元，買4個15元的麵包，剩多少元？",
+      "wrongSolution": "小海先算 80−15=65，再算 65×4。",
+      "errorOptions": ["只減了一個麵包的錢就去乘，順序配錯", "減法算錯", "忘了算麵包總價", "看錯麵包個數"],
+      "correctErrorIndex": 0,
+      "explanation": "要先算 4 個麵包的總價 15×4=60，再算 80−60=20 元。先減一個再乘，錢會愈算愈奇怪。"
+    },
+    {
+      "id": "two-step-basic-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "10-7",
+      "errorPath": 2,
+      "problem": "一盒8顆的糖裝了4盒，另外散裝5顆，共幾顆？",
+      "wrongSolution": "小塘先算 4+5=9，再算 8×9=72顆。",
+      "errorOptions": ["把盒數和散裝顆數加在一起，對象配錯", "乘法算錯", "忘了加散裝的糖", "看錯每盒顆數"],
+      "correctErrorIndex": 0,
+      "explanation": "4 是盒數、5 是散裝顆數，單位不同不能相加。要先算 8×4=32，再加 5 顆得 37 顆。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "two-step-basic-ca-1",
+      "type": "context-application",
+      "challenge": "10-1",
+      "errorPath": 3,
+      "scenario": "公車上有28人，到站時下車9人，又上車15人。",
+      "question": "現在車上有幾人？",
+      "options": ["34人", "52人", "19人", "4人"],
+      "answer": 0,
+      "explanation": "先算下車後：28−9=19 人，再算上車後：19+15=34 人。全部加起來 52 是沒分清上下車方向。"
+    },
+    {
+      "id": "two-step-basic-ca-2",
+      "type": "context-application",
+      "challenge": "10-1",
+      "errorPath": 3,
+      "scenario": "小美有35張貼紙，送給妹妹8張，又買了12張。",
+      "question": "小美現在有幾張貼紙？",
+      "options": ["39張", "55張", "27張", "15張"],
+      "answer": 0,
+      "explanation": "先算送出後：35−8=27 張，再算買了之後：27+12=39 張。55 是把三個數字全加了。"
+    },
+    {
+      "id": "two-step-basic-ca-3",
+      "type": "context-application",
+      "challenge": "10-1",
+      "errorPath": 3,
+      "scenario": "圖書館有40本繪本，今天還回來7本，被借走16本。",
+      "question": "現在架上有幾本繪本？",
+      "options": ["31本", "63本", "47本", "17本"],
+      "answer": 0,
+      "explanation": "先算還回來後：40+7=47 本，再算借走後：47−16=31 本。63 是把三個數字全加了。"
+    },
+    {
+      "id": "two-step-basic-ca-4",
+      "type": "context-application",
+      "challenge": "10-2",
+      "errorPath": 1,
+      "scenario": "一盒8顆的巧克力有4盒，另外還有散裝5顆。",
+      "question": "巧克力共有幾顆？",
+      "options": ["37顆", "32顆", "17顆", "72顆"],
+      "answer": 0,
+      "explanation": "先算盒裝：8×4=32 顆，再加散裝：32+5=37 顆。答 32 是只做一步就停了。"
+    },
+    {
+      "id": "two-step-basic-ca-5",
+      "type": "context-application",
+      "challenge": "10-2",
+      "errorPath": 1,
+      "scenario": "每包6顆的糖果有3包，桌上另外還有4顆。",
+      "question": "糖果共有幾顆？",
+      "options": ["22顆", "18顆", "13顆", "42顆"],
+      "answer": 0,
+      "explanation": "先算包裝：6×3=18 顆，再加桌上的：18+4=22 顆。答 18 是忘了加桌上那 4 顆。"
+    },
+    {
+      "id": "two-step-basic-ca-6",
+      "type": "context-application",
+      "challenge": "10-2",
+      "errorPath": 1,
+      "scenario": "禮堂每排有7張椅子，排了5排，門口再放2張。",
+      "question": "椅子共有幾張？",
+      "options": ["37張", "35張", "14張", "49張"],
+      "answer": 0,
+      "explanation": "先算排好的：7×5=35 張，再加門口的：35+2=37 張。答 35 是漏了門口那 2 張。"
+    },
+    {
+      "id": "two-step-basic-ca-7",
+      "type": "context-application",
+      "challenge": "10-3",
+      "errorPath": 2,
+      "scenario": "小安帶100元去文具店，買了6枝9元的鉛筆。",
+      "question": "小安剩下多少元？",
+      "options": ["46元", "54元", "85元", "94元"],
+      "answer": 0,
+      "explanation": "先算總價：6×9=54 元，再算剩下：100−54=46 元。94 是錯把 100−6，枝數不能拿來減錢。"
+    },
+    {
+      "id": "two-step-basic-ca-8",
+      "type": "context-application",
+      "challenge": "10-3",
+      "errorPath": 2,
+      "scenario": "小樂帶80元去麵包店，買了4個15元的麵包。",
+      "question": "小樂剩下多少元？",
+      "options": ["20元", "60元", "65元", "76元"],
+      "answer": 0,
+      "explanation": "先算總價：15×4=60 元，再算剩下：80−60=20 元。65 是只減一個麵包的錢，76 是拿個數去減錢。"
+    },
+    {
+      "id": "two-step-basic-ca-9",
+      "type": "context-application",
+      "challenge": "10-3",
+      "errorPath": 2,
+      "scenario": "小雨帶50元去買筆，買了3枝12元的原子筆。",
+      "question": "小雨剩下多少元？",
+      "options": ["14元", "36元", "38元", "47元"],
+      "answer": 0,
+      "explanation": "先算總價：12×3=36 元，再算剩下：50−36=14 元。38 是只減一枝的錢，47 是拿枝數去減錢。"
+    },
+    {
+      "id": "two-step-basic-ca-10",
+      "type": "context-application",
+      "challenge": "10-8",
+      "errorPath": 2,
+      "scenario": "小安帶100元，想買6枝9元的鉛筆。",
+      "question": "要算剩多少元，要先算出什麼？",
+      "options": ["鉛筆的總價", "剩下的錢", "鉛筆的枝數", "一枝的價錢"],
+      "answer": 0,
+      "explanation": "中間答案是鉛筆總價 6×9=54 元，有了總價才能算 100−54=46 元。"
+    },
+    {
+      "id": "two-step-basic-ca-11",
+      "type": "context-application",
+      "challenge": "10-8",
+      "errorPath": 2,
+      "scenario": "一盒8顆的巧克力有4盒，另外散裝5顆。",
+      "question": "要算總共幾顆，要先算出什麼？",
+      "options": ["盒裝共幾顆", "散裝有幾顆", "一盒有幾顆", "總共有幾盒"],
+      "answer": 0,
+      "explanation": "先算盒裝共 8×4=32 顆，這是中間答案，再加散裝 5 顆才是總數 37 顆。"
+    },
+    {
+      "id": "two-step-basic-ca-12",
+      "type": "context-application",
+      "challenge": "10-8",
+      "errorPath": 1,
+      "scenario": "公車上有28人，下車9人後，又上車15人。",
+      "question": "要算現在幾人，中間答案是什麼？",
+      "options": ["下車後剩的19人", "上車的15人", "下車的9人", "原本的28人"],
+      "answer": 0,
+      "explanation": "第一步算 28−9=19 人，這就是中間答案；再算 19+15=34 人。15、9、28 都是題目給的數字，不是算出來的。"
+    }
+  ]
+}

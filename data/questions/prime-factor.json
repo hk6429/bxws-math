@@ -1,0 +1,252 @@
+{
+  "nodeId": "prime-factor",
+  "curriculum": "N-6-1",
+  "basicMastery": [
+    {
+      "id": "prime-factor-bm-1",
+      "type": "basic-mastery",
+      "challenge": "2-1",
+      "errorPath": 1,
+      "stem": "下列哪一個數是質數？",
+      "options": ["15", "1", "17", "21"],
+      "answer": 2,
+      "explanation": "17 的因數只有 1 和 17，是質數。15 = 3×5、21 = 3×7 是合數；1 既不是質數也不是合數。"
+    },
+    {
+      "id": "prime-factor-bm-2",
+      "type": "basic-mastery",
+      "challenge": "2-1",
+      "errorPath": 1,
+      "stem": "20 以內的質數共有幾個？",
+      "options": ["9 個", "7 個", "10 個", "8 個"],
+      "answer": 3,
+      "explanation": "20 以內的質數：2、3、5、7、11、13、17、19，共 8 個。1 不是質數，別多算進去。"
+    },
+    {
+      "id": "prime-factor-bm-3",
+      "type": "basic-mastery",
+      "challenge": "2-1",
+      "errorPath": 1,
+      "stem": "下列哪一個數不是質數？",
+      "options": ["2", "13", "19", "9"],
+      "answer": 3,
+      "explanation": "9 = 3×3 是合數。2 是質數，而且是唯一的偶數質數；13、19 都是質數。"
+    },
+    {
+      "id": "prime-factor-bm-4",
+      "type": "basic-mastery",
+      "challenge": "2-2",
+      "errorPath": 3,
+      "stem": "下列哪一個數是 3 的倍數？",
+      "options": ["143", "234", "205", "122"],
+      "answer": 1,
+      "explanation": "3 的倍數看數字和：2+3+4 = 9 是 3 的倍數。143 末位雖是 3，但 1+4+3 = 8，不是 3 的倍數。"
+    },
+    {
+      "id": "prime-factor-bm-5",
+      "type": "basic-mastery",
+      "challenge": "2-2",
+      "errorPath": 3,
+      "stem": "下列哪個數同時是 2 和 5 的倍數？",
+      "options": ["125", "72", "130", "95"],
+      "answer": 2,
+      "explanation": "同時是 2 和 5 的倍數，末位必須是 0：130 符合。125 和 95 只是 5 的倍數，72 只是 2 的倍數。"
+    },
+    {
+      "id": "prime-factor-bm-6",
+      "type": "basic-mastery",
+      "challenge": "2-2",
+      "errorPath": 3,
+      "stem": "哪個數是 3 的倍數，但不是 2 的倍數？",
+      "options": ["96", "87", "74", "53"],
+      "answer": 1,
+      "explanation": "87 的數字和 8+7 = 15 是 3 的倍數，末位 7 是奇數。96 同時是 2 和 3 的倍數；74 只是 2 的倍數。"
+    },
+    {
+      "id": "prime-factor-bm-7",
+      "type": "basic-mastery",
+      "challenge": "2-3",
+      "errorPath": 2,
+      "stem": "60 的質因數分解結果是？",
+      "options": ["2×2×3×5", "2×3×5", "2×2×15", "4×15"],
+      "answer": 0,
+      "explanation": "短除法：60÷2=30、30÷2=15、15÷3=5，所以 60 = 2×2×3×5。15 和 4 是合數，不能留在答案裡。"
+    },
+    {
+      "id": "prime-factor-bm-8",
+      "type": "basic-mastery",
+      "challenge": "2-3",
+      "errorPath": 2,
+      "stem": "84 的質因數分解結果是？",
+      "options": ["4×21", "2×3×7", "2×2×21", "2×2×3×7"],
+      "answer": 3,
+      "explanation": "短除法：84÷2=42、42÷2=21、21÷3=7，所以 84 = 2×2×3×7。2×3×7 = 42，漏了一個 2。"
+    },
+    {
+      "id": "prime-factor-bm-9",
+      "type": "basic-mastery",
+      "challenge": "2-3",
+      "errorPath": 2,
+      "stem": "90 的質因數分解結果是？",
+      "options": ["2×9×5", "3×3×10", "2×3×3×5", "2×3×5"],
+      "answer": 2,
+      "explanation": "短除法：90÷2=45、45÷3=15、15÷3=5，所以 90 = 2×3×3×5。9 和 10 是合數，還要再分解。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "prime-factor-ci-1",
+      "type": "concept-id",
+      "challenge": "2-4",
+      "errorPath": 1,
+      "statement": "1 是質數。",
+      "correctAnswer": false,
+      "explanation": "質數要恰好有兩個因數（1 和自己），1 只有一個因數，所以 1 既不是質數也不是合數。"
+    },
+    {
+      "id": "prime-factor-ci-2",
+      "type": "concept-id",
+      "challenge": "2-4",
+      "errorPath": 1,
+      "statement": "91 是質數。",
+      "correctAnswer": false,
+      "explanation": "91 = 7 × 13，是合數。長得像質數的數要小心用 7、11、13 試除確認。"
+    },
+    {
+      "id": "prime-factor-ci-3",
+      "type": "concept-id",
+      "challenge": "2-4",
+      "errorPath": 1,
+      "statement": "2 是質數，而且是唯一的偶數質數。",
+      "correctAnswer": true,
+      "explanation": "2 的因數只有 1 和 2，是質數；其他偶數都能被 2 整除，因數超過兩個，所以都是合數。"
+    },
+    {
+      "id": "prime-factor-ci-4",
+      "type": "concept-id",
+      "challenge": "2-5",
+      "statement": "30 的質因數分解，不論先除哪個質數，結果都是 2×3×5。",
+      "correctAnswer": true,
+      "explanation": "先除 5 或先除 2 都可以：分解到全是質數時，得到的質因數都一樣，只是順序不同。"
+    },
+    {
+      "id": "prime-factor-ci-5",
+      "type": "concept-id",
+      "challenge": "2-5",
+      "statement": "30 除了 2×3×5，還能分解成另一組不同的質數相乘。",
+      "correctAnswer": false,
+      "explanation": "質因數分解的結果是唯一的（不計順序），30 只能分解成 2×3×5。"
+    },
+    {
+      "id": "prime-factor-ci-6",
+      "type": "concept-id",
+      "challenge": "2-5",
+      "statement": "把合數做質因數分解，不計順序時結果只有一種。",
+      "correctAnswer": true,
+      "explanation": "每個合數的質因數分解都是唯一的，例如 12 只能是 2×2×3，這是質因數分解最重要的性質。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "prime-factor-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "2-6",
+      "errorPath": 2,
+      "problem": "把 60 做質因數分解",
+      "wrongSolution": "小明寫 60 = 2×2×15，就停下來作答",
+      "errorOptions": ["15 是合數，還沒分解完", "2 不能當短除法的除數", "應該先用 5 去除", "60 本身是質數"],
+      "correctErrorIndex": 0,
+      "explanation": "分解要進行到全部都是質數才能停：15 = 3×5，所以 60 = 2×2×3×5。"
+    },
+    {
+      "id": "prime-factor-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "2-6",
+      "errorPath": 2,
+      "problem": "把 72 做質因數分解",
+      "wrongSolution": "小華寫 72 = 2×2×2×9，就停下來作答",
+      "errorOptions": ["2 用了太多次", "除到 9 就停，9 還是合數", "應該從 3 開始除", "72 不能被 2 整除"],
+      "correctErrorIndex": 1,
+      "explanation": "9 = 3×3 是合數，還要繼續分解：72 = 2×2×2×3×3。全部都是質數才算分解完成。"
+    },
+    {
+      "id": "prime-factor-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "2-6",
+      "errorPath": 2,
+      "problem": "把 50 做質因數分解",
+      "wrongSolution": "小美寫 50 = 5×10，就停下來作答",
+      "errorOptions": ["5 不是質數", "50 應該先除以 3", "答案抄錯了", "10 是合數，還要再分解"],
+      "correctErrorIndex": 3,
+      "explanation": "10 = 2×5 是合數，所以 50 = 2×5×5。中途停手是質因數分解最常見的錯誤。"
+    },
+    {
+      "id": "prime-factor-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "2-7",
+      "errorPath": 2,
+      "problem": "把 36 做質因數分解",
+      "wrongSolution": "小杰用 4 當除數，答 36 = 4×3×3",
+      "errorOptions": ["3 不是質數", "4 是合數，不能當質因數", "36 不能被 4 整除", "答案應該是 6×6"],
+      "correctErrorIndex": 1,
+      "explanation": "短除法的除數必須是質數：4 = 2×2 是合數，正確分解是 36 = 2×2×3×3。"
+    },
+    {
+      "id": "prime-factor-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "2-7",
+      "errorPath": 2,
+      "problem": "把 48 做質因數分解",
+      "wrongSolution": "小恩寫 48 = 6×8，說質因數是 6 和 8",
+      "errorOptions": ["6 和 8 都是合數，不是質因數", "6×8 不等於 48", "質因數只有 2", "48 是質數不能分解"],
+      "correctErrorIndex": 0,
+      "explanation": "6 = 2×3、8 = 2×2×2 都是合數，要繼續分解：48 = 2×2×2×2×3。"
+    },
+    {
+      "id": "prime-factor-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "2-7",
+      "errorPath": 2,
+      "problem": "把 100 做質因數分解",
+      "wrongSolution": "小柔寫 100 = 10×10，說質因數是 10",
+      "errorOptions": ["100 不能被 10 整除", "質因數應該是 4 和 25", "10 是合數，要再分解成 2×5", "100 是質數"],
+      "correctErrorIndex": 2,
+      "explanation": "10 = 2×5 是合數，所以 100 = 2×2×5×5。質因數分解的結果只能出現質數。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "prime-factor-ca-1",
+      "type": "context-application",
+      "challenge": "2-8",
+      "errorPath": 2,
+      "scenario": "36 位學生要排隊，每排人數相同，每排至少 2 人、至少排 2 排。",
+      "question": "共有幾種不同的排法？",
+      "options": ["9 種", "5 種", "7 種", "8 種"],
+      "answer": 2,
+      "explanation": "36 = 2×2×3×3，因數有 1、2、3、4、6、9、12、18、36 共 9 個；去掉每排 1 人和只排 1 排，剩 7 種。"
+    },
+    {
+      "id": "prime-factor-ca-2",
+      "type": "context-application",
+      "challenge": "2-8",
+      "errorPath": 2,
+      "scenario": "小恩的置物櫃密碼，是三個質數 2、3、7 相乘的積。",
+      "question": "密碼是多少？",
+      "options": ["21", "12", "42", "76"],
+      "answer": 2,
+      "explanation": "2×3×7 = 42。21 是漏乘了 2，12 是把 7 誤看成 2 再乘，都不對。"
+    },
+    {
+      "id": "prime-factor-ca-3",
+      "type": "context-application",
+      "challenge": "2-8",
+      "errorPath": 2,
+      "scenario": "84 顆彈珠要每袋裝一樣多顆，剛好裝完不剩。",
+      "question": "每袋的顆數可能是下列哪個？",
+      "options": ["14 顆", "9 顆", "10 顆", "16 顆"],
+      "answer": 0,
+      "explanation": "84 = 2×2×3×7，14 = 2×7 是 84 的因數。9、10、16 都不能整除 84，剩下的彈珠會裝不完。"
+    }
+  ]
+}

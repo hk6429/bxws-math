@@ -1,0 +1,260 @@
+{
+  "nodeId": "money-basic",
+  "basicMastery": [
+    {
+      "id": "money-basic-bm-1",
+      "type": "basic-mastery",
+      "challenge": "4-1",
+      "errorPath": 1,
+      "stem": "2 個 10 元和 3 個 1 元，共多少元？",
+      "options": ["5 元", "23 元", "32 元", "13 元"],
+      "answer": 1,
+      "explanation": "2 個 10 元是 20 元，加 3 個 1 元共 23 元。不能把硬幣個數 2+3=5 當成錢數。"
+    },
+    {
+      "id": "money-basic-bm-2",
+      "type": "basic-mastery",
+      "challenge": "4-1",
+      "errorPath": 1,
+      "stem": "1 個 50 元和 4 個 10 元，共多少元？",
+      "options": ["90 元", "54 元", "5 元", "100 元"],
+      "answer": 0,
+      "explanation": "50 元加上 4 個 10 元（40 元），共 90 元。硬幣個數 1+4=5 不是錢數。"
+    },
+    {
+      "id": "money-basic-bm-3",
+      "type": "basic-mastery",
+      "challenge": "4-1",
+      "errorPath": 1,
+      "stem": "3 個 100 元和 2 個 5 元，共多少元？",
+      "options": ["105 元", "5 元", "310 元", "320 元"],
+      "answer": 2,
+      "explanation": "3 個 100 元是 300 元，2 個 5 元是 10 元，合起來 310 元。"
+    },
+    {
+      "id": "money-basic-bm-4",
+      "type": "basic-mastery",
+      "challenge": "4-2",
+      "errorPath": 2,
+      "stem": "1 個 50 元可以換幾個 10 元？",
+      "options": ["10 個", "5 個", "50 個", "2 個"],
+      "answer": 1,
+      "explanation": "10、20、30、40、50，數 5 次，所以 50 元換 5 個 10 元。換 10 個是 100 元的換法。"
+    },
+    {
+      "id": "money-basic-bm-5",
+      "type": "basic-mastery",
+      "challenge": "4-2",
+      "errorPath": 2,
+      "stem": "100 元可以換幾個 5 元？",
+      "options": ["10 個", "5 個", "25 個", "20 個"],
+      "answer": 3,
+      "explanation": "5 元 2 個是 10 元，10 元要 2 個 5 元；100 元有 10 個十，共 20 個 5 元。"
+    },
+    {
+      "id": "money-basic-bm-6",
+      "type": "basic-mastery",
+      "challenge": "4-2",
+      "errorPath": 2,
+      "stem": "1 張 500 元可以換幾張 100 元？",
+      "options": ["5 張", "10 張", "50 張", "4 張"],
+      "answer": 0,
+      "explanation": "100、200、300、400、500，數 5 次，所以換 5 張。換 10 張是 1000 元的換法。"
+    },
+    {
+      "id": "money-basic-bm-7",
+      "type": "basic-mastery",
+      "challenge": "4-3",
+      "errorPath": 1,
+      "stem": "要付 67 元，哪一種拿法剛好？",
+      "options": ["50元1個、10元1個、5元1個、1元2個", "50元1個、5元1個、1元2個", "10元6個、1元2個", "50元1個、10元2個"],
+      "answer": 0,
+      "explanation": "50+10+5+1+1=67 元剛好。其他拿法分別是 57、62、70 元。"
+    },
+    {
+      "id": "money-basic-bm-8",
+      "type": "basic-mastery",
+      "challenge": "4-3",
+      "errorPath": 1,
+      "stem": "要付 38 元，哪一種拿法剛好？",
+      "options": ["10元3個、1元5個", "10元3個、5元1個、1元3個", "5元7個", "10元3個、5元2個"],
+      "answer": 1,
+      "explanation": "30+5+3=38 元剛好。其他拿法分別是 35、35、40 元。"
+    },
+    {
+      "id": "money-basic-bm-9",
+      "type": "basic-mastery",
+      "challenge": "4-3",
+      "errorPath": 1,
+      "stem": "要付 120 元，哪一種拿法剛好？",
+      "options": ["100元1張、5元2個", "50元2個、10元1個", "100元1張、10元2個", "100元1張、1元2個"],
+      "answer": 2,
+      "explanation": "100+10+10=120 元剛好。其他拿法分別是 110、110、102 元。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "money-basic-ci-1",
+      "type": "concept-id",
+      "challenge": "4-4",
+      "errorPath": 1,
+      "statement": "5 個 10 元比 1 個 50 元多。",
+      "correctAnswer": false,
+      "explanation": "5 個 10 元是 50 元，和 1 個 50 元一樣多，不是比較多。要看總錢數，不是硬幣個數。"
+    },
+    {
+      "id": "money-basic-ci-2",
+      "type": "concept-id",
+      "challenge": "4-4",
+      "errorPath": 1,
+      "statement": "6 個 1 元比 1 個 5 元多。",
+      "correctAnswer": true,
+      "explanation": "6 個 1 元是 6 元，1 個 5 元是 5 元，6 元比 5 元多 1 元。這題個數多剛好錢也多，但要算過才知道。"
+    },
+    {
+      "id": "money-basic-ci-3",
+      "type": "concept-id",
+      "challenge": "4-4",
+      "errorPath": 1,
+      "statement": "硬幣的個數比較多，錢就一定比較多。",
+      "correctAnswer": false,
+      "explanation": "不一定。例如 3 個 1 元只有 3 元，1 個 50 元卻有 50 元。要把幣值加起來比，不能只數個數。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "money-basic-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "4-6",
+      "errorPath": 2,
+      "problem": "1 個 50 元可以換幾個 10 元？",
+      "wrongSolution": "小平說：可以換 10 個 10 元",
+      "errorOptions": ["把 50 元當成 100 元來換", "加法算錯", "看錯題目要換的硬幣", "抄錯數字"],
+      "correctErrorIndex": 0,
+      "explanation": "10 個 10 元是 100 元，不是 50 元。50 元只能換 5 個 10 元，小平套用了 100 元的換法。"
+    },
+    {
+      "id": "money-basic-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "4-6",
+      "errorPath": 2,
+      "problem": "100 元可以換幾個 5 元？",
+      "wrongSolution": "小美說：可以換 10 個 5 元",
+      "errorOptions": ["把個數和元數寫顛倒", "用了 10 元的換法來換 5 元", "減法計算錯誤", "看錯錢幣的圖案"],
+      "correctErrorIndex": 1,
+      "explanation": "10 個 5 元只有 50 元。100 元換 5 元要 20 個，小美用成「100 元換 10 個 10 元」的答案。"
+    },
+    {
+      "id": "money-basic-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "4-6",
+      "errorPath": 2,
+      "problem": "1 張 500 元可以換幾張 100 元？",
+      "wrongSolution": "小凱說：可以換 10 張 100 元",
+      "errorOptions": ["把百元鈔看成十元硬幣", "張數數到一半就停", "把 500 元當成 1000 元來換", "加法進位錯誤"],
+      "correctErrorIndex": 2,
+      "explanation": "10 張 100 元是 1000 元，不是 500 元。500 元只能換 5 張 100 元。"
+    },
+    {
+      "id": "money-basic-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "4-7",
+      "errorPath": 3,
+      "problem": "用 100 元買 74 元的文具，該找多少元？",
+      "wrongSolution": "店員算 100 − 74 = 36 元",
+      "errorOptions": ["把找錢算成加法", "個位不夠減，向十位借 1 後算錯借位", "看錯文具的價錢", "把 100 元看成 50 元"],
+      "correctErrorIndex": 1,
+      "explanation": "100 − 74：個位 10−4=6，十位借出後剩 9，9−7=2，答案是 26 元，不是 36 元。"
+    },
+    {
+      "id": "money-basic-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "4-7",
+      "errorPath": 3,
+      "problem": "用 100 元買 42 元的麵包，該找多少元？",
+      "wrongSolution": "小華算 100 − 42 = 68 元",
+      "errorOptions": ["十位借 1 給個位後，忘了十位要少 1", "把 42 抄成 32", "把減法當成加法", "個位 0 減 2 算錯成 6"],
+      "correctErrorIndex": 0,
+      "explanation": "100 − 42：個位 10−2=8，十位借出 1 後剩 9，9−4=5，答案是 58 元。忘了扣借走的 1 才會得 68。"
+    },
+    {
+      "id": "money-basic-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "4-7",
+      "errorPath": 3,
+      "problem": "用 100 元買 65 元的果汁，該找多少元？",
+      "wrongSolution": "小安算 100 − 65 = 45 元",
+      "errorOptions": ["把 65 抄成 55", "把果汁價錢和付的錢顛倒相減", "連續借位時十位沒有先變成 9 再減", "找錢用了乘法"],
+      "correctErrorIndex": 2,
+      "explanation": "100 − 65：個位 10−5=5，十位借出後是 9，9−6=3，答案是 35 元。十位沒變 9 直接算才會得 45。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "money-basic-ca-1",
+      "type": "context-application",
+      "challenge": "4-5",
+      "errorPath": 3,
+      "scenario": "小奇拿 100 元去買 74 元的彩色筆。",
+      "question": "店員應該找他多少元？",
+      "options": ["36 元", "26 元", "34 元", "24 元"],
+      "answer": 1,
+      "explanation": "100 − 74 = 26 元。個位 10−4=6，十位借出後剩 9，9−7=2。"
+    },
+    {
+      "id": "money-basic-ca-2",
+      "type": "context-application",
+      "challenge": "4-5",
+      "errorPath": 3,
+      "scenario": "小珊帶 100 元買一本 58 元的筆記本。",
+      "question": "應該找回多少元？",
+      "options": ["42 元", "52 元", "48 元", "32 元"],
+      "answer": 0,
+      "explanation": "100 − 58 = 42 元。個位 10−8=2，十位借出後剩 9，9−5=4。"
+    },
+    {
+      "id": "money-basic-ca-3",
+      "type": "context-application",
+      "challenge": "4-5",
+      "errorPath": 3,
+      "scenario": "小豪用 50 元買一個 33 元的麵包。",
+      "question": "應該找回多少元？",
+      "options": ["27 元", "23 元", "17 元", "13 元"],
+      "answer": 2,
+      "explanation": "50 − 33 = 17 元。個位 10−3=7，十位借出後剩 4，4−3=1。"
+    },
+    {
+      "id": "money-basic-ca-4",
+      "type": "context-application",
+      "challenge": "4-8",
+      "errorPath": 3,
+      "scenario": "媽媽帶 1 張 500 元和 2 張 100 元，買 650 元的鍋子。",
+      "question": "付完錢後剩多少元？",
+      "options": ["150 元", "50 元", "250 元", "100 元"],
+      "answer": 1,
+      "explanation": "500 + 100 + 100 = 700 元，700 − 650 = 50 元。"
+    },
+    {
+      "id": "money-basic-ca-5",
+      "type": "context-application",
+      "challenge": "4-8",
+      "errorPath": 3,
+      "scenario": "爸爸用 1 張 1000 元買 380 元的書包。",
+      "question": "應該找回多少元？",
+      "options": ["720 元", "680 元", "620 元", "520 元"],
+      "answer": 2,
+      "explanation": "1000 − 380 = 620 元。十位 10−8=2 要向百位借，百位剩 9，9−3=6。"
+    },
+    {
+      "id": "money-basic-ca-6",
+      "type": "context-application",
+      "challenge": "4-8",
+      "errorPath": 3,
+      "scenario": "哥哥帶 2 張 500 元，買一雙 890 元的球鞋。",
+      "question": "付完錢後剩多少元？",
+      "options": ["210 元", "190 元", "110 元", "100 元"],
+      "answer": 2,
+      "explanation": "2 張 500 元是 1000 元，1000 − 890 = 110 元。"
+    }
+  ]
+}

@@ -1,0 +1,341 @@
+{
+  "nodeId": "big-number-100m",
+  "curriculum": [
+    "N-4-1"
+  ],
+  "basicMastery": [
+    {
+      "id": "big-number-100m-bm-1",
+      "type": "basic-mastery",
+      "stem": "「三千五百六十萬」用阿拉伯數字寫是多少？",
+      "options": [
+        "35600000",
+        "3560000",
+        "356000000",
+        "30560000"
+      ],
+      "answer": 0,
+      "explanation": "三千五百六十萬＝3560 個萬＝35600000。少寫一個 0 會變成 356 萬。",
+      "challenge": "6-1",
+      "errorPath": 3
+    },
+    {
+      "id": "big-number-100m-bm-2",
+      "type": "basic-mastery",
+      "stem": "47250000 讀作什麼？",
+      "options": [
+        "四百七十二萬五千",
+        "四千七百二十五萬",
+        "四千七百二十五",
+        "四億七千二百五十萬"
+      ],
+      "answer": 1,
+      "explanation": "從個位往左每四位一節：4725｜0000，是 4725 個萬，讀作四千七百二十五萬。",
+      "challenge": "6-1",
+      "errorPath": 3
+    },
+    {
+      "id": "big-number-100m-bm-3",
+      "type": "basic-mastery",
+      "stem": "「六千零八萬」用阿拉伯數字寫是多少？",
+      "options": [
+        "6080000",
+        "60800000",
+        "60080000",
+        "6800000"
+      ],
+      "answer": 2,
+      "explanation": "六千零八萬＝6008 個萬＝60080000。百萬位和十萬位的 0 都要補齊。",
+      "challenge": "6-1",
+      "errorPath": 1
+    },
+    {
+      "id": "big-number-100m-bm-4",
+      "type": "basic-mastery",
+      "stem": "下面哪一個數最大？",
+      "options": [
+        "98760000",
+        "100200000",
+        "99999999",
+        "89999999"
+      ],
+      "answer": 1,
+      "explanation": "先比位數：100200000 有 9 位，其他都是 8 位，位數多的整數比較大。",
+      "challenge": "6-3",
+      "errorPath": 2
+    },
+    {
+      "id": "big-number-100m-bm-5",
+      "type": "basic-mastery",
+      "stem": "比較 56340000 和 56430000，哪一個比較大？",
+      "options": [
+        "56430000 比較大",
+        "56340000 比較大",
+        "兩個一樣大",
+        "位數相同無法比較"
+      ],
+      "answer": 0,
+      "explanation": "位數相同時從最高位往下比：千萬位、百萬位都相同，十萬位 4＞3。",
+      "challenge": "6-3",
+      "errorPath": 2
+    },
+    {
+      "id": "big-number-100m-bm-6",
+      "type": "basic-mastery",
+      "stem": "下面哪一個數比 30000000 小？",
+      "options": [
+        "30000001",
+        "30100000",
+        "33000000",
+        "29990000"
+      ],
+      "answer": 3,
+      "explanation": "29990000 是 2999 萬，比 3000 萬小；其他三個都比 30000000 大。",
+      "challenge": "6-3",
+      "errorPath": 2
+    },
+    {
+      "id": "big-number-100m-bm-7",
+      "type": "basic-mastery",
+      "stem": "30 萬＋20 萬＝？",
+      "options": [
+        "50 萬",
+        "500 萬",
+        "5 萬",
+        "60 萬"
+      ],
+      "answer": 0,
+      "explanation": "以「萬」為單位計算：30＋20＝50，所以是 50 萬，單位不能多算或少算一級。",
+      "challenge": "6-4",
+      "errorPath": 3
+    },
+    {
+      "id": "big-number-100m-bm-8",
+      "type": "basic-mastery",
+      "stem": "1200 萬−400 萬＝？",
+      "options": [
+        "80 萬",
+        "800 萬",
+        "8000 萬",
+        "1600 萬"
+      ],
+      "answer": 1,
+      "explanation": "以「萬」為單位：1200−400＝800，是 800 萬。別把答案多寫或少寫一個 0。",
+      "challenge": "6-4",
+      "errorPath": 3
+    },
+    {
+      "id": "big-number-100m-bm-9",
+      "type": "basic-mastery",
+      "stem": "4500 萬＋500 萬＝？",
+      "options": [
+        "500 萬",
+        "4550 萬",
+        "5000 萬",
+        "9500 萬"
+      ],
+      "answer": 2,
+      "explanation": "4500＋500＝5000，是 5000 萬。別把 500 看成 50 而算成 4550 萬。",
+      "challenge": "6-4",
+      "errorPath": 3
+    },
+    {
+      "id": "big-number-100m-bm-10",
+      "type": "basic-mastery",
+      "stem": "數線上每一小格代表 1 萬，從 0 往右數 7 格是多少？",
+      "options": [
+        "7000",
+        "70000",
+        "700000",
+        "70007"
+      ],
+      "answer": 1,
+      "explanation": "7 格就是 7 個 1 萬＝70000。刻度單位是「萬」，不是「千」。",
+      "challenge": "6-8",
+      "errorPath": 3
+    },
+    {
+      "id": "big-number-100m-bm-11",
+      "type": "basic-mastery",
+      "stem": "數線上 4 萬到 5 萬之間平分成 10 小格，每小格代表多少？",
+      "options": [
+        "100",
+        "10000",
+        "5000",
+        "1000"
+      ],
+      "answer": 3,
+      "explanation": "4 萬到 5 萬相差 10000，平分成 10 格，每格 10000÷10＝1000。",
+      "challenge": "6-8",
+      "errorPath": 3
+    },
+    {
+      "id": "big-number-100m-bm-12",
+      "type": "basic-mastery",
+      "stem": "數線上每格代表 10 萬，從 200 萬的點往右 3 格是多少？",
+      "options": [
+        "2300000",
+        "2030000",
+        "230000",
+        "5000000"
+      ],
+      "answer": 0,
+      "explanation": "3 格是 30 萬，200 萬＋30 萬＝230 萬＝2300000。",
+      "challenge": "6-8",
+      "errorPath": 3
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "big-number-100m-ci-1",
+      "type": "concept-id",
+      "statement": "10 個一百萬合起來是一千萬。",
+      "correctAnswer": true,
+      "explanation": "位值每滿十就進一級：10 個一百萬＝一千萬，10 個一千萬＝一億。",
+      "challenge": "6-2"
+    },
+    {
+      "id": "big-number-100m-ci-2",
+      "type": "concept-id",
+      "statement": "10 個十萬合起來就是一億。",
+      "correctAnswer": false,
+      "explanation": "10 個十萬是一百萬。要 10 個一千萬才是一億，中間還隔了兩級。",
+      "challenge": "6-2",
+      "errorPath": 3
+    },
+    {
+      "id": "big-number-100m-ci-3",
+      "type": "concept-id",
+      "statement": "一億是 10 個一千萬合起來的數。",
+      "correctAnswer": true,
+      "explanation": "一千萬滿十進一級就是一億：10×10000000＝100000000。",
+      "challenge": "6-2"
+    },
+    {
+      "id": "big-number-100m-ci-4",
+      "type": "concept-id",
+      "statement": "比較兩個整數時，位數比較多的那個數一定比較大。",
+      "correctAnswer": true,
+      "explanation": "整數最高位不是 0，所以 9 位數一定大於 8 位數，先比位數再逐位比。",
+      "challenge": "6-6"
+    },
+    {
+      "id": "big-number-100m-ci-5",
+      "type": "concept-id",
+      "statement": "位數相同的兩個數，從個位開始比就能知道誰大。",
+      "correctAnswer": false,
+      "explanation": "要從最高位開始比。個位大不代表數大，例如 21 的個位比 30 大，但 30 較大。",
+      "challenge": "6-6",
+      "errorPath": 2
+    },
+    {
+      "id": "big-number-100m-ci-6",
+      "type": "concept-id",
+      "statement": "87654321 比 123456789 大，因為開頭的 8 比 1 大。",
+      "correctAnswer": false,
+      "explanation": "先比位數：123456789 是 9 位數，87654321 只有 8 位數，9 位數比較大。",
+      "challenge": "6-6",
+      "errorPath": 2
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "big-number-100m-ed-1",
+      "type": "error-diagnosis",
+      "problem": "把「二千零四萬」寫成阿拉伯數字",
+      "wrongSolution": "小平寫成 2040000",
+      "errorOptions": [
+        "二千零四萬是 2004 個萬，他少寫一個 0",
+        "他多寫了一個 0",
+        "他把 4 寫到十萬位去了",
+        "他把二千萬寫成二百萬"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "二千零四萬＝2004 個萬＝20040000。2040000 只有 204 萬，節內的 0 少補了。",
+      "challenge": "6-5",
+      "errorPath": 1
+    },
+    {
+      "id": "big-number-100m-ed-2",
+      "type": "error-diagnosis",
+      "problem": "把 50070000 讀出來",
+      "wrongSolution": "小真讀成「五千七百萬」",
+      "errorOptions": [
+        "他讀成億開頭了",
+        "他把 7 讀成 70 了",
+        "漏讀節內的 0，應是五千零七萬",
+        "他多讀了一個萬字"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "50070000 分節是 5007｜0000，百萬位是 0 要讀「零」：五千零七萬。",
+      "challenge": "6-5",
+      "errorPath": 1
+    },
+    {
+      "id": "big-number-100m-ed-3",
+      "type": "error-diagnosis",
+      "problem": "把「三千零五十萬」寫成阿拉伯數字",
+      "wrongSolution": "小海寫成 30050000",
+      "errorOptions": [
+        "他少寫了一個 0",
+        "0 的位置放錯，應是 30500000",
+        "他把三千萬寫成三百萬",
+        "他把五十寫成五百了"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "三千零五十萬＝3050 個萬＝30500000。寫成 30050000 變成三千零五萬。",
+      "challenge": "6-5",
+      "errorPath": 1
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "big-number-100m-ca-1",
+      "type": "context-application",
+      "scenario": "甲市人口約 1250000 人，乙市人口約 980000 人。",
+      "question": "哪一市的人口比較多？",
+      "options": [
+        "甲市，因為位數比較多",
+        "乙市，因為開頭的 9 比 1 大",
+        "兩市人口一樣多",
+        "人口太大無法比較"
+      ],
+      "answer": 0,
+      "explanation": "1250000 是 7 位數，980000 是 6 位數，位數多的整數大，甲市人口較多。",
+      "challenge": "6-7",
+      "errorPath": 2
+    },
+    {
+      "id": "big-number-100m-ca-2",
+      "type": "context-application",
+      "scenario": "學校蓋活動中心需要 3200 萬元，目前已募到 2800 萬元。",
+      "question": "還差多少萬元才夠？",
+      "options": [
+        "4000 萬元",
+        "400 萬元",
+        "40 萬元",
+        "600 萬元"
+      ],
+      "answer": 1,
+      "explanation": "以萬為單位相減：3200−2800＝400，還差 400 萬元。",
+      "challenge": "6-7",
+      "errorPath": 3
+    },
+    {
+      "id": "big-number-100m-ca-3",
+      "type": "context-application",
+      "scenario": "動物園去年的入園人數是 1080000 人次。",
+      "question": "這個數讀作什麼？",
+      "options": [
+        "一千零八十萬",
+        "十萬八千",
+        "一百零八萬",
+        "一百八十萬"
+      ],
+      "answer": 2,
+      "explanation": "1080000 分節是 108｜0000，是 108 個萬，讀作一百零八萬。",
+      "challenge": "6-7",
+      "errorPath": 1
+    }
+  ]
+}

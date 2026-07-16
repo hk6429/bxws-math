@@ -1,0 +1,248 @@
+{
+  "nodeId": "line-symmetry",
+  "basicMastery": [
+    {
+      "id": "line-symmetry-bm-1",
+      "type": "basic-mastery",
+      "challenge": "13-1",
+      "errorPath": 1,
+      "stem": "沿一條直線對摺後兩邊完全疊合的圖形叫什麼？",
+      "options": ["線對稱圖形", "平行四邊形", "全等圖形", "立體圖形"],
+      "answer": 0,
+      "explanation": "對摺後兩邊完全疊合的圖形叫線對稱圖形，摺線就是對稱軸。"
+    },
+    {
+      "id": "line-symmetry-bm-2",
+      "type": "basic-mastery",
+      "challenge": "13-1",
+      "errorPath": 2,
+      "stem": "線對稱圖形對摺時所沿的那條直線叫什麼？",
+      "options": ["對角線", "對稱軸", "平行線", "中線"],
+      "answer": 1,
+      "explanation": "讓圖形對摺後完全疊合的那條直線叫對稱軸，它不一定是對角線。"
+    },
+    {
+      "id": "line-symmetry-bm-3",
+      "type": "basic-mastery",
+      "challenge": "13-1",
+      "errorPath": 1,
+      "stem": "圖形沿直線對摺後怎樣，才算線對稱圖形？",
+      "options": ["兩邊大小差不多", "兩邊顏色相同", "兩邊完全疊合", "兩邊都是三角形"],
+      "answer": 2,
+      "explanation": "一定要「完全疊合」才算線對稱，只是看起來差不多並不算。"
+    },
+    {
+      "id": "line-symmetry-bm-4",
+      "type": "basic-mastery",
+      "challenge": "13-2",
+      "errorPath": 3,
+      "stem": "正方形有幾條對稱軸？",
+      "options": ["2 條", "4 條", "1 條", "8 條"],
+      "answer": 1,
+      "explanation": "正方形有 4 條對稱軸：橫、直各 1 條，再加 2 條對角線。"
+    },
+    {
+      "id": "line-symmetry-bm-5",
+      "type": "basic-mastery",
+      "challenge": "13-2",
+      "errorPath": 2,
+      "stem": "長方形（不是正方形）有幾條對稱軸？",
+      "options": ["4 條", "1 條", "2 條", "0 條"],
+      "answer": 2,
+      "explanation": "長方形只有通過兩組對邊中點的 2 條對稱軸，對角線不是對稱軸。"
+    },
+    {
+      "id": "line-symmetry-bm-6",
+      "type": "basic-mastery",
+      "challenge": "13-2",
+      "errorPath": 3,
+      "stem": "正三角形有幾條對稱軸？",
+      "options": ["1 條", "6 條", "0 條", "3 條"],
+      "answer": 3,
+      "explanation": "正三角形從每個頂點到對邊中點各有 1 條對稱軸，共 3 條。"
+    },
+    {
+      "id": "line-symmetry-bm-7",
+      "type": "basic-mastery",
+      "challenge": "13-3",
+      "errorPath": 3,
+      "stem": "等腰三角形（不是正三角形）有幾條對稱軸？",
+      "options": ["1 條", "2 條", "3 條", "0 條"],
+      "answer": 0,
+      "explanation": "等腰三角形只有 1 條對稱軸：從頂角到底邊中點的直線。"
+    },
+    {
+      "id": "line-symmetry-bm-8",
+      "type": "basic-mastery",
+      "challenge": "13-3",
+      "errorPath": 3,
+      "stem": "菱形（不是正方形）有幾條對稱軸？",
+      "options": ["4 條", "2 條", "0 條", "1 條"],
+      "answer": 1,
+      "explanation": "菱形的 2 條對角線都是對稱軸，共 2 條；通過對邊中點的線不是。"
+    },
+    {
+      "id": "line-symmetry-bm-9",
+      "type": "basic-mastery",
+      "challenge": "13-3",
+      "errorPath": 1,
+      "stem": "一般的平行四邊形有幾條對稱軸？",
+      "options": ["2 條", "1 條", "4 條", "0 條"],
+      "answer": 3,
+      "explanation": "一般平行四邊形不管沿哪條線對摺都不會疊合，對稱軸是 0 條。"
+    },
+    {
+      "id": "line-symmetry-bm-10",
+      "type": "basic-mastery",
+      "challenge": "13-4",
+      "errorPath": 3,
+      "stem": "圓有幾條對稱軸？",
+      "options": ["無數條", "1 條", "2 條", "4 條"],
+      "answer": 0,
+      "explanation": "通過圓心的每一條直線都是對稱軸，所以圓有無數條對稱軸。"
+    },
+    {
+      "id": "line-symmetry-bm-11",
+      "type": "basic-mastery",
+      "challenge": "13-4",
+      "errorPath": 3,
+      "stem": "圓的每一條對稱軸都通過哪裡？",
+      "options": ["圓周上", "圓心", "直徑的端點", "圓的外面"],
+      "answer": 1,
+      "explanation": "圓的對稱軸就是通過圓心的直線（直徑所在的直線）。"
+    },
+    {
+      "id": "line-symmetry-bm-12",
+      "type": "basic-mastery",
+      "challenge": "13-4",
+      "errorPath": 3,
+      "stem": "半圓形有幾條對稱軸？",
+      "options": ["2 條", "無數條", "1 條", "0 條"],
+      "answer": 2,
+      "explanation": "半圓形只有 1 條對稱軸：通過圓心、垂直於直徑邊的那條直線。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "line-symmetry-ci-1",
+      "type": "concept-id",
+      "challenge": "13-5",
+      "errorPath": 1,
+      "statement": "一般的平行四邊形沿對角線對摺，兩邊會完全疊合。",
+      "correctAnswer": false,
+      "explanation": "一般平行四邊形沿對角線對摺不會疊合，它沒有任何對稱軸。"
+    },
+    {
+      "id": "line-symmetry-ci-2",
+      "type": "concept-id",
+      "challenge": "13-5",
+      "errorPath": 1,
+      "statement": "一般的平行四邊形不是線對稱圖形。",
+      "correctAnswer": true,
+      "explanation": "它找不到任何一條摺線能讓兩邊完全疊合，所以不是線對稱圖形。"
+    },
+    {
+      "id": "line-symmetry-ci-3",
+      "type": "concept-id",
+      "challenge": "13-5",
+      "errorPath": 2,
+      "statement": "菱形沿對角線對摺，兩邊會完全疊合。",
+      "correctAnswer": true,
+      "explanation": "菱形的兩條對角線都是對稱軸，沿對角線對摺會完全疊合。"
+    },
+    {
+      "id": "line-symmetry-ci-4",
+      "type": "concept-id",
+      "challenge": "13-6",
+      "statement": "線對稱圖形中，對稱點的連線會被對稱軸垂直平分。",
+      "correctAnswer": true,
+      "explanation": "把對稱點連起來，這條線段和對稱軸垂直，而且被對稱軸分成等長兩段。"
+    },
+    {
+      "id": "line-symmetry-ci-5",
+      "type": "concept-id",
+      "challenge": "13-6",
+      "statement": "對稱軸兩側的對應邊等長、對應角相等。",
+      "correctAnswer": true,
+      "explanation": "對摺後兩邊完全疊合，所以對應邊一樣長、對應角一樣大。"
+    },
+    {
+      "id": "line-symmetry-ci-6",
+      "type": "concept-id",
+      "challenge": "13-6",
+      "statement": "一組對稱點到對稱軸的距離，兩邊不一定相等。",
+      "correctAnswer": false,
+      "explanation": "對稱點到對稱軸的距離一定相等，這樣對摺時兩點才會疊在一起。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "line-symmetry-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "13-7",
+      "errorPath": 2,
+      "problem": "找長方形的對稱軸",
+      "wrongSolution": "小明說：「長方形的對角線就是它的對稱軸。」",
+      "errorOptions": ["長方形根本沒有對角線", "對稱軸一定是鉛直的直線", "沿對角線對摺不會疊合，對稱軸是通過對邊中點的線", "長方形的對稱軸有 4 條"],
+      "correctErrorIndex": 2,
+      "explanation": "長方形沿對角線對摺兩邊不會疊合；它的 2 條對稱軸通過兩組對邊的中點。"
+    },
+    {
+      "id": "line-symmetry-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "13-7",
+      "errorPath": 3,
+      "problem": "數正方形的對稱軸",
+      "wrongSolution": "小華只找到橫的和直的 2 條，就說正方形有 2 條對稱軸。",
+      "errorOptions": ["漏數了兩條對角線，共有 4 條", "橫的那條其實不算對稱軸", "正方形只有 1 條對稱軸", "應該再加上 4 條邊，共 6 條"],
+      "correctErrorIndex": 0,
+      "explanation": "正方形沿對角線對摺也會完全疊合，所以對稱軸是橫、直加兩條對角線，共 4 條。"
+    },
+    {
+      "id": "line-symmetry-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "13-7",
+      "errorPath": 1,
+      "problem": "判斷平行四邊形是不是線對稱圖形",
+      "wrongSolution": "小杰說：「平行四邊形轉半圈會和原來重合，所以是線對稱圖形。」",
+      "errorOptions": ["平行四邊形轉半圈不會重合", "轉半圈重合是點對稱，線對稱要對摺後疊合", "轉半圈就等於對摺一次", "平行四邊形其實有 2 條對稱軸"],
+      "correctErrorIndex": 1,
+      "explanation": "轉半圈重合是另一種對稱（點對稱）；線對稱必須「對摺」後疊合，平行四邊形做不到。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "line-symmetry-ca-1",
+      "type": "context-application",
+      "challenge": "13-8",
+      "errorPath": 1,
+      "scenario": "美勞課剪窗花：色紙對摺一次，剪出半個愛心後攤開。",
+      "question": "攤開後的完整愛心是什麼圖形？",
+      "options": ["平行四邊形", "立體圖形", "線對稱圖形", "全等圖形"],
+      "answer": 2,
+      "explanation": "對摺剪出來的圖形沿摺線兩邊完全疊合，一定是線對稱圖形。"
+    },
+    {
+      "id": "line-symmetry-ca-2",
+      "type": "context-application",
+      "challenge": "13-8",
+      "errorPath": 2,
+      "scenario": "小美發現「王」字沿中間的鉛直線對摺，左右完全疊合。",
+      "question": "這條鉛直線是「王」字的什麼？",
+      "options": ["對稱軸", "對角線", "平行線", "高"],
+      "answer": 0,
+      "explanation": "能讓圖形對摺後完全疊合的直線就是對稱軸。"
+    },
+    {
+      "id": "line-symmetry-ca-3",
+      "type": "context-application",
+      "challenge": "13-8",
+      "errorPath": 1,
+      "scenario": "分類海報上，甲卡片是一般平行四邊形，乙卡片是等腰梯形。",
+      "question": "哪一張卡片是線對稱圖形？",
+      "options": ["只有甲", "兩張都是", "兩張都不是", "只有乙"],
+      "answer": 3,
+      "explanation": "等腰梯形有 1 條通過兩底中點的對稱軸；一般平行四邊形沒有對稱軸。"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "nodeId": "length-mm",
+  "basicMastery": [
+    {
+      "id": "length-mm-bm-1",
+      "type": "basic-mastery",
+      "challenge": "7-1",
+      "errorPath": 1,
+      "stem": "1 公分等於幾毫米？",
+      "options": ["100 毫米", "10 毫米", "1 毫米", "1000 毫米"],
+      "answer": 1,
+      "explanation": "1 公分 = 10 毫米。公分和毫米是十進關係，不是一百進。"
+    },
+    {
+      "id": "length-mm-bm-2",
+      "type": "basic-mastery",
+      "challenge": "7-1",
+      "errorPath": 1,
+      "stem": "3 公分等於幾毫米？",
+      "options": ["3 毫米", "300 毫米", "30 毫米", "13 毫米"],
+      "answer": 2,
+      "explanation": "1 公分 = 10 毫米，3 公分 = 3 × 10 = 30 毫米。"
+    },
+    {
+      "id": "length-mm-bm-3",
+      "type": "basic-mastery",
+      "challenge": "7-1",
+      "errorPath": 1,
+      "stem": "70 毫米等於幾公分？",
+      "options": ["7 公分", "70 公分", "700 公分", "17 公分"],
+      "answer": 0,
+      "explanation": "10 毫米 = 1 公分，70 毫米 = 70 ÷ 10 = 7 公分。"
+    },
+    {
+      "id": "length-mm-bm-4",
+      "type": "basic-mastery",
+      "challenge": "7-2",
+      "errorPath": 1,
+      "stem": "4 公分 7 毫米等於幾毫米？",
+      "options": ["407 毫米", "74 毫米", "47 毫米", "470 毫米"],
+      "answer": 2,
+      "explanation": "4 公分 = 40 毫米，40 + 7 = 47 毫米。公分換毫米是 ×10，不是 ×100。"
+    },
+    {
+      "id": "length-mm-bm-5",
+      "type": "basic-mastery",
+      "challenge": "7-2",
+      "errorPath": 3,
+      "stem": "86 毫米等於幾公分幾毫米？",
+      "options": ["8 公分 6 毫米", "86 公分", "6 公分 8 毫米", "8 公分 60 毫米"],
+      "answer": 0,
+      "explanation": "每 10 毫米是 1 公分：86 毫米 = 80 毫米 + 6 毫米 = 8 公分 6 毫米。"
+    },
+    {
+      "id": "length-mm-bm-6",
+      "type": "basic-mastery",
+      "challenge": "7-2",
+      "errorPath": 1,
+      "stem": "9 公分 3 毫米等於幾毫米？",
+      "options": ["903 毫米", "93 毫米", "12 毫米", "39 毫米"],
+      "answer": 1,
+      "explanation": "9 公分 = 90 毫米，90 + 3 = 93 毫米。"
+    },
+    {
+      "id": "length-mm-bm-7",
+      "type": "basic-mastery",
+      "challenge": "7-3",
+      "errorPath": 3,
+      "stem": "3 公分 8 毫米加 2 公分 6 毫米是多少？",
+      "options": ["6 公分 4 毫米", "7 公分 4 毫米", "5 公分 4 毫米", "6 公分 2 毫米"],
+      "answer": 0,
+      "explanation": "全換成毫米：38 + 26 = 64 毫米 = 6 公分 4 毫米。毫米相加滿 10 要進成 1 公分。"
+    },
+    {
+      "id": "length-mm-bm-8",
+      "type": "basic-mastery",
+      "challenge": "7-3",
+      "errorPath": 3,
+      "stem": "5 公分 2 毫米減 1 公分 6 毫米是多少？",
+      "options": ["4 公分 6 毫米", "3 公分 6 毫米", "4 公分 4 毫米", "3 公分 4 毫米"],
+      "answer": 1,
+      "explanation": "全換成毫米：52 − 16 = 36 毫米 = 3 公分 6 毫米。2 毫米不夠減 6 毫米，要向公分借 10 毫米。"
+    },
+    {
+      "id": "length-mm-bm-9",
+      "type": "basic-mastery",
+      "challenge": "7-3",
+      "errorPath": 3,
+      "stem": "2 公分 9 毫米加 4 公分 5 毫米是幾毫米？",
+      "options": ["64 毫米", "614 毫米", "84 毫米", "74 毫米"],
+      "answer": 3,
+      "explanation": "29 毫米 + 45 毫米 = 74 毫米。不能把公分和毫米的數字直接併著寫。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "length-mm-ci-1",
+      "type": "concept-id",
+      "challenge": "7-4",
+      "statement": "一枚硬幣的厚度大約是 2 毫米。",
+      "correctAnswer": true,
+      "explanation": "硬幣厚度約 2 毫米，是毫米的生活量感基準物之一。"
+    },
+    {
+      "id": "length-mm-ci-2",
+      "type": "concept-id",
+      "challenge": "7-4",
+      "errorPath": 2,
+      "statement": "一枝鉛筆的長度大約是 18 毫米。",
+      "correctAnswer": false,
+      "explanation": "18 毫米還不到 2 公分，比指甲還短。鉛筆長度大約是 18「公分」。"
+    },
+    {
+      "id": "length-mm-ci-3",
+      "type": "concept-id",
+      "challenge": "7-4",
+      "statement": "一隻螞蟻的身長大約是 5 毫米。",
+      "correctAnswer": true,
+      "explanation": "螞蟻身長約 5 毫米，適合用毫米這個小單位來量。"
+    },
+    {
+      "id": "length-mm-ci-4",
+      "type": "concept-id",
+      "challenge": "7-5",
+      "errorPath": 2,
+      "statement": "毫米比公分小，所以 90 毫米比 8 公分短。",
+      "correctAnswer": false,
+      "explanation": "要換成同單位再比：90 毫米 = 9 公分 > 8 公分。單位小不代表數值小。"
+    },
+    {
+      "id": "length-mm-ci-5",
+      "type": "concept-id",
+      "challenge": "7-5",
+      "errorPath": 2,
+      "statement": "120 毫米比 13 公分長。",
+      "correctAnswer": false,
+      "explanation": "120 毫米 = 12 公分，12 公分 < 13 公分，所以 120 毫米比較短。"
+    },
+    {
+      "id": "length-mm-ci-6",
+      "type": "concept-id",
+      "challenge": "7-5",
+      "statement": "50 毫米和 5 公分一樣長。",
+      "correctAnswer": true,
+      "explanation": "1 公分 = 10 毫米，5 公分 = 50 毫米，兩者相等。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "length-mm-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "7-6",
+      "errorPath": 3,
+      "problem": "用尺量鉛筆的長度",
+      "wrongSolution": "尺的 0 對齊鉛筆左端，右端在 6 公分再多 3 小格的地方，小明讀成 63 公分。",
+      "errorOptions": ["小格的刻度是毫米，應讀成 6 公分 3 毫米", "尺一定要從 1 開始量才對", "應該把 6 和 3 相加得 9 公分", "鉛筆太長，不能用這把尺量"],
+      "correctErrorIndex": 0,
+      "explanation": "尺上的小格是毫米，1 小格 = 1 毫米。正確讀法是 6 公分 3 毫米，不能把兩個數字併成 63 公分。"
+    },
+    {
+      "id": "length-mm-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "7-6",
+      "errorPath": 3,
+      "problem": "用尺量橡皮擦的長度",
+      "wrongSolution": "尺的 0 對齊左端，右端在 4 公分再多 8 小格的地方，小婷讀成 48 公分。",
+      "errorOptions": ["應該讀成 8 公分 4 毫米才對", "尺沒有對齊 0，要重量一次", "小格是毫米，應讀成 4 公分 8 毫米", "橡皮擦要用公尺來量"],
+      "correctErrorIndex": 2,
+      "explanation": "4 公分再多 8 小格是 4 公分 8 毫米（48 毫米），不是 48 公分。48 公分比課本還長，明顯不合理。"
+    },
+    {
+      "id": "length-mm-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "7-6",
+      "errorPath": 3,
+      "problem": "用尺量迴紋針的長度",
+      "wrongSolution": "尺的 0 對齊左端，右端在 3 公分再多 2 小格的地方，小豪讀成 32 公分。",
+      "errorOptions": ["迴紋針太小，不能用尺量", "小格是毫米，應讀成 3 公分 2 毫米", "應該讀成 2 公分 3 毫米", "要把 3 和 2 相乘得 6 公分"],
+      "correctErrorIndex": 1,
+      "explanation": "3 公分再多 2 小格是 3 公分 2 毫米（32 毫米）。把公分和毫米的數字併寫成 32 公分是常見錯誤。"
+    },
+    {
+      "id": "length-mm-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "7-7",
+      "errorPath": 1,
+      "problem": "把 5 公分換算成毫米",
+      "wrongSolution": "小華算成 5 公分 = 500 毫米。",
+      "errorOptions": ["公分和毫米之間不能換算", "把 ×10 記成 ×100，應是 50 毫米", "應該用 ÷10 來算，答案是 0.5 毫米", "答案沒有錯，只是忘了寫單位"],
+      "correctErrorIndex": 1,
+      "explanation": "1 公分 = 10 毫米，5 公分 = 5 × 10 = 50 毫米。×100 是公尺換公分的進率，不能搬過來用。"
+    },
+    {
+      "id": "length-mm-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "7-7",
+      "errorPath": 1,
+      "problem": "把 8 公分換算成毫米",
+      "wrongSolution": "小美算成 8 公分 = 800 毫米。",
+      "errorOptions": ["應該算 8 + 10 = 18 毫米", "800 毫米沒有錯", "8 公分本來就不能換成毫米", "換算率用錯，應是 8 × 10 = 80 毫米"],
+      "correctErrorIndex": 3,
+      "explanation": "公分換毫米是 ×10：8 公分 = 80 毫米。800 毫米其實是 80 公分，差了十倍。"
+    },
+    {
+      "id": "length-mm-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "7-7",
+      "errorPath": 1,
+      "problem": "把 30 毫米換算成公分",
+      "wrongSolution": "小哲算成 30 毫米 = 300 公分。",
+      "errorOptions": ["換算方向弄反了，應是 30 ÷ 10 = 3 公分", "應該算 30 × 100 = 3000 公分", "毫米換公分要先換成公尺", "30 毫米比 1 公分短，不能換算"],
+      "correctErrorIndex": 0,
+      "explanation": "毫米換公分是把小單位換成大單位，要 ÷10：30 毫米 = 3 公分。乘反了會差一百倍。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "length-mm-ca-1",
+      "type": "context-application",
+      "challenge": "7-8",
+      "errorPath": 2,
+      "scenario": "螞蟻的身長是 6 毫米，瓢蟲的身長是 1 公分 2 毫米。",
+      "question": "誰比較長？長幾毫米？",
+      "options": ["瓢蟲，長 6 毫米", "螞蟻，長 6 毫米", "瓢蟲，長 4 毫米", "兩隻一樣長"],
+      "answer": 0,
+      "explanation": "1 公分 2 毫米 = 12 毫米，12 − 6 = 6，瓢蟲比螞蟻長 6 毫米。"
+    },
+    {
+      "id": "length-mm-ca-2",
+      "type": "context-application",
+      "challenge": "7-8",
+      "errorPath": 2,
+      "scenario": "紅色緞帶長 4 公分 5 毫米，藍色緞帶長 39 毫米。",
+      "question": "哪條緞帶比較長？長幾毫米？",
+      "options": ["藍色，長 6 毫米", "紅色，長 6 毫米", "紅色，長 16 毫米", "兩條一樣長"],
+      "answer": 1,
+      "explanation": "4 公分 5 毫米 = 45 毫米，45 − 39 = 6，紅色緞帶比較長，長 6 毫米。"
+    },
+    {
+      "id": "length-mm-ca-3",
+      "type": "context-application",
+      "challenge": "7-8",
+      "errorPath": 2,
+      "scenario": "一根釘子長 28 毫米，一根螺絲長 3 公分。",
+      "question": "誰比較長？長幾毫米？",
+      "options": ["釘子，長 2 毫米", "釘子，長 25 毫米", "螺絲，長 2 毫米", "兩根一樣長"],
+      "answer": 2,
+      "explanation": "3 公分 = 30 毫米，30 − 28 = 2，螺絲比釘子長 2 毫米。數字大不一定長，要先換成同單位。"
+    }
+  ]
+}

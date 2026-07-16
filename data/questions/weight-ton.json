@@ -1,0 +1,252 @@
+{
+  "nodeId": "weight-ton",
+  "basicMastery": [
+    {
+      "id": "weight-ton-bm-1",
+      "type": "basic-mastery",
+      "challenge": "19-1",
+      "errorPath": 1,
+      "stem": "1 公噸等於幾公斤？",
+      "options": ["100 公斤", "10000 公斤", "1000 公斤", "10 公斤"],
+      "answer": 2,
+      "explanation": "1 公噸 = 1000 公斤。噸與公斤之間是 1000 倍，不是 100 倍。"
+    },
+    {
+      "id": "weight-ton-bm-2",
+      "type": "basic-mastery",
+      "challenge": "19-1",
+      "errorPath": 2,
+      "stem": "0.5 公噸等於幾公斤？",
+      "options": ["500 公斤", "50 公斤", "5000 公斤", "0.5 公斤"],
+      "answer": 0,
+      "explanation": "0.5 公噸 = 0.5 × 1000 = 500 公斤，也就是半公噸。"
+    },
+    {
+      "id": "weight-ton-bm-3",
+      "type": "basic-mastery",
+      "challenge": "19-1",
+      "errorPath": 1,
+      "stem": "2 公噸等於幾公斤？",
+      "options": ["200 公斤", "2000 公斤", "20000 公斤", "20 公斤"],
+      "answer": 1,
+      "explanation": "2 公噸 = 2 × 1000 = 2000 公斤。乘 100 只得到 200，是把換算率記錯。"
+    },
+    {
+      "id": "weight-ton-bm-4",
+      "type": "basic-mastery",
+      "challenge": "19-2",
+      "errorPath": 1,
+      "stem": "2.4 公噸等於幾公斤？",
+      "options": ["240 公斤", "24000 公斤", "2.4 公斤", "2400 公斤"],
+      "answer": 3,
+      "explanation": "2.4 × 1000 = 2400 公斤。小數點向右移三位，不是兩位。"
+    },
+    {
+      "id": "weight-ton-bm-5",
+      "type": "basic-mastery",
+      "challenge": "19-2",
+      "errorPath": 2,
+      "stem": "3600 公斤等於幾公噸？",
+      "options": ["36 公噸", "3.6 公噸", "0.36 公噸", "360 公噸"],
+      "answer": 1,
+      "explanation": "3600 ÷ 1000 = 3.6 公噸。公斤換公噸，小數點向左移三位。"
+    },
+    {
+      "id": "weight-ton-bm-6",
+      "type": "basic-mastery",
+      "challenge": "19-2",
+      "errorPath": 2,
+      "stem": "0.75 公噸等於幾公斤？",
+      "options": ["750 公斤", "75 公斤", "7500 公斤", "0.75 公斤"],
+      "answer": 0,
+      "explanation": "0.75 × 1000 = 750 公斤。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "weight-ton-ci-1",
+      "type": "concept-id",
+      "challenge": "19-3",
+      "statement": "一頭大象的體重，用公噸表示比較方便。",
+      "correctAnswer": true,
+      "explanation": "成年大象約 3 到 6 公噸，用公斤要寫幾千，用公噸表示簡潔清楚。"
+    },
+    {
+      "id": "weight-ton-ci-2",
+      "type": "concept-id",
+      "challenge": "19-3",
+      "statement": "一顆西瓜的重量大約是 2 公噸。",
+      "correctAnswer": false,
+      "explanation": "西瓜大約 5 到 10「公斤」；2 公噸 = 2000 公斤，接近一輛小汽車的重量。"
+    },
+    {
+      "id": "weight-ton-ci-3",
+      "type": "concept-id",
+      "challenge": "19-3",
+      "statement": "一輛小客車的重量大約是 1.5 公噸。",
+      "correctAnswer": true,
+      "explanation": "小客車大多在 1 到 2 公噸之間，1.5 公噸是合理的量感基準物。"
+    },
+    {
+      "id": "weight-ton-ci-4",
+      "type": "concept-id",
+      "challenge": "19-4",
+      "errorPath": 2,
+      "statement": "0.5 公噸比 480 公斤輕。",
+      "correctAnswer": false,
+      "explanation": "0.5 公噸 = 500 公斤 > 480 公斤。小數的公噸要先換成公斤再比，不能只看 0.5 比 480 小。"
+    },
+    {
+      "id": "weight-ton-ci-5",
+      "type": "concept-id",
+      "challenge": "19-4",
+      "errorPath": 2,
+      "statement": "1.2 公噸和 1200 公斤一樣重。",
+      "correctAnswer": true,
+      "explanation": "1.2 × 1000 = 1200 公斤，兩者一樣重。"
+    },
+    {
+      "id": "weight-ton-ci-6",
+      "type": "concept-id",
+      "challenge": "19-4",
+      "errorPath": 2,
+      "statement": "0.09 公噸比 90 公斤重。",
+      "correctAnswer": false,
+      "explanation": "0.09 公噸 = 0.09 × 1000 = 90 公斤，兩者一樣重，沒有誰比較重。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "weight-ton-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "19-5",
+      "errorPath": 1,
+      "problem": "把 1.2 公噸換算成公斤",
+      "wrongSolution": "小明算成 1.2 × 100 = 120 公斤。",
+      "errorOptions": ["1 公噸是 1000 公斤，應是 1200 公斤", "公噸換公斤應該用除法", "1.2 × 100 算錯了，不是 120", "小數不能拿來乘 100"],
+      "correctErrorIndex": 0,
+      "explanation": "1 公噸 = 1000 公斤，1.2 公噸 = 1200 公斤。×100 是把公噸的換算率記成公尺換公分那套。"
+    },
+    {
+      "id": "weight-ton-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "19-5",
+      "errorPath": 1,
+      "problem": "把 4500 公斤換算成公噸",
+      "wrongSolution": "小華算成 4500 ÷ 100 = 45 公噸。",
+      "errorOptions": ["公斤換公噸應該用乘法才對", "除法計算錯誤，4500 ÷ 100 不是 45", "換算率記錯：應除以 1000，得 4.5 公噸", "公斤不能換算成公噸"],
+      "correctErrorIndex": 2,
+      "explanation": "1 公噸 = 1000 公斤，4500 ÷ 1000 = 4.5 公噸。45 公噸等於 45000 公斤，是原來的 10 倍。"
+    },
+    {
+      "id": "weight-ton-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "19-5",
+      "errorPath": 1,
+      "problem": "比較 0.8 公噸的砂石和 850 公斤的砂石",
+      "wrongSolution": "小杰把 0.8 公噸換成 80 公斤，說 850 公斤那堆重了快十倍。",
+      "errorOptions": ["850 公斤那堆其實比較輕", "換算率記錯：0.8 公噸是 800 公斤，只差 50 公斤", "0.8 公噸根本不能和公斤比較", "應該把 850 公斤換成公噸再比"],
+      "correctErrorIndex": 1,
+      "explanation": "0.8 × 1000 = 800 公斤，850 公斤只多 50 公斤。×100 讓差距被誇大成十倍。"
+    },
+    {
+      "id": "weight-ton-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "19-6",
+      "errorPath": 3,
+      "problem": "貨車限重 3 公噸，載了 28 包各 100 公斤的米，判斷有沒有超重",
+      "wrongSolution": "小豪算 28 × 100 = 2800，說 2800 比 3 大很多，一定超重。",
+      "errorOptions": ["乘法算錯，28 × 100 不是 2800", "米的重量不能用公斤來計算", "答案對，這樣載確實超重", "3 公噸是 3000 公斤，2800 沒超重"],
+      "correctErrorIndex": 3,
+      "explanation": "要先把限重換成公斤：3 公噸 = 3000 公斤，2800 < 3000，沒有超重。拿 2800 和 3 比是單位不同硬比。"
+    },
+    {
+      "id": "weight-ton-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "19-6",
+      "errorPath": 3,
+      "problem": "判斷搭電梯有沒有超重（限重 1 公噸）",
+      "wrongSolution": "8 人共重 600 公斤，再搬進 0.5 公噸貨物。小安算 600 + 0.5 = 600.5，說沒超重。",
+      "errorOptions": ["0.5 公噸是 500 公斤，共 1100 公斤超重", "8 個人的體重不能加進去算", "加法算錯，600 + 0.5 不是 600.5", "限重 1 公噸就是 100 公斤"],
+      "correctErrorIndex": 0,
+      "explanation": "0.5 公噸 = 500 公斤，600 + 500 = 1100 公斤 > 1000 公斤，超重。公斤和公噸不能直接相加。"
+    },
+    {
+      "id": "weight-ton-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "19-6",
+      "errorPath": 3,
+      "problem": "判斷 4 天的麵粉用量是否超過 5500 公斤",
+      "wrongSolution": "工廠每天用 1.5 公噸麵粉。小美算 1.5 × 4 = 6，說 6 比 5500 小太多，沒超過。",
+      "errorOptions": ["乘法算錯，1.5 × 4 不是 6", "應該用 5500 除以 4 來比", "6 公噸是 6000 公斤，超過 5500 公斤", "每天用量會變，不能用乘法"],
+      "correctErrorIndex": 2,
+      "explanation": "1.5 × 4 = 6 公噸 = 6000 公斤 > 5500 公斤，有超過。比較前要先換成同單位。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "weight-ton-ca-1",
+      "type": "context-application",
+      "challenge": "19-7",
+      "errorPath": 3,
+      "scenario": "電梯限重 1 公噸。10 人平均每人 78 公斤。",
+      "question": "再推進 250 公斤的貨物，超重了嗎？",
+      "options": ["沒有超重", "超重 30 公斤", "剛好 1 公噸", "超重 300 公斤"],
+      "answer": 1,
+      "explanation": "10 × 78 = 780 公斤，加 250 公斤共 1030 公斤；1 公噸 = 1000 公斤，超重 30 公斤。"
+    },
+    {
+      "id": "weight-ton-ca-2",
+      "type": "context-application",
+      "challenge": "19-7",
+      "errorPath": 2,
+      "scenario": "卡車限重 5 公噸，目前已經載了 3.2 公噸的貨。",
+      "question": "最多還能再載幾公斤？",
+      "options": ["180 公斤", "2800 公斤", "1800 公斤", "1200 公斤"],
+      "answer": 2,
+      "explanation": "5 − 3.2 = 1.8 公噸 = 1800 公斤。"
+    },
+    {
+      "id": "weight-ton-ca-3",
+      "type": "context-application",
+      "challenge": "19-7",
+      "errorPath": 1,
+      "scenario": "工地訂了 2 公噸的水泥，每包水泥重 50 公斤。",
+      "question": "一共是幾包水泥？",
+      "options": ["4 包", "400 包", "20 包", "40 包"],
+      "answer": 3,
+      "explanation": "2 公噸 = 2000 公斤，2000 ÷ 50 = 40 包。若把 2 公噸誤當 200 公斤，就會錯算成 4 包。"
+    },
+    {
+      "id": "weight-ton-ca-4",
+      "type": "context-application",
+      "challenge": "19-8",
+      "scenario": "回收場每天大約收 1.8 公噸的回收物。",
+      "question": "一星期 7 天大約收幾公噸？",
+      "options": ["大約 13 公噸", "大約 8 公噸", "大約 126 公噸", "大約 1.3 公噸"],
+      "answer": 0,
+      "explanation": "1.8 × 7 = 12.6 公噸，用概數說大約 13 公噸。"
+    },
+    {
+      "id": "weight-ton-ca-5",
+      "type": "context-application",
+      "challenge": "19-8",
+      "errorPath": 2,
+      "scenario": "貨輪這一趟載了 4980 公斤的貨物。",
+      "question": "用概數說，大約是幾公噸？",
+      "options": ["大約 50 公噸", "大約 5 公噸", "大約 0.5 公噸", "大約 500 公噸"],
+      "answer": 1,
+      "explanation": "4980 ÷ 1000 = 4.98 公噸，四捨五入大約 5 公噸。"
+    },
+    {
+      "id": "weight-ton-ca-6",
+      "type": "context-application",
+      "challenge": "19-8",
+      "scenario": "農會每天大約收購 2.9 公噸的稻穀。",
+      "question": "10 天大約收購幾公噸？",
+      "options": ["大約 3 公噸", "大約 300 公噸", "大約 30 公噸", "大約 12 公噸"],
+      "answer": 2,
+      "explanation": "2.9 × 10 = 29 公噸，用概數說大約 30 公噸。"
+    }
+  ]
+}
