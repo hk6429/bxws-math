@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "tiers": {
+    "elem-high": "國小高年級",
+    "jhs-g7": "國中七年級"
+  },
+  "masteryThreshold": 0.8,
+  "strands": [
+    {
+      "id": "num-quantity",
+      "name": "數與量",
+      "nodes": [
+        {
+          "id": "fraction-unlike-denom",
+          "name": "異分母分數",
+          "tier": "elem-high",
+          "prereq": []
+        },
+        {
+          "id": "fraction-mul",
+          "name": "分數乘除",
+          "tier": "elem-high",
+          "prereq": ["fraction-unlike-denom"]
+        },
+        {
+          "id": "decimal-mul",
+          "name": "小數乘除",
+          "tier": "elem-high",
+          "prereq": []
+        },
+        {
+          "id": "ratio-rate",
+          "name": "比與比值",
+          "tier": "elem-high",
+          "prereq": ["fraction-mul"]
+        },
+        {
+          "id": "negative-number",
+          "name": "負數",
+          "tier": "jhs-g7",
+          "prereq": ["decimal-mul"]
+        },
+        {
+          "id": "proportion-eq",
+          "name": "比例式",
+          "tier": "jhs-g7",
+          "prereq": ["ratio-rate"]
+        }
+      ]
+    },
+    {
+      "id": "algebra",
+      "name": "代數",
+      "nodes": [
+        {
+          "id": "algebra-symbol",
+          "name": "代數符號",
+          "tier": "jhs-g7",
+          "prereq": ["negative-number"]
+        },
+        {
+          "id": "linear-eq-1var",
+          "name": "一元一次方程式",
+          "tier": "jhs-g7",
+          "prereq": ["algebra-symbol"]
+        }
+      ]
+    },
+    {
+      "id": "space-shape",
+      "name": "空間與形狀",
+      "nodes": [],
+      "status": "coming-soon"
+    },
+    {
+      "id": "relation-pattern",
+      "name": "關係與規律",
+      "nodes": [],
+      "status": "coming-soon"
+    },
+    {
+      "id": "data-uncertainty",
+      "name": "資料與可能性",
+      "nodes": [],
+      "status": "coming-soon"
+    }
+  ]
+}

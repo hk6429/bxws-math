@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>步學吾數</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>步學吾數</h1>
+    <nav>
+      <button id="nav-home">技能樹</button>
+      <button id="nav-dashboard">我的儀表板</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="view-home" class="view active">
+      <div id="skilltree-container" class="skilltree"></div>
+    </section>
+
+    <section id="view-quiz" class="view">
+      <h2 id="quiz-node-name"></h2>
+      <div id="quiz-progress" class="quiz-progress"></div>
+      <div id="quiz-area"></div>
+    </section>
+
+    <section id="view-dashboard" class="view">
+      <div id="dashboard-content"></div>
+    </section>
+  </main>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

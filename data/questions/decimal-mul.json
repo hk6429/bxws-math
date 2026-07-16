@@ -1,0 +1,77 @@
+{
+  "nodeId": "decimal-mul",
+  "basicMastery": [
+    {
+      "id": "decimal-mul-bm-1",
+      "type": "basic-mastery",
+      "stem": "2.5 × 1.2 = ？",
+      "options": ["3", "2.6", "3.6", "2.5"],
+      "answer": 0,
+      "explanation": "2.5 × 1.2 = 3.00"
+    },
+    {
+      "id": "decimal-mul-bm-2",
+      "type": "basic-mastery",
+      "stem": "4.8 ÷ 0.6 = ？",
+      "options": ["8", "0.8", "80", "4.2"],
+      "answer": 0,
+      "explanation": "被除數與除數同乘 10：48 ÷ 6 = 8"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "decimal-mul-ci-1",
+      "type": "concept-id",
+      "statement": "0.5 × 0.5 = 0.25，乘積比任一乘數都小。",
+      "correctAnswer": true,
+      "explanation": "兩個小於 1 的數相乘，乘積會比原本兩數都小。"
+    },
+    {
+      "id": "decimal-mul-ci-2",
+      "type": "concept-id",
+      "statement": "小數除法時，被除數和除數同時乘以 10，商會跟著改變。",
+      "correctAnswer": false,
+      "explanation": "被除數與除數同乘（或同除）以相同的數，商不變。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "decimal-mul-ed-1",
+      "type": "error-diagnosis",
+      "problem": "計算 1.2 × 0.3",
+      "wrongSolution": "算成 1.2 × 0.3 = 3.6",
+      "errorOptions": ["小數點位數算錯，應為 0.36", "乘數看錯", "進位錯誤", "忘記化簡"],
+      "correctErrorIndex": 0,
+      "explanation": "1.2 有 1 位小數、0.3 有 1 位小數，乘積應有 2 位小數：0.36"
+    },
+    {
+      "id": "decimal-mul-ed-2",
+      "type": "error-diagnosis",
+      "problem": "計算 6.4 ÷ 0.8",
+      "wrongSolution": "算成 6.4 ÷ 0.8 = 0.8",
+      "errorOptions": ["除數轉整數時，被除數沒有跟著移動小數點", "看錯除號方向", "位數對齊錯誤", "抄錯數字"],
+      "correctErrorIndex": 0,
+      "explanation": "除數與被除數同乘 10 化為整數：64 ÷ 8 = 8"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "decimal-mul-ca-1",
+      "type": "context-application",
+      "scenario": "每公斤蘋果 45.5 元，媽媽買了 2.4 公斤。",
+      "question": "媽媽要付多少錢？",
+      "options": ["109.2 元", "91 元", "108 元", "112.2 元"],
+      "answer": 0,
+      "explanation": "45.5 × 2.4 = 109.2"
+    },
+    {
+      "id": "decimal-mul-ca-2",
+      "type": "context-application",
+      "scenario": "一桶油有 8.4 公升，要平均裝進每瓶 0.6 公升的瓶子。",
+      "question": "可以裝滿幾瓶？",
+      "options": ["14 瓶", "12 瓶", "8 瓶", "1.4 瓶"],
+      "answer": 0,
+      "explanation": "8.4 ÷ 0.6 = 14"
+    }
+  ]
+}

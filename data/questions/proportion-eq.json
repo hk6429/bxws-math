@@ -1,0 +1,77 @@
+{
+  "nodeId": "proportion-eq",
+  "basicMastery": [
+    {
+      "id": "proportion-eq-bm-1",
+      "type": "basic-mastery",
+      "stem": "解比例式 3:4 = x:12，x 是多少？",
+      "options": ["9", "16", "6", "12"],
+      "answer": 0,
+      "explanation": "內項乘積等於外項乘積：4x = 3×12 = 36，x = 9"
+    },
+    {
+      "id": "proportion-eq-bm-2",
+      "type": "basic-mastery",
+      "stem": "解比例式 x:5 = 6:10，x 是多少？",
+      "options": ["3", "12", "5", "30"],
+      "answer": 0,
+      "explanation": "10x = 5×6 = 30，x = 3"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "proportion-eq-ci-1",
+      "type": "concept-id",
+      "statement": "比例式中，內項乘積等於外項乘積。",
+      "correctAnswer": true,
+      "explanation": "這是比例式（a:b = c:d ⇒ ad = bc）的核心性質。"
+    },
+    {
+      "id": "proportion-eq-ci-2",
+      "type": "concept-id",
+      "statement": "比例式 a:b = c:d 中，只要 a=c 就一定成立。",
+      "correctAnswer": false,
+      "explanation": "比例式成立要看整體比值是否相等（ad=bc），不是只看單一項相等。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "proportion-eq-ed-1",
+      "type": "error-diagnosis",
+      "problem": "解比例式 2:3 = x:9",
+      "wrongSolution": "算成 x = 9×3 ÷ 2 = 13.5",
+      "errorOptions": ["內項外項的對應關係搞錯", "忘記約分", "看錯數字", "漏乘"],
+      "correctErrorIndex": 0,
+      "explanation": "正確為 2×9 = 3x，x = 6"
+    },
+    {
+      "id": "proportion-eq-ed-2",
+      "type": "error-diagnosis",
+      "problem": "解比例式 x:4 = 5:2",
+      "wrongSolution": "算成 x = 4×2 ÷ 5 = 1.6",
+      "errorOptions": ["外項內項對應顛倒", "乘除順序算錯", "看錯數字", "抄錯題目"],
+      "correctErrorIndex": 0,
+      "explanation": "正確為 2x = 4×5 = 20，x = 10"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "proportion-eq-ca-1",
+      "type": "context-application",
+      "scenario": "地圖比例尺是 1:5000，圖上量得兩地距離是 4 公分。",
+      "question": "實際距離是多少公尺？",
+      "options": ["200 公尺", "2000 公尺", "20 公尺", "2 公尺"],
+      "answer": 0,
+      "explanation": "4 × 5000 = 20000 公分 = 200 公尺"
+    },
+    {
+      "id": "proportion-eq-ca-2",
+      "type": "context-application",
+      "scenario": "配製消毒水，原液與水的比是 1:4，要配製 5 公升的溶液。",
+      "question": "需要多少公升的原液？",
+      "options": ["1 公升", "4 公升", "0.2 公升", "2 公升"],
+      "answer": 0,
+      "explanation": "共 1+4=5 份，每份 1 公升，原液佔 1 份 = 1 公升"
+    }
+  ]
+}

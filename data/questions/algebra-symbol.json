@@ -1,0 +1,77 @@
+{
+  "nodeId": "algebra-symbol",
+  "basicMastery": [
+    {
+      "id": "algebra-symbol-bm-1",
+      "type": "basic-mastery",
+      "stem": "若 x=3，求 2x+5 的值",
+      "options": ["11", "10", "8", "13"],
+      "answer": 0,
+      "explanation": "2×3+5 = 6+5 = 11"
+    },
+    {
+      "id": "algebra-symbol-bm-2",
+      "type": "basic-mastery",
+      "stem": "化簡 3x + 2x - x",
+      "options": ["4x", "6x", "5x", "3x"],
+      "answer": 0,
+      "explanation": "同類項係數相加減：3+2-1 = 4，結果為 4x"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "algebra-symbol-ci-1",
+      "type": "concept-id",
+      "statement": "3x 表示 3 個 x 相加，也就是 x+x+x。",
+      "correctAnswer": true,
+      "explanation": "係數乘以未知數即表示該未知數重複相加的次數。"
+    },
+    {
+      "id": "algebra-symbol-ci-2",
+      "type": "concept-id",
+      "statement": "x² 和 2x 是同類項，可以直接合併成 3x 或 3x²。",
+      "correctAnswer": false,
+      "explanation": "x² 和 x 的次方不同，不是同類項，不能合併。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "algebra-symbol-ed-1",
+      "type": "error-diagnosis",
+      "problem": "化簡 2x + 3y - x + y",
+      "wrongSolution": "算成 2x+3y-x+y = x+3y",
+      "errorOptions": ["y 的係數合併算錯", "x 的係數合併算錯", "漏看負號", "抄錯題目"],
+      "correctErrorIndex": 0,
+      "explanation": "x 係數：2-1=1；y 係數：3+1=4，正確答案為 x+4y"
+    },
+    {
+      "id": "algebra-symbol-ed-2",
+      "type": "error-diagnosis",
+      "problem": "當 x=2 時，求 3x² 的值",
+      "wrongSolution": "小方算成 3x² = (3×2)² = 36",
+      "errorOptions": ["把 3 也一起平方了，運算順序錯誤", "代入數字錯誤", "漏乘", "抄錯題目"],
+      "correctErrorIndex": 0,
+      "explanation": "3x² 是先算 x²=4，再乘以 3，得 12，而不是 (3x)²"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "algebra-symbol-ca-1",
+      "type": "context-application",
+      "scenario": "小豪原有 n 元，媽媽又給他 50 元。",
+      "question": "下列代數式何者能正確表示小豪現在有多少元？",
+      "options": ["n+50", "50n", "n-50", "50-n"],
+      "answer": 0,
+      "explanation": "原有 n 元，加上 50 元，共 n+50 元"
+    },
+    {
+      "id": "algebra-symbol-ca-2",
+      "type": "context-application",
+      "scenario": "一枝筆 x 元，小華買了 4 枝相同的筆。",
+      "question": "下列代數式何者能正確表示小華花了多少元？",
+      "options": ["4x", "x+4", "x÷4", "x-4"],
+      "answer": 0,
+      "explanation": "4 枝、每枝 x 元，總花費為 4×x = 4x"
+    }
+  ]
+}

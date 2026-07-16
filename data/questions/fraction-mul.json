@@ -1,0 +1,77 @@
+{
+  "nodeId": "fraction-mul",
+  "basicMastery": [
+    {
+      "id": "fraction-mul-bm-1",
+      "type": "basic-mastery",
+      "stem": "2/3 × 3/4 = ？",
+      "options": ["1/2", "6/7", "3/4", "2/4"],
+      "answer": 0,
+      "explanation": "2×3 / 3×4 = 6/12 = 1/2"
+    },
+    {
+      "id": "fraction-mul-bm-2",
+      "type": "basic-mastery",
+      "stem": "4/5 ÷ 2/3 = ？",
+      "options": ["6/5", "8/15", "3/10", "2/3"],
+      "answer": 0,
+      "explanation": "除以一數等於乘以其倒數：4/5 × 3/2 = 12/10 = 6/5"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "fraction-mul-ci-1",
+      "type": "concept-id",
+      "statement": "一個數乘以真分數（小於1的分數），結果會比原來的數小。",
+      "correctAnswer": true,
+      "explanation": "乘以小於 1 的數會讓結果縮小，例如 3/4 × 1/2 < 3/4。"
+    },
+    {
+      "id": "fraction-mul-ci-2",
+      "type": "concept-id",
+      "statement": "分數除法可以把除數的分子分母顛倒後，改成乘法計算。",
+      "correctAnswer": true,
+      "explanation": "除以一數等於乘以其倒數，這是分數除法的核心規則。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "fraction-mul-ed-1",
+      "type": "error-diagnosis",
+      "problem": "計算 2/3 × 3/5",
+      "wrongSolution": "小強算成 2×5 / 3×3 = 10/9",
+      "errorOptions": ["交叉相乘，而非分子乘分子、分母乘分母", "忘記約分", "看錯運算符號", "抄錯題目"],
+      "correctErrorIndex": 0,
+      "explanation": "正確做法是分子乘分子、分母乘分母：2×3 / 3×5 = 6/15 = 2/5"
+    },
+    {
+      "id": "fraction-mul-ed-2",
+      "type": "error-diagnosis",
+      "problem": "計算 3/4 ÷ 1/2",
+      "wrongSolution": "小美算成 3/4 × 1/2 = 3/8",
+      "errorOptions": ["除法沒有把除數變成倒數，直接相乘", "分子分母顛倒錯誤", "約分約錯", "抄錯數字"],
+      "correctErrorIndex": 0,
+      "explanation": "正確做法為 3/4 × 2/1 = 6/4 = 3/2"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "fraction-mul-ca-1",
+      "type": "context-application",
+      "scenario": "分蛋糕時，每人分到蛋糕的 1/4，小新只吃掉自己那份的 3/4。",
+      "question": "小新吃掉整塊蛋糕的幾分之幾？",
+      "options": ["3/16", "3/4", "1/3", "4/3"],
+      "answer": 0,
+      "explanation": "1/4 × 3/4 = 3/16"
+    },
+    {
+      "id": "fraction-mul-ca-2",
+      "type": "context-application",
+      "scenario": "一條繩子長 3/4 公尺，平均剪成 3 段。",
+      "question": "每段繩子長多少公尺？",
+      "options": ["1/4 公尺", "1/12 公尺", "4/3 公尺", "2/4 公尺"],
+      "answer": 0,
+      "explanation": "3/4 ÷ 3 = 3/4 × 1/3 = 1/4"
+    }
+  ]
+}

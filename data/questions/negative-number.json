@@ -1,0 +1,77 @@
+{
+  "nodeId": "negative-number",
+  "basicMastery": [
+    {
+      "id": "negative-number-bm-1",
+      "type": "basic-mastery",
+      "stem": "(-3) + 5 = ？",
+      "options": ["2", "-2", "8", "-8"],
+      "answer": 0,
+      "explanation": "異號相加，取絕對值較大者的符號：5-3=2，取正號"
+    },
+    {
+      "id": "negative-number-bm-2",
+      "type": "basic-mastery",
+      "stem": "(-4) × (-3) = ？",
+      "options": ["12", "-12", "7", "-7"],
+      "answer": 0,
+      "explanation": "同號相乘結果為正：4×3=12"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "negative-number-ci-1",
+      "type": "concept-id",
+      "statement": "兩個負數相乘，結果是正數。",
+      "correctAnswer": true,
+      "explanation": "同號相乘（正×正、負×負）結果皆為正。"
+    },
+    {
+      "id": "negative-number-ci-2",
+      "type": "concept-id",
+      "statement": "負數的絕對值一定是負的。",
+      "correctAnswer": false,
+      "explanation": "絕對值表示距離 0 的遠近，恆為非負數，例如 |-5| = 5。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "negative-number-ed-1",
+      "type": "error-diagnosis",
+      "problem": "計算 (-5) + (-3)",
+      "wrongSolution": "算成 (-5) + (-3) = 2",
+      "errorOptions": ["同號相加卻用了相減的規則", "看錯正負號", "進位錯誤", "抄錯數字"],
+      "correctErrorIndex": 0,
+      "explanation": "同號相加，取相同符號、數值相加：-(5+3) = -8"
+    },
+    {
+      "id": "negative-number-ed-2",
+      "type": "error-diagnosis",
+      "problem": "計算 (-2) × 3",
+      "wrongSolution": "算成 (-2) × 3 = 6",
+      "errorOptions": ["異號相乘卻得到正數，符號判斷錯誤", "乘法表算錯", "看錯運算符號", "抄錯數字"],
+      "correctErrorIndex": 0,
+      "explanation": "異號相乘結果為負：-(2×3) = -6"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "negative-number-ca-1",
+      "type": "context-application",
+      "scenario": "氣溫早上是 -3°C，中午上升了 8°C。",
+      "question": "中午氣溫是幾度？",
+      "options": ["5°C", "-5°C", "11°C", "-11°C"],
+      "answer": 0,
+      "explanation": "-3 + 8 = 5"
+    },
+    {
+      "id": "negative-number-ca-2",
+      "type": "context-application",
+      "scenario": "小明的帳戶原本欠款 200 元（記作 -200 元），後來存入 350 元。",
+      "question": "帳戶餘額是多少？",
+      "options": ["150 元", "550 元", "-150 元", "-550 元"],
+      "answer": 0,
+      "explanation": "-200 + 350 = 150"
+    }
+  ]
+}

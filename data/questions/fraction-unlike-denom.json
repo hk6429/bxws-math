@@ -1,0 +1,77 @@
+{
+  "nodeId": "fraction-unlike-denom",
+  "basicMastery": [
+    {
+      "id": "fraction-unlike-denom-bm-1",
+      "type": "basic-mastery",
+      "stem": "1/2 + 1/3 = ？",
+      "options": ["5/6", "2/5", "1/6", "5/5"],
+      "answer": 0,
+      "explanation": "通分為 6：3/6 + 2/6 = 5/6"
+    },
+    {
+      "id": "fraction-unlike-denom-bm-2",
+      "type": "basic-mastery",
+      "stem": "3/4 - 1/6 = ？",
+      "options": ["7/12", "2/12", "1/3", "5/12"],
+      "answer": 0,
+      "explanation": "通分為 12：9/12 - 2/12 = 7/12"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "fraction-unlike-denom-ci-1",
+      "type": "concept-id",
+      "statement": "1/2 和 2/4 是等值分數，因為分子分母同乘以 2。",
+      "correctAnswer": true,
+      "explanation": "分子分母同乘（或同除）以相同的數，分數大小不變。"
+    },
+    {
+      "id": "fraction-unlike-denom-ci-2",
+      "type": "concept-id",
+      "statement": "分母不同的分數可以直接把分子相加、分母相加來計算加法。",
+      "correctAnswer": false,
+      "explanation": "分母不同時必須先通分成相同分母，才能把分子相加。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "fraction-unlike-denom-ed-1",
+      "type": "error-diagnosis",
+      "problem": "計算 1/3 + 1/4",
+      "wrongSolution": "小明算成 1/3 + 1/4 = 2/7",
+      "errorOptions": ["分子相加、分母相加，沒有通分", "忘記約分", "看錯數字", "進位錯誤"],
+      "correctErrorIndex": 0,
+      "explanation": "通分為 12：4/12 + 3/12 = 7/12，才是正確答案。"
+    },
+    {
+      "id": "fraction-unlike-denom-ed-2",
+      "type": "error-diagnosis",
+      "problem": "計算 5/6 - 1/2",
+      "wrongSolution": "小華算成 5/6 - 1/2 = 4/4 = 1",
+      "errorOptions": ["直接用分子減分子、分母減分母", "通分後分子減錯", "忘記約分", "抄錯題目"],
+      "correctErrorIndex": 0,
+      "explanation": "通分為 6：5/6 - 3/6 = 2/6 = 1/3，才是正確答案。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "fraction-unlike-denom-ca-1",
+      "type": "context-application",
+      "scenario": "一杯果汁，小明喝了 1/3，小美喝了 1/4。",
+      "question": "兩人一共喝掉這杯果汁的幾分之幾？",
+      "options": ["7/12", "2/7", "1/2", "5/12"],
+      "answer": 0,
+      "explanation": "1/3 + 1/4 = 4/12 + 3/12 = 7/12"
+    },
+    {
+      "id": "fraction-unlike-denom-ca-2",
+      "type": "context-application",
+      "scenario": "一條緞帶長 1 公尺，先用掉 1/2 公尺，又用掉剩下的 1/6 公尺。",
+      "question": "緞帶還剩下多少公尺？",
+      "options": ["1/3", "1/6", "1/2", "2/3"],
+      "answer": 0,
+      "explanation": "共用掉 1/2 + 1/6 = 3/6 + 1/6 = 4/6 = 2/3，還剩 1 - 2/3 = 1/3"
+    }
+  ]
+}

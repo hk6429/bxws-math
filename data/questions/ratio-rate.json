@@ -1,0 +1,77 @@
+{
+  "nodeId": "ratio-rate",
+  "basicMastery": [
+    {
+      "id": "ratio-rate-bm-1",
+      "type": "basic-mastery",
+      "stem": "3:4 的比值是多少？",
+      "options": ["3/4", "4/3", "7", "1"],
+      "answer": 0,
+      "explanation": "比值 = 前項 ÷ 後項 = 3 ÷ 4 = 3/4"
+    },
+    {
+      "id": "ratio-rate-bm-2",
+      "type": "basic-mastery",
+      "stem": "甲數與乙數的比是 2:5，若乙數是 30，甲數是多少？",
+      "options": ["12", "15", "10", "20"],
+      "answer": 0,
+      "explanation": "每份 = 30 ÷ 5 = 6，甲數 = 2 × 6 = 12"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "ratio-rate-ci-1",
+      "type": "concept-id",
+      "statement": "2:3 和 4:6 是相等的比。",
+      "correctAnswer": true,
+      "explanation": "前後項同乘以 2，比值不變，所以兩個比相等。"
+    },
+    {
+      "id": "ratio-rate-ci-2",
+      "type": "concept-id",
+      "statement": "比的前後項同時加上相同的數，比值不會改變。",
+      "correctAnswer": false,
+      "explanation": "比值只有在前後項同乘或同除相同的數時才不變，同加會改變比值。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "ratio-rate-ed-1",
+      "type": "error-diagnosis",
+      "problem": "化簡比 8:12",
+      "wrongSolution": "小杰算成 8:12 = 2:4",
+      "errorOptions": ["只除了一次，還沒化到最簡", "分子分母顛倒", "算成加法", "抄錯數字"],
+      "correctErrorIndex": 0,
+      "explanation": "8 和 12 的最大公因數是 4，8÷4:12÷4 = 2:3 才是最簡整數比。"
+    },
+    {
+      "id": "ratio-rate-ed-2",
+      "type": "error-diagnosis",
+      "problem": "求 5:2 的比值",
+      "wrongSolution": "小華算成 5:2 的比值是 2/5",
+      "errorOptions": ["前後項顛倒了", "忘記化簡", "算成百分比", "抄錯數字"],
+      "correctErrorIndex": 0,
+      "explanation": "比值應為前項除以後項：5 ÷ 2 = 5/2"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "ratio-rate-ca-1",
+      "type": "context-application",
+      "scenario": "班上男生和女生人數比是 3:2，全班共 30 人。",
+      "question": "女生有幾人？",
+      "options": ["12 人", "18 人", "15 人", "10 人"],
+      "answer": 0,
+      "explanation": "每份 = 30 ÷ (3+2) = 6，女生 = 2 × 6 = 12"
+    },
+    {
+      "id": "ratio-rate-ca-2",
+      "type": "context-application",
+      "scenario": "食譜中麵粉和糖的比是 5:1，這次用了糖 40 公克。",
+      "question": "需要多少公克的麵粉？",
+      "options": ["200 公克", "40 公克", "250 公克", "160 公克"],
+      "answer": 0,
+      "explanation": "每份 = 40 ÷ 1 = 40，麵粉 = 5 × 40 = 200"
+    }
+  ]
+}

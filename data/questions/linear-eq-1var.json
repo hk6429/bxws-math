@@ -1,0 +1,77 @@
+{
+  "nodeId": "linear-eq-1var",
+  "basicMastery": [
+    {
+      "id": "linear-eq-1var-bm-1",
+      "type": "basic-mastery",
+      "stem": "解方程式 2x + 3 = 11",
+      "options": ["4", "5", "3", "8"],
+      "answer": 0,
+      "explanation": "2x = 11-3 = 8，x = 4"
+    },
+    {
+      "id": "linear-eq-1var-bm-2",
+      "type": "basic-mastery",
+      "stem": "解方程式 3x - 5 = 2x + 1",
+      "options": ["6", "4", "-6", "1"],
+      "answer": 0,
+      "explanation": "移項：3x-2x = 1+5，x = 6"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "linear-eq-1var-ci-1",
+      "type": "concept-id",
+      "statement": "解方程式時，等號兩邊同時加上或減去相同的數，等式仍然成立。",
+      "correctAnswer": true,
+      "explanation": "這是等量公理之一，保持等式兩邊平衡。"
+    },
+    {
+      "id": "linear-eq-1var-ci-2",
+      "type": "concept-id",
+      "statement": "移項時，數字從等號一邊移到另一邊，正負號不需要改變。",
+      "correctAnswer": false,
+      "explanation": "移項的本質是兩邊同加或同減，所以移過去的項要變號。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "linear-eq-1var-ed-1",
+      "type": "error-diagnosis",
+      "problem": "解方程式 x + 7 = 15",
+      "wrongSolution": "算成 x = 15 + 7 = 22",
+      "errorOptions": ["移項時正負號沒有改變（應該用減法）", "加法算錯", "抄錯數字", "漏看等號"],
+      "correctErrorIndex": 0,
+      "explanation": "正確做法為兩邊同減 7：x = 15-7 = 8"
+    },
+    {
+      "id": "linear-eq-1var-ed-2",
+      "type": "error-diagnosis",
+      "problem": "解方程式 2x = 10",
+      "wrongSolution": "算成 x = 10 - 2 = 8",
+      "errorOptions": ["消去係數時用了減法而非除法", "除法算錯", "看錯係數", "抄錯數字"],
+      "correctErrorIndex": 0,
+      "explanation": "消去係數 2 應該兩邊同除以 2：x = 10÷2 = 5"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "linear-eq-1var-ca-1",
+      "type": "context-application",
+      "scenario": "小美買了 3 枝相同的筆，又買了一本 20 元的筆記本，總共花了 65 元（設每枝筆 x 元）。",
+      "question": "每枝筆多少元？",
+      "options": ["15 元", "45 元", "20 元", "5 元"],
+      "answer": 0,
+      "explanation": "3x + 20 = 65 ⇒ 3x = 45 ⇒ x = 15"
+    },
+    {
+      "id": "linear-eq-1var-ca-2",
+      "type": "context-application",
+      "scenario": "某數的 2 倍加上 7 等於 23。",
+      "question": "這個數是多少？",
+      "options": ["8", "16", "9", "11.5"],
+      "answer": 0,
+      "explanation": "2x + 7 = 23 ⇒ 2x = 16 ⇒ x = 8"
+    }
+  ]
+}
