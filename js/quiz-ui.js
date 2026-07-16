@@ -34,6 +34,29 @@ function markResult(list, btn, isCorrect, correctBtn) {
   if (!isCorrect && correctBtn) correctBtn.classList.add("q-correct");
 }
 
+// 答對彩鉛屑噴發：從正解按鈕位置隨機噴 12 顆（純 DOM 粒子，700ms 自毀）
+const SHAVING_COLORS = ["var(--cp-red)", "var(--cp-green)", "var(--cp-blue)", "var(--cp-orange)", "var(--cp-yellow)"];
+function burstShavings(wrap, originEl, count = 12) {
+  const wrapRect = wrap.getBoundingClientRect();
+  const rect = originEl?.getBoundingClientRect() ?? wrapRect;
+  const ox = rect.left - wrapRect.left + rect.width / 2;
+  const oy = rect.top - wrapRect.top + rect.height / 2;
+  for (let i = 0; i < count; i++) {
+    const p = el("span", "pshaving", ["✦", "✏", "●", "▲"][i % 4]);
+    const angle = Math.random() * Math.PI * 2;
+    const dist = 40 + Math.random() * 70;
+    p.style.left = `${ox}px`;
+    p.style.top = `${oy}px`;
+    p.style.setProperty("--dx", `${Math.cos(angle) * dist}px`);
+    p.style.setProperty("--dy", `${Math.sin(angle) * dist - 30}px`);
+    p.style.setProperty("--rot", `${(Math.random() - 0.5) * 540}deg`);
+    p.style.setProperty("--sc", `${0.6 + Math.random() * 0.9}`);
+    p.style.color = SHAVING_COLORS[i % SHAVING_COLORS.length];
+    wrap.appendChild(p);
+    setTimeout(() => p.remove(), 800);
+  }
+}
+
 function addMascotReaction(wrap, mascotVariant, isCorrect) {
   if (!mascotVariant) return;
   const box = el("div", `q-mascot-react react-${isCorrect ? "happy" : "sad"}`);
@@ -66,12 +89,19 @@ export function renderQuestion(question, onAnswered, mascotVariant, opts = {}) {
   const handleAnswered = (isCorrect) => {
     explain.style.display = "block";
     addMascotReaction(wrap, mascotVariant, isCorrect);
+    if (isCorrect) {
+      burstShavings(wrap, wrap.querySelector(".q-option.q-correct"));
+    }
     if (opts.encounter) {
       if (isCorrect) {
         wrap.appendChild(el("div", "encounter-stamp", "✦ 靈光章"));
-        for (let i = 0; i < 2; i++) {
+        for (let i = 0; i < 8; i++) {
           const spark = el("span", "spark", "✦");
-          spark.style.animationDelay = `${i * 0.15}s`;
+          spark.style.animationDelay = `${i * 0.08}s`;
+          spark.style.right = `${20 + Math.random() * 120}px`;
+          spark.style.bottom = `${20 + Math.random() * 60}px`;
+          spark.style.setProperty("--spark-dx", `${(Math.random() - 0.5) * 60}px`);
+          spark.style.fontSize = `${0.8 + Math.random() * 0.8}rem`;
           wrap.appendChild(spark);
         }
       } else {

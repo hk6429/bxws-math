@@ -21,6 +21,11 @@ export function isDue(questionId) {
   return Date.now() >= dueAt;
 }
 
+// 是否曾作答過（有 Leitner 紀錄）——複習類每日任務用
+export function hasRecord(questionId) {
+  return !!getBoxState()[questionId];
+}
+
 export function updateBox(questionId, correct) {
   const state = getBoxState();
   const current = state[questionId]?.box ?? 1;

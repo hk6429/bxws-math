@@ -16,6 +16,38 @@
       "options": ["6", "4", "-6", "1"],
       "answer": 0,
       "explanation": "移項：3x-2x = 1+5，x = 6"
+    },
+    {
+      "id": "linear-eq-1var-bm-3",
+      "type": "basic-mastery",
+      "stem": "解方程式 x - 6 = 9",
+      "options": ["3", "15", "-15", "54"],
+      "answer": 1,
+      "explanation": "根據等量公理，兩邊同加 6：x = 9+6 = 15。檢驗：15-6 = 9 ✓"
+    },
+    {
+      "id": "linear-eq-1var-bm-4",
+      "type": "basic-mastery",
+      "stem": "解方程式 x÷4 = 3",
+      "options": ["7", "3/4", "12", "-1"],
+      "answer": 2,
+      "explanation": "根據等量公理，兩邊同乘 4：x = 3×4 = 12。檢驗：12÷4 = 3 ✓"
+    },
+    {
+      "id": "linear-eq-1var-bm-5",
+      "type": "basic-mastery",
+      "stem": "解方程式 5x + 4 = 2x - 8",
+      "options": ["-4", "4", "-4/3", "-12"],
+      "answer": 0,
+      "explanation": "2x 移到左邊變 -2x，+4 移到右邊變 -4：5x-2x = -8-4，3x = -12，兩邊同除以 3 得 x = -4。檢驗：5×(-4)+4 = -16，2×(-4)-8 = -16 ✓"
+    },
+    {
+      "id": "linear-eq-1var-bm-6",
+      "type": "basic-mastery",
+      "stem": "解方程式 (2/3)x - 1 = 5",
+      "options": ["4", "6", "9", "18"],
+      "answer": 2,
+      "explanation": "-1 移項到右邊變 +1：(2/3)x = 5+1 = 6。兩邊同乘 3/2（即除以係數 2/3）：x = 6×(3/2) = 9。檢驗：(2/3)×9-1 = 6-1 = 5 ✓"
     }
   ],
   "conceptId": [
@@ -32,6 +64,34 @@
       "statement": "移項時，數字從等號一邊移到另一邊，正負號不需要改變。",
       "correctAnswer": false,
       "explanation": "移項的本質是兩邊同加或同減，所以移過去的項要變號。"
+    },
+    {
+      "id": "linear-eq-1var-ci-3",
+      "type": "concept-id",
+      "statement": "等號兩邊同時乘以或除以同一個不為 0 的數，等式仍然成立。",
+      "correctAnswer": true,
+      "explanation": "這也是等量公理：像天平兩邊同時放大或縮小相同倍數，仍然保持平衡。除數不能為 0。"
+    },
+    {
+      "id": "linear-eq-1var-ci-4",
+      "type": "concept-id",
+      "statement": "要檢驗 x=5 是不是方程式 2x-3=7 的解，可以把 5 代入原方程式，看等號兩邊是否相等。",
+      "correctAnswer": true,
+      "explanation": "代入檢驗是確認解的標準方法：2×5-3 = 7，左邊等於右邊，所以 x=5 是這個方程式的解。"
+    },
+    {
+      "id": "linear-eq-1var-ci-5",
+      "type": "concept-id",
+      "statement": "解方程式 x+5=12 時，只要把左邊減 5，右邊不用動，等式仍然成立。",
+      "correctAnswer": false,
+      "explanation": "等量公理要求等號「兩邊同時」做相同的操作。只減一邊會破壞平衡：正確做法是兩邊同減 5，得 x = 12-5 = 7。"
+    },
+    {
+      "id": "linear-eq-1var-ci-6",
+      "type": "concept-id",
+      "statement": "解方程式 2x=6 時，可以把係數 2 移項變成 x=6-2，所以 x=4。",
+      "correctAnswer": false,
+      "explanation": "移項（加減互換）只適用於「加減的項」；2x 中的 2 是乘在 x 上的係數，要用「兩邊同除以 2」消去：x = 6÷2 = 3。檢驗：2×3 = 6 ✓，而 2×4 = 8 ≠ 6。"
     }
   ],
   "errorDiagnosis": [
@@ -52,6 +112,42 @@
       "errorOptions": ["消去係數時用了減法而非除法", "除法算錯", "看錯係數", "抄錯數字"],
       "correctErrorIndex": 0,
       "explanation": "消去係數 2 應該兩邊同除以 2：x = 10÷2 = 5"
+    },
+    {
+      "id": "linear-eq-1var-ed-3",
+      "type": "error-diagnosis",
+      "problem": "解方程式 x + 9 = 4",
+      "wrongSolution": "小玲算成 x = 4 + 9 = 13",
+      "errorOptions": ["加法算錯", "+9 移項到右邊時忘了變號（應該變成 -9）", "抄錯數字", "把未知數放錯邊"],
+      "correctErrorIndex": 1,
+      "explanation": "+9 移到等號右邊要變成 -9：x = 4-9 = -5。檢驗：-5+9 = 4 ✓。答案是負數也沒關係，不要因為怕負數就把減法改成加法。"
+    },
+    {
+      "id": "linear-eq-1var-ed-4",
+      "type": "error-diagnosis",
+      "problem": "解方程式 x - 4 = 10",
+      "wrongSolution": "小凱算成 x = 10 - 4 = 6",
+      "errorOptions": ["減法算錯", "看錯等號方向", "-4 移項到右邊時忘了變號（應該變成 +4）", "抄錯題目"],
+      "correctErrorIndex": 2,
+      "explanation": "-4 移到等號右邊要變成 +4：x = 10+4 = 14。檢驗：14-4 = 10 ✓，而 6-4 = 2 ≠ 10。"
+    },
+    {
+      "id": "linear-eq-1var-ed-5",
+      "type": "error-diagnosis",
+      "problem": "解方程式 4x - 3 = 2x + 5",
+      "wrongSolution": "小威算成 4x + 2x = 5 + 3，6x = 8，x = 4/3",
+      "errorOptions": ["-3 移項時變號錯誤", "除法算錯", "係數相加算錯", "2x 移到左邊時忘了變號（應該是 4x-2x）"],
+      "correctErrorIndex": 3,
+      "explanation": "右邊的 2x 移到左邊要變成 -2x：4x-2x = 5+3，2x = 8，x = 4。檢驗：4×4-3 = 13，2×4+5 = 13 ✓。小威把 -3 的移項做對了，卻把 2x 移項時沒變號。"
+    },
+    {
+      "id": "linear-eq-1var-ed-6",
+      "type": "error-diagnosis",
+      "problem": "解方程式 2(x + 3) = 10",
+      "wrongSolution": "小芸算成 2x + 3 = 10，2x = 7，x = 3.5",
+      "errorOptions": ["用分配律去括號時，2 沒有乘到括號內的第二項 3", "移項忘了變號", "除法算錯", "抄錯係數"],
+      "correctErrorIndex": 0,
+      "explanation": "分配律要把 2 乘到括號內每一項：2(x+3) = 2x+6。所以 2x+6 = 10，2x = 10-6 = 4，x = 2。檢驗：2×(2+3) = 2×5 = 10 ✓"
     }
   ],
   "contextApplication": [
@@ -72,6 +168,42 @@
       "options": ["8", "16", "9", "11.5"],
       "answer": 0,
       "explanation": "2x + 7 = 23 ⇒ 2x = 16 ⇒ x = 8"
+    },
+    {
+      "id": "linear-eq-1var-ca-3",
+      "type": "context-application",
+      "scenario": "姐姐的年齡比小林年齡的 2 倍少 3 歲，姐姐今年 15 歲（設小林今年 x 歲）。",
+      "question": "小林今年幾歲？",
+      "options": ["6 歲", "9 歲", "12 歲", "7.5 歲"],
+      "answer": 1,
+      "explanation": "依題意列式：2x-3 = 15。-3 移項變 +3：2x = 15+3 = 18，兩邊同除以 2：x = 9。檢驗：9 的 2 倍是 18，少 3 歲是 15 ✓。若移項忘變號算成 2x = 15-3 會誤得 6。"
+    },
+    {
+      "id": "linear-eq-1var-ca-4",
+      "type": "context-application",
+      "scenario": "一條繩子長 x 公分，剪掉 35 公分後，剩下 48 公分。",
+      "question": "這條繩子原來長多少公分？",
+      "options": ["13 公分", "48 公分", "35 公分", "83 公分"],
+      "answer": 3,
+      "explanation": "依題意列式：x-35 = 48。-35 移項變 +35：x = 48+35 = 83。檢驗：83-35 = 48 ✓。若誤算 48-35 = 13，剪掉 35 後會比 35 還短，不合理。"
+    },
+    {
+      "id": "linear-eq-1var-ca-5",
+      "type": "context-application",
+      "scenario": "門票每張 x 元，爸爸買了 4 張門票，拿 1000 元付款，店員找回 120 元。",
+      "question": "每張門票多少元？",
+      "options": ["250 元", "200 元", "220 元", "280 元"],
+      "answer": 2,
+      "explanation": "依題意列式：1000-4x = 120（付款減花費等於找零），或 4x = 1000-120。4x = 880，兩邊同除以 4：x = 220。檢驗：4×220 = 880，1000-880 = 120 ✓。若忘了扣找零直接算 1000÷4 會誤得 250。"
+    },
+    {
+      "id": "linear-eq-1var-ca-6",
+      "type": "context-application",
+      "scenario": "三個連續整數的和是 72（設最小的整數為 x）。",
+      "question": "最小的整數是多少？",
+      "options": ["23", "24", "25", "22"],
+      "answer": 0,
+      "explanation": "三個連續整數為 x、x+1、x+2，依題意列式：x+(x+1)+(x+2) = 72，合併同類項：3x+3 = 72，+3 移項變 -3：3x = 69，兩邊同除以 3：x = 23。檢驗：23+24+25 = 72 ✓"
     }
   ]
 }

@@ -1056,3 +1056,332 @@ main { padding: 24px; max-width: 960px; margin: 0 auto; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ===== 玩家評審修正批次（2026-07-16）===== */
+
+/* 音效開關鈕 */
+.nav-sfx { min-width: 44px; font-size: 1.1rem; }
+
+/* 下一題門禁：作答前隱藏 */
+.q-next-hidden { display: none !important; }
+
+/* 答對終於有動畫了：正解按鈕彈跳＋綠光 */
+.q-option.q-correct {
+  animation: correct-pop 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes correct-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.06); box-shadow: 0 0 0 6px rgba(77, 143, 79, 0.25); }
+  100% { transform: scale(1); }
+}
+
+/* 答對彩鉛屑粒子 */
+.pshaving {
+  position: absolute;
+  font-size: 0.9rem;
+  pointer-events: none;
+  z-index: 30;
+  animation: shaving-burst 0.75s ease-out forwards;
+}
+@keyframes shaving-burst {
+  0% { transform: translate(0, 0) rotate(0deg) scale(var(--sc, 1)); opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) rotate(var(--rot)) scale(0.4); opacity: 0; }
+}
+
+/* 連對 5+ 升溫 */
+.streak-badge-hot { color: var(--cp-orange); font-size: 1.05em; }
+.q-card.streak-hot { box-shadow: 0 0 0 3px rgba(217, 123, 41, 0.35), var(--sketch-shadow, 4px 4px 0 var(--paper-shadow)); }
+
+/* 今日修稿單 */
+.daily-board {
+  position: relative;
+  background: var(--paper-bright);
+  border: var(--sketch-border);
+  border-radius: var(--sketch-radius-a);
+  padding: 14px 18px;
+  margin: 0 0 16px;
+  box-shadow: 4px 4px 0 var(--paper-shadow);
+  font-family: var(--font-hand);
+}
+.daily-board.daily-done { background: linear-gradient(135deg, var(--paper-bright), #ead9a8); }
+.daily-title { font-weight: 700; font-size: 1.05rem; margin-bottom: 8px; color: var(--pencil); }
+.daily-tasks { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+.daily-task { color: var(--pencil); }
+.daily-task.task-done { color: var(--cp-green); text-decoration: line-through; text-decoration-thickness: 1px; }
+.daily-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.daily-btn {
+  min-height: 44px;
+  padding: 8px 16px;
+  font-family: var(--font-hand);
+  font-size: 0.95rem;
+  background: var(--paper);
+  border: var(--sketch-border);
+  border-radius: var(--sketch-radius-b);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--paper-shadow);
+}
+.daily-btn:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--paper-shadow); }
+.ink-bottle { color: var(--cp-blue); font-size: 0.92rem; }
+.daily-stamp {
+  position: absolute;
+  right: 18px;
+  top: 12px;
+  width: 58px;
+  height: 58px;
+  border: 3px double var(--cp-red);
+  border-radius: 50%;
+  color: var(--cp-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  transform: rotate(-12deg);
+  font-size: 0.9rem;
+}
+.daily-stamp.stamp-fresh { animation: stamp-slam 0.5s cubic-bezier(0.36, 0, 0.66, -0.3) both; }
+.daily-lastplayed { margin-top: 8px; font-size: 0.85rem; color: rgba(74, 66, 56, 0.7); }
+
+/* 斷點續傳卡 */
+.resume-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: #fdf6cf;
+  border: var(--sketch-border);
+  border-radius: var(--sketch-radius-b);
+  padding: 12px 16px;
+  margin-bottom: 14px;
+  box-shadow: 3px 3px 0 var(--paper-shadow);
+  font-family: var(--font-hand);
+}
+.resume-drop { opacity: 0.75; }
+
+/* 每週大師盃 */
+.weekly-card {
+  background: var(--paper-bright);
+  border: 2px solid var(--cp-orange);
+  border-radius: var(--sketch-radius-b);
+  padding: 14px 18px;
+  margin-bottom: 14px;
+  box-shadow: 4px 4px 0 rgba(217, 123, 41, 0.25);
+  font-family: var(--font-hand);
+}
+.weekly-title { font-weight: 700; color: var(--cp-orange); margin-bottom: 6px; }
+.weekly-best { color: var(--pencil); margin-bottom: 6px; }
+.weekly-code-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+.weekly-code-row code, .weekly-result code {
+  background: var(--paper-deep);
+  border: 1px dashed var(--pencil);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+}
+.weekly-compare { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
+.weekly-compare input {
+  min-height: 44px;
+  padding: 6px 10px;
+  border: var(--sketch-border);
+  border-radius: 8px;
+  font-family: var(--font-hand);
+  background: var(--paper);
+  flex: 1 1 200px;
+}
+.weekly-compare-result { width: 100%; color: var(--cp-blue); font-weight: 700; min-height: 1.2em; }
+.weekly-result {
+  background: #fdf3df;
+  border: 2px solid var(--cp-orange);
+  border-radius: var(--sketch-radius-b);
+  padding: 12px 16px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.weekly-result-title { font-weight: 700; color: var(--cp-orange); width: 100%; }
+
+/* Ghost Run */
+.quiz-ghost {
+  font-family: var(--font-hand);
+  color: rgba(74, 66, 56, 0.75);
+  font-size: 0.92rem;
+  margin: 4px 0 8px;
+}
+
+/* 稀有章出貨卡（結算重播） */
+.ms-drop.rare-drop { border-color: var(--cp-red); background: #fbeee9; }
+.ms-drop.rare-drop .ms-sym { color: var(--cp-red); }
+
+/* 大師印章簿 */
+.dash-stampbook { margin-top: 20px; }
+.stamp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+.stamp-cell {
+  border: var(--sketch-border);
+  border-radius: var(--sketch-radius-b);
+  background: var(--paper-bright);
+  padding: 10px;
+  text-align: center;
+  font-family: var(--font-hand);
+  box-shadow: 2px 2px 0 var(--paper-shadow);
+}
+.stamp-cell.stamp-locked { border-style: dashed; opacity: 0.6; background: var(--paper); }
+.stamp-sym {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 6px;
+  border: 2px double var(--cp-red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cp-red);
+  font-size: 1.2rem;
+  transform: rotate(-8deg);
+}
+.stamp-locked .stamp-sym { border-color: var(--pencil); color: var(--pencil); }
+.stamp-name { font-size: 0.85rem; color: var(--pencil); }
+.ms-date { font-size: 0.72rem; color: rgba(74, 66, 56, 0.6); margin-top: 4px; }
+
+/* 墨水瓶區與紀錄列 */
+.dash-ink { margin-top: 20px; }
+.ink-hint { color: rgba(74, 66, 56, 0.7); font-family: var(--font-hand); }
+.dash-records { color: var(--cp-blue); font-family: var(--font-hand); }
+.dash-share { margin-top: 20px; }
+
+/* 終局橫幅：已通關的收斂版 */
+.endgame-banner.endgame-cleared { opacity: 0.92; }
+.endgame-cleared .endgame-title { font-size: 1rem; }
+
+@media (max-width: 600px) {
+  .daily-stamp { position: static; margin-top: 8px; transform: rotate(-6deg); }
+  .weekly-compare input { flex-basis: 100%; }
+}
+
+/* ===== 西洋古董毛邊紙改版（2026-07-16）===== */
+/* 羊皮紙色調覆蓋 */
+:root {
+  --paper: #ecd9ae;
+  --paper-bright: #f3e6c2;
+  --paper-deep: #dcc491;
+  --paper-shadow: rgba(88, 62, 28, 0.3);
+  --grid-line: transparent;
+  --ink: #3d2f1c;
+  --ink-dim: #857250;
+  --pencil: #4b3a22;
+  --pencil-soft: rgba(75, 58, 34, 0.45);
+  --deckle-a: polygon(0.0% 1.0%, 11.6% 1.2%, 22.3% 0.4%, 31.9% 0.0%, 43.0% 0.2%, 54.2% 1.2%, 66.4% 0.9%, 76.6% 0.8%, 89.3% 1.3%, 99.8% 0.0%, 98.6% 9.7%, 99.0% 21.5%, 99.0% 32.1%, 99.4% 45.5%, 99.1% 55.8%, 99.6% 66.3%, 99.9% 76.4%, 98.7% 87.9%, 100.0% 99.8%, 88.3% 99.8%, 77.6% 99.4%, 67.6% 99.4%, 54.7% 99.8%, 44.5% 98.9%, 34.1% 99.4%, 23.8% 98.9%, 10.8% 99.3%, 1.0% 100.0%, 1.3% 89.4%, 0.8% 78.0%, 1.1% 66.1%, 0.6% 55.9%, 0.2% 44.3%, 1.0% 34.8%, 0.1% 22.7%, 1.3% 11.8%);
+  --deckle-b: polygon(1.4% 1.3%, 12.4% 1.2%, 22.5% 0.2%, 33.4% 1.1%, 43.5% 0.2%, 54.7% 0.1%, 65.1% 1.2%, 78.4% 0.2%, 88.9% 0.7%, 99.6% 0.0%, 99.2% 11.4%, 99.5% 22.6%, 98.6% 32.9%, 99.3% 44.0%, 99.8% 56.1%, 99.5% 65.3%, 99.9% 78.5%, 99.7% 88.7%, 100.0% 99.1%, 87.9% 99.5%, 78.8% 99.1%, 65.4% 98.8%, 54.1% 99.4%, 44.7% 99.1%, 32.8% 99.6%, 21.5% 99.4%, 12.0% 99.9%, 0.7% 98.7%, 0.8% 89.6%, 0.9% 76.9%, 0.1% 68.0%, 0.3% 57.0%, 1.0% 46.0%, 1.3% 33.1%, 1.4% 23.2%, 0.5% 12.6%);
+}
+
+/* 陳年羊皮紙桌面：污漬斑駁＋四周暗角，不再有方格 */
+body {
+  background:
+    radial-gradient(ellipse 45% 30% at 18% 12%, rgba(122, 86, 38, 0.12), transparent 70%),
+    radial-gradient(ellipse 38% 26% at 84% 68%, rgba(110, 74, 32, 0.14), transparent 70%),
+    radial-gradient(ellipse 30% 22% at 62% 24%, rgba(140, 100, 48, 0.08), transparent 70%),
+    radial-gradient(ellipse 24% 18% at 34% 82%, rgba(120, 82, 36, 0.1), transparent 70%),
+    radial-gradient(circle 5% at 74% 40%, rgba(96, 62, 24, 0.09), transparent 100%),
+    radial-gradient(ellipse at center, #e6d2a4 0%, #dcc491 52%, #c0a069 100%);
+  background-attachment: fixed;
+}
+
+/* 毛邊紙面板：撕邊取代直角框線，邊緣以焦褐暈染收邊 */
+.q-card,
+.daily-board,
+.weekly-card,
+.resume-card,
+.q-summary,
+.strategy-card,
+.dash-summary,
+.dash-collection,
+.dash-stampbook,
+.dash-ink,
+.dash-badges,
+.dash-errorbook,
+.dash-leaderboard,
+.dash-share,
+.dash-name,
+.endgame-banner {
+  border: none;
+  border-radius: 0;
+  clip-path: var(--deckle-a);
+  background:
+    radial-gradient(ellipse 60% 40% at 22% 18%, rgba(150, 112, 58, 0.07), transparent 75%),
+    radial-gradient(ellipse 46% 34% at 80% 78%, rgba(140, 100, 48, 0.09), transparent 75%),
+    var(--paper-bright);
+  box-shadow:
+    inset 0 0 0 1px rgba(96, 68, 30, 0.18),
+    inset 0 0 22px rgba(96, 68, 30, 0.22);
+}
+.daily-board, .q-summary, .dash-collection, .dash-badges, .weekly-card { clip-path: var(--deckle-b); }
+.weekly-card { box-shadow: inset 0 0 0 2px rgba(180, 96, 30, 0.35), inset 0 0 22px rgba(140, 76, 22, 0.22); }
+
+/* 測驗卡：拿掉現代筆記本的藍線與紅邊線，改成手稿褐墨橫線 */
+.q-card {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 33px, rgba(110, 80, 40, 0.1) 33px 34px),
+    radial-gradient(ellipse 50% 36% at 78% 20%, rgba(150, 112, 58, 0.08), transparent 75%),
+    var(--paper-bright);
+  padding-left: 28px;
+}
+
+/* 手稿卡與印章格：小面積毛邊 */
+.ms-card, .stamp-cell {
+  border: none;
+  border-radius: 0;
+  clip-path: var(--deckle-b);
+  box-shadow: inset 0 0 0 1px rgba(96, 68, 30, 0.16), inset 0 0 14px rgba(96, 68, 30, 0.18);
+}
+.ms-card.locked, .stamp-cell.stamp-locked {
+  box-shadow: inset 0 0 0 1px rgba(96, 68, 30, 0.28), inset 0 0 14px rgba(96, 68, 30, 0.12);
+  background: var(--paper-deep);
+}
+
+/* 便利貼與語錄仍是貼上去的紙片，跟著換毛邊 */
+.quote-note { clip-path: var(--deckle-a); border: none; }
+
+/* 選項按鈕保留手繪圓角（是墨線畫的框，不是紙片），僅換紙色 */
+.q-option, .q-next, .daily-btn { background: var(--paper-bright); }
+
+/* 沾水鵝毛筆：桌角裝飾 */
+.quill-deco {
+  position: fixed;
+  right: 6px;
+  bottom: 48px;
+  width: 170px;
+  pointer-events: none;
+  z-index: 5;
+  transform: rotate(-8deg);
+  filter: drop-shadow(3px 5px 4px rgba(60, 40, 12, 0.35));
+  opacity: 0.96;
+}
+@media (max-width: 900px) { .quill-deco { width: 110px; bottom: 40px; opacity: 0.85; } }
+@media (max-width: 600px) { .quill-deco { display: none; } }
+
+/* topbar 換成深色舊皮革，襯羊皮紙 */
+.topbar {
+  background:
+    repeating-linear-gradient(90deg, transparent 0 3px, rgba(0, 0, 0, 0.05) 3px 4px),
+    linear-gradient(#7a5c38, #64482a);
+  border-bottom: 3px solid #3d2c16;
+}
+
+/* 技能樹大稿紙也換毛邊羊皮紙 */
+.skill-map {
+  border: none;
+  border-radius: 0;
+  clip-path: var(--deckle-a);
+  background:
+    repeating-linear-gradient(180deg, transparent 0 33px, rgba(110, 80, 40, 0.08) 33px 34px),
+    radial-gradient(ellipse 60% 40% at 80% 14%, rgba(150, 112, 58, 0.09), transparent 75%),
+    radial-gradient(ellipse 46% 30% at 16% 84%, rgba(140, 100, 48, 0.08), transparent 75%),
+    var(--paper-bright);
+  box-shadow: inset 0 0 0 1px rgba(96, 68, 30, 0.16), inset 0 0 26px rgba(96, 68, 30, 0.2);
+}

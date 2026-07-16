@@ -21,6 +21,20 @@ const QUOTES = {
   ],
 };
 
+// 墨水瓶番外語錄：每集滿 7 滴墨解鎖一則（署名規則同上，不捏造名言）
+export const EXTRA_QUOTES = [
+  { text: "如果達文西在場，大概會說：我的每一本筆記，都是從第一頁的塗鴉開始的。你已經翻開第七頁了。", by: "" },
+  { text: "「數學是科學的皇后，數論是數學的皇后。」你每天練的加減乘除，正是皇后的階梯。", by: "高斯" },
+  { text: "如果達文西在場，大概會說：持續，是天分做不到的事。", by: "" },
+  { text: "如果高斯在場，大概會說：我小時候算 1 加到 100，靠的不是快，是看出規律——你也開始看出自己的規律了。", by: "" },
+  { text: "「頑固的嚴謹。」一個月的墨水瓶，就是這四個字最好的證明。", by: "達文西座右銘 Ostinato rigore" },
+  { text: "如果達文西與高斯同時在場，大概會一起說：工作室的門，永遠為每天回來的人開著。", by: "" },
+];
+
+export function unlockedExtraQuotes(inkDropCount) {
+  return EXTRA_QUOTES.slice(0, Math.floor(inkDropCount / 7));
+}
+
 export function pickQuote(stars, mascot) {
   if (Math.random() >= 0.4) return null;
   const pool = stars >= 3 ? QUOTES.praise : stars >= 1 ? QUOTES.cheer : QUOTES.comfort;

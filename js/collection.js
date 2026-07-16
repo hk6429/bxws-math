@@ -13,6 +13,43 @@ export const MANUSCRIPTS = [
   { id: "master-trial", sym: "∞", name: "雙大師聯名合稿", hint: "大師試煉正確率達九成，直接落款", desc: "達文西執筆、高斯驗算——工作室最珍貴的一頁。" },
 ];
 
+// 大師印章簿：奇遇題答對 5% 機率掉當前節點主題章（10 次未掉保底必掉）
+export const RARE_STAMPS = [
+  { id: "davinci-manuscript", sym: "🪶", name: "達文西手稿章", hint: "數與量的奇遇題裡等你" },
+  { id: "gauss-signature", sym: "Σ", name: "高斯親筆章", hint: "代數的奇遇題裡等你" },
+  { id: "stamp-fraction-unlike-denom", sym: "½", name: "通分之橋章", hint: "「異分母分數」的奇遇題裡等你" },
+  { id: "stamp-fraction-mul", sym: "¾", name: "切割乾酪章", hint: "「分數乘除」的奇遇題裡等你" },
+  { id: "stamp-decimal-mul", sym: "•", name: "小數羅盤章", hint: "「小數乘除」的奇遇題裡等你" },
+  { id: "stamp-ratio-rate", sym: "∶", name: "黃金比例章", hint: "「比與比值」的奇遇題裡等你" },
+  { id: "stamp-negative-number", sym: "−", name: "零下寒冰章", hint: "「負數」的奇遇題裡等你" },
+  { id: "stamp-proportion-eq", sym: "⚖", name: "等比天平章", hint: "「比例式」的奇遇題裡等你" },
+  { id: "stamp-algebra-symbol", sym: "𝑥", name: "未知數面具章", hint: "「代數符號」的奇遇題裡等你" },
+  { id: "stamp-linear-eq-1var", sym: "🗝", name: "解方程金鑰章", hint: "「一元一次方程式」的奇遇題裡等你" },
+];
+
+// 該節點對應的節點章；大師試煉／每週盃掉大師簽名章
+export function stampForNode(nodeId, mascot) {
+  const nodeStamp = RARE_STAMPS.find((s) => s.id === `stamp-${nodeId}`);
+  if (nodeStamp) return nodeStamp;
+  return RARE_STAMPS.find((s) => s.id === (mascot === "gauss" ? "gauss-signature" : "davinci-manuscript"));
+}
+
+export function getRareStamps() {
+  return store.read("rareStampBook", {});
+}
+
+export function ownRareStamp(stampId) {
+  const book = getRareStamps();
+  if (!book[stampId]) {
+    book[stampId] = { at: Date.now() };
+    store.write("rareStampBook", book);
+  }
+  // 相容舊存檔格式
+  const legacy = new Set(store.read("rareStamps", []));
+  legacy.add(stampId);
+  store.write("rareStamps", [...legacy]);
+}
+
 export function getCollection() {
   return store.read("collection", {});
 }

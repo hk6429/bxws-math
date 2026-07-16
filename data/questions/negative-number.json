@@ -16,6 +16,38 @@
       "options": ["12", "-12", "7", "-7"],
       "answer": 0,
       "explanation": "同號相乘結果為正：4×3=12"
+    },
+    {
+      "id": "negative-number-bm-3",
+      "type": "basic-mastery",
+      "stem": "數線上，-2 的相反數是多少？",
+      "options": ["-2", "2", "0", "-4"],
+      "answer": 1,
+      "explanation": "相反數是指在數線上與原點距離相同、但方向相反的數。-2 距離原點 2 個單位，往右邊同樣距離的數是 2，所以 -2 的相反數是 2。"
+    },
+    {
+      "id": "negative-number-bm-4",
+      "type": "basic-mastery",
+      "stem": "3 − 5 = ？",
+      "options": ["2", "8", "-2", "-8"],
+      "answer": 2,
+      "explanation": "3 減 5 不夠減，可想成 3 − 5 = 3 + (-5)。異號相加取絕對值較大者的符號：5 − 3 = 2，取負號，所以 3 − 5 = -2。"
+    },
+    {
+      "id": "negative-number-bm-5",
+      "type": "basic-mastery",
+      "stem": "(-2) − 4 = ？",
+      "options": ["2", "-2", "6", "-6"],
+      "answer": 3,
+      "explanation": "減去 4 等於加上 -4：(-2) − 4 = (-2) + (-4)。同號相加，數值相加、保留負號：2 + 4 = 6，所以答案是 -6。"
+    },
+    {
+      "id": "negative-number-bm-6",
+      "type": "basic-mastery",
+      "stem": "(-3) + (-6) − (-4) = ？",
+      "options": ["-5", "-13", "5", "-7"],
+      "answer": 0,
+      "explanation": "先處理減去負數：−(-4) = +4。原式 = (-3) + (-6) + 4 = (-9) + 4 = -5。"
     }
   ],
   "conceptId": [
@@ -32,6 +64,34 @@
       "statement": "負數的絕對值一定是負的。",
       "correctAnswer": false,
       "explanation": "絕對值表示距離 0 的遠近，恆為非負數，例如 |-5| = 5。"
+    },
+    {
+      "id": "negative-number-ci-3",
+      "type": "concept-id",
+      "statement": "在數線上，-5 在 -2 的左邊。",
+      "correctAnswer": true,
+      "explanation": "數線上愈往左的數愈小。-5 < -2，所以 -5 在 -2 的左邊。"
+    },
+    {
+      "id": "negative-number-ci-4",
+      "type": "concept-id",
+      "statement": "氣溫 -8°C 比氣溫 -3°C 溫暖。",
+      "correctAnswer": false,
+      "explanation": "-8 < -3，所以 -8°C 比 -3°C 更冷，不是更溫暖。負數比大小時，絕對值愈大的負數反而愈小。"
+    },
+    {
+      "id": "negative-number-ci-5",
+      "type": "concept-id",
+      "statement": "減去一個負數，等於加上它的相反數。例如 3 − (-2) = 3 + 2。",
+      "correctAnswer": true,
+      "explanation": "減法可以改寫成加上減數的相反數：a − b = a + (-b)。-2 的相反數是 2，所以 3 − (-2) = 3 + 2 = 5。"
+    },
+    {
+      "id": "negative-number-ci-6",
+      "type": "concept-id",
+      "statement": "若 |a| = |b|，則 a 一定等於 b。",
+      "correctAnswer": false,
+      "explanation": "絕對值相等只代表兩數與 0 的距離相同，a 也可能是 b 的相反數。例如 |3| = |-3| = 3，但 3 ≠ -3。"
     }
   ],
   "errorDiagnosis": [
@@ -52,6 +112,42 @@
       "errorOptions": ["異號相乘卻得到正數，符號判斷錯誤", "乘法表算錯", "看錯運算符號", "抄錯數字"],
       "correctErrorIndex": 0,
       "explanation": "異號相乘結果為負：-(2×3) = -6"
+    },
+    {
+      "id": "negative-number-ed-3",
+      "type": "error-diagnosis",
+      "problem": "計算 3 − 5",
+      "wrongSolution": "算成 3 − 5 = 2",
+      "errorOptions": ["看錯數字", "不夠減時直接大減小，忘了結果應該是負數", "進位錯誤", "把減法當成加法"],
+      "correctErrorIndex": 1,
+      "explanation": "3 比 5 小，不夠減時結果是負數：3 − 5 = -(5 − 3) = -2。只算 5 − 3 = 2 卻沒加負號，就是這種錯誤。"
+    },
+    {
+      "id": "negative-number-ed-4",
+      "type": "error-diagnosis",
+      "problem": "比較 -6 和 -1 的大小",
+      "wrongSolution": "認為 -6 > -1，因為 6 比 1 大",
+      "errorOptions": ["抄錯數字", "把加法規則用錯地方", "只比較絕對值大小，忽略了負號讓方向相反", "計算粗心"],
+      "correctErrorIndex": 2,
+      "explanation": "數線上 -6 在 -1 的左邊，所以 -6 < -1。負數比大小時，絕對值愈大反而愈小，不能只看 6 比 1 大。"
+    },
+    {
+      "id": "negative-number-ed-5",
+      "type": "error-diagnosis",
+      "problem": "計算 (-2) − 4",
+      "wrongSolution": "算成 (-2) − 4 = 2",
+      "errorOptions": ["抄錯題目數字", "乘法的符號規則用錯地方", "計算過程漏寫一步", "把減號和前面的負號誤當成「負負得正」互相抵銷"],
+      "correctErrorIndex": 3,
+      "explanation": "「負負得正」只適用於減去負數（如 −(-4)）或負數相乘，這裡是負數再減去正數：(-2) − 4 = (-2) + (-4) = -6。"
+    },
+    {
+      "id": "negative-number-ed-6",
+      "type": "error-diagnosis",
+      "problem": "計算 |-3| + |-5|",
+      "wrongSolution": "算成 |-3| + |-5| = -8",
+      "errorOptions": ["加法算錯", "誤以為負數的絕對值仍是負數", "看錯運算符號", "漏算一項"],
+      "correctErrorIndex": 1,
+      "explanation": "絕對值恆為非負數：|-3| = 3，|-5| = 5，所以 |-3| + |-5| = 3 + 5 = 8，不是 -8。"
     }
   ],
   "contextApplication": [
@@ -72,6 +168,42 @@
       "options": ["150 元", "550 元", "-150 元", "-550 元"],
       "answer": 0,
       "explanation": "-200 + 350 = 150"
+    },
+    {
+      "id": "negative-number-ca-3",
+      "type": "context-application",
+      "scenario": "一艘潛水艇位於海平面下 15 公尺（記作 -15 公尺），接著上升了 9 公尺。",
+      "question": "潛水艇現在的位置是多少公尺？",
+      "options": ["-24 公尺", "-6 公尺", "6 公尺", "24 公尺"],
+      "answer": 1,
+      "explanation": "上升 9 公尺就是加 9：(-15) + 9 = -6，潛水艇仍在海平面下 6 公尺處。"
+    },
+    {
+      "id": "negative-number-ca-4",
+      "type": "context-application",
+      "scenario": "今天台北氣溫是 5°C，合歡山氣溫是 -4°C。",
+      "question": "台北氣溫比合歡山高幾度？",
+      "options": ["1 度", "-1 度", "9 度", "-9 度"],
+      "answer": 2,
+      "explanation": "求相差幾度用減法：5 − (-4) = 5 + 4 = 9，台北比合歡山高 9 度。"
+    },
+    {
+      "id": "negative-number-ca-5",
+      "type": "context-application",
+      "scenario": "小華用正負數記帳：收入記正、支出記負。這週的紀錄是 +120、-45、-80、+30。",
+      "question": "這週的結餘是多少元？",
+      "options": ["275 元", "25 元", "-25 元", "105 元"],
+      "answer": 1,
+      "explanation": "全部相加：120 + (-45) + (-80) + 30 = 120 − 45 − 80 + 30 = 75 − 80 + 30 = -5 + 30 = 25 元。"
+    },
+    {
+      "id": "negative-number-ca-6",
+      "type": "context-application",
+      "scenario": "玉山主峰海拔約 3952 公尺，某處海底位於海平面下 300 公尺（記作 -300 公尺）。",
+      "question": "兩地的高度相差多少公尺？",
+      "options": ["3652 公尺", "3952 公尺", "-3652 公尺", "4252 公尺"],
+      "answer": 3,
+      "explanation": "高度差用減法：3952 − (-300) = 3952 + 300 = 4252 公尺。減去負數等於加上它的相反數。"
     }
   ]
 }

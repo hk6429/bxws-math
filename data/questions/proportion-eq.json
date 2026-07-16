@@ -16,6 +16,38 @@
       "options": ["3", "12", "5", "30"],
       "answer": 0,
       "explanation": "10x = 5×6 = 30，x = 3"
+    },
+    {
+      "id": "proportion-eq-bm-3",
+      "type": "basic-mastery",
+      "stem": "解比例式 2:5 = 8:x，x 是多少？",
+      "options": ["11", "20", "3.2", "40"],
+      "answer": 1,
+      "explanation": "內項乘積等於外項乘積：5×8 = 2x，40 = 2x，x = 20。也可以想成前項 2 變成 8 是乘以 4，後項 5 也要乘以 4 得 20。"
+    },
+    {
+      "id": "proportion-eq-bm-4",
+      "type": "basic-mastery",
+      "stem": "在比例式 3:7 = 9:21 中，內項是哪兩個數？",
+      "options": ["3 和 21", "7 和 9", "3 和 7", "9 和 21"],
+      "answer": 1,
+      "explanation": "比例式 a:b = c:d 中，中間的兩個數 b、c 是內項，外側的兩個數 a、d 是外項。所以內項是 7 和 9，外項是 3 和 21。"
+    },
+    {
+      "id": "proportion-eq-bm-5",
+      "type": "basic-mastery",
+      "stem": "解比例式 x:6 = 1/2:3，x 是多少？",
+      "options": ["9", "36", "4", "1"],
+      "answer": 3,
+      "explanation": "內項乘積等於外項乘積：6×(1/2) = 3x，3 = 3x，x = 1。"
+    },
+    {
+      "id": "proportion-eq-bm-6",
+      "type": "basic-mastery",
+      "stem": "解比例式 (x+1):3 = 8:6，x 是多少？",
+      "options": ["4", "15", "3", "16"],
+      "answer": 2,
+      "explanation": "內項乘積等於外項乘積：3×8 = 6(x+1)，24 = 6(x+1)，x+1 = 4，所以 x = 3。注意最後要把 x+1 = 4 再減 1。"
     }
   ],
   "conceptId": [
@@ -32,6 +64,34 @@
       "statement": "比例式 a:b = c:d 中，只要 a=c 就一定成立。",
       "correctAnswer": false,
       "explanation": "比例式成立要看整體比值是否相等（ad=bc），不是只看單一項相等。"
+    },
+    {
+      "id": "proportion-eq-ci-3",
+      "type": "concept-id",
+      "statement": "在比例式 2:3 = 4:6 中，2 和 6 是外項。",
+      "correctAnswer": true,
+      "explanation": "比例式 a:b = c:d 中，外側的 a、d 是外項。這裡 a=2、d=6，所以 2 和 6 是外項；3 和 4 是內項。檢驗：外項積 2×6 = 12 = 內項積 3×4。"
+    },
+    {
+      "id": "proportion-eq-ci-4",
+      "type": "concept-id",
+      "statement": "3:5 和 5:3 表示同樣的比。",
+      "correctAnswer": false,
+      "explanation": "比有順序之分：3:5 的比值是 3/5，5:3 的比值是 5/3，兩者不相等，所以不是同樣的比。"
+    },
+    {
+      "id": "proportion-eq-ci-5",
+      "type": "concept-id",
+      "statement": "若 a:b = c:d，則 a×c = b×d。",
+      "correctAnswer": false,
+      "explanation": "正確的性質是外項積等於內項積，即 a×d = b×c，不是 a×c = b×d。例如 1:2 = 3:6 時，1×6 = 2×3 = 6，但 1×3 = 3 ≠ 2×6 = 12。"
+    },
+    {
+      "id": "proportion-eq-ci-6",
+      "type": "concept-id",
+      "statement": "如果 y 與 x 成正比，當 x 變成原來的 2 倍時，y 也變成原來的 2 倍。",
+      "correctAnswer": true,
+      "explanation": "成正比表示 y = kx（k 為定值）。當 x 變成 2x 時，y 變成 k(2x) = 2kx，正好是原來的 2 倍。"
     }
   ],
   "errorDiagnosis": [
@@ -52,6 +112,42 @@
       "errorOptions": ["外項內項對應顛倒", "乘除順序算錯", "看錯數字", "抄錯題目"],
       "correctErrorIndex": 0,
       "explanation": "正確為 2x = 4×5 = 20，x = 10"
+    },
+    {
+      "id": "proportion-eq-ed-3",
+      "type": "error-diagnosis",
+      "problem": "解比例式 4:x = 2:3",
+      "wrongSolution": "算成 x = 4×2÷3 ≈ 2.67",
+      "errorOptions": ["約分約錯", "把內項積等於外項積的對應位置搞錯", "看錯數字", "除法計算錯誤"],
+      "correctErrorIndex": 1,
+      "explanation": "4:x = 2:3 中，內項是 x 和 2，外項是 4 和 3。正確為 2x = 4×3 = 12，x = 6。錯解把 4×2 湊在一起，對應關係錯了。"
+    },
+    {
+      "id": "proportion-eq-ed-4",
+      "type": "error-diagnosis",
+      "problem": "解比例式 1:3 = 5:x",
+      "wrongSolution": "算成 x = 5 + 2 = 7（因為 1 加 2 變成 3）",
+      "errorOptions": ["抄錯數字", "漏乘一項", "把倍數關係誤用加法思考，比例其實是乘法關係", "除的位置放錯"],
+      "correctErrorIndex": 2,
+      "explanation": "1 變成 3 是「乘以 3」，不是「加 2」。所以 x = 5×3 = 15。用內項積等於外項積驗算：3×5 = 1×x，x = 15。"
+    },
+    {
+      "id": "proportion-eq-ed-5",
+      "type": "error-diagnosis",
+      "problem": "解比例式 x:4 = 3:1/2",
+      "wrongSolution": "算成 x = 4×3×1/2 = 6",
+      "errorOptions": ["內項外項顛倒", "分數約分錯誤", "抄錯數字", "應該除以 1/2（等於乘以 2），卻誤成乘以 1/2"],
+      "correctErrorIndex": 3,
+      "explanation": "內項積等於外項積：4×3 = (1/2)x，12 = (1/2)x，x = 12 ÷ (1/2) = 12×2 = 24。除以 1/2 等於乘以 2，錯解卻乘以 1/2 得到 6。"
+    },
+    {
+      "id": "proportion-eq-ed-6",
+      "type": "error-diagnosis",
+      "problem": "y 與 x 成正比，x = 4 時 y = 10，求 x = 6 時的 y",
+      "wrongSolution": "算成 y = 10 + 2 = 12（因為 x 多了 2，y 也加 2）",
+      "errorOptions": ["把正比的倍數關係誤當成加上同樣的數", "比值算錯", "看錯數字", "單位換算錯誤"],
+      "correctErrorIndex": 0,
+      "explanation": "正比是等倍放大：x 從 4 變 6 是乘以 6/4 = 1.5 倍，y 也要乘以 1.5 倍，y = 10×1.5 = 15。也可列比例式 4:10 = 6:y，4y = 60，y = 15。"
     }
   ],
   "contextApplication": [
@@ -72,6 +168,42 @@
       "options": ["1 公升", "4 公升", "0.2 公升", "2 公升"],
       "answer": 0,
       "explanation": "共 1+4=5 份，每份 1 公升，原液佔 1 份 = 1 公升"
+    },
+    {
+      "id": "proportion-eq-ca-3",
+      "type": "context-application",
+      "scenario": "沖泡果汁時，原汁與水的比是 2:3。小美用了 6 杯原汁。",
+      "question": "要加幾杯水才符合比例？",
+      "options": ["4 杯", "9 杯", "7 杯", "18 杯"],
+      "answer": 1,
+      "explanation": "列比例式 2:3 = 6:x，內項積等於外項積：3×6 = 2x，18 = 2x，x = 9 杯。也可想成原汁 2 變 6 是乘以 3，水 3 也乘以 3 得 9。"
+    },
+    {
+      "id": "proportion-eq-ca-4",
+      "type": "context-application",
+      "scenario": "食譜上寫：做 4 人份鬆餅需要 200 克麵粉。現在要做 6 人份。",
+      "question": "需要多少克麵粉？",
+      "options": ["133 克", "1200 克", "240 克", "300 克"],
+      "answer": 3,
+      "explanation": "列比例式 4:200 = 6:x，內項積等於外項積：200×6 = 4x，1200 = 4x，x = 300 克。也可想成每人份 200÷4 = 50 克，6 人份 = 50×6 = 300 克。"
+    },
+    {
+      "id": "proportion-eq-ca-5",
+      "type": "context-application",
+      "scenario": "一張照片原本寬 15 公分、高 10 公分，等比例放大後寬變成 24 公分。",
+      "question": "放大後的高是多少公分？",
+      "options": ["36 公分", "19 公分", "16 公分", "6.25 公分"],
+      "answer": 2,
+      "explanation": "列比例式 15:10 = 24:x，內項積等於外項積：10×24 = 15x，240 = 15x，x = 16 公分。"
+    },
+    {
+      "id": "proportion-eq-ca-6",
+      "type": "context-application",
+      "scenario": "小齊騎腳踏車，速度固定，3/4 小時騎了 9 公里。",
+      "question": "照同樣的速度，騎 15 公里需要多少小時？",
+      "options": ["1.25 小時", "0.45 小時", "5 小時", "20 小時"],
+      "answer": 0,
+      "explanation": "距離與時間成正比，列比例式 9:3/4 = 15:x，內項積等於外項積：(3/4)×15 = 9x，45/4 = 9x，x = 45/36 = 5/4 = 1.25 小時。"
     }
   ]
 }

@@ -5,7 +5,12 @@
       "id": "fraction-mul-bm-1",
       "type": "basic-mastery",
       "stem": "2/3 × 3/4 = ？",
-      "options": ["1/2", "6/7", "3/4", "2/4"],
+      "options": [
+        "1/2",
+        "6/7",
+        "3/4",
+        "5/7"
+      ],
       "answer": 0,
       "explanation": "2×3 / 3×4 = 6/12 = 1/2"
     },
@@ -13,9 +18,66 @@
       "id": "fraction-mul-bm-2",
       "type": "basic-mastery",
       "stem": "4/5 ÷ 2/3 = ？",
-      "options": ["6/5", "8/15", "3/10", "2/3"],
+      "options": [
+        "6/5",
+        "8/15",
+        "3/10",
+        "2/3"
+      ],
       "answer": 0,
       "explanation": "除以一數等於乘以其倒數：4/5 × 3/2 = 12/10 = 6/5"
+    },
+    {
+      "id": "fraction-mul-bm-3",
+      "type": "basic-mastery",
+      "stem": "3/5 × 10 = ？",
+      "options": [
+        "3/50",
+        "10又3/5",
+        "6",
+        "30/50"
+      ],
+      "answer": 2,
+      "explanation": "整數只乘分子：3×10 / 5 = 30/5 = 6。注意不能把 10 同時乘到分子和分母，那樣分數的值不會變。"
+    },
+    {
+      "id": "fraction-mul-bm-4",
+      "type": "basic-mastery",
+      "stem": "5/8 × 4/15 = ？",
+      "options": [
+        "75/32",
+        "1/6",
+        "9/23",
+        "1/12"
+      ],
+      "answer": 1,
+      "explanation": "分子乘分子、分母乘分母：5×4 / 8×15 = 20/120，約分（分子分母同除以 20）= 1/6。也可以先約分再乘：5 和 15 約成 1 和 3，4 和 8 約成 1 和 2，得 1/6。"
+    },
+    {
+      "id": "fraction-mul-bm-5",
+      "type": "basic-mastery",
+      "stem": "1又1/2 ÷ 3/4 = ？",
+      "options": [
+        "1又1/8",
+        "1/2",
+        "4/3",
+        "2"
+      ],
+      "answer": 3,
+      "explanation": "先把帶分數化成假分數：1又1/2 = 3/2。除以 3/4 等於乘以它的倒數 4/3：3/2 × 4/3 = 12/6 = 2。"
+    },
+    {
+      "id": "fraction-mul-bm-6",
+      "type": "basic-mastery",
+      "stem": "2/3 ÷ 4/9 × 1/2 = ？",
+      "options": [
+        "3/2",
+        "3/4",
+        "4/27",
+        "3"
+      ],
+      "answer": 1,
+      "explanation": "先把除法改成乘倒數：2/3 × 9/4 × 1/2 = 18/24，約分（分子分母同除以 6）= 3/4。"
     }
   ],
   "conceptId": [
@@ -32,6 +94,34 @@
       "statement": "分數除法可以把除數的分子分母顛倒後，改成乘法計算。",
       "correctAnswer": true,
       "explanation": "除以一數等於乘以其倒數，這是分數除法的核心規則。"
+    },
+    {
+      "id": "fraction-mul-ci-3",
+      "type": "concept-id",
+      "statement": "3/4 的倒數是 4/3，因為 3/4 × 4/3 = 1。",
+      "correctAnswer": true,
+      "explanation": "兩數相乘等於 1，這兩數互為倒數。3/4 × 4/3 = 12/12 = 1，所以 3/4 的倒數就是把分子分母顛倒的 4/3。"
+    },
+    {
+      "id": "fraction-mul-ci-4",
+      "type": "concept-id",
+      "statement": "分數乘法一定要先通分，才能把分子相乘、分母相乘。",
+      "correctAnswer": false,
+      "explanation": "通分是加減法才需要的步驟。乘法直接分子乘分子、分母乘分母即可，例如 1/2 × 1/3 = 1/6，不必通分。"
+    },
+    {
+      "id": "fraction-mul-ci-5",
+      "type": "concept-id",
+      "statement": "一個數除以真分數（小於 1 的分數），商會比原來的數大。",
+      "correctAnswer": true,
+      "explanation": "除以小於 1 的數等於乘以大於 1 的倒數，結果變大。例如 6 ÷ 1/2 = 6 × 2 = 12，比 6 大。"
+    },
+    {
+      "id": "fraction-mul-ci-6",
+      "type": "concept-id",
+      "statement": "帶分數相乘時，可以整數乘整數、分數乘分數，再把兩個結果相加。",
+      "correctAnswer": false,
+      "explanation": "必須先化成假分數再相乘。例如 1又1/2 × 2又1/2 = 3/2 × 5/2 = 15/4 = 3又3/4；若用整數乘整數（1×2=2）加分數乘分數（1/2×1/2=1/4）只得 2又1/4，是錯的。"
     }
   ],
   "errorDiagnosis": [
@@ -40,7 +130,12 @@
       "type": "error-diagnosis",
       "problem": "計算 2/3 × 3/5",
       "wrongSolution": "小強算成 2×5 / 3×3 = 10/9",
-      "errorOptions": ["交叉相乘，而非分子乘分子、分母乘分母", "忘記約分", "看錯運算符號", "抄錯題目"],
+      "errorOptions": [
+        "交叉相乘，而非分子乘分子、分母乘分母",
+        "忘記約分",
+        "看錯運算符號",
+        "抄錯題目"
+      ],
       "correctErrorIndex": 0,
       "explanation": "正確做法是分子乘分子、分母乘分母：2×3 / 3×5 = 6/15 = 2/5"
     },
@@ -49,9 +144,70 @@
       "type": "error-diagnosis",
       "problem": "計算 3/4 ÷ 1/2",
       "wrongSolution": "小美算成 3/4 × 1/2 = 3/8",
-      "errorOptions": ["除法沒有把除數變成倒數，直接相乘", "分子分母顛倒錯誤", "約分約錯", "抄錯數字"],
+      "errorOptions": [
+        "除法沒有把除數變成倒數，直接相乘",
+        "分子分母顛倒錯誤",
+        "約分約錯",
+        "抄錯數字"
+      ],
       "correctErrorIndex": 0,
       "explanation": "正確做法為 3/4 × 2/1 = 6/4 = 3/2"
+    },
+    {
+      "id": "fraction-mul-ed-3",
+      "type": "error-diagnosis",
+      "problem": "計算 2/5 × 3",
+      "wrongSolution": "小凱算成 2×3 / 5×3 = 6/15 = 2/5",
+      "errorOptions": [
+        "把 3 只乘到分母",
+        "乘完忘記約分",
+        "把 3 同時乘到分子和分母",
+        "把乘法看成除法"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "整數只乘分子：2×3 / 5 = 6/5 = 1又1/5。把 3 同時乘到分子和分母等於乘以 3/3 = 1，分數的值根本沒變。"
+    },
+    {
+      "id": "fraction-mul-ed-4",
+      "type": "error-diagnosis",
+      "problem": "計算 8 ÷ 2/3",
+      "wrongSolution": "小晴算成 1/8 × 3/2 = 3/16",
+      "errorOptions": [
+        "忘記把答案約分成最簡分數",
+        "把被除數變成倒數，除數卻沒有變倒數",
+        "把除法算成減法",
+        "通分時公分母選錯"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "要變倒數的是「除數」2/3，不是被除數 8。正確做法：8 × 3/2 = 24/2 = 12。"
+    },
+    {
+      "id": "fraction-mul-ed-5",
+      "type": "error-diagnosis",
+      "problem": "計算 2又1/3 × 1又1/2",
+      "wrongSolution": "小哲算成 (2×1) + (1/3×1/2) = 2又1/6",
+      "errorOptions": [
+        "通分的公分母算錯",
+        "倒數的分子分母寫反",
+        "假分數化錯數字",
+        "沒有先化成假分數，把整數和分數分開相乘"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "帶分數相乘必須先化成假分數：2又1/3 = 7/3，1又1/2 = 3/2。7/3 × 3/2 = 21/6 = 7/2 = 3又1/2，不是 2又1/6。"
+    },
+    {
+      "id": "fraction-mul-ed-6",
+      "type": "error-diagnosis",
+      "problem": "計算 3/4 ÷ 5/6",
+      "wrongSolution": "小榆算成 4/3 × 5/6 = 20/18 = 10/9",
+      "errorOptions": [
+        "約分時算錯數字",
+        "倒數變錯對象：應把除數 5/6 變倒數，卻把被除數 3/4 變倒數",
+        "分子乘分子時計算錯誤",
+        "答案沒有化成帶分數"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "除以一數等於乘以「除數」的倒數：3/4 × 6/5 = 18/20 = 9/10，不能把被除數 3/4 顛倒成 4/3。"
     }
   ],
   "contextApplication": [
@@ -60,7 +216,12 @@
       "type": "context-application",
       "scenario": "分蛋糕時，每人分到蛋糕的 1/4，小新只吃掉自己那份的 3/4。",
       "question": "小新吃掉整塊蛋糕的幾分之幾？",
-      "options": ["3/16", "3/4", "1/3", "4/3"],
+      "options": [
+        "3/16",
+        "3/4",
+        "1/3",
+        "4/3"
+      ],
       "answer": 0,
       "explanation": "1/4 × 3/4 = 3/16"
     },
@@ -69,9 +230,70 @@
       "type": "context-application",
       "scenario": "一條繩子長 3/4 公尺，平均剪成 3 段。",
       "question": "每段繩子長多少公尺？",
-      "options": ["1/4 公尺", "1/12 公尺", "4/3 公尺", "2/4 公尺"],
+      "options": [
+        "1/4 公尺",
+        "1/12 公尺",
+        "4/3 公尺",
+        "2/4 公尺"
+      ],
       "answer": 0,
       "explanation": "3/4 ÷ 3 = 3/4 × 1/3 = 1/4"
+    },
+    {
+      "id": "fraction-mul-ca-3",
+      "type": "context-application",
+      "scenario": "一瓶果汁有 4/5 公升，媽媽倒了其中的 1/2 給弟弟。",
+      "question": "弟弟得到多少公升的果汁？",
+      "options": [
+        "5/7 公升",
+        "8/5 公升",
+        "3/10 公升",
+        "2/5 公升"
+      ],
+      "answer": 3,
+      "explanation": "「4/5 公升的 1/2」用乘法：4/5 × 1/2 = 4/10，約分成最簡分數 = 2/5 公升。"
+    },
+    {
+      "id": "fraction-mul-ca-4",
+      "type": "context-application",
+      "scenario": "一包麵粉重 3/4 公斤，做一次鬆餅要用 1/8 公斤的麵粉。",
+      "question": "這包麵粉可以做幾次鬆餅？",
+      "options": [
+        "6 次",
+        "3/32 次",
+        "1/6 次",
+        "8 次"
+      ],
+      "answer": 0,
+      "explanation": "求「3/4 裡面有幾個 1/8」用除法：3/4 ÷ 1/8 = 3/4 × 8/1 = 24/4 = 6 次。"
+    },
+    {
+      "id": "fraction-mul-ca-5",
+      "type": "context-application",
+      "scenario": "一塊長方形菜園，長 2又2/5 公尺、寬 1又1/4 公尺。",
+      "question": "這塊菜園的面積是多少平方公尺？",
+      "options": [
+        "2又1/10 平方公尺",
+        "3 平方公尺",
+        "3又13/20 平方公尺",
+        "12/20 平方公尺"
+      ],
+      "answer": 1,
+      "explanation": "先化成假分數：2又2/5 = 12/5，1又1/4 = 5/4。面積 = 12/5 × 5/4 = 60/20 = 3 平方公尺。"
+    },
+    {
+      "id": "fraction-mul-ca-6",
+      "type": "context-application",
+      "scenario": "阿姨買了 3又1/2 公斤的米，每天煮飯用掉 7/10 公斤。",
+      "question": "這些米可以煮幾天？",
+      "options": [
+        "2又9/20 天",
+        "5 天",
+        "1/5 天",
+        "7 天"
+      ],
+      "answer": 1,
+      "explanation": "3又1/2 = 7/2。7/2 ÷ 7/10 = 7/2 × 10/7 = 70/14 = 5 天。"
     }
   ]
 }

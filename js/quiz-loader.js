@@ -1,4 +1,4 @@
-import { isDue, getBox } from "./leitner.js";
+import { isDue, getBox, hasRecord } from "./leitner.js";
 
 const bankCache = {};
 
@@ -43,9 +43,34 @@ export async function buildSession(nodeId, sessionSize = 8, strategy = "slow", e
   const rest = all.filter((q) => !repairIds.has(q.id));
   const due = rest.filter((q) => isDue(q.id));
   const notDue = rest.filter((q) => !isDue(q.id));
+  const dueIds = new Set(due.map((q) => q.id));
   const ordered = [...repairQuestions, ...due, ...notDue].sort((a, b) => {
     if (!!a._fromErrorbook !== !!b._fromErrorbook) return a._fromErrorbook ? -1 : 1;
+    const aDue = dueIds.has(a.id);
+    const bDue = dueIds.has(b.id);
+    if (aDue !== bDue) return aDue ? -1 : 1;
+    if (aDue) return getBox(b.id) - getBox(a.id); // 到期題中，記憶最成熟（高盒）者最急
     return getBox(a.id) - getBox(b.id);
   });
   return ordered.slice(0, Math.min(sessionSize, ordered.length));
+}
+
+// 今日補墨：跨節點蒐集「作答過且到期」的複習題（高盒優先）
+export async function buildReviewSession(nodeIds, sessionSize = 6) {
+  const banks = await Promise.all(nodeIds.map(loadQuestionBank));
+  const all = banks.flatMap((bank, i) =>
+    flattenBank(bank).map((q) => ({ ...q, _nodeId: nodeIds[i] }))
+  );
+  return all
+    .filter((q) => hasRecord(q.id) && isDue(q.id))
+    .sort((a, b) => getBox(b.id) - getBox(a.id))
+    .slice(0, sessionSize);
+}
+
+// 今日到期複習題數（首頁修稿單用）
+export async function countDueReviews(nodeIds) {
+  const banks = await Promise.all(nodeIds.map(loadQuestionBank));
+  return banks
+    .flatMap(flattenBank)
+    .filter((q) => hasRecord(q.id) && isDue(q.id)).length;
 }
