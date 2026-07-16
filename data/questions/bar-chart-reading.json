@@ -1,0 +1,19 @@
+{
+  "nodeId": "bar-chart-reading",
+  "basicMastery": [
+    {"id":"bar-chart-reading-bm-1","type":"basic-mastery","stem":"長條圖中每一格代表 2 人，某長條高 6 格，代表多少人？","options":["3 人","8 人","12 人","16 人"],"answer":2,"explanation":"每格 2 人，共 6 格，所以 2×6=12 人。"},
+    {"id":"bar-chart-reading-bm-2","type":"basic-mastery","stem":"長條圖顯示甲班 24 人、乙班 18 人參加運動會。甲班比乙班多幾人？","options":["4 人","6 人","12 人","42 人"],"answer":1,"explanation":"24-18=6 人。"}
+  ],
+  "conceptId": [
+    {"id":"bar-chart-reading-ci-1","type":"concept-id","statement":"讀長條圖前，要先確認圖名、橫軸、縱軸及每一格代表的數量。","correctAnswer":true,"explanation":"這些資訊決定長條所表示的類別與正確數值。"},
+    {"id":"bar-chart-reading-ci-2","type":"concept-id","statement":"長條愈高一定代表該類別的名稱愈長。","correctAnswer":false,"explanation":"長條高度表示數量大小，和類別名稱的字數無關。"}
+  ],
+  "errorDiagnosis": [
+    {"id":"bar-chart-reading-ed-1","type":"error-diagnosis","problem":"每格代表 5 本，科學書長條高 4 格","wrongSolution":"小凱回答科學書有 9 本，因為 5+4=9","errorOptions":["應用乘法計算每格數量，卻用了加法","把長條高度少數一格","把每格看成 4 本","應該用減法"],"correctErrorIndex":0,"explanation":"4 格、每格 5 本，應算 4×5=20 本。"},
+    {"id":"bar-chart-reading-ed-2","type":"error-diagnosis","problem":"比較長條圖中甲 30 人與乙 20 人","wrongSolution":"小真說乙比甲多 10 人","errorOptions":["減法計算錯誤","把比較方向顛倒，應是甲比乙多 10 人","漏看單位","兩數應該相加"],"correctErrorIndex":1,"explanation":"甲是 30 人、乙是 20 人；差雖然算成 10 人，卻把比較方向說反了。"}
+  ],
+  "contextApplication": [
+    {"id":"bar-chart-reading-ca-1","type":"context-application","scenario":"資源回收長條圖顯示：週一 15 公斤、週二 25 公斤、週三 20 公斤。","question":"三天共回收多少公斤？","options":["45 公斤","50 公斤","60 公斤","75 公斤"],"answer":2,"explanation":"15+25+20=60 公斤。"},
+    {"id":"bar-chart-reading-ca-2","type":"context-application","scenario":"社團人數長條圖中，籃球 16 人、羽球 12 人、桌球 8 人。","question":"如果要選出人數最少的社團，是哪一個？","options":["籃球","羽球","桌球","無法判斷"],"answer":2,"explanation":"8<12<16，所以桌球社人數最少。"}
+  ]
+}

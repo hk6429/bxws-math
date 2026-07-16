@@ -1,0 +1,4 @@
+.codex-image-runtime/
+.p3-image-*.log
+.p3-image-marker-*
+.p3-image-prompt-*.txt

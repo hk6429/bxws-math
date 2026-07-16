@@ -1,0 +1,77 @@
+{
+  "nodeId": "function-relation",
+  "basicMastery": [
+    {
+      "id": "function-relation-bm-1",
+      "type": "basic-mastery",
+      "stem": "若 y=2x+3，當 x=4 時，y 的值是多少？",
+      "options": ["8", "9", "11", "14"],
+      "answer": 2,
+      "explanation": "把 x=4 代入，y=2×4+3=11。"
+    },
+    {
+      "id": "function-relation-bm-2",
+      "type": "basic-mastery",
+      "stem": "下列哪一組對應符合 y=x-2？",
+      "options": ["x=3，y=5", "x=5，y=3", "x=-1，y=1", "x=2，y=2"],
+      "answer": 1,
+      "explanation": "x=5 時，y=5-2=3，因此 (5,3) 符合。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "function-relation-ci-1",
+      "type": "concept-id",
+      "statement": "在 y=3x+1 中，給定一個 x 值，就能依規則算出唯一的 y 值。",
+      "correctAnswer": true,
+      "explanation": "固定 x 後，3x+1 的計算結果只有一個，因此 y 值唯一。"
+    },
+    {
+      "id": "function-relation-ci-2",
+      "type": "concept-id",
+      "statement": "只要 x 增加，任何函數關係中的 y 都一定增加。",
+      "correctAnswer": false,
+      "explanation": "不一定，例如 y=10-x 中，x 增加時 y 反而減少。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "function-relation-ed-1",
+      "type": "error-diagnosis",
+      "problem": "已知 y=4x-5，求 x=3 時的 y",
+      "wrongSolution": "小翔算成 y=4×(3-5)=-8。",
+      "errorOptions": ["把 4x-5 誤看成 4(x-5)", "3-5 算錯", "x 應代成 y", "負數不能當答案"],
+      "correctErrorIndex": 0,
+      "explanation": "4x-5 要先算 4×3，再減 5，得到 y=12-5=7。"
+    },
+    {
+      "id": "function-relation-ed-2",
+      "type": "error-diagnosis",
+      "problem": "檢查點 (2,7) 是否符合 y=3x+1",
+      "wrongSolution": "小庭把 x=7、y=2 代入，算得 2≠22，所以說不符合。",
+      "errorOptions": ["把有序數對中的 x、y 順序顛倒", "3×7 算錯", "等號不能用來檢查", "應把 1 改成 -1"],
+      "correctErrorIndex": 0,
+      "explanation": "(2,7) 表示 x=2、y=7；代入右式得 3×2+1=7，與 y 相等，所以符合。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "function-relation-ca-1",
+      "type": "context-application",
+      "scenario": "計程車資簡化為 y=85+20x，其中 x 是行駛公里數，y 是車資（元）。",
+      "question": "行駛 6 公里，車資是多少元？",
+      "options": ["105 元", "120 元", "205 元", "510 元"],
+      "answer": 2,
+      "explanation": "代入 x=6：y=85+20×6=85+120=205 元。"
+    },
+    {
+      "id": "function-relation-ca-2",
+      "type": "context-application",
+      "scenario": "水箱原有 50 公升水，每分鐘流出 4 公升。經過 x 分鐘後，剩水量為 y=50-4x。",
+      "question": "經過 8 分鐘後，剩下多少公升？",
+      "options": ["18 公升", "32 公升", "42 公升", "82 公升"],
+      "answer": 0,
+      "explanation": "代入 x=8：y=50-4×8=50-32=18 公升。"
+    }
+  ]
+}

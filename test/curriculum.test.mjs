@@ -11,6 +11,17 @@ const existingIds = new Set([
   "fraction-unlike-denom", "fraction-mul", "decimal-mul", "ratio-rate",
   "negative-number", "proportion-eq", "algebra-symbol", "linear-eq-1var",
 ]);
+const newStrandNodeIds = {
+  "relation-pattern": [
+    "repeat-pattern", "growing-pattern", "input-output-table", "pattern-rule",
+    "coordinate-first-quadrant", "coordinate-plane", "function-relation", "direct-proportion",
+  ],
+  "data-uncertainty": [
+    "data-table-basic", "bar-chart-reading", "line-chart-reading", "mean-basic",
+    "median-mode", "range-data-interpretation", "chance-sample-space", "probability-basic",
+  ],
+};
+const newestIds = new Set(Object.values(newStrandNodeIds).flat());
 const lowReadyGates = {
   "numbers-to-100": ["1-3", "1-6"],
   "basic-add-sub": ["2-6"],
@@ -99,10 +110,21 @@ const readyGates = {
   ...finalReadyGates,
 };
 
-test("國小全技能骨架新增 70 節點，id 全域唯一", () => {
-  assert.equal(nodes.length, 78);
+test("全技能骨架共 94 節點，id 全域唯一", () => {
+  assert.equal(nodes.length, 94);
   assert.equal(new Set(nodes.map((node) => node.id)).size, nodes.length);
-  assert.equal(nodes.filter((node) => !existingIds.has(node.id)).length, 70);
+  assert.equal(nodes.filter((node) => !existingIds.has(node.id) && !newestIds.has(node.id)).length, 70);
+  assert.equal(nodes.filter((node) => newestIds.has(node.id)).length, 16);
+});
+
+test("關係與規律、資料與可能性各 8 節點，且已移除 status", () => {
+  for (const [strandId, expectedNodeIds] of Object.entries(newStrandNodeIds)) {
+    const strand = tree.strands.find((item) => item.id === strandId);
+    assert.ok(strand, `缺少 ${strandId} strand`);
+    assert.equal(strand.nodes.length, 8, `${strandId} 應有 8 節點`);
+    assert.deepEqual(strand.nodes.map((node) => node.id), expectedNodeIds);
+    assert.equal(Object.hasOwn(strand, "status"), false, `${strandId} 應移除 status`);
+  }
 });
 
 test("tier、六組合併與兩組改名遵守總綱裁決", () => {
@@ -122,9 +144,9 @@ test("tier、六組合併與兩組改名遵守總綱裁決", () => {
   assert.equal(nodesById["cuboid-volume"].strand, "space-shape");
 });
 
-test("78 個節點 contentPending 歸零，70 個新題庫守門挑戰符合裁決", () => {
+test("94 個節點 contentPending 歸零，既有 70 個新題庫守門挑戰符合裁決", () => {
   assert.equal(nodes.filter((node) => node.contentPending === true).length, 0);
-  for (const node of nodes.filter((item) => !existingIds.has(item.id))) {
+  for (const node of nodes.filter((item) => !existingIds.has(item.id) && !newestIds.has(item.id))) {
     assert.ok(Array.isArray(node.gateChallenges), `${node.id} 應有 gateChallenges 陣列`);
     if (readyGates[node.id]) {
       assert.equal(node.contentPending, undefined, `${node.id} 應移除 contentPending`);
@@ -134,6 +156,19 @@ test("78 個節點 contentPending 歸零，70 個新題庫守門挑戰符合裁�
     }
   }
   assert.deepEqual(nodesById["shape-recognize"].gateChallenges, ["1-6", "1-4"]);
+});
+
+test("18 個幾何節點皆有 lessonMedia，共映射 10 個唯一圖檔", () => {
+  const geometry = tree.strands.find((strand) => strand.id === "space-shape");
+  assert.ok(geometry);
+  assert.equal(geometry.nodes.length, 18);
+  for (const node of geometry.nodes) {
+    assert.equal(typeof node.lessonMedia?.src, "string", `${node.id} 缺 lessonMedia.src`);
+    assert.match(node.lessonMedia.src, /^assets\/geometry\/.+\.png$/);
+    assert.equal(typeof node.lessonMedia?.alt, "string", `${node.id} 缺 lessonMedia.alt`);
+    assert.ok(node.lessonMedia.alt.trim().length > 0, `${node.id} 的 alt 不可為空`);
+  }
+  assert.equal(new Set(geometry.nodes.map((node) => node.lessonMedia.src)).size, 10);
 });
 
 test("總綱第三節接線完成，跨 strand prereq 以全域索引解析且無環", () => {

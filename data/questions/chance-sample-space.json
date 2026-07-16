@@ -1,0 +1,19 @@
+{
+  "nodeId": "chance-sample-space",
+  "basicMastery": [
+    {"id":"chance-sample-space-bm-1","type":"basic-mastery","stem":"擲一顆一般六面骰子一次，所有可能點數共有幾種？","options":["2 種","3 種","6 種","12 種"],"answer":2,"explanation":"可能點數為 1、2、3、4、5、6，共 6 種。"},
+    {"id":"chance-sample-space-bm-2","type":"basic-mastery","stem":"公平轉盤只有面積相同的紅、藍兩區。轉一次，轉到紅色與藍色的可能性如何？","options":["紅色較大","藍色較大","兩者相同","兩者都不可能"],"answer":2,"explanation":"兩區面積相同，且轉盤公平，因此兩種結果的可能性相同。"}
+  ],
+  "conceptId": [
+    {"id":"chance-sample-space-ci-1","type":"concept-id","statement":"不可能事件的發生機率是 0。","correctAnswer":true,"explanation":"不可能事件沒有任何符合條件的結果，所以機率為 0。"},
+    {"id":"chance-sample-space-ci-2","type":"concept-id","statement":"公平硬幣昨天擲出正面，今天擲一次就一定也是正面。","correctAnswer":false,"explanation":"每次擲公平硬幣都可能出現正面或反面，前一次結果不會保證下一次結果。"}
+  ],
+  "errorDiagnosis": [
+    {"id":"chance-sample-space-ed-1","type":"error-diagnosis","problem":"擲一顆六面骰子，列出可能結果","wrongSolution":"小哲只列 1、2、3、4、5，說共有 5 種","errorOptions":["漏列點數 6","多列點數 5","骰子只有 4 種結果","應列出 0"],"correctErrorIndex":0,"explanation":"一般六面骰子的點數為 1 到 6，小哲漏列了 6。"},
+    {"id":"chance-sample-space-ed-2","type":"error-diagnosis","problem":"袋中有 3 顆紅球、3 顆藍球，任取一顆","wrongSolution":"小萱說題目先提到紅球，所以紅球較可能被取到","errorOptions":["兩種球數量相同，可能性相同，和敘述順序無關","藍球一定先被取到","應把球數相加後再比較","顏色事件無法比較"],"correctErrorIndex":0,"explanation":"紅球與藍球各 3 顆，數量相同，因此被取到的可能性相同；題目敘述順序不影響抽取結果。"}
+  ],
+  "contextApplication": [
+    {"id":"chance-sample-space-ca-1","type":"context-application","scenario":"箱中只有寫著 1、2、3、4 的四張卡，每張被抽中的機會相同。","question":"抽一張卡，下列哪個事件不可能發生？","options":["抽到偶數","抽到小於 5 的數","抽到 5","抽到大於 1 的數"],"answer":2,"explanation":"箱中沒有寫著 5 的卡片，所以抽到 5 不可能發生。"},
+    {"id":"chance-sample-space-ca-2","type":"context-application","scenario":"抽獎箱有 8 張中獎券和 2 張未中獎券，每張被抽中的機會相同。","question":"抽一張券，哪一種結果較可能發生？","options":["中獎","未中獎","兩者相同","兩者都不可能"],"answer":0,"explanation":"中獎券有 8 張，多於未中獎券 2 張，所以中獎較可能發生。"}
+  ]
+}

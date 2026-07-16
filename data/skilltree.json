@@ -96,27 +96,53 @@
       "id": "space-shape",
       "name": "空間與形狀",
       "nodes": [
-        { "id": "shape-recognize", "name": "形體與圖形辨認", "tier": "elem-low", "prereq": [], "gateChallenges": ["1-6", "1-4"] },
-        { "id": "shape-feature", "name": "圖形構成要素", "tier": "elem-low", "prereq": ["shape-recognize"], "gateChallenges": ["2-6", "2-5"] },
-        { "id": "angle-basic", "name": "角與直角", "tier": "elem-mid", "prereq": ["shape-feature"], "gateChallenges": ["4", "6"] },
-        { "id": "square-rect", "name": "正方形與長方形", "tier": "elem-mid", "prereq": ["shape-feature"], "gateChallenges": ["4-6", "4-5"] },
-        { "id": "circle-parts", "name": "圓的認識", "tier": "elem-mid", "prereq": ["shape-feature"], "gateChallenges": ["5-6", "5-4"] },
-        { "id": "angle-degree", "name": "量角器與度", "tier": "elem-mid", "prereq": ["angle-basic"], "gateChallenges": ["4", "6"] },
-        { "id": "perimeter-area-formula", "name": "周長與面積公式", "tier": "elem-mid", "prereq": ["square-rect", "area-cm2"], "gateChallenges": ["6", "5"] },
-        { "id": "perp-parallel", "name": "垂直與平行", "tier": "elem-mid", "prereq": ["angle-basic"], "gateChallenges": ["8-4", "8-6"] },
-        { "id": "tri-quad-types", "name": "三角形與四邊形", "tier": "elem-mid", "prereq": ["square-rect", "perp-parallel"], "gateChallenges": ["9-5", "9-7"] },
-        { "id": "tri-quad-property", "name": "三角形與四邊形性質", "tier": "elem-high", "prereq": ["tri-quad-types", "angle-degree"], "gateChallenges": ["10-6", "10-7"] },
-        { "id": "plane-area-formula", "name": "三角形／平行四邊形／梯形面積", "tier": "elem-high", "prereq": ["perimeter-area-formula", "tri-quad-types"], "gateChallenges": ["7", "3"] },
-        { "id": "sector-basic", "name": "扇形", "tier": "elem-high", "prereq": ["circle-parts"], "gateChallenges": ["7", "6"] },
-        { "id": "line-symmetry", "name": "線對稱", "tier": "elem-high", "prereq": ["tri-quad-types"], "gateChallenges": ["13-5", "13-7"] },
-        { "id": "cuboid-volume", "name": "長方體體積與表面積", "tier": "elem-high", "prereq": ["volume-cm3", "perimeter-area-formula"], "gateChallenges": ["6", "7"] },
-        { "id": "solids-nets", "name": "柱體錐體與展開圖", "tier": "elem-high", "prereq": ["shape-feature"], "gateChallenges": ["15-7", "15-6"] },
-        { "id": "scale-map", "name": "放大縮小與比例尺", "tier": "elem-high", "prereq": ["tri-quad-property", "ratio-rate"], "gateChallenges": ["16-7", "16-5"] },
-        { "id": "circle-measure", "name": "圓周長與圓面積", "tier": "elem-high", "prereq": ["circle-parts", "plane-area-formula", "sector-basic", "decimal-mul"], "gateChallenges": ["7", "4"] },
-        { "id": "prism-volume", "name": "柱體體積與表面積", "tier": "elem-high", "prereq": ["cuboid-volume", "circle-measure"], "gateChallenges": ["18-7", "18-5"] }
+        { "id": "shape-recognize", "name": "形體與圖形辨認", "tier": "elem-low", "prereq": [], "gateChallenges": ["1-6", "1-4"], "lessonMedia": { "src": "assets/geometry/geometry-shapes-solids.png", "alt": "平面圖形與立體形體的辨認示意圖" } },
+        { "id": "shape-feature", "name": "圖形構成要素", "tier": "elem-low", "prereq": ["shape-recognize"], "gateChallenges": ["2-6", "2-5"], "lessonMedia": { "src": "assets/geometry/geometry-shapes-solids.png", "alt": "圖形邊、角、面等構成要素示意圖" } },
+        { "id": "angle-basic", "name": "角與直角", "tier": "elem-mid", "prereq": ["shape-feature"], "gateChallenges": ["4", "6"], "lessonMedia": { "src": "assets/geometry/geometry-angle-family.png", "alt": "角的構成與直角示意圖" } },
+        { "id": "square-rect", "name": "正方形與長方形", "tier": "elem-mid", "prereq": ["shape-feature"], "gateChallenges": ["4-6", "4-5"], "lessonMedia": { "src": "assets/geometry/geometry-quadrilateral-family.png", "alt": "正方形與長方形特徵示意圖" } },
+        { "id": "circle-parts", "name": "圓的認識", "tier": "elem-mid", "prereq": ["shape-feature"], "gateChallenges": ["5-6", "5-4"], "lessonMedia": { "src": "assets/geometry/geometry-circle-family.png", "alt": "圓心、半徑與直徑的構造示意圖" } },
+        { "id": "angle-degree", "name": "量角器與度", "tier": "elem-mid", "prereq": ["angle-basic"], "gateChallenges": ["4", "6"], "lessonMedia": { "src": "assets/geometry/geometry-angle-family.png", "alt": "使用量角器測量角度的示意圖" } },
+        { "id": "perimeter-area-formula", "name": "周長與面積公式", "tier": "elem-mid", "prereq": ["square-rect", "area-cm2"], "gateChallenges": ["6", "5"], "lessonMedia": { "src": "assets/geometry/geometry-area-family.png", "alt": "平面圖形周長與面積的比較示意圖" } },
+        { "id": "perp-parallel", "name": "垂直與平行", "tier": "elem-mid", "prereq": ["angle-basic"], "gateChallenges": ["8-4", "8-6"], "lessonMedia": { "src": "assets/geometry/geometry-lines.png", "alt": "垂直線與平行線的關係示意圖" } },
+        { "id": "tri-quad-types", "name": "三角形與四邊形", "tier": "elem-mid", "prereq": ["square-rect", "perp-parallel"], "gateChallenges": ["9-5", "9-7"], "lessonMedia": { "src": "assets/geometry/geometry-quadrilateral-family.png", "alt": "不同三角形與四邊形的分類示意圖" } },
+        { "id": "tri-quad-property", "name": "三角形與四邊形性質", "tier": "elem-high", "prereq": ["tri-quad-types", "angle-degree"], "gateChallenges": ["10-6", "10-7"], "lessonMedia": { "src": "assets/geometry/geometry-quadrilateral-family.png", "alt": "三角形與四邊形邊角性質示意圖" } },
+        { "id": "plane-area-formula", "name": "三角形／平行四邊形／梯形面積", "tier": "elem-high", "prereq": ["perimeter-area-formula", "tri-quad-types"], "gateChallenges": ["7", "3"], "lessonMedia": { "src": "assets/geometry/geometry-area-family.png", "alt": "三角形、平行四邊形與梯形面積關係示意圖" } },
+        { "id": "sector-basic", "name": "扇形", "tier": "elem-high", "prereq": ["circle-parts"], "gateChallenges": ["7", "6"], "lessonMedia": { "src": "assets/geometry/geometry-circle-family.png", "alt": "圓與扇形組成關係示意圖" } },
+        { "id": "line-symmetry", "name": "線對稱", "tier": "elem-high", "prereq": ["tri-quad-types"], "gateChallenges": ["13-5", "13-7"], "lessonMedia": { "src": "assets/geometry/geometry-symmetry.png", "alt": "圖形沿對稱軸對應的線對稱示意圖" } },
+        { "id": "cuboid-volume", "name": "長方體體積與表面積", "tier": "elem-high", "prereq": ["volume-cm3", "perimeter-area-formula"], "gateChallenges": ["6", "7"], "lessonMedia": { "src": "assets/geometry/geometry-box-volume.png", "alt": "長方體體積與表面構成示意圖" } },
+        { "id": "solids-nets", "name": "柱體錐體與展開圖", "tier": "elem-high", "prereq": ["shape-feature"], "gateChallenges": ["15-7", "15-6"], "lessonMedia": { "src": "assets/geometry/geometry-nets.png", "alt": "立體形體與展開圖的對應示意圖" } },
+        { "id": "scale-map", "name": "放大縮小與比例尺", "tier": "elem-high", "prereq": ["tri-quad-property", "ratio-rate"], "gateChallenges": ["16-7", "16-5"], "lessonMedia": { "src": "assets/geometry/geometry-scale.png", "alt": "圖形縮放與地圖比例尺示意圖" } },
+        { "id": "circle-measure", "name": "圓周長與圓面積", "tier": "elem-high", "prereq": ["circle-parts", "plane-area-formula", "sector-basic", "decimal-mul"], "gateChallenges": ["7", "4"], "lessonMedia": { "src": "assets/geometry/geometry-circle-family.png", "alt": "圓周與圓面積測量關係示意圖" } },
+        { "id": "prism-volume", "name": "柱體體積與表面積", "tier": "elem-high", "prereq": ["cuboid-volume", "circle-measure"], "gateChallenges": ["18-7", "18-5"], "lessonMedia": { "src": "assets/geometry/geometry-box-volume.png", "alt": "柱體底面、高與表面的構成示意圖" } }
       ]
     },
-    { "id": "relation-pattern", "name": "關係與規律", "nodes": [], "status": "coming-soon" },
-    { "id": "data-uncertainty", "name": "資料與可能性", "nodes": [], "status": "coming-soon" }
+    {
+      "id": "relation-pattern",
+      "name": "關係與規律",
+      "nodes": [
+        { "id": "repeat-pattern", "name": "重複規律", "tier": "elem-low", "prereq": [], "gateChallenges": ["1-6", "1-4"] },
+        { "id": "growing-pattern", "name": "遞增規律", "tier": "elem-mid", "prereq": ["repeat-pattern", "multiplication-intro"], "gateChallenges": ["4-6", "4-5"] },
+        { "id": "input-output-table", "name": "輸入輸出與對應表", "tier": "elem-high", "prereq": ["growing-pattern", "four-ops-order"], "gateChallenges": ["9-5", "9-7"] },
+        { "id": "pattern-rule", "name": "項次與規則式", "tier": "jhs-g7", "prereq": ["growing-pattern", "algebra-symbol"], "gateChallenges": ["10-6", "10-7"] },
+        { "id": "coordinate-first-quadrant", "name": "方格定位與第一象限", "tier": "elem-high", "prereq": ["shape-feature"], "gateChallenges": ["13-5", "13-7"] },
+        { "id": "coordinate-plane", "name": "直角座標平面", "tier": "jhs-g7", "prereq": ["coordinate-first-quadrant", "negative-number"], "gateChallenges": ["15-7", "15-6"] },
+        { "id": "function-relation", "name": "變數與函數關係", "tier": "jhs-g7", "prereq": ["input-output-table", "pattern-rule", "algebra-symbol"], "gateChallenges": ["16-7", "16-5"] },
+        { "id": "direct-proportion", "name": "正比關係", "tier": "jhs-g7", "prereq": ["function-relation", "ratio-rate", "proportion-eq"], "gateChallenges": ["18-7", "18-5"] }
+      ]
+    },
+    {
+      "id": "data-uncertainty",
+      "name": "資料與可能性",
+      "nodes": [
+        { "id": "data-table-basic", "name": "資料分類與表格", "tier": "elem-high", "prereq": ["quantity-compare"], "gateChallenges": ["1-6", "1-7"] },
+        { "id": "bar-chart-reading", "name": "長條圖判讀", "tier": "elem-high", "prereq": ["data-table-basic"], "gateChallenges": ["2-6", "2-7"] },
+        { "id": "line-chart-reading", "name": "折線圖判讀", "tier": "elem-high", "prereq": ["bar-chart-reading", "time-daily"], "gateChallenges": ["3-6", "3-7"] },
+        { "id": "mean-basic", "name": "平均數", "tier": "elem-high", "prereq": ["data-table-basic", "mixed-four-ops"], "gateChallenges": ["4-6", "4-7"] },
+        { "id": "median-mode", "name": "中位數與眾數", "tier": "jhs-g7", "prereq": ["data-table-basic"], "gateChallenges": ["5-6", "5-7"] },
+        { "id": "range-data-interpretation", "name": "全距與資料判讀", "tier": "jhs-g7", "prereq": ["mean-basic", "median-mode"], "gateChallenges": ["6-6", "6-7"] },
+        { "id": "chance-sample-space", "name": "可能性與樣本空間", "tier": "elem-high", "prereq": ["fraction-equivalent"], "gateChallenges": ["7-6", "7-7"] },
+        { "id": "probability-basic", "name": "基礎機率", "tier": "jhs-g7", "prereq": ["chance-sample-space", "fraction-equivalent"], "gateChallenges": ["8-6", "8-7"] }
+      ]
+    }
   ]
 }

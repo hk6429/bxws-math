@@ -479,6 +479,21 @@ function startQuiz(node) {
     textContent: "翻開大師的心法頁——這一輪要怎麼練？",
   }));
 
+  if (node.lessonMedia?.src) {
+    const figure = document.createElement("figure");
+    figure.className = "lesson-media";
+    const img = document.createElement("img");
+    img.src = node.lessonMedia.src;
+    img.alt = node.lessonMedia.alt ?? "";
+    img.loading = "lazy";
+    img.decoding = "async";
+    img.addEventListener("error", () => {
+      figure.hidden = true;
+    }, { once: true });
+    figure.appendChild(img);
+    picker.appendChild(figure);
+  }
+
   const lastUsed = store.read("lastStrategy", "slow");
   const nodeErrorCount = listWrongQuestions().filter((e) => e.nodeId === node.id).length;
   STRATEGIES.forEach((s) => {

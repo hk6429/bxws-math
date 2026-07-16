@@ -5,9 +5,13 @@ const HALO_R = 22;          // 星軌（進度環）半徑
 const HIT_R = 26;           // 透明熱區（維持觸控 44px+）
 const CROWN_R = 32;         // 伴星冠冕弧半徑
 const LINE_TRIM = 26;       // 星座線兩端內縮，避免穿過星體
-const SPACING_X = 130;
-const SPACING_Y = 140;
+const SPACING_X = 164;
+const SPACING_Y = 156;
 const PAD = 60;
+const MIN_MAP_WIDTH = 940;
+const MAX_NODES_PER_ROW = 5;
+const LABEL_CHARS_PER_LINE = 8;
+const LABEL_LINE_HEIGHT = 16;
 const MAX_BG_STARS = 80;    // 每個 strand SVG 背景星數上限
 
 function el(tag, className, text) {
@@ -78,23 +82,39 @@ function computeDepths(nodes, allNodesById) {
   return depth;
 }
 
-function layoutNodes(nodes, allNodesById) {
+export function splitLabelLines(text, maxChars = LABEL_CHARS_PER_LINE) {
+  const chars = [...text.trim()];
+  if (chars.length <= maxChars) return [chars.join("")];
+
+  const lineCount = Math.ceil(chars.length / maxChars);
+  const balancedLength = Math.ceil(chars.length / lineCount);
+  return Array.from({ length: lineCount }, (_, index) => (
+    chars.slice(index * balancedLength, (index + 1) * balancedLength).join("")
+  )).filter(Boolean);
+}
+
+export function layoutNodes(nodes, allNodesById) {
   const depth = computeDepths(nodes, allNodesById);
   const byDepth = {};
   nodes.forEach((n) => {
     const d = depth[n.id];
     (byDepth[d] = byDepth[d] ?? []).push(n);
   });
-  const maxCount = Math.max(...Object.values(byDepth).map((arr) => arr.length));
-  const width = Math.max(320, maxCount * SPACING_X + PAD * 2);
-  const layerCount = Object.keys(byDepth).length;
-  const height = layerCount * SPACING_Y + PAD * 2;
+  const depthGroups = Object.entries(byDepth).sort(([a], [b]) => Number(a) - Number(b));
+  const rows = depthGroups.flatMap(([, depthNodes]) => (
+    Array.from({ length: Math.ceil(depthNodes.length / MAX_NODES_PER_ROW) }, (_, rowIndex) => (
+      depthNodes.slice(rowIndex * MAX_NODES_PER_ROW, (rowIndex + 1) * MAX_NODES_PER_ROW)
+    ))
+  ));
+  const maxCount = Math.max(...rows.map((row) => row.length));
+  const width = Math.max(MIN_MAP_WIDTH, maxCount * SPACING_X + PAD * 2);
+  const height = rows.length * SPACING_Y + PAD * 2;
 
   const positions = {};
-  Object.entries(byDepth).forEach(([d, arr]) => {
+  rows.forEach((arr, rowIndex) => {
     arr.forEach((node, idx) => {
       const offset = (idx - (arr.length - 1) / 2) * SPACING_X;
-      positions[node.id] = { x: width / 2 + offset, y: Number(d) * SPACING_Y + PAD };
+      positions[node.id] = { x: width / 2 + offset, y: rowIndex * SPACING_Y + PAD };
     });
   });
   return { positions, width, height };
@@ -320,7 +340,14 @@ export function renderSkillTree(container, tree, onSelectNode) {
     const mapWrap = el("div", "skill-map");
     const { positions, width, height } = layoutNodes(strand.nodes, nodesById);
 
-    const svg = svgEl("svg", { viewBox: `0 0 ${width} ${height}` });
+    const svg = svgEl("svg", {
+      viewBox: `0 0 ${width} ${height}`,
+      width,
+      height,
+      role: "group",
+      "aria-label": `${strand.name}技能星圖`,
+    });
+    svg.style.setProperty("--skill-map-width", `${width}px`);
     svg.appendChild(makeSketchDefs());
     svg.appendChild(makeStarDefs(strand.id));
     svg.appendChild(makeStarField(strand, width, height));
@@ -352,11 +379,20 @@ export function renderSkillTree(container, tree, onSelectNode) {
         frontierAssigned = true;
       }
 
+      const lockReason = lockReasonText(node, tree, nodesById);
       const g = svgEl("g", {
         class: `map-node state-${visualState}${frontierNode === node ? " is-frontier" : ""}`,
         "data-state": state,
         transform: `translate(${pos.x}, ${pos.y})`,
+        role: "button",
+        tabindex: state === "unlocked" || state === "mastered" ? "0" : "-1",
+        "aria-disabled": state === "locked" || state === "content-pending" ? "true" : "false",
+        "aria-label": lockReason ? `${node.name}：${lockReason}` : node.name,
       });
+
+      const title = svgEl("title");
+      title.textContent = lockReason ? `${node.name}：${lockReason}` : node.name;
+      g.appendChild(title);
 
       // 星軌（進度環）
       g.appendChild(svgEl("circle", { class: "node-ring-bg", r: HALO_R }));
@@ -384,7 +420,11 @@ export function renderSkillTree(container, tree, onSelectNode) {
       if (visualState !== "locked" && stars > 0) g.appendChild(makeCrown(stars));
 
       const label = svgEl("text", { class: "node-label", y: HALO_R + 18, "paint-order": "stroke" });
-      label.textContent = node.name;
+      splitLabelLines(node.name).forEach((line, lineIndex) => {
+        const tspan = svgEl("tspan", { x: 0, dy: lineIndex === 0 ? 0 : LABEL_LINE_HEIGHT });
+        tspan.textContent = line;
+        label.appendChild(tspan);
+      });
       g.appendChild(label);
 
       // 透明熱區：維持觸控 44px
@@ -393,26 +433,16 @@ export function renderSkillTree(container, tree, onSelectNode) {
       g.addEventListener("click", () => {
         if (state === "unlocked" || state === "mastered") onSelectNode(node);
       });
+      g.addEventListener("keydown", (event) => {
+        if ((event.key === "Enter" || event.key === " ") && (state === "unlocked" || state === "mastered")) {
+          event.preventDefault();
+          onSelectNode(node);
+        }
+      });
       svg.appendChild(g);
     });
 
     mapWrap.appendChild(svg);
-
-    strand.nodes.forEach((node) => {
-      const state = nodeState(node, tree);
-      if (state === "locked" || state === "content-pending") {
-        const pos = positions[node.id];
-        const reason = lockReasonText(node, tree, nodesById);
-        if (reason) {
-          const tip = el("div", "lock-reason", reason);
-          tip.style.position = "absolute";
-          tip.style.left = `${(pos.x / width) * 100}%`;
-          tip.style.top = `${((pos.y + HALO_R + 34) / height) * 100}%`;
-          tip.style.transform = "translate(-50%, 0)";
-          mapWrap.appendChild(tip);
-        }
-      }
-    });
 
     if (frontierNode && visuals.mascot) {
       const pos = positions[frontierNode.id];
@@ -422,13 +452,13 @@ export function renderSkillTree(container, tree, onSelectNode) {
       img.alt = "大師吉祥物";
       img.onerror = () => { mascot.style.display = "none"; };
       mascot.appendChild(img);
-      mascot.style.left = `${(pos.x / width) * 100}%`;
-      mascot.style.top = `${(pos.y / height) * 100}%`;
+      mascot.style.left = `${pos.x}px`;
+      mascot.style.top = `${pos.y}px`;
       mapWrap.appendChild(mascot);
 
       const tip = el("div", "node-suggested-tip", "👉 從這裡開始");
-      tip.style.left = `${(pos.x / width) * 100}%`;
-      tip.style.top = `${(pos.y / height) * 100}%`;
+      tip.style.left = `${pos.x}px`;
+      tip.style.top = `${pos.y}px`;
       mapWrap.appendChild(tip);
     }
 

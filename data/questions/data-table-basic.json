@@ -1,0 +1,19 @@
+{
+  "nodeId": "data-table-basic",
+  "basicMastery": [
+    {"id":"data-table-basic-bm-1","type":"basic-mastery","stem":"調查同學最喜歡的水果，結果為：蘋果、香蕉、蘋果、芭樂、蘋果。蘋果出現幾次？","options":["2 次","3 次","4 次","5 次"],"answer":1,"explanation":"逐一計數，蘋果出現在第 1、3、5 筆，共 3 次。"},
+    {"id":"data-table-basic-bm-2","type":"basic-mastery","stem":"表格記錄四天借書量：週一 12 本、週二 15 本、週三 9 本、週四 14 本。哪一天最多？","options":["週一","週二","週三","週四"],"answer":1,"explanation":"比較 12、15、9、14，最大值是 15，所以週二最多。"}
+  ],
+  "conceptId": [
+    {"id":"data-table-basic-ci-1","type":"concept-id","statement":"整理類別資料時，可用正字記號或次數表記錄每一類出現的次數。","correctAnswer":true,"explanation":"分類後逐筆計數，可以減少遺漏並方便比較。"},
+    {"id":"data-table-basic-ci-2","type":"concept-id","statement":"在每筆資料只歸入一類的次數表中，各類次數相加可以大於原始資料總筆數。","correctAnswer":false,"explanation":"每筆資料只歸入一類時，各類次數總和應等於原始資料總筆數。"}
+  ],
+  "errorDiagnosis": [
+    {"id":"data-table-basic-ed-1","type":"error-diagnosis","problem":"把紅、藍、紅、綠、藍、紅整理成次數表","wrongSolution":"小安記成紅 2 次、藍 2 次、綠 1 次，共 5 次","errorOptions":["漏數了一筆紅色資料","把藍色多算一次","把綠色多算一次","總和應是 7 次"],"correctErrorIndex":0,"explanation":"原始資料共有 6 筆，其中紅色出現 3 次；小安漏數了一筆紅色。"},
+    {"id":"data-table-basic-ed-2","type":"error-diagnosis","problem":"比較表格中的 8、13、11、9 四個次數","wrongSolution":"小美說 9 最大，因為 9 排在最後","errorOptions":["把資料位置當成數值大小的依據","漏看表格標題","把 13 看成 31","加法計算錯誤"],"correctErrorIndex":0,"explanation":"比較次數要比較數值，不是資料出現的位置；13 才是最大值。"}
+  ],
+  "contextApplication": [
+    {"id":"data-table-basic-ca-1","type":"context-application","scenario":"班級交通方式調查：走路 6 人、腳踏車 8 人、公車 10 人、家長接送 7 人。","question":"全班共有多少人接受調查？","options":["25 人","29 人","31 人","32 人"],"answer":2,"explanation":"將各類次數相加：6+8+10+7=31 人。"},
+    {"id":"data-table-basic-ca-2","type":"context-application","scenario":"圖書館統計一天借閱類別：文學 18 本、科學 12 本、歷史 9 本、藝術 11 本。","question":"文學類比歷史類多借出幾本？","options":["7 本","9 本","21 本","27 本"],"answer":1,"explanation":"18-9=9，本日文學類比歷史類多 9 本。"}
+  ]
+}

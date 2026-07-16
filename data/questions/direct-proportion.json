@@ -1,0 +1,77 @@
+{
+  "nodeId": "direct-proportion",
+  "basicMastery": [
+    {
+      "id": "direct-proportion-bm-1",
+      "type": "basic-mastery",
+      "stem": "y 與 x 成正比，且 x=3 時 y=12。當 x=5 時，y 是多少？",
+      "options": ["15", "18", "20", "24"],
+      "answer": 2,
+      "explanation": "y÷x 的固定比值是 12÷3=4，所以 y=4x；x=5 時 y=20。"
+    },
+    {
+      "id": "direct-proportion-bm-2",
+      "type": "basic-mastery",
+      "stem": "下列哪一個關係表示 y 與 x 成正比？",
+      "options": ["y=3x", "y=3x+1", "y=x-3", "y=3÷x"],
+      "answer": 0,
+      "explanation": "正比關係可寫成 y=kx（k 為固定且不為 0 的數），因此 y=3x 是正比關係。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "direct-proportion-ci-1",
+      "type": "concept-id",
+      "statement": "若 y 與 x 成正比，x 變成原來的 2 倍時，y 也會變成原來的 2 倍。",
+      "correctAnswer": true,
+      "explanation": "正比可寫成 y=kx；x 乘以 2 時，y=k(2x)=2kx，也乘以 2。"
+    },
+    {
+      "id": "direct-proportion-ci-2",
+      "type": "concept-id",
+      "statement": "關係 y=5x+2 中，y 與 x 成正比。",
+      "correctAnswer": false,
+      "explanation": "正比必須是 y=kx，且 x=0 時 y=0。y=5x+2 多了固定的 2，不是正比。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "direct-proportion-ed-1",
+      "type": "error-diagnosis",
+      "problem": "y 與 x 成正比，x=4 時 y=10，求 x=8 時的 y",
+      "wrongSolution": "小光認為 x 增加 4，所以 y 也增加 4，得到 14。",
+      "errorOptions": ["把正比的倍數關係誤當成增加相同的數量", "10+4 算錯", "x 不可等於 8", "正比時 y 應保持不變"],
+      "correctErrorIndex": 0,
+      "explanation": "x 從 4 變 8 是原來的 2 倍，所以 y 也應是 10 的 2 倍，等於 20。"
+    },
+    {
+      "id": "direct-proportion-ed-2",
+      "type": "error-diagnosis",
+      "problem": "判斷表格 x=1、2、3，y=4、8、13 是否為正比",
+      "wrongSolution": "小萱說 y 都在增加，所以一定成正比。",
+      "errorOptions": ["只看 y 增加，沒有檢查 y÷x 是否固定", "x 不能是連續整數", "y 必須比 x 小", "正比只能有兩組資料"],
+      "correctErrorIndex": 0,
+      "explanation": "前兩組 y÷x 都是 4，但第三組 13÷3 不等於 4，因此比值不固定，不成正比。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "direct-proportion-ca-1",
+      "type": "context-application",
+      "scenario": "蘋果每公斤 60 元，總價 y（元）與重量 x（公斤）成正比。",
+      "question": "買 2.5 公斤蘋果需付多少元？",
+      "options": ["120 元", "150 元", "180 元", "240 元"],
+      "answer": 1,
+      "explanation": "y=60x，代入 x=2.5，得 y=60×2.5=150 元。"
+    },
+    {
+      "id": "direct-proportion-ca-2",
+      "type": "context-application",
+      "scenario": "水龍頭流量固定，4 分鐘可裝 28 公升水。",
+      "question": "照相同流量，9 分鐘可裝多少公升水？",
+      "options": ["33 公升", "56 公升", "63 公升", "252 公升"],
+      "answer": 2,
+      "explanation": "每分鐘流量為 28÷4=7 公升，9 分鐘可裝 7×9=63 公升。"
+    }
+  ]
+}

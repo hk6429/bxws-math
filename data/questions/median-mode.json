@@ -1,0 +1,19 @@
+{
+  "nodeId": "median-mode",
+  "basicMastery": [
+    {"id":"median-mode-bm-1","type":"basic-mastery","stem":"資料 3、7、5、9、6 的中位數是多少？","options":["5","6","7","9"],"answer":1,"explanation":"先排序為 3、5、6、7、9，正中間的數是 6。"},
+    {"id":"median-mode-bm-2","type":"basic-mastery","stem":"資料 2、4、4、5、7 的眾數是多少？","options":["2","4","5","7"],"answer":1,"explanation":"4 出現 2 次，比其他數都多，所以眾數是 4。"}
+  ],
+  "conceptId": [
+    {"id":"median-mode-ci-1","type":"concept-id","statement":"求中位數前，必須先將資料依大小排列。","correctAnswer":true,"explanation":"排序後才能找出位於中央位置的資料。"},
+    {"id":"median-mode-ci-2","type":"concept-id","statement":"每一組資料都只有一個眾數。","correctAnswer":false,"explanation":"資料可能沒有眾數，也可能有兩個以上並列出現最多次的眾數。"}
+  ],
+  "errorDiagnosis": [
+    {"id":"median-mode-ed-1","type":"error-diagnosis","problem":"求 8、2、6、5、3 的中位數","wrongSolution":"小恩直接取原本排在中間的 6，並說中位數是 6","errorOptions":["沒有先排序，誤把原始位置中間的數當成中位數","6 不是資料中的數","資料筆數應是 4","中位數一定是平均數"],"correctErrorIndex":0,"explanation":"應先排序成 2、3、5、6、8，再取正中間的 5，所以中位數是 5。"},
+    {"id":"median-mode-ed-2","type":"error-diagnosis","problem":"求 1、2、2、3、3 的眾數","wrongSolution":"小芳只回答 2","errorOptions":["2 沒有出現","3 也出現最多次，應回答 2 與 3","應回答 1","眾數應是 11"],"correctErrorIndex":1,"explanation":"2 與 3 都各出現 2 次，且同為最多，因此兩者都是眾數。"}
+  ],
+  "contextApplication": [
+    {"id":"median-mode-ca-1","type":"context-application","scenario":"五位學生通勤時間為 10、12、15、18、45 分鐘。","question":"通勤時間的中位數是多少？","options":["12 分鐘","15 分鐘","18 分鐘","20 分鐘"],"answer":1,"explanation":"資料已排序，五筆資料中央的第 3 筆是 15 分鐘。"},
+    {"id":"median-mode-ca-2","type":"context-application","scenario":"飲料店售出杯數依口味記錄為：紅茶、綠茶、紅茶、奶茶、紅茶、綠茶。","question":"今天的眾數是哪一種口味？","options":["紅茶","綠茶","奶茶","沒有眾數"],"answer":0,"explanation":"紅茶出現 3 次，是出現次數最多的口味。"}
+  ]
+}

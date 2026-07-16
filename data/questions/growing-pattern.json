@@ -1,0 +1,77 @@
+{
+  "nodeId": "growing-pattern",
+  "basicMastery": [
+    {
+      "id": "growing-pattern-bm-1",
+      "type": "basic-mastery",
+      "stem": "觀察數列 4、7、10、13、（　），括號中應填多少？",
+      "options": ["14", "15", "16", "17"],
+      "answer": 2,
+      "explanation": "相鄰兩數都增加 3，所以 13+3=16。"
+    },
+    {
+      "id": "growing-pattern-bm-2",
+      "type": "basic-mastery",
+      "stem": "第 1 個圖有 2 顆星，第 2 個有 4 顆，第 3 個有 6 顆。照此規律，第 5 個有幾顆星？",
+      "options": ["8 顆", "10 顆", "12 顆", "14 顆"],
+      "answer": 1,
+      "explanation": "每次增加 2 顆，第 4 個有 8 顆，第 5 個有 10 顆。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "growing-pattern-ci-1",
+      "type": "concept-id",
+      "statement": "數列 3、6、9、12、……中，相鄰兩項的差都相同。",
+      "correctAnswer": true,
+      "explanation": "後一項都比前一項多 3，因此相鄰兩項的差固定是 3。"
+    },
+    {
+      "id": "growing-pattern-ci-2",
+      "type": "concept-id",
+      "statement": "只要數列中的數愈來愈大，每次增加的數量就一定相同。",
+      "correctAnswer": false,
+      "explanation": "愈來愈大不代表每次增加量相同，例如 1、2、4、7 分別增加 1、2、3。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "growing-pattern-ed-1",
+      "type": "error-diagnosis",
+      "problem": "依規律求數列 5、9、13、17、……的下一項",
+      "wrongSolution": "小明算成 17+5=22。",
+      "errorOptions": ["把第一項 5 當成每次增加量；實際每次增加 4", "17 應改成 16", "應該用減法", "9-5 算錯"],
+      "correctErrorIndex": 0,
+      "explanation": "相鄰兩項的差是 9-5=4、13-9=4，所以應算 17+4=21。"
+    },
+    {
+      "id": "growing-pattern-ed-2",
+      "type": "error-diagnosis",
+      "problem": "火柴棒圖形第 1 個用 3 根，之後每多一個圖形就增加 2 根，求第 4 個所需根數",
+      "wrongSolution": "小琪算成 3+2×4=11 根。",
+      "errorOptions": ["乘法算錯", "第 1 個已有 3 根，到第 4 個只增加 3 次，應算3+2×3", "應把 3 和 2 相乘", "第 4 個應增加 4 根"],
+      "correctErrorIndex": 1,
+      "explanation": "從第 1 個到第 4 個共經過 3 次增加，所以需要 3+2×3=9 根。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "growing-pattern-ca-1",
+      "type": "context-application",
+      "scenario": "小恩第一週存 20 元，之後每週都比前一週多存 10 元。",
+      "question": "小恩第 4 週存多少元？",
+      "options": ["40 元", "50 元", "60 元", "80 元"],
+      "answer": 1,
+      "explanation": "各週依序存 20、30、40、50 元，所以第 4 週存 50 元。"
+    },
+    {
+      "id": "growing-pattern-ca-2",
+      "type": "context-application",
+      "scenario": "觀眾席第 1 排有 12 個座位，每往後一排就增加 3 個座位。",
+      "question": "第 6 排有幾個座位？",
+      "options": ["27 個", "30 個", "18 個", "33 個"],
+      "answer": 0,
+      "explanation": "從第 1 排到第 6 排增加 5 次，所以有 12+3×5=27 個座位。"
+    }
+  ]
+}

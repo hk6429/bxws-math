@@ -192,7 +192,13 @@ main { padding: 24px; max-width: 960px; margin: 0 auto; }
   box-shadow: 3px 4px 0 var(--paper-shadow);
   padding: 8px;
 }
-.skill-map svg { width: 100%; display: block; overflow: visible; }
+.skill-map svg {
+  width: var(--skill-map-width, 100%);
+  max-width: none;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
 
 /* 連線 = 鉛筆手繪虛線 */
 .map-path {
@@ -384,6 +390,25 @@ main { padding: 24px; max-width: 960px; margin: 0 auto; }
   text-align: center;
   margin-bottom: 4px;
 }
+.lesson-media,
+.q-media {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}
+.lesson-media { max-width: 560px; }
+.q-media { max-width: 520px; margin-bottom: 14px; }
+.lesson-media img,
+.q-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 360px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+.lesson-media[hidden],
+.q-media[hidden] { display: none; }
 .strategy-card {
   display: flex;
   flex-direction: column;
@@ -2054,6 +2079,10 @@ body::before {
 
 /* ---------- 11. 技能樹容器＝星空圖（星星三態由 JS 端處理）---------- */
 .skill-map {
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+  scrollbar-color: rgba(242, 201, 76, 0.55) rgba(13, 18, 38, 0.45);
   background:
     radial-gradient(circle, rgba(255, 250, 235, 0.8) 0 1px, transparent 1.7px),
     radial-gradient(circle, rgba(214, 226, 255, 0.55) 0 0.9px, transparent 1.5px),
@@ -2068,10 +2097,13 @@ body::before {
 /* 節點標籤翻亮＋paint-order 標準描邊（取代 -webkit-text-stroke 路線） */
 .map-node .node-label {
   fill: var(--starlight-text);
+  font-size: 13px;
+  font-weight: 600;
   paint-order: stroke fill;
   stroke: rgba(13, 18, 38, 0.9);
   stroke-width: 3px;
   stroke-linejoin: round;
+  pointer-events: none;
 }
 .map-node.state-locked .node-label { fill: #8fa0c8; opacity: 0.85; }
 .map-node .node-lock-icon { fill: #8fa0c8; }
@@ -2201,6 +2233,8 @@ body::before {
 .tip-bubble button { min-height: 44px; }
 @media (max-width: 600px) {
   .tip-bubble { bottom: 76px; }
+  .lesson-media img,
+  .q-media img { max-height: 260px; }
 }
 /* visitor-badge 深底改亮環 */
 img[src*="visitor-badge"] {

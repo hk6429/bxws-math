@@ -1,0 +1,19 @@
+{
+  "nodeId": "range-data-interpretation",
+  "basicMastery": [
+    {"id":"range-data-interpretation-bm-1","type":"basic-mastery","stem":"資料 6、9、12、15 的全距是多少？","options":["6","9","12","21"],"answer":1,"explanation":"全距=最大值-最小值=15-6=9。"},
+    {"id":"range-data-interpretation-bm-2","type":"basic-mastery","stem":"甲組分數為 70、80、90；乙組為 78、80、82。哪一組全距較小？","options":["甲組","乙組","兩組相同","無法比較"],"answer":1,"explanation":"甲組全距 90-70=20；乙組全距 82-78=4，所以乙組較小。"}
+  ],
+  "conceptId": [
+    {"id":"range-data-interpretation-ci-1","type":"concept-id","statement":"全距可以反映一組資料從最小值到最大值的分散程度。","correctAnswer":true,"explanation":"全距愈大，表示最大值與最小值相距愈遠。"},
+    {"id":"range-data-interpretation-ci-2","type":"concept-id","statement":"兩組資料平均數相同，資料分布就一定完全相同。","correctAnswer":false,"explanation":"平均數相同仍可能有不同的全距與分布，例如 0、10 與 5、5 的平均數都為 5。"}
+  ],
+  "errorDiagnosis": [
+    {"id":"range-data-interpretation-ed-1","type":"error-diagnosis","problem":"求 4、7、10、13 的全距","wrongSolution":"小豪把最大值和最小值相加，算成 13+4=17","errorOptions":["全距應是最大值減最小值，不是相加","最大值找錯","最小值找錯","應除以資料個數"],"correctErrorIndex":0,"explanation":"全距為 13-4=9。"},
+    {"id":"range-data-interpretation-ed-2","type":"error-diagnosis","problem":"比較甲組 5、5、5 與乙組 3、5、7","wrongSolution":"小晴說兩組平均數都是 5，所以分散程度相同","errorOptions":["兩組平均數不同","只看平均數，忽略甲組全距 0、乙組全距 4","全距都等於 5","資料筆數不同"],"correctErrorIndex":1,"explanation":"平均數相同不代表分散相同；甲組全距 0，乙組全距 4。"}
+  ],
+  "contextApplication": [
+    {"id":"range-data-interpretation-ca-1","type":"context-application","scenario":"兩地一週氣溫：甲地最低 18°C、最高 30°C；乙地最低 22°C、最高 28°C。","question":"哪一地的氣溫全距較大？","options":["甲地","乙地","兩地相同","資料不足"],"answer":0,"explanation":"甲地全距 30-18=12°C；乙地全距 28-22=6°C，所以甲地較大。"},
+    {"id":"range-data-interpretation-ca-2","type":"context-application","scenario":"甲班成績平均 80 分、全距 30 分；乙班平均 80 分、全距 12 分。","question":"只根據這些資料，下列何者合理？","options":["甲班每人都比乙班高分","乙班成績的最大值一定較高","乙班成績的最大值與最小值較接近","兩班每一個分數都相同"],"answer":2,"explanation":"全距較小表示最大值和最小值的差較小；其餘敘述無法由平均數與全距推出。"}
+  ]
+}

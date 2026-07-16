@@ -5,6 +5,21 @@ function el(tag, className, text) {
   return node;
 }
 
+function renderMedia(media, className) {
+  if (!media?.src) return null;
+  const figure = el("figure", className);
+  const img = document.createElement("img");
+  img.src = media.src;
+  img.alt = media.alt ?? "";
+  img.loading = "lazy";
+  img.decoding = "async";
+  img.addEventListener("error", () => {
+    figure.hidden = true;
+  }, { once: true });
+  figure.appendChild(img);
+  return figure;
+}
+
 function renderChoiceList(container, options, onPick) {
   const list = el("div", "q-options");
   options.forEach((opt, idx) => {
@@ -82,6 +97,8 @@ export function renderQuestion(question, onAnswered, mascotVariant, opts = {}) {
     "context-application": "情境應用題",
   }[question.type];
   wrap.appendChild(el("div", "q-type", typeLabel));
+  const media = renderMedia(question.media, "q-media");
+  if (media) wrap.appendChild(media);
 
   const explain = el("div", "q-explain", question.explanation);
   explain.style.display = "none";

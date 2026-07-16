@@ -1,0 +1,77 @@
+{
+  "nodeId": "coordinate-first-quadrant",
+  "basicMastery": [
+    {
+      "id": "coordinate-first-quadrant-bm-1",
+      "type": "basic-mastery",
+      "stem": "平面上某點從原點向右 4 格、向上 3 格，這個點的座標是什麼？",
+      "options": ["(3,4)", "(4,3)", "(-4,3)", "(4,-3)"],
+      "answer": 1,
+      "explanation": "座標先寫水平位置 x，再寫垂直位置 y，所以是 (4,3)。"
+    },
+    {
+      "id": "coordinate-first-quadrant-bm-2",
+      "type": "basic-mastery",
+      "stem": "點 A 的座標是 (2,5)，它在原點的哪個方向？",
+      "options": ["右 2、上 5", "右 5、上 2", "左 2、上 5", "右 2、下 5"],
+      "answer": 0,
+      "explanation": "(2,5) 表示 x=2、y=5，也就是從原點向右 2 格、向上 5 格。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "coordinate-first-quadrant-ci-1",
+      "type": "concept-id",
+      "statement": "座標 (a,b) 中，a 表示水平方向的位置，b 表示垂直方向的位置。",
+      "correctAnswer": true,
+      "explanation": "有序數對的順序固定為先 x 後 y，也就是先水平、後垂直。"
+    },
+    {
+      "id": "coordinate-first-quadrant-ci-2",
+      "type": "concept-id",
+      "statement": "座標 (3,7) 和 (7,3) 表示同一個位置。",
+      "correctAnswer": false,
+      "explanation": "座標有順序，(3,7) 是右 3、上 7；(7,3) 是右 7、上 3，位置不同。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "coordinate-first-quadrant-ed-1",
+      "type": "error-diagnosis",
+      "problem": "讀出從原點向右 6 格、向上 2 格的點",
+      "wrongSolution": "小美寫成 (2,6)。",
+      "errorOptions": ["把 x、y 座標的順序顛倒", "兩個數都應加 1", "向右應寫負數", "向上應寫 0"],
+      "correctErrorIndex": 0,
+      "explanation": "座標先寫水平的 6，再寫垂直的 2，正確為 (6,2)。"
+    },
+    {
+      "id": "coordinate-first-quadrant-ed-2",
+      "type": "error-diagnosis",
+      "problem": "在方格圖上標示點 (0,4)",
+      "wrongSolution": "小哲認為 x=0，所以這個點就是原點。",
+      "errorOptions": ["把只有 x=0 誤認成 x、y 都是0；此點應在 y 軸上方4格", "0 不能當座標", "y=4 應向右移", "座標順序應交換"],
+      "correctErrorIndex": 0,
+      "explanation": "原點是 (0,0)。點 (0,4) 的水平位置為 0，但仍需向上 4 格，位於 y 軸上。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "coordinate-first-quadrant-ca-1",
+      "type": "context-application",
+      "scenario": "校園平面圖以校門為原點，向東為 x 正方向，向北為 y 正方向。圖書館在校門東方 5 格、北方 2 格。",
+      "question": "圖書館的座標是多少？",
+      "options": ["(5,2)", "(2,5)", "(-5,2)", "(5,-2)"],
+      "answer": 0,
+      "explanation": "向東 5 格是 x=5，向北 2 格是 y=2，所以座標為 (5,2)。"
+    },
+    {
+      "id": "coordinate-first-quadrant-ca-2",
+      "type": "context-application",
+      "scenario": "棋盤以左下角為 (0,0)，一枚棋子位在 (3,6)。",
+      "question": "棋子向右移 2 格後，新座標是多少？",
+      "options": ["(3,8)", "(1,6)", "(5,6)", "(5,8)"],
+      "answer": 2,
+      "explanation": "向右移只改變 x 座標：3+2=5，y 座標仍是 6，所以是 (5,6)。"
+    }
+  ]
+}

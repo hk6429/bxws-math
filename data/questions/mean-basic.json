@@ -1,0 +1,19 @@
+{
+  "nodeId": "mean-basic",
+  "basicMastery": [
+    {"id":"mean-basic-bm-1","type":"basic-mastery","stem":"4、6、8 的平均數是多少？","options":["5","6","7","18"],"answer":1,"explanation":"(4+6+8)÷3=18÷3=6。"},
+    {"id":"mean-basic-bm-2","type":"basic-mastery","stem":"5 次小考平均 80 分，總分是多少？","options":["16 分","85 分","400 分","800 分"],"answer":2,"explanation":"總分=平均數×資料個數=80×5=400 分。"}
+  ],
+  "conceptId": [
+    {"id":"mean-basic-ci-1","type":"concept-id","statement":"平均數等於所有資料的總和除以資料個數。","correctAnswer":true,"explanation":"這是算術平均數的定義。"},
+    {"id":"mean-basic-ci-2","type":"concept-id","statement":"資料 2、4、12 的平均數就是中間的 4。","correctAnswer":false,"explanation":"平均數為 (2+4+12)÷3=6；中間的 4 是中位數。"}
+  ],
+  "errorDiagnosis": [
+    {"id":"mean-basic-ed-1","type":"error-diagnosis","problem":"求 6、8、10 的平均數","wrongSolution":"小琪算成 (6+8+10)÷2=12","errorOptions":["總和算錯","除數應是資料個數 3，不是 2","不該使用除法","應先由大到小排列"],"correctErrorIndex":1,"explanation":"共有 3 筆資料，應算 24÷3=8。"},
+    {"id":"mean-basic-ed-2","type":"error-diagnosis","problem":"4 人平均有 7 枝筆","wrongSolution":"小傑說總共有 11 枝，因為 7+4=11","errorOptions":["求總量應用平均數乘以人數","7+4 算錯","人數應該減 1","平均數不能求總量"],"correctErrorIndex":0,"explanation":"總枝數=7×4=28 枝。"}
+  ],
+  "contextApplication": [
+    {"id":"mean-basic-ca-1","type":"context-application","scenario":"小美前三天讀書時間為 40、50、60 分鐘。","question":"平均每天讀書幾分鐘？","options":["45 分鐘","50 分鐘","55 分鐘","150 分鐘"],"answer":1,"explanation":"(40+50+60)÷3=150÷3=50 分鐘。"},
+    {"id":"mean-basic-ca-2","type":"context-application","scenario":"球隊 4 場比賽平均得 12 分，前 3 場共得 33 分。","question":"第 4 場得幾分？","options":["9 分","12 分","15 分","48 分"],"answer":2,"explanation":"4 場總分為 12×4=48 分，第 4 場為 48-33=15 分。"}
+  ]
+}

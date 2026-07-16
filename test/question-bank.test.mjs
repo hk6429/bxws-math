@@ -23,6 +23,10 @@ const nodeIds = [
   "weight-ton", "capacity-volume", "time-mul-div", "speed",
   "fraction-unlike-denom", "fraction-mul", "decimal-mul", "ratio-rate",
   "negative-number", "proportion-eq", "algebra-symbol", "linear-eq-1var",
+  "repeat-pattern", "growing-pattern", "input-output-table", "pattern-rule",
+  "coordinate-first-quadrant", "coordinate-plane", "function-relation", "direct-proportion",
+  "data-table-basic", "bar-chart-reading", "line-chart-reading", "mean-basic",
+  "median-mode", "range-data-interpretation", "chance-sample-space", "probability-basic",
 ];
 
 const questionArrays = ["basicMastery", "conceptId", "errorDiagnosis", "contextApplication"];
@@ -30,6 +34,17 @@ const legacyNodeIds = new Set([
   "fraction-unlike-denom", "fraction-mul", "decimal-mul", "ratio-rate",
   "negative-number", "proportion-eq", "algebra-symbol", "linear-eq-1var",
 ]);
+const newStrands = {
+  "relation-pattern": new Set([
+    "repeat-pattern", "growing-pattern", "input-output-table", "pattern-rule",
+    "coordinate-first-quadrant", "coordinate-plane", "function-relation", "direct-proportion",
+  ]),
+  "data-uncertainty": new Set([
+    "data-table-basic", "bar-chart-reading", "line-chart-reading", "mean-basic",
+    "median-mode", "range-data-interpretation", "chance-sample-space", "probability-basic",
+  ]),
+};
+const newNodeIds = new Set(Object.values(newStrands).flatMap((ids) => [...ids]));
 
 globalThis.fetch = async (url) => {
   const body = await readFile(new URL(`../${url}`, import.meta.url), "utf8");
@@ -41,15 +56,29 @@ globalThis.localStorage = {
   setItem: (key, value) => storage.set(key, value),
 };
 
-test("quiz-loader 可載入全庫 78 個節點題庫，且容忍頂層 curriculum", async () => {
+test("quiz-loader 可載入全庫 94 個節點題庫，且容忍頂層 curriculum", async () => {
   const banks = await Promise.all(nodeIds.map(loadQuestionBank));
-  assert.equal(banks.length, 78);
+  assert.equal(banks.length, 94);
   for (const [index, bank] of banks.entries()) {
     const questions = questionArrays.flatMap((key) => bank[key] ?? []);
-    assert.ok(questions.length >= 24, `${nodeIds[index]} 題數不足`);
-    if (!legacyNodeIds.has(nodeIds[index])) {
+    if (newNodeIds.has(nodeIds[index])) {
+      assert.equal(questions.length, 8, `${nodeIds[index]} 應精確為 8 題`);
+      for (const key of questionArrays) {
+        assert.equal(bank[key]?.length, 2, `${nodeIds[index]} ${key} 應精確為 2 題`);
+      }
+    } else {
+      assert.ok(questions.length >= 24, `${nodeIds[index]} 題數不足`);
+    }
+    if (!legacyNodeIds.has(nodeIds[index]) && !newNodeIds.has(nodeIds[index])) {
       assert.ok(questions.every((question) => question.challenge), `${nodeIds[index]} 缺 challenge`);
     }
+  }
+  for (const [strandId, ids] of Object.entries(newStrands)) {
+    const total = nodeIds.reduce((sum, nodeId, index) => {
+      if (!ids.has(nodeId)) return sum;
+      return sum + questionArrays.reduce((count, key) => count + (banks[index][key]?.length ?? 0), 0);
+    }, 0);
+    assert.equal(total, 64, `${strandId} 應精確為 64 題`);
   }
   assert.ok(banks.some((bank) => bank.curriculum));
 });
