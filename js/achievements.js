@@ -6,6 +6,7 @@ export const BADGES = [
   { id: "all-mastery", name: "融會貫通", desc: "精熟全部已上線學習點", check: (ctx) => ctx.masteredCount >= ctx.totalNodes },
   { id: "perfect-round", name: "全對挑戰", desc: "單次作答 5 題全對", check: (ctx) => ctx.lastRoundAllCorrect },
   { id: "streak-3", name: "連對三題", desc: "連續答對 3 題", check: (ctx) => ctx.currentStreak >= 3 },
+  { id: "master-trial", name: "大師真傳", desc: "大師試煉正確率達九成", check: (ctx) => ctx.masterTrialPassed },
 ];
 
 export function getUnlockedBadges() {

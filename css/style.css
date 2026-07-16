@@ -309,6 +309,27 @@ main { padding: 24px; max-width: 960px; margin: 0 auto; }
   text-align: center;
 }
 
+/* 終局：大師試煉邀請函 */
+.endgame-banner {
+  position: relative;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 27px, rgba(90,120,160,.12) 27px 28px),
+    var(--paper-deep);
+  border: 3px double var(--cp-red);
+  border-radius: var(--sketch-radius-a);
+  box-shadow: var(--sketch-shadow);
+  padding: 18px 20px;
+  margin-bottom: 24px;
+  text-align: center;
+  transform: rotate(-0.5deg);
+}
+.endgame-banner .endgame-title {
+  font-family: var(--font-hand);
+  font-weight: bold;
+  color: var(--cp-red);
+  margin-bottom: 10px;
+}
+
 /* ---------- 首次使用教學：黃便利貼 ---------- */
 
 .tip-bubble {

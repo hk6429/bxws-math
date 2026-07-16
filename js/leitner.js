@@ -24,7 +24,7 @@ export function isDue(questionId) {
 export function updateBox(questionId, correct) {
   const state = getBoxState();
   const current = state[questionId]?.box ?? 1;
-  const nextBox = correct ? Math.min(MAX_BOX, current + 1) : 1;
+  const nextBox = correct ? Math.min(MAX_BOX, current + 1) : Math.max(1, current - 1);
   state[questionId] = { box: nextBox, lastSeen: Date.now() };
   store.write("leitner", state);
   return nextBox;

@@ -1,6 +1,6 @@
 import { loadSkillTree, allNodes, nodeState, getNodeMastery } from "./schema.js";
 import { renderSkillTree, computeOverview } from "./skilltree-ui.js";
-import { buildSession } from "./quiz-loader.js";
+import { buildSession, buildMasterSession } from "./quiz-loader.js";
 import { renderQuestion } from "./quiz-ui.js";
 import { recordAnswer, overallMasteryPct, getNodeStats } from "./scoreEngine.js";
 import { updateBox } from "./leitner.js";
@@ -15,7 +15,9 @@ const views = {
 };
 
 let tree = null;
-let session = { queue: [], index: 0, node: null, mascot: null, streak: 0, roundCorrect: 0, roundTotal: 0 };
+let session = { queue: [], index: 0, node: null, mascot: null, streak: 0, maxStreak: 0, roundCorrect: 0, roundTotal: 0 };
+
+const MASTER_TRIAL_ID = "master-trial";
 
 function showView(name) {
   Object.entries(views).forEach(([key, el]) => el.classList.toggle("active", key === name));
@@ -29,9 +31,42 @@ function mascotVariantFor(nodeId) {
 
 async function goHome() {
   tree = tree ?? (await loadSkillTree());
-  renderSkillTree(document.getElementById("skilltree-container"), tree, startQuiz);
+  const container = document.getElementById("skilltree-container");
+  renderSkillTree(container, tree, startQuiz);
+  maybeShowEndgame(container);
   showView("home");
   maybeShowOnboardingTip();
+}
+
+// 終局內容：全節點精熟後開放大師試煉
+function maybeShowEndgame(container) {
+  const overview = computeOverview(tree);
+  if (overview.masteredCount < overview.totalNodes) return;
+  const banner = document.createElement("div");
+  banner.className = "endgame-banner";
+  banner.innerHTML = `<div class="endgame-title">整本草稿都完稿了！達文西與高斯聯名邀請你——</div>`;
+  const btn = document.createElement("button");
+  btn.className = "q-next";
+  btn.textContent = "⚔ 挑戰大師試煉（跨主題混合 10 題）";
+  btn.addEventListener("click", startMasterTrial);
+  banner.appendChild(btn);
+  container.prepend(banner);
+}
+
+async function startMasterTrial() {
+  const nodeIds = allNodes(tree).map((n) => n.id);
+  session = {
+    queue: await buildMasterSession(nodeIds),
+    index: 0,
+    node: { id: MASTER_TRIAL_ID, name: "大師試煉" },
+    mascot: "davinci",
+    streak: 0,
+    maxStreak: 0,
+    roundCorrect: 0,
+    roundTotal: 0,
+  };
+  showView("quiz");
+  renderCurrentQuestion();
 }
 
 function maybeShowOnboardingTip() {
@@ -54,6 +89,7 @@ async function startQuiz(node) {
     node,
     mascot: mascotVariantFor(node.id),
     streak: 0,
+    maxStreak: 0,
     roundCorrect: 0,
     roundTotal: 0,
   };
@@ -110,33 +146,40 @@ function renderCurrentQuestion() {
 }
 
 function handleAnswer(question, isCorrect) {
-  recordAnswer(session.node.id, question.id, isCorrect, 0);
+  const nodeId = question._nodeId ?? session.node.id;
+  recordAnswer(nodeId, question.id, isCorrect, 0);
   updateBox(question.id, isCorrect);
   session.roundTotal += 1;
   if (isCorrect) {
     session.roundCorrect += 1;
     session.streak += 1;
+    session.maxStreak = Math.max(session.maxStreak, session.streak);
   } else {
     session.streak = 0;
-    addWrongQuestion(session.node.id, question);
+    addWrongQuestion(nodeId, question);
   }
   renderStreakBadge();
 }
 
 function finishSession() {
   const overview = computeOverview(tree);
+  const isMasterTrial = session.node.id === MASTER_TRIAL_ID;
+  const roundPct = session.roundTotal > 0 ? session.roundCorrect / session.roundTotal : 0;
   const ctx = {
     masteredCount: overview.masteredCount,
     totalNodes: overview.totalNodes,
-    lastRoundAllCorrect: session.roundTotal > 0 && session.roundCorrect === session.roundTotal && session.roundTotal >= 5,
-    currentStreak: session.streak,
+    lastRoundAllCorrect: session.roundTotal >= 5 && session.roundCorrect === session.roundTotal,
+    currentStreak: session.maxStreak,
+    masterTrialPassed: isMasterTrial && session.roundTotal > 0 && roundPct >= 0.9,
   };
   const newBadges = evaluateBadges(ctx);
 
   document.getElementById("quiz-streak").innerHTML = "";
   const quizArea = document.getElementById("quiz-area");
   quizArea.innerHTML = "";
-  const stats = getNodeStats(session.node.id);
+  const stats = isMasterTrial
+    ? { masteryPct: roundPct, totalAttempts: session.roundTotal }
+    : getNodeStats(session.node.id);
   quizArea.appendChild(makeSummary(stats, newBadges));
 
   const player = getPlayerName();
@@ -198,7 +241,7 @@ function makeSummary(stats, newBadges) {
   reports.innerHTML = `
     <div class="report-tile"><strong>${Math.round((session.roundCorrect / session.roundTotal) * 100) || 0}%</strong><div>本輪正確率</div></div>
     <div class="report-tile"><strong>${stats.totalAttempts}</strong><div>累計作答</div></div>
-    <div class="report-tile"><strong>${session.streak}</strong><div>最終連對</div></div>
+    <div class="report-tile"><strong>${session.maxStreak}</strong><div>最長連對</div></div>
   `;
   box.appendChild(reports);
 

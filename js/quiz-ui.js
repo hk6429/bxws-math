@@ -15,6 +15,19 @@ function renderChoiceList(container, options, onPick) {
   container.appendChild(list);
 }
 
+// 選項打散：回傳打散後的選項與新正解索引（正解不可固定在第一位）
+function shuffleOptions(options, answerIdx) {
+  const order = options.map((_, i) => i);
+  for (let i = order.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [order[i], order[j]] = [order[j], order[i]];
+  }
+  return {
+    options: order.map((i) => options[i]),
+    answer: order.indexOf(answerIdx),
+  };
+}
+
 function markResult(list, btn, isCorrect, correctBtn) {
   [...list.children].forEach((child) => (child.disabled = true));
   btn.classList.add(isCorrect ? "q-correct" : "q-wrong");
@@ -54,9 +67,10 @@ export function renderQuestion(question, onAnswered, mascotVariant) {
 
   if (question.type === "basic-mastery") {
     wrap.appendChild(el("div", "q-stem", question.stem));
-    renderChoiceList(wrap, question.options, (idx, btn, list) => {
-      const isCorrect = idx === question.answer;
-      markResult(list, btn, isCorrect, list.children[question.answer]);
+    const view = shuffleOptions(question.options, question.answer);
+    renderChoiceList(wrap, view.options, (idx, btn, list) => {
+      const isCorrect = idx === view.answer;
+      markResult(list, btn, isCorrect, list.children[view.answer]);
       handleAnswered(isCorrect);
     });
   }
@@ -75,9 +89,10 @@ export function renderQuestion(question, onAnswered, mascotVariant) {
   if (question.type === "error-diagnosis") {
     wrap.appendChild(el("div", "q-stem", question.problem));
     wrap.appendChild(el("div", "q-wrong-solution", question.wrongSolution));
-    renderChoiceList(wrap, question.errorOptions, (idx, btn, list) => {
-      const isCorrect = idx === question.correctErrorIndex;
-      markResult(list, btn, isCorrect, list.children[question.correctErrorIndex]);
+    const view = shuffleOptions(question.errorOptions, question.correctErrorIndex);
+    renderChoiceList(wrap, view.options, (idx, btn, list) => {
+      const isCorrect = idx === view.answer;
+      markResult(list, btn, isCorrect, list.children[view.answer]);
       handleAnswered(isCorrect);
     });
   }
@@ -85,9 +100,10 @@ export function renderQuestion(question, onAnswered, mascotVariant) {
   if (question.type === "context-application") {
     wrap.appendChild(el("div", "q-scenario", question.scenario));
     wrap.appendChild(el("div", "q-stem", question.question));
-    renderChoiceList(wrap, question.options, (idx, btn, list) => {
-      const isCorrect = idx === question.answer;
-      markResult(list, btn, isCorrect, list.children[question.answer]);
+    const view = shuffleOptions(question.options, question.answer);
+    renderChoiceList(wrap, view.options, (idx, btn, list) => {
+      const isCorrect = idx === view.answer;
+      markResult(list, btn, isCorrect, list.children[view.answer]);
       handleAnswered(isCorrect);
     });
   }
