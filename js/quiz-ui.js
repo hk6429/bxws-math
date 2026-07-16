@@ -46,8 +46,12 @@ function addMascotReaction(wrap, mascotVariant, isCorrect) {
   wrap.appendChild(box);
 }
 
-export function renderQuestion(question, onAnswered, mascotVariant) {
+export function renderQuestion(question, onAnswered, mascotVariant, opts = {}) {
   const wrap = el("div", `q-card type-${question.type}`);
+  if (opts.encounter) {
+    wrap.classList.add("q-encounter");
+    wrap.appendChild(el("div", "encounter-banner", "✦ 大師的靈光一閃！答對有特別蓋章 ✦"));
+  }
   const typeLabel = {
     "basic-mastery": "基本精熟題",
     "concept-id": "概念辨識題",
@@ -62,7 +66,19 @@ export function renderQuestion(question, onAnswered, mascotVariant) {
   const handleAnswered = (isCorrect) => {
     explain.style.display = "block";
     addMascotReaction(wrap, mascotVariant, isCorrect);
-    onAnswered(isCorrect);
+    if (opts.encounter) {
+      if (isCorrect) {
+        wrap.appendChild(el("div", "encounter-stamp", "✦ 靈光章"));
+        for (let i = 0; i < 2; i++) {
+          const spark = el("span", "spark", "✦");
+          spark.style.animationDelay = `${i * 0.15}s`;
+          wrap.appendChild(spark);
+        }
+      } else {
+        wrap.querySelector(".encounter-banner")?.classList.add("banner-fade");
+      }
+    }
+    onAnswered(isCorrect, { encounter: !!opts.encounter });
   };
 
   if (question.type === "basic-mastery") {
