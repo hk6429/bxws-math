@@ -48,10 +48,23 @@
 }
 
 html { font-size: var(--base-font-size); }
-.accessibility-settings { position: relative; z-index: 2; margin: 10px auto; max-width: 720px; padding: 10px 14px; border: 1px solid rgba(242,201,76,.45); border-radius: 10px; background: rgba(18,16,34,.82); color: #f2e7c9; }
-.accessibility-settings summary { cursor: pointer; font-weight: 700; }
-.accessibility-settings fieldset { margin: 10px 0; }
-.accessibility-settings label { display: inline-flex; gap: 6px; align-items: center; margin: 5px 12px 5px 0; }
+.accessibility-settings { position: relative; z-index: 20; margin-left: 8px; }
+.accessibility-settings summary {
+  cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: center;
+  min-width: 44px; min-height: 44px; font-weight: 700; font-size: 1rem;
+  font-family: var(--font-hand); background: var(--paper); color: var(--ink);
+  border: var(--sketch-border); border-radius: var(--sketch-radius-a);
+  box-shadow: var(--sketch-shadow);
+}
+.accessibility-settings summary::-webkit-details-marker { display: none; }
+.accessibility-settings[open] summary { border-color: #2c261c; }
+.accessibility-settings-panel {
+  position: absolute; top: calc(100% + 8px); right: 0; width: max-content; max-width: min(85vw, 320px);
+  padding: 12px 14px; border: 1px solid rgba(242,201,76,.45); border-radius: 10px;
+  background: rgba(18,16,34,.94); color: #f2e7c9; box-shadow: 0 6px 18px rgba(0,0,0,.35);
+}
+.accessibility-settings-panel fieldset { margin: 0 0 8px; border: none; padding: 0; }
+.accessibility-settings-panel label { display: flex; gap: 6px; align-items: center; margin: 5px 0; }
 .combo-break { animation: combo-break-shake 480ms ease-out; }
 @keyframes combo-break-shake {
   0%, 100% { transform: translateX(0); background-color: transparent; box-shadow: none; }
@@ -103,8 +116,10 @@ body {
 
 .topbar {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
   padding: 14px 24px;
   background:
     repeating-linear-gradient(90deg, transparent 0 3px, rgba(0,0,0,.03) 3px 4px),
@@ -112,6 +127,7 @@ body {
   border-bottom: 3px solid var(--pencil);
   box-shadow: 0 4px 0 var(--paper-shadow);
 }
+.topbar nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 
 .topbar h1 {
   position: relative;
@@ -141,7 +157,6 @@ body {
 .topbar h1::after { bottom: -9px; right: -14px; transform: rotate(-42deg); }
 
 .topbar nav button {
-  margin-left: 8px;
   min-height: 44px;
   font-family: var(--font-hand);
   background: var(--paper);
