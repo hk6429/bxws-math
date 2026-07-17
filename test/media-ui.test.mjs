@@ -28,6 +28,8 @@ class FakeElement {
 
 globalThis.document = {
   createElement: (tagName) => new FakeElement(tagName),
+  addEventListener: () => {},
+  removeEventListener: () => {},
 };
 
 const { renderQuestion } = await import("../js/quiz-ui.js");

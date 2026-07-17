@@ -26,6 +26,24 @@ function renderMedia(media, className) {
   return figure;
 }
 
+// 數字鍵 1-4 直接點選對應選項；題目換下一題後（list 從畫面移除）監聽自動失效
+function enableNumberKeyAnswering(list) {
+  const handler = (event) => {
+    if (!list.isConnected) {
+      document.removeEventListener("keydown", handler);
+      return;
+    }
+    const active = document.activeElement;
+    if (active && (active.tagName === "INPUT" || active.tagName === "TEXTAREA")) return;
+    const idx = Number(event.key) - 1;
+    if (!Number.isInteger(idx) || idx < 0) return;
+    const btn = list.children[idx];
+    if (!btn || btn.disabled) return;
+    btn.click();
+  };
+  document.addEventListener("keydown", handler);
+}
+
 function renderChoiceList(container, options, onPick) {
   const list = el("div", "q-options");
   options.forEach((opt, idx) => {
@@ -35,6 +53,7 @@ function renderChoiceList(container, options, onPick) {
     list.appendChild(btn);
   });
   container.appendChild(list);
+  enableNumberKeyAnswering(list);
 }
 
 // 選項打散：回傳打散後的選項與新正解索引（正解不可固定在第一位）
