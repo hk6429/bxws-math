@@ -28,6 +28,7 @@ import {
 } from "./daily.js";
 import {
   isoWeekKey, buildWeeklySession, getWeeklyBest, submitWeeklyResult, decodeClassResults, decodeResult,
+  getRoomCode, setRoomCode, syncWeeklyResultToServer, fetchWeeklyBoard,
 } from "./weekly.js";
 import { computeWorkshop, WORKSHOP_STAGES } from "./workshop.js";
 import {
@@ -574,11 +575,60 @@ function makeWeeklyCard(container) {
   cmp.appendChild(result);
   card.appendChild(cmp);
 
+  const roomBox = document.createElement("div");
+  roomBox.className = "room-sync-box";
+  const roomLabel = document.createElement("label");
+  roomLabel.htmlFor = "room-code-input";
+  roomLabel.textContent = "班級代碼（同代碼的人會出現在同一張真排行榜）";
+  const roomInput = document.createElement("input");
+  roomInput.id = "room-code-input";
+  roomInput.type = "text";
+  roomInput.maxLength = 40;
+  roomInput.placeholder = "例如：301班";
+  roomInput.value = getRoomCode() || "";
+  const roomSyncBtn = document.createElement("button");
+  roomSyncBtn.className = "daily-btn";
+  roomSyncBtn.textContent = "同步真排行榜";
+  const roomOutput = document.createElement("div");
+  roomOutput.className = "room-sync-output";
+  roomSyncBtn.addEventListener("click", async () => {
+    const code = setRoomCode(roomInput.value);
+    if (!code) {
+      roomOutput.textContent = "請先輸入班級代碼";
+      return;
+    }
+    roomOutput.textContent = "同步中…";
+    const results = await fetchWeeklyBoard(code, isoWeekKey());
+    if (!results) {
+      roomOutput.textContent = "暫時連不上伺服器，改用下方手動貼上模式吧";
+      return;
+    }
+    roomOutput.innerHTML = "";
+    const note = document.createElement("p");
+    note.className = "score-disclosure";
+    note.textContent = "✅ 已伺服器同步（同班同代碼即時可見）";
+    roomOutput.appendChild(note);
+    if (results.length === 0) {
+      roomOutput.appendChild(Object.assign(document.createElement("p"), { textContent: "這個代碼本週還沒有人交出成績" }));
+    } else {
+      const list = document.createElement("ol");
+      results.forEach((entry) => {
+        const row = document.createElement("li");
+        row.textContent = `${entry.name}・${entry.pct}%・${entry.totalSec} 秒・連詠 ${entry.maxStreak}${entry.flagged ? "・⚠️ 建議複驗" : ""}`;
+        if (entry.flagged) row.title = entry.flagReasons.join("、");
+        list.appendChild(row);
+      });
+      roomOutput.appendChild(list);
+    }
+  });
+  roomBox.append(roomLabel, roomInput, roomSyncBtn, roomOutput);
+  card.appendChild(roomBox);
+
   const wall = document.createElement("div");
   wall.className = "class-leaderboard-wall";
   const wallLabel = document.createElement("label");
   wallLabel.htmlFor = "class-result-codes";
-  wallLabel.textContent = "班級戰績牆";
+  wallLabel.textContent = "班級戰績牆（手動貼上模式・離線備援）";
   const textarea = document.createElement("textarea");
   textarea.id = "class-result-codes";
   textarea.rows = 5;
@@ -1141,6 +1191,7 @@ function finishSession() {
       session.maxStreak,
       { questionCount: session.roundTotal, answerLog: session.perQuestion }
     );
+    syncWeeklyResultToServer(weeklyRecord);
   }
 
   let challengeReply = null;

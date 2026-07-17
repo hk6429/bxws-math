@@ -3166,3 +3166,13 @@ body::before {
   font-size: 0.82rem;
   line-height: 1.45;
 }
+.room-sync-box {
+  margin: 10px 0 16px;
+  padding: 10px 12px;
+  border: 1px solid rgba(143, 111, 212, 0.4);
+  border-radius: 8px;
+  background: rgba(143, 111, 212, 0.08);
+}
+.room-sync-box label { display: block; margin-bottom: 6px; font-size: 0.85rem; }
+.room-sync-box input { width: 100%; max-width: 220px; margin-right: 8px; }
+.room-sync-output { margin-top: 8px; }

@@ -1,0 +1,8 @@
+name = "bxws-math"
+pages_build_output_dir = "."
+compatibility_date = "2026-07-17"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "bxws-math-scores"
+database_id = "3c2e407f-c938-40df-ba7d-ed267438cfa9"

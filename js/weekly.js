@@ -1,5 +1,6 @@
 import { store } from "./store.js";
 import { flattenBank, loadQuestionBank } from "./quiz-loader.js";
+import { getPlayerId, getPlayerName } from "./leaderboard.js";
 
 // 每週大師盃：ISO 週數當種子，全班同一套題；結算產生可互報的戰績碼（無後端天梯）
 
@@ -171,4 +172,54 @@ export function submitWeeklyResult(pct, totalSec, maxStreak, audit = {}) {
   };
   store.write(`weekly:${isoWeekKey()}`, record);
   return record;
+}
+
+// 房間代碼：老師/學生自訂的班級代碼，用來把伺服器排行榜分組
+export function getRoomCode() {
+  return store.read("roomCode", null);
+}
+
+export function setRoomCode(code) {
+  const trimmed = String(code ?? "").trim().slice(0, 40);
+  store.write("roomCode", trimmed || null);
+  return trimmed || null;
+}
+
+// 背景同步到 Cloudflare D1；離線或伺服器異常時安靜失敗，不影響本機遊戲流程
+export async function syncWeeklyResultToServer(record) {
+  const roomCode = getRoomCode();
+  if (!roomCode || !record) return { skipped: true };
+  try {
+    const res = await fetch("/api/weekly-submit", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        roomCode,
+        week: isoWeekKey(),
+        deviceId: getPlayerId(),
+        name: getPlayerName() || "匿名",
+        pct: record.pct,
+        totalSec: record.totalSec,
+        maxStreak: record.maxStreak,
+        questionCount: record.questionCount,
+      }),
+    });
+    if (!res.ok) return { ok: false };
+    return await res.json();
+  } catch {
+    return { ok: false, offline: true };
+  }
+}
+
+// 從伺服器讀取真排行榜；失敗時回傳 null，呼叫端要自行 fallback 到手動貼上模式
+export async function fetchWeeklyBoard(roomCode, week = isoWeekKey()) {
+  if (!roomCode) return null;
+  try {
+    const res = await fetch(`/api/weekly-board?roomCode=${encodeURIComponent(roomCode)}&week=${encodeURIComponent(week)}`);
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.results ?? null;
+  } catch {
+    return null;
+  }
 }
