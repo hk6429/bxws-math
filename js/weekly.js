@@ -83,6 +83,23 @@ export function decodeResult(code) {
   return result;
 }
 
+export function decodeClassResults(text) {
+  const results = [];
+  let invalidCount = 0;
+  String(text).split(/\r?\n/).forEach((raw, index) => {
+    const code = raw.trim();
+    if (!code) return;
+    const decoded = decodeResult(code);
+    if (!decoded || decoded.error) {
+      invalidCount += 1;
+      return;
+    }
+    results.push({ ...decoded, code, lineNumber: index + 1 });
+  });
+  results.sort((a, b) => b.pct - a.pct || a.totalSec - b.totalSec || b.maxStreak - a.maxStreak);
+  return { results, invalidCount };
+}
+
 export function getWeeklyBest() {
   return store.read(`weekly:${isoWeekKey()}`, null);
 }

@@ -1,4 +1,5 @@
 import { store } from "./store.js";
+import { addStardust } from "./daily.js";
 
 // 咒卷集：前 8 件 id = 技能樹節點 id；tier 1 = 入庫、tier 2 = 導師蠟封
 export const MANUSCRIPTS = [
@@ -44,6 +45,38 @@ export function ownRareStamp(stampId) {
     book[stampId] = { at: Date.now() };
     store.write("rareStampBook", book);
   }
+}
+
+export function resolveEncounterReward(nodeId, mascot, random = Math.random) {
+  store.write("encounterWins", store.read("encounterWins", 0) + 1);
+  const owned = getRareStamps();
+  if (RARE_STAMPS.every((stamp) => owned[stamp.id])) {
+    addStardust(3);
+    store.write("encounterPity", 0);
+    return {
+      type: "stardust",
+      amount: 3,
+      message: "徽記已全數集齊，這次的魔力化為 3 粒星屑注入你的瓶中",
+    };
+  }
+
+  let pity = store.read("encounterPity", 0) + 1;
+  const shouldDrop = random() < 0.05 || pity >= 10;
+  if (!shouldDrop) {
+    store.write("encounterPity", pity);
+    return null;
+  }
+
+  let stamp = stampForNode(nodeId, mascot);
+  if (owned[stamp.id]) stamp = RARE_STAMPS.find((item) => !owned[item.id]) ?? null;
+  if (!stamp) {
+    store.write("encounterPity", pity);
+    return null;
+  }
+  pity = 0;
+  ownRareStamp(stamp.id);
+  store.write("encounterPity", pity);
+  return { type: "stamp", stamp };
 }
 
 export function getCollection() {

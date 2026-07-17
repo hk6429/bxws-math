@@ -5,14 +5,14 @@ import { computeWorkshop } from "../js/workshop.js";
 test("工作室修復度由精熟、落款與稀有章加權推導，不另存進度", () => {
   const tree = {
     strands: [
-      { id: "num-quantity", name: "數與量", nodes: [{ id: "n1" }, { id: "n2" }] },
+      { id: "num-quantity", name: "數與量", nodes: [{ id: "fraction-mul" }, { id: "decimal-mul" }] },
       { id: "space-shape", name: "空間與形狀", nodes: [], status: "coming-soon" },
     ],
   };
   const workshop = computeWorkshop(tree, {
-    progress: { n1: { masteryPct: 1 }, n2: { masteryPct: 0.5 } },
-    collection: { n1: { tier: 2 }, n2: { tier: 1 } },
-    rareStamps: { "stamp-n1": { at: 1 } },
+    progress: { "fraction-mul": { masteryPct: 1 }, "decimal-mul": { masteryPct: 0.5 } },
+    collection: { "fraction-mul": { tier: 2 }, "decimal-mul": { tier: 1 } },
+    rareStamps: { "stamp-fraction-mul": { at: 1 } },
   });
 
   assert.equal(workshop.rooms[0].repairPct, 71);
@@ -28,6 +28,33 @@ test("目前已上線房間全數重光時，觸發工作室終局", () => {
     collection: { a1: { tier: 2 } },
     rareStamps: { "stamp-a1": { at: 1 } },
   });
+  assert.equal(workshop.overallPct, 100);
+  assert.equal(workshop.allRestored, true);
+});
+
+test("沒有咒卷與徽記的塔只看精熟度，五塔可一起達成全復明", () => {
+  const tree = {
+    strands: [
+      { id: "num-quantity", name: "數與量", nodes: [{ id: "fraction-mul" }] },
+      { id: "algebra", name: "代數", nodes: [{ id: "algebra-symbol" }] },
+      { id: "space-shape", name: "空間與形狀", nodes: [{ id: "shape-recognize" }] },
+      { id: "relation-pattern", name: "關係與規律", nodes: [{ id: "repeat-pattern" }] },
+      { id: "data-uncertainty", name: "資料與可能性", nodes: [{ id: "data-table-basic" }] },
+    ],
+  };
+  const workshop = computeWorkshop(tree, {
+    progress: Object.fromEntries(tree.strands.flatMap((strand) => strand.nodes).map((node) => [node.id, { masteryPct: 1 }])),
+    collection: {
+      "fraction-mul": { tier: 2 },
+      "algebra-symbol": { tier: 2 },
+    },
+    rareStamps: {
+      "stamp-fraction-mul": { at: 1 },
+      "stamp-algebra-symbol": { at: 1 },
+    },
+  });
+
+  assert.deepEqual(workshop.rooms.map((room) => room.repairPct), [100, 100, 100, 100, 100]);
   assert.equal(workshop.overallPct, 100);
   assert.equal(workshop.allRestored, true);
 });

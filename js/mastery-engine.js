@@ -45,6 +45,18 @@ export function masteryThresholdFor(node = {}, threshold) {
   return DEFAULT_TIER_THRESHOLDS[node.tier] ?? 0.8;
 }
 
+export function nextStepRecommendation(stats = {}, wasMastered = false) {
+  if (!wasMastered && stats.mastered) {
+    return { kind: "just-mastered", label: "⚡ 同節點再練一輪" };
+  }
+  const unmet = stats.unmetConditions ?? [];
+  if (!stats.mastered && unmet.length >= 1 && unmet.length <= 2) {
+    const remaining = Math.max(1, Math.ceil(Number(stats.remainingPracticeCount) || 1));
+    return { kind: "close", remaining, label: `還差 ${remaining} 題就完卷——補上！` };
+  }
+  return { kind: "retry", label: "⚡ 同節點再練一輪" };
+}
+
 function expectedChallenges(attempts, node) {
   if (Array.isArray(node.challengeIds) && node.challengeIds.length > 0) {
     return [...new Set(node.challengeIds)];
@@ -138,18 +150,19 @@ export function evaluateMastery(attempts = [], node = {}, threshold, alreadyMast
   const unmetConditions = Object.entries(conditions)
     .filter(([, met]) => !met)
     .map(([condition]) => condition);
+  const remainingPracticeCount = Math.max(0, 12 - scoredAttempts.length, 10 - window.length);
   const details = {
-    A: `A 視窗：近 10 題答對率需達 ${Math.round(resolvedThreshold * 100)}%`,
-    B: "B 樣本：累計作答需達 12 題",
+    A: `再多練 ${Math.max(1, 10 - window.length)} 題，最近 10 題答對率要接近 ${Math.round(resolvedThreshold * 100)}% 才會亮`,
+    B: `再多寫 ${Math.max(0, 12 - scoredAttempts.length)} 題就集滿練習量囉`,
     C: missingChallenges.length > 0
-      ? `C 挑戰覆蓋：仍缺 ${missingChallenges.join("、")}`
-      : "C 挑戰覆蓋：守門挑戰或最近答對覆蓋尚未完成",
-    D: "D 題型覆蓋：四題型需齊全，且概念辨識與錯誤診斷合計至少答對 3 題",
-    E: `E 錯誤路徑鎖：第 ${errorLocks.join("、")} 條墨路仍待先備快檢與錯誤診斷修復`,
+      ? `再點亮這些挑戰：${missingChallenges.join("、")}`
+      : "守門挑戰再答對一次，這處星光就會亮起來",
+    D: "四種題型都再碰一碰，概念辨識和找錯題合計答對 3 題就好",
+    E: `第 ${errorLocks.join("、")} 條墨路還沒亮，先做暖身題，再完成兩題找錯練習`,
   };
   const feedback = unmetConditions.length === 0
     ? "五處星光都已點亮，這卷咒卷可以完卷。"
-    : `尚未完成：${unmetConditions.map((condition) => details[condition]).join("；")}。`;
+    : `還沒完卷：${unmetConditions.map((condition) => details[condition]).join("；")}。`;
 
   return {
     mastered,
@@ -157,6 +170,7 @@ export function evaluateMastery(attempts = [], node = {}, threshold, alreadyMast
     stars: masteryStars(accuracy),
     conditions,
     unmetConditions,
+    remainingPracticeCount,
     missingChallenges,
     feedback,
     errorLocks,

@@ -1,0 +1,40 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import { insertMentorCoachingQuestion } from "../js/quiz-loader.js";
+import { pickQuote, QUOTES } from "../js/quotes.js";
+
+test("三連錯介入會把一題基本精通題插到下一題", () => {
+  const queue = [{ id: "hard-1", type: "error-diagnosis" }, { id: "hard-2", type: "context-application" }];
+  const inserted = insertMentorCoachingQuestion(queue, 0, [
+    { id: "basic-1", type: "basic-mastery", stem: "先暖身" },
+  ], "別急，我們先喘口氣，練一題簡單的", () => 0);
+
+  assert.equal(inserted, true);
+  assert.equal(queue[1].id, "basic-1");
+  assert.equal(queue[1]._mentorCoaching, true);
+  assert.equal(queue[1]._mentorLine, "別急，我們先喘口氣，練一題簡單的");
+});
+
+test("零星或一星結算一定取用安慰語錄", () => {
+  const originalRandom = Math.random;
+  Math.random = () => 0.99;
+  try {
+    const zeroStar = pickQuote(0, "davinci");
+    const oneStar = pickQuote(1, "davinci");
+    assert.ok(zeroStar);
+    assert.ok(oneStar);
+    assert.ok(QUOTES.comfort.includes(zeroStar));
+    assert.ok(QUOTES.comfort.includes(oneStar));
+  } finally {
+    Math.random = originalRandom;
+  }
+});
+
+test("作答流程在三連錯後插入導師陪練，且不持久化連錯計數", async () => {
+  const app = await readFile(new URL("../js/app.js", import.meta.url), "utf8");
+  assert.match(app, /session\.consecutiveWrong >= 3/);
+  assert.match(app, /insertMentorCoachingQuestion/);
+  assert.match(app, /mentor-coaching-line/);
+  assert.match(app, /const \{ qStartAt, consecutiveWrong, mentorPool, \.\.\.rest \} = session/);
+});

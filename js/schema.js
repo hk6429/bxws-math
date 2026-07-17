@@ -50,3 +50,10 @@ export function isNodePlayable(node, tree, progress = getProgress()) {
   const state = nodeState(node, tree, progress);
   return state === "unlocked" || state === "mastered";
 }
+
+export function recommendedNextNode(tree, progress = getProgress()) {
+  const nodes = allNodes(tree);
+  return nodes.find((node) => nodeState(node, tree, progress) === "unlocked")
+    ?? nodes.find((node) => isNodePlayable(node, tree, progress))
+    ?? null;
+}

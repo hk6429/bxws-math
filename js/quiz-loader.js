@@ -22,6 +22,14 @@ export function flattenBank(bank) {
   ];
 }
 
+export function insertMentorCoachingQuestion(queue, currentIndex, basicQuestions, mentorLine, random = Math.random) {
+  const candidates = (basicQuestions ?? []).filter((question) => question?.type === "basic-mastery");
+  if (candidates.length === 0) return false;
+  const picked = candidates[Math.min(candidates.length - 1, Math.floor(random() * candidates.length))];
+  queue.splice(currentIndex + 1, 0, { ...picked, _mentorCoaching: true, _mentorLine: mentorLine });
+  return true;
+}
+
 // 終局大師試煉：跨節點混題，每題帶 _nodeId 讓作答記錄回到原節點
 export async function buildMasterSession(nodeIds, sessionSize = 10) {
   const results = await Promise.allSettled(nodeIds.map(loadQuestionBank));

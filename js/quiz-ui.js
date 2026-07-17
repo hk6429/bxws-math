@@ -5,6 +5,10 @@ function el(tag, className, text) {
   return node;
 }
 
+export function autoAdvanceDelay(isCorrect) {
+  return isCorrect ? 800 : null;
+}
+
 function renderMedia(media, className) {
   if (!media?.src) return null;
   const figure = el("figure", className);

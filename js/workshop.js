@@ -1,3 +1,5 @@
+import { MANUSCRIPTS, RARE_STAMPS } from "./collection.js";
+
 const ROOM_META = {
   "num-quantity": { icon: "⚖", title: "凡奇的秘數塔", voice: "「萬物皆可量，量過才算懂。」先別擦掉錯的那一筆，一稿一稿修到準" },
   algebra: { icon: "✦", title: "格思的符文塔", voice: "「給未知一個名字，它就不再可怕。」不必重算整題，直取第一個不合理處" },
@@ -7,6 +9,10 @@ const ROOM_META = {
 };
 
 const clamp01 = (n) => Math.max(0, Math.min(1, Number(n) || 0));
+const manuscriptNodeIds = new Set(MANUSCRIPTS.map((item) => item.id).filter((id) => id !== "master-trial"));
+const stampNodeIds = new Set(RARE_STAMPS
+  .map((stamp) => stamp.id.startsWith("stamp-") ? stamp.id.slice(6) : null)
+  .filter(Boolean));
 
 function roomStage(repairPct) {
   if (repairPct >= 100) return "restored";
@@ -23,10 +29,19 @@ export function computeWorkshop(tree, { progress = {}, collection = {}, rareStam
     }
 
     const mastery = nodeIds.reduce((sum, id) => sum + clamp01(progress[id]?.masteryPct), 0) / nodeIds.length;
-    const manuscript = nodeIds.reduce((sum, id) => sum + clamp01((collection[id]?.tier ?? 0) / 2), 0) / nodeIds.length;
-    const stamps = nodeIds.filter((id) => rareStamps[`stamp-${id}`]).length / nodeIds.length;
+    const manuscriptIds = nodeIds.filter((id) => manuscriptNodeIds.has(id));
+    const rareStampIds = nodeIds.filter((id) => stampNodeIds.has(id));
+    const manuscript = manuscriptIds.length
+      ? manuscriptIds.reduce((sum, id) => sum + clamp01((collection[id]?.tier ?? 0) / 2), 0) / manuscriptIds.length
+      : 0;
+    const stamps = rareStampIds.length
+      ? rareStampIds.filter((id) => rareStamps[`stamp-${id}`]).length / rareStampIds.length
+      : 0;
     // manuscript tier 2 本質是 masteryPct>=0.8 的粗粒度重述，故降權避免與 mastery 重複計分
-    const repairPct = Math.round((mastery * 0.7 + manuscript * 0.15 + stamps * 0.15) * 100);
+    const hasCollectibleBonus = manuscriptIds.length > 0 || rareStampIds.length > 0;
+    const repairPct = Math.round((hasCollectibleBonus
+      ? mastery * 0.7 + manuscript * 0.15 + stamps * 0.15
+      : mastery) * 100);
     return { ...meta, id: strand.id, name: strand.name, available: true, repairPct, stage: roomStage(repairPct) };
   });
   const activeRooms = rooms.filter((room) => room.available);

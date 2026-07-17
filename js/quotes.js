@@ -54,8 +54,8 @@ export function unlockedExtraQuotes(inkDropCount) {
 }
 
 export function pickQuote(stars, mascot) {
-  if (Math.random() >= 0.4) return null;
-  const pool = stars >= 3 ? QUOTES.praise : stars >= 1 ? QUOTES.cheer : QUOTES.comfort;
+  if (stars > 1 && Math.random() >= 0.4) return null;
+  const pool = stars >= 3 ? QUOTES.praise : stars >= 2 ? QUOTES.cheer : QUOTES.comfort;
   const preferred = pool.filter((q) => q.mascot === mascot);
   const candidates = preferred.length > 0 ? preferred : pool;
   return candidates[Math.floor(Math.random() * candidates.length)];

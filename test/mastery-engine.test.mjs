@@ -5,6 +5,7 @@ import {
   challengeWeight,
   evaluateMastery,
   masteryThresholdFor,
+  nextStepRecommendation,
 } from "../js/mastery-engine.js";
 import { buildSession } from "../js/quiz-loader.js";
 
@@ -85,6 +86,35 @@ test("精熟判定同時通過 A–E 才 mastered", () => {
   assert.equal(result.stars, 3);
 });
 
+test("本輪剛完卷時，下一步引擎回傳完卷慶祝", () => {
+  assert.deepEqual(nextStepRecommendation({ mastered: true, unmetConditions: [] }, false), {
+    kind: "just-mastered",
+    label: "⚡ 同節點再練一輪",
+  });
+});
+
+test("只剩一兩個條件時，下一步引擎顯示還差幾題", () => {
+  assert.deepEqual(nextStepRecommendation({
+    mastered: false,
+    unmetConditions: ["B"],
+    remainingPracticeCount: 2,
+  }, false), {
+    kind: "close",
+    remaining: 2,
+    label: "還差 2 題就完卷——補上！",
+  });
+});
+
+test("離完卷還有多項條件時，下一步引擎建議同節點再練", () => {
+  assert.deepEqual(nextStepRecommendation({
+    mastered: false,
+    unmetConditions: ["A", "B", "C"],
+  }, false), {
+    kind: "retry",
+    label: "⚡ 同節點再練一輪",
+  });
+});
+
 test("9 挑戰節點最近只對 7/9 時不符合條件 C", () => {
   const result = evaluateMastery(nineChallengeAttempts(["10-8", "10-9"]), {
     tier: "elem-mid",
@@ -115,7 +145,7 @@ test("9 挑戰節點即使對 8/9，守門錯誤仍不精熟", () => {
   assert.equal(result.mastered, false);
 });
 
-test("未滿樣本或挑戰覆蓋時不精熟，回饋指出缺項挑戰", () => {
+test("還沒完卷時以孩子看得懂的話指出差幾題與缺項挑戰", () => {
   const attempts = masteredAttempts(10).filter((attempt) => attempt.challenge !== "1-8");
   const result = evaluateMastery(attempts, { tier: "elem-mid", gateChallenges: ["1-8"] });
   assert.equal(result.mastered, false);
@@ -124,7 +154,9 @@ test("未滿樣本或挑戰覆蓋時不精熟，回饋指出缺項挑戰", () =>
   assert.ok(result.missingChallenges.includes("1-8"));
   assert.match(result.feedback, /1-8/);
   assert.deepEqual(result.unmetConditions, ["A", "B", "C"]);
-  for (const condition of result.unmetConditions) assert.match(result.feedback, new RegExp(`${condition} `));
+  assert.match(result.feedback, /再多寫 3 題就集滿練習量囉/);
+  assert.match(result.feedback, /答對率要接近 75%/);
+  assert.doesNotMatch(result.feedback, /A 視窗|B 樣本|C 挑戰覆蓋|尚未完成|不足|失敗/);
 });
 
 test("精熟門檻可依 tier 調整並保留明確參數覆寫", () => {

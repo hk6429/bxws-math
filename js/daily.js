@@ -74,3 +74,47 @@ export function inkThisMonth() {
   const prefix = todayKey().slice(0, 7);
   return getInkDays().filter((d) => d.startsWith(prefix)).length;
 }
+
+export function addStardust(amount = 1) {
+  const gained = Math.max(0, Math.floor(Number(amount) || 0));
+  if (gained === 0) return getStardustCount();
+  const bonus = Math.max(0, Number(store.read("stardustBonus", 0)) || 0) + gained;
+  store.write("stardustBonus", bonus);
+  return getInkDays().length + bonus;
+}
+
+export function getStardustCount() {
+  return getInkDays().length + Math.max(0, Number(store.read("stardustBonus", 0)) || 0);
+}
+
+export function returningWelcome(lastPlayed, dueCount, now = Date.now()) {
+  const daysAway = lastPlayed?.at
+    ? Math.max(0, Math.floor((now - Number(lastPlayed.at)) / 86400000))
+    : 0;
+  const displayDueCount = daysAway >= 2 ? Math.min(Math.max(0, dueCount), 6) : Math.max(0, dueCount);
+  return {
+    daysAway,
+    displayDueCount,
+    headline: daysAway >= 2
+      ? `導師把咒卷都收好了，今天先點亮 ${displayDueCount} 頁就好`
+      : dueCount > 0
+        ? `今日喚醒單——有 ${dueCount} 頁咒卷的星光等你點亮`
+        : "今日喚醒單",
+  };
+}
+
+export function claimStardustMilestones(total = getStardustCount()) {
+  const saved = store.read("stardustMilestones", {});
+  const newlyUnlocked = [];
+  [30, 100].forEach((milestone) => {
+    if (total >= milestone && saved[milestone] !== true) {
+      saved[milestone] = true;
+      newlyUnlocked.push(milestone);
+    }
+  });
+  if (newlyUnlocked.length > 0) store.write("stardustMilestones", saved);
+  return {
+    newlyUnlocked,
+    unlocked: [30, 100].filter((milestone) => saved[milestone] === true),
+  };
+}

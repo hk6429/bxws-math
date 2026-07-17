@@ -10,7 +10,8 @@ const KEY_TYPES = {
   lastCreatedChallenge: "nullable-object", lastPlayed: "nullable-object", lastStrategy: "nullable-string",
   leaderboard: "array", manuscriptCare: "object", masterTrialBest: "nullable-object",
   player: "nullable-string", playerId: "string", rareStampBook: "object", rareStamps: "array-or-object",
-  schemaVersion: "number", seenTip: "boolean", sfxOn: "boolean",
+  schemaVersion: "number", seenTip: "boolean", sfxOn: "boolean", stardustBonus: "number",
+  stardustMilestones: "object",
 };
 
 export const CURRENT_SCHEMA_VERSION = 2;

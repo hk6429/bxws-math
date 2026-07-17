@@ -1,7 +1,12 @@
-import { loadSkillTree, allNodes, nodeState, getNodeMastery, isNodePlayable } from "./schema.js";
+import {
+  loadSkillTree, allNodes, nodeState, getNodeMastery, isNodePlayable, recommendedNextNode,
+} from "./schema.js";
 import { renderSkillTree, computeOverview } from "./skilltree-ui.js";
-import { buildSession, buildMasterSession, buildReviewSession, countDueReviews } from "./quiz-loader.js";
-import { renderQuestion } from "./quiz-ui.js";
+import {
+  buildSession, buildMasterSession, buildReviewSession, countDueReviews,
+  insertMentorCoachingQuestion, loadQuestionBank,
+} from "./quiz-loader.js";
+import { autoAdvanceDelay, renderQuestion } from "./quiz-ui.js";
 import { recordAnswer, overallMasteryPct, getNodeStats } from "./scoreEngine.js";
 import { updateBox, hasRecord, isDue } from "./leitner.js";
 import { addWrongQuestion, listWrongQuestions, removeWrongQuestion } from "./errorbook.js";
@@ -9,15 +14,21 @@ import { evaluateBadges, getUnlockedBadges, unlockBadge, BADGES } from "./achiev
 import { getPlayerName, setPlayerName, submitScore, getLeaderboard } from "./leaderboard.js";
 import {
   MANUSCRIPTS, getCollection, evaluateCollection,
-  RARE_STAMPS, stampForNode, getRareStamps, ownRareStamp,
+  RARE_STAMPS, getRareStamps, resolveEncounterReward,
   manuscriptDustStatus, addManuscriptCare,
 } from "./collection.js";
-import { pickQuote, unlockedExtraQuotes } from "./quotes.js";
+import { pickQuote, QUOTES, unlockedExtraQuotes } from "./quotes.js";
 import { store, exportNamespace, importNamespace, isStorageBroken, runMigrations } from "./store.js";
 import { sfx, isSfxOn, setSfxOn } from "./sfx.js";
-import { getDaily, bumpDaily, dailyTasks, maybeDropInk, getInkDays, inkThisMonth } from "./daily.js";
-import { isoWeekKey, buildWeeklySession, getWeeklyBest, submitWeeklyResult, decodeResult } from "./weekly.js";
+import {
+  getDaily, bumpDaily, dailyTasks, maybeDropInk, getInkDays, getStardustCount,
+  claimStardustMilestones, inkThisMonth, returningWelcome,
+} from "./daily.js";
+import {
+  isoWeekKey, buildWeeklySession, getWeeklyBest, submitWeeklyResult, decodeClassResults, decodeResult,
+} from "./weekly.js";
 import { computeWorkshop, WORKSHOP_STAGES } from "./workshop.js";
+import { nextStepRecommendation } from "./mastery-engine.js";
 import {
   buildChallengeCatalog, decodeChallenge, decodeReply, encodeChallenge, encodeReply,
   questionAccuracy, questionLabel,
@@ -146,12 +157,16 @@ function newSession(fields) {
     elapsedTotal: 0,
     perQuestion: [],
     rareDrops: [],
+    stardustEarned: 0,
     challengeCode: null,
     streak: 0,
     streakShielded: false,
     maxStreak: 0,
     roundCorrect: 0,
     roundTotal: 0,
+    wasMasteredAtStart: false,
+    consecutiveWrong: 0,
+    mentorPool: [],
     ...fields,
   };
 }
@@ -164,7 +179,7 @@ function saveActiveSession(indexOffset = 0) {
     if (indexOffset > 0) clearActiveSession();
     return;
   }
-  const { qStartAt, ...rest } = session;
+  const { qStartAt, consecutiveWrong, mentorPool, ...rest } = session;
   store.write("activeSession", { ...rest, index: idx, savedAt: Date.now() });
 }
 
@@ -206,9 +221,10 @@ async function goHome() {
 
     makeWeeklyCard(dockBody);
     makeResumeCard(dockBody);
-    await makeDailyBoard(dockBody);
+    const dailySnapshot = await makeDailyBoard(dockBody);
     makeWorkshopTeaser(dockBody);
     if (!dockBody.hasChildNodes()) dock.remove();
+    makeTodayFirstStep(container, dailySnapshot.dueCount);
     showView("home");
     maybeShowOnboardingTip();
   } catch {
@@ -234,6 +250,8 @@ async function makeDailyBoard(container) {
   const tasks = dailyTasks(daily, { dueCount, errorCount });
   const justInked = maybeDropInk(tasks);
   const allDone = tasks.every((t) => t.satisfied);
+  const lastPlayed = store.read("lastPlayed", null);
+  const welcome = returningWelcome(lastPlayed, dueCount);
 
   const board = document.createElement("div");
   board.className = "daily-board" + (allDone ? " daily-done" : "");
@@ -241,9 +259,7 @@ async function makeDailyBoard(container) {
   title.className = "daily-title";
   title.textContent = allDone
     ? "今日喚醒單：完成！今晚的星光全亮了"
-    : dueCount > 0
-      ? `今日喚醒單——有 ${dueCount} 頁咒卷的星光等你點亮`
-      : "今日喚醒單";
+    : welcome.headline;
   board.appendChild(title);
 
   const list = document.createElement("div");
@@ -269,9 +285,18 @@ async function makeDailyBoard(container) {
   }
   const ink = document.createElement("span");
   ink.className = "ink-bottle";
-  ink.textContent = `🫙 星屑瓶：本月 ${inkThisMonth()} 粒（共 ${getInkDays().length} 粒）`;
+  ink.textContent = `🫙 星屑瓶：本月 ${inkThisMonth()} 粒（共 ${getStardustCount()} 粒）`;
   actions.appendChild(ink);
   board.appendChild(actions);
+
+  const milestones = claimStardustMilestones(getStardustCount());
+  if (milestones.newlyUnlocked.length > 0) {
+    sfx.rare();
+    board.appendChild(Object.assign(document.createElement("div"), {
+      className: "stardust-milestone-celebration",
+      textContent: `✦ 星屑里程碑：瓶中已聚集 ${milestones.newlyUnlocked.at(-1)} 粒星光！`,
+    }));
+  }
 
   if (allDone) {
     const stamp = document.createElement("div");
@@ -280,7 +305,6 @@ async function makeDailyBoard(container) {
     board.appendChild(stamp);
   }
 
-  const lastPlayed = store.read("lastPlayed", null);
   if (lastPlayed) {
     const days = Math.floor((Date.now() - lastPlayed.at) / 86400000);
     const when = days === 0 ? "今天" : `${days} 天前`;
@@ -290,6 +314,31 @@ async function makeDailyBoard(container) {
     board.appendChild(line);
   }
   container.prepend(board);
+  return { dueCount, welcome };
+}
+
+function makeTodayFirstStep(container, dueCount) {
+  const button = document.createElement("button");
+  button.className = "q-next today-first-step";
+  button.textContent = "今日第一步";
+  button.addEventListener("click", () => takeTodayFirstStep(dueCount));
+  container.prepend(button);
+}
+
+async function takeTodayFirstStep(dueCount) {
+  const saved = store.read("activeSession", null);
+  if (saved?.queue && saved.index < saved.queue.length) {
+    resumeActiveSession();
+    return;
+  }
+  if (dueCount > 0) {
+    await startReviewSession();
+    return;
+  }
+  const recommended = recommendedNextNode(tree);
+  if (!recommended) return;
+  const lastStrategy = store.read("lastStrategy", null) ?? "slow";
+  await startQuizWithStrategy(recommended, lastStrategy);
 }
 
 function workshopSnapshot() {
@@ -507,6 +556,42 @@ function makeWeeklyCard(container) {
   cmp.appendChild(result);
   card.appendChild(cmp);
 
+  const wall = document.createElement("div");
+  wall.className = "class-leaderboard-wall";
+  const wallLabel = document.createElement("label");
+  wallLabel.htmlFor = "class-result-codes";
+  wallLabel.textContent = "班級戰績牆";
+  const textarea = document.createElement("textarea");
+  textarea.id = "class-result-codes";
+  textarea.rows = 5;
+  textarea.placeholder = "每行貼上一組戰績咒文";
+  secureCodeInput(textarea);
+  const renderWall = document.createElement("button");
+  renderWall.className = "daily-btn";
+  renderWall.textContent = "排出班級戰績";
+  const wallOutput = document.createElement("div");
+  wallOutput.className = "class-leaderboard-output";
+  renderWall.addEventListener("click", () => {
+    const parsed = decodeClassResults(textarea.value);
+    wallOutput.innerHTML = "";
+    const list = document.createElement("ol");
+    parsed.results.forEach((entry) => {
+      const row = document.createElement("li");
+      row.textContent = `第 ${entry.lineNumber} 行・${entry.pct}%・${entry.totalSec} 秒・連詠 ${entry.maxStreak}`;
+      list.appendChild(row);
+    });
+    if (parsed.results.length > 0) wallOutput.appendChild(list);
+    else wallOutput.appendChild(Object.assign(document.createElement("p"), { textContent: "還沒有可辨識的戰績" }));
+    if (parsed.invalidCount > 0) {
+      wallOutput.appendChild(Object.assign(document.createElement("p"), {
+        className: "class-leaderboard-invalid",
+        textContent: `有 ${parsed.invalidCount} 行無法辨識`,
+      }));
+    }
+  });
+  wall.append(wallLabel, textarea, renderWall, wallOutput);
+  card.appendChild(wall);
+
   container.prepend(card);
 }
 
@@ -666,10 +751,12 @@ function startQuiz(node) {
 }
 
 async function startQuizWithStrategy(node, strategyId) {
+  showView("quiz");
   store.write("lastStrategy", strategyId);
   const errorEntries = strategyId === "repair"
     ? listWrongQuestions().filter((e) => e.nodeId === node.id)
     : [];
+  const bank = await loadQuestionBank(node.id);
   const queue = await buildSession(node.id, 8, strategyId, errorEntries, node);
   session = newSession({
     queue,
@@ -677,6 +764,8 @@ async function startQuizWithStrategy(node, strategyId) {
     mascot: mascotVariantFor(node.id),
     kind: "node",
     strategy: strategyId,
+    wasMasteredAtStart: getNodeStats(node.id).mastered,
+    mentorPool: bank.basicMastery ?? [],
     repairTotal: queue.filter((q) => q._fromErrorbook).length,
     encounterIdx: Math.random() < 0.35 ? Math.floor(Math.random() * queue.length) : -1,
   });
@@ -749,6 +838,12 @@ function renderCurrentQuestion(focusStem = false) {
   if (session.strategy === "sprint") startSprintTimer();
   else clearSprintTimer();
   const opts = { encounter: session.index === session.encounterIdx };
+  if (question._mentorCoaching) {
+    quizArea.appendChild(Object.assign(document.createElement("div"), {
+      className: "mentor-coaching-line",
+      textContent: question._mentorLine,
+    }));
+  }
   const card = renderQuestion(question, (isCorrect, meta) => handleAnswer(question, isCorrect, meta), session.mascot, opts);
   if (session.streak >= 3) card.classList.add("streak-active");
   if (session.streak >= 5) card.classList.add("streak-hot");
@@ -766,7 +861,10 @@ function renderCurrentQuestion(focusStem = false) {
   const nextBtn = document.createElement("button");
   nextBtn.className = "q-next q-next-hidden";
   nextBtn.textContent = session.index === session.queue.length - 1 ? "看成果" : "下一題";
+  let advanced = false;
   nextBtn.addEventListener("click", () => {
+    if (advanced) return;
+    advanced = true;
     session.index += 1;
     saveActiveSession();
     renderCurrentQuestion(true);
@@ -787,6 +885,7 @@ function handleAnswer(question, isCorrect, meta = {}) {
   session.perQuestion.push({ c: isCorrect ? 1 : 0, ms: elapsed });
   if (wasReviewDue) bumpDaily("review");
   if (isCorrect) {
+    session.consecutiveWrong = 0;
     session.roundCorrect += 1;
     session.streak += 1;
     session.maxStreak = Math.max(session.maxStreak, session.streak);
@@ -803,8 +902,9 @@ function handleAnswer(question, isCorrect, meta = {}) {
       bumpDaily("repair");
     }
     if (wasReviewDue && (getCollection()[nodeId]?.tier ?? 0) >= 2) addManuscriptCare(nodeId);
-    if (meta.encounter) meta.rareStampName = handleEncounterWin();
+    if (meta.encounter) meta.encounterReward = handleEncounterWin();
   } else {
+    session.consecutiveWrong += 1;
     if (session.streak >= 5 && !session.streakShielded) {
       session.streakShielded = true;
       session.streak = Math.max(0, session.streak - 2);
@@ -818,49 +918,65 @@ function handleAnswer(question, isCorrect, meta = {}) {
     if (session.strategy === "slow" && !question._retry) {
       session.queue.push({ ...question, _retry: true });
     }
+    if (session.consecutiveWrong >= 3) {
+      const comfort = QUOTES.comfort.filter((quote) => quote.mascot === session.mascot);
+      const candidates = comfort.length > 0 ? comfort : QUOTES.comfort;
+      const quote = candidates[Math.floor(Math.random() * candidates.length)];
+      const inserted = insertMentorCoachingQuestion(
+        session.queue,
+        session.index,
+        [...session.mentorPool, ...session.queue],
+        quote?.text ?? "別急，我們先喘口氣，練一題簡單的"
+      );
+      if (inserted) session.consecutiveWrong = 0;
+    }
   }
   renderStreakBadge();
   saveActiveSession(1);
   nextBtnEl?.classList.remove("q-next-hidden");
   nextBtnEl?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  const answeredNextButton = nextBtnEl;
+  const autoDelay = autoAdvanceDelay(isCorrect);
+  if (autoDelay !== null && answeredNextButton) {
+    scheduleTimer(() => answeredNextButton.click(), autoDelay);
+  }
   const messages = [isCorrect
     ? "答對了！"
     : `答錯了，正解是：選項${meta.correctLabel ?? ""}「${meta.correctText ?? ""}」`];
   if (session.streak >= 3) messages.push(`連詠 ${session.streak}`);
-  if (meta.rareStampName) messages.push(`發現稀有徽記：${meta.rareStampName}`);
-  messages.push("下一題按鈕已出現");
+  if (meta.encounterReward?.type === "stamp") messages.push(`發現稀有徽記：${meta.encounterReward.stamp.name}`);
+  if (meta.encounterReward?.type === "stardust") messages.push(meta.encounterReward.message);
+  messages.push(isCorrect ? "即將自動進入下一題" : "下一題按鈕已出現");
   announce(messages.join("。"));
   showStorageNoticeIfNeeded();
 }
 
 // 奇遇魔法陣答對：5% 掉稀有徽記，10 次未掉保底必掉（掉當前節點主題徽記，已擁有則遞補未擁有的）
 function handleEncounterWin() {
-  store.write("encounterWins", store.read("encounterWins", 0) + 1);
-  let pity = store.read("encounterPity", 0) + 1;
-  const shouldDrop = Math.random() < 0.05 || pity >= 10;
-  let discovered = null;
-  if (shouldDrop) {
-    const owned = getRareStamps();
-    const nodeId = session.queue[session.index]?._nodeId ?? session.node.id;
-    let stamp = stampForNode(nodeId, session.mascot);
-    if (owned[stamp.id]) stamp = RARE_STAMPS.find((s) => !owned[s.id]) ?? null;
-    if (stamp) {
-      pity = 0;
-      ownRareStamp(stamp.id);
-      session.rareDrops.push(stamp);
-      discovered = stamp.name;
-      sfx.rare();
-      const card = document.querySelector("#quiz-area .q-card");
-      if (card) {
-        const rare = document.createElement("div");
-        rare.className = "rare-stamp";
-        rare.textContent = `${stamp.sym} ${stamp.name}`;
-        card.appendChild(rare);
-      }
+  const nodeId = session.queue[session.index]?._nodeId ?? session.node.id;
+  const reward = resolveEncounterReward(nodeId, session.mascot);
+  if (!reward) return null;
+
+  sfx.rare();
+  const card = document.querySelector("#quiz-area .q-card");
+  if (reward.type === "stamp") {
+    session.rareDrops.push(reward.stamp);
+    if (card) {
+      const rare = document.createElement("div");
+      rare.className = "rare-stamp";
+      rare.textContent = `${reward.stamp.sym} ${reward.stamp.name}`;
+      card.appendChild(rare);
+    }
+  } else {
+    session.stardustEarned += reward.amount;
+    if (card) {
+      const stardust = document.createElement("div");
+      stardust.className = "stardust-drop";
+      stardust.textContent = reward.message;
+      card.appendChild(stardust);
     }
   }
-  store.write("encounterPity", pity);
-  return discovered;
+  return reward;
 }
 
 function finishSession() {
@@ -930,10 +1046,14 @@ function finishSession() {
   const stats = session.kind === "node"
     ? getNodeStats(session.node.id)
     : { masteryPct: roundPct, totalAttempts: session.roundTotal };
+  const nextStep = session.kind === "node"
+    ? nextStepRecommendation(stats, session.wasMasteredAtStart)
+    : null;
+  if (nextStep?.kind === "just-mastered") sfx.rare();
   const newDrops = session.kind === "node" || isMasterTrial
     ? evaluateCollection(session.node.id, stats, ctx)
     : [];
-  quizArea.appendChild(makeSummary(stats, newBadges, newDrops, weeklyRecord, challengeReply));
+  quizArea.appendChild(makeSummary(stats, newBadges, newDrops, weeklyRecord, challengeReply, nextStep));
 
   const player = getPlayerName();
   if (player) {
@@ -941,8 +1061,16 @@ function finishSession() {
     submitScore(player, overallMasteryPct(nodeIds));
   }
 
+  if (nextStep) {
+    const retryBtn = document.createElement("button");
+    retryBtn.className = "q-next";
+    retryBtn.textContent = nextStep.label;
+    retryBtn.addEventListener("click", () => startQuizWithStrategy(session.node, session.strategy ?? "slow"));
+    quizArea.appendChild(retryBtn);
+  }
+
   const backBtn = document.createElement("button");
-  backBtn.className = "q-next";
+  backBtn.className = `q-next${nextStep ? " q-next-secondary" : ""}`;
   backBtn.textContent = "回魔法星圖";
   backBtn.addEventListener("click", goHome);
   quizArea.appendChild(backBtn);
@@ -977,9 +1105,25 @@ function strategySummaryBits() {
   };
 }
 
-function makeSummary(stats, newBadges, newDrops = [], weeklyRecord = null, challengeReply = null) {
+function makeSummary(stats, newBadges, newDrops = [], weeklyRecord = null, challengeReply = null, nextStep = null) {
   const box = document.createElement("div");
   box.className = "q-summary";
+
+  if (nextStep?.kind === "just-mastered") {
+    box.appendChild(Object.assign(document.createElement("div"), {
+      className: "mastery-complete-banner",
+      textContent: "✦ 咒卷完卷！",
+    }));
+  }
+
+  const milestones = claimStardustMilestones(getStardustCount());
+  if (milestones.newlyUnlocked.length > 0) {
+    sfx.rare();
+    box.appendChild(Object.assign(document.createElement("div"), {
+      className: "stardust-milestone-celebration",
+      textContent: `✦ 星屑里程碑：瓶中已聚集 ${milestones.newlyUnlocked.at(-1)} 粒星光！`,
+    }));
+  }
 
   const stars = roundStars(session.roundTotal, session.roundCorrect);
   const mascotState = stars >= 2 ? "celebrate" : stars >= 1 ? "happy" : "idle";
@@ -1083,6 +1227,13 @@ function makeSummary(stats, newBadges, newDrops = [], weeklyRecord = null, chall
     drop.appendChild(text);
     box.appendChild(drop);
   });
+
+  if (session.stardustEarned > 0) {
+    const drop = document.createElement("div");
+    drop.className = "ms-drop stardust-drop";
+    drop.textContent = `✦ 本輪有 ${session.stardustEarned} 粒星屑注入瓶中`;
+    box.appendChild(drop);
+  }
 
   // 新咒卷入庫／導師蠟封演出
   newDrops.forEach((d) => {
@@ -1450,11 +1601,19 @@ async function showDashboard() {
   el.appendChild(stampSection);
 
   // 星屑瓶與番外語錄
-  const inkTotal = getInkDays().length;
+  const inkTotal = getStardustCount();
+  const milestones = claimStardustMilestones(inkTotal);
   const extras = unlockedExtraQuotes(inkTotal);
   const inkSection = document.createElement("div");
   inkSection.className = "dash-ink";
+  milestones.unlocked.forEach((milestone) => inkSection.classList.add(`stardust-${milestone}`));
   inkSection.innerHTML = `<h3>星屑瓶（共 ${inkTotal} 粒 · 每 7 粒解鎖一則賢者殘卷番外）</h3>`;
+  milestones.unlocked.forEach((milestone) => {
+    inkSection.appendChild(Object.assign(document.createElement("div"), {
+      className: "stardust-milestone-marker",
+      textContent: `✦ ${milestone} 粒星屑里程碑`,
+    }));
+  });
   if (extras.length === 0) {
     inkSection.appendChild(Object.assign(document.createElement("p"), {
       className: "ink-hint",
