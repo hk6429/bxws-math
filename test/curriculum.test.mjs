@@ -167,7 +167,7 @@ test("18 個已完成幾何節點皆有 lessonMedia，另有 4 個七年級 pend
   assert.equal(pendingGeometry.length, 4);
   for (const node of readyGeometry) {
     assert.equal(typeof node.lessonMedia?.src, "string", `${node.id} 缺 lessonMedia.src`);
-    assert.match(node.lessonMedia.src, /^assets\/geometry\/.+\.png$/);
+    assert.match(node.lessonMedia.src, /^assets\/geometry\/.+\.(?:png|webp)$/);
     assert.equal(typeof node.lessonMedia?.alt, "string", `${node.id} 缺 lessonMedia.alt`);
     assert.ok(node.lessonMedia.alt.trim().length > 0, `${node.id} 的 alt 不可為空`);
   }

@@ -200,7 +200,7 @@ test("buildSession 實際接上挑戰輪替引擎", async () => {
     errorDiagnosis: questions.filter((question) => question.type === "error-diagnosis"),
     contextApplication: questions.filter((question) => question.type === "context-application"),
   };
-  globalThis.fetch = async () => ({ json: async () => bank });
+  globalThis.fetch = async () => ({ ok: true, status: 200, json: async () => bank });
   const queue = await buildSession("adaptive-node", 8, "slow", [], { tier: "elem-mid" });
   assert.equal(new Set(queue.map((question) => question.challenge)).size, 8);
 });
@@ -241,6 +241,8 @@ test("有 prereq 的錯誤路徑鎖先做三題先備 BM，全對後才恢復原
     basicMastery: [1, 2, 3, 4].map((n) => ({ id: `prereq-bm-${n}`, type: "basic-mastery" })),
   };
   globalThis.fetch = async (url) => ({
+    ok: true,
+    status: 200,
     json: async () => url.includes("prereq-node") ? prereqBank : currentBank,
   });
 

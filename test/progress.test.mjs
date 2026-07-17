@@ -2,12 +2,16 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { recordAnswer, getNodeStats } from "../js/scoreEngine.js";
 import { isNodeMastered, nodeState } from "../js/schema.js";
+import { runMigrations } from "../js/store.js";
 
 function fakeStorage() {
   const map = new Map();
   return {
+    get length() { return map.size; },
+    key: (index) => [...map.keys()][index] ?? null,
     getItem: (key) => map.get(key) ?? null,
     setItem: (key, value) => map.set(key, value),
+    removeItem: (key) => map.delete(key),
   };
 }
 
@@ -56,6 +60,7 @@ test("舊存檔達門檻者一次性遷移，新增 prereq 不回鎖", () => {
   }));
   const oldNode = { id: "old", prereq: ["prereq"] };
   const oldTree = { masteryThreshold: 0.8, strands: [{ id: "s", nodes: [oldNode, { id: "prereq", prereq: [] }] }] };
+  runMigrations(0, oldTree);
   assert.equal(isNodeMastered("old", oldTree), true);
   assert.equal(nodeState(oldNode, oldTree), "mastered");
   const saved = JSON.parse(localStorage.getItem("bxws:progress"));

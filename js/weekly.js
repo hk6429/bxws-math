@@ -1,5 +1,5 @@
 import { store } from "./store.js";
-import { loadQuestionBank } from "./quiz-loader.js";
+import { flattenBank, loadQuestionBank } from "./quiz-loader.js";
 
 // 每週大師盃：ISO 週數當種子，全班同一套題；結算產生可互報的戰績碼（無後端天梯）
 
@@ -31,20 +31,13 @@ function mulberry32(a) {
   };
 }
 
-function flattenBank(bank) {
-  return [
-    ...bank.basicMastery,
-    ...bank.conceptId,
-    ...bank.errorDiagnosis,
-    ...bank.contextApplication,
-  ];
-}
-
 // 同週同 nodeIds → 題組完全相同（id 排序後洗牌，與題庫檔內順序無關）
 export async function buildWeeklySession(nodeIds, sessionSize = 10) {
-  const banks = await Promise.all(nodeIds.map(loadQuestionBank));
-  const all = banks
-    .flatMap((bank, i) => flattenBank(bank).map((q) => ({ ...q, _nodeId: nodeIds[i] })))
+  const results = await Promise.allSettled(nodeIds.map(loadQuestionBank));
+  const all = results
+    .flatMap((result, i) => result.status === "fulfilled"
+      ? flattenBank(result.value).map((q) => ({ ...q, _nodeId: nodeIds[i] }))
+      : [])
     .sort((a, b) => (a.id < b.id ? -1 : 1));
   const rand = mulberry32(hashSeed(isoWeekKey()));
   for (let i = all.length - 1; i > 0; i--) {
@@ -54,22 +47,31 @@ export async function buildWeeklySession(nodeIds, sessionSize = 10) {
   return all.slice(0, Math.min(sessionSize, all.length));
 }
 
-// 戰績碼：正確率(0-100)×百萬 + 總秒數(cap999)×千 + 最長連對(cap99)，base36 大寫＋一位檢查碼
+const RESULT_SALT = "bxws-weekly-2026";
+
+function resultChecksum(text) {
+  return (hashSeed(`${RESULT_SALT}|${text}`) % (36 ** 3)).toString(36).toUpperCase().padStart(3, "0");
+}
+
+// 戰績碼 V2：base36 本體＋混入週次與站點鹽的三位檢查碼
 export function encodeResult(pct, totalSec, maxStreak) {
   const value =
     Math.round(pct) * 1000000 +
     Math.min(999, Math.round(totalSec)) * 1000 +
     Math.min(99, maxStreak);
   const body = value.toString(36).toUpperCase();
-  const check = (value % 35).toString(36).toUpperCase();
-  return `${isoWeekKey()}-${body}${check}`;
+  const week = isoWeekKey();
+  const check = resultChecksum(`${week}|${body}`);
+  return `${week}-V2${body}${check}`;
 }
 
 export function decodeResult(code) {
-  const m = /^(\d{4}W\d{2})-([0-9A-Z]+)([0-9A-Z])$/.exec(code.trim().toUpperCase());
+  const normalized = String(code).trim().toUpperCase();
+  if (/^\d{4}W\d{2}-[0-9A-Z]+$/.test(normalized) && !normalized.includes("-V2")) return { error: "too-old" };
+  const m = /^(\d{4}W\d{2})-V2([0-9A-Z]+)([0-9A-Z]{3})$/.exec(normalized);
   if (!m) return null;
   const value = parseInt(m[2], 36);
-  if (Number.isNaN(value) || (value % 35).toString(36).toUpperCase() !== m[3]) return null;
+  if (Number.isNaN(value) || resultChecksum(`${m[1]}|${m[2]}`) !== m[3]) return null;
   const result = {
     week: m[1],
     pct: Math.floor(value / 1000000),

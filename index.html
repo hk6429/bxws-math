@@ -2,49 +2,60 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>步學吾數</title>
+  <link rel="canonical" href="https://bxws-math.vercel.app/" />
+  <link rel="modulepreload" href="js/store.js" />
+  <link rel="modulepreload" href="js/schema.js" />
+  <link rel="modulepreload" href="js/quiz-loader.js" />
+  <link rel="modulepreload" href="js/quiz-ui.js" />
+  <link rel="modulepreload" href="js/leitner.js" />
+  <link rel="modulepreload" href="js/scoreEngine.js" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <header class="topbar">
     <h1>步學吾數</h1>
     <nav>
-      <button id="nav-home">技能樹</button>
+      <button id="nav-home" aria-current="page">技能樹</button>
       <button id="nav-workshop">大師工作室</button>
       <button id="nav-dashboard">我的儀表板</button>
-      <button id="nav-sfx" class="nav-sfx" aria-label="音效開關">🔇</button>
+      <button id="nav-sfx" class="nav-sfx" aria-label="音效開關" aria-pressed="false">🔇</button>
     </nav>
   </header>
 
   <main>
-    <section id="view-home" class="view active">
+    <section id="view-home" class="view active" aria-labelledby="home-heading">
+      <h2 id="home-heading" class="visually-hidden" tabindex="-1">技能星圖</h2>
       <div id="skilltree-container" class="skilltree"></div>
     </section>
 
-    <section id="view-quiz" class="view">
-      <h2 id="quiz-node-name"></h2>
+    <section id="view-quiz" class="view" aria-labelledby="quiz-node-name">
+      <h2 id="quiz-node-name" tabindex="-1">練習題</h2>
       <span id="quiz-streak"></span>
-      <div id="quiz-progressbar" class="quiz-progressbar"></div>
+      <div id="quiz-progressbar" class="quiz-progressbar" role="progressbar" aria-valuemin="1" aria-valuemax="1" aria-valuenow="1" aria-label="第 1 題，共 1 題"></div>
+      <div id="quiz-live" role="status" aria-live="polite" class="visually-hidden"></div>
       <div id="quiz-area"></div>
     </section>
 
-    <section id="view-dashboard" class="view">
+    <section id="view-dashboard" class="view" aria-labelledby="dashboard-heading">
+      <h2 id="dashboard-heading" class="visually-hidden" tabindex="-1">我的儀表板</h2>
       <div id="dashboard-content"></div>
     </section>
 
-    <section id="view-workshop" class="view">
+    <section id="view-workshop" class="view" aria-labelledby="workshop-heading">
+      <h2 id="workshop-heading" class="visually-hidden" tabindex="-1">大師工作室</h2>
       <div id="workshop-content"></div>
     </section>
   </main>
 
   <div id="tip-bubble-root"></div>
-  <img src="assets/deco/quill.png" class="quill-deco" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+  <img src="assets/deco/quill.png" class="quill-deco" alt="" loading="lazy" decoding="async" />
 
   <script type="module" src="js/app.js"></script>
 
-  <img src="https://visitor-badge.laobi.icu/badge?page_id=hk6429.bxws-math" alt="訪客人數" loading="lazy" style="position:fixed;right:14px;bottom:14px;z-index:2147483000;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.35);">
-  <script>window.goatcounter = {path: p => location.host + p}</script>
-  <script data-goatcounter="https://hk6429.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=hk6429.bxws-math" alt="訪客人數" loading="lazy" referrerpolicy="no-referrer" style="position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:2147483000;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.35);pointer-events:none;">
+  <script src="js/vendor/gc-config.js"></script>
+  <script data-goatcounter="https://hk6429.goatcounter.com/count" async src="js/vendor/count.js"></script>
 </body>
 </html>

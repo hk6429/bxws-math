@@ -48,7 +48,7 @@ const newNodeIds = new Set(Object.values(newStrands).flatMap((ids) => [...ids]))
 
 globalThis.fetch = async (url) => {
   const body = await readFile(new URL(`../${url}`, import.meta.url), "utf8");
-  return { json: async () => JSON.parse(body) };
+  return { ok: true, status: 200, json: async () => JSON.parse(body) };
 };
 const storage = new Map();
 globalThis.localStorage = {

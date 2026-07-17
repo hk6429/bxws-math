@@ -119,12 +119,14 @@ body {
   transition: box-shadow .12s, transform .12s;
 }
 .topbar nav button:nth-child(even) { border-radius: var(--sketch-radius-b); }
+@media (hover: hover) and (pointer: fine) {
 .topbar nav button:hover {
   border-width: 3px;
   border-color: #2c261c;
   background: #efe6cc;
   transform: translate(1px, 2px);
   box-shadow: 1px 1px 0 var(--paper-shadow);
+}
 }
 
 main { padding: 24px; max-width: 960px; margin: 0 auto; }
@@ -419,7 +421,9 @@ main { padding: 24px; max-width: 960px; margin: 0 auto; }
   cursor: pointer;
   font-weight: bold;
 }
-.tip-bubble button:hover { transform: translate(1px, 2px); box-shadow: 1px 1px 0 var(--paper-shadow); }
+@media (hover: hover) and (pointer: fine) {
+  .tip-bubble button:hover { transform: translate(1px, 2px); box-shadow: 1px 1px 0 var(--paper-shadow); }
+}
 
 /* ---------- 大師心法：策略選擇頁（CD3） ---------- */
 
@@ -469,7 +473,9 @@ main { padding: 24px; max-width: 960px; margin: 0 auto; }
 .strategy-card:nth-child(odd) { border-radius: var(--sketch-radius-b); }
 .strategy-card strong { font-family: var(--font-hand); font-size: 1.15rem; color: var(--strategy-color, var(--ink)); }
 .strategy-card span { color: var(--ink-dim); font-size: 0.95rem; }
-.strategy-card:hover:not(:disabled) { transform: rotate(-1deg) translate(1px, 2px); box-shadow: 1px 1px 0 var(--paper-shadow); }
+@media (hover: hover) and (pointer: fine) {
+  .strategy-card:hover:not(:disabled) { transform: rotate(-1deg) translate(1px, 2px); box-shadow: 1px 1px 0 var(--paper-shadow); }
+}
 .strategy-card:disabled { opacity: 0.45; cursor: default; }
 .strategy-recommend-tag {
   align-self: flex-end;
@@ -844,10 +850,12 @@ main { padding: 24px; max-width: 960px; margin: 0 auto; }
   border: 2px solid var(--pencil);
   border-radius: 55% 45% 50% 50% / 45% 55% 45% 55%;
 }
+@media (hover: hover) and (pointer: fine) {
 .q-option:hover:not(:disabled) {
   border-color: var(--pencil);
   border-width: 2.5px;
   background: rgba(74,111,165,.08);
+}
 }
 .q-option:disabled { cursor: default; }
 
@@ -941,7 +949,9 @@ main { padding: 24px; max-width: 960px; margin: 0 auto; }
   font-weight: bold;
   transition: box-shadow .12s, transform .12s;
 }
-.q-next:hover { transform: translate(1px, 2px); box-shadow: 1px 1px 0 var(--paper-shadow); }
+@media (hover: hover) and (pointer: fine) {
+  .q-next:hover { transform: translate(1px, 2px); box-shadow: 1px 1px 0 var(--paper-shadow); }
+}
 .q-next:active { transform: translate(2px, 3px); box-shadow: none; }
 
 @keyframes shake-x {
@@ -1925,9 +1935,11 @@ body::before {
   color: var(--mana);
   font-variant-numeric: tabular-nums;
 }
+@media (hover: hover) and (pointer: fine) {
 .workshop-teaser:hover {
   border-color: rgba(242, 201, 76, 0.7);
   box-shadow: 0 4px 18px rgba(242, 201, 76, 0.2);
+}
 }
 /* 工作室主頁 hero */
 .workshop-hero {
@@ -2290,3 +2302,218 @@ img[src*="visitor-badge"] {
   0%, 100% { opacity: 0.82; }
   50% { opacity: 1; }
 }
+
+/* ---------- 14. 2026-07 行動裝置、觸控與效能修正 ---------- */
+input, select, textarea, button { font: inherit; }
+.weekly-compare input,
+.challenge-receiver input,
+.challenge-creator select { font-size: 1rem; }
+
+.map-node .node-label { font-size: 0.875rem; }
+.challenge-question-list {
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.lesson-media img, .q-media img { aspect-ratio: 3 / 2; }
+
+:where(.topbar nav, .daily-actions, .weekly-code-row, .weekly-compare, .challenge-receiver,
+  .challenge-creator, .travel-actions, .q-options) { touch-action: manipulation; }
+:where(.q-next, .daily-btn, .weekly-go, .strategy-card, .topbar button):active:not(:disabled) {
+  transform: translate(1px, 2px) scale(0.98);
+  box-shadow: none;
+}
+
+.clone-warning {
+  position: relative;
+  z-index: 2147483001;
+  padding: 9px 14px;
+  background: #8c241f;
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+}
+
+.lock-tap-tip-below { transform: translate(-50%, 70%) rotate(-2deg); }
+
+/* frontier 脈衝只改 transform/opacity，避免行動 GPU 反覆重算 filter */
+@keyframes redraw-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.68; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .map-path, .node-body { filter: none !important; }
+  body::before { animation: none !important; }
+}
+
+@media (max-width: 600px) {
+  main { padding: 8px; }
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px 8px;
+  }
+  .topbar h1 { align-self: center; }
+  .topbar nav {
+    display: flex;
+    width: 100%;
+    flex: 1;
+    gap: 4px;
+  }
+  .topbar nav button {
+    flex: 1 1 0;
+    min-width: 0;
+    margin-left: 0;
+    padding: 6px 4px;
+    font-size: 0.86rem;
+  }
+  .map-node .node-label { font-size: 1rem; }
+  .q-card, .q-summary, .daily-board, .weekly-card, .endgame-banner {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .q-card::before, .q-summary::before, .daily-board::before,
+  .weekly-card::before, .endgame-banner::before {
+    left: 6px;
+    right: 6px;
+  }
+  .tip-bubble {
+    top: calc(env(safe-area-inset-top) + 116px);
+    right: 8px;
+    bottom: auto;
+    left: 8px;
+    width: auto;
+    max-width: none;
+    padding: 7px 9px;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .tip-bubble br { display: none; }
+  .tip-bubble button { min-height: 34px; margin-left: 6px; padding: 3px 8px; }
+}
+
+/* ---------- 15. Wave 2：無障礙工具 ---------- */
+/* 視覺隱藏但保留讀屏與鍵盤可達性 */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* 亮色結算紙上的策略文字對比 */
+.q-summary .strategy-note { color: #3e7440; }
+
+/* 深色策略選擇器保留亮綠文字 */
+.strategy-picker .strategy-note { color: #9fe3a5; }
+
+/* 當前導覽頁辨識 */
+.topbar nav [aria-current="page"] {
+  box-shadow: inset 0 -3px 0 var(--mana);
+  font-weight: 800;
+}
+
+/* 旅行皮箱鍵盤焦點環 */
+.travel-import:focus-within {
+  outline: 3px solid var(--mana);
+  outline-offset: 3px;
+}
+
+/* 題幹可縮放行高 */
+.q-stem { line-height: 1.7; }
+
+/* 詳解以左框而非斜體區別 */
+.q-explain { font-style: normal; }
+
+/* 節點標籤使用相對字級 */
+.map-node .node-label { font-size: 0.875rem; }
+
+/* 挑戰題核取方塊觸控尺寸 */
+.challenge-question input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  accent-color: var(--mana);
+}
+
+/* 挑戰題標籤最低觸控高度 */
+.challenge-question { min-height: 44px; }
+
+/* 五題額滿提示 */
+.challenge-full-message {
+  display: block;
+  min-height: 1.5em;
+  color: #ffd166;
+  font-weight: 700;
+}
+
+/* 今日看板收合指示器 */
+.home-brief-dock > summary { list-style: none; }
+
+/* 今日看板收合指示器圖示 */
+.home-brief-dock > summary::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: 0.45em;
+}
+
+/* 今日看板展開指示器 */
+.home-brief-dock[open] > summary::before { content: "▾"; }
+
+/* 儲存空間失效通知 */
+.storage-notice {
+  position: sticky;
+  top: 0;
+  z-index: 2147483002;
+  padding: 10px 16px;
+  background: #7a251f;
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* 題庫載入錯誤卡 */
+.load-error-card {
+  max-width: 36rem;
+  margin: 3rem auto;
+  padding: 2rem;
+  border: 2px solid #9f3a32;
+  border-radius: 12px;
+  background: #fff7ed;
+  color: #70251f;
+  text-align: center;
+  font-weight: 800;
+}
+
+/* 作答正誤符號間距 */
+.q-result-mark { margin-inline-start: 0.5em; }
+
+/* 高對比模式以實線標示正解 */
+@media (forced-colors: active) {
+  .q-option.q-correct { border: 4px solid ButtonText; }
+}
+
+/* 高對比模式以虛線標示錯誤 */
+@media (forced-colors: active) {
+  .q-option.q-wrong { border: 4px dashed ButtonText; }
+}
+
+/* 減少動態時移除會殘留的儀式粒子 */
+@media (prefers-reduced-motion: reduce) {
+  .halo-ripple, .pshaving, .spark { display: none !important; }
+}
+
+/* 一般亮色區域的策略文字對比 */
+.strategy-note { color: #3e7440; }
+
+/* 深色策略選擇器的策略文字對比 */
+.strategy-picker .strategy-note { color: #9fe3a5; }

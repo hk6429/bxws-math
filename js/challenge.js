@@ -1,8 +1,10 @@
-import { loadQuestionBank } from "./quiz-loader.js";
+import { flattenBank, loadQuestionBank } from "./quiz-loader.js";
+import { isoWeekKey } from "./weekly.js";
 
-const PREFIX = "BX";
-const REPLY_PREFIX = "XR";
+const PREFIX = "BX2";
+const REPLY_PREFIX = "XR2";
 const PICK_COUNT = 5;
+const SITE_SALT = "bxws-challenge-2026";
 
 function checksum(text) {
   let hash = 2166136261;
@@ -10,17 +12,23 @@ function checksum(text) {
     hash ^= ch.charCodeAt(0);
     hash = Math.imul(hash, 16777619);
   }
-  return (hash >>> 0) % 36;
+  for (const ch of SITE_SALT) {
+    hash ^= ch.charCodeAt(0);
+    hash = Math.imul(hash, 16777619);
+  }
+  return (hash >>> 0) % (36 ** 3);
 }
 
-function flattenBank(bank) {
-  return [...bank.basicMastery, ...bank.conceptId, ...bank.errorDiagnosis, ...bank.contextApplication];
+function checksumText(text) {
+  return checksum(text).toString(36).toUpperCase().padStart(3, "0");
 }
 
 export async function buildChallengeCatalog(nodeIds) {
-  const banks = await Promise.all(nodeIds.map(loadQuestionBank));
-  return banks
-    .flatMap((bank, index) => flattenBank(bank).map((q) => ({ ...q, _nodeId: nodeIds[index] })))
+  const results = await Promise.allSettled(nodeIds.map(loadQuestionBank));
+  return results
+    .flatMap((result, index) => result.status === "fulfilled"
+      ? flattenBank(result.value).map((q) => ({ ...q, _nodeId: nodeIds[index] }))
+      : [])
     .sort((a, b) => a.id.localeCompare(b.id));
 }
 
@@ -30,39 +38,53 @@ export function encodeChallenge(questions, catalog) {
   if (indexes.some((index) => index < 0 || index >= 36 ** 2)) throw new Error("挑戰包含有無法辨識的題目");
   if (new Set(indexes).size !== PICK_COUNT) throw new Error("挑戰包題目不可重複");
   const body = indexes.map((index) => index.toString(36).padStart(2, "0")).join("").toUpperCase();
-  return `${PREFIX}-${body}${checksum(body).toString(36).toUpperCase()}`;
+  const week = isoWeekKey();
+  return `${PREFIX}-${week}-${body}${checksumText(`${week}|${body}`)}`;
 }
 
 export function decodeChallenge(code, catalog) {
-  const match = /^BX-([0-9A-Z]{10})([0-9A-Z])$/.exec(String(code).trim().toUpperCase());
-  if (!match || checksum(match[1]).toString(36).toUpperCase() !== match[2]) return null;
-  const indexes = match[1].match(/.{2}/g).map((chunk) => parseInt(chunk, 36));
+  const normalized = String(code).trim().toUpperCase();
+  if (/^BX-[0-9A-Z]{11}$/.test(normalized)) return { error: "too-old" };
+  const match = /^BX2-(\d{4}W\d{2})-([0-9A-Z]{10})([0-9A-Z]{3})$/.exec(normalized);
+  if (!match || checksumText(`${match[1]}|${match[2]}`) !== match[3]) return null;
+  const indexes = match[2].match(/.{2}/g).map((chunk) => parseInt(chunk, 36));
   if (new Set(indexes).size !== PICK_COUNT || indexes.some((index) => !catalog[index])) return null;
   return indexes.map((index) => catalog[index]);
 }
 
 export function questionAccuracy(questionId, progress = {}) {
-  const attempts = Object.values(progress).flatMap((entry) => entry?.attempts ?? []).filter((a) => a.questionId === questionId);
-  if (attempts.length === 0) return null;
-  return attempts.filter((a) => a.correct).length / attempts.length;
+  const counters = Object.values(progress).flatMap((entry) => {
+    const stats = entry?.questionStats?.[questionId];
+    if (stats) return [stats];
+    const legacy = (entry?.attempts ?? []).filter((attempt) => attempt.questionId === questionId);
+    return legacy.length > 0 ? [{
+      totalAttempts: legacy.length,
+      correctAttempts: legacy.filter((attempt) => attempt.correct).length,
+    }] : [];
+  });
+  const totalAttempts = counters.reduce((sum, stats) => sum + stats.totalAttempts, 0);
+  if (totalAttempts === 0) return null;
+  return counters.reduce((sum, stats) => sum + stats.correctAttempts, 0) / totalAttempts;
 }
 
 export function encodeReply(challengeCode, pct, totalSec) {
   const challenge = String(challengeCode).trim().toUpperCase();
-  const digest = checksum(challenge).toString(36).padStart(1, "0");
+  const digest = checksumText(challenge);
   const score = Math.max(0, Math.min(100, Math.round(pct))).toString(36).padStart(2, "0");
   const seconds = Math.max(0, Math.min(1295, Math.round(totalSec))).toString(36).padStart(2, "0");
   const body = `${digest}${score}${seconds}`.toUpperCase();
-  return `${REPLY_PREFIX}-${body}${checksum(body).toString(36).toUpperCase()}`;
+  return `${REPLY_PREFIX}-${body}${checksumText(body)}`;
 }
 
 export function decodeReply(code, challengeCode) {
-  const match = /^XR-([0-9A-Z]{5})([0-9A-Z])$/.exec(String(code).trim().toUpperCase());
-  if (!match || checksum(match[1]).toString(36).toUpperCase() !== match[2]) return null;
-  const expectedDigest = checksum(String(challengeCode).trim().toUpperCase()).toString(36).toUpperCase();
-  if (match[1][0] !== expectedDigest) return null;
-  const pct = parseInt(match[1].slice(1, 3), 36);
-  const totalSec = parseInt(match[1].slice(3, 5), 36);
+  const normalized = String(code).trim().toUpperCase();
+  if (/^XR-[0-9A-Z]{6}$/.test(normalized)) return { error: "too-old" };
+  const match = /^XR2-([0-9A-Z]{7})([0-9A-Z]{3})$/.exec(normalized);
+  if (!match || checksumText(match[1]) !== match[2]) return null;
+  const expectedDigest = checksumText(String(challengeCode).trim().toUpperCase());
+  if (match[1].slice(0, 3) !== expectedDigest) return null;
+  const pct = parseInt(match[1].slice(3, 5), 36);
+  const totalSec = parseInt(match[1].slice(5, 7), 36);
   if (pct > 100) return null;
   return { pct, totalSec };
 }

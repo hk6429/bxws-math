@@ -5,6 +5,7 @@ let treeCache = null;
 export async function loadSkillTree() {
   if (treeCache) return treeCache;
   const res = await fetch("data/skilltree.json");
+  if (!res.ok) throw new Error(`技能樹載入失敗（${res.status}）`);
   treeCache = await res.json();
   return treeCache;
 }
@@ -22,40 +23,30 @@ export function getProgress() {
   return store.read("progress", {});
 }
 
-export function getNodeMastery(nodeId) {
-  const progress = getProgress();
+export function getNodeMastery(nodeId, progress = getProgress()) {
   return progress[nodeId]?.masteryPct ?? 0;
 }
 
-export function isNodeMastered(nodeId, tree) {
-  const progress = getProgress();
+export function isNodeMastered(nodeId, tree, progress = getProgress()) {
   const entry = progress[nodeId];
   if (!entry) return false;
-  if (entry.masteryVersion === 2) return entry.mastered === true;
-  const node = allNodes(tree).find((item) => item.id === nodeId);
-  const threshold = tree.masteryThresholds?.[node?.tier] ?? tree.masteryThreshold ?? 0.8;
-  if ((entry.masteryPct ?? 0) < threshold) return false;
-  entry.mastered = true;
-  entry.masteryVersion = 2;
-  progress[nodeId] = entry;
-  store.write("progress", progress);
-  return true;
+  return entry.masteryVersion === 2 && entry.mastered === true;
 }
 
-export function isNodeUnlocked(node, tree) {
+export function isNodeUnlocked(node, tree, progress = getProgress()) {
   if (node.contentPending) return false;
   if (!node.prereq || node.prereq.length === 0) return true;
-  return node.prereq.every((id) => isNodeMastered(id, tree));
+  return node.prereq.every((id) => isNodeMastered(id, tree, progress));
 }
 
-export function nodeState(node, tree) {
+export function nodeState(node, tree, progress = getProgress()) {
   if (node.contentPending) return "content-pending";
-  if (isNodeMastered(node.id, tree)) return "mastered";
-  if (!isNodeUnlocked(node, tree)) return "locked";
+  if (isNodeMastered(node.id, tree, progress)) return "mastered";
+  if (!isNodeUnlocked(node, tree, progress)) return "locked";
   return "unlocked";
 }
 
-export function isNodePlayable(node, tree) {
-  const state = nodeState(node, tree);
+export function isNodePlayable(node, tree, progress = getProgress()) {
+  const state = nodeState(node, tree, progress);
   return state === "unlocked" || state === "mastered";
 }

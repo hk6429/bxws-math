@@ -44,10 +44,6 @@ export function ownRareStamp(stampId) {
     book[stampId] = { at: Date.now() };
     store.write("rareStampBook", book);
   }
-  // 相容舊存檔格式
-  const legacy = new Set(store.read("rareStamps", []));
-  legacy.add(stampId);
-  store.write("rareStamps", [...legacy]);
 }
 
 export function getCollection() {

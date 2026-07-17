@@ -57,6 +57,8 @@ test("題目媒體位於題型標籤後、題幹前，並具備懶載入與 alt"
   assert.equal(img.alt, "幾何圖例");
   assert.equal(img.loading, "lazy");
   assert.equal(img.decoding, "async");
+  assert.equal(img.width, 1536);
+  assert.equal(img.height, 1024);
 });
 
 test("題目圖片載入失敗會隱藏 figure，純文字題仍有題幹與選項", () => {
@@ -81,6 +83,8 @@ test("節點教學圖在心法頁建立，並在策略卡前插入", async () =>
   assert.ok(mediaStart > source.indexOf("function startQuiz(node)"));
   assert.ok(strategyStart > mediaStart);
   assert.match(source.slice(mediaStart, strategyStart), /loading = "lazy"/);
+  assert.match(source.slice(mediaStart, strategyStart), /width = 1536/);
+  assert.match(source.slice(mediaStart, strategyStart), /height = 1024/);
   assert.match(source.slice(mediaStart, strategyStart), /decoding = "async"/);
   assert.match(source.slice(mediaStart, strategyStart), /figure\.hidden = true/);
 });

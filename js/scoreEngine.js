@@ -4,6 +4,11 @@ import { evaluateMastery } from "./mastery-engine.js";
 export function recordAnswer(nodeId, questionOrId, correct, msElapsed, node = {}) {
   const progress = store.read("progress", {});
   const entry = progress[nodeId] ?? { attempts: [], masteryPct: 0 };
+  entry.totalAttempts = Number.isFinite(entry.totalAttempts) ? entry.totalAttempts : entry.attempts.length;
+  entry.correctAttempts = Number.isFinite(entry.correctAttempts)
+    ? entry.correctAttempts
+    : entry.attempts.filter((savedAttempt) => savedAttempt.correct).length;
+  entry.questionStats = entry.questionStats ?? {};
   const question = typeof questionOrId === "string" ? { id: questionOrId } : questionOrId;
   const attempt = {
     questionId: question.id,
@@ -18,6 +23,13 @@ export function recordAnswer(nodeId, questionOrId, correct, msElapsed, node = {}
     at: Date.now(),
   };
   entry.attempts.push(attempt);
+  entry.totalAttempts += 1;
+  if (correct) entry.correctAttempts += 1;
+  const questionStats = entry.questionStats[question.id] ?? { totalAttempts: 0, correctAttempts: 0 };
+  questionStats.totalAttempts += 1;
+  if (correct) questionStats.correctAttempts += 1;
+  entry.questionStats[question.id] = questionStats;
+  entry.attempts = entry.attempts.slice(-50);
   const challengeIds = question._challengeIds ?? entry.challengeIds ?? node.challengeIds;
   if (Array.isArray(challengeIds) && challengeIds.length > 0) {
     entry.challengeIds = [...new Set(challengeIds)];
@@ -43,8 +55,8 @@ export function getNodeStats(nodeId) {
     missingChallenges: entry.missingChallenges ?? [],
     feedback: entry.feedback ?? "",
     errorLocks: entry.errorLocks ?? [],
-    totalAttempts: entry.attempts.length,
-    correctAttempts: entry.attempts.filter((a) => a.correct).length,
+    totalAttempts: entry.totalAttempts ?? entry.attempts.length,
+    correctAttempts: entry.correctAttempts ?? entry.attempts.filter((a) => a.correct).length,
   };
 }
 

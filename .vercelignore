@@ -1,0 +1,11 @@
+.p3-image-*
+scripts/
+docs/
+test/
+.wrangler/
+.netlify/
+.git/
+assets/geometry/raw/
+node_modules/
+*.log
+.codex-image-runtime/

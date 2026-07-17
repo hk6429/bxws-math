@@ -2,9 +2,10 @@ import { store } from "./store.js";
 
 const MAX_BOX = 5;
 const BOX_INTERVAL_DAYS = [0, 1, 3, 7, 14];
+let boxStateCache;
 
 export function getBoxState() {
-  return store.read("leitner", {});
+  return boxStateCache ??= store.read("leitner", {});
 }
 
 export function getBox(questionId) {
@@ -26,11 +27,12 @@ export function hasRecord(questionId) {
   return !!getBoxState()[questionId];
 }
 
-export function updateBox(questionId, correct) {
+export function updateBox(questionId, correct, nodeId = null) {
   const state = getBoxState();
   const current = state[questionId]?.box ?? 1;
   const nextBox = correct ? Math.min(MAX_BOX, current + 1) : Math.max(1, current - 1);
-  state[questionId] = { box: nextBox, lastSeen: Date.now() };
+  state[questionId] = { ...state[questionId], box: nextBox, lastSeen: Date.now(), ...(nodeId ? { nodeId } : {}) };
+  boxStateCache = state;
   store.write("leitner", state);
   return nextBox;
 }

@@ -1,4 +1,4 @@
-import { allNodes, nodeState, getNodeMastery } from "./schema.js";
+import { allNodes, nodeState, getNodeMastery, getProgress } from "./schema.js";
 
 // ── 魔法星空圖版面常數 ──
 const HALO_R = 22;          // 星軌（進度環）半徑
@@ -8,6 +8,7 @@ const LINE_TRIM = 26;       // 星座線兩端內縮，避免穿過星體
 const SPACING_X = 164;
 const SPACING_Y = 156;
 const PAD = 60;
+const PAD_TOP = 150;
 const MIN_MAP_WIDTH = 940;
 const MAX_NODES_PER_ROW = 5;
 const LABEL_CHARS_PER_LINE = 8;
@@ -93,7 +94,10 @@ export function splitLabelLines(text, maxChars = LABEL_CHARS_PER_LINE) {
   )).filter(Boolean);
 }
 
-export function layoutNodes(nodes, allNodesById) {
+export function layoutNodes(nodes, allNodesById, containerWidth = MIN_MAP_WIDTH) {
+  const isNarrow = containerWidth < 600;
+  const nodesPerRow = isNarrow ? MAX_NODES_PER_ROW - 2 : MAX_NODES_PER_ROW;
+  const spacingX = isNarrow ? 120 : SPACING_X;
   const depth = computeDepths(nodes, allNodesById);
   const byDepth = {};
   nodes.forEach((n) => {
@@ -102,19 +106,19 @@ export function layoutNodes(nodes, allNodesById) {
   });
   const depthGroups = Object.entries(byDepth).sort(([a], [b]) => Number(a) - Number(b));
   const rows = depthGroups.flatMap(([, depthNodes]) => (
-    Array.from({ length: Math.ceil(depthNodes.length / MAX_NODES_PER_ROW) }, (_, rowIndex) => (
-      depthNodes.slice(rowIndex * MAX_NODES_PER_ROW, (rowIndex + 1) * MAX_NODES_PER_ROW)
+    Array.from({ length: Math.ceil(depthNodes.length / nodesPerRow) }, (_, rowIndex) => (
+      depthNodes.slice(rowIndex * nodesPerRow, (rowIndex + 1) * nodesPerRow)
     ))
   ));
   const maxCount = Math.max(...rows.map((row) => row.length));
-  const width = Math.max(MIN_MAP_WIDTH, maxCount * SPACING_X + PAD * 2);
-  const height = rows.length * SPACING_Y + PAD * 2;
+  const width = isNarrow ? Math.max(1, containerWidth) : Math.max(MIN_MAP_WIDTH, maxCount * spacingX + PAD * 2);
+  const height = rows.length * SPACING_Y + PAD_TOP + PAD;
 
   const positions = {};
   rows.forEach((arr, rowIndex) => {
     arr.forEach((node, idx) => {
-      const offset = (idx - (arr.length - 1) / 2) * SPACING_X;
-      positions[node.id] = { x: width / 2 + offset, y: rowIndex * SPACING_Y + PAD };
+      const offset = (idx - (arr.length - 1) / 2) * spacingX;
+      positions[node.id] = { x: width / 2 + offset, y: rowIndex * SPACING_Y + PAD_TOP };
     });
   });
   return { positions, width, height };
@@ -125,6 +129,10 @@ function starCount(masteryPct, threshold) {
   if (masteryPct >= 0.9) return 2;
   if (masteryPct >= threshold) return 1;
   return 0;
+}
+
+export function masteryThresholdForNode(node, tree) {
+  return tree.masteryThresholds?.[node.tier] ?? tree.masteryThreshold ?? 0.8;
 }
 
 function lockReasonText(node, tree, nodesById) {
@@ -183,7 +191,8 @@ function makeStarDefs(strandId) {
 function makeStarField(strand, width, height) {
   const field = svgEl("g", { class: "star-field" });
   const rand = mulberry32(hashStr(strand.id));
-  const count = Math.min(MAX_BG_STARS, Math.round((width * height) / 3500));
+  const mobileCap = width < 600 ? 30 : MAX_BG_STARS;
+  const count = Math.min(mobileCap, Math.round((width * height) / 3500));
   for (let i = 0; i < count; i++) {
     const star = svgEl("circle", {
       class: "bg-star",
@@ -309,12 +318,13 @@ let lastMasteredIds = null;
 export function renderSkillTree(container, tree, onSelectNode) {
   sketchDefsInjected = false;
   container.innerHTML = "";
+  const progress = getProgress();
   const nodesById = Object.fromEntries(allNodes(tree).map((n) => [n.id, n]));
   let frontierAssigned = false;
   let twinkleIndex = 0;
 
   const masteredNow = new Set(
-    allNodes(tree).filter((n) => nodeState(n, tree) === "mastered").map((n) => n.id)
+    allNodes(tree).filter((n) => nodeState(n, tree, progress) === "mastered").map((n) => n.id)
   );
   // 首次 render 不放儀式（進頁面不該爆一輪煙火）
   const justMastered = new Set(
@@ -338,7 +348,8 @@ export function renderSkillTree(container, tree, onSelectNode) {
     }
 
     const mapWrap = el("div", "skill-map");
-    const { positions, width, height } = layoutNodes(strand.nodes, nodesById);
+    const containerWidth = Math.floor(mapWrap.getBoundingClientRect().width || container.clientWidth || MIN_MAP_WIDTH);
+    const { positions, width, height } = layoutNodes(strand.nodes, nodesById, containerWidth);
 
     const svg = svgEl("svg", {
       viewBox: `0 0 ${width} ${height}`,
@@ -357,7 +368,7 @@ export function renderSkillTree(container, tree, onSelectNode) {
         const from = positions[prereqId];
         const to = positions[node.id];
         if (!from || !to) return;
-        const isActive = nodeState(nodesById[prereqId], tree) === "mastered";
+        const isActive = nodeState(nodesById[prereqId], tree, progress) === "mastered";
         makeConstellationLines(from, to, isActive).forEach((line) => {
           // 儀式：新精熟節點「連出去」的星座線描線點亮
           if (justMastered.has(prereqId)) line.classList.add("constellation-draw");
@@ -368,11 +379,12 @@ export function renderSkillTree(container, tree, onSelectNode) {
 
     let frontierNode = null;
     strand.nodes.forEach((node) => {
-      const state = nodeState(node, tree);
+      const state = nodeState(node, tree, progress);
       const visualState = state === "content-pending" ? "locked" : state;
       const pos = positions[node.id];
-      const mastery = getNodeMastery(node.id);
-      const stars = starCount(mastery, tree.masteryThreshold ?? 0.8);
+      const mastery = getNodeMastery(node.id, progress);
+      const masteryThreshold = masteryThresholdForNode(node, tree);
+      const stars = starCount(mastery, masteryThreshold);
 
       if (!frontierAssigned && state === "unlocked") {
         frontierNode = node;
@@ -380,14 +392,16 @@ export function renderSkillTree(container, tree, onSelectNode) {
       }
 
       const lockReason = lockReasonText(node, tree, nodesById);
+      const progressPct = Math.round(Math.min(1, mastery / masteryThreshold) * 100);
+      const stateLabel = state === "mastered" ? "已精熟" : state === "unlocked" ? "可挑戰" : "尚未解鎖";
       const g = svgEl("g", {
         class: `map-node state-${visualState}${frontierNode === node ? " is-frontier" : ""}`,
         "data-state": state,
         transform: `translate(${pos.x}, ${pos.y})`,
         role: "button",
-        tabindex: state === "unlocked" || state === "mastered" ? "0" : "-1",
+        tabindex: "0",
         "aria-disabled": state === "locked" || state === "content-pending" ? "true" : "false",
-        "aria-label": lockReason ? `${node.name}：${lockReason}` : node.name,
+        "aria-label": `${node.name}，${stateLabel}，進度 ${progressPct}%，${stars} 星${lockReason ? `，${lockReason}` : ""}`,
       });
 
       const title = svgEl("title");
@@ -397,7 +411,7 @@ export function renderSkillTree(container, tree, onSelectNode) {
       // 星軌（進度環）
       g.appendChild(svgEl("circle", { class: "node-ring-bg", r: HALO_R }));
       const circumference = 2 * Math.PI * HALO_R;
-      const pct = state === "mastered" ? 1 : Math.min(1, mastery / (tree.masteryThreshold ?? 0.8));
+      const pct = state === "mastered" ? 1 : Math.min(1, mastery / masteryThreshold);
       g.appendChild(svgEl("circle", {
         class: "node-ring-progress",
         r: HALO_R,
@@ -408,7 +422,10 @@ export function renderSkillTree(container, tree, onSelectNode) {
 
       // 點亮儀式：光環漣漪（transform 動畫，先掛 fill-box/center）
       if (justMastered.has(node.id)) {
-        g.appendChild(centerTransformBox(svgEl("circle", { class: "halo-ripple", r: HALO_R })));
+        const ripple = centerTransformBox(svgEl("circle", { class: "halo-ripple", r: HALO_R }));
+        ripple.addEventListener("animationend", () => ripple.remove(), { once: true });
+        setTimeout(() => ripple.remove(), 1200);
+        g.appendChild(ripple);
       }
 
       // 星星本體
@@ -435,10 +452,10 @@ export function renderSkillTree(container, tree, onSelectNode) {
         else if (lockReason) showLockTapTip(mapWrap, pos, lockReason);
       });
       g.addEventListener("keydown", (event) => {
-        if ((event.key === "Enter" || event.key === " ") && (state === "unlocked" || state === "mastered")) {
-          event.preventDefault();
-          onSelectNode(node);
-        }
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        if (state === "unlocked" || state === "mastered") onSelectNode(node);
+        else if (lockReason) showLockTapTip(mapWrap, pos, lockReason);
       });
       svg.appendChild(g);
     });
@@ -473,14 +490,19 @@ let activeLockTapTip = null;
 function showLockTapTip(mapWrap, pos, reason) {
   activeLockTapTip?.remove();
   const tip = el("div", "node-suggested-tip lock-tap-tip", `🔒 ${reason}`);
+  tip.setAttribute("role", "status");
   tip.style.left = `${pos.x}px`;
   tip.style.top = `${pos.y}px`;
+  if (pos.y < 150) tip.classList.add("lock-tap-tip-below");
   mapWrap.appendChild(tip);
   activeLockTapTip = tip;
-  setTimeout(() => {
+  const dismiss = () => {
     if (activeLockTapTip === tip) activeLockTapTip = null;
     tip.remove();
-  }, 2600);
+    document.removeEventListener("click", dismiss, true);
+  };
+  setTimeout(dismiss, 6000);
+  setTimeout(() => document.addEventListener("click", dismiss, true), 0);
 }
 
 function renderComingSoonStrand(strand) {
@@ -499,7 +521,8 @@ function renderComingSoonStrand(strand) {
 }
 
 export function computeOverview(tree) {
+  const progress = getProgress();
   const nodes = allNodes(tree).filter((node) => !node.contentPending);
-  const masteredCount = nodes.filter((n) => nodeState(n, tree) === "mastered").length;
+  const masteredCount = nodes.filter((n) => nodeState(n, tree, progress) === "mastered").length;
   return { totalNodes: nodes.length, masteredCount, nodes };
 }

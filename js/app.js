@@ -13,7 +13,7 @@ import {
   manuscriptDustStatus, addManuscriptCare,
 } from "./collection.js";
 import { pickQuote, unlockedExtraQuotes } from "./quotes.js";
-import { store, exportNamespace, importNamespace } from "./store.js";
+import { store, exportNamespace, importNamespace, isStorageBroken, runMigrations } from "./store.js";
 import { sfx, isSfxOn, setSfxOn } from "./sfx.js";
 import { getDaily, bumpDaily, dailyTasks, maybeDropInk, getInkDays, inkThisMonth } from "./daily.js";
 import { isoWeekKey, buildWeeklySession, getWeeklyBest, submitWeeklyResult, decodeResult } from "./weekly.js";
@@ -33,6 +33,39 @@ const views = {
 let tree = null;
 let session = { queue: [], index: 0, node: null, mascot: null, streak: 0, streakShielded: false, maxStreak: 0, roundCorrect: 0, roundTotal: 0 };
 let nextBtnEl = null;
+const pendingTimers = new Set();
+const preloadedMascots = new Set();
+let migrationsRun = false;
+let storageNoticeShown = false;
+
+function announce(message) {
+  const live = document.getElementById("quiz-live");
+  if (live) live.textContent = message;
+}
+
+function showStorageNoticeIfNeeded() {
+  if (!isStorageBroken() || storageNoticeShown) return;
+  storageNoticeShown = true;
+  const notice = document.createElement("div");
+  notice.className = "storage-notice";
+  notice.role = "status";
+  notice.textContent = "這台裝置無法儲存進度（可能是私密瀏覽模式），本次練習不會保留";
+  document.body.prepend(notice);
+}
+
+function scheduleTimer(callback, delay) {
+  const id = setTimeout(() => {
+    pendingTimers.delete(id);
+    callback();
+  }, delay);
+  pendingTimers.add(id);
+  return id;
+}
+
+function clearPendingTimers() {
+  pendingTimers.forEach(clearTimeout);
+  pendingTimers.clear();
+}
 
 const MASTER_TRIAL_ID = "master-trial";
 const REVIEW_ID = "daily-review";
@@ -47,7 +80,47 @@ const STRATEGIES = [
 const SPRINT_LIMIT_MS = 20000;
 
 function showView(name) {
+  const changed = !views[name]?.classList.contains("active");
+  if (changed) clearPendingTimers();
+  if (name !== "quiz") clearSprintTimer();
   Object.entries(views).forEach(([key, el]) => el.classList.toggle("active", key === name));
+  const navByView = { home: "nav-home", workshop: "nav-workshop", dashboard: "nav-dashboard" };
+  Object.values(navByView).forEach((id) => document.getElementById(id)?.removeAttribute("aria-current"));
+  if (navByView[name]) document.getElementById(navByView[name])?.setAttribute("aria-current", "page");
+  window.scrollTo(0, 0);
+  const labels = { home: "技能星圖", quiz: "練習題", dashboard: "我的儀表板", workshop: "大師工作室" };
+  const heading = views[name]?.querySelector("h2");
+  if (heading) {
+    heading.focus({ preventScroll: true });
+    announce(`已進入：${labels[name]}`);
+  }
+}
+
+function preloadMascot(variant) {
+  if (!variant || preloadedMascots.has(variant)) return;
+  preloadedMascots.add(variant);
+  ["happy", "sad"].forEach((state) => {
+    const image = new Image();
+    image.src = `assets/mascot/${variant}-${state}.png`;
+  });
+}
+
+function makePasteButton(input) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "daily-btn paste-btn";
+  button.textContent = "📋 貼上";
+  button.addEventListener("click", async () => {
+    try { input.value = await navigator.clipboard.readText(); } catch { /* 靜默失敗 */ }
+  });
+  return button;
+}
+
+function secureCodeInput(input) {
+  input.autocapitalize = "characters";
+  input.autocomplete = "off";
+  input.spellcheck = false;
+  return input;
 }
 
 function mascotVariantFor(nodeId) {
@@ -109,29 +182,45 @@ function resumeActiveSession() {
 }
 
 async function goHome() {
-  tree = tree ?? (await loadSkillTree());
   const container = document.getElementById("skilltree-container");
-  renderSkillTree(container, tree, startQuiz);
-  maybeShowEndgame(container);
+  try {
+    tree = tree ?? (await loadSkillTree());
+    if (!migrationsRun) {
+      const fromVersion = store.read("schemaVersion", 0);
+      runMigrations(fromVersion, tree);
+      migrationsRun = true;
+    }
+    renderSkillTree(container, tree, startQuiz);
+    maybeShowEndgame(container);
 
   // 首頁降噪：每週盃/續讀/修稿單/工作室四張卡收進單一可收合看板，先讓學生看到星圖本體
-  const dock = document.createElement("details");
-  dock.className = "home-brief-dock";
-  const summary = document.createElement("summary");
-  summary.textContent = "📋 今日看板——每週盃・續讀・修稿單・工作室";
-  dock.appendChild(summary);
-  const dockBody = document.createElement("div");
-  dockBody.className = "home-brief-dock-body";
-  dock.appendChild(dockBody);
-  container.prepend(dock);
+    const dock = document.createElement("details");
+    dock.className = "home-brief-dock";
+    const summary = document.createElement("summary");
+    summary.textContent = "今日看板——每週盃・續讀・修稿單・工作室";
+    dock.appendChild(summary);
+    const dockBody = document.createElement("div");
+    dockBody.className = "home-brief-dock-body";
+    dock.appendChild(dockBody);
+    container.prepend(dock);
 
-  makeWeeklyCard(dockBody);
-  makeResumeCard(dockBody);
-  await makeDailyBoard(dockBody);
-  makeWorkshopTeaser(dockBody);
-  if (!dockBody.hasChildNodes()) dock.remove();
-  showView("home");
-  maybeShowOnboardingTip();
+    makeWeeklyCard(dockBody);
+    makeResumeCard(dockBody);
+    await makeDailyBoard(dockBody);
+    makeWorkshopTeaser(dockBody);
+    if (!dockBody.hasChildNodes()) dock.remove();
+    showView("home");
+    maybeShowOnboardingTip();
+  } catch {
+    container.innerHTML = "";
+    const errorCard = document.createElement("div");
+    errorCard.className = "load-error-card";
+    errorCard.textContent = "題庫載入失敗，請重新整理";
+    container.appendChild(errorCard);
+    showView("home");
+  } finally {
+    showStorageNoticeIfNeeded();
+  }
 }
 
 // ── P0：今日修稿單＋星墨瓶 ──
@@ -229,10 +318,19 @@ async function showWorkshop() {
 
   const hero = document.createElement("section");
   hero.className = `workshop-hero${workshop.allRestored ? " workshop-complete" : ""}`;
-  hero.innerHTML = `<div class="workshop-kicker">每一頁你完成的手稿，都在把工作室修回來。</div>
-    <h2>${workshop.allRestored ? "大師工作室・全數重光" : "大師工作室修復計畫"}</h2>
-    <div class="workshop-meter"><span style="width:${workshop.overallPct}%"></span></div>
-    <p>目前已開放房間總修復度 ${workshop.overallPct}%。精熟手稿、獲得落款、找回稀有章，光就會一層層回來。</p>`;
+  const kicker = document.createElement("div");
+  kicker.className = "workshop-kicker";
+  kicker.textContent = "每一頁你完成的手稿，都在把工作室修回來。";
+  const heading = document.createElement("h2");
+  heading.textContent = workshop.allRestored ? "大師工作室・全數重光" : "大師工作室修復計畫";
+  const meter = document.createElement("div");
+  meter.className = "workshop-meter";
+  const meterFill = document.createElement("span");
+  meterFill.style.width = `${Number(workshop.overallPct) || 0}%`;
+  meter.appendChild(meterFill);
+  const intro = document.createElement("p");
+  intro.textContent = `目前已開放房間總修復度 ${Number(workshop.overallPct) || 0}%。精熟手稿、獲得落款、找回稀有章，光就會一層層回來。`;
+  hero.append(kicker, heading, meter, intro);
   if (workshop.allRestored) {
     const finale = document.createElement("div");
     finale.className = "workshop-finale";
@@ -247,10 +345,27 @@ async function showWorkshop() {
     const stage = WORKSHOP_STAGES[room.stage];
     const card = document.createElement("article");
     card.className = `workshop-room room-${room.stage}`;
-    card.innerHTML = `<div class="room-scene"><span>${room.icon}</span></div>
-      <div class="room-copy"><div class="room-stage">${stage.label}</div><h3>${room.title}</h3>
-      <p>${stage.message}</p><div class="room-meter"><span style="width:${room.repairPct}%"></span></div>
-      <strong>${room.available ? `${room.repairPct}%` : "待開放"}</strong></div>`;
+    const scene = document.createElement("div");
+    scene.className = "room-scene";
+    scene.appendChild(Object.assign(document.createElement("span"), { textContent: room.icon }));
+    const copy = document.createElement("div");
+    copy.className = "room-copy";
+    const roomStage = document.createElement("div");
+    roomStage.className = "room-stage";
+    roomStage.textContent = stage.label;
+    const roomTitle = document.createElement("h3");
+    roomTitle.textContent = room.title;
+    const roomMessage = document.createElement("p");
+    roomMessage.textContent = stage.message;
+    const roomMeter = document.createElement("div");
+    roomMeter.className = "room-meter";
+    const roomFill = document.createElement("span");
+    roomFill.style.width = `${Number(room.repairPct) || 0}%`;
+    roomMeter.appendChild(roomFill);
+    const roomScore = document.createElement("strong");
+    roomScore.textContent = room.available ? `${Number(room.repairPct) || 0}%` : "待開放";
+    copy.append(roomStage, roomTitle, roomMessage, roomMeter, roomScore);
+    card.append(scene, copy);
     grid.appendChild(card);
   });
   root.appendChild(grid);
@@ -326,7 +441,7 @@ function makeWeeklyCard(container) {
       try {
         await navigator.clipboard.writeText(best.code);
         copy.textContent = "已複製！";
-        setTimeout(() => (copy.textContent = "複製戰績碼"), 1500);
+        scheduleTimer(() => (copy.textContent = "複製戰績碼"), 1500);
       } catch { /* 剪貼簿不可用時保持原樣 */ }
     });
     codeRow.appendChild(copy);
@@ -345,9 +460,14 @@ function makeWeeklyCard(container) {
   // 同學互報戰績碼比一比
   const cmp = document.createElement("div");
   cmp.className = "weekly-compare";
+  const compareLabel = document.createElement("label");
+  compareLabel.htmlFor = "weekly-compare-code";
+  compareLabel.textContent = "同學的戰績碼";
   const input = document.createElement("input");
+  input.id = "weekly-compare-code";
   input.type = "text";
-  input.placeholder = "輸入同學的戰績碼比一比";
+  input.placeholder = "例如：2026W29-V2…";
+  secureCodeInput(input);
   const result = document.createElement("div");
   result.className = "weekly-compare-result";
   const btn = document.createElement("button");
@@ -357,6 +477,10 @@ function makeWeeklyCard(container) {
     const other = decodeResult(input.value);
     if (!other) {
       result.textContent = "這組戰績碼看不懂，再核對一次？";
+      return;
+    }
+    if (other.error === "too-old") {
+      result.textContent = "這組戰績碼格式太舊，請同學重新打一場產生新版碼。";
       return;
     }
     if (other.week !== isoWeekKey()) {
@@ -376,7 +500,9 @@ function makeWeeklyCard(container) {
         ? `你贏了！${mineBest.pct}%・${mineBest.totalSec}s vs 對方 ${other.pct}%・${other.totalSec}s`
         : `對方領先：${other.pct}%・${other.totalSec}s vs 你 ${mineBest.pct}%・${mineBest.totalSec}s——再戰一場討回來！`;
   });
+  cmp.appendChild(compareLabel);
   cmp.appendChild(input);
+  cmp.appendChild(makePasteButton(input));
   cmp.appendChild(btn);
   cmp.appendChild(result);
   card.appendChild(cmp);
@@ -501,6 +627,8 @@ function startQuiz(node) {
     img.alt = node.lessonMedia.alt ?? "";
     img.loading = "lazy";
     img.decoding = "async";
+    img.width = 1536;
+    img.height = 1024;
     img.addEventListener("error", () => {
       figure.hidden = true;
     }, { once: true });
@@ -552,12 +680,19 @@ async function startQuizWithStrategy(node, strategyId) {
     repairTotal: queue.filter((q) => q._fromErrorbook).length,
     encounterIdx: Math.random() < 0.35 ? Math.floor(Math.random() * queue.length) : -1,
   });
+  preloadMascot(session.mascot);
   renderCurrentQuestion();
 }
 
 function renderProgressBar() {
   const bar = document.getElementById("quiz-progressbar");
   bar.innerHTML = "";
+  const total = Math.max(1, session.queue.length);
+  const current = Math.min(total, session.index + 1);
+  bar.setAttribute("aria-valuemin", "1");
+  bar.setAttribute("aria-valuemax", String(total));
+  bar.setAttribute("aria-valuenow", String(current));
+  bar.setAttribute("aria-label", `第 ${current} 題，共 ${total} 題`);
   session.queue.forEach((_, idx) => {
     const seg = document.createElement("div");
     seg.className = "seg" + (idx < session.index ? " filled" : "");
@@ -595,8 +730,9 @@ function renderGhostLine() {
   document.getElementById("quiz-progressbar").after(el);
 }
 
-function renderCurrentQuestion() {
+function renderCurrentQuestion(focusStem = false) {
   const quizArea = document.getElementById("quiz-area");
+  preloadMascot(session.mascot);
   quizArea.innerHTML = "";
   document.getElementById("quiz-node-name").textContent = session.node.name;
   renderProgressBar();
@@ -617,6 +753,14 @@ function renderCurrentQuestion() {
   if (session.streak >= 3) card.classList.add("streak-active");
   if (session.streak >= 5) card.classList.add("streak-hot");
   quizArea.appendChild(card);
+  card.scrollIntoView({ block: "start", behavior: "auto" });
+  if (focusStem) {
+    const stem = card.querySelector(".q-stem");
+    if (stem) {
+      stem.tabIndex = -1;
+      stem.focus({ preventScroll: true });
+    }
+  }
 
   // 作答後才解鎖「下一題」——不能跳過作答
   const nextBtn = document.createElement("button");
@@ -625,7 +769,7 @@ function renderCurrentQuestion() {
   nextBtn.addEventListener("click", () => {
     session.index += 1;
     saveActiveSession();
-    renderCurrentQuestion();
+    renderCurrentQuestion(true);
   });
   quizArea.appendChild(nextBtn);
   nextBtnEl = nextBtn;
@@ -637,7 +781,7 @@ function handleAnswer(question, isCorrect, meta = {}) {
   const wasReviewDue = hasRecord(question.id) && isDue(question.id);
   const node = allNodes(tree).find((item) => item.id === nodeId) ?? {};
   recordAnswer(nodeId, question, isCorrect, elapsed, node);
-  updateBox(question.id, isCorrect);
+  updateBox(question.id, isCorrect, nodeId);
   session.roundTotal += 1;
   session.elapsedTotal += elapsed;
   session.perQuestion.push({ c: isCorrect ? 1 : 0, ms: elapsed });
@@ -646,7 +790,7 @@ function handleAnswer(question, isCorrect, meta = {}) {
     session.roundCorrect += 1;
     session.streak += 1;
     session.maxStreak = Math.max(session.maxStreak, session.streak);
-    const best = store.read("bestStreak", 0);
+    const best = Number(store.read("bestStreak", 0)) || 0;
     if (session.streak > best) store.write("bestStreak", session.streak);
     sfx.correct(session.streak);
     if (question._retry) session.retryDone += 1;
@@ -659,7 +803,7 @@ function handleAnswer(question, isCorrect, meta = {}) {
       bumpDaily("repair");
     }
     if (wasReviewDue && (getCollection()[nodeId]?.tier ?? 0) >= 2) addManuscriptCare(nodeId);
-    if (meta.encounter) handleEncounterWin();
+    if (meta.encounter) meta.rareStampName = handleEncounterWin();
   } else {
     if (session.streak >= 5 && !session.streakShielded) {
       session.streakShielded = true;
@@ -678,6 +822,15 @@ function handleAnswer(question, isCorrect, meta = {}) {
   renderStreakBadge();
   saveActiveSession(1);
   nextBtnEl?.classList.remove("q-next-hidden");
+  nextBtnEl?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  const messages = [isCorrect
+    ? "答對了！"
+    : `答錯了，正解是：選項${meta.correctLabel ?? ""}「${meta.correctText ?? ""}」`];
+  if (session.streak >= 3) messages.push(`連對 ${session.streak}`);
+  if (meta.rareStampName) messages.push(`發現稀有章：${meta.rareStampName}`);
+  messages.push("下一題按鈕已出現");
+  announce(messages.join("。"));
+  showStorageNoticeIfNeeded();
 }
 
 // 奇遇答對：5% 掉大師印章，10 次未掉保底必掉（掉當前節點主題章，已擁有則遞補未擁有的）
@@ -685,6 +838,7 @@ function handleEncounterWin() {
   store.write("encounterWins", store.read("encounterWins", 0) + 1);
   let pity = store.read("encounterPity", 0) + 1;
   const shouldDrop = Math.random() < 0.05 || pity >= 10;
+  let discovered = null;
   if (shouldDrop) {
     const owned = getRareStamps();
     const nodeId = session.queue[session.index]?._nodeId ?? session.node.id;
@@ -694,6 +848,7 @@ function handleEncounterWin() {
       pity = 0;
       ownRareStamp(stamp.id);
       session.rareDrops.push(stamp);
+      discovered = stamp.name;
       sfx.rare();
       const card = document.querySelector("#quiz-area .q-card");
       if (card) {
@@ -705,6 +860,7 @@ function handleEncounterWin() {
     }
   }
   store.write("encounterPity", pity);
+  return discovered;
 }
 
 function finishSession() {
@@ -846,7 +1002,7 @@ function makeSummary(stats, newBadges, newDrops = [], weeklyRecord = null, chall
     s.textContent = "★";
     s.style.animationDelay = `${i * 0.15}s`;
     starsBox.appendChild(s);
-    if (i < stars) setTimeout(() => sfx.star(i), 150 * i + 200);
+    if (i < stars) scheduleTimer(() => sfx.star(i), 150 * i + 200);
   }
   box.appendChild(starsBox);
 
@@ -1015,7 +1171,11 @@ async function makeChallengeHub() {
     creator.innerHTML = `<div class="challenge-locked">🔒 先讓任一張手稿獲得「大師落款」，就能解鎖學徒出題權。</div>`;
   } else {
     const selected = new Map();
+    const filterLabel = document.createElement("label");
+    filterLabel.htmlFor = "challenge-bank-select";
+    filterLabel.textContent = "挑選題庫";
     const filter = document.createElement("select");
+    filter.id = "challenge-bank-select";
     [...new Set(eligible.map((q) => q._nodeId))].forEach((id) => {
       const option = document.createElement("option");
       option.value = id;
@@ -1024,6 +1184,9 @@ async function makeChallengeHub() {
     });
     const count = document.createElement("strong");
     count.textContent = "已挑 0 / 5 題";
+    const fullMessage = document.createElement("span");
+    fullMessage.className = "challenge-full-message";
+    fullMessage.setAttribute("role", "status");
     const list = document.createElement("div");
     list.className = "challenge-question-list";
     const output = document.createElement("div");
@@ -1045,11 +1208,16 @@ async function makeChallengeHub() {
         const accuracy = questionAccuracy(question.id, store.read("progress", {}));
         const accuracyText = accuracy === null ? "尚未作答" : `歷史正確率 ${Math.round(accuracy * 100)}%`;
         const copy = document.createElement("span");
-        copy.innerHTML = `<strong>${questionLabel(question)}</strong><small>${accuracyText}</small>`;
+        const questionText = document.createElement("strong");
+        questionText.textContent = questionLabel(question);
+        const accuracyLine = document.createElement("small");
+        accuracyLine.textContent = accuracyText;
+        copy.append(questionText, accuracyLine);
         checkbox.addEventListener("change", () => {
           if (checkbox.checked) selected.set(question.id, question);
           else selected.delete(question.id);
           count.textContent = `已挑 ${selected.size} / 5 題`;
+          fullMessage.textContent = selected.size === 5 ? "已滿 5 題，取消一題才能改選" : "";
           make.disabled = selected.size !== 5;
           renderList();
         });
@@ -1065,7 +1233,7 @@ async function makeChallengeHub() {
       output.innerHTML = `<strong>你的挑戰碼：</strong><code>${code}</code>`;
       try { await navigator.clipboard.writeText(code); output.append("（已複製）"); } catch { /* 可手動複製 */ }
     });
-    creator.append(filter, count, list, make, output);
+    creator.append(filterLabel, filter, count, fullMessage, list, make, output);
     renderList();
   }
   section.appendChild(creator);
@@ -1073,8 +1241,13 @@ async function makeChallengeHub() {
   const receiver = document.createElement("div");
   receiver.className = "challenge-receiver";
   receiver.innerHTML = "<h4>收下同學的挑戰</h4>";
+  const inputLabel = document.createElement("label");
+  inputLabel.htmlFor = "challenge-code";
+  inputLabel.textContent = "同學的挑戰碼";
   const input = document.createElement("input");
-  input.placeholder = "輸入 BX- 開頭的挑戰碼";
+  input.id = "challenge-code";
+  input.placeholder = "例如：BX2-…";
+  secureCodeInput(input);
   const result = document.createElement("div");
   result.className = "challenge-message";
   const play = document.createElement("button");
@@ -1082,17 +1255,23 @@ async function makeChallengeHub() {
   play.textContent = "開始接招";
   play.addEventListener("click", () => {
     const queue = decodeChallenge(input.value, catalog);
-    if (!queue) { result.textContent = "這組挑戰碼看不懂，請再核對一次。"; return; }
+    if (queue?.error === "too-old") { result.textContent = "這組挑戰碼格式太舊，請出題同學重新產生。"; return; }
+    if (!Array.isArray(queue)) { result.textContent = "這組挑戰碼看不懂，請再核對一次。"; return; }
     startChallengeSession(input.value.trim().toUpperCase(), queue);
   });
-  receiver.append(input, play, result);
+  receiver.append(inputLabel, input, makePasteButton(input), play, result);
   section.appendChild(receiver);
 
   const reply = document.createElement("div");
   reply.className = "challenge-receiver";
   reply.innerHTML = "<h4>查看同學的回擊</h4>";
+  const replyLabel = document.createElement("label");
+  replyLabel.htmlFor = "counter-code";
+  replyLabel.textContent = "同學的回擊碼";
   const replyInput = document.createElement("input");
-  replyInput.placeholder = "輸入 XR- 開頭的回擊碼";
+  replyInput.id = "counter-code";
+  replyInput.placeholder = "例如：XR2-…";
+  secureCodeInput(replyInput);
   const replyResult = document.createElement("div");
   replyResult.className = "challenge-message";
   const inspect = document.createElement("button");
@@ -1101,11 +1280,12 @@ async function makeChallengeHub() {
   inspect.addEventListener("click", () => {
     const mine = store.read("lastCreatedChallenge", null);
     const decoded = mine ? decodeReply(replyInput.value, mine.code) : null;
+    if (decoded?.error === "too-old") { replyResult.textContent = "這組回擊碼格式太舊，請同學重新挑戰。"; return; }
     if (!decoded) { replyResult.textContent = mine ? "這不是這一包的回擊碼。" : "這台裝置還沒有你出過的挑戰包。"; return; }
     unlockBadge("sparring");
     replyResult.textContent = `同學答對 ${decoded.pct}%，用了 ${decoded.totalSec} 秒。你也獲得「切磋章」！`;
   });
-  reply.append(replyInput, inspect, replyResult);
+  reply.append(replyLabel, replyInput, makePasteButton(replyInput), inspect, replyResult);
   section.appendChild(reply);
   return section;
 }
@@ -1126,22 +1306,24 @@ function makeTravelCase() {
     link.href = url;
     link.download = `步學吾數-草稿本-${new Date().toISOString().slice(0, 10)}.json`;
     link.click();
-    setTimeout(() => URL.revokeObjectURL(url), 0);
+    scheduleTimer(() => URL.revokeObjectURL(url), 0);
   });
   const label = document.createElement("label");
   label.className = "daily-btn travel-import";
+  label.htmlFor = "travel-case-file";
   label.textContent = "🧳 打開旅行皮箱";
   const file = document.createElement("input");
+  file.id = "travel-case-file";
   file.type = "file";
   file.accept = "application/json,.json";
-  file.hidden = true;
+  file.className = "visually-hidden";
   file.addEventListener("change", async () => {
     const picked = file.files?.[0];
     if (!picked) return;
     try {
       const bundle = JSON.parse(await picked.text());
       if (!confirm("匯入會覆蓋這台裝置的同名進度，要繼續嗎？")) return;
-      const count = importNamespace(bundle);
+      const count = importNamespace(bundle, localStorage, tree);
       alert(`已打開旅行皮箱，帶回 ${count} 項紀錄。`);
       location.reload();
     } catch (error) {
@@ -1167,7 +1349,7 @@ async function showDashboard() {
   const el = document.getElementById("dashboard-content");
   el.innerHTML = "";
 
-  const bestStreak = store.read("bestStreak", 0);
+  const bestStreak = Number(store.read("bestStreak", 0)) || 0;
   const trialBest = store.read("masterTrialBest", null);
   const summary = document.createElement("div");
   summary.className = "dash-summary";
@@ -1235,8 +1417,6 @@ async function showDashboard() {
 
   // 大師印章簿（稀有章圖鑑：全 10 枚含未解鎖剪影＋入手日期）
   const stampBook = getRareStamps();
-  const legacy = store.read("rareStamps", []);
-  legacy.forEach((id) => { if (!stampBook[id]) stampBook[id] = { at: null }; });
   const stampCount = Object.keys(stampBook).length;
   const stampSection = document.createElement("div");
   stampSection.className = "dash-stampbook";
@@ -1352,10 +1532,8 @@ function renderShareCard() {
   const ownedCount = Object.keys(col).length;
   const sealedCount = Object.values(col).filter((c) => c.tier >= 2).length;
   const stampBook = getRareStamps();
-  const legacy = store.read("rareStamps", []);
-  legacy.forEach((id) => { if (!stampBook[id]) stampBook[id] = { at: null }; });
   const ownedStamps = RARE_STAMPS.filter((s) => stampBook[s.id]);
-  const bestStreak = store.read("bestStreak", 0);
+  const bestStreak = Number(store.read("bestStreak", 0)) || 0;
   const name = getPlayerName() ?? "同學";
 
   const W = 800, H = 460;
@@ -1441,13 +1619,18 @@ function makeNameEditor() {
   const box = document.createElement("div");
   box.className = "dash-name";
   const label = document.createElement("label");
+  label.htmlFor = "player-name";
   label.textContent = "排行榜暱稱：";
   const input = document.createElement("input");
+  input.id = "player-name";
   input.type = "text";
+  input.maxLength = 12;
   input.value = getPlayerName() ?? "";
-  input.placeholder = "輸入你的名字";
+  input.placeholder = "例如：小數達人";
   input.addEventListener("change", () => {
-    if (input.value.trim()) setPlayerName(input.value.trim());
+    const safeName = input.value.trim().slice(0, 12).replace(/[\/:*?"<>|\n\r]/g, "");
+    input.value = safeName;
+    if (safeName) setPlayerName(safeName);
   });
   box.appendChild(label);
   box.appendChild(input);
@@ -1458,8 +1641,10 @@ function makeNameEditor() {
 function setupSfxToggle() {
   const btn = document.getElementById("nav-sfx");
   const sync = () => {
-    btn.textContent = isSfxOn() ? "🔊" : "🔇";
-    btn.title = isSfxOn() ? "音效開（點擊關閉）" : "音效關（點擊開啟）";
+    const on = isSfxOn();
+    btn.textContent = on ? "🔊" : "🔇";
+    btn.title = on ? "音效開（點擊關閉）" : "音效關（點擊開啟）";
+    btn.setAttribute("aria-pressed", String(on));
   };
   btn.addEventListener("click", () => {
     setSfxOn(!isSfxOn());
@@ -1473,6 +1658,19 @@ document.getElementById("nav-home").addEventListener("click", goHome);
 document.getElementById("nav-workshop").addEventListener("click", showWorkshop);
 document.getElementById("nav-dashboard").addEventListener("click", showDashboard);
 setupSfxToggle();
+document.addEventListener("click", () => queueMicrotask(showStorageNoticeIfNeeded), true);
+document.addEventListener("change", () => queueMicrotask(showStorageNoticeIfNeeded), true);
+document.querySelector(".quill-deco")?.addEventListener("error", (event) => {
+  event.currentTarget.hidden = true;
+}, { once: true });
+
+const allowedHosts = new Set(["bxws-math.vercel.app", "bxws-math.pages.dev", "bxws-math.netlify.app", "localhost", "127.0.0.1"]);
+if (!allowedHosts.has(location.hostname)) {
+  const warning = document.createElement("div");
+  warning.className = "clone-warning";
+  warning.textContent = "⚠️ 這不是《步學吾數》官方網站，請勿輸入或匯入個人學習資料。";
+  document.body.prepend(warning);
+}
 
 if (!getPlayerName()) setPlayerName("同學");
 goHome();

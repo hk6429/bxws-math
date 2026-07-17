@@ -13,6 +13,8 @@ function renderMedia(media, className) {
   img.alt = media.alt ?? "";
   img.loading = "lazy";
   img.decoding = "async";
+  img.width = 1536;
+  img.height = 1024;
   img.addEventListener("error", () => {
     figure.hidden = true;
   }, { once: true });
@@ -24,6 +26,7 @@ function renderChoiceList(container, options, onPick) {
   const list = el("div", "q-options");
   options.forEach((opt, idx) => {
     const btn = el("button", "q-option", opt);
+    btn.setAttribute?.("aria-label", `選項${String.fromCharCode(65 + idx)}，${opt}`);
     btn.addEventListener("click", () => onPick(idx, btn, list));
     list.appendChild(btn);
   });
@@ -47,6 +50,24 @@ function markResult(list, btn, isCorrect, correctBtn) {
   [...list.children].forEach((child) => (child.disabled = true));
   btn.classList.add(isCorrect ? "q-correct" : "q-wrong");
   if (!isCorrect && correctBtn) correctBtn.classList.add("q-correct");
+  const addMark = (button, mark, state) => {
+    const index = [...list.children].indexOf(button);
+    const text = button.textContent;
+    const symbol = el("span", "q-result-mark", mark);
+    symbol.setAttribute?.("aria-hidden", "true");
+    button.appendChild(symbol);
+    button.setAttribute?.("aria-label", `選項${String.fromCharCode(65 + index)}，${state}，${text}`);
+  };
+  if (isCorrect) addMark(btn, "✓", "正解");
+  else {
+    addMark(btn, "✕", "作答錯誤");
+    if (correctBtn) addMark(correctBtn, "✓", "正解");
+  }
+}
+
+function removeAfterAnimation(node, fallbackMs) {
+  node.addEventListener("animationend", () => node.remove(), { once: true });
+  setTimeout(() => node.remove(), fallbackMs);
 }
 
 // 答對彩鉛屑噴發：從正解按鈕位置隨機噴 12 顆（純 DOM 粒子，700ms 自毀）
@@ -68,7 +89,7 @@ function burstShavings(wrap, originEl, count = 12) {
     p.style.setProperty("--sc", `${0.6 + Math.random() * 0.9}`);
     p.style.color = SHAVING_COLORS[i % SHAVING_COLORS.length];
     wrap.appendChild(p);
-    setTimeout(() => p.remove(), 800);
+    removeAfterAnimation(p, 800);
   }
 }
 
@@ -103,7 +124,7 @@ export function renderQuestion(question, onAnswered, mascotVariant, opts = {}) {
   const explain = el("div", "q-explain", question.explanation);
   explain.style.display = "none";
 
-  const handleAnswered = (isCorrect) => {
+  const handleAnswered = (isCorrect, answerMeta) => {
     explain.style.display = "block";
     addMascotReaction(wrap, mascotVariant, isCorrect);
     if (isCorrect) {
@@ -120,12 +141,13 @@ export function renderQuestion(question, onAnswered, mascotVariant, opts = {}) {
           spark.style.setProperty("--spark-dx", `${(Math.random() - 0.5) * 60}px`);
           spark.style.fontSize = `${0.8 + Math.random() * 0.8}rem`;
           wrap.appendChild(spark);
+          removeAfterAnimation(spark, 1400);
         }
       } else {
         wrap.querySelector(".encounter-banner")?.classList.add("banner-fade");
       }
     }
-    onAnswered(isCorrect, { encounter: !!opts.encounter });
+    onAnswered(isCorrect, { encounter: !!opts.encounter, ...answerMeta });
   };
 
   if (question.type === "basic-mastery") {
@@ -134,7 +156,10 @@ export function renderQuestion(question, onAnswered, mascotVariant, opts = {}) {
     renderChoiceList(wrap, view.options, (idx, btn, list) => {
       const isCorrect = idx === view.answer;
       markResult(list, btn, isCorrect, list.children[view.answer]);
-      handleAnswered(isCorrect);
+      handleAnswered(isCorrect, {
+        correctLabel: String.fromCharCode(65 + view.answer),
+        correctText: view.options[view.answer],
+      });
     });
   }
 
@@ -145,7 +170,10 @@ export function renderQuestion(question, onAnswered, mascotVariant, opts = {}) {
       const isCorrect = pickedTrue === question.correctAnswer;
       const correctIdx = question.correctAnswer ? 0 : 1;
       markResult(list, btn, isCorrect, list.children[correctIdx]);
-      handleAnswered(isCorrect);
+      handleAnswered(isCorrect, {
+        correctLabel: String.fromCharCode(65 + correctIdx),
+        correctText: correctIdx === 0 ? "正確" : "錯誤",
+      });
     });
   }
 
@@ -156,7 +184,10 @@ export function renderQuestion(question, onAnswered, mascotVariant, opts = {}) {
     renderChoiceList(wrap, view.options, (idx, btn, list) => {
       const isCorrect = idx === view.answer;
       markResult(list, btn, isCorrect, list.children[view.answer]);
-      handleAnswered(isCorrect);
+      handleAnswered(isCorrect, {
+        correctLabel: String.fromCharCode(65 + view.answer),
+        correctText: view.options[view.answer],
+      });
     });
   }
 
@@ -167,7 +198,10 @@ export function renderQuestion(question, onAnswered, mascotVariant, opts = {}) {
     renderChoiceList(wrap, view.options, (idx, btn, list) => {
       const isCorrect = idx === view.answer;
       markResult(list, btn, isCorrect, list.children[view.answer]);
-      handleAnswered(isCorrect);
+      handleAnswered(isCorrect, {
+        correctLabel: String.fromCharCode(65 + view.answer),
+        correctText: view.options[view.answer],
+      });
     });
   }
 

@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import tree from "../data/skilltree.json" with { type: "json" };
-import { layoutNodes, splitLabelLines } from "../js/skilltree-ui.js";
+import { layoutNodes, masteryThresholdForNode, splitLabelLines } from "../js/skilltree-ui.js";
 
 const allNodes = tree.strands.flatMap((strand) => strand.nodes);
 const nodesById = Object.fromEntries(allNodes.map((node) => [node.id, node]));
@@ -49,5 +49,18 @@ test("跨 strand 的全域深度會壓密成連續畫布列", () => {
   assert.ok(positions["linear-eq-1var"].y < positions["linear-equation-modeling"].y);
   assert.ok(positions["linear-inequality-meaning"].y < positions["linear-inequality-solving"].y);
   assert.ok(Math.max(...Object.values(positions).map((pos) => pos.y)) < height);
-  assert.ok(height < 800, `5 個代數節點的畫布不應因全域深度撲高：${height}`);
+  assert.ok(height < 900, `5 個代數節點加上吉祥物安全留白後仍不應因全域深度撲高：${height}`);
+});
+
+test("手機直向星圖使用容器寬度並改為較窄三欄排列", () => {
+  const strand = tree.strands.find((item) => item.nodes.length >= 4);
+  const desktop = layoutNodes(strand.nodes, nodesById, 940);
+  const mobile = layoutNodes(strand.nodes, nodesById, 390);
+  assert.equal(mobile.width, 390);
+  assert.ok(mobile.height >= desktop.height);
+  assert.ok(Math.min(...Object.values(mobile.positions).map((pos) => pos.y)) >= 150);
+});
+
+test("elem-low 星等與進度環採節點層級 0.75 精熟門檻", () => {
+  assert.equal(masteryThresholdForNode({ tier: "elem-low" }, tree), 0.75);
 });

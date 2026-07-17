@@ -1,4 +1,4 @@
-import { isDue, getBox, hasRecord } from "./leitner.js";
+import { isDue, getBox, hasRecord, getBoxState } from "./leitner.js";
 import { store } from "./store.js";
 import { activeErrorLocks, buildAdaptiveSequence, prereqQuickCheckPassed } from "./mastery-engine.js";
 
@@ -7,12 +7,13 @@ const bankCache = {};
 export async function loadQuestionBank(nodeId) {
   if (bankCache[nodeId]) return bankCache[nodeId];
   const res = await fetch(`data/questions/${nodeId}.json`);
+  if (!res.ok) throw new Error(`題庫載入失敗：${nodeId}（${res.status}）`);
   const bank = await res.json();
   bankCache[nodeId] = bank;
   return bank;
 }
 
-function flattenBank(bank) {
+export function flattenBank(bank) {
   return [
     ...(bank.basicMastery ?? []),
     ...(bank.conceptId ?? []),
@@ -23,10 +24,10 @@ function flattenBank(bank) {
 
 // 終局大師試煉：跨節點混題，每題帶 _nodeId 讓作答記錄回到原節點
 export async function buildMasterSession(nodeIds, sessionSize = 10) {
-  const banks = await Promise.all(nodeIds.map(loadQuestionBank));
-  const all = banks.flatMap((bank, i) =>
-    flattenBank(bank).map((q) => ({ ...q, _nodeId: nodeIds[i] }))
-  );
+  const results = await Promise.allSettled(nodeIds.map(loadQuestionBank));
+  const all = results.flatMap((result, i) => result.status === "fulfilled"
+    ? flattenBank(result.value).map((q) => ({ ...q, _nodeId: nodeIds[i] }))
+    : []);
   for (let i = all.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [all[i], all[j]] = [all[j], all[i]];
@@ -88,10 +89,18 @@ export async function buildSession(nodeId, sessionSize = 8, strategy = "slow", e
 
 // 今日補墨：跨節點蒐集「作答過且到期」的複習題（高盒優先）
 export async function buildReviewSession(nodeIds, sessionSize = 6) {
-  const banks = await Promise.all(nodeIds.map(loadQuestionBank));
-  const all = banks.flatMap((bank, i) =>
-    flattenBank(bank).map((q) => ({ ...q, _nodeId: nodeIds[i] }))
-  );
+  const state = getBoxState();
+  const dueRecords = Object.entries(state).filter(([id]) => isDue(id));
+  const dueNodeIds = new Set(dueRecords.map(([, record]) => record.nodeId).filter(Boolean));
+  const hasLegacyDue = dueRecords.some(([, record]) => !record.nodeId);
+  const nodesToFetch = hasLegacyDue ? nodeIds : nodeIds.filter((id) => dueNodeIds.has(id));
+  const results = await Promise.allSettled(nodesToFetch.map(loadQuestionBank));
+  const all = results.flatMap((result, i) => result.status === "fulfilled" ? flattenBank(result.value).map((q) => {
+    const nodeId = nodesToFetch[i];
+    if (state[q.id] && !state[q.id].nodeId) state[q.id].nodeId = nodeId;
+    return { ...q, _nodeId: nodeId };
+  }) : []);
+  if (dueRecords.some(([, record]) => !record.nodeId)) store.write("leitner", state);
   return all
     .filter((q) => hasRecord(q.id) && isDue(q.id))
     .sort((a, b) => getBox(b.id) - getBox(a.id))
@@ -100,8 +109,7 @@ export async function buildReviewSession(nodeIds, sessionSize = 6) {
 
 // 今日到期複習題數（首頁修稿單用）
 export async function countDueReviews(nodeIds) {
-  const banks = await Promise.all(nodeIds.map(loadQuestionBank));
-  return banks
-    .flatMap(flattenBank)
-    .filter((q) => hasRecord(q.id) && isDue(q.id)).length;
+  const allowed = new Set(nodeIds);
+  return Object.entries(getBoxState())
+    .filter(([id, record]) => (!record.nodeId || allowed.has(record.nodeId)) && isDue(id)).length;
 }
