@@ -1,5 +1,4 @@
 plugins = []
-headers = []
 redirects = []
 
 [functions]
@@ -23,3 +22,37 @@ publishOrigin = "default"
 [build.processing.js]
 
 [build.services]
+
+[[headers]]
+for = "/*"
+
+[headers.values]
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "DENY"
+Referrer-Policy = "strict-origin-when-cross-origin"
+Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://visitor-badge.laobi.icu https://hk6429.goatcounter.com; connect-src 'self' https://hk6429.goatcounter.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+
+[[headers]]
+for = "/assets/*"
+
+[headers.values]
+Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+
+[[headers]]
+for = "/data/*"
+
+[headers.values]
+Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
+
+[[headers]]
+for = "/js/*"
+
+[headers.values]
+Cache-Control = "public, max-age=600, stale-while-revalidate=86400"
+
+[[headers]]
+for = "/css/*"
+
+[headers.values]
+Cache-Control = "public, max-age=600, stale-while-revalidate=86400"

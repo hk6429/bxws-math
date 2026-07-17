@@ -98,7 +98,7 @@ function addMascotReaction(wrap, mascotVariant, isCorrect) {
   const box = el("div", `q-mascot-react react-${isCorrect ? "happy" : "sad"}`);
   const img = document.createElement("img");
   img.src = `assets/mascot/${mascotVariant}-${isCorrect ? "happy" : "sad"}.png`;
-  img.alt = "大師吉祥物反應";
+  img.alt = "駐塔導師反應";
   img.onerror = () => { box.style.display = "none"; };
   box.appendChild(img);
   wrap.style.position = "relative";
@@ -109,10 +109,10 @@ export function renderQuestion(question, onAnswered, mascotVariant, opts = {}) {
   const wrap = el("div", `q-card type-${question.type}`);
   if (opts.encounter) {
     wrap.classList.add("q-encounter");
-    wrap.appendChild(el("div", "encounter-banner", "✦ 大師的靈光一閃！答對有特別蓋章 ✦"));
+    wrap.appendChild(el("div", "encounter-banner", "✦ 魔法陣突現！答對有特別徽記 ✦"));
   }
   const typeLabel = {
-    "basic-mastery": "基本精熟題",
+    "basic-mastery": "基本精通題",
     "concept-id": "概念辨識題",
     "error-diagnosis": "錯誤診斷題",
     "context-application": "情境應用題",
@@ -132,7 +132,7 @@ export function renderQuestion(question, onAnswered, mascotVariant, opts = {}) {
     }
     if (opts.encounter) {
       if (isCorrect) {
-        wrap.appendChild(el("div", "encounter-stamp", "✦ 靈光章"));
+        wrap.appendChild(el("div", "encounter-stamp", "✦ 星光徽記"));
         for (let i = 0; i < 8; i++) {
           const spark = el("span", "spark", "✦");
           spark.style.animationDelay = `${i * 0.08}s`;

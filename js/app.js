@@ -71,11 +71,11 @@ const MASTER_TRIAL_ID = "master-trial";
 const REVIEW_ID = "daily-review";
 const WEEKLY_ID = "weekly-cup";
 
-// 大師心法：進節點前的練功策略（CD3）
+// 導師秘傳：進節點前的練功策略（CD3）
 const STRATEGIES = [
-  { id: "slow", name: "慢筆細描", color: "--cp-blue", desc: "達文西心法：好線條是描出來的。答錯的題目，這一輪排到隊尾再描一次。" },
-  { id: "repair", name: "補筆修稿", color: "--cp-red", desc: "手稿上還留著待修的筆跡。優先出你的錯題，答對就從復仇本清帳。" },
-  { id: "sprint", name: "疾筆速寫", color: "--cp-orange", desc: "高斯心法：每題 20 秒內答對記一次疾筆。超時不算錯，只是不記疾筆。" },
+  { id: "slow", name: "慢筆細描", color: "--cp-blue", desc: "凡奇秘傳：好線條是描出來的。答錯的題目，這一輪排到隊尾再描一次。" },
+  { id: "repair", name: "淨化咒", color: "--cp-red", desc: "咒卷上還留著沉暗的痕跡。優先出你的錯題，答對就收服馴魔簿裡的小魔物。" },
+  { id: "sprint", name: "疾筆速寫", color: "--cp-orange", desc: "格思秘傳：每題 20 秒內答對記一次疾筆。超時不算錯，只是不記疾筆。" },
 ];
 const SPRINT_LIMIT_MS = 20000;
 
@@ -88,7 +88,7 @@ function showView(name) {
   Object.values(navByView).forEach((id) => document.getElementById(id)?.removeAttribute("aria-current"));
   if (navByView[name]) document.getElementById(navByView[name])?.setAttribute("aria-current", "page");
   window.scrollTo(0, 0);
-  const labels = { home: "技能星圖", quiz: "練習題", dashboard: "我的儀表板", workshop: "大師工作室" };
+  const labels = { home: "魔法星圖", quiz: "練習題", dashboard: "我的儀表板", workshop: "學院五塔" };
   const heading = views[name]?.querySelector("h2");
   if (heading) {
     heading.focus({ preventScroll: true });
@@ -193,11 +193,11 @@ async function goHome() {
     renderSkillTree(container, tree, startQuiz);
     maybeShowEndgame(container);
 
-  // 首頁降噪：每週盃/續讀/修稿單/工作室四張卡收進單一可收合看板，先讓學生看到星圖本體
+  // 首頁降噪：學院盃/續讀/喚醒單/五塔四張卡收進單一可收合看板，先讓學生看到星圖本體
     const dock = document.createElement("details");
     dock.className = "home-brief-dock";
     const summary = document.createElement("summary");
-    summary.textContent = "今日看板——每週盃・續讀・修稿單・工作室";
+    summary.textContent = "今日看板——學院盃・續讀・喚醒單・五塔";
     dock.appendChild(summary);
     const dockBody = document.createElement("div");
     dockBody.className = "home-brief-dock-body";
@@ -223,7 +223,7 @@ async function goHome() {
   }
 }
 
-// ── P0：今日修稿單＋星墨瓶 ──
+// ── P0：今日喚醒單＋星屑瓶 ──
 async function makeDailyBoard(container) {
   const nodeIds = allNodes(tree)
     .filter((n) => isNodePlayable(n, tree))
@@ -240,10 +240,10 @@ async function makeDailyBoard(container) {
   const title = document.createElement("div");
   title.className = "daily-title";
   title.textContent = allDone
-    ? "今日修稿單：完稿！可以安心闔上草稿本了"
+    ? "今日喚醒單：完成！今晚的星光全亮了"
     : dueCount > 0
-      ? `今日修稿單——有 ${dueCount} 頁手稿的墨跡等你補`
-      : "今日修稿單";
+      ? `今日喚醒單——有 ${dueCount} 頁咒卷的星光等你點亮`
+      : "今日喚醒單";
   board.appendChild(title);
 
   const list = document.createElement("div");
@@ -263,20 +263,20 @@ async function makeDailyBoard(container) {
   if (dueCount > 0) {
     const btn = document.createElement("button");
     btn.className = "daily-btn";
-    btn.textContent = `🖋 一鍵補墨（${Math.min(dueCount, 6)} 題）`;
+    btn.textContent = `✨ 一鍵注光（${Math.min(dueCount, 6)} 題）`;
     btn.addEventListener("click", startReviewSession);
     actions.appendChild(btn);
   }
   const ink = document.createElement("span");
   ink.className = "ink-bottle";
-  ink.textContent = `🫙 星墨瓶：本月 ${inkThisMonth()} 滴（共 ${getInkDays().length} 滴）`;
+  ink.textContent = `🫙 星屑瓶：本月 ${inkThisMonth()} 粒（共 ${getInkDays().length} 粒）`;
   actions.appendChild(ink);
   board.appendChild(actions);
 
   if (allDone) {
     const stamp = document.createElement("div");
     stamp.className = "daily-stamp" + (justInked ? " stamp-fresh" : "");
-    stamp.textContent = "完稿章";
+    stamp.textContent = "喚醒章";
     board.appendChild(stamp);
   }
 
@@ -304,7 +304,7 @@ function makeWorkshopTeaser(container) {
   const workshop = workshopSnapshot();
   const card = document.createElement("button");
   card.className = "workshop-teaser";
-  card.innerHTML = `<span>🏛</span><strong>大師工作室修復計畫</strong><span>${workshop.overallPct}% 重光</span>`;
+  card.innerHTML = `<span>🏛</span><strong>五塔復明計畫</strong><span>${workshop.overallPct}% 復明</span>`;
   card.addEventListener("click", showWorkshop);
   container.prepend(card);
 }
@@ -320,21 +320,21 @@ async function showWorkshop() {
   hero.className = `workshop-hero${workshop.allRestored ? " workshop-complete" : ""}`;
   const kicker = document.createElement("div");
   kicker.className = "workshop-kicker";
-  kicker.textContent = "每一頁你完成的手稿，都在把工作室修回來。";
+  kicker.textContent = "每一頁你喚醒的咒卷，都在把塔燈點回來。";
   const heading = document.createElement("h2");
-  heading.textContent = workshop.allRestored ? "大師工作室・全數重光" : "大師工作室修復計畫";
+  heading.textContent = workshop.allRestored ? "學院五塔・塔燈全數重燃" : "五塔復明計畫";
   const meter = document.createElement("div");
   meter.className = "workshop-meter";
   const meterFill = document.createElement("span");
   meterFill.style.width = `${Number(workshop.overallPct) || 0}%`;
   meter.appendChild(meterFill);
   const intro = document.createElement("p");
-  intro.textContent = `目前已開放房間總修復度 ${Number(workshop.overallPct) || 0}%。精熟手稿、獲得落款、找回稀有章，光就會一層層回來。`;
+  intro.textContent = `目前已開放各塔總復明度 ${Number(workshop.overallPct) || 0}%。精通咒卷、獲得蠟封、找回稀有徽記，星光就會一層層回來。`;
   hero.append(kicker, heading, meter, intro);
   if (workshop.allRestored) {
     const finale = document.createElement("div");
     finale.className = "workshop-finale";
-    finale.textContent = "✦ 燈一盞一盞亮起，大師把門牌翻到了「工作室之友」。這裡已經不只是大師的工作室，也是你的。";
+    finale.textContent = "✦ 塔燈一盞一盞燃起，學院把名冊翻到了「星穹之光」。這裡已經不只是賢者的學院，也是你的學院。";
     hero.appendChild(finale);
   }
   root.appendChild(hero);
@@ -380,7 +380,7 @@ async function startReviewSession() {
   if (queue.length === 0) return;
   session = newSession({
     queue,
-    node: { id: REVIEW_ID, name: "今日補墨" },
+    node: { id: REVIEW_ID, name: "今日注光" },
     mascot: "davinci",
     kind: "review",
     encounterIdx: Math.random() < 0.35 ? Math.floor(Math.random() * queue.length) : -1,
@@ -396,11 +396,11 @@ function makeResumeCard(container) {
   const card = document.createElement("div");
   card.className = "resume-card";
   const text = document.createElement("div");
-  text.textContent = `上次的草稿還攤在桌上——${saved.node.name} · 第 ${saved.index + 1}/${saved.queue.length} 題`;
+  text.textContent = `上次的咒卷還攤在桌上——${saved.node.name} · 第 ${saved.index + 1}/${saved.queue.length} 題`;
   card.appendChild(text);
   const go = document.createElement("button");
   go.className = "daily-btn";
-  go.textContent = "接著畫";
+  go.textContent = "接著喚醒";
   go.addEventListener("click", resumeActiveSession);
   const drop = document.createElement("button");
   drop.className = "daily-btn resume-drop";
@@ -414,20 +414,20 @@ function makeResumeCard(container) {
   container.prepend(card);
 }
 
-// ── 每週大師盃 ──
+// ── 每週學院盃 ──
 function makeWeeklyCard(container) {
   const card = document.createElement("div");
   card.className = "weekly-card";
   const best = getWeeklyBest();
   const title = document.createElement("div");
   title.className = "weekly-title";
-  title.textContent = `🏆 本週大師盃 ${isoWeekKey()}——全班同一套題，敢來嗎？`;
+  title.textContent = `🏆 本週學院盃 ${isoWeekKey()}——全班同一套題，敢來嗎？`;
   card.appendChild(title);
 
   if (best) {
     const mine = document.createElement("div");
     mine.className = "weekly-best";
-    mine.textContent = `我的最佳：${best.pct}%・${best.totalSec} 秒・連對 ${best.maxStreak}`;
+    mine.textContent = `我的最佳：${best.pct}%・${best.totalSec} 秒・連詠 ${best.maxStreak}`;
     card.appendChild(mine);
     const codeRow = document.createElement("div");
     codeRow.className = "weekly-code-row";
@@ -436,12 +436,12 @@ function makeWeeklyCard(container) {
     codeRow.appendChild(code);
     const copy = document.createElement("button");
     copy.className = "daily-btn";
-    copy.textContent = "複製戰績碼";
+    copy.textContent = "複製戰績咒文";
     copy.addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(best.code);
         copy.textContent = "已複製！";
-        scheduleTimer(() => (copy.textContent = "複製戰績碼"), 1500);
+        scheduleTimer(() => (copy.textContent = "複製戰績咒文"), 1500);
       } catch { /* 剪貼簿不可用時保持原樣 */ }
     });
     codeRow.appendChild(copy);
@@ -457,12 +457,12 @@ function makeWeeklyCard(container) {
   actions.appendChild(go);
   card.appendChild(actions);
 
-  // 同學互報戰績碼比一比
+  // 同學互報戰績咒文比一比
   const cmp = document.createElement("div");
   cmp.className = "weekly-compare";
   const compareLabel = document.createElement("label");
   compareLabel.htmlFor = "weekly-compare-code";
-  compareLabel.textContent = "同學的戰績碼";
+  compareLabel.textContent = "同學的戰績咒文";
   const input = document.createElement("input");
   input.id = "weekly-compare-code";
   input.type = "text";
@@ -476,15 +476,15 @@ function makeWeeklyCard(container) {
   btn.addEventListener("click", () => {
     const other = decodeResult(input.value);
     if (!other) {
-      result.textContent = "這組戰績碼看不懂，再核對一次？";
+      result.textContent = "這組戰績咒文看不懂，再核對一次？";
       return;
     }
     if (other.error === "too-old") {
-      result.textContent = "這組戰績碼格式太舊，請同學重新打一場產生新版碼。";
+      result.textContent = "這組戰績咒文格式太舊，請同學重新打一場產生新版咒文。";
       return;
     }
     if (other.week !== isoWeekKey()) {
-      result.textContent = `這是 ${other.week} 的舊戰績碼，本週是 ${isoWeekKey()}。`;
+      result.textContent = `這是 ${other.week} 的舊戰績咒文，本週是 ${isoWeekKey()}。`;
       return;
     }
     const mineBest = getWeeklyBest();
@@ -514,7 +514,7 @@ async function startWeeklySession() {
   const nodeIds = allNodes(tree).filter((n) => !n.contentPending).map((n) => n.id);
   session = newSession({
     queue: await buildWeeklySession(nodeIds, 10),
-    node: { id: WEEKLY_ID, name: `本週大師盃 ${isoWeekKey()}` },
+    node: { id: WEEKLY_ID, name: `本週學院盃 ${isoWeekKey()}` },
     mascot: "gauss",
     kind: "weekly",
   });
@@ -522,7 +522,7 @@ async function startWeeklySession() {
   renderCurrentQuestion();
 }
 
-// 終局內容：全節點精熟後開放大師試煉（可重複挑戰、保留最佳紀錄）
+// 終局內容：全節點精熟後開放賢者試煉（可重複挑戰、保留最佳紀錄）
 function maybeShowEndgame(container) {
   const overview = computeOverview(tree);
   if (overview.masteredCount < overview.totalNodes) return;
@@ -530,11 +530,11 @@ function maybeShowEndgame(container) {
   const banner = document.createElement("div");
   banner.className = "endgame-banner" + (best ? " endgame-cleared" : "");
   banner.innerHTML = best
-    ? `<div class="endgame-title">大師試煉最佳紀錄：${Math.round(best.pct * 100)}%——雙大師在等你刷新它</div>`
-    : `<div class="endgame-title">整本草稿都完稿了！達文西與高斯聯名邀請你——</div>`;
+    ? `<div class="endgame-title">賢者試煉最佳紀錄：${Math.round(best.pct * 100)}%——五塔賢者在等你刷新紀錄</div>`
+    : `<div class="endgame-title">整片魔法星圖都點亮了！五塔賢者聯名邀請你——</div>`;
   const btn = document.createElement("button");
   btn.className = "q-next";
-  btn.textContent = best ? "⚔ 再戰大師試煉" : "⚔ 挑戰大師試煉（跨主題混合 10 題）";
+  btn.textContent = best ? "⚔ 再戰賢者試煉" : "⚔ 挑戰賢者試煉（跨塔混合 10 題）";
   btn.addEventListener("click", startMasterTrial);
   banner.appendChild(btn);
   container.prepend(banner);
@@ -544,7 +544,7 @@ async function startMasterTrial() {
   const nodeIds = allNodes(tree).filter((n) => !n.contentPending).map((n) => n.id);
   session = newSession({
     queue: await buildMasterSession(nodeIds),
-    node: { id: MASTER_TRIAL_ID, name: "大師試煉" },
+    node: { id: MASTER_TRIAL_ID, name: "賢者試煉" },
     mascot: "davinci",
     kind: "master",
   });
@@ -593,7 +593,7 @@ function maybeShowOnboardingTip() {
   const root = document.getElementById("tip-bubble-root");
   const box = document.createElement("div");
   box.className = "tip-bubble";
-  box.innerHTML = `大師的草稿本攤開了！點一下發亮的手稿，接下達文西畫到一半的題目吧。<br /><button>知道了</button>`;
+  box.innerHTML = `星穹學院的咒卷庫攤開了！點一下發亮的咒卷，接下凡奇導師喚醒到一半的題目吧。<br /><button>知道了</button>`;
   box.querySelector("button").addEventListener("click", () => {
     box.remove();
     store.write("seenTip", true);
@@ -601,7 +601,7 @@ function maybeShowOnboardingTip() {
   root.appendChild(box);
 }
 
-// 進節點先翻「心法頁」選策略，再開局
+// 進節點先翻「秘傳頁」選策略，再開局
 function startQuiz(node) {
   if (!isNodePlayable(node, tree)) return;
   showView("quiz");
@@ -616,7 +616,7 @@ function startQuiz(node) {
   picker.className = "strategy-picker";
   picker.appendChild(Object.assign(document.createElement("div"), {
     className: "strategy-picker-title",
-    textContent: "翻開大師的心法頁——這一輪要怎麼練？",
+    textContent: "翻開導師的秘傳頁——這一輪要怎麼練？",
   }));
 
   if (node.lessonMedia?.src) {
@@ -650,13 +650,13 @@ function startQuiz(node) {
     const title = document.createElement("strong");
     title.textContent = s.name;
     const desc = document.createElement("span");
-    desc.textContent = unavailable ? "這本手稿目前沒有待修筆跡" : s.desc;
+    desc.textContent = unavailable ? "這卷咒文目前沒有黯淡處" : s.desc;
     card.appendChild(title);
     card.appendChild(desc);
     if (isRecommended) {
       const tag = document.createElement("em");
       tag.className = "strategy-recommend-tag";
-      tag.textContent = isFirstTime ? "新手推薦先選這個" : "上次的心法";
+      tag.textContent = isFirstTime ? "新手推薦先選這個" : "上次的秘傳";
       card.appendChild(tag);
     }
     if (!unavailable) card.addEventListener("click", () => startQuizWithStrategy(node, s.id));
@@ -706,7 +706,7 @@ function renderStreakBadge() {
   if (session.streak >= 3) {
     const badge = document.createElement("span");
     badge.className = "streak-badge" + (session.streak >= 5 ? " streak-badge-hot" : "");
-    badge.textContent = `🔥 連對 ${session.streak}`;
+    badge.textContent = `🔥 連詠 ×${session.streak}`;
     el.appendChild(badge);
   }
 }
@@ -826,14 +826,14 @@ function handleAnswer(question, isCorrect, meta = {}) {
   const messages = [isCorrect
     ? "答對了！"
     : `答錯了，正解是：選項${meta.correctLabel ?? ""}「${meta.correctText ?? ""}」`];
-  if (session.streak >= 3) messages.push(`連對 ${session.streak}`);
-  if (meta.rareStampName) messages.push(`發現稀有章：${meta.rareStampName}`);
+  if (session.streak >= 3) messages.push(`連詠 ${session.streak}`);
+  if (meta.rareStampName) messages.push(`發現稀有徽記：${meta.rareStampName}`);
   messages.push("下一題按鈕已出現");
   announce(messages.join("。"));
   showStorageNoticeIfNeeded();
 }
 
-// 奇遇答對：5% 掉大師印章，10 次未掉保底必掉（掉當前節點主題章，已擁有則遞補未擁有的）
+// 奇遇魔法陣答對：5% 掉稀有徽記，10 次未掉保底必掉（掉當前節點主題徽記，已擁有則遞補未擁有的）
 function handleEncounterWin() {
   store.write("encounterWins", store.read("encounterWins", 0) + 1);
   let pity = store.read("encounterPity", 0) + 1;
@@ -894,7 +894,7 @@ function finishSession() {
     });
   }
 
-  // 大師試煉最佳紀錄（可重刷）
+  // 賢者試煉最佳紀錄（可重刷）
   if (isMasterTrial && session.roundTotal > 0) {
     const best = store.read("masterTrialBest", null);
     if (!best || roundPct > best.pct) {
@@ -902,7 +902,7 @@ function finishSession() {
     }
   }
 
-  // 每週大師盃：submit 最佳成績＋戰績碼
+  // 每週學院盃：submit 最佳成績＋戰績咒文
   let weeklyRecord = null;
   if (session.kind === "weekly" && session.roundTotal > 0) {
     weeklyRecord = submitWeeklyResult(
@@ -943,7 +943,7 @@ function finishSession() {
 
   const backBtn = document.createElement("button");
   backBtn.className = "q-next";
-  backBtn.textContent = "回技能樹";
+  backBtn.textContent = "回魔法星圖";
   backBtn.addEventListener("click", goHome);
   quizArea.appendChild(backBtn);
 }
@@ -962,18 +962,18 @@ function strategySummaryBits() {
   if (session.strategy === "slow") {
     return {
       tile: `<div class="report-tile"><strong>${session.retryDone}</strong><div>補描成功</div></div>`,
-      note: session.retryDone > 0 ? "線條描實了——補描成功的題目，就是你的了。" : "達文西：好線條是描出來的。",
+      note: session.retryDone > 0 ? "線條描實了——補描成功的題目，就是你的了。" : "凡奇導師：好線條是描出來的。",
     };
   }
   if (session.strategy === "repair") {
     return {
-      tile: `<div class="report-tile"><strong>${session.repairedCount}/${session.repairTotal}</strong><div>修復舊筆跡</div></div>`,
-      note: session.repairedCount > 0 ? "錯題復仇本變薄了！" : "待修筆跡還在等你回來。",
+      tile: `<div class="report-tile"><strong>${session.repairedCount}/${session.repairTotal}</strong><div>收服小魔物</div></div>`,
+      note: session.repairedCount > 0 ? "馴魔簿變薄了！" : "小魔物還在等你回來收服。",
     };
   }
   return {
     tile: `<div class="report-tile"><strong>${session.fastCount}/${session.roundTotal}</strong><div>疾筆</div></div>`,
-    note: session.fastCount >= 6 ? "高斯點頭了。" : "筆速會越練越快。",
+    note: session.fastCount >= 6 ? "格思導師點頭了。" : "筆速會越練越快。",
   };
 }
 
@@ -988,7 +988,7 @@ function makeSummary(stats, newBadges, newDrops = [], weeklyRecord = null, chall
     mascotBox.className = "summary-mascot";
     const img = document.createElement("img");
     img.src = `assets/mascot/${session.mascot}-${mascotState}.png`;
-    img.alt = "大師吉祥物";
+    img.alt = "駐塔導師";
     img.onerror = () => { mascotBox.style.display = "none"; };
     mascotBox.appendChild(img);
     box.appendChild(mascotBox);
@@ -1006,7 +1006,7 @@ function makeSummary(stats, newBadges, newDrops = [], weeklyRecord = null, chall
   }
   box.appendChild(starsBox);
 
-  // 大師的一句話（40% 機率）
+  // 賢者殘卷的一句話（40% 機率）
   const quote = pickQuote(stars, session.mascot);
   if (quote) {
     const note = document.createElement("div");
@@ -1028,12 +1028,12 @@ function makeSummary(stats, newBadges, newDrops = [], weeklyRecord = null, chall
     }));
   }
 
-  // 每週大師盃戰績碼（結算頁最顯眼位置）
+  // 每週學院盃戰績咒文（結算頁最顯眼位置）
   if (weeklyRecord) {
     const w = document.createElement("div");
     w.className = "weekly-result";
     const isNewBest = weeklyRecord.pct === Math.round((session.roundCorrect / session.roundTotal) * 100);
-    w.innerHTML = `<div class="weekly-result-title">🏆 ${isNewBest ? "本週戰績碼" : "本週最佳戰績碼（這場沒刷新）"}</div>`;
+    w.innerHTML = `<div class="weekly-result-title">🏆 ${isNewBest ? "本週戰績咒文" : "本週最佳戰績咒文（這場沒刷新）"}</div>`;
     const code = document.createElement("code");
     code.textContent = weeklyRecord.code;
     w.appendChild(code);
@@ -1054,11 +1054,11 @@ function makeSummary(stats, newBadges, newDrops = [], weeklyRecord = null, chall
   if (challengeReply) {
     const result = document.createElement("div");
     result.className = "challenge-result";
-    result.innerHTML = `<div class="weekly-result-title">⚔ 回擊碼・${challengeReply.pct}% ・ ${challengeReply.totalSec} 秒</div>
+    result.innerHTML = `<div class="weekly-result-title">⚔ 回擊咒文・${challengeReply.pct}% ・ ${challengeReply.totalSec} 秒</div>
       <code>${challengeReply.code}</code><p>複製給出題同學，他輸入後也會獲得「切磋章」。</p>`;
     const copy = document.createElement("button");
     copy.className = "daily-btn";
-    copy.textContent = "複製回擊碼";
+    copy.textContent = "複製回擊咒文";
     copy.addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(challengeReply.code);
@@ -1069,7 +1069,7 @@ function makeSummary(stats, newBadges, newDrops = [], weeklyRecord = null, chall
     box.appendChild(result);
   }
 
-  // 稀有章出貨：結算頁鄭重重播（不再被下一題吃掉）
+  // 稀有徽記出貨：結算頁鄭重重播（不再被下一題吃掉）
   session.rareDrops.forEach((stamp) => {
     const drop = document.createElement("div");
     drop.className = "ms-drop rare-drop";
@@ -1078,13 +1078,13 @@ function makeSummary(stats, newBadges, newDrops = [], weeklyRecord = null, chall
     sym.textContent = stamp.sym;
     const text = document.createElement("div");
     text.className = "ms-drop-text";
-    text.textContent = `✦ 稀有章出土：${stamp.name}！收進大師印章簿了`;
+    text.textContent = `✦ 稀有徽記出土：${stamp.name}！收進導師徽記匣了`;
     drop.appendChild(sym);
     drop.appendChild(text);
     box.appendChild(drop);
   });
 
-  // 新手稿入冊／大師落款演出
+  // 新咒卷入庫／導師蠟封演出
   newDrops.forEach((d) => {
     const drop = document.createElement("div");
     drop.className = "ms-drop" + (d.tier === 2 ? " ms-drop-sealed" : "");
@@ -1094,11 +1094,11 @@ function makeSummary(stats, newBadges, newDrops = [], weeklyRecord = null, chall
     const text = document.createElement("div");
     text.className = "ms-drop-text";
     text.textContent = d.tier === 2
-      ? `🖋 大師落款：${d.item.name}——這一頁，正式是你的了`
-      : `📜 新手稿入冊：${d.item.name}`;
+      ? `🖋 導師蠟封：${d.item.name}——這一卷，正式是你的了`
+      : `📜 新咒卷入庫：${d.item.name}——收進你的咒卷集了`;
     drop.appendChild(sym);
     drop.appendChild(text);
-    if (d.tier === 2) drop.appendChild(Object.assign(document.createElement("div"), { className: "ms-seal", textContent: "落款" }));
+    if (d.tier === 2) drop.appendChild(Object.assign(document.createElement("div"), { className: "ms-seal", textContent: "蠟封" }));
     box.appendChild(drop);
   });
 
@@ -1109,7 +1109,7 @@ function makeSummary(stats, newBadges, newDrops = [], weeklyRecord = null, chall
   reports.innerHTML = `
     <div class="report-tile"><strong>${Math.round((session.roundCorrect / session.roundTotal) * 100) || 0}%</strong><div>本輪正確率</div></div>
     <div class="report-tile"><strong>${totalSec}s</strong><div>本輪用時</div></div>
-    <div class="report-tile"><strong>${session.maxStreak}</strong><div>最長連對</div></div>
+    <div class="report-tile"><strong>${session.maxStreak}</strong><div>最長連詠</div></div>
     ${strategyBits.tile || `<div class="report-tile"><strong>${stats.totalAttempts}</strong><div>累計作答</div></div>`}
   `;
   box.appendChild(reports);
@@ -1162,13 +1162,13 @@ async function makeChallengeHub() {
   const nodeNames = Object.fromEntries(allNodes(tree).map((node) => [node.id, node.name]));
   const section = document.createElement("section");
   section.className = "challenge-hub";
-  section.innerHTML = `<h3>🎯 學徒出題所・五題挑戰包</h3>
-    <p>手稿獲得大師落款後，你就有資格從該頁挑五題考同學。從自己最容易上當的題挑起，才是真正的出題人。</p>`;
+  section.innerHTML = `<h3>🎯 見習出題所・五題挑戰包</h3>
+    <p>咒卷獲得導師蠟封後，你就有資格從該卷挑五題考同學。從自己最容易上當的題挑起，才是真正的出題人。</p>`;
 
   const creator = document.createElement("div");
   creator.className = "challenge-creator";
   if (eligible.length === 0) {
-    creator.innerHTML = `<div class="challenge-locked">🔒 先讓任一張手稿獲得「大師落款」，就能解鎖學徒出題權。</div>`;
+    creator.innerHTML = `<div class="challenge-locked">🔒 先讓任一卷咒卷獲得「導師蠟封」，就能解鎖見習出題權。</div>`;
   } else {
     const selected = new Map();
     const filterLabel = document.createElement("label");
@@ -1193,7 +1193,7 @@ async function makeChallengeHub() {
     output.className = "challenge-code-output";
     const make = document.createElement("button");
     make.className = "daily-btn";
-    make.textContent = "編成挑戰碼";
+    make.textContent = "編成挑戰咒文";
     make.disabled = true;
 
     const renderList = () => {
@@ -1230,7 +1230,7 @@ async function makeChallengeHub() {
     make.addEventListener("click", async () => {
       const code = encodeChallenge([...selected.values()], catalog);
       store.write("lastCreatedChallenge", { code, questionIds: [...selected.keys()], at: Date.now() });
-      output.innerHTML = `<strong>你的挑戰碼：</strong><code>${code}</code>`;
+      output.innerHTML = `<strong>你的挑戰咒文：</strong><code>${code}</code>`;
       try { await navigator.clipboard.writeText(code); output.append("（已複製）"); } catch { /* 可手動複製 */ }
     });
     creator.append(filterLabel, filter, count, fullMessage, list, make, output);
@@ -1243,7 +1243,7 @@ async function makeChallengeHub() {
   receiver.innerHTML = "<h4>收下同學的挑戰</h4>";
   const inputLabel = document.createElement("label");
   inputLabel.htmlFor = "challenge-code";
-  inputLabel.textContent = "同學的挑戰碼";
+  inputLabel.textContent = "同學的挑戰咒文";
   const input = document.createElement("input");
   input.id = "challenge-code";
   input.placeholder = "例如：BX2-…";
@@ -1255,8 +1255,8 @@ async function makeChallengeHub() {
   play.textContent = "開始接招";
   play.addEventListener("click", () => {
     const queue = decodeChallenge(input.value, catalog);
-    if (queue?.error === "too-old") { result.textContent = "這組挑戰碼格式太舊，請出題同學重新產生。"; return; }
-    if (!Array.isArray(queue)) { result.textContent = "這組挑戰碼看不懂，請再核對一次。"; return; }
+    if (queue?.error === "too-old") { result.textContent = "這組挑戰咒文格式太舊，請出題同學重新產生。"; return; }
+    if (!Array.isArray(queue)) { result.textContent = "這組挑戰咒文看不懂，請再核對一次。"; return; }
     startChallengeSession(input.value.trim().toUpperCase(), queue);
   });
   receiver.append(inputLabel, input, makePasteButton(input), play, result);
@@ -1267,7 +1267,7 @@ async function makeChallengeHub() {
   reply.innerHTML = "<h4>查看同學的回擊</h4>";
   const replyLabel = document.createElement("label");
   replyLabel.htmlFor = "counter-code";
-  replyLabel.textContent = "同學的回擊碼";
+  replyLabel.textContent = "同學的回擊咒文";
   const replyInput = document.createElement("input");
   replyInput.id = "counter-code";
   replyInput.placeholder = "例如：XR2-…";
@@ -1280,8 +1280,8 @@ async function makeChallengeHub() {
   inspect.addEventListener("click", () => {
     const mine = store.read("lastCreatedChallenge", null);
     const decoded = mine ? decodeReply(replyInput.value, mine.code) : null;
-    if (decoded?.error === "too-old") { replyResult.textContent = "這組回擊碼格式太舊，請同學重新挑戰。"; return; }
-    if (!decoded) { replyResult.textContent = mine ? "這不是這一包的回擊碼。" : "這台裝置還沒有你出過的挑戰包。"; return; }
+    if (decoded?.error === "too-old") { replyResult.textContent = "這組回擊咒文格式太舊，請同學重新挑戰。"; return; }
+    if (!decoded) { replyResult.textContent = mine ? "這不是這一包的回擊咒文。" : "這台裝置還沒有你出過的挑戰包。"; return; }
     unlockBadge("sparring");
     replyResult.textContent = `同學答對 ${decoded.pct}%，用了 ${decoded.totalSec} 秒。你也獲得「切磋章」！`;
   });
@@ -1293,25 +1293,25 @@ async function makeChallengeHub() {
 function makeTravelCase() {
   const section = document.createElement("section");
   section.className = "travel-case";
-  section.innerHTML = `<h3>🧳 旅行皮箱</h3><p>把這台裝置上的手稿、精熟進度、印章與錯題全部打包，到另一台電腦繼續寫。</p>`;
+  section.innerHTML = `<h3>🧳 魔法行囊</h3><p>把這台裝置上的咒卷、精通進度、徽記與馴魔簿全部打包，到另一台電腦繼續喚醒。</p>`;
   const actions = document.createElement("div");
   actions.className = "travel-actions";
   const pack = document.createElement("button");
   pack.className = "daily-btn";
-  pack.textContent = "📦 打包我的草稿本";
+  pack.textContent = "📦 打包我的咒卷集";
   pack.addEventListener("click", () => {
     const blob = new Blob([JSON.stringify(exportNamespace(), null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = `步學吾數-草稿本-${new Date().toISOString().slice(0, 10)}.json`;
+    link.download = `步學吾數-咒卷集-${new Date().toISOString().slice(0, 10)}.json`;
     link.click();
     scheduleTimer(() => URL.revokeObjectURL(url), 0);
   });
   const label = document.createElement("label");
   label.className = "daily-btn travel-import";
   label.htmlFor = "travel-case-file";
-  label.textContent = "🧳 打開旅行皮箱";
+  label.textContent = "🧳 打開魔法行囊";
   const file = document.createElement("input");
   file.id = "travel-case-file";
   file.type = "file";
@@ -1324,7 +1324,7 @@ function makeTravelCase() {
       const bundle = JSON.parse(await picked.text());
       if (!confirm("匯入會覆蓋這台裝置的同名進度，要繼續嗎？")) return;
       const count = importNamespace(bundle, localStorage, tree);
-      alert(`已打開旅行皮箱，帶回 ${count} 項紀錄。`);
+      alert(`已打開魔法行囊，帶回 ${count} 項紀錄。`);
       location.reload();
     } catch (error) {
       alert(error instanceof Error ? error.message : "這個檔案無法匯入。");
@@ -1354,10 +1354,10 @@ async function showDashboard() {
   const summary = document.createElement("div");
   summary.className = "dash-summary";
   summary.innerHTML = `<h3>整體戰力值</h3><p>${overview.masteredCount} / ${overview.totalNodes} 個學習點已開通</p>
-    <p class="dash-records">歷史最長連對：${bestStreak}${trialBest ? ` ・ 大師試煉最佳：${Math.round(trialBest.pct * 100)}%` : ""}</p>`;
+    <p class="dash-records">歷史最長連詠：${bestStreak}${trialBest ? ` ・ 賢者試煉最佳：${Math.round(trialBest.pct * 100)}%` : ""}</p>`;
   el.appendChild(summary);
 
-  // 大師手稿收藏冊（含完成度與入手日期）
+  // 咒卷集（含完成度與入手日期）
   const col = getCollection();
   const ownedCount = Object.keys(col).length;
   const sealedCount = Object.values(col).filter((c) => c.tier >= 2).length;
@@ -1366,7 +1366,7 @@ async function showDashboard() {
   const colSection = document.createElement("div");
   colSection.className = "dash-collection";
   colSection.appendChild(Object.assign(document.createElement("h3"), {
-    textContent: `大師手稿收藏冊（${ownedCount} / ${MANUSCRIPTS.length} 入冊 · ${sealedCount} 落款 · 完成度 ${colPct}%）`,
+    textContent: `咒卷集（${ownedCount} / ${MANUSCRIPTS.length} 入庫 · ${sealedCount} 蠟封 · 完成度 ${colPct}%）`,
   }));
   const grid = document.createElement("div");
   grid.className = "collection-grid";
@@ -1397,17 +1397,17 @@ async function showDashboard() {
         const d = new Date(record.at);
         card.appendChild(Object.assign(document.createElement("div"), {
           className: "ms-date",
-          textContent: `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()} 入冊`,
+          textContent: `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()} 入庫`,
         }));
       }
     }
     if (tier >= 2) {
-      card.appendChild(Object.assign(document.createElement("div"), { className: "ms-seal", textContent: "落款" }));
+      card.appendChild(Object.assign(document.createElement("div"), { className: "ms-seal", textContent: "蠟封" }));
     }
     if (dust.dusty) {
       card.appendChild(Object.assign(document.createElement("div"), {
         className: "dust-note",
-        textContent: `手稿蒙塵・補 ${3 - dust.careCount} 題到期墨跡即重新發亮`,
+        textContent: `咒卷沉暗・答對 ${3 - dust.careCount} 題星光黯淡處即重新發亮`,
       }));
     }
     grid.appendChild(card);
@@ -1415,13 +1415,13 @@ async function showDashboard() {
   colSection.appendChild(grid);
   el.appendChild(colSection);
 
-  // 大師印章簿（稀有章圖鑑：全 10 枚含未解鎖剪影＋入手日期）
+  // 導師徽記匣（稀有徽記圖鑑：全 10 枚含未解鎖剪影＋入手日期）
   const stampBook = getRareStamps();
   const stampCount = Object.keys(stampBook).length;
   const stampSection = document.createElement("div");
   stampSection.className = "dash-stampbook";
   stampSection.appendChild(Object.assign(document.createElement("h3"), {
-    textContent: `大師印章簿（${stampCount} / ${RARE_STAMPS.length}）——奇遇題答對有機會出土`,
+    textContent: `導師徽記匣（${stampCount} / ${RARE_STAMPS.length}）——奇遇魔法陣裡答對有機會出土`,
   }));
   const stampGrid = document.createElement("div");
   stampGrid.className = "stamp-grid";
@@ -1449,16 +1449,16 @@ async function showDashboard() {
   stampSection.appendChild(stampGrid);
   el.appendChild(stampSection);
 
-  // 星墨瓶與番外語錄
+  // 星屑瓶與番外語錄
   const inkTotal = getInkDays().length;
   const extras = unlockedExtraQuotes(inkTotal);
   const inkSection = document.createElement("div");
   inkSection.className = "dash-ink";
-  inkSection.innerHTML = `<h3>星墨瓶（共 ${inkTotal} 滴 · 每 7 滴解鎖一則大師番外）</h3>`;
+  inkSection.innerHTML = `<h3>星屑瓶（共 ${inkTotal} 粒 · 每 7 粒解鎖一則賢者殘卷番外）</h3>`;
   if (extras.length === 0) {
     inkSection.appendChild(Object.assign(document.createElement("p"), {
       className: "ink-hint",
-      textContent: "完成每日修稿單就滴一滴墨。斷了也不會倒掉——瓶子只進不出。",
+      textContent: "完成每日喚醒單就落下一粒星屑。斷了也不會倒掉——瓶子只進不出。",
     }));
   }
   extras.forEach((q) => {
@@ -1485,7 +1485,7 @@ async function showDashboard() {
   const errorSection = document.createElement("div");
   errorSection.className = "dash-errorbook";
   const wrongList = listWrongQuestions();
-  errorSection.innerHTML = `<h3>錯題復仇本（${wrongList.length} 題）</h3>`;
+  errorSection.innerHTML = `<h3>馴魔簿（${wrongList.length} 隻小魔物等你收服）</h3>`;
   wrongList.slice(0, 10).forEach((entry) => {
     const q = entry.question;
     const stem = q.stem || q.statement || q.problem || q.question;
@@ -1515,13 +1515,13 @@ async function showDashboard() {
   showView("dashboard");
 }
 
-// 收藏分享卡：canvas 畫泛黃草稿紙戰績卡，一鍵下載
+// 收藏分享卡：canvas 畫星空羊皮卷紀錄卡，一鍵下載
 function makeShareCard() {
   const box = document.createElement("div");
   box.className = "dash-share";
   const btn = document.createElement("button");
   btn.className = "daily-btn";
-  btn.textContent = "🖼 產生我的手稿冊卡片（下載炫耀）";
+  btn.textContent = "🖼 產生我的咒卷集卡片（下載炫耀）";
   btn.addEventListener("click", () => renderShareCard());
   box.appendChild(btn);
   return box;
@@ -1542,7 +1542,7 @@ function renderShareCard() {
   canvas.height = H;
   const ctx = canvas.getContext("2d");
 
-  // 泛黃草稿紙底
+  // 星空羊皮卷底（繪圖邏輯不動，僅換語境）
   ctx.fillStyle = "#f4ead2";
   ctx.fillRect(0, 0, W, H);
   ctx.strokeStyle = "rgba(140,110,70,0.18)";
@@ -1560,20 +1560,20 @@ function renderShareCard() {
 
   ctx.fillStyle = "#4a3620";
   ctx.font = "bold 34px 'Noto Sans TC', sans-serif";
-  ctx.fillText("步學吾數・大師工作室手稿冊", 44, 74);
+  ctx.fillText("步學吾數・星穹學院咒卷集", 44, 74);
   ctx.font = "24px 'Noto Sans TC', sans-serif";
-  ctx.fillText(`學徒：${name}`, 44, 130);
+  ctx.fillText(`見習魔導師：${name}`, 44, 130);
 
   ctx.font = "22px 'Noto Sans TC', sans-serif";
   const lines = [
-    `📜 手稿入冊 ${ownedCount} / ${MANUSCRIPTS.length}　🖋 大師落款 ${sealedCount}`,
-    `✦ 稀有印章 ${ownedStamps.length} / ${RARE_STAMPS.length}　🔥 歷史最長連對 ${bestStreak}`,
+    `📜 咒卷入庫 ${ownedCount} / ${MANUSCRIPTS.length}　🖋 導師蠟封 ${sealedCount}`,
+    `✦ 稀有徽記 ${ownedStamps.length} / ${RARE_STAMPS.length}　🔥 歷史最長連詠 ${bestStreak}`,
   ];
   lines.forEach((t, i) => ctx.fillText(t, 44, 184 + i * 44));
 
-  // 印章區
+  // 徽記區
   ctx.font = "20px 'Noto Sans TC', sans-serif";
-  ctx.fillText("印章簿：", 44, 296);
+  ctx.fillText("徽記匣：", 44, 296);
   ownedStamps.slice(0, 8).forEach((s, i) => {
     const x = 70 + (i % 4) * 175;
     const y = 330 + Math.floor(i / 4) * 56;
@@ -1590,7 +1590,7 @@ function renderShareCard() {
   });
   if (ownedStamps.length === 0) {
     ctx.fillStyle = "#8a7455";
-    ctx.fillText("（還沒有印章——去奇遇題裡挖！）", 130, 334);
+    ctx.fillText("（還沒有徽記——去奇遇魔法陣裡挖！）", 130, 334);
   }
 
   const d = new Date();
@@ -1600,12 +1600,12 @@ function renderShareCard() {
 
   const finish = () => {
     const a = document.createElement("a");
-    a.download = `步學吾數手稿冊-${name}.png`;
+    a.download = `步學吾數咒卷集-${name}.png`;
     a.href = canvas.toDataURL("image/png");
     a.click();
   };
 
-  // 吉祥物蓋台（載得到就畫，載不到直接出卡）
+  // 駐塔導師蓋台（載得到就畫，載不到直接出卡）
   const img = new Image();
   img.onload = () => {
     ctx.drawImage(img, W - 190, H - 210, 150, 150);

@@ -1,19 +1,19 @@
 import { store } from "./store.js";
 
 export const BADGES = [
-  { id: "first-mastery", name: "初試啼聲", desc: "第一個學習點達到精熟", check: (ctx) => ctx.masteredCount >= 1 },
-  { id: "three-mastery", name: "小有心得", desc: "精熟 3 個學習點", check: (ctx) => ctx.masteredCount >= 3 },
-  { id: "ten-mastery", name: "登堂入室", desc: "精熟 10 個學習點", check: (ctx) => ctx.masteredCount >= 10 },
-  { id: "thirty-mastery", name: "半程學者", desc: "精熟 30 個學習點", check: (ctx) => ctx.masteredCount >= 30 },
-  { id: "all-mastery", name: "融會貫通", desc: "精熟全部已上線學習點", check: (ctx) => ctx.masteredCount >= ctx.totalNodes },
+  { id: "first-mastery", name: "初試啼聲", desc: "第一個學習點達到精通", check: (ctx) => ctx.masteredCount >= 1 },
+  { id: "three-mastery", name: "小有心得", desc: "精通 3 個學習點", check: (ctx) => ctx.masteredCount >= 3 },
+  { id: "ten-mastery", name: "登堂入室", desc: "精通 10 個學習點", check: (ctx) => ctx.masteredCount >= 10 },
+  { id: "thirty-mastery", name: "半程學者", desc: "精通 30 個學習點", check: (ctx) => ctx.masteredCount >= 30 },
+  { id: "all-mastery", name: "融會貫通", desc: "精通全部已上線學習點", check: (ctx) => ctx.masteredCount >= ctx.totalNodes },
   { id: "perfect-round", name: "全對挑戰", desc: "單次作答 5 題全對", check: (ctx) => ctx.lastRoundAllCorrect },
-  { id: "streak-3", name: "連對三題", desc: "連續答對 3 題", check: (ctx) => ctx.currentStreak >= 3 },
+  { id: "streak-3", name: "連詠三題", desc: "連續答對 3 題", check: (ctx) => ctx.currentStreak >= 3 },
   { id: "streak-10", name: "十連不墜", desc: "連續答對 10 題", check: (ctx) => ctx.currentStreak >= 10 },
-  { id: "master-trial", name: "大師真傳", desc: "大師試煉正確率達九成", check: (ctx) => ctx.masterTrialPassed },
-  { id: "encounter-5", name: "奇遇獵人", desc: "答對 5 次靈光一閃題", check: (ctx) => ctx.encounterWins >= 5 },
-  { id: "encounter-15", name: "奇遇大師", desc: "答對 15 次靈光一閃題", check: (ctx) => ctx.encounterWins >= 15 },
-  { id: "workshop-friend", name: "工作室之友", desc: "讓目前已開放的大師工作室全數重光", check: (ctx) => ctx.workshopRestored },
-  { id: "sparring", name: "切磋章", desc: "完成同學的挑戰包或收到回擊碼", check: (ctx) => ctx.sparring },
+  { id: "master-trial", name: "賢者真傳", desc: "賢者試煉正確率達九成", check: (ctx) => ctx.masterTrialPassed },
+  { id: "encounter-5", name: "奇遇獵人", desc: "答對 5 次奇遇魔法陣", check: (ctx) => ctx.encounterWins >= 5 },
+  { id: "encounter-15", name: "奇遇宗師", desc: "答對 15 次奇遇魔法陣", check: (ctx) => ctx.encounterWins >= 15 },
+  { id: "workshop-friend", name: "星穹之光", desc: "讓學院五塔全數塔燈重燃", check: (ctx) => ctx.workshopRestored },
+  { id: "sparring", name: "切磋章", desc: "完成同學的挑戰包或收到回擊咒文", check: (ctx) => ctx.sparring },
 ];
 
 export function getUnlockedBadges() {

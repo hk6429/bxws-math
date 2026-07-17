@@ -136,10 +136,10 @@ export function masteryThresholdForNode(node, tree) {
 }
 
 function lockReasonText(node, tree, nodesById) {
-  if (node.contentPending) return "星墨未乾，這頁手稿尚待題庫完稿";
+  if (node.contentPending) return "星屑未凝，先去別的咒卷練功吧！";
   if (!node.prereq || node.prereq.length === 0) return "";
   const names = node.prereq.map((id) => nodesById[id]?.name ?? id);
-  return `先精熟「${names.join("、")}」解鎖`;
+  return `先精通「${names.join("、")}」解鎖`;
 }
 
 let sketchDefsInjected = false;
@@ -169,11 +169,17 @@ function makeSketchDefs() {
 function makeStarDefs(strandId) {
   const defs = svgEl("defs");
 
-  const grad = svgEl("radialGradient", { id: `star-core-${strandId}` });
-  [["0%", "#ffffff"], ["35%", "#ffe9a8"], ["100%", "#f2c94c"]].forEach(([offset, color]) => {
-    grad.appendChild(svgEl("stop", { offset, "stop-color": color }));
+  // 雙漸層：sigil-ember＝燭火微光（unlocked）、sigil-lit＝完全點亮的白金印記（mastered）
+  [
+    { id: `sigil-ember-${strandId}`, stops: [["0%", "#fff8e6"], ["40%", "#ffd98a"], ["100%", "#e8a13c"]] },
+    { id: `sigil-lit-${strandId}`, stops: [["0%", "#ffffff"], ["35%", "#ffe9a8"], ["100%", "#f2c94c"]] },
+  ].forEach(({ id, stops }) => {
+    const grad = svgEl("radialGradient", { id });
+    stops.forEach(([offset, color]) => {
+      grad.appendChild(svgEl("stop", { offset, "stop-color": color }));
+    });
+    defs.appendChild(grad);
   });
-  defs.appendChild(grad);
 
   [
     { id: `star-glow-soft-${strandId}`, blur: "2.5" },
@@ -205,6 +211,9 @@ function makeStarField(strand, width, height) {
       star.classList.add("twinkle");
       star.style.animationDelay = `${(rand() * 4).toFixed(2)}s`;
     }
+    // 魔法混色：每第 6 顆秘術紫、每第 9 顆魔力青（附加 class，總數與 twinkle 比例不變）
+    if (i % 6 === 5) star.classList.add("bg-star-arcane");
+    if (i % 9 === 8) star.classList.add("bg-star-mana");
     field.appendChild(star);
   }
   return field;
@@ -264,51 +273,55 @@ function makeNodeStar(state, strandId, twinkleIndex) {
   const star = centerTransformBox(svgEl("g", { class: `node-star node-star-${state}` }));
 
   if (state === "locked") {
-    // 暗星：小、#4a5878、無 glow
+    // 沉睡符文石：沉暗星體＋秘術紫刻痕描邊＋休眠石環
     star.appendChild(svgEl("path", {
       class: "node-star-core",
       d: starPath(7, 2.8),
-      fill: "#4a5878",
+      fill: "#3d4663",
+      stroke: "rgba(143,111,212,0.45)",
+      "stroke-width": "1",
     }));
+    star.appendChild(svgEl("circle", { class: "rune-stone-ring", r: 11 }));
     return star;
   }
 
-  const coreFill = `url(#star-core-${strandId})`;
   if (state === "unlocked") {
-    // 微光四芒星：radialGradient 星核＋soft glow＋錯拍 twinkle
+    // 燭火微光星符：sigil-ember 星核＋soft glow＋錯拍 twinkle
+    const emberFill = `url(#sigil-ember-${strandId})`;
     star.appendChild(svgEl("path", {
       class: "node-star-glow",
       d: starPath(13, 5),
-      fill: coreFill,
+      fill: emberFill,
       filter: `url(#star-glow-soft-${strandId})`,
     }));
     star.appendChild(svgEl("path", {
       class: "node-star-core",
       d: starPath(12, 4.6),
-      fill: coreFill,
+      fill: emberFill,
     }));
     star.classList.add("twinkle");
     star.style.animationDelay = `${((twinkleIndex % 7) * 0.55).toFixed(2)}s`;
     return star;
   }
 
-  // mastered：點亮魔法星：strong glow＋十字光芒（ray-breathe 呼吸）
+  // mastered：完全點亮的魔法印記：sigil-lit＋strong glow＋十字光芒（fill 交給 CSS）＋封印環
+  const litFill = `url(#sigil-lit-${strandId})`;
   star.appendChild(svgEl("path", {
     class: "node-star-glow",
     d: starPath(16, 6),
-    fill: coreFill,
+    fill: litFill,
     filter: `url(#star-glow-strong-${strandId})`,
   }));
   star.appendChild(centerTransformBox(svgEl("path", {
     class: "star-rays ray-breathe",
     d: starPath(26, 1.6),
-    fill: coreFill,
   })));
   star.appendChild(svgEl("path", {
     class: "node-star-core",
     d: starPath(14, 5.5),
-    fill: coreFill,
+    fill: litFill,
   }));
+  star.appendChild(svgEl("circle", { class: "sigil-seal", r: 17 }));
   return star;
 }
 
@@ -467,14 +480,14 @@ export function renderSkillTree(container, tree, onSelectNode) {
       const mascot = el("div", "map-mascot");
       const img = document.createElement("img");
       img.src = `assets/mascot/${visuals.mascot}-idle.png`;
-      img.alt = "大師吉祥物";
+      img.alt = "駐塔導師";
       img.onerror = () => { mascot.style.display = "none"; };
       mascot.appendChild(img);
       mascot.style.left = `${pos.x}px`;
       mascot.style.top = `${pos.y}px`;
       mapWrap.appendChild(mascot);
 
-      const tip = el("div", "node-suggested-tip", "👉 從這裡開始");
+      const tip = el("div", "node-suggested-tip", "✦ 從這枚星符開始");
       tip.style.left = `${pos.x}px`;
       tip.style.top = `${pos.y}px`;
       mapWrap.appendChild(tip);
@@ -507,7 +520,7 @@ function showLockTapTip(mapWrap, pos, reason) {
 
 function renderComingSoonStrand(strand) {
   const banner = el("div", "strand-soon-banner");
-  banner.appendChild(el("div", "soon-title", "這幾頁草稿，大師還沒畫完…"));
+  banner.appendChild(el("div", "soon-title", "這幾張星象圖，導師還沒繪完…"));
   banner.appendChild(el("div", "", "敬請期待"));
   const tip = el("div", "soon-tip", "");
   banner.appendChild(tip);
@@ -515,7 +528,7 @@ function renderComingSoonStrand(strand) {
     banner.style.animation = "none";
     void banner.offsetWidth;
     banner.style.animation = "shake-x 0.3s";
-    tip.textContent = "星墨未乾，先去別的手稿練功吧！";
+    tip.textContent = "星屑未凝，先去別的咒卷練功吧！";
   });
   return banner;
 }

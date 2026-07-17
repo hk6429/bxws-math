@@ -29,7 +29,7 @@ export function dailyTasks(daily, { dueCount = 0, errorCount = 0 } = {}) {
   return [
     {
       id: "review",
-      label: "補墨：複習到期手稿",
+      label: "注光：複習到期咒卷",
       target: 6,
       done: daily.review,
       satisfied: daily.review >= 6 || dueCount === 0, // 到期題清空也算完成
@@ -43,7 +43,7 @@ export function dailyTasks(daily, { dueCount = 0, errorCount = 0 } = {}) {
     },
     {
       id: "repair",
-      label: "修稿：修復錯題",
+      label: "淨化：收服錯題小魔物",
       target: 2,
       done: daily.repair,
       satisfied: daily.repair >= 2 || errorCount === 0,

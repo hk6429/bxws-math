@@ -2517,3 +2517,563 @@ input, select, textarea, button { font: inherit; }
 
 /* 深色策略選擇器的策略文字對比 */
 .strategy-picker .strategy-note { color: #9fe3a5; }
+
+/* ===== 魔法學院改版（2026-07）===== */
+/* 星穹魔法學院：深夜古堡長廊——石牆、燭光、懸掛旗幟。
+   暖亮紙 × 冷暗廳雙層結構沿用星術工房，只換氣味：星空 → 石堡燭光。 */
+
+/* ---------- M0. 色彩 token：石堡與學院四色 ---------- */
+:root {
+  --castle: #1c1a2e;
+  --castle-deep: #121022;
+  --castle-stone: #262238;
+  --star-gold: #e8b64c;
+  --star-gold-glow: rgba(232, 182, 76, 0.45);
+  --house-crimson: #a3352c;
+  --house-emerald: #2e7d5b;
+  --house-sapphire: #3d5a9e;
+  --house-amber: #c98a2b;
+  --arcane: #9b7bd8;
+  --mana: #5cc8e8;
+}
+
+/* 石磚縫＋壁燭暖暈（取代星點夜空） */
+body {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 46px, rgba(0, 0, 0, 0.22) 46px 48px),
+    repeating-linear-gradient(90deg, transparent 0 92px, rgba(0, 0, 0, 0.16) 92px 94px),
+    radial-gradient(ellipse 40% 26% at 12% 8%, rgba(232, 182, 76, 0.1), transparent 70%),
+    radial-gradient(ellipse 36% 24% at 88% 30%, rgba(232, 182, 76, 0.08), transparent 70%),
+    radial-gradient(ellipse 44% 30% at 50% 96%, rgba(155, 123, 216, 0.08), transparent 70%),
+    linear-gradient(180deg, var(--castle-deep), var(--castle) 50%, #201c34);
+}
+/* twinkle 偽元素改燭光呼吸（只動 opacity；768px 以下既有規則已停用 body::before 動畫） */
+body::before {
+  background:
+    radial-gradient(ellipse 30% 20% at 18% 14%, rgba(232, 182, 76, 0.14), transparent 70%),
+    radial-gradient(ellipse 26% 18% at 84% 68%, rgba(232, 182, 76, 0.1), transparent 70%);
+  animation: candle-breath 5.5s ease-in-out infinite;
+}
+@keyframes candle-breath {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 0.95; }
+}
+
+/* ---------- M1. 頂欄＝學院橫幅與燭台 ---------- */
+.topbar {
+  position: relative;
+  background: linear-gradient(180deg, #2a2440, #1a1730);
+  border-bottom: 2px solid rgba(232, 182, 76, 0.55);
+  box-shadow:
+    inset 0 2px 0 rgba(232, 182, 76, 0.25),
+    0 4px 18px rgba(0, 0, 0, 0.6),
+    0 2px 0 rgba(232, 182, 76, 0.2);
+}
+/* 左右壁燭光暈：topbar 本體偽元素（h1 偽元素已被吊環佔用） */
+.topbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle 26px at 8% 50%, rgba(255, 214, 120, 0.28), transparent),
+    radial-gradient(circle 26px at 92% 50%, rgba(255, 214, 120, 0.22), transparent);
+  animation: candle-breath 4s ease-in-out infinite;
+}
+/* 標題＝懸掛的燕尾旗（緋紅旗布＋織紋） */
+.topbar h1 {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  transform: none;
+  padding: 6px 26px 16px;
+  clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%);
+  background:
+    repeating-linear-gradient(90deg, transparent 0 6px, rgba(0, 0, 0, 0.08) 6px 7px),
+    linear-gradient(180deg, #7c2a22, #5e1f18);
+  color: #f7e3b0;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.45));
+}
+/* 紙膠帶 → 兩枚金色吊釘（放旗面內緣，避免被 clip-path 裁半） */
+.topbar h1::before, .topbar h1::after {
+  width: 9px;
+  height: 9px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: none;
+  background: radial-gradient(circle at 35% 30%, #f3d488, #a97e3e 70%);
+  top: 3px;
+  bottom: auto;
+  transform: none;
+}
+.topbar h1::before { left: 16%; }
+.topbar h1::after { right: 16%; left: auto; }
+/* 導覽鈕＝盾徽旗牌 */
+.topbar nav button,
+.topbar nav button:nth-child(even) {
+  border-radius: 6px 6px 40% 40% / 6px 6px 55% 55%;
+  background: linear-gradient(180deg, #2e2846, #201c34);
+  border: 1.5px solid rgba(232, 182, 76, 0.45);
+  color: #f0e2bd;
+  outline-color: transparent;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+/* 補回被裝飾 outline 蓋掉的鍵盤焦點環（高一階 specificity） */
+.topbar nav button:focus-visible {
+  outline: 3px solid var(--mana);
+  outline-offset: 2px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .topbar nav button:hover {
+    border-width: 1.5px;
+    border-color: rgba(232, 182, 76, 0.85);
+    background: linear-gradient(180deg, #363053, #262240);
+    transform: none;
+    box-shadow: 0 0 10px var(--star-gold-glow);
+  }
+}
+.topbar nav [aria-current="page"] { box-shadow: inset 0 -3px 0 var(--star-gold); }
+
+/* ---------- M2. 題卡＝攤開的魔法書 ---------- */
+/* 紙身：加中央書脊溝＋左右向書溝彎曲的內側陰影 */
+.q-card::before {
+  background:
+    linear-gradient(90deg, transparent 49.2%, rgba(60, 40, 12, 0.16) 49.7% 50.3%, transparent 50.8%),
+    radial-gradient(ellipse 8% 100% at 50% 50%, rgba(60, 40, 12, 0.14), transparent),
+    repeating-linear-gradient(0deg, transparent 0 33px, rgba(110, 80, 40, 0.1) 33px 34px),
+    radial-gradient(ellipse 60% 40% at 22% 18%, rgba(150, 112, 58, 0.07), transparent 75%),
+    radial-gradient(ellipse 46% 34% at 80% 78%, rgba(140, 100, 48, 0.09), transparent 75%),
+    var(--paper-bright);
+}
+/* 木軸 → 皮革封面框（四條皮革封面條）＋四角金屬護角 */
+.q-card::after {
+  background:
+    radial-gradient(circle at 50% 50%, #f3d488 0 30%, #a97e3e 55%, #6b4a1c 72%, transparent 74%) left 0 top 0 / var(--rod-h) var(--rod-h) no-repeat,
+    radial-gradient(circle at 50% 50%, #f3d488 0 30%, #a97e3e 55%, #6b4a1c 72%, transparent 74%) right 0 top 0 / var(--rod-h) var(--rod-h) no-repeat,
+    radial-gradient(circle at 50% 50%, #f3d488 0 30%, #a97e3e 55%, #6b4a1c 72%, transparent 74%) left 0 bottom 0 / var(--rod-h) var(--rod-h) no-repeat,
+    radial-gradient(circle at 50% 50%, #f3d488 0 30%, #a97e3e 55%, #6b4a1c 72%, transparent 74%) right 0 bottom 0 / var(--rod-h) var(--rod-h) no-repeat,
+    linear-gradient(90deg, #4a3320, #6b4a2c 40%, #533a22) left 0 top 0 / var(--rod-h) 100% no-repeat,
+    linear-gradient(90deg, #533a22, #6b4a2c 60%, #4a3320) right 0 top 0 / var(--rod-h) 100% no-repeat,
+    linear-gradient(180deg, #4a3320, #6b4a2c 40%, #533a22) left 0 top 0 / 100% var(--rod-h) no-repeat,
+    linear-gradient(0deg, #4a3320, #6b4a2c 40%, #533a22) left 0 bottom 0 / 100% var(--rod-h) no-repeat;
+}
+/* 題型緞帶＝書籤帶：學院四色 */
+.q-card.type-basic-mastery { --tape-color: rgba(61, 90, 158, 0.4); }
+.q-card.type-concept-id { --tape-color: rgba(46, 125, 91, 0.4); }
+.q-card.type-error-diagnosis { --tape-color: rgba(163, 53, 44, 0.35); }
+.q-card.type-context-application { --tape-color: rgba(201, 138, 43, 0.45); }
+.q-card .q-type { transform: translateY(-4px); }
+/* 奇遇符號換魔法星陣 */
+.encounter-banner::before { content: "✧ ⚝ ✧"; }
+.encounter-banner::after { content: "✧ ⚝ ✧"; }
+/* 連對熾熱＝書頁鍍金邊 */
+.q-card.streak-hot::before {
+  box-shadow:
+    inset 0 0 0 2px rgba(232, 182, 76, 0.6),
+    inset 0 0 26px rgba(190, 140, 40, 0.28);
+}
+
+/* ---------- M3. 選項＝咒文行與魔法陣 ---------- */
+.q-option {
+  background: transparent;
+  border-color: rgba(75, 58, 34, 0.5);
+}
+/* 行首作答圈 → 三環魔法陣（double 邊框＋外淡環） */
+.q-option::before {
+  border: 2px double var(--arcane);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 0 3px rgba(155, 123, 216, 0.15);
+}
+@media (hover: hover) and (pointer: fine) {
+  .q-option:hover:not(:disabled) {
+    border-color: var(--arcane);
+    border-width: 2px;
+    background: rgba(155, 123, 216, 0.1);
+  }
+}
+/* 答對＝符光成咒（翡翠院色） */
+.q-correct {
+  border-color: var(--house-emerald) !important;
+  background:
+    radial-gradient(ellipse 70% 120% at 20px 50%, rgba(126, 217, 140, 0.32), transparent 70%),
+    linear-gradient(rgba(46, 125, 91, 0.1), rgba(46, 125, 91, 0.1)) !important;
+}
+.q-correct::before {
+  border-color: var(--house-emerald);
+  background: radial-gradient(circle, #7ed98c 0 40%, rgba(46, 125, 91, 0.4));
+}
+.q-correct::after {
+  color: #1e5e42;
+  text-shadow: 0 0 6px rgba(126, 217, 140, 0.95), 0 0 12px rgba(126, 217, 140, 0.5);
+}
+/* 答錯＝咒文潰散（暗紅輝光；劃掉的認知功能不動） */
+.q-wrong::before { border-color: #8f2f26; }
+.q-wrong::after {
+  color: #8f2f26;
+  text-shadow: 0 0 5px rgba(163, 53, 44, 0.55);
+}
+/* 粒子＝咒語火花（JS 零改動，只換色票） */
+.pshaving {
+  --cp-red: #e8a0ff;
+  --cp-green: #8cf0c0;
+  --cp-blue: #fff2c8;
+  --cp-orange: #ffd76a;
+  --cp-yellow: var(--star-gold);
+}
+/* 修掉毛邊紙批次誤覆蓋：主行動鈕在羊皮紙上要有可讀底色 */
+.q-next {
+  background: linear-gradient(180deg, #3d5a9e, #2c4478);
+  color: #f0e6cf;
+  border-color: #1e3358;
+}
+
+/* ---------- M4. 心法策略卡＝塔羅魔法卡牌 ---------- */
+.strategy-card,
+.strategy-card:nth-child(odd) {
+  position: relative;
+  clip-path: none;
+  border-radius: 12px;
+  border: 1.5px solid color-mix(in srgb, var(--strategy-color, var(--arcane)) 55%, #6b4a1c);
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, color-mix(in srgb, var(--strategy-color, var(--arcane)) 20%, transparent), transparent 70%),
+    linear-gradient(160deg, #2a2545, #1d1936);
+  /* 塔羅雙細金線內框 */
+  box-shadow:
+    inset 0 0 0 5px rgba(232, 182, 76, 0.35),
+    inset 0 0 0 11px rgba(232, 182, 76, 0.18),
+    0 4px 12px rgba(0, 0, 0, 0.45);
+}
+.strategy-card::before {
+  content: "✦";
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  color: var(--strategy-color, var(--arcane));
+  text-shadow: 0 0 6px currentColor;
+  pointer-events: none;
+}
+.strategy-card strong { color: color-mix(in srgb, var(--strategy-color, var(--arcane)) 55%, white); }
+.strategy-card span { color: #c9d0ea; }
+.strategy-recommend-tag { color: var(--star-gold-core, #ffe9a8); }
+@media (hover: hover) and (pointer: fine) {
+  .strategy-card:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow:
+      inset 0 0 0 5px rgba(232, 182, 76, 0.35),
+      inset 0 0 0 11px rgba(232, 182, 76, 0.18),
+      0 8px 20px rgba(0, 0, 0, 0.5),
+      0 0 14px var(--star-gold-glow);
+  }
+}
+
+/* ---------- M5. 進度條＝咒文符石／連詠咒環 ---------- */
+.quiz-progressbar .seg,
+.quiz-progressbar .seg:nth-child(even) {
+  background: rgba(18, 16, 34, 0.7);
+  border: 1.5px solid rgba(155, 123, 216, 0.4);
+  border-radius: 4px;
+  transform: none;
+}
+.quiz-progressbar .seg.filled {
+  border-color: var(--arcane);
+  background: linear-gradient(180deg, #c9a7ff, var(--arcane) 60%, #6b4aa8);
+  box-shadow: 0 0 8px rgba(155, 123, 216, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+/* 終咒符石＝金 */
+.quiz-progressbar .seg.filled:last-child {
+  border-color: var(--star-gold);
+  background: linear-gradient(180deg, #ffe9a8, var(--star-gold));
+  box-shadow: 0 0 10px var(--star-gold-glow), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+/* 連詠計數＝懸浮咒環 */
+.streak-badge {
+  border: 2px double var(--arcane);
+  border-radius: 999px;
+  background: rgba(18, 16, 34, 0.6);
+  color: #d8c8ff;
+  text-shadow: 0 0 5px rgba(155, 123, 216, 0.6);
+  transform: none;
+}
+.streak-badge-hot {
+  border-color: var(--star-gold);
+  color: #ffe9a8;
+  text-shadow: 0 0 8px var(--star-gold-glow);
+}
+
+/* ---------- M6. 蠟封徽記：蠟色分級 ---------- */
+/* 稀有章＝紫蠟 */
+.rare-stamp {
+  background: radial-gradient(circle at 35% 30%, #a67ae0, #6b3fa8 62%, #4a2a78);
+  border-color: rgba(58, 32, 96, 0.9);
+}
+/* 徽章解鎖＝金蠟（深褐字保對比） */
+.badge-unlock {
+  background: radial-gradient(circle at 35% 30%, #f3d488, #c98a2b 62%, #8a5c1a);
+  color: #3d2510;
+  border-color: rgba(122, 82, 24, 0.9);
+}
+/* 金蠟垂尾緞帶 */
+.badge-unlock::before {
+  content: "";
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  width: 16px;
+  height: 18px;
+  transform: translateX(-50%);
+  background: #7c2a22;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%);
+  z-index: -1;
+}
+.badge-row.got::before {
+  content: "❖ ";
+  color: var(--star-gold);
+}
+/* 圓章統一蠟面 */
+.stamp-sym, .ms-seal {
+  background: radial-gradient(circle at 35% 30%, #d96a52, #a13327 62%, #7c2118);
+  color: #f7e3b0;
+  border: 2px solid rgba(110, 28, 16, 0.9);
+}
+
+/* ---------- M7. 今日看板＝石牆佈告欄 ---------- */
+.home-brief-dock > summary {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px 10px 30px;
+  background:
+    radial-gradient(circle 4px at 12px 50%, #f3d488 0 45%, #8a5c1a 70%, transparent 72%),
+    radial-gradient(circle 4px at calc(100% - 12px) 50%, #f3d488 0 45%, #8a5c1a 70%, transparent 72%),
+    repeating-linear-gradient(90deg, transparent 0 5px, rgba(0, 0, 0, 0.1) 5px 6px),
+    linear-gradient(180deg, #4a3826, #382a1c);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(232, 182, 76, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.5);
+  color: #f0e2bd;
+}
+.home-brief-dock > summary::before { color: var(--star-gold); }
+
+/* ---------- M8. 儀表板＝魔法帳本 ---------- */
+.dash-collection, .dash-stampbook, .dash-ink, .dash-badges,
+.dash-leaderboard, .dash-share, .dash-name,
+.challenge-hub, .travel-case {
+  border: 1px solid rgba(232, 182, 76, 0.28);
+  background:
+    linear-gradient(90deg, rgba(232, 182, 76, 0.22) 0 4px, rgba(0, 0, 0, 0.3) 4px 6px, transparent 6px),
+    radial-gradient(ellipse 70% 50% at 84% 8%, rgba(155, 123, 216, 0.12), transparent 70%),
+    linear-gradient(180deg, #2b2540, #201c34);
+}
+.dash-collection h3, .dash-stampbook h3, .dash-ink h3, .dash-badges h3,
+.dash-leaderboard h3, .dash-share h3, .challenge-hub h3, .travel-case h3 {
+  border-bottom: 1px solid rgba(232, 182, 76, 0.25);
+  padding-bottom: 6px;
+}
+/* 成績冊內頁：亮卷軸補中央書溝，呼應魔法書 */
+.dash-summary {
+  background:
+    linear-gradient(90deg, transparent 49.2%, rgba(60, 40, 12, 0.14) 49.7% 50.3%, transparent 50.8%),
+    radial-gradient(ellipse 60% 40% at 22% 18%, rgba(150, 112, 58, 0.07), transparent 75%),
+    radial-gradient(ellipse 46% 34% at 80% 78%, rgba(140, 100, 48, 0.09), transparent 75%),
+    var(--paper-bright);
+}
+/* 馴魔簿：暗紅框收斂 */
+.dash-errorbook { border-color: rgba(163, 53, 44, 0.4); }
+
+/* ---------- M9. 工作室房間卡＝哥德拱門教室 ---------- */
+.workshop-room { background: linear-gradient(180deg, #262238, #1c1930); }
+.workshop-room .room-scene {
+  border-radius: 46% 46% 0 0 / 38% 38% 0 0;
+  margin: 10px 14px 0;
+  background: radial-gradient(ellipse 80% 90% at 50% 100%, #3a3154, #241f3c 75%);
+  box-shadow:
+    inset 0 0 0 3px rgba(232, 182, 76, 0.3),
+    inset 0 0 24px rgba(0, 0, 0, 0.6);
+}
+/* 塵封＝鎖著的門（門縫全黑） */
+.workshop-room.room-dusty .room-scene {
+  box-shadow:
+    inset 0 0 0 3px rgba(232, 182, 76, 0.18),
+    inset 0 0 24px rgba(0, 0, 0, 0.6),
+    inset 0 -18px 20px rgba(0, 0, 0, 0.5);
+}
+/* 聚光中＝門縫透出燭光 */
+.workshop-room.room-mending .room-scene {
+  background:
+    radial-gradient(ellipse 40% 30% at 50% 100%, rgba(232, 182, 76, 0.4), transparent),
+    radial-gradient(ellipse 80% 90% at 50% 100%, #3a3154, #241f3c 75%);
+}
+/* 塔燈重燃＝門敞開滿室金光 */
+.workshop-room.room-restored .room-scene {
+  background:
+    radial-gradient(circle at 50% 66%, rgba(255, 214, 120, 0.45), transparent 80%),
+    radial-gradient(ellipse 80% 90% at 50% 100%, #3a3154, #241f3c 75%);
+}
+/* 入口卡與 hero 換石廳底 */
+.workshop-teaser { background: linear-gradient(135deg, #2b2540, #201c34); }
+.workshop-hero {
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%, rgba(155, 123, 216, 0.16), transparent 70%),
+    linear-gradient(180deg, #2b2540, #201c34);
+}
+
+/* ---------- M10. 彈出提示＝漂浮咒紙 ---------- */
+.tip-bubble {
+  background: linear-gradient(160deg, #f3e6c2, #e6d2a4);
+  border: 1px solid rgba(96, 68, 30, 0.35);
+  clip-path: var(--deckle-b);
+  box-shadow: none;
+  /* clip-path 裁 box-shadow，外陰影一律 drop-shadow */
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 8px var(--star-gold-glow));
+  animation: tip-float 4.5s ease-in-out infinite;
+}
+@keyframes tip-float {
+  0%, 100% { transform: rotate(2deg) translateY(0); }
+  50% { transform: rotate(2deg) translateY(-5px); }
+}
+/* 紙膠帶 → 蠟點 */
+.tip-bubble::before {
+  width: 22px;
+  height: 22px;
+  border: none;
+  border-radius: 48% 52% 50% 50% / 52% 48% 52% 48%;
+  background: radial-gradient(circle at 35% 30%, #d96a52, #a13327 62%, #7c2118);
+  top: -10px;
+  transform: translateX(-50%);
+}
+/* 便利貼系 → 羊皮紙籤 */
+.node-suggested-tip, .lock-tap-tip {
+  background: #f0dfa8;
+  color: var(--ink);
+  box-shadow: 0 0 8px rgba(232, 182, 76, 0.35);
+}
+/* 結算語錄＝秘術紫符紙 */
+.quote-note { background: linear-gradient(160deg, #ece2f8, #ddd0f2); }
+
+/* ---------- M11. 魔法星圖（純 CSS 端；class 由 JS 組員產生）---------- */
+/* 星象圖背景：星雲微增濃＋底色帶紫 */
+.skill-map {
+  background:
+    radial-gradient(circle, rgba(255, 250, 235, 0.8) 0 1px, transparent 1.7px),
+    radial-gradient(circle, rgba(214, 226, 255, 0.55) 0 0.9px, transparent 1.5px),
+    radial-gradient(ellipse 60% 45% at 80% 10%, rgba(155, 123, 216, 0.22), transparent 70%),
+    radial-gradient(ellipse 50% 36% at 14% 86%, rgba(92, 200, 232, 0.16), transparent 70%),
+    linear-gradient(180deg, #121936, #141838);
+  background-size: 113px 127px, 167px 139px, auto, auto, auto;
+}
+/* strand 匾額＝學院銅牌 */
+.strand-header,
+.strand:nth-child(even) .strand-header {
+  clip-path: none;
+  transform: none;
+  opacity: 1;
+  background: linear-gradient(180deg, #2a3358, #1a2140);
+  border: 1.5px solid rgba(232, 182, 76, 0.5);
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(232, 182, 76, 0.2);
+}
+.strand-name { color: var(--starlight-text); }
+/* 連線＝咒文光徑 */
+.constellation-dust { stroke: rgba(155, 123, 216, 0.4); }
+.constellation-glow { stroke-width: 5; opacity: 0.3; }
+.constellation-core { stroke: #ffe9a8; stroke-width: 1.8; }
+/* 魔力充能環：魔力青混 strand 色、圓頭液面感 */
+.map-node circle.node-ring-progress {
+  stroke: color-mix(in srgb, var(--strand-color, var(--strand-number)) 55%, var(--mana));
+  stroke-linecap: round;
+}
+.map-node circle.node-ring-bg { stroke: rgba(155, 123, 216, 0.35); }
+/* 節點三態配件 */
+.node-star-locked { opacity: 0.85; }
+.rune-stone-ring {
+  fill: none;
+  stroke: rgba(155, 123, 216, 0.3);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+}
+.sigil-seal {
+  fill: none;
+  stroke: var(--star-gold);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 3;
+  opacity: 0.7;
+}
+/* 光芒帶一絲秘術紫：是「魔法」不是「天文」 */
+.star-rays { fill: color-mix(in srgb, var(--star-gold) 70%, #9b7bd8); }
+/* 燭火搖曳：twinkle 值域收窄、節奏加快（0.35↔1/3.2s → 0.55↔1/2.4s） */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+.twinkle { animation-duration: 2.4s; }
+/* 背景星混色＋螢火（class 由 JS 端撒） */
+.bg-star-arcane { fill: #b9a3e8; }
+.bg-star-mana { fill: #9adcf2; }
+.firefly {
+  fill: #ffd98a;
+  animation: firefly-drift 7s ease-in-out infinite;
+}
+@keyframes firefly-drift {
+  0%, 100% { opacity: 0.25; }
+  40% { opacity: 0.9; }
+  70% { opacity: 0.5; }
+}
+/* 伴星冠冕＝漂浮符文（opacity-only 呼吸） */
+.crown-star {
+  fill: var(--star-gold);
+  stroke: rgba(255, 233, 168, 0.6);
+  stroke-width: 0.4;
+  animation: rune-float 4s ease-in-out infinite;
+}
+.crown-star:nth-of-type(2n) { animation-delay: 1.4s; }
+.crown-star:nth-of-type(3n) { animation-delay: 2.6s; }
+@keyframes rune-float {
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 1; }
+}
+/* 吉祥物 → 鎏金魔法肖像畫框 */
+.map-mascot {
+  padding: 6px;
+  background: radial-gradient(ellipse at 50% 30%, #1e2749, #0d1226);
+  border: 3px solid transparent;
+  border-image: linear-gradient(135deg, #d4a944, #f2e0a0 30%, #8a6a20 65%, #e8c96a) 1;
+  box-shadow: 0 0 14px rgba(232, 182, 76, 0.35), inset 0 0 10px rgba(5, 8, 22, 0.7);
+}
+/* 畫框燭光：偽元素 opacity 呼吸（不動 box-shadow，省 paint） */
+.map-mascot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 70% 60% at 50% 88%, rgba(232, 182, 76, 0.22), transparent 70%);
+  animation: candle-breath 4.5s ease-in-out infinite;
+}
+
+/* ---------- M12. 手機紅線：filter 補洞＋新無限動畫停用清單 ---------- */
+@media (max-width: 768px) {
+  /* 舊規則只殺已退役的 .node-body；真正掛 SVG filter 的是 .node-star-glow */
+  .map-path, .node-star-glow { filter: none !important; }
+  /* glow 失焦後改半透明假光暈 */
+  .node-star-glow { opacity: 0.35; }
+  /* 本批新增的無限動畫全停（reduced-motion 由全域規則涵蓋） */
+  .tip-bubble, .topbar::before, .map-mascot::after, .firefly {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  /* 手機提示條是單行省空間版型：咒紙毛邊與蠟點退場，回到素面 */
+  .tip-bubble { clip-path: none; filter: none; }
+  .tip-bubble::before { display: none; }
+  /* 手機窄框（--rod-h:16px、padding-left:14px）：左右皮革條退場，只留上下封面條＋護角 */
+  .q-card::after {
+    background:
+      radial-gradient(circle at 50% 50%, #f3d488 0 30%, #a97e3e 55%, #6b4a1c 72%, transparent 74%) left 0 top 0 / var(--rod-h) var(--rod-h) no-repeat,
+      radial-gradient(circle at 50% 50%, #f3d488 0 30%, #a97e3e 55%, #6b4a1c 72%, transparent 74%) right 0 top 0 / var(--rod-h) var(--rod-h) no-repeat,
+      radial-gradient(circle at 50% 50%, #f3d488 0 30%, #a97e3e 55%, #6b4a1c 72%, transparent 74%) left 0 bottom 0 / var(--rod-h) var(--rod-h) no-repeat,
+      radial-gradient(circle at 50% 50%, #f3d488 0 30%, #a97e3e 55%, #6b4a1c 72%, transparent 74%) right 0 bottom 0 / var(--rod-h) var(--rod-h) no-repeat,
+      linear-gradient(180deg, #4a3320, #6b4a2c 40%, #533a22) left 0 top 0 / 100% var(--rod-h) no-repeat,
+      linear-gradient(0deg, #4a3320, #6b4a2c 40%, #533a22) left 0 bottom 0 / 100% var(--rod-h) no-repeat;
+  }
+}

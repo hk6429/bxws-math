@@ -9,3 +9,4 @@ assets/geometry/raw/
 node_modules/
 *.log
 .codex-image-runtime/
+assets/mascot/raw/

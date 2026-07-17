@@ -1,33 +1,33 @@
 import { store } from "./store.js";
 
-// 大師手稿收藏冊：前 8 件 id = 技能樹節點 id；tier 1 = 入冊、tier 2 = 大師落款
+// 咒卷集：前 8 件 id = 技能樹節點 id；tier 1 = 入庫、tier 2 = 導師蠟封
 export const MANUSCRIPTS = [
-  { id: "fraction-unlike-denom", sym: "½＋⅓", name: "通分之橋手稿", hint: "完成「異分母分數」一輪作答即入冊", desc: "達文西說：分母不同的兩座橋，得先架到同一個高度。" },
-  { id: "fraction-mul", sym: "¾×⅔", name: "切割乾酪手稿", hint: "完成「分數乘除」一輪作答即入冊", desc: "把一塊乾酪的四分之三再切三份——這就是分數相乘。" },
-  { id: "decimal-mul", sym: "0.5", name: "小數點羅盤手稿", hint: "完成「小數乘除」一輪作答即入冊", desc: "小數點是羅盤針，乘除時它往哪偏，全看位數。" },
-  { id: "ratio-rate", sym: "a∶b", name: "黃金比例手稿", hint: "完成「比與比值」一輪作答即入冊", desc: "達文西畫人體前，先量比例——比是萬物的骨架。" },
-  { id: "negative-number", sym: "−3", name: "零度以下手稿", hint: "完成「負數」一輪作答即入冊", desc: "高斯批註：數線往左走，世界並沒有結束。" },
-  { id: "proportion-eq", sym: "a∶b＝c∶d", name: "等比天平手稿", hint: "完成「比例式」一輪作答即入冊", desc: "內項相乘等於外項相乘——天平兩端就此平衡。" },
-  { id: "algebra-symbol", sym: "𝑥", name: "未知數面具手稿", hint: "完成「代數符號」一輪作答即入冊", desc: "高斯說：給未知的東西戴上面具，它就聽你指揮。" },
-  { id: "linear-eq-1var", sym: "𝑥＝?", name: "解方程金鑰手稿", hint: "完成「一元一次方程式」一輪作答即入冊", desc: "移項是鑰匙轉動的聲音，等號兩邊同時開鎖。" },
-  { id: "master-trial", sym: "∞", name: "雙大師聯名合稿", hint: "大師試煉正確率達九成，直接落款", desc: "達文西執筆、高斯驗算——工作室最珍貴的一頁。" },
+  { id: "fraction-unlike-denom", sym: "½＋⅓", name: "通分之橋咒卷", hint: "完成「異分母分數」一輪作答即入庫", desc: "凡奇導師說：分母不同的兩座橋，得先架到同一個高度。" },
+  { id: "fraction-mul", sym: "¾×⅔", name: "切割乾酪咒卷", hint: "完成「分數乘除」一輪作答即入庫", desc: "把一塊乾酪的四分之三再切三份——這就是分數相乘。" },
+  { id: "decimal-mul", sym: "0.5", name: "小數點羅盤咒卷", hint: "完成「小數乘除」一輪作答即入庫", desc: "小數點是羅盤針，乘除時它往哪偏，全看位數。" },
+  { id: "ratio-rate", sym: "a∶b", name: "黃金比例咒卷", hint: "完成「比與比值」一輪作答即入庫", desc: "凡奇導師畫人體前，先量比例——比是萬物的骨架。" },
+  { id: "negative-number", sym: "−3", name: "零度以下咒卷", hint: "完成「負數」一輪作答即入庫", desc: "格思導師批註：數線往左走，世界並沒有結束。" },
+  { id: "proportion-eq", sym: "a∶b＝c∶d", name: "等比天平咒卷", hint: "完成「比例式」一輪作答即入庫", desc: "內項相乘等於外項相乘——天平兩端就此平衡。" },
+  { id: "algebra-symbol", sym: "𝑥", name: "未知數面具咒卷", hint: "完成「代數符號」一輪作答即入庫", desc: "格思導師說：給未知的東西戴上面具，它就聽你指揮。" },
+  { id: "linear-eq-1var", sym: "𝑥＝?", name: "解方程金鑰咒卷", hint: "完成「一元一次方程式」一輪作答即入庫", desc: "移項是鑰匙轉動的聲音，等號兩邊同時開鎖。" },
+  { id: "master-trial", sym: "∞", name: "雙導師聯名咒卷", hint: "賢者試煉正確率達九成，直接蠟封", desc: "凡奇執筆、格思驗算——星穹學院最珍貴的一卷。" },
 ];
 
-// 大師印章簿：奇遇題答對 5% 機率掉當前節點主題章（10 次未掉保底必掉）
+// 導師徽記匣：奇遇魔法陣答對 5% 機率掉當前節點主題徽記（10 次未掉保底必掉）
 export const RARE_STAMPS = [
-  { id: "davinci-manuscript", sym: "🪶", name: "達文西手稿章", hint: "數與量的奇遇題裡等你" },
-  { id: "gauss-signature", sym: "Σ", name: "高斯親筆章", hint: "代數的奇遇題裡等你" },
-  { id: "stamp-fraction-unlike-denom", sym: "½", name: "通分之橋章", hint: "「異分母分數」的奇遇題裡等你" },
-  { id: "stamp-fraction-mul", sym: "¾", name: "切割乾酪章", hint: "「分數乘除」的奇遇題裡等你" },
-  { id: "stamp-decimal-mul", sym: "•", name: "小數羅盤章", hint: "「小數乘除」的奇遇題裡等你" },
-  { id: "stamp-ratio-rate", sym: "∶", name: "黃金比例章", hint: "「比與比值」的奇遇題裡等你" },
-  { id: "stamp-negative-number", sym: "−", name: "零下寒冰章", hint: "「負數」的奇遇題裡等你" },
-  { id: "stamp-proportion-eq", sym: "⚖", name: "等比天平章", hint: "「比例式」的奇遇題裡等你" },
-  { id: "stamp-algebra-symbol", sym: "𝑥", name: "未知數面具章", hint: "「代數符號」的奇遇題裡等你" },
-  { id: "stamp-linear-eq-1var", sym: "🗝", name: "解方程金鑰章", hint: "「一元一次方程式」的奇遇題裡等你" },
+  { id: "davinci-manuscript", sym: "🪶", name: "凡奇圖紋徽記", hint: "秘數塔的奇遇魔法陣裡等你" },
+  { id: "gauss-signature", sym: "Σ", name: "格思雷紋徽記", hint: "符文塔的奇遇魔法陣裡等你" },
+  { id: "stamp-fraction-unlike-denom", sym: "½", name: "通分之橋徽記", hint: "「異分母分數」的奇遇魔法陣裡等你" },
+  { id: "stamp-fraction-mul", sym: "¾", name: "切割乾酪徽記", hint: "「分數乘除」的奇遇魔法陣裡等你" },
+  { id: "stamp-decimal-mul", sym: "•", name: "小數羅盤徽記", hint: "「小數乘除」的奇遇魔法陣裡等你" },
+  { id: "stamp-ratio-rate", sym: "∶", name: "黃金比例徽記", hint: "「比與比值」的奇遇魔法陣裡等你" },
+  { id: "stamp-negative-number", sym: "−", name: "零下寒冰徽記", hint: "「負數」的奇遇魔法陣裡等你" },
+  { id: "stamp-proportion-eq", sym: "⚖", name: "等比天平徽記", hint: "「比例式」的奇遇魔法陣裡等你" },
+  { id: "stamp-algebra-symbol", sym: "𝑥", name: "未知數面具徽記", hint: "「代數符號」的奇遇魔法陣裡等你" },
+  { id: "stamp-linear-eq-1var", sym: "🗝", name: "解方程金鑰徽記", hint: "「一元一次方程式」的奇遇魔法陣裡等你" },
 ];
 
-// 該節點對應的節點章；大師試煉／每週盃掉大師簽名章
+// 該節點對應的節點徽記；賢者試煉／每週學院盃掉導師徽記
 export function stampForNode(nodeId, mascot) {
   const nodeStamp = RARE_STAMPS.find((s) => s.id === `stamp-${nodeId}`);
   if (nodeStamp) return nodeStamp;
@@ -53,7 +53,7 @@ export function getCollection() {
 const DAY_MS = 24 * 60 * 60 * 1000;
 const BOX_INTERVAL_DAYS = [0, 1, 3, 7, 14];
 
-// 守護型 CD8：只改變顯示，不更動手稿 tier 或 Leitner 資料。
+// 守護型 CD8：只改變顯示，不更動咒卷 tier 或 Leitner 資料。
 export function manuscriptDustStatus(nodeId, collection, leitner, questionIds, careRecord, now = Date.now()) {
   if ((collection[nodeId]?.tier ?? 0) < 2) return { dusty: false, careCount: 0, dustSince: null };
   const dustThresholds = questionIds

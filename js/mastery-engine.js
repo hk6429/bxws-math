@@ -148,7 +148,7 @@ export function evaluateMastery(attempts = [], node = {}, threshold, alreadyMast
     E: `E 錯誤路徑鎖：第 ${errorLocks.join("、")} 條墨路仍待先備快檢與錯誤診斷修復`,
   };
   const feedback = unmetConditions.length === 0
-    ? "五道墨跡都已完整，這頁手稿可以完稿。"
+    ? "五處星光都已點亮，這卷咒卷可以完卷。"
     : `尚未完成：${unmetConditions.map((condition) => details[condition]).join("；")}。`;
 
   return {

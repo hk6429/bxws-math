@@ -1,9 +1,9 @@
 const ROOM_META = {
-  "num-quantity": { icon: "🧮", title: "達文西的比例工房", voice: "耐心畫草稿、反覆試作再修正" },
-  algebra: { icon: "Σ", title: "高斯的代數書房", voice: "迅速看出規律，精準揪出錯誤" },
-  "space-shape": { icon: "📐", title: "歐幾里得的幾何廳", voice: "從定義與已知條件一步步推演" },
-  "relation-pattern": { icon: "🌿", title: "斐波那契的規律花園", voice: "觀察變化，讓規律逐步生長" },
-  "data-uncertainty": { icon: "🎲", title: "帕斯卡的機率閣", voice: "列清可能與資料，再作判斷" },
+  "num-quantity": { icon: "⚖", title: "凡奇的秘數塔", voice: "「萬物皆可量，量過才算懂。」先別擦掉錯的那一筆，一稿一稿修到準" },
+  algebra: { icon: "✦", title: "格思的符文塔", voice: "「給未知一個名字，它就不再可怕。」不必重算整題，直取第一個不合理處" },
+  "space-shape": { icon: "🔮", title: "幾德的稜光塔", voice: "「線要站穩，光才走得直。」回到定義，一步步推演" },
+  "relation-pattern": { icon: "🌿", title: "斐蘿的藤紋塔", voice: "「看懂前三步，就能預言下一步。」把前幾項排整齊，規律自己會發芽" },
+  "data-uncertainty": { icon: "🎲", title: "帕嵐的星卜塔", voice: "「列清所有可能，再下判斷。」擲骰之前，先列表" },
 };
 
 const clamp01 = (n) => Math.max(0, Math.min(1, Number(n) || 0));
@@ -41,8 +41,8 @@ export function computeWorkshop(tree, { progress = {}, collection = {}, rareStam
 }
 
 export const WORKSHOP_STAGES = {
-  dusty: { label: "蒙塵", message: "手稿還在沉睡，每次練習都會擦亮一角。" },
-  mending: { label: "整理中", message: "光已經透進來了，再補齊精熟、落款與印章。" },
-  restored: { label: "重光", message: "這個房間已重新開門。" },
-  blueprint: { label: "藍圖待展開", message: "後續學習領域上線後，這個房間會開始修復。" },
+  dusty: { label: "沉暗", message: "咒卷還在沉睡，每次練習都會點亮一角星光。" },
+  mending: { label: "聚光中", message: "星光已經透進來了，再補齊精通、蠟封與徽記。" },
+  restored: { label: "塔燈重燃", message: "這座塔的燈已重新點亮。" },
+  blueprint: { label: "封印未解", message: "後續學習領域上線後，這座塔的封印會解開。" },
 };

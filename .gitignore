@@ -3,3 +3,5 @@
 .p3-image-marker-*
 .p3-image-prompt-*.txt
 assets/geometry/raw/
+assets/mascot/raw/
+.mascot-*.log

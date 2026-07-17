@@ -176,7 +176,7 @@ export function exportNamespace(storage = localStorage) {
 
 export function importNamespace(bundle, storage = localStorage, tree = null) {
   if (!bundle || bundle.kind !== BUNDLE_KIND || bundle.version !== 1 || !bundle.data || Array.isArray(bundle.data)) {
-    throw new Error("這不是《步學吾數》的旅行皮箱檔");
+    throw new Error("這不是《步學吾數》的魔法行囊檔");
   }
   const entries = Object.entries(bundle.data);
   if (entries.length > 5000) throw new Error("存檔項目過多，已停止匯入");
@@ -205,7 +205,7 @@ export function importNamespace(bundle, storage = localStorage, tree = null) {
     }
     currentKeys.forEach((key) => storage.removeItem?.(key));
     snapshot.forEach((value, key) => storage.setItem(key, value));
-    throw new Error(`旅行皮箱匯入失敗，已還原原存檔：${error.message}`);
+    throw new Error(`魔法行囊匯入失敗，已還原原存檔：${error.message}`);
   }
   return entries.length;
 }

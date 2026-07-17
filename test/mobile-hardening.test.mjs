@@ -11,7 +11,7 @@ const [css, html, app, skilltreeUi, tree] = await Promise.all([
 ]);
 
 test("手機 topbar、卷軸卡與教學泡泡具有窄螢幕覆寫", () => {
-  const mobile = css.slice(css.lastIndexOf("@media (max-width: 600px)"));
+  const mobile = css.slice(css.indexOf("@media (max-width: 600px)"));
   assert.match(mobile, /flex-direction:\s*column/);
   assert.match(mobile, /main\s*\{\s*padding:\s*8px/);
   assert.match(mobile, /padding-left:\s*14px/);
