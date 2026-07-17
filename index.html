@@ -20,6 +20,7 @@
       <button id="nav-home" aria-current="page">魔法星圖</button>
       <button id="nav-workshop">學院五塔</button>
       <button id="nav-dashboard">我的儀表板</button>
+      <a class="teacher-link" href="teacher.html">教師成果頁</a>
       <button id="nav-sfx" class="nav-sfx" aria-label="音效開關" aria-pressed="false">🔇</button>
     </nav>
   </header>
@@ -27,6 +28,16 @@
   <main>
     <section id="view-home" class="view active" aria-labelledby="home-heading">
       <h2 id="home-heading" class="visually-hidden" tabindex="-1">魔法星圖</h2>
+      <details id="accessibility-settings" class="accessibility-settings">
+        <summary>輔助設定</summary>
+        <fieldset><legend>全站字級</legend>
+          <label><input type="radio" name="font-size" value="standard">標準</label>
+          <label><input type="radio" name="font-size" value="large">大</label>
+          <label><input type="radio" name="font-size" value="xlarge">特大</label>
+        </fieldset>
+        <label><input id="setting-sprint-warning" type="checkbox">顯示疾筆倒數紅色閃動警示</label>
+        <label><input id="setting-combo-break" type="checkbox">顯示連詠中斷視覺效果</label>
+      </details>
       <div id="skilltree-container" class="skilltree"></div>
     </section>
 

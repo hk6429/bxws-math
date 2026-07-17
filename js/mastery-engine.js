@@ -3,6 +3,39 @@ function pick(items, random) {
   return items[Math.min(items.length - 1, Math.floor(random() * items.length))];
 }
 
+export function difficultyWeight(difficulty, accuracy) {
+  if (accuracy < 0.5) return { easy: 5, medium: 2, hard: 1 }[difficulty] ?? 1;
+  if (accuracy >= 0.85) return { easy: 1, medium: 2, hard: 5 }[difficulty] ?? 1;
+  return { easy: 2, medium: 4, hard: 2 }[difficulty] ?? 1;
+}
+
+function pickWeightedQuestion(questions, accuracy, random) {
+  if (questions.length === 0) return null;
+  const weighted = questions.map((question) => ({
+    question,
+    weight: difficultyWeight(question.difficulty, accuracy),
+  }));
+  const total = weighted.reduce((sum, item) => sum + item.weight, 0);
+  let target = random() * total;
+  for (const item of weighted) {
+    target -= item.weight;
+    if (target < 0) return item.question;
+  }
+  return weighted.at(-1)?.question ?? null;
+}
+
+function pickDifficultySequence(questions, accuracy, limit, random) {
+  const available = [...questions];
+  const result = [];
+  while (available.length > 0 && result.length < limit) {
+    const question = pickWeightedQuestion(available, accuracy, random);
+    if (!question) break;
+    result.push(question);
+    available.splice(available.indexOf(question), 1);
+  }
+  return result;
+}
+
 export function challengeWeight(attempts, challenge) {
   const matching = attempts.filter((attempt) => attempt.challenge === challenge);
   const lastTwo = matching.slice(-2);
@@ -273,7 +306,12 @@ export function buildAdaptiveSequence(questions, attempts = [], limit = 8, rando
     ? questions.filter((question) => question.type !== "error-diagnosis")
     : questions;
   const challengeQuestions = eligibleQuestions.filter((question) => question.challenge);
-  if (challengeQuestions.length === 0) return eligibleQuestions.slice(0, limit);
+  if (challengeQuestions.length === 0) {
+    if (!eligibleQuestions.some((question) => question.difficulty)) {
+      return eligibleQuestions.slice(0, limit);
+    }
+    return pickDifficultySequence(eligibleQuestions, accuracy, limit, random);
+  }
 
   const attemptedChallenges = new Set(attempts.map((attempt) => attempt.challenge).filter(Boolean));
   const groups = new Map();
@@ -296,7 +334,7 @@ export function buildAdaptiveSequence(questions, attempts = [], limit = 8, rando
     const candidates = variants.filter((question) =>
       !cooldownIds.has(question.id) && !queuedIds.has(question.id)
     );
-    const question = pick(candidates, random);
+    const question = pickWeightedQuestion(candidates, accuracy, random);
     if (question) {
       queue.push(question);
       queuedIds.add(question.id);
@@ -313,7 +351,7 @@ export function buildAdaptiveSequence(questions, attempts = [], limit = 8, rando
     const candidates = groups.get(challenge).filter((question) =>
       !cooldownIds.has(question.id) && !queuedIds.has(question.id)
     );
-    const question = pick(candidates, random);
+    const question = pickWeightedQuestion(candidates, accuracy, random);
     if (!question) break;
     queue.push(question);
     queuedIds.add(question.id);

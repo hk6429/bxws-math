@@ -27,6 +27,8 @@ const nodeIds = [
   "coordinate-first-quadrant", "coordinate-plane", "function-relation", "direct-proportion",
   "data-table-basic", "bar-chart-reading", "line-chart-reading", "mean-basic",
   "median-mode", "range-data-interpretation", "chance-sample-space", "probability-basic",
+  "linear-equation-modeling", "linear-inequality-meaning", "linear-inequality-solving",
+  "histogram-contingency",
 ];
 
 const questionArrays = ["basicMastery", "conceptId", "errorDiagnosis", "contextApplication"];
@@ -45,6 +47,13 @@ const newStrands = {
   ]),
 };
 const newNodeIds = new Set(Object.values(newStrands).flatMap((ids) => [...ids]));
+const difficultyRequiredNodeIds = new Set([
+  "fraction-mul", "decimal-mul", "ratio-rate", "algebra-symbol", "linear-eq-1var",
+]);
+const trackCNodeIds = new Set([
+  "linear-equation-modeling", "linear-inequality-meaning", "linear-inequality-solving",
+  "median-mode", "probability-basic", "histogram-contingency",
+]);
 
 globalThis.fetch = async (url) => {
   const body = await readFile(new URL(`../${url}`, import.meta.url), "utf8");
@@ -56,9 +65,9 @@ globalThis.localStorage = {
   setItem: (key, value) => storage.set(key, value),
 };
 
-test("quiz-loader 可載入全庫 94 個已完成節點題庫，且容忍頂層 curriculum", async () => {
+test("quiz-loader 可載入全庫 98 個已完成節點題庫，且容忍頂層 curriculum", async () => {
   const banks = await Promise.all(nodeIds.map(loadQuestionBank));
-  assert.equal(banks.length, 94);
+  assert.equal(banks.length, 98);
   for (const [index, bank] of banks.entries()) {
     const questions = questionArrays.flatMap((key) => bank[key] ?? []);
     if (newNodeIds.has(nodeIds[index])) {
@@ -66,11 +75,27 @@ test("quiz-loader 可載入全庫 94 個已完成節點題庫，且容忍頂層 
       for (const key of questionArrays) {
         assert.equal(bank[key]?.length, 6, `${nodeIds[index]} ${key} 應精確為 6 題`);
       }
+    } else if (trackCNodeIds.has(nodeIds[index])) {
+      assert.ok(questions.length >= 20, `${nodeIds[index]} 題數不足`);
     } else {
       assert.ok(questions.length >= 24, `${nodeIds[index]} 題數不足`);
     }
     if (!legacyNodeIds.has(nodeIds[index]) && !newNodeIds.has(nodeIds[index])) {
       assert.ok(questions.every((question) => question.challenge), `${nodeIds[index]} 缺 challenge`);
+    }
+    if (difficultyRequiredNodeIds.has(nodeIds[index])) {
+      assert.ok(questions.every((question) => ["easy", "medium", "hard"].includes(question.difficulty)), `${nodeIds[index]} 缺 difficulty`);
+      const diagnosis = bank.errorDiagnosis ?? [];
+      assert.ok(diagnosis.every((question) => typeof question.errorPath === "string" && question.errorPath.length > 0), `${nodeIds[index]} 找錯題缺 errorPath`);
+      assert.ok(new Set(diagnosis.map((question) => question.errorPath)).size < diagnosis.length, `${nodeIds[index]} errorPath 必須能累積重複迷思`);
+    }
+    if (trackCNodeIds.has(nodeIds[index])) {
+      assert.ok(questions.length >= 20, `${nodeIds[index]} 至少應有 20 題`);
+      assert.ok(questions.every((question) => ["easy", "medium", "hard"].includes(question.difficulty)), `${nodeIds[index]} 缺 difficulty`);
+      const diagnosis = bank.errorDiagnosis ?? [];
+      assert.ok(diagnosis.every((question) => typeof question.errorPath === "string"), `${nodeIds[index]} 找錯題缺穩定 errorPath`);
+      assert.ok(new Set(diagnosis.map((question) => question.errorPath)).size < diagnosis.length, `${nodeIds[index]} errorPath 無法累積`);
+      assert.ok(bank.curriculum?.codes?.length > 0, `${nodeIds[index]} 缺 108 課綱錨點`);
     }
   }
   for (const [strandId, ids] of Object.entries(newStrands)) {

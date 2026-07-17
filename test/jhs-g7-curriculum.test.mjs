@@ -21,6 +21,10 @@ const allNodes = tree.strands.flatMap((strand) =>
   strand.nodes.map((node) => ({ ...node, strand: strand.id }))
 );
 const nodesById = Object.fromEntries(allNodes.map((node) => [node.id, node]));
+const completedThisRound = new Set([
+  "linear-equation-modeling", "linear-inequality-meaning", "linear-inequality-solving",
+  "histogram-contingency",
+]);
 
 test("七年級新增 12 節點依指定 strand 完整落位", () => {
   assert.equal(newIds.size, 12);
@@ -45,7 +49,7 @@ test("七年級新節點 schema 完整，且題庫未完成狀態一致", () => 
     assert.ok(Array.isArray(node.gateChallenges), `${id}.gateChallenges 應為陣列`);
     assert.equal(node.gateChallenges.length, 2, `${id} 應有 2 個守門挑戰`);
     assert.ok(node.gateChallenges.every((challenge) => /^\d+-\d+$/.test(challenge)), `${id} 守門挑戰格式錯誤`);
-    assert.equal(node.contentPending, true, `${id}.contentPending 必須為 true`);
+    assert.equal(node.contentPending, completedThisRound.has(id) ? undefined : true, `${id}.contentPending 狀態不一致`);
   }
 });
 

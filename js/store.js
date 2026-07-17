@@ -4,6 +4,7 @@ const MAX_BUNDLE_BYTES = 2 * 1024 * 1024;
 const MAX_VALUE_BYTES = 256 * 1024;
 const byteSize = (text) => new TextEncoder().encode(text).byteLength;
 const KEY_TYPES = {
+  accessibilitySettings: "object",
   activityStreak: "object",
   bestStreak: "number", progress: "progress", leitner: "object", activeSession: "nullable-object",
   badges: "array", collection: "object", encounterPity: "number", encounterPityByRarity: "object", encounterWins: "number",

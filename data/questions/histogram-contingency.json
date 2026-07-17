@@ -1,0 +1,313 @@
+{
+  "nodeId": "histogram-contingency",
+  "curriculum": {
+    "codes": [
+      "D-7-1",
+      "d-IV-1"
+    ],
+    "note": "整理與判讀直方圖、長條圖及列聯表。"
+  },
+  "basicMastery": [
+    {
+      "id": "histogram-contingency-bm-1",
+      "type": "basic-mastery",
+      "challenge": "12-1",
+      "stem": "某直方圖中 10–未滿20 分有 7 人，20–未滿30 分有 12 人。哪組人數較多？",
+      "options": [
+        "10–未滿20",
+        "20–未滿30",
+        "一樣多",
+        "無法判斷"
+      ],
+      "answer": 1,
+      "explanation": "12>7，所以 20–未滿30 分組較多。",
+      "difficulty": "easy",
+      "errorPath": "interval-reading"
+    },
+    {
+      "id": "histogram-contingency-bm-2",
+      "type": "basic-mastery",
+      "challenge": "12-2",
+      "stem": "列聯表：男生喜歡球類 8 人、音樂 5 人；女生喜歡球類 6 人、音樂 9 人。喜歡音樂共幾人？",
+      "options": [
+        "11",
+        "13",
+        "14",
+        "15"
+      ],
+      "answer": 2,
+      "explanation": "音樂欄合計 5+9=14。",
+      "difficulty": "easy",
+      "errorPath": "row-column-total"
+    },
+    {
+      "id": "histogram-contingency-bm-3",
+      "type": "basic-mastery",
+      "challenge": "12-1",
+      "stem": "同上表，受調查總人數為何？",
+      "options": [
+        "20",
+        "24",
+        "28",
+        "30"
+      ],
+      "answer": 2,
+      "explanation": "8+5+6+9=28。",
+      "difficulty": "medium",
+      "errorPath": "row-column-total"
+    },
+    {
+      "id": "histogram-contingency-bm-4",
+      "type": "basic-mastery",
+      "challenge": "12-2",
+      "stem": "直方圖的 30–未滿40 組有 4 人。分數恰為 40 的人屬於哪組？",
+      "options": [
+        "30–未滿40",
+        "40–未滿50",
+        "兩組都算",
+        "兩組都不算"
+      ],
+      "answer": 1,
+      "explanation": "區間右端不包含 40，應歸入下一組。",
+      "difficulty": "medium",
+      "errorPath": "interval-boundary"
+    },
+    {
+      "id": "histogram-contingency-bm-5",
+      "type": "basic-mastery",
+      "challenge": "12-1",
+      "stem": "哪一項最能區分一般長條圖與連續資料直方圖？",
+      "options": [
+        "直方圖的柱通常相連",
+        "直方圖一定是圓形",
+        "長條圖不能標人數",
+        "直方圖沒有橫軸"
+      ],
+      "answer": 0,
+      "explanation": "連續組距相接，因此直方圖柱通常相連。",
+      "difficulty": "medium",
+      "errorPath": "chart-type-confusion"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "histogram-contingency-ci-1",
+      "type": "concept-id",
+      "challenge": "12-3",
+      "statement": "直方圖適合呈現分組後的連續數量資料。",
+      "correctAnswer": true,
+      "explanation": "例如身高、時間或分數區間。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "histogram-contingency-ci-2",
+      "type": "concept-id",
+      "challenge": "12-4",
+      "statement": "列聯表可以同時呈現兩個分類變項的交叉人數。",
+      "correctAnswer": true,
+      "explanation": "每一格代表兩種分類條件的交集。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "histogram-contingency-ci-3",
+      "type": "concept-id",
+      "challenge": "12-3",
+      "statement": "直方圖柱子相連，是因為相鄰組距代表連續區間。",
+      "correctAnswer": true,
+      "explanation": "柱子相連具有資料連續性的意義。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "histogram-contingency-ci-4",
+      "type": "concept-id",
+      "challenge": "12-4",
+      "statement": "列聯表只要看其中一格，就能知道全班總人數。",
+      "correctAnswer": false,
+      "explanation": "必須加總所有互斥分類格或使用總計。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "histogram-contingency-ci-5",
+      "type": "concept-id",
+      "challenge": "12-3",
+      "statement": "10–未滿20 與 20–未滿30 的區間會把 20 重複計算兩次。",
+      "correctAnswer": false,
+      "explanation": "第一組不包含 20，第二組包含 20。",
+      "difficulty": "medium"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "histogram-contingency-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "12-5",
+      "problem": "區間 0–未滿10 有 3 人、10–未滿20 有 6 人",
+      "wrongSolution": "把分數 10 算進第一組",
+      "errorOptions": [
+        "10 應進 10–未滿20 組",
+        "10 不屬於任何組",
+        "兩組都要算",
+        "人數應相乘"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "『未滿10』不包含 10。",
+      "difficulty": "easy",
+      "errorPath": "interval-boundary"
+    },
+    {
+      "id": "histogram-contingency-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "12-6",
+      "problem": "列聯表中球類欄為男 7、女 8",
+      "wrongSolution": "說喜歡球類共 8 人",
+      "errorOptions": [
+        "只看了女生格，應加 7+8=15",
+        "應算 8-7",
+        "應看列總計",
+        "列聯表不能加總"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "欄總計要加總同欄各列。",
+      "difficulty": "easy",
+      "errorPath": "row-column-total"
+    },
+    {
+      "id": "histogram-contingency-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "12-5",
+      "problem": "類別是紅、藍、綠三種顏色",
+      "wrongSolution": "用柱子相連的直方圖呈現",
+      "errorOptions": [
+        "顏色是離散類別，宜用有間隔的長條圖",
+        "直方圖不能有顏色",
+        "柱高不能是人數",
+        "應改用數線"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "直方圖用於連續分組資料。",
+      "difficulty": "medium",
+      "errorPath": "chart-type-confusion"
+    },
+    {
+      "id": "histogram-contingency-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "12-6",
+      "problem": "列聯表四格為 5、6、7、8",
+      "wrongSolution": "總人數算成 5+8=13",
+      "errorOptions": [
+        "只加對角格，應四格全加得 26",
+        "應相乘",
+        "應取最大值",
+        "應只加第一列"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "總數是所有互斥交叉格的合計。",
+      "difficulty": "medium",
+      "errorPath": "row-column-total"
+    },
+    {
+      "id": "histogram-contingency-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "12-5",
+      "problem": "20–未滿30 組有 9 人",
+      "wrongSolution": "說分數 30 也算在這組",
+      "errorOptions": [
+        "30 應進下一組",
+        "30 應同時計兩組",
+        "30 不可出現在資料",
+        "9 人應改成 30 人"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "右端點『未滿30』不包含 30。",
+      "difficulty": "easy",
+      "errorPath": "interval-boundary"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "histogram-contingency-ca-1",
+      "type": "context-application",
+      "challenge": "12-7",
+      "scenario": "班級通勤時間直方圖：0–未滿10 分有 6 人，10–未滿20 分有 11 人，20–未滿30 分有 8 人。",
+      "question": "哪一組人數最多？",
+      "options": [
+        "0–未滿10",
+        "10–未滿20",
+        "20–未滿30",
+        "一樣多"
+      ],
+      "answer": 1,
+      "explanation": "11 人最多。",
+      "difficulty": "easy",
+      "errorPath": "interval-reading"
+    },
+    {
+      "id": "histogram-contingency-ca-2",
+      "type": "context-application",
+      "challenge": "12-8",
+      "scenario": "列聯表：七年級搭公車 12、步行 8；八年級搭公車 9、步行 11。",
+      "question": "步行學生共有幾人？",
+      "options": [
+        "17",
+        "19",
+        "20",
+        "40"
+      ],
+      "answer": 1,
+      "explanation": "8+11=19。",
+      "difficulty": "easy",
+      "errorPath": "row-column-total"
+    },
+    {
+      "id": "histogram-contingency-ca-3",
+      "type": "context-application",
+      "challenge": "12-7",
+      "scenario": "同上資料。",
+      "question": "受調查學生共幾人？",
+      "options": [
+        "20",
+        "21",
+        "40",
+        "48"
+      ],
+      "answer": 2,
+      "explanation": "12+8+9+11=40。",
+      "difficulty": "medium",
+      "errorPath": "row-column-total"
+    },
+    {
+      "id": "histogram-contingency-ca-4",
+      "type": "context-application",
+      "challenge": "12-8",
+      "scenario": "閱讀時間分組為 0–未滿15、15–未滿30、30–未滿45 分。",
+      "question": "恰好閱讀 30 分鐘歸入哪組？",
+      "options": [
+        "15–未滿30",
+        "30–未滿45",
+        "兩組",
+        "皆非"
+      ],
+      "answer": 1,
+      "explanation": "30 不在前組的『未滿30』內，屬於下一組。",
+      "difficulty": "medium",
+      "errorPath": "interval-boundary"
+    },
+    {
+      "id": "histogram-contingency-ca-5",
+      "type": "context-application",
+      "challenge": "12-7",
+      "scenario": "要比較不同社團（籃球、合唱、美術）人數。",
+      "question": "較適合哪一種圖？",
+      "options": [
+        "柱子相連的直方圖",
+        "有間隔的長條圖",
+        "數線",
+        "散布圖"
+      ],
+      "answer": 1,
+      "explanation": "社團是離散類別，適合長條圖。",
+      "difficulty": "medium",
+      "errorPath": "chart-type-confusion"
+    }
+  ]
+}

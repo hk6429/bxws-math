@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   buildAdaptiveSequence,
   challengeWeight,
+  difficultyWeight,
   evaluateMastery,
   MASTER_TRIAL_TIERS,
   masterTrialTierState,
@@ -10,6 +11,7 @@ import {
   masteryThresholdFor,
   nextStepRecommendation,
 } from "../js/mastery-engine.js";
+import { validateQuestion } from "../js/schema.js";
 import { buildSession } from "../js/quiz-loader.js";
 
 function challengeBank() {
@@ -39,6 +41,43 @@ test("加權抽題依錯題與連對調整挑戰權重", () => {
   assert.equal(challengeWeight(attempts, "1-1"), 2);
   assert.equal(challengeWeight(attempts, "1-2"), 0.5);
   assert.equal(challengeWeight(attempts, "1-3"), 1);
+});
+
+test("近期正確率會動態調整易中難抽題權重", () => {
+  assert.deepEqual(
+    ["easy", "medium", "hard"].map((level) => difficultyWeight(level, 0.3)),
+    [5, 2, 1]
+  );
+  assert.deepEqual(
+    ["easy", "medium", "hard"].map((level) => difficultyWeight(level, 0.9)),
+    [1, 2, 5]
+  );
+  assert.ok(difficultyWeight("medium", 0.7) > difficultyWeight("easy", 0.7));
+});
+
+test("題目 schema 接受 easy medium hard，拒絕未知難度", () => {
+  assert.doesNotThrow(() => validateQuestion({ id: "q", difficulty: "easy" }));
+  assert.doesNotThrow(() => validateQuestion({ id: "q", difficulty: "medium" }));
+  assert.doesNotThrow(() => validateQuestion({ id: "q", difficulty: "hard" }));
+  assert.throws(() => validateQuestion({ id: "q", difficulty: "expert" }), /difficulty/);
+});
+
+test("無 challenge 的舊題庫也會依近期正確率做難度加權", () => {
+  const questions = [
+    { id: "easy", difficulty: "easy" },
+    { id: "medium", difficulty: "medium" },
+    { id: "hard", difficulty: "hard" },
+  ];
+  const low = buildAdaptiveSequence(questions, [
+    { questionId: "old-1", correct: false },
+    { questionId: "old-2", correct: false },
+  ], 1, () => 0.3);
+  const high = buildAdaptiveSequence(questions, [
+    { questionId: "old-1", correct: true },
+    { questionId: "old-2", correct: true },
+  ], 1, () => 0.7);
+  assert.equal(low[0].difficulty, "easy");
+  assert.equal(high[0].difficulty, "hard");
 });
 
 test("加權階段不抽最近 6 題的同一題 id", () => {

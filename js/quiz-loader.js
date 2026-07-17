@@ -1,6 +1,7 @@
 import { isDue, getBox, hasRecord, getBoxState } from "./leitner.js";
 import { store } from "./store.js";
 import { activeErrorLocks, buildAdaptiveSequence, prereqQuickCheckPassed } from "./mastery-engine.js";
+import { validateQuestionBank } from "./schema.js";
 
 const bankCache = {};
 
@@ -8,7 +9,7 @@ export async function loadQuestionBank(nodeId) {
   if (bankCache[nodeId]) return bankCache[nodeId];
   const res = await fetch(`data/questions/${nodeId}.json`);
   if (!res.ok) throw new Error(`題庫載入失敗：${nodeId}（${res.status}）`);
-  const bank = await res.json();
+  const bank = validateQuestionBank(await res.json());
   bankCache[nodeId] = bank;
   return bank;
 }
@@ -40,6 +41,19 @@ export function insertMentorCoachingQuestion(
   const specificLine = mentorStrategyLine(trigger.nodeName ?? trigger.nodeId ?? "這一題", picked, mentorLine);
   queue.splice(currentIndex + 1, 0, { ...picked, _mentorCoaching: true, _mentorLine: specificLine });
   return true;
+}
+
+export function mentorCoachingTransition(state, isCorrect) {
+  if (isCorrect) {
+    return { consecutiveWrong: 0, retryUsed: false, insertRetry: false };
+  }
+  const consecutiveWrong = Math.max(0, Number(state?.consecutiveWrong) || 0) + 1;
+  const retryUsed = state?.retryUsed === true;
+  return {
+    consecutiveWrong,
+    retryUsed: !retryUsed,
+    insertRetry: !retryUsed,
+  };
 }
 
 // 終局大師試煉：跨節點混題，每題帶 _nodeId 讓作答記錄回到原節點
@@ -83,7 +97,7 @@ export async function buildSession(nodeId, sessionSize = 8, strategy = "slow", e
   const targetSize = isInitialChallengeScan
     ? Math.max(sessionSize, challengeIds.length)
     : sessionSize;
-  const adaptive = rest.some((question) => question.challenge)
+  const adaptive = rest.some((question) => question.challenge || question.difficulty)
     ? buildAdaptiveSequence(
       rest,
       attempts,

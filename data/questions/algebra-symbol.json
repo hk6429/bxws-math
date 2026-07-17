@@ -5,49 +5,91 @@
       "id": "algebra-symbol-bm-1",
       "type": "basic-mastery",
       "stem": "若 x=3，求 2x+5 的值",
-      "options": ["11", "10", "8", "13"],
+      "options": [
+        "11",
+        "10",
+        "8",
+        "13"
+      ],
       "answer": 0,
-      "explanation": "2×3+5 = 6+5 = 11"
+      "explanation": "2×3+5 = 6+5 = 11",
+      "difficulty": "easy",
+      "errorPath": "substitution-operation-order"
     },
     {
       "id": "algebra-symbol-bm-2",
       "type": "basic-mastery",
       "stem": "化簡 3x + 2x - x",
-      "options": ["4x", "6x", "5x", "3x"],
+      "options": [
+        "4x",
+        "6x",
+        "5x",
+        "3x"
+      ],
       "answer": 0,
-      "explanation": "同類項係數相加減：3+2-1 = 4，結果為 4x"
+      "explanation": "同類項係數相加減：3+2-1 = 4，結果為 4x",
+      "difficulty": "easy",
+      "errorPath": "combine-like-terms"
     },
     {
       "id": "algebra-symbol-bm-3",
       "type": "basic-mastery",
       "stem": "用代數式表示「比 a 大 7 的數」",
-      "options": ["7a", "a+7", "a-7", "7-a"],
+      "options": [
+        "7a",
+        "a+7",
+        "a-7",
+        "7-a"
+      ],
       "answer": 1,
-      "explanation": "「比 a 大 7」表示在 a 的基礎上再加 7，所以是 a+7。7a 是 a 的 7 倍，意義不同。"
+      "explanation": "「比 a 大 7」表示在 a 的基礎上再加 7，所以是 a+7。7a 是 a 的 7 倍，意義不同。",
+      "difficulty": "easy",
+      "errorPath": "translate-operation-order"
     },
     {
       "id": "algebra-symbol-bm-4",
       "type": "basic-mastery",
       "stem": "若 y=5，求 4y-6 的值",
-      "options": ["26", "39", "14", "20"],
+      "options": [
+        "26",
+        "39",
+        "14",
+        "20"
+      ],
       "answer": 2,
-      "explanation": "4y 表示 4×y，代入 y=5：4×5-6 = 20-6 = 14。注意 4y 不是把 4 和 5 寫在一起變成 45。"
+      "explanation": "4y 表示 4×y，代入 y=5：4×5-6 = 20-6 = 14。注意 4y 不是把 4 和 5 寫在一起變成 45。",
+      "difficulty": "easy",
+      "errorPath": "substitution-operation-order"
     },
     {
       "id": "algebra-symbol-bm-5",
       "type": "basic-mastery",
       "stem": "化簡 5x - 2(x-3)",
-      "options": ["3x-6", "7x-6", "3x-3", "3x+6"],
+      "options": [
+        "3x-6",
+        "7x-6",
+        "3x-3",
+        "3x+6"
+      ],
       "answer": 3,
-      "explanation": "先用分配律去括號：-2(x-3) = -2x+6，注意負號要分配到括號內每一項。再合併同類項：5x-2x+6 = 3x+6。"
+      "explanation": "先用分配律去括號：-2(x-3) = -2x+6，注意負號要分配到括號內每一項。再合併同類項：5x-2x+6 = 3x+6。",
+      "difficulty": "hard",
+      "errorPath": "distribute-sign"
     },
     {
       "id": "algebra-symbol-bm-6",
       "type": "basic-mastery",
       "stem": "若 x=-2，求 x²-3x 的值",
-      "options": ["-2", "10", "2", "-10"],
+      "options": [
+        "-2",
+        "10",
+        "2",
+        "-10"
+      ],
       "answer": 1,
-      "explanation": "代入 x=-2：x² = (-2)² = 4，-3x = -3×(-2) = +6，所以 x²-3x = 4+6 = 10。負數的平方是正數，負負相乘也是正數。"
+      "explanation": "代入 x=-2：x² = (-2)² = 4，-3x = -3×(-2) = +6，所以 x²-3x = 4+6 = 10。負數的平方是正數，負負相乘也是正數。",
+      "difficulty": "hard",
+      "errorPath": "substitution-operation-order"
     }
   ],
   "conceptId": [
@@ -56,42 +98,48 @@
       "type": "concept-id",
       "statement": "3x 表示 3 個 x 相加，也就是 x+x+x。",
       "correctAnswer": true,
-      "explanation": "係數乘以未知數即表示該未知數重複相加的次數。"
+      "explanation": "係數乘以未知數即表示該未知數重複相加的次數。",
+      "difficulty": "easy"
     },
     {
       "id": "algebra-symbol-ci-2",
       "type": "concept-id",
       "statement": "x² 和 2x 是同類項，可以直接合併成 3x 或 3x²。",
       "correctAnswer": false,
-      "explanation": "x² 和 x 的次方不同，不是同類項，不能合併。"
+      "explanation": "x² 和 x 的次方不同，不是同類項，不能合併。",
+      "difficulty": "easy"
     },
     {
       "id": "algebra-symbol-ci-3",
       "type": "concept-id",
       "statement": "a×5 通常省略乘號並把數字寫在字母前面，記成 5a。",
       "correctAnswer": true,
-      "explanation": "代數的書寫慣例：數字與字母相乘時省略乘號，且係數寫在字母前面，a×5 = 5a。"
+      "explanation": "代數的書寫慣例：數字與字母相乘時省略乘號，且係數寫在字母前面，a×5 = 5a。",
+      "difficulty": "easy"
     },
     {
       "id": "algebra-symbol-ci-4",
       "type": "concept-id",
       "statement": "3x 的意思就是 3+x。",
       "correctAnswer": false,
-      "explanation": "3x 是省略乘號的寫法，表示 3×x，不是 3+x。例如 x=2 時，3x=6，但 3+x=5，兩者不同。"
+      "explanation": "3x 是省略乘號的寫法，表示 3×x，不是 3+x。例如 x=2 時，3x=6，但 3+x=5，兩者不同。",
+      "difficulty": "easy"
     },
     {
       "id": "algebra-symbol-ci-5",
       "type": "concept-id",
       "statement": "代數式 x÷2 與 0.5x 表示相同的數。",
       "correctAnswer": true,
-      "explanation": "x÷2 = x×(1/2) = 0.5x，除以 2 和乘以 0.5 結果相同。"
+      "explanation": "x÷2 = x×(1/2) = 0.5x，除以 2 和乘以 0.5 結果相同。",
+      "difficulty": "medium"
     },
     {
       "id": "algebra-symbol-ci-6",
       "type": "concept-id",
       "statement": "當 x=-1 時，-x 的值是 -1。",
       "correctAnswer": false,
-      "explanation": "-x 表示 x 的相反數。當 x=-1 時，-x = -(-1) = 1，不是 -1。-x 不一定是負數。"
+      "explanation": "-x 表示 x 的相反數。當 x=-1 時，-x = -(-1) = 1，不是 -1。-x 不一定是負數。",
+      "difficulty": "medium"
     }
   ],
   "errorDiagnosis": [
@@ -100,54 +148,96 @@
       "type": "error-diagnosis",
       "problem": "化簡 2x + 3y - x + y",
       "wrongSolution": "算成 2x+3y-x+y = x+3y",
-      "errorOptions": ["y 的係數合併算錯", "x 的係數合併算錯", "漏看負號", "抄錯題目"],
+      "errorOptions": [
+        "y 的係數合併算錯",
+        "x 的係數合併算錯",
+        "漏看負號",
+        "抄錯題目"
+      ],
       "correctErrorIndex": 0,
-      "explanation": "x 係數：2-1=1；y 係數：3+1=4，正確答案為 x+4y"
+      "explanation": "x 係數：2-1=1；y 係數：3+1=4，正確答案為 x+4y",
+      "difficulty": "easy",
+      "errorPath": "combine-like-terms"
     },
     {
       "id": "algebra-symbol-ed-2",
       "type": "error-diagnosis",
       "problem": "當 x=2 時，求 3x² 的值",
       "wrongSolution": "小方算成 3x² = (3×2)² = 36",
-      "errorOptions": ["把 3 也一起平方了，運算順序錯誤", "代入數字錯誤", "漏乘", "抄錯題目"],
+      "errorOptions": [
+        "把 3 也一起平方了，運算順序錯誤",
+        "代入數字錯誤",
+        "漏乘",
+        "抄錯題目"
+      ],
       "correctErrorIndex": 0,
-      "explanation": "3x² 是先算 x²=4，再乘以 3，得 12，而不是 (3x)²"
+      "explanation": "3x² 是先算 x²=4，再乘以 3，得 12，而不是 (3x)²",
+      "difficulty": "medium",
+      "errorPath": "substitution-operation-order"
     },
     {
       "id": "algebra-symbol-ed-3",
       "type": "error-diagnosis",
       "problem": "用代數式表示「n 的 3 倍再加 2」",
       "wrongSolution": "小明列成 3(n+2)",
-      "errorOptions": ["未知數用錯字母", "係數 3 寫錯位置", "把「先乘 3 再加 2」誤成「先加 2 再乘 3」", "漏掉加 2"],
+      "errorOptions": [
+        "未知數用錯字母",
+        "係數 3 寫錯位置",
+        "把「先乘 3 再加 2」誤成「先加 2 再乘 3」",
+        "漏掉加 2"
+      ],
       "correctErrorIndex": 2,
-      "explanation": "「n 的 3 倍」是 3n，「再加 2」是最後才加，正確列式為 3n+2。3(n+2) 是先加 2 再乘 3，運算順序不同，例如 n=1 時 3n+2=5，但 3(n+2)=9。"
+      "explanation": "「n 的 3 倍」是 3n，「再加 2」是最後才加，正確列式為 3n+2。3(n+2) 是先加 2 再乘 3，運算順序不同，例如 n=1 時 3n+2=5，但 3(n+2)=9。",
+      "difficulty": "medium",
+      "errorPath": "translate-operation-order"
     },
     {
       "id": "algebra-symbol-ed-4",
       "type": "error-diagnosis",
       "problem": "當 x=4 時，求 5-x 的值",
       "wrongSolution": "小華算成 5-x = 4-5 = -1",
-      "errorOptions": ["代入的數字抄錯", "把 5-x 顛倒成 x-5 來算，減法不能隨意交換", "漏看負號", "乘法算錯"],
+      "errorOptions": [
+        "代入的數字抄錯",
+        "把 5-x 顛倒成 x-5 來算，減法不能隨意交換",
+        "漏看負號",
+        "乘法算錯"
+      ],
       "correctErrorIndex": 1,
-      "explanation": "5-x 是「5 減去 x」，代入 x=4 應為 5-4 = 1。減法沒有交換律，5-4 和 4-5 結果不同。"
+      "explanation": "5-x 是「5 減去 x」，代入 x=4 應為 5-4 = 1。減法沒有交換律，5-4 和 4-5 結果不同。",
+      "difficulty": "easy",
+      "errorPath": "substitution-operation-order"
     },
     {
       "id": "algebra-symbol-ed-5",
       "type": "error-diagnosis",
       "problem": "化簡 4x + 3",
       "wrongSolution": "小杰寫成 4x+3 = 7x",
-      "errorOptions": ["係數相加算錯", "漏看加號", "抄錯題目", "把不是同類項的 4x 和 3 硬合併在一起"],
+      "errorOptions": [
+        "係數相加算錯",
+        "漏看加號",
+        "抄錯題目",
+        "把不是同類項的 4x 和 3 硬合併在一起"
+      ],
       "correctErrorIndex": 3,
-      "explanation": "4x 是含未知數的項，3 是常數項，兩者不是同類項，不能合併。4x+3 已是最簡形式。例如 x=1 時 4x+3=7，但 7x=7 只是巧合；x=2 時 4x+3=11，7x=14，明顯不同。"
+      "explanation": "4x 是含未知數的項，3 是常數項，兩者不是同類項，不能合併。4x+3 已是最簡形式。例如 x=1 時 4x+3=7，但 7x=7 只是巧合；x=2 時 4x+3=11，7x=14，明顯不同。",
+      "difficulty": "medium",
+      "errorPath": "combine-like-terms"
     },
     {
       "id": "algebra-symbol-ed-6",
       "type": "error-diagnosis",
       "problem": "化簡 -(2x-5)",
       "wrongSolution": "小安寫成 -(2x-5) = -2x-5",
-      "errorOptions": ["負號只分配到第一項，括號內第二項忘了變號", "係數乘錯", "把括號拆成加法", "抄錯題目"],
+      "errorOptions": [
+        "負號只分配到第一項，括號內第二項忘了變號",
+        "係數乘錯",
+        "把括號拆成加法",
+        "抄錯題目"
+      ],
       "correctErrorIndex": 0,
-      "explanation": "去括號時，括號前的負號要分配到括號內每一項：-(2x-5) = -2x+5。第二項 -5 變號後是 +5，不是 -5。"
+      "explanation": "去括號時，括號前的負號要分配到括號內每一項：-(2x-5) = -2x+5。第二項 -5 變號後是 +5，不是 -5。",
+      "difficulty": "hard",
+      "errorPath": "distribute-sign"
     }
   ],
   "contextApplication": [
@@ -156,54 +246,96 @@
       "type": "context-application",
       "scenario": "小豪原有 n 元，媽媽又給他 50 元。",
       "question": "下列代數式何者能正確表示小豪現在有多少元？",
-      "options": ["n+50", "50n", "n-50", "50-n"],
+      "options": [
+        "n+50",
+        "50n",
+        "n-50",
+        "50-n"
+      ],
       "answer": 0,
-      "explanation": "原有 n 元，加上 50 元，共 n+50 元"
+      "explanation": "原有 n 元，加上 50 元，共 n+50 元",
+      "difficulty": "easy",
+      "errorPath": "translate-operation-order"
     },
     {
       "id": "algebra-symbol-ca-2",
       "type": "context-application",
       "scenario": "一枝筆 x 元，小華買了 4 枝相同的筆。",
       "question": "下列代數式何者能正確表示小華花了多少元？",
-      "options": ["4x", "x+4", "x÷4", "x-4"],
+      "options": [
+        "4x",
+        "x+4",
+        "x÷4",
+        "x-4"
+      ],
       "answer": 0,
-      "explanation": "4 枝、每枝 x 元，總花費為 4×x = 4x"
+      "explanation": "4 枝、每枝 x 元，總花費為 4×x = 4x",
+      "difficulty": "easy",
+      "errorPath": "translate-operation-order"
     },
     {
       "id": "algebra-symbol-ca-3",
       "type": "context-application",
       "scenario": "一盒雞蛋有 y 顆，媽媽買了 3 盒，又另外多拿 2 顆。",
       "question": "下列代數式何者能正確表示媽媽總共買了多少顆雞蛋？",
-      "options": ["3(y+2)", "y+5", "3y+2", "2y+3"],
+      "options": [
+        "3(y+2)",
+        "y+5",
+        "3y+2",
+        "2y+3"
+      ],
       "answer": 2,
-      "explanation": "3 盒共 3×y = 3y 顆，再加 2 顆，共 3y+2 顆。3(y+2) 是每盒先多 2 顆再乘 3，意義不同。"
+      "explanation": "3 盒共 3×y = 3y 顆，再加 2 顆，共 3y+2 顆。3(y+2) 是每盒先多 2 顆再乘 3，意義不同。",
+      "difficulty": "medium",
+      "errorPath": "translate-operation-order"
     },
     {
       "id": "algebra-symbol-ca-4",
       "type": "context-application",
       "scenario": "哥哥今年 a 歲，弟弟比哥哥小 4 歲。",
       "question": "下列代數式何者能正確表示弟弟今年幾歲？",
-      "options": ["a+4", "a-4", "4-a", "4a"],
+      "options": [
+        "a+4",
+        "a-4",
+        "4-a",
+        "4a"
+      ],
       "answer": 1,
-      "explanation": "弟弟比哥哥小 4 歲，就是哥哥的年齡減 4，即 a-4。注意 4-a 是「4 減哥哥的年齡」，意義不同。"
+      "explanation": "弟弟比哥哥小 4 歲，就是哥哥的年齡減 4，即 a-4。注意 4-a 是「4 減哥哥的年齡」，意義不同。",
+      "difficulty": "easy",
+      "errorPath": "translate-operation-order"
     },
     {
       "id": "algebra-symbol-ca-5",
       "type": "context-application",
       "scenario": "一個長方形的長是 x 公分，寬是 5 公分。",
       "question": "下列代數式何者能正確表示這個長方形的周長（公分）？",
-      "options": ["x+5", "5x", "2x+5", "2x+10"],
+      "options": [
+        "x+5",
+        "5x",
+        "2x+5",
+        "2x+10"
+      ],
       "answer": 3,
-      "explanation": "周長 = 2×(長+寬) = 2×(x+5) = 2x+10。用分配律展開時，2 要乘到括號內的每一項。5x 是面積，不是周長。"
+      "explanation": "周長 = 2×(長+寬) = 2×(x+5) = 2x+10。用分配律展開時，2 要乘到括號內的每一項。5x 是面積，不是周長。",
+      "difficulty": "hard",
+      "errorPath": "distribute-sign"
     },
     {
       "id": "algebra-symbol-ca-6",
       "type": "context-application",
       "scenario": "手搖飲每杯 x 元，小婷買了 3 杯，拿 500 元付款。",
       "question": "下列代數式何者能正確表示店員應找回多少元？",
-      "options": ["500-3x", "3x-500", "500-x-3", "3(500-x)"],
+      "options": [
+        "500-3x",
+        "3x-500",
+        "500-x-3",
+        "3(500-x)"
+      ],
       "answer": 0,
-      "explanation": "3 杯共花 3×x = 3x 元，找回的錢 = 付款金額 - 花費 = 500-3x 元。3x-500 是「花費減付款」，順序顛倒了。"
+      "explanation": "3 杯共花 3×x = 3x 元，找回的錢 = 付款金額 - 花費 = 500-3x 元。3x-500 是「花費減付款」，順序顛倒了。",
+      "difficulty": "medium",
+      "errorPath": "translate-operation-order"
     }
   ]
 }

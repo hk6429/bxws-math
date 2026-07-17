@@ -4,7 +4,7 @@ import {
 import { renderSkillTree, computeOverview } from "./skilltree-ui.js";
 import {
   buildSession, buildMasterSession, buildReviewSession, countDueReviews,
-  insertMentorCoachingQuestion, loadQuestionBank,
+  insertMentorCoachingQuestion, loadQuestionBank, mentorCoachingTransition,
 } from "./quiz-loader.js";
 import { autoAdvanceDelay, renderQuestion } from "./quiz-ui.js";
 import { recordAnswer, overallMasteryPct, getNodeStats } from "./scoreEngine.js";
@@ -22,6 +22,7 @@ import {
   store, exportNamespace, importNamespace, isStorageBroken, recordActivityStreak, runMigrations,
 } from "./store.js";
 import { sfx, isSfxOn, setSfxOn } from "./sfx.js";
+import { applyAccessibilitySettings, getAccessibilitySettings, setAccessibilitySetting } from "./accessibility.js";
 import {
   getDaily, bumpDaily, dailyTasks, maybeDropInk, getInkDays, getStardustCount,
   addStardust, claimStardustMilestones, inkThisMonth, returningWelcome,
@@ -171,6 +172,7 @@ function newSession(fields) {
     roundTotal: 0,
     wasMasteredAtStart: false,
     consecutiveWrong: 0,
+    mentorRetryUsed: false,
     mentorPool: [],
     ...fields,
   };
@@ -184,7 +186,7 @@ function saveActiveSession(indexOffset = 0) {
     if (indexOffset > 0) clearActiveSession();
     return;
   }
-  const { qStartAt, consecutiveWrong, mentorPool, ...rest } = session;
+  const { qStartAt, consecutiveWrong, mentorRetryUsed, mentorPool, ...rest } = session;
   store.write("activeSession", { ...rest, index: idx, savedAt: Date.now() });
 }
 
@@ -736,7 +738,8 @@ function startSprintTimer() {
     const left = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
     if (left > 0) {
       el.textContent = `⏱ 疾筆倒數 ${left} 秒`;
-      el.classList.toggle("timer-hot", left <= 5);
+      const settings = getAccessibilitySettings();
+      el.classList.toggle("timer-hot", settings.sprintWarning && left <= 5);
       if (left <= 5 && left !== lastShown) sfx.tick();
       lastShown = left;
     } else {
@@ -1031,7 +1034,17 @@ function handleAnswer(question, isCorrect, meta = {}) {
   session.perQuestion.push({ c: isCorrect ? 1 : 0, ms: elapsed, at: Date.now() });
   if (wasReviewDue) bumpDaily("review");
   if (isCorrect) {
-    session.consecutiveWrong = 0;
+    if (question._mentorCoaching) {
+      const transition = mentorCoachingTransition({
+        consecutiveWrong: session.consecutiveWrong,
+        retryUsed: session.mentorRetryUsed,
+      }, true);
+      session.consecutiveWrong = transition.consecutiveWrong;
+      session.mentorRetryUsed = transition.retryUsed;
+    } else {
+      session.consecutiveWrong = 0;
+      session.mentorRetryUsed = false;
+    }
     session.roundCorrect += 1;
     session.streak += 1;
     session.maxStreak = Math.max(session.maxStreak, session.streak);
@@ -1050,7 +1063,15 @@ function handleAnswer(question, isCorrect, meta = {}) {
     if (wasReviewDue && (getCollection()[nodeId]?.tier ?? 0) >= 2) addManuscriptCare(nodeId);
     if (meta.encounter) meta.encounterReward = handleEncounterWin();
   } else {
-    session.consecutiveWrong += 1;
+    const streakBeforeWrong = session.streak;
+    const mentorTransition = question._mentorCoaching
+      ? mentorCoachingTransition({
+        consecutiveWrong: session.consecutiveWrong,
+        retryUsed: session.mentorRetryUsed,
+      }, false)
+      : null;
+    session.consecutiveWrong = mentorTransition?.consecutiveWrong ?? session.consecutiveWrong + 1;
+    if (mentorTransition) session.mentorRetryUsed = mentorTransition.retryUsed;
     if (session.streak >= 5 && !session.streakShielded) {
       session.streakShielded = true;
       session.streak = Math.max(0, session.streak - 2);
@@ -1059,12 +1080,28 @@ function handleAnswer(question, isCorrect, meta = {}) {
       session.streakShielded = false;
     }
     sfx.wrong();
+    const settings = getAccessibilitySettings();
+    if (streakBeforeWrong > 0 && settings.comboBreakEffect) {
+      const quizArea = document.getElementById("quiz-area");
+      quizArea?.classList.remove("combo-break");
+      requestAnimationFrame(() => quizArea?.classList.add("combo-break"));
+      scheduleTimer(() => quizArea?.classList.remove("combo-break"), 500);
+    }
     addWrongQuestion(nodeId, question);
     // 慢筆細描：答錯排到隊尾再描一次（每題限一次）
     if (session.strategy === "slow" && !question._retry) {
       session.queue.push({ ...question, _retry: true });
     }
-    if (session.consecutiveWrong >= 3) {
+    if (mentorTransition?.insertRetry) {
+      insertMentorCoachingQuestion(
+        session.queue,
+        session.index,
+        [question],
+        question._mentorLine,
+        Math.random,
+        { nodeId, nodeName: node.name ?? nodeId }
+      );
+    } else if (!question._mentorCoaching && session.consecutiveWrong >= 3) {
       const comfort = QUOTES.comfort.filter((quote) => quote.mascot === session.mascot);
       const candidates = comfort.length > 0 ? comfort : QUOTES.comfort;
       const quote = candidates[Math.floor(Math.random() * candidates.length)];
@@ -1076,7 +1113,7 @@ function handleAnswer(question, isCorrect, meta = {}) {
         Math.random,
         { nodeId, nodeName: node.name ?? nodeId }
       );
-      if (inserted) session.consecutiveWrong = 0;
+      if (inserted) session.mentorRetryUsed = false;
     }
   }
   renderStreakBadge();
@@ -2012,10 +2049,33 @@ function setupSfxToggle() {
   sync();
 }
 
+function setupAccessibilitySettings() {
+  const sync = () => {
+    const settings = applyAccessibilitySettings();
+    document.querySelectorAll('input[name="font-size"]').forEach((input) => {
+      input.checked = input.value === settings.fontSize;
+    });
+    document.getElementById("setting-sprint-warning").checked = settings.sprintWarning;
+    document.getElementById("setting-combo-break").checked = settings.comboBreakEffect;
+  };
+  document.querySelectorAll('input[name="font-size"]').forEach((input) => input.addEventListener("change", () => {
+    if (input.checked) setAccessibilitySetting("fontSize", input.value);
+    sync();
+  }));
+  document.getElementById("setting-sprint-warning").addEventListener("change", (event) => {
+    setAccessibilitySetting("sprintWarning", event.currentTarget.checked); sync();
+  });
+  document.getElementById("setting-combo-break").addEventListener("change", (event) => {
+    setAccessibilitySetting("comboBreakEffect", event.currentTarget.checked); sync();
+  });
+  sync();
+}
+
 document.getElementById("nav-home").addEventListener("click", goHome);
 document.getElementById("nav-workshop").addEventListener("click", showWorkshop);
 document.getElementById("nav-dashboard").addEventListener("click", showDashboard);
 setupSfxToggle();
+setupAccessibilitySettings();
 document.addEventListener("click", () => queueMicrotask(showStorageNoticeIfNeeded), true);
 document.addEventListener("change", () => queueMicrotask(showStorageNoticeIfNeeded), true);
 document.querySelector(".quill-deco")?.addEventListener("error", (event) => {

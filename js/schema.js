@@ -2,6 +2,31 @@ import { store } from "./store.js";
 
 let treeCache = null;
 
+const QUESTION_DIFFICULTIES = new Set(["easy", "medium", "hard"]);
+
+export function validateQuestion(question) {
+  if (!question || typeof question !== "object" || typeof question.id !== "string") {
+    throw new Error("question.id 必須是字串");
+  }
+  if (question.difficulty !== undefined && !QUESTION_DIFFICULTIES.has(question.difficulty)) {
+    throw new Error(`question.difficulty 不合法：${question.difficulty}`);
+  }
+  if (question.errorPath !== undefined
+      && question.errorPath !== null
+      && typeof question.errorPath !== "string"
+      && typeof question.errorPath !== "number") {
+    throw new Error("question.errorPath 必須是字串或舊版數字標籤");
+  }
+  return question;
+}
+
+export function validateQuestionBank(bank) {
+  for (const key of ["basicMastery", "conceptId", "errorDiagnosis", "contextApplication"]) {
+    for (const question of bank?.[key] ?? []) validateQuestion(question);
+  }
+  return bank;
+}
+
 export async function loadSkillTree() {
   if (treeCache) return treeCache;
   const res = await fetch("data/skilltree.json");

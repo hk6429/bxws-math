@@ -108,6 +108,10 @@ const readyGates = {
   ...measurementReadyGates,
   ...angleReadyGates,
   ...finalReadyGates,
+  "linear-equation-modeling": ["4-6", "4-8"],
+  "linear-inequality-meaning": ["5-6", "5-8"],
+  "linear-inequality-solving": ["6-6", "6-8"],
+  "histogram-contingency": ["12-6", "12-8"],
 };
 
 test("全技能骨架共 110 節點，id 全域唯一", () => {
@@ -144,7 +148,7 @@ test("tier、六組合併與兩組改名遵守總綱裁決", () => {
 });
 
 test("新增 12 個七年級與 4 個審查補強骨架皆為 contentPending，既有題庫守門挑戰符合裁決", () => {
-  assert.equal(nodes.filter((node) => node.contentPending === true).length, 16);
+  assert.equal(nodes.filter((node) => node.contentPending === true).length, 12);
   for (const node of nodes.filter((item) => !existingIds.has(item.id) && !newestIds.has(item.id))) {
     assert.ok(Array.isArray(node.gateChallenges), `${node.id} 應有 gateChallenges 陣列`);
     if (readyGates[node.id]) {

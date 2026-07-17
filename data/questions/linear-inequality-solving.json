@@ -1,0 +1,313 @@
+{
+  "nodeId": "linear-inequality-solving",
+  "curriculum": {
+    "codes": [
+      "A-7-8",
+      "a-IV-3"
+    ],
+    "note": "解單一一元一次不等式、在數線表示解集並解應用問題。"
+  },
+  "basicMastery": [
+    {
+      "id": "linear-inequality-solving-bm-1",
+      "type": "basic-mastery",
+      "challenge": "6-1",
+      "stem": "解 x+3>7",
+      "options": [
+        "x>4",
+        "x<4",
+        "x≥4",
+        "x≤4"
+      ],
+      "answer": 0,
+      "explanation": "兩邊同減 3，得 x>4。",
+      "difficulty": "easy",
+      "errorPath": "move-term-sign"
+    },
+    {
+      "id": "linear-inequality-solving-bm-2",
+      "type": "basic-mastery",
+      "challenge": "6-2",
+      "stem": "解 2x≤10",
+      "options": [
+        "x≤5",
+        "x≥5",
+        "x<8",
+        "x≤8"
+      ],
+      "answer": 0,
+      "explanation": "兩邊同除以正數 2，不等號方向不變。",
+      "difficulty": "easy",
+      "errorPath": "coefficient-inverse-operation"
+    },
+    {
+      "id": "linear-inequality-solving-bm-3",
+      "type": "basic-mastery",
+      "challenge": "6-1",
+      "stem": "解 -3x>6",
+      "options": [
+        "x>−2",
+        "x<−2",
+        "x≥−2",
+        "x≤−2"
+      ],
+      "answer": 1,
+      "explanation": "兩邊同除以負數 -3，不等號方向要反轉。",
+      "difficulty": "medium",
+      "errorPath": "negative-reverse"
+    },
+    {
+      "id": "linear-inequality-solving-bm-4",
+      "type": "basic-mastery",
+      "challenge": "6-2",
+      "stem": "解 5-2x≥1",
+      "options": [
+        "x≥2",
+        "x≤2",
+        "x>−2",
+        "x≤−2"
+      ],
+      "answer": 1,
+      "explanation": "-2x≥-4，再除以 -2 並反轉，得 x≤2。",
+      "difficulty": "hard",
+      "errorPath": "negative-reverse"
+    },
+    {
+      "id": "linear-inequality-solving-bm-5",
+      "type": "basic-mastery",
+      "challenge": "6-1",
+      "stem": "解 (x-1)/3<2",
+      "options": [
+        "x<5",
+        "x<7",
+        "x>7",
+        "x≤7"
+      ],
+      "answer": 1,
+      "explanation": "兩邊乘 3 得 x-1<6，再加 1 得 x<7。",
+      "difficulty": "medium",
+      "errorPath": "coefficient-inverse-operation"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "linear-inequality-solving-ci-1",
+      "type": "concept-id",
+      "challenge": "6-3",
+      "statement": "不等式兩邊同加一個數，不等號方向不變。",
+      "correctAnswer": true,
+      "explanation": "加減同一數保持大小關係。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "linear-inequality-solving-ci-2",
+      "type": "concept-id",
+      "challenge": "6-4",
+      "statement": "不等式兩邊同乘負數時，不等號方向要反轉。",
+      "correctAnswer": true,
+      "explanation": "例如 2<3 同乘 -1 後為 -2>-3。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "linear-inequality-solving-ci-3",
+      "type": "concept-id",
+      "challenge": "6-3",
+      "statement": "x≤4 在數線上以 4 的實心點並向左表示。",
+      "correctAnswer": true,
+      "explanation": "包含 4 用實心點，小於範圍向左。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "linear-inequality-solving-ci-4",
+      "type": "concept-id",
+      "challenge": "6-4",
+      "statement": "解 2x>8 時，因為除以 2，所以不等號要反轉。",
+      "correctAnswer": false,
+      "explanation": "只有乘除負數才反轉；2 是正數。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "linear-inequality-solving-ci-5",
+      "type": "concept-id",
+      "challenge": "6-3",
+      "statement": "應用題解出範圍後，若 x 代表人數，仍需取符合條件的整數。",
+      "correctAnswer": true,
+      "explanation": "人數不能取任意小數。",
+      "difficulty": "medium"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "linear-inequality-solving-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "6-5",
+      "problem": "解 x-5>2",
+      "wrongSolution": "寫成 x>2-5=-3",
+      "errorOptions": [
+        "-5 移項應變 +5，得 x>7",
+        "不等號應反轉",
+        "應除以 5",
+        "x 應為等號"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "兩邊同加 5 得 x>7。",
+      "difficulty": "easy",
+      "errorPath": "move-term-sign"
+    },
+    {
+      "id": "linear-inequality-solving-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "6-6",
+      "problem": "解 4x≤20",
+      "wrongSolution": "寫成 x≤20-4=16",
+      "errorOptions": [
+        "消去係數要除以 4，得 x≤5",
+        "應反轉不等號",
+        "20-4 算錯",
+        "應加 4"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "係數 4 以除法消去。",
+      "difficulty": "easy",
+      "errorPath": "coefficient-inverse-operation"
+    },
+    {
+      "id": "linear-inequality-solving-ed-3",
+      "type": "error-diagnosis",
+      "challenge": "6-5",
+      "problem": "解 -2x≤8",
+      "wrongSolution": "兩邊除以 -2，寫成 x≤-4",
+      "errorOptions": [
+        "除法算錯",
+        "除以負數忘了反轉，應 x≥-4",
+        "應寫 x≤4",
+        "不等式無解"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "乘除負數必須反轉不等號。",
+      "difficulty": "medium",
+      "errorPath": "negative-reverse"
+    },
+    {
+      "id": "linear-inequality-solving-ed-4",
+      "type": "error-diagnosis",
+      "challenge": "6-6",
+      "problem": "解 3x+2<11",
+      "wrongSolution": "移項寫成 3x<11+2",
+      "errorOptions": [
+        "+2 移項應變 -2，得 3x<9",
+        "應反轉不等號",
+        "3 應加到右邊",
+        "應用等號"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "兩邊同減 2。",
+      "difficulty": "medium",
+      "errorPath": "move-term-sign"
+    },
+    {
+      "id": "linear-inequality-solving-ed-5",
+      "type": "error-diagnosis",
+      "challenge": "6-5",
+      "problem": "解 6-3x>0",
+      "wrongSolution": "得到 -3x>-6 後寫 x>-2",
+      "errorOptions": [
+        "-6 算錯",
+        "除以負數未反轉，應 x<2",
+        "應得 x<-2",
+        "應用實心點"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "6-3x>0 得 -3x>-6，除以 -3 後 x<2。",
+      "difficulty": "hard",
+      "errorPath": "negative-reverse"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "linear-inequality-solving-ca-1",
+      "type": "context-application",
+      "challenge": "6-7",
+      "scenario": "計程車起跳 70 元，每公里加 20 元，預算不超過 250 元，行駛 x 公里。",
+      "question": "最多可行駛幾公里？",
+      "options": [
+        "8 公里",
+        "9 公里",
+        "12 公里",
+        "16 公里"
+      ],
+      "answer": 1,
+      "explanation": "70+20x≤250，20x≤180，x≤9。",
+      "difficulty": "medium",
+      "errorPath": "coefficient-inverse-operation"
+    },
+    {
+      "id": "linear-inequality-solving-ca-2",
+      "type": "context-application",
+      "challenge": "6-8",
+      "scenario": "電梯限重 600 公斤，已有 455 公斤，每位學生 48 公斤。",
+      "question": "最多還可進入幾位學生？",
+      "options": [
+        "2 位",
+        "3 位",
+        "4 位",
+        "5 位"
+      ],
+      "answer": 1,
+      "explanation": "455+48x≤600，x≤145/48≈3.02，取整數最多 3 位。",
+      "difficulty": "hard",
+      "errorPath": "solution-interpretation"
+    },
+    {
+      "id": "linear-inequality-solving-ca-3",
+      "type": "context-application",
+      "challenge": "6-7",
+      "scenario": "小考至少 70 分才及格，已得 18 分作業分，考試分數為 x。",
+      "question": "考試至少幾分？",
+      "options": [
+        "52 分",
+        "70 分",
+        "88 分",
+        "42 分"
+      ],
+      "answer": 0,
+      "explanation": "18+x≥70，所以 x≥52。",
+      "difficulty": "easy",
+      "errorPath": "move-term-sign"
+    },
+    {
+      "id": "linear-inequality-solving-ca-4",
+      "type": "context-application",
+      "challenge": "6-8",
+      "scenario": "租借單車 30 元，之後每小時 25 元，帶 130 元。",
+      "question": "最多租幾小時？",
+      "options": [
+        "3 小時",
+        "4 小時",
+        "5 小時",
+        "6 小時"
+      ],
+      "answer": 1,
+      "explanation": "30+25x≤130，25x≤100，x≤4。",
+      "difficulty": "medium",
+      "errorPath": "coefficient-inverse-operation"
+    },
+    {
+      "id": "linear-inequality-solving-ca-5",
+      "type": "context-application",
+      "challenge": "6-7",
+      "scenario": "某數的 5 倍減 4 小於 21。",
+      "question": "這個數 x 的範圍為何？",
+      "options": [
+        "x<5",
+        "x≤5",
+        "x>5",
+        "x<17/5"
+      ],
+      "answer": 0,
+      "explanation": "5x-4<21，5x<25，x<5。",
+      "difficulty": "medium",
+      "errorPath": "move-term-sign"
+    }
+  ]
+}
