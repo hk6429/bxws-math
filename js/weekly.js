@@ -174,6 +174,9 @@ export function submitWeeklyResult(pct, totalSec, maxStreak, audit = {}) {
   return record;
 }
 
+// D1 只掛在 Cloudflare Pages 專案上，寫死絕對網址讓 Vercel/Netlify 版也能跨網域打同一份資料庫
+const API_BASE = "https://bxws-math.pages.dev";
+
 // 房間代碼：老師/學生自訂的班級代碼，用來把伺服器排行榜分組
 export function getRoomCode() {
   return store.read("roomCode", null);
@@ -190,7 +193,7 @@ export async function syncWeeklyResultToServer(record) {
   const roomCode = getRoomCode();
   if (!roomCode || !record) return { skipped: true };
   try {
-    const res = await fetch("/api/weekly-submit", {
+    const res = await fetch(`${API_BASE}/api/weekly-submit`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
@@ -215,7 +218,7 @@ export async function syncWeeklyResultToServer(record) {
 export async function fetchWeeklyBoard(roomCode, week = isoWeekKey()) {
   if (!roomCode) return null;
   try {
-    const res = await fetch(`/api/weekly-board?roomCode=${encodeURIComponent(roomCode)}&week=${encodeURIComponent(week)}`);
+    const res = await fetch(`${API_BASE}/api/weekly-board?roomCode=${encodeURIComponent(roomCode)}&week=${encodeURIComponent(week)}`);
     if (!res.ok) return null;
     const data = await res.json();
     return data.results ?? null;

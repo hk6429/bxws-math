@@ -38,7 +38,7 @@ test("有房間代碼時會 POST 到 /api/weekly-submit 並帶上正確欄位", 
     return { ok: true, json: async () => ({ ok: true, updated: true, flagged: false, reasons: [] }) };
   };
   const result = await syncWeeklyResultToServer({ pct: 90, totalSec: 40, maxStreak: 5, questionCount: 10 });
-  assert.equal(capturedUrl, "/api/weekly-submit");
+  assert.equal(capturedUrl, "https://bxws-math.pages.dev/api/weekly-submit");
   assert.equal(capturedBody.roomCode, "302班");
   assert.equal(capturedBody.week, isoWeekKey());
   assert.equal(capturedBody.pct, 90);
@@ -54,7 +54,7 @@ test("伺服器離線或連線失敗時安靜回報 offline，不丟出例外", 
 
 test("fetchWeeklyBoard 正常時回傳 results 陣列，失敗時回傳 null 供呼叫端 fallback", async () => {
   globalThis.fetch = async (url) => {
-    assert.match(url, /^\/api\/weekly-board\?roomCode=304%E7%8F%AD&week=/);
+    assert.match(url, /^https:\/\/bxws-math\.pages\.dev\/api\/weekly-board\?roomCode=304%E7%8F%AD&week=/);
     return { ok: true, json: async () => ({ ok: true, results: [{ name: "小安", pct: 90 }] }) };
   };
   const results = await fetchWeeklyBoard("304班");

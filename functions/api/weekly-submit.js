@@ -1,7 +1,11 @@
-import { json, normStr, clampInt, assessImplausibleResult } from "./_util.js";
+import { json, normStr, clampInt, assessImplausibleResult, corsPreflight } from "./_util.js";
 
 const ROOM_CODE_RE = /^[0-9A-Za-z一-鿿_-]{1,40}$/;
 const WEEK_RE = /^\d{4}W\d{2}$/;
+
+export async function onRequestOptions() {
+  return corsPreflight();
+}
 
 export async function onRequestPost({ request, env }) {
   let body;
