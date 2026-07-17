@@ -22,11 +22,23 @@ export function flattenBank(bank) {
   ];
 }
 
-export function insertMentorCoachingQuestion(queue, currentIndex, basicQuestions, mentorLine, random = Math.random) {
-  const candidates = (basicQuestions ?? []).filter((question) => question?.type === "basic-mastery");
+export function mentorStrategyLine(nodeName, question, fallback) {
+  const explanation = typeof question?.explanation === "string" ? question.explanation.trim() : "";
+  return explanation ? `${nodeName}：先抓關鍵步驟——${explanation}` : fallback;
+}
+
+export function insertMentorCoachingQuestion(
+  queue, currentIndex, basicQuestions, mentorLine, random = Math.random, trigger = {}
+) {
+  const allCandidates = (basicQuestions ?? []).filter((question) => question?.type === "basic-mastery");
+  const sameSkill = trigger.nodeId
+    ? allCandidates.filter((question) => question._nodeId === trigger.nodeId)
+    : [];
+  const candidates = sameSkill.length > 0 ? sameSkill : allCandidates;
   if (candidates.length === 0) return false;
   const picked = candidates[Math.min(candidates.length - 1, Math.floor(random() * candidates.length))];
-  queue.splice(currentIndex + 1, 0, { ...picked, _mentorCoaching: true, _mentorLine: mentorLine });
+  const specificLine = mentorStrategyLine(trigger.nodeName ?? trigger.nodeId ?? "這一題", picked, mentorLine);
+  queue.splice(currentIndex + 1, 0, { ...picked, _mentorCoaching: true, _mentorLine: specificLine });
   return true;
 }
 

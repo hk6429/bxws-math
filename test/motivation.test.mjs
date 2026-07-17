@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { insertMentorCoachingQuestion } from "../js/quiz-loader.js";
+import { insertMentorCoachingQuestion, mentorStrategyLine } from "../js/quiz-loader.js";
 import { pickQuote, QUOTES } from "../js/quotes.js";
 
 test("三連錯介入會把一題基本精通題插到下一題", () => {
@@ -14,6 +14,29 @@ test("三連錯介入會把一題基本精通題插到下一題", () => {
   assert.equal(queue[1].id, "basic-1");
   assert.equal(queue[1]._mentorCoaching, true);
   assert.equal(queue[1]._mentorLine, "別急，我們先喘口氣，練一題簡單的");
+});
+
+test("三連錯導師只取觸發技能的基礎題，並引用題庫現有解題步驟", () => {
+  const queue = [{ id: "hard", _nodeId: "fraction-mul", type: "error-diagnosis" }];
+  const inserted = insertMentorCoachingQuestion(queue, 0, [
+    { id: "other", _nodeId: "decimal-mul", type: "basic-mastery", explanation: "小數點步驟" },
+    { id: "fraction", _nodeId: "fraction-mul", type: "basic-mastery", explanation: "分子乘分子，分母乘分母，再約分" },
+  ], "加油", () => 0, { nodeId: "fraction-mul", nodeName: "分數乘除" });
+
+  assert.equal(inserted, true);
+  assert.equal(queue[1].id, "fraction");
+  assert.equal(queue[1]._mentorLine, "分數乘除：先抓關鍵步驟——分子乘分子，分母乘分母，再約分");
+  assert.equal(mentorStrategyLine("分數乘除", queue[1], "加油"), queue[1]._mentorLine);
+});
+
+test("每個已上線技能的基礎題都有可供導師引用的數學策略", async () => {
+  const tree = JSON.parse(await readFile(new URL("../data/skilltree.json", import.meta.url), "utf8"));
+  const liveNodes = tree.strands.flatMap((strand) => strand.nodes).filter((node) => !node.contentPending);
+  for (const node of liveNodes) {
+    const bank = JSON.parse(await readFile(new URL(`../data/questions/${node.id}.json`, import.meta.url), "utf8"));
+    assert.ok(bank.basicMastery.length > 0, node.id);
+    assert.ok(bank.basicMastery.every((question) => question.explanation?.trim()), node.id);
+  }
 });
 
 test("零星或一星結算一定取用安慰語錄", () => {

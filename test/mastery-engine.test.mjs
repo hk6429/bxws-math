@@ -4,6 +4,9 @@ import {
   buildAdaptiveSequence,
   challengeWeight,
   evaluateMastery,
+  MASTER_TRIAL_TIERS,
+  masterTrialTierState,
+  settleMasterTrialTier,
   masteryThresholdFor,
   nextStepRecommendation,
 } from "../js/mastery-engine.js";
@@ -84,6 +87,49 @@ test("精熟判定同時通過 A–E 才 mastered", () => {
   assert.deepEqual(result.conditions, { A: true, B: true, C: true, D: true, E: true });
   assert.deepEqual(result.missingChallenges, []);
   assert.equal(result.stars, 3);
+});
+
+test("作答中回報 A–E 五條精熟條件的連續進度", () => {
+  const attempts = masteredAttempts(10).map((attempt, index) => ({
+    ...attempt,
+    correct: index < 8,
+  }));
+  const result = evaluateMastery(attempts, {
+    tier: "elem-high",
+    challengeIds: ["1-1", "1-2", "1-3", "1-4"],
+    gateChallenges: ["1-4"],
+  });
+
+  assert.deepEqual(Object.keys(result.criteriaProgress), ["A", "B", "C", "D", "E"]);
+  assert.equal(result.criteriaProgress.A.current, 80);
+  assert.equal(result.criteriaProgress.A.target, 80);
+  assert.equal(result.criteriaProgress.B.current, 10);
+  assert.equal(result.criteriaProgress.B.target, 12);
+  assert.equal(result.criteriaProgress.D.typeCurrent, 4);
+  assert.equal(result.criteriaProgress.D.typeTarget, 4);
+  assert.match(result.criteriaProgress.C.label, /挑戰覆蓋/);
+  assert.ok(Object.values(result.criteriaProgress).every((criterion) =>
+    criterion.pct >= 0 && criterion.pct <= 100
+  ));
+});
+
+test("賢者試煉銅銀金逐階解鎖，題數門檻與首通獎勵逐階提高", () => {
+  assert.deepEqual(MASTER_TRIAL_TIERS.map((tier) => [tier.id, tier.questionCount, tier.passPct, tier.reward.stardust]), [
+    ["bronze", 10, 0.8, 10],
+    ["silver", 15, 0.9, 25],
+    ["gold", 20, 1, 50],
+  ]);
+  assert.deepEqual(masterTrialTierState({}).map((tier) => tier.unlocked), [true, false, false]);
+
+  const bronze = settleMasterTrialTier("bronze", 0.8, {});
+  assert.equal(bronze.passed, true);
+  assert.equal(bronze.rewardStardust, 10);
+  assert.deepEqual(masterTrialTierState(bronze.records).map((tier) => tier.unlocked), [true, true, false]);
+
+  const replay = settleMasterTrialTier("bronze", 1, bronze.records);
+  assert.equal(replay.rewardStardust, 0);
+  const silver = settleMasterTrialTier("silver", 0.9, replay.records);
+  assert.deepEqual(masterTrialTierState(silver.records).map((tier) => tier.unlocked), [true, true, true]);
 });
 
 test("本輪剛完卷時，下一步引擎回傳完卷慶祝", () => {

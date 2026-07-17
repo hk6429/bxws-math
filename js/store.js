@@ -4,11 +4,13 @@ const MAX_BUNDLE_BYTES = 2 * 1024 * 1024;
 const MAX_VALUE_BYTES = 256 * 1024;
 const byteSize = (text) => new TextEncoder().encode(text).byteLength;
 const KEY_TYPES = {
+  activityStreak: "object",
   bestStreak: "number", progress: "progress", leitner: "object", activeSession: "nullable-object",
-  badges: "array", collection: "object", encounterPity: "number", encounterWins: "number",
+  badges: "array", collection: "object", encounterPity: "number", encounterPityByRarity: "object", encounterWins: "number",
   errorbook: "object", inkDays: "array", lastChallengeResult: "nullable-object",
   lastCreatedChallenge: "nullable-object", lastPlayed: "nullable-object", lastStrategy: "nullable-string",
   leaderboard: "array", manuscriptCare: "object", masterTrialBest: "nullable-object",
+  masterTrialTiers: "object",
   player: "nullable-string", playerId: "string", rareStampBook: "object", rareStamps: "array-or-object",
   schemaVersion: "number", seenTip: "boolean", sfxOn: "boolean", stardustBonus: "number",
   stardustMilestones: "object",
@@ -165,6 +167,31 @@ export function runMigrations(fromVersion = 0, tree = null, storage = localStora
 }
 
 export const store = { read, write };
+
+function activityDateKey(now) {
+  const date = new Date(now);
+  const pad = (value) => String(value).padStart(2, "0");
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+}
+
+function dateSerial(key) {
+  const [year, month, day] = key.split("-").map(Number);
+  return Math.floor(Date.UTC(year, month - 1, day) / 86400000);
+}
+
+export function getActivityStreak() {
+  return store.read("activityStreak", { count: 0, lastDate: null });
+}
+
+export function recordActivityStreak(now = Date.now()) {
+  const today = activityDateKey(now);
+  const current = getActivityStreak();
+  if (current.lastDate === today) return current;
+  const consecutive = current.lastDate && dateSerial(today) - dateSerial(current.lastDate) === 1;
+  const next = { count: consecutive ? current.count + 1 : 1, lastDate: today };
+  store.write("activityStreak", next);
+  return next;
+}
 
 export function exportNamespace(storage = localStorage) {
   const data = {};

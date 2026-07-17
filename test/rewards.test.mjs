@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { evaluateBadges } from "../js/achievements.js";
+import { BADGES, evaluateBadges } from "../js/achievements.js";
 import { claimStardustMilestones } from "../js/daily.js";
 
 function fakeStorage(entries = {}) {
@@ -41,6 +41,14 @@ test("四十到八十節點各有精熟里程碑", () => {
     [true, true, true, true, true]
   );
   assert.ok(!ids.includes("all-mastery"));
+});
+
+test("三十到八十節點每五個都有精熟里程碑", () => {
+  const ids = new Set(BADGES.map((badge) => badge.id));
+  [35, 45, 55, 65, 75].forEach((count) => {
+    const words = { 35: "thirty-five", 45: "forty-five", 55: "fifty-five", 65: "sixty-five", 75: "seventy-five" };
+    assert.ok(ids.has(`${words[count]}-mastery`));
+  });
 });
 
 test("每一座塔達到百分之百時都會各自獲得重燃章", () => {

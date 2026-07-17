@@ -1,17 +1,17 @@
 import { MANUSCRIPTS, RARE_STAMPS } from "./collection.js";
 
 const ROOM_META = {
-  "num-quantity": { icon: "⚖", title: "凡奇的秘數塔", voice: "「萬物皆可量，量過才算懂。」先別擦掉錯的那一筆，一稿一稿修到準" },
-  algebra: { icon: "✦", title: "格思的符文塔", voice: "「給未知一個名字，它就不再可怕。」不必重算整題，直取第一個不合理處" },
-  "space-shape": { icon: "🔮", title: "幾德的稜光塔", voice: "「線要站穩，光才走得直。」回到定義，一步步推演" },
-  "relation-pattern": { icon: "🌿", title: "斐蘿的藤紋塔", voice: "「看懂前三步，就能預言下一步。」把前幾項排整齊，規律自己會發芽" },
-  "data-uncertainty": { icon: "🎲", title: "帕嵐的星卜塔", voice: "「列清所有可能，再下判斷。」擲骰之前，先列表" },
+  "num-quantity": { icon: "⚖", title: "凡奇的秘數塔", voice: "「萬物皆可量。」先標單位，需要時統一單位，再依數量關係列式，最後用估算檢查答案大小。" },
+  algebra: { icon: "✦", title: "格思的符文塔", voice: "「給未知一個名字。」先設未知數，依題意列等式，等號兩邊做相同運算，解出後代回原題驗算。" },
+  "space-shape": { icon: "🔮", title: "幾德的稜光塔", voice: "「線要站穩，光才走得直。」先標出邊角與已知長度，對照定義，選對公式列式，最後檢查單位。" },
+  "relation-pattern": { icon: "🌿", title: "斐蘿的藤紋塔", voice: "「看懂前三步，就能預言下一步。」排前幾項，比較相鄰項的變化，寫出規則，再代回已知項驗證。" },
+  "data-uncertainty": { icon: "🎲", title: "帕嵐的星卜塔", voice: "「列清所有可能，再下判斷。」先確認總數與資料分類；求機率時，用有利結果數除以所有可能結果數。" },
 };
 
 const clamp01 = (n) => Math.max(0, Math.min(1, Number(n) || 0));
 const manuscriptNodeIds = new Set(MANUSCRIPTS.map((item) => item.id).filter((id) => id !== "master-trial"));
 const stampNodeIds = new Set(RARE_STAMPS
-  .map((stamp) => stamp.id.startsWith("stamp-") ? stamp.id.slice(6) : null)
+  .map((stamp) => stamp.workshop && stamp.id.startsWith("stamp-") ? stamp.id.slice(6) : null)
   .filter(Boolean));
 
 function roomStage(repairPct) {

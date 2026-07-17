@@ -52,6 +52,7 @@ export function getNodeStats(nodeId) {
     mastered: entry.mastered === true,
     stars: entry.stars ?? 0,
     conditions: entry.conditions ?? null,
+    criteriaProgress: entry.criteriaProgress ?? null,
     unmetConditions: entry.unmetConditions ?? [],
     remainingPracticeCount: entry.remainingPracticeCount ?? Math.max(0, 12 - (entry.totalAttempts ?? entry.attempts.length)),
     missingChallenges: entry.missingChallenges ?? [],

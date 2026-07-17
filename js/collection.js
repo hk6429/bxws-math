@@ -14,18 +14,44 @@ export const MANUSCRIPTS = [
   { id: "master-trial", sym: "∞", name: "雙導師聯名咒卷", hint: "賢者試煉正確率達九成，直接蠟封", desc: "凡奇執筆、格思驗算——星穹學院最珍貴的一卷。" },
 ];
 
-// 導師徽記匣：奇遇魔法陣答對 5% 機率掉當前節點主題徽記（10 次未掉保底必掉）
+export const STAMP_RARITIES = {
+  "普通": { dropRate: 0.12, pity: 5 },
+  "稀有": { dropRate: 0.05, pity: 15 },
+  "傳說": { dropRate: 0.02, pity: 30 },
+};
+
+// 五塔各 6 枚：3 普通、2 稀有、1 傳說。所有主題都來自現有節點與五導師世界觀。
 export const RARE_STAMPS = [
-  { id: "davinci-manuscript", sym: "🪶", name: "凡奇圖紋徽記", hint: "秘數塔的奇遇魔法陣裡等你" },
-  { id: "gauss-signature", sym: "Σ", name: "格思雷紋徽記", hint: "符文塔的奇遇魔法陣裡等你" },
-  { id: "stamp-fraction-unlike-denom", sym: "½", name: "通分之橋徽記", hint: "「異分母分數」的奇遇魔法陣裡等你" },
-  { id: "stamp-fraction-mul", sym: "¾", name: "切割乾酪徽記", hint: "「分數乘除」的奇遇魔法陣裡等你" },
-  { id: "stamp-decimal-mul", sym: "•", name: "小數羅盤徽記", hint: "「小數乘除」的奇遇魔法陣裡等你" },
-  { id: "stamp-ratio-rate", sym: "∶", name: "黃金比例徽記", hint: "「比與比值」的奇遇魔法陣裡等你" },
-  { id: "stamp-negative-number", sym: "−", name: "零下寒冰徽記", hint: "「負數」的奇遇魔法陣裡等你" },
-  { id: "stamp-proportion-eq", sym: "⚖", name: "等比天平徽記", hint: "「比例式」的奇遇魔法陣裡等你" },
-  { id: "stamp-algebra-symbol", sym: "𝑥", name: "未知數面具徽記", hint: "「代數符號」的奇遇魔法陣裡等你" },
-  { id: "stamp-linear-eq-1var", sym: "🗝", name: "解方程金鑰徽記", hint: "「一元一次方程式」的奇遇魔法陣裡等你" },
+  { id: "stamp-fraction-unlike-denom", sym: "½", name: "通分之橋徽記", hint: "異分母分數奇遇", rarity: "普通", mentor: "凡奇", workshop: true },
+  { id: "stamp-fraction-mul", sym: "¾", name: "切割乾酪徽記", hint: "分數乘除奇遇", rarity: "普通", mentor: "凡奇", workshop: true },
+  { id: "stamp-decimal-mul", sym: "•", name: "小數羅盤徽記", hint: "小數乘除奇遇", rarity: "普通", mentor: "凡奇", workshop: true },
+  { id: "stamp-ratio-rate", sym: "∶", name: "黃金比例徽記", hint: "比與比值奇遇", rarity: "稀有", mentor: "凡奇", workshop: true },
+  { id: "davinci-manuscript", sym: "🪶", name: "凡奇圖紋徽記", hint: "秘數塔奇遇", rarity: "稀有", mentor: "凡奇" },
+  { id: "num-tower-legend", sym: "⚖", name: "秘數塔心衡徽記", hint: "秘數塔傳說奇遇", rarity: "傳說", mentor: "凡奇" },
+  { id: "stamp-negative-number", sym: "−", name: "零下寒冰徽記", hint: "負數奇遇", rarity: "普通", mentor: "格思", workshop: true },
+  { id: "stamp-algebra-symbol", sym: "𝑥", name: "未知數面具徽記", hint: "代數符號奇遇", rarity: "普通", mentor: "格思", workshop: true },
+  { id: "stamp-linear-eq-1var", sym: "🗝", name: "解方程金鑰徽記", hint: "一元一次方程式奇遇", rarity: "普通", mentor: "格思", workshop: true },
+  { id: "stamp-proportion-eq", sym: "⚖", name: "等比天平徽記", hint: "比例式奇遇", rarity: "稀有", mentor: "格思", workshop: true },
+  { id: "gauss-signature", sym: "Σ", name: "格思雷紋徽記", hint: "符文塔奇遇", rarity: "稀有", mentor: "格思" },
+  { id: "algebra-tower-legend", sym: "✦", name: "符文塔真名徽記", hint: "符文塔傳說奇遇", rarity: "傳說", mentor: "格思" },
+  { id: "stamp-angle-degree", sym: "∠", name: "量角星光徽記", hint: "量角器與度奇遇", rarity: "普通", mentor: "幾德" },
+  { id: "stamp-circle-parts", sym: "◉", name: "圓心光輪徽記", hint: "圓的認識奇遇", rarity: "普通", mentor: "幾德" },
+  { id: "stamp-plane-area-formula", sym: "▱", name: "面積拼圖徽記", hint: "平面面積公式奇遇", rarity: "普通", mentor: "幾德" },
+  { id: "stamp-perp-parallel", sym: "⊥", name: "垂平雙光徽記", hint: "垂直與平行奇遇", rarity: "稀有", mentor: "幾德" },
+  { id: "stamp-solids-nets", sym: "⬡", name: "展開圖水晶徽記", hint: "立體展開圖奇遇", rarity: "稀有", mentor: "幾德" },
+  { id: "space-tower-legend", sym: "◇", name: "稜光塔公理徽記", hint: "稜光塔傳說奇遇", rarity: "傳說", mentor: "幾德" },
+  { id: "stamp-repeat-pattern", sym: "↻", name: "重複藤節徽記", hint: "重複規律奇遇", rarity: "普通", mentor: "斐蘿" },
+  { id: "stamp-growing-pattern", sym: "↗", name: "遞增星藤徽記", hint: "遞增規律奇遇", rarity: "普通", mentor: "斐蘿" },
+  { id: "stamp-input-output-table", sym: "↦", name: "輸入輸出葉徽記", hint: "輸入輸出表奇遇", rarity: "普通", mentor: "斐蘿" },
+  { id: "stamp-pattern-rule", sym: "n", name: "第 n 項藤紋徽記", hint: "規律通則奇遇", rarity: "稀有", mentor: "斐蘿" },
+  { id: "stamp-function-relation", sym: "f", name: "函數藤心徽記", hint: "函數關係奇遇", rarity: "稀有", mentor: "斐蘿" },
+  { id: "relation-tower-legend", sym: "🌿", name: "藤紋塔生長徽記", hint: "藤紋塔傳說奇遇", rarity: "傳說", mentor: "斐蘿" },
+  { id: "stamp-bar-chart-reading", sym: "▆", name: "長條星象徽記", hint: "長條圖奇遇", rarity: "普通", mentor: "帕嵐" },
+  { id: "stamp-line-chart-reading", sym: "⌁", name: "折線星跡徽記", hint: "折線圖奇遇", rarity: "普通", mentor: "帕嵐" },
+  { id: "stamp-mean-basic", sym: "x̄", name: "平均星秤徽記", hint: "平均數奇遇", rarity: "普通", mentor: "帕嵐" },
+  { id: "stamp-probability-basic", sym: "P", name: "機率星骰徽記", hint: "基礎機率奇遇", rarity: "稀有", mentor: "帕嵐" },
+  { id: "stamp-chance-sample-space", sym: "Ω", name: "樣本空間徽記", hint: "樣本空間奇遇", rarity: "稀有", mentor: "帕嵐" },
+  { id: "data-tower-legend", sym: "✧", name: "星卜塔全覽徽記", hint: "星卜塔傳說奇遇", rarity: "傳說", mentor: "帕嵐" },
 ];
 
 // 該節點對應的節點徽記；賢者試煉／每週學院盃掉導師徽記
@@ -53,6 +79,7 @@ export function resolveEncounterReward(nodeId, mascot, random = Math.random) {
   if (RARE_STAMPS.every((stamp) => owned[stamp.id])) {
     addStardust(3);
     store.write("encounterPity", 0);
+    store.write("encounterPityByRarity", { "普通": 0, "稀有": 0, "傳說": 0 });
     return {
       type: "stardust",
       amount: 3,
@@ -60,22 +87,28 @@ export function resolveEncounterReward(nodeId, mascot, random = Math.random) {
     };
   }
 
-  let pity = store.read("encounterPity", 0) + 1;
-  const shouldDrop = random() < 0.05 || pity >= 10;
-  if (!shouldDrop) {
-    store.write("encounterPity", pity);
+  const savedPity = store.read("encounterPityByRarity", {});
+  const pity = Object.fromEntries(Object.keys(STAMP_RARITIES).map((rarity) => [rarity, (savedPity[rarity] ?? 0) + 1]));
+  const roll = random();
+  const rarity = ["傳說", "稀有", "普通"].find((candidate) => {
+    const config = STAMP_RARITIES[candidate];
+    return RARE_STAMPS.some((stamp) => stamp.rarity === candidate && !owned[stamp.id])
+      && (pity[candidate] >= config.pity || roll < config.dropRate);
+  });
+  if (!rarity) {
+    store.write("encounterPityByRarity", pity);
     return null;
   }
 
-  let stamp = stampForNode(nodeId, mascot);
-  if (owned[stamp.id]) stamp = RARE_STAMPS.find((item) => !owned[item.id]) ?? null;
-  if (!stamp) {
-    store.write("encounterPity", pity);
-    return null;
-  }
-  pity = 0;
+  const preferred = stampForNode(nodeId, mascot);
+  const stamp = preferred?.rarity === rarity && !owned[preferred.id]
+    ? preferred
+    : RARE_STAMPS.find((item) => item.rarity === rarity && !owned[item.id]) ?? null;
+  if (!stamp) return null;
+  pity[rarity] = 0;
   ownRareStamp(stamp.id);
-  store.write("encounterPity", pity);
+  store.write("encounterPityByRarity", pity);
+  store.write("encounterPity", 0);
   return { type: "stamp", stamp };
 }
 

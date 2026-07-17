@@ -3115,3 +3115,54 @@ body::before {
       linear-gradient(0deg, #4a3320, #6b4a2c 40%, #533a22) left 0 bottom 0 / 100% var(--rod-h) no-repeat;
   }
 }
+.mastery-progress-live {
+  margin: 10px 0 14px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  background: rgba(15, 24, 54, 0.72);
+}
+.mastery-progress-row {
+  display: grid;
+  grid-template-columns: 1.5rem minmax(80px, 0.7fr) minmax(160px, 2fr);
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+.mastery-progress-row meter { width: 100%; }
+.mastery-progress-row small { line-height: 1.35; }
+@media (max-width: 560px) {
+  .mastery-progress-row { grid-template-columns: 1.5rem 1fr; }
+  .mastery-progress-row small { grid-column: 2; }
+}
+.stamp-rarity { margin-top: 4px; font-size: 0.78rem; font-weight: 700; }
+.rarity-普通 { color: #d9e3ee; }
+.rarity-稀有 { color: #76c7ff; }
+.rarity-傳說 { color: #ffd36a; text-shadow: 0 0 8px rgba(255, 211, 106, 0.45); }
+.activity-streak-home {
+  display: inline-flex;
+  align-self: flex-start;
+  margin: 8px 0 12px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(255, 157, 66, 0.18);
+  color: #ffd08a;
+  font-weight: 800;
+}
+.onboarding-walkthrough {
+  width: min(92vw, 480px);
+  padding: 24px;
+  border: 1px solid rgba(255, 211, 106, 0.55);
+  border-radius: 18px;
+  background: #111b38;
+  color: #f7f2e6;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+}
+.onboarding-walkthrough::backdrop { background: rgba(4, 8, 22, 0.82); }
+.onboarding-walkthrough button { margin-top: 14px; }
+.score-disclosure {
+  margin: 8px 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}

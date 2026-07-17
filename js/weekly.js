@@ -47,10 +47,19 @@ export async function buildWeeklySession(nodeIds, sessionSize = 10) {
   return all.slice(0, Math.min(sessionSize, all.length));
 }
 
-const RESULT_SALT = "bxws-weekly-2026";
+function deriveResultKey(week) {
+  let mixed = hashSeed(week) ^ 0x9e3779b9;
+  mixed = Math.imul(mixed ^ (mixed >>> 13), 0x85ebca6b);
+  mixed = Math.imul(mixed ^ (mixed >>> 16), 0xc2b2ae35);
+  const rotatedWeek = [...week].reverse().map((char, index) =>
+    String.fromCharCode(char.charCodeAt(0) ^ ((index * 17 + 43) & 31))
+  ).join("");
+  return `${(mixed >>> 0).toString(36)}:${hashSeed(rotatedWeek).toString(36)}`;
+}
 
-function resultChecksum(text) {
-  return (hashSeed(`${RESULT_SALT}|${text}`) % (36 ** 3)).toString(36).toUpperCase().padStart(3, "0");
+function resultChecksum(week, body) {
+  const key = deriveResultKey(week);
+  return (hashSeed(`${key}|${body}|${key.length}`) % (36 ** 3)).toString(36).toUpperCase().padStart(3, "0");
 }
 
 // 戰績碼 V2：base36 本體＋混入週次與站點鹽的三位檢查碼
@@ -61,7 +70,7 @@ export function encodeResult(pct, totalSec, maxStreak) {
     Math.min(99, maxStreak);
   const body = value.toString(36).toUpperCase();
   const week = isoWeekKey();
-  const check = resultChecksum(`${week}|${body}`);
+  const check = resultChecksum(week, body);
   return `${week}-V2${body}${check}`;
 }
 
@@ -71,7 +80,7 @@ export function decodeResult(code) {
   const m = /^(\d{4}W\d{2})-V2([0-9A-Z]+)([0-9A-Z]{3})$/.exec(normalized);
   if (!m) return null;
   const value = parseInt(m[2], 36);
-  if (Number.isNaN(value) || resultChecksum(`${m[1]}|${m[2]}`) !== m[3]) return null;
+  if (Number.isNaN(value) || resultChecksum(m[1], m[2]) !== m[3]) return null;
   const result = {
     week: m[1],
     pct: Math.floor(value / 1000000),
@@ -81,6 +90,33 @@ export function decodeResult(code) {
   // 合理範圍檢查，擋掉碰巧過檢查碼的亂碼
   if (result.pct > 100 || result.maxStreak > 99) return null;
   return result;
+}
+
+export function assessImplausibleResult(record = {}) {
+  const reasons = [];
+  const pct = Number(record.pct);
+  const totalSec = Number(record.totalSec);
+  const questionCount = Number(record.questionCount);
+  if (Number.isFinite(questionCount) && questionCount > 0) {
+    if (Number.isFinite(totalSec) && totalSec < questionCount * 1.2) reasons.push("平均作答時間過短");
+    if (pct === 100 && questionCount < 5) reasons.push("全對但題數過少");
+  }
+  const answerLog = Array.isArray(record.answerLog) ? record.answerLog : null;
+  if (answerLog) {
+    const logCorrect = answerLog.filter((answer) => answer.c === 1 || answer.correct === true).length;
+    const logPct = answerLog.length > 0 ? Math.round((logCorrect / answerLog.length) * 100) : 0;
+    const logSec = answerLog.reduce((sum, answer) => sum + Math.max(0, Number(answer.ms) || 0), 0) / 1000;
+    if ((Number.isFinite(questionCount) && questionCount !== answerLog.length)
+      || (Number.isFinite(pct) && pct !== logPct)
+      || (Number.isFinite(totalSec) && Math.abs(totalSec - logSec) > Math.max(2, logSec * 0.2))) {
+      reasons.push("分數或時間與作答紀錄不一致");
+    }
+    if (Number.isFinite(record.completedAt)
+      && answerLog.some((answer) => Number.isFinite(answer.at) && answer.at > record.completedAt)) {
+      reasons.push("作答時間戳晚於結算時間");
+    }
+  }
+  return { flagged: reasons.length > 0, reasons, flagLabel: reasons.length > 0 ? "⚠️ 建議複驗" : "" };
 }
 
 export function decodeClassResults(text) {
@@ -107,7 +143,8 @@ export function decodeClassResults(text) {
       invalidCount += 1;
       return;
     }
-    results.push({ ...decoded, code, name: name || null, lineNumber: index + 1 });
+    const audit = assessImplausibleResult({ ...decoded, questionCount: 10 });
+    results.push({ ...decoded, ...audit, code, name: name || null, lineNumber: index + 1 });
   });
   results.sort((a, b) => b.pct - a.pct || a.totalSec - b.totalSec || b.maxStreak - a.maxStreak);
   return { results, invalidCount };
@@ -118,14 +155,20 @@ export function getWeeklyBest() {
 }
 
 // 名次規則：正確率高者勝，同分比總秒數（快者勝）
-export function submitWeeklyResult(pct, totalSec, maxStreak) {
+export function submitWeeklyResult(pct, totalSec, maxStreak, audit = {}) {
   const current = getWeeklyBest();
   const better =
     !current ||
     pct > current.pct ||
     (pct === current.pct && totalSec < current.totalSec);
   if (!better) return current;
-  const record = { pct, totalSec, maxStreak, code: encodeResult(pct, totalSec, maxStreak) };
+  const completedAt = Date.now();
+  const questionCount = Number(audit.questionCount) || audit.answerLog?.length || 10;
+  const plausibility = assessImplausibleResult({ pct, totalSec, questionCount, completedAt, answerLog: audit.answerLog });
+  const record = {
+    pct, totalSec, maxStreak, questionCount, completedAt, ...plausibility,
+    code: encodeResult(pct, totalSec, maxStreak),
+  };
   store.write(`weekly:${isoWeekKey()}`, record);
   return record;
 }

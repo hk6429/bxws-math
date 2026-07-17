@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { decodeClassResults, decodeResult, encodeResult } from "../js/weekly.js";
+import { assessImplausibleResult, decodeClassResults, decodeResult, encodeResult } from "../js/weekly.js";
 
 test("每週戰績碼使用混入週次的三位檢查碼並可還原", () => {
   const code = encodeResult(80, 47, 6);
@@ -48,4 +48,42 @@ test("學院盃畫面提供不落盤的多行班級戰績牆", async () => {
   assert.match(app, /有 \$\{parsed\.invalidCount\} 行無法辨識/);
   const wallBlock = app.slice(app.indexOf("const wall ="), app.indexOf("container.prepend(card)"));
   assert.doesNotMatch(wallBlock, /store\.write/);
+});
+
+test("可疑戰績會標記過短時間、過少題全對與作答紀錄不一致", () => {
+  const audit = assessImplausibleResult({
+    pct: 100,
+    totalSec: 30,
+    questionCount: 3,
+    completedAt: 5000,
+    answerLog: [
+      { c: 1, ms: 1000, at: 6000 },
+      { c: 1, ms: 1000, at: 7000 },
+      { c: 1, ms: 1000, at: 8000 },
+    ],
+  });
+  assert.equal(audit.flagged, true);
+  assert.ok(audit.reasons.some((reason) => reason.includes("題數過少")));
+  assert.ok(audit.reasons.some((reason) => reason.includes("作答紀錄")));
+  assert.ok(audit.reasons.some((reason) => reason.includes("時間戳")));
+
+  const wall = decodeClassResults(`小快,${encodeResult(100, 3, 10)}`);
+  assert.equal(wall.results[0].flagged, true);
+  assert.match(wall.results[0].flagLabel, /建議複驗/);
+});
+
+test("戰績碼檢查鍵由週次與多個數值動態混合，不再放單一明文鹽", async () => {
+  const weekly = await readFile(new URL("../js/weekly.js", import.meta.url), "utf8");
+  assert.doesNotMatch(weekly, /bxws-weekly-2026/);
+  assert.doesNotMatch(weekly, /RESULT_SALT/);
+  assert.match(weekly, /deriveResultKey/);
+  assert.match(weekly, /0x9e3779b9/);
+  assert.match(weekly, /0x85ebca6b/);
+  assert.match(weekly, /0xc2b2ae35/);
+});
+
+test("班級戰績牆顯示建議複驗標記與學生自報揭露", async () => {
+  const app = await readFile(new URL("../js/app.js", import.meta.url), "utf8");
+  assert.match(app, /entry\.flagLabel/);
+  assert.match(app, /學生自行回報成績，未經伺服器驗證/);
 });

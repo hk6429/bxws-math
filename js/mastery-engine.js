@@ -39,6 +39,45 @@ const DEFAULT_TIER_THRESHOLDS = {
   "jhs-g7": 0.8,
 };
 
+export const MASTER_TRIAL_TIERS = [
+  { id: "bronze", name: "銅章試煉", questionCount: 10, passPct: 0.8, reward: { stardust: 10 }, requires: null },
+  { id: "silver", name: "銀章試煉", questionCount: 15, passPct: 0.9, reward: { stardust: 25 }, requires: "bronze" },
+  { id: "gold", name: "金章試煉", questionCount: 20, passPct: 1, reward: { stardust: 50 }, requires: "silver" },
+];
+
+export function masterTrialTierState(records = {}) {
+  return MASTER_TRIAL_TIERS.map((tier) => ({
+    ...tier,
+    unlocked: tier.requires === null || records[tier.requires]?.cleared === true,
+    cleared: records[tier.id]?.cleared === true,
+    bestPct: records[tier.id]?.bestPct ?? 0,
+  }));
+}
+
+export function settleMasterTrialTier(tierId, pct, records = {}, at = Date.now()) {
+  const tier = MASTER_TRIAL_TIERS.find((item) => item.id === tierId);
+  if (!tier) return { passed: false, rewardStardust: 0, records };
+  const state = masterTrialTierState(records).find((item) => item.id === tierId);
+  if (!state?.unlocked) return { passed: false, rewardStardust: 0, records };
+  const prior = records[tierId] ?? {};
+  const passed = pct >= tier.passPct;
+  const firstClear = passed && prior.cleared !== true;
+  return {
+    passed,
+    firstClear,
+    rewardStardust: firstClear ? tier.reward.stardust : 0,
+    records: {
+      ...records,
+      [tierId]: {
+        ...prior,
+        cleared: prior.cleared === true || passed,
+        bestPct: Math.max(prior.bestPct ?? 0, pct),
+        ...(firstClear ? { clearedAt: at } : {}),
+      },
+    },
+  };
+}
+
 export function masteryThresholdFor(node = {}, threshold) {
   if (Number.isFinite(threshold)) return threshold;
   if (Number.isFinite(node.masteryThreshold)) return node.masteryThreshold;
@@ -146,6 +185,53 @@ export function evaluateMastery(attempts = [], node = {}, threshold, alreadyMast
       .every((type) => windowTypes.has(type)) && conceptAndDiagnosisCorrect >= 3,
     E: !hasChallengeData || errorLocks.length === 0,
   };
+  const clampPct = (value) => Math.max(0, Math.min(100, Math.round(value)));
+  const requiredChallengeCount = Math.max(0, challenges.length - 1);
+  const passedGateCount = gates.filter((gate) => latestByChallenge.get(gate)?.correct).length;
+  const typeCoverage = windowTypes.size;
+  const criteriaProgress = {
+    A: {
+      pct: lowShortcut ? 100 : clampPct(Math.min(window.length / 10, accuracy / resolvedThreshold) * 100),
+      current: Math.round(accuracy * 100),
+      target: Math.round(resolvedThreshold * 100),
+      label: `答對率 ${Math.round(accuracy * 100)}%/${Math.round(resolvedThreshold * 100)}%（近 ${window.length}/10 題）`,
+    },
+    B: {
+      pct: lowShortcut ? 100 : clampPct((scoredAttempts.length / 12) * 100),
+      current: Math.min(scoredAttempts.length, 12),
+      target: 12,
+      label: `練習量 ${Math.min(scoredAttempts.length, 12)}/12 題`,
+    },
+    C: {
+      pct: !hasChallengeData
+        ? 100
+        : clampPct(Math.min(
+          requiredChallengeCount === 0 ? 1 : challengeCorrect / requiredChallengeCount,
+          gates.length === 0 ? 1 : passedGateCount / gates.length
+        ) * 100),
+      current: challengeCorrect,
+      target: requiredChallengeCount,
+      gateCurrent: passedGateCount,
+      gateTarget: gates.length,
+      label: !hasChallengeData
+        ? "挑戰覆蓋：舊題庫無挑戰編號，直接通過"
+        : `挑戰覆蓋 ${challengeCorrect}/${requiredChallengeCount}・守門 ${passedGateCount}/${gates.length}`,
+    },
+    D: {
+      pct: clampPct(Math.min(typeCoverage / 4, conceptAndDiagnosisCorrect / 3) * 100),
+      current: conceptAndDiagnosisCorrect,
+      target: 3,
+      typeCurrent: Math.min(typeCoverage, 4),
+      typeTarget: 4,
+      label: `題型覆蓋 ${Math.min(typeCoverage, 4)}/4・概念與找錯答對 ${Math.min(conceptAndDiagnosisCorrect, 3)}/3`,
+    },
+    E: {
+      pct: !hasChallengeData || errorLocks.length === 0 ? 100 : 0,
+      current: errorLocks.length,
+      target: 0,
+      label: errorLocks.length === 0 ? "錯誤墨路已清空" : `待淨化錯誤墨路 ${errorLocks.length} 條`,
+    },
+  };
   const mastered = alreadyMastered || Object.values(conditions).every(Boolean);
   const unmetConditions = Object.entries(conditions)
     .filter(([, met]) => !met)
@@ -169,6 +255,7 @@ export function evaluateMastery(attempts = [], node = {}, threshold, alreadyMast
     masteryPct: Math.round(accuracy * 100) / 100,
     stars: masteryStars(accuracy),
     conditions,
+    criteriaProgress,
     unmetConditions,
     remainingPracticeCount,
     missingChallenges,
