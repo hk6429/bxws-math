@@ -93,7 +93,7 @@ test("本輪剛完卷時，下一步引擎回傳完卷慶祝", () => {
   });
 });
 
-test("只剩一兩個條件時，下一步引擎顯示還差幾題", () => {
+test("只剩一兩個條件時，下一步引擎不承諾精確題數", () => {
   assert.deepEqual(nextStepRecommendation({
     mastered: false,
     unmetConditions: ["B"],
@@ -101,7 +101,7 @@ test("只剩一兩個條件時，下一步引擎顯示還差幾題", () => {
   }, false), {
     kind: "close",
     remaining: 2,
-    label: "還差 2 題就完卷——補上！",
+    label: "再練一輪，很可能就完卷！",
   });
 });
 

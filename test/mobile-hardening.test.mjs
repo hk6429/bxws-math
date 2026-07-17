@@ -16,7 +16,8 @@ test("手機 topbar、卷軸卡與教學泡泡具有窄螢幕覆寫", () => {
   assert.match(mobile, /main\s*\{\s*padding:\s*8px/);
   assert.match(mobile, /padding-left:\s*14px/);
   assert.match(mobile, /left:\s*6px/);
-  assert.match(mobile, /\.tip-bubble[\s\S]*white-space:\s*nowrap/);
+  assert.match(mobile, /\.tip-bubble\s*\{[^}]*position:\s*static[^}]*white-space:\s*normal/);
+  assert.doesNotMatch(mobile, /\.tip-bubble\s*\{[^}]*top:\s*calc/);
 });
 
 test("觸控、iOS 字級、overscroll 與行動版 SVG 降級規則存在", () => {

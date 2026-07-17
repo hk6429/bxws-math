@@ -29,10 +29,22 @@ test("班級戰績牆逐行容錯，依正確率與速度排序", () => {
   assert.deepEqual(wall.results.map((result) => result.lineNumber), [5, 1, 3]);
 });
 
+test("班級戰績牆接受姓名逗號或空白格式，空姓名維持行號相容", () => {
+  const alice = encodeResult(100, 55, 6);
+  const bob = encodeResult(80, 20, 8);
+  const unnamed = encodeResult(70, 30, 3);
+  const wall = decodeClassResults(`小安,${alice}\n小博 ${bob}\n,${unnamed}`);
+
+  assert.deepEqual(wall.results.map((result) => result.name), ["小安", "小博", null]);
+  assert.deepEqual(wall.results.map((result) => result.lineNumber), [1, 2, 3]);
+});
+
 test("學院盃畫面提供不落盤的多行班級戰績牆", async () => {
   const app = await readFile(new URL("../js/app.js", import.meta.url), "utf8");
   assert.match(app, /textarea\.id = "class-result-codes"/);
   assert.match(app, /decodeClassResults\(textarea\.value\)/);
+  assert.match(app, /姓名,戰績咒文/);
+  assert.match(app, /entry\.name \|\| `第 \$\{entry\.lineNumber\} 行`/);
   assert.match(app, /有 \$\{parsed\.invalidCount\} 行無法辨識/);
   const wallBlock = app.slice(app.indexOf("const wall ="), app.indexOf("container.prepend(card)"));
   assert.doesNotMatch(wallBlock, /store\.write/);

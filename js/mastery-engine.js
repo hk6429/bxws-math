@@ -52,7 +52,7 @@ export function nextStepRecommendation(stats = {}, wasMastered = false) {
   const unmet = stats.unmetConditions ?? [];
   if (!stats.mastered && unmet.length >= 1 && unmet.length <= 2) {
     const remaining = Math.max(1, Math.ceil(Number(stats.remainingPracticeCount) || 1));
-    return { kind: "close", remaining, label: `還差 ${remaining} 題就完卷——補上！` };
+    return { kind: "close", remaining, label: "再練一輪，很可能就完卷！" };
   }
   return { kind: "retry", label: "⚡ 同節點再練一輪" };
 }

@@ -337,7 +337,11 @@ async function takeTodayFirstStep(dueCount) {
   }
   const recommended = recommendedNextNode(tree);
   if (!recommended) return;
-  const lastStrategy = store.read("lastStrategy", null) ?? "slow";
+  const lastStrategy = store.read("lastStrategy", null);
+  if (lastStrategy === null) {
+    startQuiz(recommended);
+    return;
+  }
   await startQuizWithStrategy(recommended, lastStrategy);
 }
 
@@ -564,7 +568,7 @@ function makeWeeklyCard(container) {
   const textarea = document.createElement("textarea");
   textarea.id = "class-result-codes";
   textarea.rows = 5;
-  textarea.placeholder = "每行貼上一組戰績咒文";
+  textarea.placeholder = "每行輸入：姓名,戰績咒文（也可用空白分隔；舊的純咒文仍可用）";
   secureCodeInput(textarea);
   const renderWall = document.createElement("button");
   renderWall.className = "daily-btn";
@@ -577,7 +581,8 @@ function makeWeeklyCard(container) {
     const list = document.createElement("ol");
     parsed.results.forEach((entry) => {
       const row = document.createElement("li");
-      row.textContent = `第 ${entry.lineNumber} 行・${entry.pct}%・${entry.totalSec} 秒・連詠 ${entry.maxStreak}`;
+      const studentLabel = entry.name || `第 ${entry.lineNumber} 行`;
+      row.textContent = `${studentLabel}・${entry.pct}%・${entry.totalSec} 秒・連詠 ${entry.maxStreak}`;
       list.appendChild(row);
     });
     if (parsed.results.length > 0) wallOutput.appendChild(list);
@@ -675,10 +680,19 @@ function startSprintTimer() {
 
 function maybeShowOnboardingTip() {
   if (store.read("seenTip", false)) return;
-  const root = document.getElementById("tip-bubble-root");
+  let root = document.getElementById("tip-bubble-root");
+  if (!root) {
+    root = document.createElement("div");
+    root.id = "tip-bubble-root";
+  }
+  document.querySelector(".home-brief-dock")?.after(root);
+  const isBrandNew = store.read("lastStrategy", null) === null;
+  const message = isBrandNew
+    ? "這是你的星圖。找不到從哪開始？點上面的「今日第一步」就對了。"
+    : "想接著練？點上面的「今日第一步」，導師會帶你走到最適合的地方。";
   const box = document.createElement("div");
   box.className = "tip-bubble";
-  box.innerHTML = `星穹學院的咒卷庫攤開了！點一下發亮的咒卷，接下凡奇導師喚醒到一半的題目吧。<br /><button>知道了</button>`;
+  box.innerHTML = `${message}<br /><button>知道了</button>`;
   box.querySelector("button").addEventListener("click", () => {
     box.remove();
     store.write("seenTip", true);
@@ -845,6 +859,7 @@ function renderCurrentQuestion(focusStem = false) {
     }));
   }
   const card = renderQuestion(question, (isCorrect, meta) => handleAnswer(question, isCorrect, meta), session.mascot, opts);
+  if (question._mentorCoaching) card.classList.add("mentor-coaching-question");
   if (session.streak >= 3) card.classList.add("streak-active");
   if (session.streak >= 5) card.classList.add("streak-hot");
   quizArea.appendChild(card);
@@ -996,6 +1011,7 @@ function finishSession() {
     currentStreak: session.maxStreak,
     masterTrialPassed: isMasterTrial && session.roundTotal > 0 && roundPct >= 0.9,
     encounterWins: store.read("encounterWins", 0),
+    rooms: workshop.rooms,
     workshopRestored: workshop.allRestored,
     sparring: session.kind === "challenge",
   };
@@ -1049,6 +1065,11 @@ function finishSession() {
   const nextStep = session.kind === "node"
     ? nextStepRecommendation(stats, session.wasMasteredAtStart)
     : null;
+  const replayAction = isMasterTrial
+    ? { label: "⚡ 再挑戰一次賢者試煉", start: startMasterTrial }
+    : session.kind === "weekly"
+      ? { label: "⚡ 再挑戰一次本週學院盃", start: startWeeklySession }
+      : null;
   if (nextStep?.kind === "just-mastered") sfx.rare();
   const newDrops = session.kind === "node" || isMasterTrial
     ? evaluateCollection(session.node.id, stats, ctx)
@@ -1067,10 +1088,16 @@ function finishSession() {
     retryBtn.textContent = nextStep.label;
     retryBtn.addEventListener("click", () => startQuizWithStrategy(session.node, session.strategy ?? "slow"));
     quizArea.appendChild(retryBtn);
+  } else if (replayAction) {
+    const replayBtn = document.createElement("button");
+    replayBtn.className = "q-next";
+    replayBtn.textContent = replayAction.label;
+    replayBtn.addEventListener("click", replayAction.start);
+    quizArea.appendChild(replayBtn);
   }
 
   const backBtn = document.createElement("button");
-  backBtn.className = `q-next${nextStep ? " q-next-secondary" : ""}`;
+  backBtn.className = `q-next${nextStep || replayAction ? " q-next-secondary" : ""}`;
   backBtn.textContent = "回魔法星圖";
   backBtn.addEventListener("click", goHome);
   quizArea.appendChild(backBtn);
@@ -1271,6 +1298,24 @@ function makeSummary(stats, newBadges, newDrops = [], weeklyRecord = null, chall
       textContent: strategyBits.note,
     }));
   }
+
+  const shareText = `我在步學吾數答對了 ${session.roundCorrect}/${session.roundTotal} 題，連詠 ×${session.maxStreak}！`;
+  const shareBtn = document.createElement("button");
+  shareBtn.className = "daily-btn summary-share-btn";
+  shareBtn.textContent = "分享這次成果";
+  shareBtn.addEventListener("click", async () => {
+    if (typeof navigator.share === "function") {
+      try {
+        await navigator.share({ title: "步學吾數", text: shareText });
+      } catch { /* 使用者取消分享時維持原畫面 */ }
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(shareText);
+      shareBtn.textContent = "已複製成果！";
+    } catch { /* 剪貼簿不可用時維持原樣 */ }
+  });
+  box.appendChild(shareBtn);
 
   if (newBadges.length > 0) {
     const badgeList = document.createElement("div");

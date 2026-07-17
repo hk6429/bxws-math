@@ -32,9 +32,16 @@ test("零星或一星結算一定取用安慰語錄", () => {
 });
 
 test("作答流程在三連錯後插入導師陪練，且不持久化連錯計數", async () => {
-  const app = await readFile(new URL("../js/app.js", import.meta.url), "utf8");
+  const [app, css] = await Promise.all([
+    readFile(new URL("../js/app.js", import.meta.url), "utf8"),
+    readFile(new URL("../css/style.css", import.meta.url), "utf8"),
+  ]);
   assert.match(app, /session\.consecutiveWrong >= 3/);
   assert.match(app, /insertMentorCoachingQuestion/);
   assert.match(app, /mentor-coaching-line/);
+  assert.match(app, /mentor-coaching-question/);
+  assert.match(css, /\.mentor-coaching-line\s*\{[\s\S]*linear-gradient/);
+  assert.match(css, /\.mentor-coaching-question\s*\{[\s\S]*animation:/);
+  assert.match(css, /@keyframes mentor-question-arrive[\s\S]*opacity:\s*0[\s\S]*transform:/);
   assert.match(app, /const \{ qStartAt, consecutiveWrong, mentorPool, \.\.\.rest \} = session/);
 });

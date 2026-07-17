@@ -87,14 +87,27 @@ export function decodeClassResults(text) {
   const results = [];
   let invalidCount = 0;
   String(text).split(/\r?\n/).forEach((raw, index) => {
-    const code = raw.trim();
-    if (!code) return;
+    const line = raw.trim();
+    if (!line) return;
+    let name = "";
+    let code = line;
+    const commaIndex = line.indexOf(",");
+    if (commaIndex >= 0) {
+      name = line.slice(0, commaIndex).trim();
+      code = line.slice(commaIndex + 1).trim();
+    } else {
+      const parts = line.split(/\s+/);
+      if (parts.length > 1) {
+        code = parts.pop();
+        name = parts.join(" ").trim();
+      }
+    }
     const decoded = decodeResult(code);
     if (!decoded || decoded.error) {
       invalidCount += 1;
       return;
     }
-    results.push({ ...decoded, code, lineNumber: index + 1 });
+    results.push({ ...decoded, code, name: name || null, lineNumber: index + 1 });
   });
   results.sort((a, b) => b.pct - a.pct || a.totalSec - b.totalSec || b.maxStreak - a.maxStreak);
   return { results, invalidCount };

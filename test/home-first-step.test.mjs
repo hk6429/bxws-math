@@ -29,6 +29,16 @@ test("今日第一步依序檢查斷點、到期複習、推薦節點", async ()
   const block = app.slice(start, app.indexOf("\n}", start) + 2);
   assert.ok(block.indexOf("activeSession") < block.indexOf("dueCount > 0"));
   assert.ok(block.indexOf("dueCount > 0") < block.indexOf("recommendedNextNode"));
+  assert.match(block, /lastStrategy === null[\s\S]*startQuiz\(recommended\)/);
   assert.match(block, /startQuizWithStrategy\(recommended, lastStrategy\)/);
   assert.match(app, /textContent = "今日第一步"/);
+});
+
+test("新手提示改指向今日第一步，回訪者也不會收到矛盾指令", async () => {
+  const app = await readFile(new URL("../js/app.js", import.meta.url), "utf8");
+  const start = app.indexOf("function maybeShowOnboardingTip");
+  const block = app.slice(start, app.indexOf("\n}", start) + 2);
+  assert.match(block, /store\.read\("lastStrategy", null\) === null/);
+  assert.match(block, /今日第一步/);
+  assert.doesNotMatch(block, /喚醒到一半/);
 });

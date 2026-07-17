@@ -2383,21 +2383,55 @@ input, select, textarea, button { font: inherit; }
     right: 6px;
   }
   .tip-bubble {
-    top: calc(env(safe-area-inset-top) + 116px);
-    right: 8px;
-    bottom: auto;
-    left: 8px;
+    position: static;
+    inset: auto;
     width: auto;
     max-width: none;
+    margin: 10px 0 18px;
     padding: 7px 9px;
     font-size: 0.8rem;
     line-height: 1.2;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    transform: none;
   }
   .tip-bubble br { display: none; }
   .tip-bubble button { min-height: 34px; margin-left: 6px; padding: 3px 8px; }
+}
+
+/* 三連錯後，導師以獨立符紙接住孩子，再讓暖身題柔和進場。 */
+.mentor-coaching-line {
+  max-width: 520px;
+  margin: 4px auto 14px;
+  padding: 12px 16px;
+  color: #3f3158;
+  background: linear-gradient(160deg, #f2eafd, #dfd2f4);
+  border: 1px solid rgba(143, 111, 212, 0.42);
+  border-radius: 8px 5px 9px 6px;
+  box-shadow: 2px 3px 0 rgba(59, 44, 84, 0.18);
+  font-family: var(--font-hand);
+  text-align: left;
+  animation: mentor-line-arrive 360ms ease-out both;
+}
+.mentor-coaching-line::before {
+  content: "✦ 導師陪練";
+  display: block;
+  margin-bottom: 4px;
+  color: #7655a4;
+  font-weight: 800;
+}
+.mentor-coaching-question {
+  animation: mentor-question-arrive 420ms ease-out both;
+}
+@keyframes mentor-line-arrive {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes mentor-question-arrive {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mentor-coaching-line, .mentor-coaching-question { animation: none !important; }
 }
 
 /* ---------- 15. Wave 2：無障礙工具 ---------- */
