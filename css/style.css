@@ -52,10 +52,29 @@ html { font-size: var(--base-font-size); }
 .accessibility-settings summary { cursor: pointer; font-weight: 700; }
 .accessibility-settings fieldset { margin: 10px 0; }
 .accessibility-settings label { display: inline-flex; gap: 6px; align-items: center; margin: 5px 12px 5px 0; }
-.combo-break { animation: combo-break-shake 420ms ease-out; }
-@keyframes combo-break-shake { 0%,100% { transform: translateX(0); } 30% { transform: translateX(-5px); } 65% { transform: translateX(4px); } }
-html[data-sprint-warning="off"] .quiz-timer.timer-hot { color: inherit; animation: none; }
-html[data-combo-break-effect="off"] .combo-break { animation: none; }
+.combo-break { animation: combo-break-shake 480ms ease-out; }
+@keyframes combo-break-shake {
+  0%, 100% { transform: translateX(0); background-color: transparent; box-shadow: none; }
+  18% { transform: translateX(-10px) rotate(-0.3deg); background-color: rgba(192, 57, 43, 0.2); box-shadow: inset 0 0 0 4px rgba(192, 57, 43, 0.45); }
+  38% { transform: translateX(9px) rotate(0.25deg); background-color: rgba(192, 57, 43, 0.12); }
+  58% { transform: translateX(-6px); }
+  78% { transform: translateX(3px); }
+}
+html[data-sprint-warning="off"] .quiz-timer.timer-hot {
+  color: #c8cbd3;
+  animation: none !important;
+  background-color: transparent;
+  box-shadow: none;
+  transform: none;
+  transition: none;
+}
+html[data-combo-break-effect="off"] .combo-break {
+  animation: none !important;
+  transform: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  transition: none !important;
+}
 .teacher-main { max-width: 980px; margin: 0 auto; padding: 24px; }
 .teacher-panel { padding: 24px; border-radius: 12px; background: var(--paper-bright, #fff); color: var(--ink, #2f271d); }
 .teacher-panel form, .teacher-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; margin: 14px 0; }
@@ -369,11 +388,24 @@ main { padding: 24px; max-width: 960px; margin: 0 auto; }
 
 .lock-tap-tip {
   transform: translate(-50%, -170%) rotate(-2deg);
-  max-width: 160px;
+  width: max-content;
+  max-width: 220px;
   white-space: normal;
   text-align: center;
   z-index: 40;
   animation: sticky-drop 0.25s cubic-bezier(.34,1.4,.64,1);
+}
+.lock-diagnostic-btn {
+  margin-top: 8px;
+  min-height: 36px;
+  padding: 6px 10px;
+  border: 2px solid var(--cp-blue);
+  border-radius: 8px;
+  background: var(--cp-blue);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 /* 終局：大師試煉邀請函 */
@@ -509,10 +541,13 @@ main { padding: 24px; max-width: 960px; margin: 0 auto; }
   font-weight: bold;
   margin-bottom: 10px;
 }
-.quiz-timer.timer-hot { color: var(--cp-red); animation: timer-pulse 0.6s infinite alternate; }
-@keyframes timer-pulse {
-  from { opacity: 1; }
-  to { opacity: 0.55; }
+.quiz-timer.timer-hot {
+  color: #ff5b46;
+  animation: timer-warning-flash 0.48s steps(2, end) infinite;
+}
+@keyframes timer-warning-flash {
+  0%, 100% { color: #ff5b46; background-color: rgba(160, 28, 20, 0.1); box-shadow: 0 0 0 0 rgba(255, 91, 70, 0); }
+  50% { color: #fff3b0; background-color: rgba(192, 57, 43, 0.42); box-shadow: 0 0 0 4px rgba(255, 91, 70, 0.2); }
 }
 
 .strategy-note {
@@ -1184,6 +1219,20 @@ main { padding: 24px; max-width: 960px; margin: 0 auto; }
 @keyframes shaving-burst {
   0% { transform: translate(0, 0) rotate(0deg) scale(var(--sc, 1)); opacity: 1; }
   100% { transform: translate(var(--dx), var(--dy)) rotate(var(--rot)) scale(0.4); opacity: 0; }
+}
+.correct-edge-flash {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  border: 8px solid rgba(255, 224, 122, 0.85);
+  box-shadow: inset 0 0 36px rgba(127, 227, 255, 0.55), 0 0 24px rgba(255, 224, 122, 0.5);
+  animation: correct-edge-flash 0.55s ease-out forwards;
+}
+@keyframes correct-edge-flash {
+  0% { opacity: 0; transform: scale(1.015); }
+  20% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1); }
 }
 
 /* 連對 5+ 升溫 */
@@ -2565,7 +2614,7 @@ input, select, textarea, button { font: inherit; }
 
 /* 減少動態時移除會殘留的儀式粒子 */
 @media (prefers-reduced-motion: reduce) {
-  .halo-ripple, .pshaving, .spark { display: none !important; }
+  .halo-ripple, .pshaving, .spark, .correct-edge-flash { display: none !important; }
 }
 
 /* 一般亮色區域的策略文字對比 */
@@ -3149,9 +3198,16 @@ body::before {
 }
 .mastery-progress-row meter { width: 100%; }
 .mastery-progress-row small { line-height: 1.35; }
+.mastery-encouragement {
+  grid-column: 3;
+  color: #ffe29a;
+  font-size: var(--fs-caption);
+  line-height: 1.35;
+}
 @media (max-width: 560px) {
   .mastery-progress-row { grid-template-columns: 1.5rem 1fr; }
   .mastery-progress-row small { grid-column: 2; }
+  .mastery-encouragement { grid-column: 2; }
 }
 .stamp-rarity { margin-top: 4px; font-size: 0.78rem; font-weight: 700; }
 .rarity-普通 { color: #d9e3ee; }
@@ -3194,3 +3250,40 @@ body::before {
 .room-sync-box label { display: block; margin-bottom: 6px; font-size: 0.85rem; }
 .room-sync-box input { width: 100%; max-width: 220px; margin-right: 8px; }
 .room-sync-output { margin-top: 8px; }
+
+/* ===== 希臘神話分支領地背景 ===== */
+.skill-map > .realm-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.28;
+  pointer-events: none;
+}
+.skill-map > svg { position: relative; z-index: 1; }
+
+/* ===== 奧林帕斯世界觀介紹 ===== */
+.mythos-lore {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
+  gap: 20px;
+  align-items: center;
+  margin: 0 0 22px;
+  padding: 18px;
+  border: 1px solid rgba(255, 211, 106, 0.38);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(28, 32, 63, 0.94), rgba(55, 41, 72, 0.9));
+}
+.mythos-style-figure { margin: 0; min-width: 0; }
+.mythos-style-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+.mythos-lore-copy h3 { margin: 0 0 10px; color: #ffe4a3; }
+.mythos-lore-copy p { margin: 0; line-height: 1.8; color: #eee7da; }
+@media (max-width: 720px) {
+  .mythos-lore { grid-template-columns: 1fr; }
+}

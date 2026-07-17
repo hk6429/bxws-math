@@ -1,6 +1,8 @@
 import { isDue, getBox, hasRecord, getBoxState } from "./leitner.js";
 import { store } from "./store.js";
-import { activeErrorLocks, buildAdaptiveSequence, prereqQuickCheckPassed } from "./mastery-engine.js";
+import {
+  activeErrorLocks, buildAdaptiveSequence, prereqQuickCheckPassed, prioritizeBasicWarmup,
+} from "./mastery-engine.js";
 import { validateQuestionBank } from "./schema.js";
 
 const bankCache = {};
@@ -118,7 +120,8 @@ export async function buildSession(nodeId, sessionSize = 8, strategy = "slow", e
     if (aDue) return getBox(b.id) - getBox(a.id); // 到期題中，記憶最成熟（高盒）者最急
     return getBox(a.id) - getBox(b.id);
   });
-  return ordered.slice(0, Math.min(targetSize, ordered.length));
+  const outputSize = Math.min(targetSize, ordered.length);
+  return prioritizeBasicWarmup(ordered, [...repairQuestions, ...rest], outputSize);
 }
 
 // 今日補墨：跨節點蒐集「作答過且到期」的複習題（高盒優先）

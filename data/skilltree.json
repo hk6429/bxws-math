@@ -98,10 +98,10 @@
       "name": "代數",
       "nodes": [
         { "id": "algebra-symbol", "name": "代數符號", "tier": "jhs-g7", "prereq": ["negative-number"] },
-        { "id": "linear-eq-1var", "name": "一元一次方程式", "tier": "jhs-g7", "prereq": ["algebra-symbol"] },
-        { "id": "linear-equation-modeling", "name": "一元一次方程式建模", "tier": "jhs-g7", "prereq": ["linear-eq-1var"], "gateChallenges": ["4-6", "4-8"] },
-        { "id": "linear-inequality-meaning", "name": "一元一次不等式的意義", "tier": "jhs-g7", "prereq": ["linear-eq-1var", "negative-number"], "gateChallenges": ["5-6", "5-8"] },
-        { "id": "linear-inequality-solving", "name": "一元一次不等式的解與應用", "tier": "jhs-g7", "prereq": ["linear-inequality-meaning"], "gateChallenges": ["6-6", "6-8"] }
+        { "id": "linear-eq-1var", "name": "一元一次方程式", "tier": "jhs-g7", "prereq": ["algebra-symbol"], "diagnosticPrereq": ["algebra-symbol"] },
+        { "id": "linear-equation-modeling", "name": "一元一次方程式建模", "tier": "jhs-g7", "prereq": ["linear-eq-1var"], "diagnosticPrereq": ["linear-eq-1var"], "gateChallenges": ["4-6", "4-8"] },
+        { "id": "linear-inequality-meaning", "name": "一元一次不等式的意義", "tier": "jhs-g7", "prereq": ["linear-eq-1var", "negative-number"], "diagnosticPrereq": ["linear-eq-1var", "negative-number"], "gateChallenges": ["5-6", "5-8"] },
+        { "id": "linear-inequality-solving", "name": "一元一次不等式的解與應用", "tier": "jhs-g7", "prereq": ["linear-inequality-meaning"], "diagnosticPrereq": ["linear-inequality-meaning"], "gateChallenges": ["6-6", "6-8"] }
       ]
     },
     {
@@ -155,15 +155,15 @@
         { "id": "bar-chart-reading", "name": "長條圖判讀", "tier": "elem-high", "prereq": ["data-table-basic"], "gateChallenges": ["2-6", "2-7"] },
         { "id": "line-chart-reading", "name": "折線圖判讀", "tier": "elem-high", "prereq": ["bar-chart-reading", "time-daily"], "gateChallenges": ["3-6", "3-7"] },
         { "id": "mean-basic", "name": "平均數", "tier": "elem-high", "prereq": ["data-table-basic", "mixed-four-ops"], "gateChallenges": ["4-6", "4-7"] },
-        { "id": "median-mode", "name": "中位數與眾數", "tier": "jhs-g7", "prereq": ["data-table-basic"], "gateChallenges": ["5-6", "5-7"] },
+        { "id": "median-mode", "name": "中位數與眾數", "tier": "jhs-g7", "prereq": ["data-table-basic"], "diagnosticPrereq": ["data-table-basic"], "gateChallenges": ["5-6", "5-7"] },
         { "id": "range-data-interpretation", "name": "全距與資料判讀", "tier": "jhs-g7", "prereq": ["mean-basic", "median-mode"], "gateChallenges": ["6-6", "6-7"] },
         { "id": "chance-sample-space", "name": "可能性與樣本空間", "tier": "elem-high", "prereq": ["fraction-equivalent"], "gateChallenges": ["7-6", "7-7"] },
-        { "id": "probability-basic", "name": "基礎機率", "tier": "jhs-g7", "prereq": ["chance-sample-space", "fraction-equivalent"], "gateChallenges": ["8-6", "8-7"] },
+        { "id": "probability-basic", "name": "基礎機率", "tier": "jhs-g7", "prereq": ["chance-sample-space", "fraction-equivalent"], "diagnosticPrereq": ["chance-sample-space", "fraction-equivalent"], "gateChallenges": ["8-6", "8-7"] },
         { "id": "simple-classification", "name": "簡單分類整理", "tier": "elem-low", "prereq": [], "gateChallenges": ["1-6", "1-8"], "contentPending": true },
         { "id": "pictogram-simple-table", "name": "圖像呈現與簡單表格", "tier": "elem-low", "prereq": ["simple-classification"], "gateChallenges": ["2-6", "2-8"], "contentPending": true },
         { "id": "table-reading-making", "name": "一維與二維表格", "tier": "elem-mid", "prereq": ["pictogram-simple-table"], "gateChallenges": ["3-6", "3-8"], "contentPending": true },
         { "id": "statistical-chart-design", "name": "資料蒐集與統計圖表", "tier": "jhs-g7", "prereq": ["data-table-basic", "bar-chart-reading", "line-chart-reading"], "gateChallenges": ["11-6", "11-8"], "contentPending": true },
-        { "id": "histogram-contingency", "name": "直方圖與列聯表", "tier": "jhs-g7", "prereq": ["statistical-chart-design", "median-mode"], "gateChallenges": ["12-6", "12-8"] }
+        { "id": "histogram-contingency", "name": "直方圖與列聯表", "tier": "jhs-g7", "prereq": ["statistical-chart-design", "median-mode"], "diagnosticPrereq": ["statistical-chart-design", "median-mode"], "gateChallenges": ["12-6", "12-8"] }
       ]
     }
   ]

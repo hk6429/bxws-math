@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>步學吾數・星穹魔法學院</title>
+  <title>步學吾數・奧林帕斯數術神殿</title>
   <link rel="canonical" href="https://bxws-math.vercel.app/" />
   <link rel="modulepreload" href="js/store.js" />
   <link rel="modulepreload" href="js/schema.js" />
@@ -17,8 +17,8 @@
   <header class="topbar">
     <h1>步學吾數</h1>
     <nav>
-      <button id="nav-home" aria-current="page">魔法星圖</button>
-      <button id="nav-workshop">學院五塔</button>
+      <button id="nav-home" aria-current="page">神話星圖</button>
+      <button id="nav-workshop">五座神殿</button>
       <button id="nav-dashboard">我的儀表板</button>
       <a class="teacher-link" href="teacher.html">教師成果頁</a>
       <button id="nav-sfx" class="nav-sfx" aria-label="音效開關" aria-pressed="false">🔇</button>
@@ -27,7 +27,16 @@
 
   <main>
     <section id="view-home" class="view active" aria-labelledby="home-heading">
-      <h2 id="home-heading" class="visually-hidden" tabindex="-1">魔法星圖</h2>
+      <h2 id="home-heading" class="visually-hidden" tabindex="-1">神話星圖</h2>
+      <section id="mythos-lore" class="mythos-lore" aria-labelledby="mythos-lore-heading">
+        <figure class="mythos-style-figure">
+          <img id="mythos-style-guide" src="assets/mythos/style-guide.png" alt="奧林帕斯數術神殿世界觀與角色風格總覽" loading="lazy" decoding="async" />
+        </figure>
+        <div class="mythos-lore-copy">
+          <h3 id="mythos-lore-heading">奧林帕斯數術神殿</h3>
+          <p>傳說奧林帕斯的智慧之火曾照亮每一條數術之路，直到混沌之霧封住五片領地。迷宮地底城的米諾陶洛斯守護數與量，斯芬克斯神殿以謎題考驗代數；獨眼巨人鍛造坊把空間與形狀鑄成精準器物，命運三女神紡織殿將關係與規律編入命線，德爾菲神諭殿則由皮媞亞與巨蟒辨讀資料與可能性。雅典娜派出五位智慧引路人，陪伴學徒閱讀神諭卷軸、破解題目，逐步喚醒沉睡的神殿。每一次計算、每一次驗證，都會留下神話印記；當五座神殿重新發光，學徒也將明白，真正的神力不是猜中答案，而是能說清楚自己的思考，並願意從錯誤中再走一步。在「步學吾數」，你不必一口氣征服整座奧林帕斯；只要今天比昨天多點亮一小段路，智慧女神的火炬就會始終在前方等你。</p>
+        </div>
+      </section>
       <details id="accessibility-settings" class="accessibility-settings">
         <summary>輔助設定</summary>
         <fieldset><legend>全站字級</legend>
@@ -42,7 +51,7 @@
     </section>
 
     <section id="view-quiz" class="view" aria-labelledby="quiz-node-name">
-      <h2 id="quiz-node-name" tabindex="-1">咒卷練功</h2>
+      <h2 id="quiz-node-name" tabindex="-1">神諭卷軸練功</h2>
       <span id="quiz-streak"></span>
       <div id="quiz-progressbar" class="quiz-progressbar" role="progressbar" aria-valuemin="1" aria-valuemax="1" aria-valuenow="1" aria-label="第 1 題，共 1 題"></div>
       <div id="quiz-live" role="status" aria-live="polite" class="visually-hidden"></div>
@@ -55,7 +64,7 @@
     </section>
 
     <section id="view-workshop" class="view" aria-labelledby="workshop-heading">
-      <h2 id="workshop-heading" class="visually-hidden" tabindex="-1">學院五塔</h2>
+      <h2 id="workshop-heading" class="visually-hidden" tabindex="-1">奧林帕斯五座神殿</h2>
       <div id="workshop-content"></div>
     </section>
   </main>

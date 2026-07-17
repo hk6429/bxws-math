@@ -14,7 +14,7 @@ function fakeStorage(entries = {}) {
   };
 }
 
-test("十枚徽記集齊後，奇遇答對改注入三粒星屑", () => {
+test("十枚印記集齊後，神諭啟示答對改注入三粒星屑", () => {
   const fullBook = Object.fromEntries(RARE_STAMPS.map((stamp) => [stamp.id, { at: 1 }]));
   globalThis.localStorage = fakeStorage({
     "bxws:rareStampBook": JSON.stringify(fullBook),
@@ -27,7 +27,7 @@ test("十枚徽記集齊後，奇遇答對改注入三粒星屑", () => {
   assert.deepEqual(reward, {
     type: "stardust",
     amount: 3,
-    message: "徽記已全數集齊，這次的魔力化為 3 粒星屑注入你的瓶中",
+    message: "印記已全數集齊，這次的魔力化為 3 粒星屑注入你的瓶中",
   });
   assert.equal(getStardustCount(), 4);
   assert.equal(JSON.parse(localStorage.getItem("bxws:encounterPity")), 0);

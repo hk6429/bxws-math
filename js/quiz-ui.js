@@ -5,8 +5,29 @@ function el(tag, className, text) {
   return node;
 }
 
+const GUARDIAN_IMAGES = {
+  "num-quantity": "assets/mythos/guardians/minotaur.png",
+  algebra: "assets/mythos/guardians/sphinx.png",
+  "space-shape": "assets/mythos/guardians/cyclops.png",
+  "relation-pattern": "assets/mythos/guardians/moirai.png",
+  "data-uncertainty": "assets/mythos/guardians/pythia.png",
+};
+
+export function guardianImageForStrand(strandId) {
+  return GUARDIAN_IMAGES[strandId] ?? null;
+}
+
 export function autoAdvanceDelay(isCorrect) {
   return isCorrect ? 800 : null;
+}
+
+export function masteryEncouragement(pct) {
+  const value = Math.max(0, Math.min(100, Number(pct) || 0));
+  if (value >= 100) return "這個技能你已經很熟了！";
+  if (value >= 80) return "再加把勁就滿分！";
+  if (value >= 50) return "已經走過一半，繼續保持！";
+  if (value > 0) return "有開始就很棒，再練幾題！";
+  return "先從第一題開始，我們慢慢來！";
 }
 
 function renderMedia(media, className) {
@@ -93,9 +114,10 @@ function removeAfterAnimation(node, fallbackMs) {
   setTimeout(() => node.remove(), fallbackMs);
 }
 
-// 答對彩鉛屑噴發：從正解按鈕位置隨機噴 12 顆（純 DOM 粒子，700ms 自毀）
+// 答對彩鉛屑噴發：從正解按鈕位置隨機噴發（純 DOM 粒子，800ms 自毀）
 const SHAVING_COLORS = ["var(--cp-red)", "var(--cp-green)", "var(--cp-blue)", "var(--cp-orange)", "var(--cp-yellow)"];
-function burstShavings(wrap, originEl, count = 12) {
+export const CORRECT_BURST_PARTICLE_COUNT = 20;
+function burstShavings(wrap, originEl, count = CORRECT_BURST_PARTICLE_COUNT) {
   const wrapRect = wrap.getBoundingClientRect();
   const rect = originEl?.getBoundingClientRect() ?? wrapRect;
   const ox = rect.left - wrapRect.left + rect.width / 2;
@@ -116,12 +138,21 @@ function burstShavings(wrap, originEl, count = 12) {
   }
 }
 
-function addMascotReaction(wrap, mascotVariant, isCorrect) {
-  if (!mascotVariant) return;
+function flashCorrectScreenEdge() {
+  if (!document.body?.appendChild) return;
+  const flash = el("span", "correct-edge-flash");
+  flash.setAttribute?.("aria-hidden", "true");
+  document.body.appendChild(flash);
+  removeAfterAnimation(flash, 650);
+}
+
+function addMascotReaction(wrap, mascotVariant, isCorrect, guardianStrand) {
+  const guardianImage = guardianImageForStrand(guardianStrand);
+  if (!guardianImage && !mascotVariant) return;
   const box = el("div", `q-mascot-react react-${isCorrect ? "happy" : "sad"}`);
   const img = document.createElement("img");
-  img.src = `assets/mascot/${mascotVariant}-${isCorrect ? "happy" : "sad"}.png`;
-  img.alt = "駐塔導師反應";
+  img.src = guardianImage ?? `assets/mascot/${mascotVariant}-${isCorrect ? "happy" : "sad"}.png`;
+  img.alt = "神殿守護者反應";
   img.onerror = () => { box.style.display = "none"; };
   box.appendChild(img);
   wrap.style.position = "relative";
@@ -132,7 +163,7 @@ export function renderQuestion(question, onAnswered, mascotVariant, opts = {}) {
   const wrap = el("div", `q-card type-${question.type}`);
   if (opts.encounter) {
     wrap.classList.add("q-encounter");
-    wrap.appendChild(el("div", "encounter-banner", "✦ 魔法陣突現！答對有特別徽記 ✦"));
+    wrap.appendChild(el("div", "encounter-banner", "✦ 神諭啟示降臨！答對有特別印記 ✦"));
   }
   const typeLabel = {
     "basic-mastery": "基本精通題",
@@ -149,13 +180,14 @@ export function renderQuestion(question, onAnswered, mascotVariant, opts = {}) {
 
   const handleAnswered = (isCorrect, answerMeta) => {
     explain.style.display = "block";
-    addMascotReaction(wrap, mascotVariant, isCorrect);
+    addMascotReaction(wrap, mascotVariant, isCorrect, opts.guardianStrand);
     if (isCorrect) {
       burstShavings(wrap, wrap.querySelector(".q-option.q-correct"));
+      flashCorrectScreenEdge();
     }
     if (opts.encounter) {
       if (isCorrect) {
-        wrap.appendChild(el("div", "encounter-stamp", "✦ 星光徽記"));
+        wrap.appendChild(el("div", "encounter-stamp", "✦ 星光印記"));
         for (let i = 0; i < 8; i++) {
           const spark = el("span", "spark", "✦");
           spark.style.animationDelay = `${i * 0.08}s`;

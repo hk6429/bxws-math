@@ -280,7 +280,7 @@ export function evaluateMastery(attempts = [], node = {}, threshold, alreadyMast
     E: `第 ${errorLocks.join("、")} 條墨路還沒亮，先做暖身題，再完成兩題找錯練習`,
   };
   const feedback = unmetConditions.length === 0
-    ? "五處星光都已點亮，這卷咒卷可以完卷。"
+    ? "五處星光都已點亮，這卷神諭卷軸可以完卷。"
     : `還沒完卷：${unmetConditions.map((condition) => details[condition]).join("；")}。`;
 
   return {
@@ -297,6 +297,35 @@ export function evaluateMastery(attempts = [], node = {}, threshold, alreadyMast
   };
 }
 
+export function prioritizeBasicWarmup(sequence = [], candidates = sequence, limit = sequence.length) {
+  const target = Math.min(2, Math.max(0, limit));
+  if (target === 0) return [];
+  const result = [...sequence];
+  const selected = result.filter((question) => question.type === "basic-mastery").slice(0, target);
+  const selectedIds = new Set(selected.map((question) => question.id));
+  const basicCandidates = candidates.filter((question) => (
+    question.type === "basic-mastery" && !selectedIds.has(question.id)
+  ));
+
+  for (const candidate of basicCandidates) {
+    if (selected.length >= target) break;
+    const sameChallengeIndex = candidate.challenge
+      ? result.findIndex((question) => (
+        question.challenge === candidate.challenge && !selectedIds.has(question.id)
+      ))
+      : -1;
+    if (sameChallengeIndex >= 0) result.splice(sameChallengeIndex, 1, candidate);
+    else if (!result.some((question) => question.id === candidate.id)) result.push(candidate);
+    selected.push(candidate);
+    selectedIds.add(candidate.id);
+  }
+
+  return [
+    ...selected,
+    ...result.filter((question) => !selectedIds.has(question.id)),
+  ].slice(0, limit);
+}
+
 export function buildAdaptiveSequence(questions, attempts = [], limit = 8, random = Math.random, node = {}) {
   const recent = attempts.slice(-10);
   const accuracy = recent.length === 0
@@ -305,12 +334,18 @@ export function buildAdaptiveSequence(questions, attempts = [], limit = 8, rando
   const eligibleQuestions = node.tier === "elem-low" && accuracy < 0.6
     ? questions.filter((question) => question.type !== "error-diagnosis")
     : questions;
+  const cooldownIds = new Set(attempts.slice(-6).map((attempt) => attempt.questionId));
+  const warmupCandidates = eligibleQuestions.filter((question) => !cooldownIds.has(question.id));
   const challengeQuestions = eligibleQuestions.filter((question) => question.challenge);
   if (challengeQuestions.length === 0) {
     if (!eligibleQuestions.some((question) => question.difficulty)) {
-      return eligibleQuestions.slice(0, limit);
+      return prioritizeBasicWarmup(eligibleQuestions.slice(0, limit), warmupCandidates, limit);
     }
-    return pickDifficultySequence(eligibleQuestions, accuracy, limit, random);
+    return prioritizeBasicWarmup(
+      pickDifficultySequence(eligibleQuestions, accuracy, limit, random),
+      warmupCandidates,
+      limit
+    );
   }
 
   const attemptedChallenges = new Set(attempts.map((attempt) => attempt.challenge).filter(Boolean));
@@ -320,7 +355,6 @@ export function buildAdaptiveSequence(questions, attempts = [], limit = 8, rando
     groups.get(question.challenge).push(question);
   }
 
-  const cooldownIds = new Set(attempts.slice(-6).map((attempt) => attempt.questionId));
   const errorLocks = activeErrorLocks(attempts);
   const remediation = errorLocks.length === 0 ? [] : eligibleQuestions.filter((question) =>
     question.type === "error-diagnosis"
@@ -356,5 +390,5 @@ export function buildAdaptiveSequence(questions, attempts = [], limit = 8, rando
     queue.push(question);
     queuedIds.add(question.id);
   }
-  return queue;
+  return prioritizeBasicWarmup(queue, warmupCandidates, limit);
 }

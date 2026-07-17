@@ -60,6 +60,7 @@ export function isNodeMastered(nodeId, tree, progress = getProgress()) {
 
 export function isNodeUnlocked(node, tree, progress = getProgress()) {
   if (node.contentPending) return false;
+  if (progress[node.id]?.diagnosticUnlocked === true) return true;
   if (!node.prereq || node.prereq.length === 0) return true;
   return node.prereq.every((id) => isNodeMastered(id, tree, progress));
 }

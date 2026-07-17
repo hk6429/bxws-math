@@ -1,4 +1,5 @@
-import { allNodes, nodeState, getNodeMastery, getProgress } from "./schema.js";
+import { allNodes, nodeState, getNodeMastery, getProgress, isNodeMastered } from "./schema.js";
+import { hasPrerequisiteDiagnostic } from "./prereq-diagnostic.js";
 
 // ── 魔法星空圖版面常數 ──
 const HALO_R = 22;          // 星軌（進度環）半徑
@@ -14,6 +15,20 @@ const MAX_NODES_PER_ROW = 5;
 const LABEL_CHARS_PER_LINE = 8;
 const LABEL_LINE_HEIGHT = 16;
 const MAX_BG_STARS = 80;    // 每個 strand SVG 背景星數上限
+const REALM_BACKGROUNDS = {
+  "num-quantity": "assets/mythos/realms/labyrinth-bg.png",
+  algebra: "assets/mythos/realms/sphinx-temple-bg.png",
+  "space-shape": "assets/mythos/realms/cyclops-forge-bg.png",
+  "relation-pattern": "assets/mythos/realms/moirai-hall-bg.png",
+  "data-uncertainty": "assets/mythos/realms/delphi-oracle-bg.png",
+};
+const GUARDIAN_IMAGES = {
+  "num-quantity": "assets/mythos/guardians/minotaur.png",
+  algebra: "assets/mythos/guardians/sphinx.png",
+  "space-shape": "assets/mythos/guardians/cyclops.png",
+  "relation-pattern": "assets/mythos/guardians/moirai.png",
+  "data-uncertainty": "assets/mythos/guardians/pythia.png",
+};
 
 function el(tag, className, text) {
   const node = document.createElement(tag);
@@ -135,11 +150,13 @@ export function masteryThresholdForNode(node, tree) {
   return tree.masteryThresholds?.[node.tier] ?? tree.masteryThreshold ?? 0.8;
 }
 
-function lockReasonText(node, tree, nodesById) {
-  if (node.contentPending) return "星屑未凝，先去別的咒卷練功吧！";
+export function lockedNodeMessage(node, tree, progress, nodesById) {
+  if (node.contentPending) return `「${node.name}」題庫尚未完成，現在還不能進入`;
   if (!node.prereq || node.prereq.length === 0) return "";
-  const names = node.prereq.map((id) => nodesById[id]?.name ?? id);
-  return `先精通「${names.join("、")}」解鎖`;
+  const names = node.prereq
+    .filter((id) => !isNodeMastered(id, tree, progress))
+    .map((id) => `「${nodesById[id]?.name ?? id}」`);
+  return names.length > 0 ? `先精通${names.join("、")}才能解鎖` : "";
 }
 
 let sketchDefsInjected = false;
@@ -328,7 +345,7 @@ function makeNodeStar(state, strandId, twinkleIndex) {
 // ── 點亮儀式：render 間 diff 出「這次新精熟」的節點 ──
 let lastMasteredIds = null;
 
-export function renderSkillTree(container, tree, onSelectNode) {
+export function renderSkillTree(container, tree, onSelectNode, onStartDiagnostic) {
   sketchDefsInjected = false;
   container.innerHTML = "";
   const progress = getProgress();
@@ -363,6 +380,15 @@ export function renderSkillTree(container, tree, onSelectNode) {
     const mapWrap = el("div", "skill-map");
     const containerWidth = Math.floor(mapWrap.getBoundingClientRect().width || container.clientWidth || MIN_MAP_WIDTH);
     const { positions, width, height } = layoutNodes(strand.nodes, nodesById, containerWidth);
+
+    const realmBackground = document.createElement("img");
+    realmBackground.className = "realm-background";
+    realmBackground.src = REALM_BACKGROUNDS[strand.id];
+    realmBackground.alt = "";
+    realmBackground.loading = "lazy";
+    realmBackground.decoding = "async";
+    realmBackground.onerror = () => { realmBackground.hidden = true; };
+    mapWrap.appendChild(realmBackground);
 
     const svg = svgEl("svg", {
       viewBox: `0 0 ${width} ${height}`,
@@ -404,7 +430,12 @@ export function renderSkillTree(container, tree, onSelectNode) {
         frontierAssigned = true;
       }
 
-      const lockReason = lockReasonText(node, tree, nodesById);
+      const lockReason = lockedNodeMessage(node, tree, progress, nodesById);
+      const diagnosticAction = state === "locked"
+        && hasPrerequisiteDiagnostic(node)
+        && typeof onStartDiagnostic === "function"
+        ? () => onStartDiagnostic(node)
+        : null;
       const progressPct = Math.round(Math.min(1, mastery / masteryThreshold) * 100);
       const stateLabel = state === "mastered" ? "已精熟" : state === "unlocked" ? "可挑戰" : "尚未解鎖";
       const g = svgEl("g", {
@@ -462,25 +493,25 @@ export function renderSkillTree(container, tree, onSelectNode) {
 
       g.addEventListener("click", () => {
         if (state === "unlocked" || state === "mastered") onSelectNode(node);
-        else if (lockReason) showLockTapTip(mapWrap, pos, lockReason);
+        else if (lockReason) showLockTapTip(mapWrap, pos, lockReason, diagnosticAction);
       });
       g.addEventListener("keydown", (event) => {
         if (event.key !== "Enter" && event.key !== " ") return;
         event.preventDefault();
         if (state === "unlocked" || state === "mastered") onSelectNode(node);
-        else if (lockReason) showLockTapTip(mapWrap, pos, lockReason);
+        else if (lockReason) showLockTapTip(mapWrap, pos, lockReason, diagnosticAction);
       });
       svg.appendChild(g);
     });
 
     mapWrap.appendChild(svg);
 
-    if (frontierNode && visuals.mascot) {
+    if (frontierNode && GUARDIAN_IMAGES[strand.id]) {
       const pos = positions[frontierNode.id];
       const mascot = el("div", "map-mascot");
       const img = document.createElement("img");
-      img.src = `assets/mascot/${visuals.mascot}-idle.png`;
-      img.alt = "駐塔導師";
+      img.src = GUARDIAN_IMAGES[strand.id];
+      img.alt = `${strand.name}守護者`;
       img.onerror = () => { mascot.style.display = "none"; };
       mascot.appendChild(img);
       mascot.style.left = `${pos.x}px`;
@@ -500,10 +531,12 @@ export function renderSkillTree(container, tree, onSelectNode) {
 
 // 觸控裝置點鎖住的星星沒有 hover title 可看，補一個會自動消失的提示泡泡
 let activeLockTapTip = null;
-function showLockTapTip(mapWrap, pos, reason) {
+function showLockTapTip(mapWrap, pos, reason, onStartDiagnostic) {
   activeLockTapTip?.remove();
-  const tip = el("div", "node-suggested-tip lock-tap-tip", `🔒 ${reason}`);
+  const tip = el("div", "node-suggested-tip lock-tap-tip");
   tip.setAttribute("role", "status");
+  tip.setAttribute("aria-live", "polite");
+  tip.appendChild(el("div", "lock-tap-message", `🔒 ${reason}`));
   tip.style.left = `${pos.x}px`;
   tip.style.top = `${pos.y}px`;
   if (pos.y < 150) tip.classList.add("lock-tap-tip-below");
@@ -512,10 +545,20 @@ function showLockTapTip(mapWrap, pos, reason) {
   const dismiss = () => {
     if (activeLockTapTip === tip) activeLockTapTip = null;
     tip.remove();
-    document.removeEventListener("click", dismiss, true);
+    document.removeEventListener("click", dismiss);
   };
+  if (onStartDiagnostic) {
+    const button = el("button", "lock-diagnostic-btn", "參加先備診斷");
+    button.type = "button";
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      dismiss();
+      onStartDiagnostic();
+    });
+    tip.appendChild(button);
+  }
   setTimeout(dismiss, 6000);
-  setTimeout(() => document.addEventListener("click", dismiss, true), 0);
+  setTimeout(() => document.addEventListener("click", dismiss), 0);
 }
 
 function renderComingSoonStrand(strand) {
@@ -528,7 +571,7 @@ function renderComingSoonStrand(strand) {
     banner.style.animation = "none";
     void banner.offsetWidth;
     banner.style.animation = "shake-x 0.3s";
-    tip.textContent = "星屑未凝，先去別的咒卷練功吧！";
+    tip.textContent = "星屑未凝，先去別的神諭卷軸練功吧！";
   });
   return banner;
 }

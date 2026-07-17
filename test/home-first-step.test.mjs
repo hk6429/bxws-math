@@ -9,7 +9,7 @@ test("離開兩天後的首頁只溫柔顯示最多六頁", () => {
   assert.deepEqual(returningWelcome({ at: now - 2 * 86400000 }, 25, now), {
     daysAway: 2,
     displayDueCount: 6,
-    headline: "導師把咒卷都收好了，今天先點亮 6 頁就好",
+    headline: "導師把神諭卷軸都收好了，今天先點亮 6 頁就好",
   });
 });
 

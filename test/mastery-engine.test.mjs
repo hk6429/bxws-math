@@ -26,10 +26,34 @@ function challengeBank() {
 
 test("首輪診斷依挑戰編號各出一題", () => {
   const queue = buildAdaptiveSequence(challengeBank(), [], 8, () => 0);
-  assert.deepEqual(queue.map((question) => question.challenge), [
+  assert.deepEqual(new Set(queue.map((question) => question.challenge)), new Set([
     "1-1", "1-2", "1-3", "1-4", "1-5", "1-6", "1-7", "1-8",
-  ]);
+  ]));
+  assert.ok(queue.slice(0, 2).every((question) => question.type === "basic-mastery"));
   assert.equal(new Set(queue.map((question) => question.id)).size, 8);
+});
+
+test("零紀錄與所有 tier 的前兩題都先用基本精通暖身", () => {
+  const bank = [
+    { id: "ed-1", challenge: "1-1", type: "error-diagnosis" },
+    { id: "bm-1", challenge: "1-1", type: "basic-mastery" },
+    { id: "ed-2", challenge: "1-2", type: "error-diagnosis" },
+    { id: "bm-2", challenge: "1-2", type: "basic-mastery" },
+    { id: "concept", challenge: "1-3", type: "concept-id" },
+  ];
+  [undefined, "elem-low", "elem-mid", "elem-high", "jhs-g7"].forEach((tier) => {
+    const queue = buildAdaptiveSequence(bank, [], 5, () => 0, tier ? { tier } : {});
+    assert.deepEqual(
+      queue.slice(0, 2).map((question) => question.type),
+      ["basic-mastery", "basic-mastery"],
+      `tier=${tier ?? "未提供"}`
+    );
+    if (tier === "elem-low") {
+      assert.ok(queue.every((question) => question.type !== "error-diagnosis"));
+    } else {
+      assert.ok(queue.slice(2).some((question) => question.type === "error-diagnosis"));
+    }
+  });
 });
 
 test("加權抽題依錯題與連對調整挑戰權重", () => {
@@ -322,7 +346,7 @@ test("buildSession 實際接上挑戰輪替引擎", async () => {
   assert.equal(new Set(queue.map((question) => question.challenge)).size, 8);
 });
 
-test("無 prereq 的錯誤路徑鎖仍優先插入兩題同路徑 ED 變式", () => {
+test("無 prereq 的錯誤路徑鎖先暖身兩題，再插入同路徑 ED 變式", () => {
   const bank = [
     ...challengeBank(),
     { id: "path-2-ed-1", challenge: "1-3", type: "error-diagnosis", errorPath: 2 },
@@ -333,7 +357,8 @@ test("無 prereq 的錯誤路徑鎖仍優先插入兩題同路徑 ED 變式", ()
     { questionId: "wrong-b", challenge: "1-2", type: "context-application", errorPath: 2, correct: false },
   ];
   const queue = buildAdaptiveSequence(bank, attempts, 8, () => 0, { tier: "elem-mid" });
-  assert.deepEqual(queue.slice(0, 2).map((question) => question.id), ["path-2-ed-1", "path-2-ed-2"]);
+  assert.ok(queue.slice(0, 2).every((question) => question.type === "basic-mastery"));
+  assert.deepEqual(queue.slice(2, 4).map((question) => question.id), ["path-2-ed-1", "path-2-ed-2"]);
 });
 
 test("有 prereq 的錯誤路徑鎖先做三題先備 BM，全對後才恢復原節點 ED", async () => {

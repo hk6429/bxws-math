@@ -29,7 +29,7 @@ export function dailyTasks(daily, { dueCount = 0, errorCount = 0 } = {}) {
   return [
     {
       id: "review",
-      label: "注光：複習到期咒卷",
+      label: "注光：複習到期神諭卷軸",
       target: 6,
       done: daily.review,
       satisfied: daily.review >= 6 || dueCount === 0, // 到期題清空也算完成
@@ -96,9 +96,9 @@ export function returningWelcome(lastPlayed, dueCount, now = Date.now()) {
     daysAway,
     displayDueCount,
     headline: daysAway >= 2
-      ? `導師把咒卷都收好了，今天先點亮 ${displayDueCount} 頁就好`
+      ? `導師把神諭卷軸都收好了，今天先點亮 ${displayDueCount} 頁就好`
       : dueCount > 0
-        ? `今日喚醒單——有 ${dueCount} 頁咒卷的星光等你點亮`
+        ? `今日喚醒單——有 ${dueCount} 頁神諭卷軸的星光等你點亮`
         : "今日喚醒單",
   };
 }
