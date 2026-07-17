@@ -432,6 +432,7 @@ export function renderSkillTree(container, tree, onSelectNode) {
 
       g.addEventListener("click", () => {
         if (state === "unlocked" || state === "mastered") onSelectNode(node);
+        else if (lockReason) showLockTapTip(mapWrap, pos, lockReason);
       });
       g.addEventListener("keydown", (event) => {
         if ((event.key === "Enter" || event.key === " ") && (state === "unlocked" || state === "mastered")) {
@@ -465,6 +466,21 @@ export function renderSkillTree(container, tree, onSelectNode) {
     strandBox.appendChild(mapWrap);
     container.appendChild(strandBox);
   });
+}
+
+// 觸控裝置點鎖住的星星沒有 hover title 可看，補一個會自動消失的提示泡泡
+let activeLockTapTip = null;
+function showLockTapTip(mapWrap, pos, reason) {
+  activeLockTapTip?.remove();
+  const tip = el("div", "node-suggested-tip lock-tap-tip", `🔒 ${reason}`);
+  tip.style.left = `${pos.x}px`;
+  tip.style.top = `${pos.y}px`;
+  mapWrap.appendChild(tip);
+  activeLockTapTip = tip;
+  setTimeout(() => {
+    if (activeLockTapTip === tip) activeLockTapTip = null;
+    tip.remove();
+  }, 2600);
 }
 
 function renderComingSoonStrand(strand) {

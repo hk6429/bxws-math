@@ -32,6 +32,19 @@ function masteryStars(accuracy) {
   return 0;
 }
 
+const DEFAULT_TIER_THRESHOLDS = {
+  "elem-low": 0.75,
+  "elem-mid": 0.75,
+  "elem-high": 0.8,
+  "jhs-g7": 0.8,
+};
+
+export function masteryThresholdFor(node = {}, threshold) {
+  if (Number.isFinite(threshold)) return threshold;
+  if (Number.isFinite(node.masteryThreshold)) return node.masteryThreshold;
+  return DEFAULT_TIER_THRESHOLDS[node.tier] ?? 0.8;
+}
+
 function expectedChallenges(attempts, node) {
   if (Array.isArray(node.challengeIds) && node.challengeIds.length > 0) {
     return [...new Set(node.challengeIds)];
@@ -47,8 +60,9 @@ function expectedChallenges(attempts, node) {
 }
 
 export function activeErrorLocks(attempts = []) {
-  if (!attempts.some((attempt) => attempt.challenge)) return [];
-  const window = attempts.slice(-10);
+  const relevant = attempts.filter((attempt) => attempt.prereqQuickCheck !== true);
+  if (!relevant.some((attempt) => attempt.challenge)) return [];
+  const window = relevant.slice(-10);
   const pathHits = new Map();
   for (const attempt of window) {
     if (attempt.correct || attempt.errorPath === undefined || attempt.errorPath === null) continue;
@@ -59,8 +73,8 @@ export function activeErrorLocks(attempts = []) {
   const locks = [];
   for (const [errorPath, hits] of pathHits) {
     if (hits.length < 2) continue;
-    const secondHitIndex = attempts.indexOf(hits[1]);
-    const remediation = attempts.slice(secondHitIndex + 1).filter((attempt) =>
+    const secondHitIndex = relevant.indexOf(hits[1]);
+    const remediation = relevant.slice(secondHitIndex + 1).filter((attempt) =>
       attempt.errorPath === errorPath && attempt.type === "error-diagnosis"
     );
     const cleared = remediation.length >= 2 && remediation.slice(-2).every((attempt) => attempt.correct);
@@ -69,15 +83,29 @@ export function activeErrorLocks(attempts = []) {
   return locks;
 }
 
-export function evaluateMastery(attempts = [], node = {}, threshold = 0.8, alreadyMastered = false) {
-  const window = attempts.slice(-10);
+export function prereqQuickCheckPassed(attempts = [], errorPath, prereqNodeId) {
+  const matching = attempts.filter((attempt) =>
+    attempt.prereqQuickCheck === true
+      && attempt.remediationPath === errorPath
+      && attempt.prereqNodeId === prereqNodeId
+  );
+  const latestByQuestion = new Map();
+  for (const attempt of matching) latestByQuestion.set(attempt.questionId, attempt);
+  const latest = [...latestByQuestion.values()].slice(-3);
+  return latest.length === 3 && latest.every((attempt) => attempt.correct);
+}
+
+export function evaluateMastery(attempts = [], node = {}, threshold, alreadyMastered = false) {
+  const resolvedThreshold = masteryThresholdFor(node, threshold);
+  const scoredAttempts = attempts.filter((attempt) => attempt.prereqQuickCheck !== true);
+  const window = scoredAttempts.slice(-10);
   const correctCount = window.filter((attempt) => attempt.correct).length;
   const accuracy = window.length === 0 ? 0 : correctCount / window.length;
-  const hasChallengeData = attempts.some((attempt) => attempt.challenge);
+  const hasChallengeData = scoredAttempts.some((attempt) => attempt.challenge);
   const gates = node.gateChallenges ?? [];
-  const challenges = expectedChallenges(attempts, node);
+  const challenges = expectedChallenges(scoredAttempts, node);
   const latestByChallenge = new Map();
-  for (const attempt of attempts) {
+  for (const attempt of scoredAttempts) {
     if (attempt.challenge) latestByChallenge.set(attempt.challenge, attempt);
   }
   const missingChallenges = hasChallengeData
@@ -90,14 +118,14 @@ export function evaluateMastery(attempts = [], node = {}, threshold = 0.8, alrea
     attempt.correct && (attempt.type === "concept-id" || attempt.type === "error-diagnosis")
   ).length;
   const lowShortcut = node.tier === "elem-low"
-    && attempts.length >= 8
-    && attempts.slice(-8).every((attempt) => attempt.correct);
+    && scoredAttempts.length >= 8
+    && scoredAttempts.slice(-8).every((attempt) => attempt.correct);
 
-  const errorLocks = activeErrorLocks(attempts);
+  const errorLocks = activeErrorLocks(scoredAttempts);
 
   const conditions = {
-    A: lowShortcut || (window.length === 10 && accuracy >= threshold),
-    B: lowShortcut || attempts.length >= 12,
+    A: lowShortcut || (window.length === 10 && accuracy >= resolvedThreshold),
+    B: lowShortcut || scoredAttempts.length >= 12,
     C: !hasChallengeData || (
       challengeCorrect >= Math.max(0, challenges.length - 1)
       && gates.every((gate) => latestByChallenge.get(gate)?.correct)
@@ -107,19 +135,28 @@ export function evaluateMastery(attempts = [], node = {}, threshold = 0.8, alrea
     E: !hasChallengeData || errorLocks.length === 0,
   };
   const mastered = alreadyMastered || Object.values(conditions).every(Boolean);
-  const feedback = errorLocks.length > 0
-    ? `第 ${errorLocks.join("、")} 條墨路連續暈開，補對兩題錯誤診斷變式即可放行。`
-    : missingChallenges.length > 0
-    ? `星圖還差 ${missingChallenges.join("、")} 挑戰的墨跡，補亮後就更接近完稿。`
-    : conditions.D
-      ? "墨跡正在聚成完整星圖，再穩住幾筆就能完稿。"
-      : "大師手稿還缺四種筆法的交會，尤其要補概念辨識與錯誤診斷。";
+  const unmetConditions = Object.entries(conditions)
+    .filter(([, met]) => !met)
+    .map(([condition]) => condition);
+  const details = {
+    A: `A 視窗：近 10 題答對率需達 ${Math.round(resolvedThreshold * 100)}%`,
+    B: "B 樣本：累計作答需達 12 題",
+    C: missingChallenges.length > 0
+      ? `C 挑戰覆蓋：仍缺 ${missingChallenges.join("、")}`
+      : "C 挑戰覆蓋：守門挑戰或最近答對覆蓋尚未完成",
+    D: "D 題型覆蓋：四題型需齊全，且概念辨識與錯誤診斷合計至少答對 3 題",
+    E: `E 錯誤路徑鎖：第 ${errorLocks.join("、")} 條墨路仍待先備快檢與錯誤診斷修復`,
+  };
+  const feedback = unmetConditions.length === 0
+    ? "五道墨跡都已完整，這頁手稿可以完稿。"
+    : `尚未完成：${unmetConditions.map((condition) => details[condition]).join("；")}。`;
 
   return {
     mastered,
     masteryPct: Math.round(accuracy * 100) / 100,
     stars: masteryStars(accuracy),
     conditions,
+    unmetConditions,
     missingChallenges,
     feedback,
     errorLocks,

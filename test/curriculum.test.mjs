@@ -110,10 +110,10 @@ const readyGates = {
   ...finalReadyGates,
 };
 
-test("全技能骨架共 106 節點，id 全域唯一", () => {
-  assert.equal(nodes.length, 106);
+test("全技能骨架共 110 節點，id 全域唯一", () => {
+  assert.equal(nodes.length, 110);
   assert.equal(new Set(nodes.map((node) => node.id)).size, nodes.length);
-  assert.equal(nodes.filter((node) => !existingIds.has(node.id) && !newestIds.has(node.id)).length, 82);
+  assert.equal(nodes.filter((node) => !existingIds.has(node.id) && !newestIds.has(node.id)).length, 86);
   assert.equal(nodes.filter((node) => newestIds.has(node.id)).length, 16);
 });
 
@@ -143,8 +143,8 @@ test("tier、六組合併與兩組改名遵守總綱裁決", () => {
   assert.equal(nodesById["cuboid-volume"].strand, "space-shape");
 });
 
-test("新增 12 個七年級骨架皆為 contentPending，既有題庫守門挑戰符合裁決", () => {
-  assert.equal(nodes.filter((node) => node.contentPending === true).length, 12);
+test("新增 12 個七年級與 4 個審查補強骨架皆為 contentPending，既有題庫守門挑戰符合裁決", () => {
+  assert.equal(nodes.filter((node) => node.contentPending === true).length, 16);
   for (const node of nodes.filter((item) => !existingIds.has(item.id) && !newestIds.has(item.id))) {
     assert.ok(Array.isArray(node.gateChallenges), `${node.id} 應有 gateChallenges 陣列`);
     if (readyGates[node.id]) {

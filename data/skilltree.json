@@ -7,6 +7,12 @@
     "jhs-g7": "國中七年級"
   },
   "masteryThreshold": 0.8,
+  "masteryThresholds": {
+    "elem-low": 0.75,
+    "elem-mid": 0.75,
+    "elem-high": 0.8,
+    "jhs-g7": 0.8
+  },
   "strandVisuals": {
     "num-quantity": { "colorVar": "--strand-number", "mascot": "davinci" },
     "algebra": { "colorVar": "--strand-algebra", "mascot": "gauss" },
@@ -83,7 +89,7 @@
         { "id": "negative-number", "name": "負數", "tier": "jhs-g7", "prereq": ["decimal-mul"] },
         { "id": "proportion-eq", "name": "比例式", "tier": "jhs-g7", "prereq": ["ratio-rate"] },
         { "id": "prime-factorization-app", "name": "質因數標準分解與應用", "tier": "jhs-g7", "prereq": ["prime-factor", "gcd-lcm"], "gateChallenges": ["1-6", "1-8"], "contentPending": true },
-        { "id": "exponent-laws", "name": "指數與指數律", "tier": "jhs-g7", "prereq": ["negative-number", "prime-factor"], "gateChallenges": ["2-6", "2-7"], "contentPending": true },
+        { "id": "exponent-laws", "name": "指數與指數律", "tier": "jhs-g7", "prereq": ["prime-factor"], "gateChallenges": ["2-6", "2-7"], "contentPending": true },
         { "id": "scientific-notation", "name": "科學記號", "tier": "jhs-g7", "prereq": ["exponent-laws", "decimal-mul"], "gateChallenges": ["3-6", "3-8"], "contentPending": true }
       ]
     },
@@ -137,7 +143,8 @@
         { "id": "coordinate-first-quadrant", "name": "方格定位與第一象限", "tier": "elem-high", "prereq": ["shape-feature"], "gateChallenges": ["13-5", "13-7"] },
         { "id": "coordinate-plane", "name": "直角座標平面", "tier": "jhs-g7", "prereq": ["coordinate-first-quadrant", "negative-number"], "gateChallenges": ["15-7", "15-6"] },
         { "id": "function-relation", "name": "變數與函數關係", "tier": "jhs-g7", "prereq": ["input-output-table", "pattern-rule", "algebra-symbol"], "gateChallenges": ["16-7", "16-5"] },
-        { "id": "direct-proportion", "name": "正比關係", "tier": "jhs-g7", "prereq": ["function-relation", "ratio-rate", "proportion-eq"], "gateChallenges": ["18-7", "18-5"] }
+        { "id": "direct-proportion", "name": "正比關係", "tier": "jhs-g7", "prereq": ["function-relation", "ratio-rate", "proportion-eq"], "gateChallenges": ["18-7", "18-5"] },
+        { "id": "two-dimensional-pattern", "name": "二維數量模式", "tier": "elem-mid", "prereq": ["growing-pattern"], "gateChallenges": ["1-6", "1-8"], "contentPending": true }
       ]
     },
     {
@@ -152,6 +159,9 @@
         { "id": "range-data-interpretation", "name": "全距與資料判讀", "tier": "jhs-g7", "prereq": ["mean-basic", "median-mode"], "gateChallenges": ["6-6", "6-7"] },
         { "id": "chance-sample-space", "name": "可能性與樣本空間", "tier": "elem-high", "prereq": ["fraction-equivalent"], "gateChallenges": ["7-6", "7-7"] },
         { "id": "probability-basic", "name": "基礎機率", "tier": "jhs-g7", "prereq": ["chance-sample-space", "fraction-equivalent"], "gateChallenges": ["8-6", "8-7"] },
+        { "id": "simple-classification", "name": "簡單分類整理", "tier": "elem-low", "prereq": [], "gateChallenges": ["1-6", "1-8"], "contentPending": true },
+        { "id": "pictogram-simple-table", "name": "圖像呈現與簡單表格", "tier": "elem-low", "prereq": ["simple-classification"], "gateChallenges": ["2-6", "2-8"], "contentPending": true },
+        { "id": "table-reading-making", "name": "一維與二維表格", "tier": "elem-mid", "prereq": ["pictogram-simple-table"], "gateChallenges": ["3-6", "3-8"], "contentPending": true },
         { "id": "statistical-chart-design", "name": "資料蒐集與統計圖表", "tier": "jhs-g7", "prereq": ["data-table-basic", "bar-chart-reading", "line-chart-reading"], "gateChallenges": ["11-6", "11-8"], "contentPending": true },
         { "id": "histogram-contingency", "name": "直方圖與列聯表", "tier": "jhs-g7", "prereq": ["statistical-chart-design", "median-mode"], "gateChallenges": ["12-6", "12-8"], "contentPending": true }
       ]

@@ -1,9 +1,9 @@
 const ROOM_META = {
-  "num-quantity": { icon: "🧮", title: "達文西的比例工房" },
-  algebra: { icon: "Σ", title: "高斯的代數書房" },
-  "space-shape": { icon: "📐", title: "歐幾里得的幾何廳" },
-  "relation-pattern": { icon: "🌿", title: "斐波那契的規律花園" },
-  "data-uncertainty": { icon: "🎲", title: "帕斯卡的機率閣" },
+  "num-quantity": { icon: "🧮", title: "達文西的比例工房", voice: "耐心畫草稿、反覆試作再修正" },
+  algebra: { icon: "Σ", title: "高斯的代數書房", voice: "迅速看出規律，精準揪出錯誤" },
+  "space-shape": { icon: "📐", title: "歐幾里得的幾何廳", voice: "從定義與已知條件一步步推演" },
+  "relation-pattern": { icon: "🌿", title: "斐波那契的規律花園", voice: "觀察變化，讓規律逐步生長" },
+  "data-uncertainty": { icon: "🎲", title: "帕斯卡的機率閣", voice: "列清可能與資料，再作判斷" },
 };
 
 const clamp01 = (n) => Math.max(0, Math.min(1, Number(n) || 0));
@@ -25,7 +25,8 @@ export function computeWorkshop(tree, { progress = {}, collection = {}, rareStam
     const mastery = nodeIds.reduce((sum, id) => sum + clamp01(progress[id]?.masteryPct), 0) / nodeIds.length;
     const manuscript = nodeIds.reduce((sum, id) => sum + clamp01((collection[id]?.tier ?? 0) / 2), 0) / nodeIds.length;
     const stamps = nodeIds.filter((id) => rareStamps[`stamp-${id}`]).length / nodeIds.length;
-    const repairPct = Math.round((mastery * 0.5 + manuscript * 0.3 + stamps * 0.2) * 100);
+    // manuscript tier 2 本質是 masteryPct>=0.8 的粗粒度重述，故降權避免與 mastery 重複計分
+    const repairPct = Math.round((mastery * 0.7 + manuscript * 0.15 + stamps * 0.15) * 100);
     return { ...meta, id: strand.id, name: strand.name, available: true, repairPct, stage: roomStage(repairPct) };
   });
   const activeRooms = rooms.filter((room) => room.available);

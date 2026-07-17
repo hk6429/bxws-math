@@ -41,7 +41,7 @@ for color in "${colors[@]}"; do
     echo "四角取色失敗：$color" >&2
     exit 1
   }
-  filters+=",colorkey=0x${color}:0.28:0.08"
+  filters+=",colorkey=0x${color}:0.34:0.12"
 done
 
 mkdir -p "$(dirname "$output")"

@@ -34,7 +34,7 @@
   --fs-node: 1rem;
   --fs-stem: 1.25rem;
   --fs-option: 1rem;
-  --fs-caption: 0.8125rem;
+  --fs-caption: 0.875rem;
   --lh-body: 1.5;
 
   /* 手繪感核心代幣 */
@@ -138,7 +138,37 @@ main { padding: 24px; max-width: 960px; margin: 0 auto; }
   main { padding: 12px; }
   .topbar { padding: 12px; }
   .topbar h1 { font-size: 1.3rem; }
+  .q-card { padding: 22px 12px 16px 28px; }
+  .q-stem { font-size: 1.1rem; line-height: 1.5; }
+  .q-option { padding: 10px 10px 10px 32px; }
+  .q-option::before { left: 8px; width: 14px; height: 14px; }
+  .strategy-card { padding: 12px 14px; }
+  .strategy-picker { gap: 10px; }
 }
+
+/* 首頁降噪看板：預設收合，展開才看到四張卡 */
+.home-brief-dock {
+  margin-bottom: 18px;
+}
+.home-brief-dock > summary {
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-hand);
+  font-weight: bold;
+  color: var(--ink);
+  background: var(--paper-bright);
+  border: var(--sketch-border);
+  border-radius: var(--sketch-radius-a);
+  box-shadow: var(--sketch-shadow);
+  padding: 10px 16px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.home-brief-dock > summary::-webkit-details-marker { display: none; }
+.home-brief-dock > summary::marker { content: ""; }
+.home-brief-dock[open] > summary { margin-bottom: 12px; }
+.home-brief-dock-body { display: flex; flex-direction: column; gap: 14px; }
 
 /* ---------- 技能樹：草稿紙上的地圖 ---------- */
 
@@ -191,6 +221,8 @@ main { padding: 24px; max-width: 960px; margin: 0 auto; }
   border-radius: var(--sketch-radius-b);
   box-shadow: 3px 4px 0 var(--paper-shadow);
   padding: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .skill-map svg {
   width: var(--skill-map-width, 100%);
@@ -315,6 +347,15 @@ main { padding: 24px; max-width: 960px; margin: 0 auto; }
   text-align: center;
 }
 
+.lock-tap-tip {
+  transform: translate(-50%, -170%) rotate(-2deg);
+  max-width: 160px;
+  white-space: normal;
+  text-align: center;
+  z-index: 40;
+  animation: sticky-drop 0.25s cubic-bezier(.34,1.4,.64,1);
+}
+
 /* 終局：大師試煉邀請函 */
 .endgame-banner {
   position: relative;
@@ -430,11 +471,11 @@ main { padding: 24px; max-width: 960px; margin: 0 auto; }
 .strategy-card span { color: var(--ink-dim); font-size: 0.95rem; }
 .strategy-card:hover:not(:disabled) { transform: rotate(-1deg) translate(1px, 2px); box-shadow: 1px 1px 0 var(--paper-shadow); }
 .strategy-card:disabled { opacity: 0.45; cursor: default; }
-.strategy-card.last-used::after {
-  content: "上次的心法";
+.strategy-recommend-tag {
   align-self: flex-end;
   font-size: var(--fs-caption);
   font-family: var(--font-hand);
+  font-style: normal;
   color: var(--strategy-color, var(--ink-dim));
 }
 

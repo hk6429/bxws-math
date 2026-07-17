@@ -1,6 +1,6 @@
 import { isDue, getBox, hasRecord } from "./leitner.js";
 import { store } from "./store.js";
-import { buildAdaptiveSequence } from "./mastery-engine.js";
+import { activeErrorLocks, buildAdaptiveSequence, prereqQuickCheckPassed } from "./mastery-engine.js";
 
 const bankCache = {};
 
@@ -44,6 +44,18 @@ export async function buildSession(nodeId, sessionSize = 8, strategy = "slow", e
   const repairIds = new Set(repairQuestions.map((q) => q.id));
   const rest = all.filter((q) => !repairIds.has(q.id));
   const attempts = store.read("progress", {})[nodeId]?.attempts ?? [];
+  const errorLock = activeErrorLocks(attempts)[0];
+  const prereqNodeId = node.prereq?.[0];
+  if (errorLock !== undefined && prereqNodeId
+      && !prereqQuickCheckPassed(attempts, errorLock, prereqNodeId)) {
+    const prereqBank = await loadQuestionBank(prereqNodeId);
+    return (prereqBank.basicMastery ?? []).slice(0, 3).map((question) => ({
+      ...question,
+      _prereqQuickCheck: true,
+      _prereqNodeId: prereqNodeId,
+      _remediationPath: errorLock,
+    }));
+  }
   const challengeIds = [...new Set(rest.map((question) => question.challenge).filter(Boolean))];
   const isInitialChallengeScan = challengeIds.length > 0
     && !attempts.some((attempt) => attempt.challenge);

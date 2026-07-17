@@ -1,6 +1,11 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildAdaptiveSequence, challengeWeight, evaluateMastery } from "../js/mastery-engine.js";
+import {
+  buildAdaptiveSequence,
+  challengeWeight,
+  evaluateMastery,
+  masteryThresholdFor,
+} from "../js/mastery-engine.js";
 import { buildSession } from "../js/quiz-loader.js";
 
 function challengeBank() {
@@ -118,6 +123,16 @@ test("未滿樣本或挑戰覆蓋時不精熟，回饋指出缺項挑戰", () =>
   assert.equal(result.conditions.C, false);
   assert.ok(result.missingChallenges.includes("1-8"));
   assert.match(result.feedback, /1-8/);
+  assert.deepEqual(result.unmetConditions, ["A", "B", "C"]);
+  for (const condition of result.unmetConditions) assert.match(result.feedback, new RegExp(`${condition} `));
+});
+
+test("精熟門檻可依 tier 調整並保留明確參數覆寫", () => {
+  assert.equal(masteryThresholdFor({ tier: "elem-low" }), 0.75);
+  assert.equal(masteryThresholdFor({ tier: "elem-mid" }), 0.75);
+  assert.equal(masteryThresholdFor({ tier: "jhs-g7" }), 0.8);
+  assert.equal(masteryThresholdFor({ tier: "elem-low", masteryThreshold: 0.7 }), 0.7);
+  assert.equal(masteryThresholdFor({ tier: "elem-low" }, 0.9), 0.9);
 });
 
 test("舊題無 challenge 時只跑 A＋B＋D，可維持相容", () => {
@@ -190,7 +205,7 @@ test("buildSession 實際接上挑戰輪替引擎", async () => {
   assert.equal(new Set(queue.map((question) => question.challenge)).size, 8);
 });
 
-test("錯誤路徑鎖啟動時，序列優先插入兩題同路徑 ED 變式", () => {
+test("無 prereq 的錯誤路徑鎖仍優先插入兩題同路徑 ED 變式", () => {
   const bank = [
     ...challengeBank(),
     { id: "path-2-ed-1", challenge: "1-3", type: "error-diagnosis", errorPath: 2 },
@@ -202,4 +217,66 @@ test("錯誤路徑鎖啟動時，序列優先插入兩題同路徑 ED 變式", (
   ];
   const queue = buildAdaptiveSequence(bank, attempts, 8, () => 0, { tier: "elem-mid" });
   assert.deepEqual(queue.slice(0, 2).map((question) => question.id), ["path-2-ed-1", "path-2-ed-2"]);
+});
+
+test("有 prereq 的錯誤路徑鎖先做三題先備 BM，全對後才恢復原節點 ED", async () => {
+  const map = new Map();
+  globalThis.localStorage = {
+    getItem: (key) => map.get(key) ?? null,
+    setItem: (key, value) => map.set(key, value),
+  };
+  const attempts = [
+    { questionId: "wrong-a", challenge: "1-1", type: "basic-mastery", errorPath: 2, correct: false },
+    { questionId: "wrong-b", challenge: "1-2", type: "context-application", errorPath: 2, correct: false },
+  ];
+  map.set("bxws:progress", JSON.stringify({ "locked-node": { attempts } }));
+  const currentBank = {
+    basicMastery: [], conceptId: [], contextApplication: [],
+    errorDiagnosis: [
+      { id: "current-ed-1", challenge: "1-3", type: "error-diagnosis", errorPath: 2 },
+      { id: "current-ed-2", challenge: "1-4", type: "error-diagnosis", errorPath: 2 },
+    ],
+  };
+  const prereqBank = {
+    basicMastery: [1, 2, 3, 4].map((n) => ({ id: `prereq-bm-${n}`, type: "basic-mastery" })),
+  };
+  globalThis.fetch = async (url) => ({
+    json: async () => url.includes("prereq-node") ? prereqBank : currentBank,
+  });
+
+  const node = { tier: "elem-mid", prereq: ["prereq-node"] };
+  const quickCheck = await buildSession("locked-node", 8, "slow", [], node);
+  assert.deepEqual(quickCheck.map((question) => question.id), ["prereq-bm-1", "prereq-bm-2", "prereq-bm-3"]);
+  assert.ok(quickCheck.every((question) => question._prereqQuickCheck));
+
+  const passed = quickCheck.map((question) => ({
+    questionId: question.id,
+    type: question.type,
+    correct: true,
+    prereqQuickCheck: true,
+    prereqNodeId: "prereq-node",
+    remediationPath: 2,
+  }));
+  map.set("bxws:progress", JSON.stringify({ "locked-node": { attempts: [...attempts, ...passed] } }));
+  const resumed = await buildSession("locked-node", 8, "slow", [], node);
+  assert.deepEqual(resumed.slice(0, 2).map((question) => question.id), ["current-ed-1", "current-ed-2"]);
+});
+
+test("先備快檢不灌高原節點精熟率，也不會把原錯誤鎖推出視窗", () => {
+  const attempts = [
+    { questionId: "wrong-a", challenge: "1-1", type: "basic-mastery", errorPath: 2, correct: false },
+    { questionId: "wrong-b", challenge: "1-2", type: "context-application", errorPath: 2, correct: false },
+    ...Array.from({ length: 12 }, (_, index) => ({
+      questionId: `quick-${index}`,
+      type: "basic-mastery",
+      correct: true,
+      prereqQuickCheck: true,
+      prereqNodeId: "prereq-node",
+      remediationPath: 2,
+    })),
+  ];
+  const result = evaluateMastery(attempts, { tier: "elem-mid" });
+  assert.equal(result.masteryPct, 0);
+  assert.equal(result.conditions.B, false);
+  assert.deepEqual(result.errorLocks, [2]);
 });

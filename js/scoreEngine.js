@@ -10,6 +10,9 @@ export function recordAnswer(nodeId, questionOrId, correct, msElapsed, node = {}
     ...(question.challenge ? { challenge: question.challenge } : {}),
     ...(question.type ? { type: question.type } : {}),
     ...(question.errorPath !== undefined ? { errorPath: question.errorPath } : {}),
+    ...(question._prereqQuickCheck ? { prereqQuickCheck: true } : {}),
+    ...(question._prereqNodeId ? { prereqNodeId: question._prereqNodeId } : {}),
+    ...(question._remediationPath !== undefined ? { remediationPath: question._remediationPath } : {}),
     correct,
     msElapsed,
     at: Date.now(),
@@ -22,7 +25,7 @@ export function recordAnswer(nodeId, questionOrId, correct, msElapsed, node = {}
   const evaluationNode = entry.challengeIds
     ? { ...node, challengeIds: entry.challengeIds }
     : node;
-  const result = evaluateMastery(entry.attempts, evaluationNode, 0.8, entry.mastered === true);
+  const result = evaluateMastery(entry.attempts, evaluationNode, undefined, entry.mastered === true);
   Object.assign(entry, result, { masteryVersion: 2 });
   progress[nodeId] = entry;
   store.write("progress", progress);

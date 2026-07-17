@@ -31,7 +31,7 @@ const views = {
 };
 
 let tree = null;
-let session = { queue: [], index: 0, node: null, mascot: null, streak: 0, maxStreak: 0, roundCorrect: 0, roundTotal: 0 };
+let session = { queue: [], index: 0, node: null, mascot: null, streak: 0, streakShielded: false, maxStreak: 0, roundCorrect: 0, roundTotal: 0 };
 let nextBtnEl = null;
 
 const MASTER_TRIAL_ID = "master-trial";
@@ -75,6 +75,7 @@ function newSession(fields) {
     rareDrops: [],
     challengeCode: null,
     streak: 0,
+    streakShielded: false,
     maxStreak: 0,
     roundCorrect: 0,
     roundTotal: 0,
@@ -112,10 +113,23 @@ async function goHome() {
   const container = document.getElementById("skilltree-container");
   renderSkillTree(container, tree, startQuiz);
   maybeShowEndgame(container);
-  makeWeeklyCard(container);
-  makeResumeCard(container);
-  await makeDailyBoard(container);
-  makeWorkshopTeaser(container);
+
+  // 首頁降噪：每週盃/續讀/修稿單/工作室四張卡收進單一可收合看板，先讓學生看到星圖本體
+  const dock = document.createElement("details");
+  dock.className = "home-brief-dock";
+  const summary = document.createElement("summary");
+  summary.textContent = "📋 今日看板——每週盃・續讀・修稿單・工作室";
+  dock.appendChild(summary);
+  const dockBody = document.createElement("div");
+  dockBody.className = "home-brief-dock-body";
+  dock.appendChild(dockBody);
+  container.prepend(dock);
+
+  makeWeeklyCard(dockBody);
+  makeResumeCard(dockBody);
+  await makeDailyBoard(dockBody);
+  makeWorkshopTeaser(dockBody);
+  if (!dockBody.hasChildNodes()) dock.remove();
   showView("home");
   maybeShowOnboardingTip();
 }
@@ -494,12 +508,15 @@ function startQuiz(node) {
     picker.appendChild(figure);
   }
 
-  const lastUsed = store.read("lastStrategy", "slow");
+  const lastUsedRaw = store.read("lastStrategy", null);
+  const isFirstTime = lastUsedRaw === null;
+  const lastUsed = lastUsedRaw ?? "slow";
   const nodeErrorCount = listWrongQuestions().filter((e) => e.nodeId === node.id).length;
   STRATEGIES.forEach((s) => {
     const card = document.createElement("button");
     const unavailable = s.id === "repair" && nodeErrorCount === 0;
-    card.className = "strategy-card" + (!unavailable && s.id === lastUsed ? " last-used" : "");
+    const isRecommended = !unavailable && s.id === lastUsed;
+    card.className = "strategy-card" + (isRecommended ? " last-used" : "");
     card.style.setProperty("--strategy-color", `var(${s.color})`);
     card.disabled = unavailable;
     const title = document.createElement("strong");
@@ -508,6 +525,12 @@ function startQuiz(node) {
     desc.textContent = unavailable ? "這本手稿目前沒有待修筆跡" : s.desc;
     card.appendChild(title);
     card.appendChild(desc);
+    if (isRecommended) {
+      const tag = document.createElement("em");
+      tag.className = "strategy-recommend-tag";
+      tag.textContent = isFirstTime ? "新手推薦先選這個" : "上次的心法";
+      card.appendChild(tag);
+    }
     if (!unavailable) card.addEventListener("click", () => startQuizWithStrategy(node, s.id));
     picker.appendChild(card);
   });
@@ -638,7 +661,13 @@ function handleAnswer(question, isCorrect, meta = {}) {
     if (wasReviewDue && (getCollection()[nodeId]?.tier ?? 0) >= 2) addManuscriptCare(nodeId);
     if (meta.encounter) handleEncounterWin();
   } else {
-    session.streak = 0;
+    if (session.streak >= 5 && !session.streakShielded) {
+      session.streakShielded = true;
+      session.streak = Math.max(0, session.streak - 2);
+    } else {
+      session.streak = 0;
+      session.streakShielded = false;
+    }
     sfx.wrong();
     addWrongQuestion(nodeId, question);
     // 慢筆細描：答錯排到隊尾再描一次（每題限一次）

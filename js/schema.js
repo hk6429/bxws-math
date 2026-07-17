@@ -10,7 +10,12 @@ export async function loadSkillTree() {
 }
 
 export function allNodes(tree) {
-  return tree.strands.flatMap((s) => s.nodes.map((n) => ({ ...n, strandId: s.id, strandName: s.name })));
+  return tree.strands.flatMap((s) => s.nodes.map((n) => ({
+    ...n,
+    masteryThreshold: tree.masteryThresholds?.[n.tier] ?? tree.masteryThreshold ?? 0.8,
+    strandId: s.id,
+    strandName: s.name,
+  })));
 }
 
 export function getProgress() {
@@ -27,7 +32,9 @@ export function isNodeMastered(nodeId, tree) {
   const entry = progress[nodeId];
   if (!entry) return false;
   if (entry.masteryVersion === 2) return entry.mastered === true;
-  if ((entry.masteryPct ?? 0) < (tree.masteryThreshold ?? 0.8)) return false;
+  const node = allNodes(tree).find((item) => item.id === nodeId);
+  const threshold = tree.masteryThresholds?.[node?.tier] ?? tree.masteryThreshold ?? 0.8;
+  if ((entry.masteryPct ?? 0) < threshold) return false;
   entry.mastered = true;
   entry.masteryVersion = 2;
   progress[nodeId] = entry;
