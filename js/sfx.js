@@ -1,10 +1,10 @@
 import { store } from "./store.js";
 
-// 純合成音效（Web Audio，零音檔）＋觸覺回饋。預設關（教室情境），同一顆鈕控制。
+// 純合成音效（Web Audio，零音檔）＋觸覺回饋。預設開啟，仍可由導覽列手動關閉。
 let ctx = null;
 
 export function isSfxOn() {
-  return store.read("sfxOn", false);
+  return store.read("sfxOn", true);
 }
 
 export function setSfxOn(on) {

@@ -20,6 +20,14 @@ function roomStage(repairPct) {
   return "dusty";
 }
 
+export function workshopWeeklyGoal(overallPct) {
+  const current = Math.max(0, Math.min(100, Math.round(Number(overallPct) || 0)));
+  if (current >= 100) return "本週小目標：五座神殿已全數甦醒！";
+  const remaining = 100 - current;
+  if (remaining <= 5) return `本週小目標：一起完成最後 ${remaining}%！`;
+  return `本週小目標：先把甦醒度推到 ${current + 5}%`;
+}
+
 export function computeWorkshop(tree, { progress = {}, collection = {}, rareStamps = {} } = {}) {
   const rooms = tree.strands.map((strand) => {
     const meta = ROOM_META[strand.id] ?? { icon: "🛠", title: strand.name };

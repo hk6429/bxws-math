@@ -21,6 +21,19 @@ export function autoAdvanceDelay(isCorrect) {
   return isCorrect ? 800 : null;
 }
 
+export function streakMilestone(streak) {
+  const value = Number(streak);
+  return [3, 5, 8].includes(value) ? value : null;
+}
+
+export function cardRevealClass(rarity) {
+  return {
+    "普通": "reveal-common",
+    "稀有": "reveal-rare",
+    "傳說": "reveal-legendary",
+  }[rarity] ?? "reveal-common";
+}
+
 export function masteryEncouragement(pct) {
   const value = Math.max(0, Math.min(100, Number(pct) || 0));
   if (value >= 100) return "這個技能你已經很熟了！";

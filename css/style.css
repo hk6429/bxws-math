@@ -3280,15 +3280,32 @@ body::before {
 
 /* ===== 奧林帕斯世界觀介紹 ===== */
 .mythos-lore {
-  display: grid;
-  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
-  gap: 20px;
-  align-items: center;
   margin: 0 0 22px;
   padding: 18px;
   border: 1px solid rgba(255, 211, 106, 0.38);
   border-radius: 18px;
   background: linear-gradient(135deg, rgba(28, 32, 63, 0.94), rgba(55, 41, 72, 0.9));
+}
+.mythos-lore-details > summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  min-height: 44px;
+  color: #ffe4a3;
+  cursor: pointer;
+  font-weight: 800;
+}
+.mythos-lore-action { white-space: nowrap; color: #fff3c7; font-size: .9rem; }
+.lore-close-label { display: none; }
+.mythos-lore-details[open] .lore-open-label { display: none; }
+.mythos-lore-details[open] .lore-close-label { display: inline; }
+.mythos-lore-body {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
+  gap: 20px;
+  align-items: center;
+  padding-top: 18px;
 }
 .mythos-style-figure { margin: 0; min-width: 0; }
 .mythos-style-figure img {
@@ -3300,5 +3317,138 @@ body::before {
 .mythos-lore-copy h3 { margin: 0 0 10px; color: #ffe4a3; }
 .mythos-lore-copy p { margin: 0; line-height: 1.8; color: #eee7da; }
 @media (max-width: 720px) {
-  .mythos-lore { grid-template-columns: 1fr; }
+  .mythos-lore-body { grid-template-columns: 1fr; }
+}
+
+/* 神殿卡片直達星圖領地 */
+.workshop-room[role="link"] { cursor: pointer; }
+.workshop-room[role="link"]:focus-visible { outline: 3px solid #ffe4a3; outline-offset: 4px; }
+.strand.strand-highlight {
+  animation: strand-arrival-highlight 1.8s ease-out both;
+}
+@keyframes strand-arrival-highlight {
+  0%, 28% { box-shadow: 0 0 0 5px rgba(255, 211, 106, 0.72), 0 0 36px rgba(255, 211, 106, 0.62); transform: scale(1.012); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 211, 106, 0); transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .strand.strand-highlight { animation: none; outline: 4px solid #ffe4a3; }
+}
+
+/* 連詠里程碑：單次縮放與柔光，不使用高頻閃爍 */
+.streak-celebration {
+  position: fixed;
+  inset: 18% 50% auto auto;
+  z-index: 2147483001;
+  width: min(88vw, 440px);
+  padding: 18px 24px;
+  border: 2px solid #ffd36a;
+  border-radius: 18px;
+  background: rgba(36, 26, 68, 0.96);
+  color: #fff3bd;
+  box-shadow: 0 0 38px rgba(255, 196, 72, 0.58);
+  font-size: clamp(1.15rem, 3vw, 1.7rem);
+  font-weight: 900;
+  text-align: center;
+  transform: translateX(50%);
+  animation: streak-milestone-pop 850ms cubic-bezier(.2,.85,.25,1) both;
+}
+.streak-celebration-5 { border-color: #ff9d55; box-shadow: 0 0 44px rgba(255, 128, 54, 0.65); }
+.streak-celebration-8 { border-color: #e7c5ff; box-shadow: 0 0 52px rgba(182, 113, 255, 0.72); }
+.q-card.streak-milestone-hit { animation: streak-card-pulse 650ms ease-out both; }
+@keyframes streak-milestone-pop {
+  0% { opacity: 0; transform: translateX(50%) scale(.72) translateY(20px); }
+  42% { opacity: 1; transform: translateX(50%) scale(1.06) translateY(0); }
+  100% { opacity: 0; transform: translateX(50%) scale(1) translateY(-8px); }
+}
+@keyframes streak-card-pulse {
+  35% { transform: scale(1.018); box-shadow: 0 0 34px rgba(255, 211, 106, .56); }
+  100% { transform: scale(1); }
+}
+
+/* 收藏解鎖開卡 */
+.card-reveal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483003;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(10, 12, 28, 0.72);
+  backdrop-filter: blur(5px);
+}
+.card-reveal {
+  width: min(84vw, 330px);
+  min-height: 360px;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 12px;
+  padding: 28px;
+  border: 4px solid #d9c49a;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #fff7df, #ead8b0);
+  color: #3d2d22;
+  text-align: center;
+  box-shadow: 0 24px 80px rgba(0,0,0,.48);
+  animation: card-reveal-open 720ms cubic-bezier(.18,.88,.24,1.18) both;
+}
+.card-reveal strong { font-size: 4.5rem; line-height: 1; }
+.card-reveal h3, .card-reveal p { margin: 0; }
+.card-reveal-rarity { font-weight: 900; letter-spacing: .18em; }
+.card-reveal.reveal-common { border-color: #d9c49a; box-shadow: 0 0 35px rgba(217, 196, 154, .5), 0 24px 80px rgba(0,0,0,.48); }
+.card-reveal.reveal-rare { border-color: #67b9ff; box-shadow: 0 0 46px rgba(74, 162, 255, .72), 0 24px 80px rgba(0,0,0,.48); }
+.card-reveal.reveal-legendary { border-color: #d598ff; box-shadow: 0 0 58px rgba(202, 91, 255, .82), 0 24px 80px rgba(0,0,0,.48); }
+@keyframes card-reveal-open {
+  0% { opacity: 0; transform: perspective(800px) rotateY(80deg) scale(.72); }
+  65% { opacity: 1; transform: perspective(800px) rotateY(-5deg) scale(1.04); }
+  100% { opacity: 1; transform: perspective(800px) rotateY(0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .streak-celebration, .q-card.streak-milestone-hit, .card-reveal { animation: none; }
+}
+
+/* 動作完成提示 */
+.action-toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  z-index: 2147483004;
+  max-width: min(90vw, 520px);
+  padding: 12px 18px;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 999px;
+  background: #214c3a;
+  color: #fff;
+  box-shadow: 0 8px 30px rgba(0,0,0,.36);
+  font-weight: 800;
+  transform: translateX(-50%);
+  animation: action-toast-in 220ms ease-out both;
+}
+.action-toast.toast-error { background: #7a251f; }
+@keyframes action-toast-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(12px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* 首次進站快速定位入口 */
+.placement-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  margin: 16px 0 24px;
+  padding: 20px;
+  border: 2px solid rgba(255, 211, 106, .72);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(69, 45, 104, .96), rgba(31, 56, 91, .96));
+  box-shadow: 0 10px 34px rgba(20, 17, 43, .34), inset 0 0 28px rgba(255, 211, 106, .08);
+  color: #fff;
+}
+.placement-entry strong, .placement-entry span { display: block; }
+.placement-entry strong { margin-bottom: 6px; color: #ffe4a3; font-size: 1.18rem; }
+.placement-entry span { line-height: 1.6; }
+.placement-entry .placement-start { margin: 0; white-space: nowrap; }
+@media (max-width: 720px) {
+  .placement-entry { grid-template-columns: 1fr; }
+  .placement-entry .placement-start { width: 100%; white-space: normal; }
 }

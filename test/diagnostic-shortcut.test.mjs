@@ -12,22 +12,24 @@ import { isNodeUnlocked } from "../js/schema.js";
 const nodes = tree.strands.flatMap((strand) => strand.nodes);
 const nodesById = Object.fromEntries(nodes.map((node) => [node.id, node]));
 
-test("七個國中橋接節點提供先備診斷捷徑", () => {
-  const expected = [
-    "linear-eq-1var",
-    "linear-equation-modeling",
-    "linear-inequality-meaning",
-    "linear-inequality-solving",
-    "median-mode",
-    "probability-basic",
-    "histogram-contingency",
-  ];
-  assert.deepEqual(
-    nodes.filter((node) => node.diagnosticPrereq).map((node) => node.id),
-    expected
-  );
-  expected.forEach((id) => {
-    assert.ok(nodesById[id].diagnosticPrereq.length >= 1 && nodesById[id].diagnosticPrereq.length <= 2);
+test("所有已上線且被兩層以上前置鏈卡住的節點都有先備診斷捷徑", () => {
+  const depthCache = new Map();
+  const depthOf = (nodeId) => {
+    if (depthCache.has(nodeId)) return depthCache.get(nodeId);
+    const prereq = nodesById[nodeId]?.prereq ?? [];
+    const depth = prereq.length === 0 ? 0 : 1 + Math.max(...prereq.map(depthOf));
+    depthCache.set(nodeId, depth);
+    return depth;
+  };
+  const eligible = nodes.filter((node) => !node.contentPending && depthOf(node.id) >= 2);
+  assert.ok(eligible.length >= 80, `目前應至少覆蓋 80 個節點，實際為 ${eligible.length}`);
+  eligible.forEach((node) => {
+    assert.ok(Array.isArray(node.diagnosticPrereq), `${node.id} 缺少 diagnosticPrereq`);
+    assert.ok(node.diagnosticPrereq.length >= 1 && node.diagnosticPrereq.length <= 2);
+    node.diagnosticPrereq.forEach((id) => assert.ok(node.prereq.includes(id), `${node.id} 只能診斷直接先備 ${id}`));
+  });
+  ["decimal-mul", "negative-number", "algebra-symbol", "linear-eq-1var"].forEach((id) => {
+    assert.ok(nodesById[id].diagnosticPrereq?.length > 0, `${id} 必須可參加先備診斷`);
   });
 });
 
@@ -87,7 +89,8 @@ test("作答流程以獨立診斷場次評分，不灌入一般精熟紀錄", as
   const app = await readFile(new URL("../js/app.js", import.meta.url), "utf8");
   assert.match(app, /function startPrerequisiteDiagnostic/);
   assert.match(app, /kind: "diagnostic"/);
-  assert.match(app, /session\.kind !== "diagnostic"[\s\S]*recordAnswer/);
+  assert.match(app, /const isAssessment = session\.kind === "diagnostic" \|\| session\.kind === "placement"/);
+  assert.match(app, /if \(!isAssessment\) \{[\s\S]*recordAnswer/);
   assert.match(app, /evaluatePrerequisiteDiagnostic/);
   assert.match(app, /applyDiagnosticResult/);
   assert.match(app, /diagnosticResult\.gapNodeIds/);

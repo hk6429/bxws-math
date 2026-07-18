@@ -364,6 +364,7 @@ export function renderSkillTree(container, tree, onSelectNode, onStartDiagnostic
 
   tree.strands.forEach((strand) => {
     const strandBox = el("section", "strand");
+    strandBox.dataset.strandId = strand.id;
     const visuals = tree.strandVisuals?.[strand.id] ?? {};
     if (visuals.colorVar) strandBox.style.setProperty("--strand-color", `var(${visuals.colorVar})`);
 

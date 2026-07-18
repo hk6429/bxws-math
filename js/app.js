@@ -6,7 +6,10 @@ import {
   buildSession, buildMasterSession, buildReviewSession, countDueReviews,
   insertMentorCoachingQuestion, loadQuestionBank, mentorCoachingTransition,
 } from "./quiz-loader.js";
-import { autoAdvanceDelay, guardianImageForStrand, masteryEncouragement, renderQuestion } from "./quiz-ui.js";
+import {
+  autoAdvanceDelay, cardRevealClass, guardianImageForStrand, masteryEncouragement,
+  renderQuestion, streakMilestone,
+} from "./quiz-ui.js";
 import { recordAnswer, overallMasteryPct, getNodeStats } from "./scoreEngine.js";
 import { updateBox, hasRecord, isDue } from "./leitner.js";
 import { addWrongQuestion, listWrongQuestions, removeWrongQuestion } from "./errorbook.js";
@@ -31,7 +34,7 @@ import {
   isoWeekKey, buildWeeklySession, getWeeklyBest, submitWeeklyResult, decodeClassResults, decodeResult,
   getRoomCode, setRoomCode, syncWeeklyResultToServer, fetchWeeklyBoard,
 } from "./weekly.js";
-import { computeWorkshop, WORKSHOP_STAGES } from "./workshop.js";
+import { computeWorkshop, workshopWeeklyGoal, WORKSHOP_STAGES } from "./workshop.js";
 import {
   MASTER_TRIAL_TIERS, masterTrialTierState, nextStepRecommendation, settleMasterTrialTier,
 } from "./mastery-engine.js";
@@ -42,6 +45,9 @@ import {
 import {
   applyDiagnosticResult, buildPrerequisiteDiagnostic, evaluatePrerequisiteDiagnostic,
 } from "./prereq-diagnostic.js";
+import {
+  applyPlacementDiagnostic, buildPlacementDiagnostic, hasMeaningfulProgress,
+} from "./placement-diagnostic.js";
 
 const views = {
   home: document.getElementById("view-home"),
@@ -61,6 +67,61 @@ let storageNoticeShown = false;
 function announce(message) {
   const live = document.getElementById("quiz-live");
   if (live) live.textContent = message;
+}
+
+function showToast(message, tone = "success") {
+  document.querySelector(".action-toast")?.remove();
+  const toast = document.createElement("div");
+  toast.className = `action-toast toast-${tone}`;
+  toast.role = "status";
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 2200);
+}
+
+function showStreakMilestone(streak) {
+  const milestone = streakMilestone(streak);
+  if (!milestone) return;
+  const quizArea = document.getElementById("quiz-area");
+  const card = quizArea?.querySelector(".q-card");
+  const celebration = document.createElement("div");
+  celebration.className = `streak-celebration streak-celebration-${milestone}`;
+  celebration.setAttribute("aria-live", "polite");
+  celebration.textContent = milestone === 8
+    ? "✦ 神話連詠 ×8！智慧火炬全亮 ✦"
+    : `🔥 連詠里程碑 ×${milestone}！`;
+  quizArea?.appendChild(celebration);
+  card?.classList.add("streak-milestone-hit");
+  scheduleTimer(() => {
+    celebration.remove();
+    card?.classList.remove("streak-milestone-hit");
+  }, 900);
+}
+
+function showCardReveal(item, rarity = "普通") {
+  if (!item) return;
+  document.querySelector(".card-reveal-overlay")?.remove();
+  const overlay = document.createElement("div");
+  overlay.className = "card-reveal-overlay";
+  overlay.setAttribute("role", "dialog");
+  overlay.setAttribute("aria-label", `解鎖${item.name}`);
+  const card = document.createElement("div");
+  card.className = `card-reveal ${cardRevealClass(rarity)}`;
+  const rarityLabel = document.createElement("span");
+  rarityLabel.className = "card-reveal-rarity";
+  rarityLabel.textContent = rarity;
+  const symbol = document.createElement("strong");
+  symbol.textContent = item.sym;
+  const title = document.createElement("h3");
+  title.textContent = item.name;
+  const hint = document.createElement("p");
+  hint.textContent = "已收入你的收藏，點一下繼續";
+  card.append(rarityLabel, symbol, title, hint);
+  overlay.appendChild(card);
+  const close = () => overlay.remove();
+  overlay.addEventListener("click", close, { once: true });
+  document.body.appendChild(overlay);
+  setTimeout(close, 2200);
 }
 
 function showStorageNoticeIfNeeded() {
@@ -159,7 +220,7 @@ function newSession(fields) {
     index: 0,
     node: null,
     mascot: "davinci",
-    kind: "node", // node | diagnostic | master | review | weekly
+    kind: "node", // node | diagnostic | placement | master | review | weekly
     strategy: null,
     retryDone: 0,
     fastCount: 0,
@@ -221,6 +282,7 @@ async function goHome() {
     }
     renderSkillTree(container, tree, startQuiz, startPrerequisiteDiagnostic);
     maybeShowEndgame(container);
+    makePlacementEntry(container);
 
   // 首頁降噪：神殿盃/續讀/喚醒單/五座神殿四張卡收進單一可收合看板，先讓學生看到星圖本體
     const dock = document.createElement("details");
@@ -252,6 +314,20 @@ async function goHome() {
   } finally {
     showStorageNoticeIfNeeded();
   }
+}
+
+function makePlacementEntry(container) {
+  if (hasMeaningfulProgress(store.read("progress", {}))) return;
+  const card = document.createElement("section");
+  card.className = "placement-entry";
+  const copy = document.createElement("div");
+  copy.innerHTML = "<strong>第一次來，不必從頭慢慢刷</strong><span>用跨年級題目找到最接近你的起點，答對的技能會依定位結果提早點亮。</span>";
+  const button = document.createElement("button");
+  button.className = "q-next placement-start";
+  button.textContent = "不知道從哪開始？先做 5 分鐘定位測驗";
+  button.addEventListener("click", startPlacementDiagnostic);
+  card.append(copy, button);
+  container.prepend(card);
 }
 
 // ── P0：今日喚醒單＋星屑瓶 ──
@@ -382,6 +458,19 @@ function makeWorkshopTeaser(container) {
   container.prepend(card);
 }
 
+async function navigateToStrand(strandId) {
+  await goHome();
+  const strand = document.querySelector(`.strand[data-strand-id="${strandId}"]`);
+  if (!strand) return;
+  strand.classList.remove("strand-highlight");
+  requestAnimationFrame(() => strand.classList.add("strand-highlight"));
+  strand.scrollIntoView({ block: "start", behavior: "smooth" });
+  scheduleTimer(() => strand.classList.remove("strand-highlight"), 1800);
+  strand.querySelector(".strand-name")?.setAttribute("tabindex", "-1");
+  strand.querySelector(".strand-name")?.focus({ preventScroll: true });
+  announce(`已定位到${strand.querySelector(".strand-name")?.textContent ?? "對應領地"}`);
+}
+
 async function showWorkshop() {
   tree = tree ?? (await loadSkillTree());
   const workshop = workshopSnapshot();
@@ -401,9 +490,12 @@ async function showWorkshop() {
   const meterFill = document.createElement("span");
   meterFill.style.width = `${Number(workshop.overallPct) || 0}%`;
   meter.appendChild(meterFill);
+  const weeklyGoal = document.createElement("div");
+  weeklyGoal.className = "workshop-weekly-goal";
+  weeklyGoal.textContent = workshopWeeklyGoal(workshop.overallPct);
   const intro = document.createElement("p");
   intro.textContent = `目前五座神殿總甦醒度為 ${Number(workshop.overallPct) || 0}%。精通神諭卷軸、取得印記，奧林帕斯的智慧之光就會一層層回來。`;
-  hero.append(kicker, heading, meter, intro);
+  hero.append(kicker, heading, meter, weeklyGoal, intro);
   if (workshop.allRestored) {
     const finale = document.createElement("div");
     finale.className = "workshop-finale";
@@ -418,6 +510,16 @@ async function showWorkshop() {
     const stage = WORKSHOP_STAGES[room.stage];
     const card = document.createElement("article");
     card.className = `workshop-room room-${room.stage}`;
+    card.dataset.strandId = room.id;
+    card.tabIndex = 0;
+    card.role = "link";
+    card.setAttribute("aria-label", `前往神話星圖的${room.title}`);
+    card.addEventListener("click", () => navigateToStrand(room.id));
+    card.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      navigateToStrand(room.id);
+    });
     const scene = document.createElement("div");
     scene.className = "room-scene";
     scene.appendChild(Object.assign(document.createElement("span"), { textContent: room.icon }));
@@ -940,6 +1042,33 @@ async function startPrerequisiteDiagnostic(node) {
   }
 }
 
+async function startPlacementDiagnostic() {
+  showView("quiz");
+  clearSprintTimer();
+  const quizArea = document.getElementById("quiz-area");
+  quizArea.innerHTML = "";
+  try {
+    const queue = await buildPlacementDiagnostic(tree, loadQuestionBank, 15);
+    session = newSession({
+      queue,
+      node: { id: "placement-diagnostic", name: "5 分鐘快速定位" },
+      mascot: "gauss",
+      kind: "placement",
+    });
+    renderCurrentQuestion();
+  } catch {
+    quizArea.appendChild(Object.assign(document.createElement("p"), {
+      className: "strategy-note",
+      textContent: "定位題目暫時不足，請先從神話星圖選擇可挑戰的技能。",
+    }));
+    const backBtn = document.createElement("button");
+    backBtn.className = "q-next";
+    backBtn.textContent = "回神話星圖";
+    backBtn.addEventListener("click", goHome);
+    quizArea.appendChild(backBtn);
+  }
+}
+
 function renderProgressBar() {
   const bar = document.getElementById("quiz-progressbar");
   bar.innerHTML = "";
@@ -1029,7 +1158,7 @@ function renderCurrentQuestion(focusStem = false) {
   session.qStartAt = Date.now();
   if (session.strategy === "sprint") startSprintTimer();
   else clearSprintTimer();
-  const guardianStrand = strandIdForNode(question._nodeId ?? session.node?.id);
+  const guardianStrand = strandIdForNode(question._nodeId ?? question._placementNodeId ?? session.node?.id);
   const opts = { encounter: session.index === session.encounterIdx, guardianStrand };
   if (question._mentorCoaching) {
     quizArea.appendChild(Object.assign(document.createElement("div"), {
@@ -1069,11 +1198,12 @@ function renderCurrentQuestion(focusStem = false) {
 
 function handleAnswer(question, isCorrect, meta = {}) {
   recordActivityStreak();
-  const nodeId = question._nodeId ?? session.node.id;
+  const nodeId = question._nodeId ?? question._placementNodeId ?? session.node.id;
   const elapsed = Math.max(0, Date.now() - session.qStartAt);
-  const wasReviewDue = session.kind !== "diagnostic" && hasRecord(question.id) && isDue(question.id);
+  const isAssessment = session.kind === "diagnostic" || session.kind === "placement";
+  const wasReviewDue = !isAssessment && hasRecord(question.id) && isDue(question.id);
   const node = allNodes(tree).find((item) => item.id === nodeId) ?? {};
-  if (session.kind !== "diagnostic") {
+  if (!isAssessment) {
     recordAnswer(nodeId, question, isCorrect, elapsed, node);
     updateBox(question.id, isCorrect, nodeId);
   }
@@ -1099,11 +1229,12 @@ function handleAnswer(question, isCorrect, meta = {}) {
     const best = Number(store.read("bestStreak", 0)) || 0;
     if (session.streak > best) store.write("bestStreak", session.streak);
     sfx.correct(session.streak);
+    showStreakMilestone(session.streak);
     if (question._retry) session.retryDone += 1;
     if (session.strategy === "sprint" && elapsed <= SPRINT_LIMIT_MS) {
       session.fastCount += 1;
     }
-    if (session.kind !== "diagnostic" && question._fromErrorbook) {
+    if (!isAssessment && question._fromErrorbook) {
       removeWrongQuestion(question.id);
       session.repairedCount += 1;
       bumpDaily("repair");
@@ -1135,9 +1266,9 @@ function handleAnswer(question, isCorrect, meta = {}) {
       requestAnimationFrame(() => quizArea?.classList.add("combo-break"));
       scheduleTimer(() => quizArea?.classList.remove("combo-break"), 500);
     }
-    if (session.kind !== "diagnostic") addWrongQuestion(nodeId, question);
+    if (!isAssessment) addWrongQuestion(nodeId, question);
     // 慢筆細描：答錯排到隊尾再描一次（每題限一次）
-    if (session.kind !== "diagnostic" && session.strategy === "slow" && !question._retry) {
+    if (!isAssessment && session.strategy === "slow" && !question._retry) {
       session.queue.push({ ...question, _retry: true });
     }
     if (mentorTransition?.insertRetry) {
@@ -1149,7 +1280,7 @@ function handleAnswer(question, isCorrect, meta = {}) {
         Math.random,
         { nodeId, nodeName: node.name ?? nodeId }
       );
-    } else if (session.kind !== "diagnostic" && !question._mentorCoaching && session.consecutiveWrong >= 3) {
+    } else if (!isAssessment && !question._mentorCoaching && session.consecutiveWrong >= 3) {
       const comfort = QUOTES.comfort.filter((quote) => quote.mascot === session.mascot);
       const candidates = comfort.length > 0 ? comfort : QUOTES.comfort;
       const quote = candidates[Math.floor(Math.random() * candidates.length)];
@@ -1195,6 +1326,7 @@ function handleEncounterWin() {
   const card = document.querySelector("#quiz-area .q-card");
   if (reward.type === "stamp") {
     session.rareDrops.push(reward.stamp);
+    showCardReveal(reward.stamp, reward.stamp.rarity);
     if (card) {
       const rare = document.createElement("div");
       rare.className = "rare-stamp";
@@ -1218,6 +1350,10 @@ function finishSession() {
   clearActiveSession();
   if (session.kind === "diagnostic") {
     finishPrerequisiteDiagnostic();
+    return;
+  }
+  if (session.kind === "placement") {
+    finishPlacementDiagnostic();
     return;
   }
   bumpDaily("rounds");
@@ -1314,6 +1450,10 @@ function finishSession() {
     ? evaluateCollection(session.node.id, stats, ctx)
     : [];
   quizArea.appendChild(makeSummary(stats, newBadges, newDrops, weeklyRecord, challengeReply, nextStep));
+  newDrops.forEach((drop) => showCardReveal(
+    drop.item,
+    drop.item.id === MASTER_TRIAL_ID ? "傳說" : drop.tier >= 2 ? "稀有" : "普通"
+  ));
 
   const player = getPlayerName();
   if (player) {
@@ -1340,6 +1480,39 @@ function finishSession() {
   backBtn.textContent = "回神話星圖";
   backBtn.addEventListener("click", goHome);
   quizArea.appendChild(backBtn);
+}
+
+function finishPlacementDiagnostic() {
+  const completedAt = Date.now();
+  const nodesById = Object.fromEntries(allNodes(tree).map((node) => [node.id, node]));
+  const progress = applyPlacementDiagnostic(
+    store.read("progress", {}),
+    session.queue,
+    session.perQuestion.map((answer) => answer.c === 1),
+    nodesById,
+    completedAt
+  );
+  store.write("progress", progress);
+  const testedIds = [...new Set(session.queue.map((question) => question._placementNodeId).filter(Boolean))];
+  const passed = testedIds.filter((id) => progress[id]?.placementDiagnostic?.completedAt === completedAt
+    && progress[id].placementDiagnostic.passed);
+  const quizArea = document.getElementById("quiz-area");
+  quizArea.innerHTML = "";
+  const summary = document.createElement("section");
+  summary.className = "q-summary placement-summary";
+  summary.appendChild(Object.assign(document.createElement("h3"), { textContent: "快速定位完成" }));
+  summary.appendChild(Object.assign(document.createElement("p"), {
+    textContent: passed.length > 0
+      ? `依你的實際作答，已點亮：${passed.map((id) => nodesById[id]?.name ?? id).join("、")}。神話星圖已開出更接近你的起點。`
+      : "這次先保留原本起點；神話星圖會從基礎開始，之後也能使用各節點的先備診斷捷徑。",
+  }));
+  quizArea.appendChild(summary);
+  const backBtn = document.createElement("button");
+  backBtn.className = "q-next";
+  backBtn.textContent = "查看我的新起點";
+  backBtn.addEventListener("click", goHome);
+  quizArea.appendChild(backBtn);
+  announce(`快速定位完成，點亮 ${passed.length} 個技能起點`);
 }
 
 function finishPrerequisiteDiagnostic() {
@@ -1594,13 +1767,18 @@ function makeSummary(stats, newBadges, newDrops = [], weeklyRecord = null, chall
     if (typeof navigator.share === "function") {
       try {
         await navigator.share({ title: "步學吾數", text: shareText });
+        shareBtn.textContent = "已開啟分享！";
+        showToast("已開啟分享，可傳給同學或家人");
       } catch { /* 使用者取消分享時維持原畫面 */ }
       return;
     }
     try {
       await navigator.clipboard.writeText(shareText);
       shareBtn.textContent = "已複製成果！";
-    } catch { /* 剪貼簿不可用時維持原樣 */ }
+      showToast("已複製成果文字");
+    } catch {
+      showToast("無法複製成果，請稍後再試", "error");
+    }
   });
   box.appendChild(shareBtn);
 
@@ -2017,12 +2195,20 @@ function makeShareCard() {
   const btn = document.createElement("button");
   btn.className = "daily-btn";
   btn.textContent = "🖼 產生我的神諭卷軸集卡片（下載炫耀）";
-  btn.addEventListener("click", () => renderShareCard());
+  btn.addEventListener("click", () => {
+    btn.disabled = true;
+    btn.textContent = "正在產生卡片…";
+    renderShareCard((success) => {
+      btn.disabled = false;
+      btn.textContent = success ? "✓ 已產生並下載！" : "🖼 再試一次產生卡片";
+      showToast(success ? "已產生並下載炫耀卡片" : "無法產生下載卡片，請稍後再試", success ? "success" : "error");
+    });
+  });
   box.appendChild(btn);
   return box;
 }
 
-function renderShareCard() {
+function renderShareCard(onComplete = () => {}) {
   const col = getCollection();
   const ownedCount = Object.keys(col).length;
   const sealedCount = Object.values(col).filter((c) => c.tier >= 2).length;
@@ -2036,6 +2222,10 @@ function renderShareCard() {
   canvas.width = W;
   canvas.height = H;
   const ctx = canvas.getContext("2d");
+  if (!ctx) {
+    onComplete(false);
+    return;
+  }
 
   // 星空羊皮卷底（繪圖邏輯不動，僅換語境）
   ctx.fillStyle = "#f4ead2";
@@ -2094,10 +2284,15 @@ function renderShareCard() {
   ctx.fillText(`${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()} · bxws-math`, W - 230, H - 40);
 
   const finish = () => {
-    const a = document.createElement("a");
-    a.download = `步學吾數神諭卷軸集-${name}.png`;
-    a.href = canvas.toDataURL("image/png");
-    a.click();
+    try {
+      const a = document.createElement("a");
+      a.download = `步學吾數神諭卷軸集-${name}.png`;
+      a.href = canvas.toDataURL("image/png");
+      a.click();
+      onComplete(true);
+    } catch {
+      onComplete(false);
+    }
   };
 
   // 駐塔導師蓋台（載得到就畫，載不到直接出卡）
@@ -2132,7 +2327,7 @@ function makeNameEditor() {
   return box;
 }
 
-// 音效／震動開關（預設關：教室情境）
+// 音效／震動開關（首次預設開啟，使用者可手動關閉）
 function setupSfxToggle() {
   const btn = document.getElementById("nav-sfx");
   const sync = () => {

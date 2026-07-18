@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import { computeWorkshop } from "../js/workshop.js";
 
 test("工作室修復度由精熟、落款與稀有章加權推導，不另存進度", () => {
@@ -73,4 +74,18 @@ test("五塔導師口吻直接對應各領域的數學解題步驟", () => {
   assert.match(voices["space-shape"], /標出邊角.*對照定義.*公式.*單位/);
   assert.match(voices["relation-pattern"], /排前幾項.*比較相鄰.*寫出規則.*代回/);
   assert.match(voices["data-uncertainty"], /確認總數.*分類.*有利結果.*所有可能/);
+});
+
+test("每張神殿卡可回到神話星圖並捲動高亮對應領地", async () => {
+  const [app, ui, css] = await Promise.all([
+    readFile(new URL("../js/app.js", import.meta.url), "utf8"),
+    readFile(new URL("../js/skilltree-ui.js", import.meta.url), "utf8"),
+    readFile(new URL("../css/style.css", import.meta.url), "utf8"),
+  ]);
+  assert.match(app, /card\.dataset\.strandId = room\.id/);
+  assert.match(app, /card\.addEventListener\("click", \(\) => navigateToStrand\(room\.id\)\)/);
+  assert.match(app, /async function navigateToStrand/);
+  assert.match(app, /scrollIntoView\(\{ block: "start", behavior: "smooth" \}\)/);
+  assert.match(ui, /strandBox\.dataset\.strandId = strand\.id/);
+  assert.match(css, /\.strand\.strand-highlight/);
 });

@@ -36,7 +36,8 @@ test("觸控、iOS 字級、overscroll 與行動版 SVG 降級規則存在", () 
 test("HTML 設有安全區、canonical、自架計數器與 modulepreload", () => {
   assert.match(html, /viewport-fit=cover/);
   assert.match(html, /rel="canonical" href="https:\/\/bxws-math\.vercel\.app\/"/);
-  assert.equal((html.match(/rel="modulepreload"/g) ?? []).length, 6);
+  assert.equal((html.match(/rel="modulepreload"/g) ?? []).length, 7);
+  assert.match(html, /rel="modulepreload" href="js\/placement-diagnostic\.js"/);
   assert.match(html, /referrerpolicy="no-referrer"/);
   assert.match(html, /pointer-events:none/);
   assert.match(html, /bottom:calc\(14px \+ env\(safe-area-inset-bottom\)\)/);

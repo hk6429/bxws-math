@@ -9,6 +9,7 @@
   <link rel="modulepreload" href="js/schema.js" />
   <link rel="modulepreload" href="js/quiz-loader.js" />
   <link rel="modulepreload" href="js/quiz-ui.js" />
+  <link rel="modulepreload" href="js/placement-diagnostic.js" />
   <link rel="modulepreload" href="js/leitner.js" />
   <link rel="modulepreload" href="js/scoreEngine.js" />
   <link rel="stylesheet" href="css/style.css" />
@@ -41,13 +42,18 @@
     <section id="view-home" class="view active" aria-labelledby="home-heading">
       <h2 id="home-heading" class="visually-hidden" tabindex="-1">神話星圖</h2>
       <section id="mythos-lore" class="mythos-lore" aria-labelledby="mythos-lore-heading">
-        <figure class="mythos-style-figure">
-          <img id="mythos-style-guide" src="assets/mythos/style-guide.png" alt="奧林帕斯數術神殿世界觀與角色風格總覽" loading="lazy" decoding="async" />
-        </figure>
-        <div class="mythos-lore-copy">
-          <h3 id="mythos-lore-heading">奧林帕斯數術神殿</h3>
-          <p>傳說奧林帕斯的智慧之火曾照亮每一條數術之路，直到混沌之霧封住五片領地。迷宮地底城的米諾陶洛斯守護數與量，斯芬克斯神殿以謎題考驗代數；獨眼巨人鍛造坊把空間與形狀鑄成精準器物，命運三女神紡織殿將關係與規律編入命線，德爾菲神諭殿則由皮媞亞與巨蟒辨讀資料與可能性。雅典娜派出五位智慧引路人，陪伴學徒閱讀神諭卷軸、破解題目，逐步喚醒沉睡的神殿。每一次計算、每一次驗證，都會留下神話印記；當五座神殿重新發光，學徒也將明白，真正的神力不是猜中答案，而是能說清楚自己的思考，並願意從錯誤中再走一步。在「步學吾數」，你不必一口氣征服整座奧林帕斯；只要今天比昨天多點亮一小段路，智慧女神的火炬就會始終在前方等你。</p>
-        </div>
+        <details class="mythos-lore-details">
+          <summary><span id="mythos-lore-heading">奧林帕斯的五座神殿等你用數學喚醒</span><span class="mythos-lore-action"><span class="lore-open-label">展開故事</span><span class="lore-close-label">收合故事</span></span></summary>
+          <div class="mythos-lore-body">
+            <figure class="mythos-style-figure">
+              <img id="mythos-style-guide" src="assets/mythos/style-guide.png" alt="奧林帕斯數術神殿世界觀與角色風格總覽" loading="lazy" decoding="async" />
+            </figure>
+            <div class="mythos-lore-copy">
+              <h3>奧林帕斯數術神殿</h3>
+              <p>傳說奧林帕斯的智慧之火曾照亮每一條數術之路，直到混沌之霧封住五片領地。迷宮地底城的米諾陶洛斯守護數與量，斯芬克斯神殿以謎題考驗代數；獨眼巨人鍛造坊把空間與形狀鑄成精準器物，命運三女神紡織殿將關係與規律編入命線，德爾菲神諭殿則由皮媞亞與巨蟒辨讀資料與可能性。雅典娜派出五位智慧引路人，陪伴學徒閱讀神諭卷軸、破解題目，逐步喚醒沉睡的神殿。每一次計算、每一次驗證，都會留下神話印記；當五座神殿重新發光，學徒也將明白，真正的神力不是猜中答案，而是能說清楚自己的思考，並願意從錯誤中再走一步。在「步學吾數」，你不必一口氣征服整座奧林帕斯；只要今天比昨天多點亮一小段路，智慧女神的火炬就會始終在前方等你。</p>
+            </div>
+          </div>
+        </details>
       </section>
       <div id="skilltree-container" class="skilltree"></div>
     </section>
