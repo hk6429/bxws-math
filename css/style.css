@@ -27,8 +27,8 @@
   --strand-pattern: #c96a8a;
   --strand-data: #7a9a3d;
 
-  --font-hand: "Yuanti TC", "Chalkboard SE", "PingFang TC", "Microsoft JhengHei", sans-serif;
-  --font-sans: "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-hand: "LXGW WenKai TC", "Yuanti TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-sans: "LXGW WenKai TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
   --font-mono-num: "SF Mono", "Roboto Mono", ui-monospace, monospace;
 
   --fs-title: 1.75rem;
@@ -1579,7 +1579,7 @@ body {
   /* a11y 債務：13px 小字加深 */
   --ink-dim: #5d4c30;
   /* 楷體筆刷字（只給大標題） */
-  --font-brush: "Kaiti TC", "BiauKai", "DFKai-SB", "Yuanti TC", "Chalkboard SE", serif;
+  --font-brush: "LXGW WenKai TC", "Kaiti TC", "BiauKai", "DFKai-SB", serif;
 }
 
 /* ---------- 2. body 星空底（scroll 不用 fixed）---------- */
@@ -3451,4 +3451,106 @@ body::before {
 @media (max-width: 720px) {
   .placement-entry { grid-template-columns: 1fr; }
   .placement-entry .placement-start { width: 100%; white-space: normal; }
+}
+
+/* ===== 2026-07 純視覺品質修正 ===== */
+
+/* 導覽內連結與按鈕共用同一組神殿旗牌語言。 */
+.topbar nav .teacher-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border: 1.5px solid color-mix(in srgb, var(--star-gold) 45%, transparent);
+  border-radius: 6px 6px 40% 40% / 6px 6px 55% 55%;
+  background: linear-gradient(180deg, #2e2846, #201c34);
+  color: #f0e2bd;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  font-family: var(--font-hand);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.topbar nav .teacher-link:focus-visible {
+  outline: 3px solid var(--mana);
+  outline-offset: 2px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .topbar nav .teacher-link:hover {
+    border-color: color-mix(in srgb, var(--star-gold) 85%, transparent);
+    background: linear-gradient(180deg, #363053, #262240);
+    box-shadow: 0 0 10px var(--star-gold-glow);
+  }
+}
+
+input[type="radio"] { accent-color: var(--star-gold); }
+
+/* 共用金色 token 貫穿頂欄、星圖與羊皮紙場景。 */
+.topbar { border-bottom-color: color-mix(in srgb, var(--star-gold) 45%, transparent); }
+.mythos-lore { border-color: color-mix(in srgb, var(--star-gold) 38%, transparent); }
+.weekly-card::after, .q-card::after { border-color: color-mix(in srgb, var(--star-gold) 42%, transparent); }
+
+/* WCAG AA：三組均以實色前景和實際亮紙底計算。 */
+.activity-streak-home {
+  background: #ffe2b8;
+  color: #7a3e00;
+}
+.score-disclosure { color: #5a5044; }
+.weekly-title { color: #8a4200; }
+
+/* 老師眉批留在當前題，柔和出現後由學生自行前進。 */
+.q-explain { animation: explanation-fade-in 360ms ease-out both; }
+@keyframes explanation-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 圖鑑卡框不再只靠文字顏色區分稀有度。 */
+.stamp-cell.stamp-owned.reveal-common {
+  box-shadow: inset 0 0 0 2px #b7a57f, inset 0 0 16px rgba(112, 91, 52, .2), 0 3px 8px rgba(5, 8, 22, .45);
+}
+.stamp-cell.stamp-owned.reveal-rare {
+  background: linear-gradient(145deg, #f8fbff, #dbeeff);
+  box-shadow: inset 0 0 0 2px #438fc4, inset 0 0 18px rgba(55, 151, 218, .28), 0 0 16px rgba(74, 162, 255, .48);
+}
+.stamp-cell.stamp-owned.reveal-legendary {
+  background: linear-gradient(145deg, #fff4d2, #eed49a);
+  box-shadow: inset 0 0 0 3px var(--star-gold), inset 0 0 20px rgba(184, 108, 22, .3), 0 0 22px var(--star-gold-glow);
+}
+.stamp-cell .rarity-普通 { color: #5a5044; }
+.stamp-cell .rarity-稀有 { color: #155d86; }
+.stamp-cell .rarity-傳說 { color: #7c3f00; text-shadow: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .q-explain { animation: none; }
+}
+
+@media (max-width: 600px) {
+  .topbar nav {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+    padding: 3px 2px 7px;
+  }
+  .topbar nav > button,
+  .topbar nav > .teacher-link,
+  .topbar nav > .accessibility-settings {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+  .topbar nav > button,
+  .topbar nav > .teacher-link { padding-inline: 10px; font-size: 0.82rem; }
+  .topbar nav > .accessibility-settings { margin-left: 0; }
+}
+
+@media (max-width: 480px) {
+  img[src*="visitor-badge"] {
+    right: 6px !important;
+    bottom: calc(6px + env(safe-area-inset-bottom)) !important;
+    opacity: .62;
+    transform: scale(.78);
+    transform-origin: right bottom;
+  }
 }

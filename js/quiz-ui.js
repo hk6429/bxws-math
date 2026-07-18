@@ -17,10 +17,6 @@ export function guardianImageForStrand(strandId) {
   return GUARDIAN_IMAGES[strandId] ?? null;
 }
 
-export function autoAdvanceDelay(isCorrect) {
-  return isCorrect ? 800 : null;
-}
-
 export function streakMilestone(streak) {
   const value = Number(streak);
   return [3, 5, 8].includes(value) ? value : null;

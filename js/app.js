@@ -7,7 +7,7 @@ import {
   insertMentorCoachingQuestion, loadQuestionBank, mentorCoachingTransition,
 } from "./quiz-loader.js";
 import {
-  autoAdvanceDelay, cardRevealClass, guardianImageForStrand, masteryEncouragement,
+  cardRevealClass, guardianImageForStrand, masteryEncouragement,
   renderQuestion, streakMilestone,
 } from "./quiz-ui.js";
 import { recordAnswer, overallMasteryPct, getNodeStats } from "./scoreEngine.js";
@@ -1300,18 +1300,13 @@ function handleAnswer(question, isCorrect, meta = {}) {
   saveActiveSession(1);
   nextBtnEl?.classList.remove("q-next-hidden");
   nextBtnEl?.scrollIntoView({ block: "nearest", behavior: "smooth" });
-  const answeredNextButton = nextBtnEl;
-  const autoDelay = autoAdvanceDelay(isCorrect);
-  if (autoDelay !== null && answeredNextButton) {
-    scheduleTimer(() => answeredNextButton.click(), autoDelay);
-  }
   const messages = [isCorrect
     ? "答對了！"
     : `答錯了，正解是：選項${meta.correctLabel ?? ""}「${meta.correctText ?? ""}」`];
   if (session.streak >= 3) messages.push(`連詠 ${session.streak}`);
   if (meta.encounterReward?.type === "stamp") messages.push(`發現稀有印記：${meta.encounterReward.stamp.name}`);
   if (meta.encounterReward?.type === "stardust") messages.push(meta.encounterReward.message);
-  messages.push(isCorrect ? "即將自動進入下一題" : "下一題按鈕已出現");
+  messages.push("下一題按鈕已出現");
   announce(messages.join("。"));
   showStorageNoticeIfNeeded();
 }
@@ -2089,7 +2084,7 @@ async function showDashboard() {
   RARE_STAMPS.forEach((s) => {
     const owned = stampBook[s.id];
     const cell = document.createElement("div");
-    cell.className = "stamp-cell" + (owned ? " stamp-owned" : " stamp-locked");
+    cell.className = "stamp-cell" + (owned ? " stamp-owned" : " stamp-locked") + ` ${cardRevealClass(s.rarity)}`;
     const sym = document.createElement("div");
     sym.className = "stamp-sym";
     sym.textContent = owned ? s.sym : "？";
