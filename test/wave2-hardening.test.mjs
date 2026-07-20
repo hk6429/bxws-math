@@ -114,8 +114,8 @@ test("Wave 2 無障礙契約與 CSS 尾端追加規則齊全", async () => {
     readFile(new URL("../js/challenge.js", import.meta.url), "utf8"),
   ]);
   assert.match(html, /id="quiz-live" role="status" aria-live="polite"/);
-  assert.equal((html.match(/<section id="view-/g) ?? []).length, 5);
-  assert.equal((html.match(/<h2[^>]*tabindex="-1"/g) ?? []).length, 5);
+  assert.equal((html.match(/<section id="view-/g) ?? []).length, 6);
+  assert.equal((html.match(/<h2[^>]*tabindex="-1"/g) ?? []).length, 6);
   assert.doesNotMatch(html, /\son[a-z]+\s*=/i);
   assert.match(html, /role="progressbar"/);
   assert.ok(css.lastIndexOf("Wave 2：無障礙工具") > css.lastIndexOf("2026-07 行動裝置"));

@@ -33,6 +33,12 @@ import {
   canFuse, resolveFusion, getSpiritBook, ownsSpirit, captureSpirit,
   stardustBalance, spendStardust, getEquippedSpirits, setEquippedSpirits, spiritBonusFor,
 } from "./fusion.js";
+import {
+  PEDESTAL_COUNT, DECORATIONS, decorationById, unlockedDecorationIds,
+  getSanctuaryLayout, placeDecoration, clearPedestal,
+  TITLES, unlockedTitles, getInscription, setInscription, inscriptionText,
+  totalMasteredCount,
+} from "./sanctuary.js";
 import { pickQuote, QUOTES, unlockedExtraQuotes } from "./quotes.js";
 import {
   store, exportNamespace, importNamespace, isStorageBroken, recordActivityStreak, runMigrations,
@@ -68,12 +74,14 @@ const views = {
   dashboard: document.getElementById("view-dashboard"),
   workshop: document.getElementById("view-workshop"),
   fusion: document.getElementById("view-fusion"),
+  sanctuary: document.getElementById("view-sanctuary"),
 };
 
 let tree = null;
 let session = { queue: [], index: 0, node: null, mascot: null, streak: 0, streakShielded: false, maxStreak: 0, roundCorrect: 0, roundTotal: 0 };
 let nextBtnEl = null;
 let fusionState = { tab: "fuse", pick: [], lastResult: null };
+let sanctuarySelectedPedestal = null;
 const pendingTimers = new Set();
 const preloadedMascots = new Set();
 let migrationsRun = false;
@@ -180,11 +188,11 @@ function showView(name) {
   if (changed) clearPendingTimers();
   if (name !== "quiz") clearSprintTimer();
   Object.entries(views).forEach(([key, el]) => el.classList.toggle("active", key === name));
-  const navByView = { home: "nav-home", workshop: "nav-workshop", fusion: "nav-fusion", dashboard: "nav-dashboard" };
+  const navByView = { home: "nav-home", workshop: "nav-workshop", fusion: "nav-fusion", sanctuary: "nav-sanctuary", dashboard: "nav-dashboard" };
   Object.values(navByView).forEach((id) => document.getElementById(id)?.removeAttribute("aria-current"));
   if (navByView[name]) document.getElementById(navByView[name])?.setAttribute("aria-current", "page");
   window.scrollTo(0, 0);
-  const labels = { home: "神話星圖", quiz: "練習題", dashboard: "我的儀表板", workshop: "奧林帕斯五座神殿", fusion: "星靈融合殿" };
+  const labels = { home: "神話星圖", quiz: "練習題", dashboard: "我的儀表板", workshop: "奧林帕斯五座神殿", fusion: "星靈融合殿", sanctuary: "繆思聖所" };
   const heading = views[name]?.querySelector("h2");
   if (heading) {
     heading.focus({ preventScroll: true });
@@ -1411,6 +1419,143 @@ function renderShopTab(body) {
     grid.appendChild(cell);
   });
   body.appendChild(grid);
+}
+
+async function showSanctuary() {
+  tree = tree ?? (await loadSkillTree());
+  showView("sanctuary");
+  sanctuarySelectedPedestal = null;
+  renderSanctuary();
+}
+
+function renderSanctuary() {
+  const root = document.getElementById("sanctuary-content");
+  root.innerHTML = "";
+  const progress = store.read("progress", {});
+  const unlockedIds = unlockedDecorationIds(tree, progress);
+  const titles = unlockedTitles(tree, progress);
+  const layout = getSanctuaryLayout();
+  const mastered = totalMasteredCount(tree, progress);
+
+  const header = document.createElement("div");
+  header.className = "sanctuary-header";
+  header.appendChild(Object.assign(document.createElement("h3"), { textContent: "繆思聖所" }));
+  header.appendChild(Object.assign(document.createElement("p"), {
+    className: "sanctuary-inscription",
+    textContent: `「${inscriptionText()}」`,
+  }));
+  header.appendChild(Object.assign(document.createElement("span"), {
+    className: "sanctuary-stat",
+    textContent: `已點亮陳設 ${unlockedIds.size} / ${DECORATIONS.length}　·　已精熟 ${mastered} 節點`,
+  }));
+  root.appendChild(header);
+
+  // 門楣銘文選擇
+  const titleWrap = document.createElement("div");
+  titleWrap.className = "sanctuary-titles";
+  titleWrap.appendChild(Object.assign(document.createElement("span"), { className: "sanctuary-subtitle", textContent: "門楣銘文（精熟愈多解鎖愈高稱號）" }));
+  const titleRow = document.createElement("div");
+  titleRow.className = "sanctuary-title-row";
+  const current = getInscription();
+  TITLES.forEach((t) => {
+    const unlocked = titles.some((x) => x.id === t.id);
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "sanctuary-title-btn" + (t.id === current ? " active" : "") + (unlocked ? "" : " locked");
+    btn.textContent = unlocked ? t.text : `🔒 ${t.text}（需精熟 ${t.need}）`;
+    btn.disabled = !unlocked;
+    btn.addEventListener("click", () => {
+      setInscription(t.id, titles);
+      renderSanctuary();
+    });
+    titleRow.appendChild(btn);
+  });
+  titleWrap.appendChild(titleRow);
+  root.appendChild(titleWrap);
+
+  // 八座基座
+  const hint = document.createElement("p");
+  hint.className = "sanctuary-hint";
+  hint.textContent = sanctuarySelectedPedestal == null
+    ? "點一座基座選中它，再從下方陳設庫挑一件擺上去。"
+    : `已選第 ${sanctuarySelectedPedestal + 1} 座基座，點下方陳設擺放，或再點一次基座取消。`;
+  root.appendChild(hint);
+
+  const pedestals = document.createElement("div");
+  pedestals.className = "sanctuary-pedestals";
+  for (let i = 0; i < PEDESTAL_COUNT; i += 1) {
+    const decoId = layout[String(i)];
+    const deco = decoId ? decorationById(decoId) : null;
+    const stillUnlocked = deco && unlockedIds.has(deco.id);
+    const cell = document.createElement("button");
+    cell.type = "button";
+    cell.className = "sanctuary-pedestal" + (sanctuarySelectedPedestal === i ? " selected" : "") + (deco ? " filled" : "");
+    if (deco && stillUnlocked) {
+      cell.appendChild(Object.assign(document.createElement("span"), { className: "pedestal-glyph", textContent: deco.glyph }));
+      cell.appendChild(Object.assign(document.createElement("span"), { className: "pedestal-name", textContent: deco.name }));
+    } else {
+      cell.appendChild(Object.assign(document.createElement("span"), { className: "pedestal-empty", textContent: `基座 ${i + 1}` }));
+    }
+    cell.addEventListener("click", () => {
+      sanctuarySelectedPedestal = sanctuarySelectedPedestal === i ? null : i;
+      renderSanctuary();
+    });
+    pedestals.appendChild(cell);
+  }
+  root.appendChild(pedestals);
+
+  if (sanctuarySelectedPedestal != null && layout[String(sanctuarySelectedPedestal)]) {
+    const clearBtn = document.createElement("button");
+    clearBtn.type = "button";
+    clearBtn.className = "sanctuary-clear-btn";
+    clearBtn.textContent = "清空這座基座";
+    clearBtn.addEventListener("click", () => {
+      clearPedestal(sanctuarySelectedPedestal);
+      renderSanctuary();
+    });
+    root.appendChild(clearBtn);
+  }
+
+  // 陳設庫
+  const gallery = document.createElement("div");
+  gallery.className = "sanctuary-gallery";
+  const byStrand = new Map();
+  DECORATIONS.forEach((d) => {
+    if (!byStrand.has(d.theme)) byStrand.set(d.theme, []);
+    byStrand.get(d.theme).push(d);
+  });
+  byStrand.forEach((items, theme) => {
+    const group = document.createElement("div");
+    group.className = "sanctuary-group";
+    group.appendChild(Object.assign(document.createElement("h4"), { textContent: theme }));
+    const grid = document.createElement("div");
+    grid.className = "sanctuary-deco-grid";
+    items.forEach((d) => {
+      const unlocked = unlockedIds.has(d.id);
+      const cell = document.createElement("button");
+      cell.type = "button";
+      cell.className = "sanctuary-deco" + (unlocked ? "" : " locked");
+      cell.disabled = !unlocked || sanctuarySelectedPedestal == null;
+      cell.appendChild(Object.assign(document.createElement("span"), { className: "deco-glyph", textContent: unlocked ? d.glyph : "🔒" }));
+      cell.appendChild(Object.assign(document.createElement("span"), { className: "deco-name", textContent: d.name }));
+      cell.appendChild(Object.assign(document.createElement("span"), {
+        className: "deco-req",
+        textContent: unlocked ? "已解鎖" : d.strand === "center" ? `精熟 ${d.milestone} 節點` : `該領域精熟 ${Math.round(d.tierRatio * 100)}%`,
+      }));
+      if (unlocked) {
+        cell.addEventListener("click", () => {
+          if (sanctuarySelectedPedestal == null) { showToast("先點一座基座", "warn"); return; }
+          placeDecoration(sanctuarySelectedPedestal, d.id, unlockedIds);
+          showToast(`✦ 「${d.name}」已擺上基座 ${sanctuarySelectedPedestal + 1}`, "success");
+          renderSanctuary();
+        });
+      }
+      grid.appendChild(cell);
+    });
+    group.appendChild(grid);
+    gallery.appendChild(group);
+  });
+  root.appendChild(gallery);
 }
 
 function renderPvpOutcome(result, quizArea) {
@@ -2923,6 +3068,7 @@ function setupOptionalMythosArt() {
 document.getElementById("nav-home").addEventListener("click", goHome);
 document.getElementById("nav-workshop").addEventListener("click", showWorkshop);
 document.getElementById("nav-fusion").addEventListener("click", showFusion);
+document.getElementById("nav-sanctuary").addEventListener("click", showSanctuary);
 document.getElementById("nav-dashboard").addEventListener("click", showDashboard);
 setupSfxToggle();
 setupAccessibilitySettings();

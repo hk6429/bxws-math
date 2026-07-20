@@ -3773,3 +3773,31 @@ input[type="radio"] { accent-color: var(--star-gold); }
 
 .boss-spirit-drop { color: var(--star-gold-core); font-size: 0.9rem; margin: 4px 0 0; }
 .spirit-drop { color: #7fd3e8; }
+
+/* 繆思聖所 */
+.sanctuary-header { text-align: center; margin-bottom: 12px; }
+.sanctuary-header h3 { margin: 0; color: var(--star-gold-core); font-size: 1.5rem; }
+.sanctuary-inscription { margin: 4px 0; color: var(--star-gold); font-size: 1.15rem; letter-spacing: 1px; }
+.sanctuary-stat { color: var(--starlight-text); font-size: 0.9rem; }
+.sanctuary-subtitle, .sanctuary-hint { color: var(--starlight-text); font-size: 0.9rem; margin: 10px 0 6px; text-align: center; }
+.sanctuary-title-row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 8px; }
+.sanctuary-title-btn { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--star-gold-glow); background: var(--night-mist); color: var(--starlight-text); cursor: pointer; font-size: 0.9rem; }
+.sanctuary-title-btn.active { background: var(--star-gold); color: var(--night-deep); font-weight: 700; }
+.sanctuary-title-btn.locked { opacity: 0.5; cursor: not-allowed; }
+.sanctuary-pedestals { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 10px 0; }
+.sanctuary-pedestal { aspect-ratio: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; border-radius: 14px; border: 2px dashed rgba(242, 201, 76, 0.35); background: rgba(30, 39, 73, 0.6); color: var(--starlight-text); cursor: pointer; padding: 6px; }
+.sanctuary-pedestal.filled { border-style: solid; background: linear-gradient(160deg, var(--night-mist), var(--night-deep)); }
+.sanctuary-pedestal.selected { border-color: var(--star-gold); box-shadow: 0 0 12px var(--star-gold-glow); }
+.pedestal-glyph { font-size: 2rem; line-height: 1; }
+.pedestal-name { font-size: 0.75rem; text-align: center; }
+.pedestal-empty { font-size: 0.85rem; opacity: 0.6; }
+.sanctuary-clear-btn { display: block; margin: 0 auto 12px; padding: 6px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: var(--starlight-text); cursor: pointer; }
+.sanctuary-group { margin-bottom: 14px; }
+.sanctuary-group h4 { margin: 0 0 6px; color: var(--star-gold); font-size: 1rem; }
+.sanctuary-deco-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 8px; }
+.sanctuary-deco { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 8px 4px; border-radius: 12px; border: 1px solid var(--star-gold-glow); background: var(--night-mist); color: var(--starlight-text); cursor: pointer; }
+.sanctuary-deco.locked { opacity: 0.5; border-style: dashed; cursor: not-allowed; }
+.sanctuary-deco:disabled { cursor: not-allowed; }
+.deco-glyph { font-size: 1.6rem; line-height: 1; }
+.deco-name { font-size: 0.78rem; text-align: center; }
+.deco-req { font-size: 0.68rem; opacity: 0.75; text-align: center; }

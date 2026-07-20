@@ -5,3 +5,5 @@
 assets/geometry/raw/
 assets/mascot/raw/
 .mascot-*.log
+.spirit-*.log
+assets/spirits/raw/
