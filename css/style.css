@@ -3827,3 +3827,21 @@ input[type="radio"] { accent-color: var(--star-gold); }
 .arena-outcome-score { color: var(--star-gold); font-size: 1.1rem; }
 .arena-outcome-status { color: var(--starlight-text); font-size: 0.9rem; }
 .arena-back-btn { margin: 10px auto; padding: 8px 20px; border-radius: 999px; border: 1px solid var(--star-gold-glow); background: var(--night-mist); color: var(--starlight-text); cursor: pointer; }
+
+/* 赫米斯班級市集 */
+.market-room-tag { color: var(--star-gold); text-align: center; font-size: 0.9rem; }
+.market-payout { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 14px; margin: 10px 0; border-radius: 12px; background: linear-gradient(120deg, rgba(242,201,76,.25), rgba(242,201,76,.1)); border: 1px solid var(--star-gold); color: var(--star-gold-core); }
+.market-claim-btn, .market-do-btn { padding: 6px 16px; border-radius: 999px; border: none; background: var(--star-gold); color: var(--night-deep); font-weight: 700; cursor: pointer; }
+.market-list-form, .market-mine, .market-board { margin-top: 14px; }
+.market-list-form h4, .market-mine h4, .market-board h4 { color: var(--star-gold); margin: 6px 0; }
+.market-form-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.market-spirit-select, .market-price-input { padding: 7px 10px; border-radius: 10px; border: 1px solid var(--star-gold-glow); background: var(--night-mist); color: var(--starlight-text); }
+.market-price-input { width: 120px; }
+.market-mine-row { color: var(--starlight-text); font-size: 0.9rem; margin: 3px 0; }
+.market-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+.market-cell { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 6px; border-radius: 12px; border: 1px solid var(--star-gold-glow); background: var(--night-mist); }
+.market-cell-name { color: var(--starlight-text); font-size: 0.82rem; text-align: center; }
+.market-cell-seller { color: var(--starlight-text); font-size: 0.72rem; opacity: 0.75; }
+.market-cell-price { color: var(--star-gold-core); font-weight: 700; }
+.market-buy-btn { margin-top: 4px; padding: 5px 14px; border-radius: 999px; border: none; background: var(--star-gold); color: var(--night-deep); font-weight: 700; cursor: pointer; }
+.market-buy-btn:disabled { background: rgba(154,166,207,.3); color: rgba(240,226,189,.5); cursor: not-allowed; }

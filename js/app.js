@@ -43,6 +43,10 @@ import {
   ARENA_QUESTION_COUNT, seasonKey, seasonLabel, normalizeRoomCode, isValidRoomCode,
   roomSeed, recordLocalArenaBest, getLocalArenaBest, submitArenaResult, fetchArenaBoard,
 } from "./arena.js";
+import {
+  isMarketOpen, nextMarketText, MARKET_MIN_PRICE, MARKET_MAX_PRICE,
+  listSpirit, fetchMarketBoard, buyListing, fetchMyListings, claimPayout,
+} from "./market.js";
 import { pickQuote, QUOTES, unlockedExtraQuotes } from "./quotes.js";
 import {
   store, exportNamespace, importNamespace, isStorageBroken, recordActivityStreak, runMigrations,
@@ -1221,7 +1225,7 @@ function renderFusion() {
 
   const tabs = document.createElement("div");
   tabs.className = "fusion-tabs";
-  [["fuse", "融合"], ["codex", "星靈圖鑑"], ["equip", "出戰"], ["shop", "赫米斯市集"]].forEach(([key, label]) => {
+  [["fuse", "融合"], ["codex", "星靈圖鑑"], ["equip", "出戰"], ["shop", "赫米斯商店"], ["market", "班級市集"]].forEach(([key, label]) => {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "fusion-tab" + (fusionState.tab === key ? " active" : "");
@@ -1237,6 +1241,7 @@ function renderFusion() {
   if (fusionState.tab === "fuse") renderFuseTab(body);
   else if (fusionState.tab === "codex") renderCodexTab(body);
   else if (fusionState.tab === "equip") renderEquipTab(body);
+  else if (fusionState.tab === "market") renderMarketTab(body);
   else renderShopTab(body);
 }
 
@@ -1562,6 +1567,137 @@ function renderSanctuary() {
     gallery.appendChild(group);
   });
   root.appendChild(gallery);
+}
+
+async function renderMarketTab(body) {
+  const open = isMarketOpen();
+  body.appendChild(Object.assign(document.createElement("p"), {
+    className: "fusion-hint",
+    textContent: `班級同學互相掛單交易星靈（星屑買賣）。赫米斯＝商業之神，${nextMarketText()}——只在週五能掛單與購買，其他天可先逛。`,
+  }));
+
+  const room = normalizeRoomCode(store.read("arenaRoom", "") ?? "");
+  if (!isValidRoomCode(room)) {
+    body.appendChild(Object.assign(document.createElement("p"), {
+      className: "fusion-empty",
+      textContent: "還沒設定班級房號。先到「神殿競技場」輸入房號，才能和同班同學交易。",
+    }));
+    return;
+  }
+  body.appendChild(Object.assign(document.createElement("p"), { className: "market-room-tag", textContent: `班級房號：${room}` }));
+
+  // 領款橫幅：別人買了你的掛單，回來領星屑
+  const mine = await fetchMyListings();
+  if (mine?.ok && mine.unclaimedTotal > 0) {
+    const banner = document.createElement("div");
+    banner.className = "market-payout";
+    banner.appendChild(Object.assign(document.createElement("span"), { textContent: `💰 有人買了你的掛單，可領 ${mine.unclaimedTotal} 星屑（${mine.sold.length} 筆）` }));
+    const claimBtn = Object.assign(document.createElement("button"), { type: "button", className: "market-claim-btn", textContent: "領取" });
+    claimBtn.addEventListener("click", async () => {
+      const r = await claimPayout();
+      if (r?.ok && r.claimed > 0) { addStardust(r.claimed); showToast(`✦ 入帳 ${r.claimed} 星屑`, "success"); }
+      renderFusion();
+    });
+    banner.appendChild(claimBtn);
+    body.appendChild(banner);
+  }
+
+  // 掛單表單（週五限定）
+  const owned = ownedSpiritNumbers();
+  const listWrap = document.createElement("div");
+  listWrap.className = "market-list-form";
+  listWrap.appendChild(Object.assign(document.createElement("h4"), { textContent: "我要掛單" }));
+  if (!open) {
+    listWrap.appendChild(Object.assign(document.createElement("p"), { className: "fusion-hint", textContent: "今天不是市集日，週五再來掛單。" }));
+  } else if (owned.length === 0) {
+    listWrap.appendChild(Object.assign(document.createElement("p"), { className: "fusion-hint", textContent: "你還沒有星靈可以賣。" }));
+  } else {
+    const row = document.createElement("div");
+    row.className = "market-form-row";
+    const sel = document.createElement("select");
+    sel.className = "market-spirit-select";
+    owned.forEach((n) => sel.appendChild(Object.assign(document.createElement("option"), { value: String(n), textContent: `${n}・${spiritName(n)}` })));
+    const priceInput = document.createElement("input");
+    priceInput.type = "number";
+    priceInput.className = "market-price-input";
+    priceInput.min = String(MARKET_MIN_PRICE);
+    priceInput.max = String(MARKET_MAX_PRICE);
+    priceInput.value = "10";
+    priceInput.placeholder = `${MARKET_MIN_PRICE}–${MARKET_MAX_PRICE} 星屑`;
+    const listBtn = Object.assign(document.createElement("button"), { type: "button", className: "market-do-btn", textContent: "掛單" });
+    listBtn.addEventListener("click", async () => {
+      const price = Math.round(Number(priceInput.value));
+      if (!(price >= MARKET_MIN_PRICE && price <= MARKET_MAX_PRICE)) { showToast(`價格需在 ${MARKET_MIN_PRICE}–${MARKET_MAX_PRICE}`, "warn"); return; }
+      const r = await listSpirit(room, Number(sel.value), price);
+      if (r?.ok) showToast(`✦ 已掛單「${spiritName(Number(sel.value))}」${price} 星屑`, "success");
+      else showToast(r?.message ?? "掛單失敗（可能非市集日或已達上限）", "warn");
+      renderFusion();
+    });
+    row.append(sel, priceInput, listBtn);
+    listWrap.appendChild(row);
+  }
+  body.appendChild(listWrap);
+
+  // 我的開放掛單
+  if (mine?.ok && mine.open?.length) {
+    const mineWrap = document.createElement("div");
+    mineWrap.className = "market-mine";
+    mineWrap.appendChild(Object.assign(document.createElement("h4"), { textContent: "我的掛單（開放中）" }));
+    mine.open.forEach((l) => {
+      mineWrap.appendChild(Object.assign(document.createElement("p"), { className: "market-mine-row", textContent: `${l.spiritN}・${spiritName(l.spiritN)}　🫙 ${l.price}` }));
+    });
+    body.appendChild(mineWrap);
+  }
+
+  // 別人的掛單
+  const boardWrap = document.createElement("div");
+  boardWrap.className = "market-board";
+  boardWrap.appendChild(Object.assign(document.createElement("h4"), { textContent: "同學的掛單" }));
+  const boardBody = document.createElement("div");
+  boardBody.className = "market-board-body";
+  boardBody.appendChild(Object.assign(document.createElement("p"), { className: "fusion-hint", textContent: "讀取中…" }));
+  boardWrap.appendChild(boardBody);
+  body.appendChild(boardWrap);
+
+  const listings = await fetchMarketBoard(room);
+  boardBody.innerHTML = "";
+  if (listings === null) {
+    boardBody.appendChild(Object.assign(document.createElement("p"), { className: "fusion-empty", textContent: "連不到市集伺服器（可能離線）。" }));
+    return;
+  }
+  if (listings.length === 0) {
+    boardBody.appendChild(Object.assign(document.createElement("p"), { className: "fusion-empty", textContent: "目前沒有同學掛單。週五開市時來逛逛！" }));
+    return;
+  }
+  const grid = document.createElement("div");
+  grid.className = "market-grid";
+  listings.forEach((l) => {
+    const cell = document.createElement("div");
+    cell.className = `market-cell spirit-${classify(l.spiritN).kind}`;
+    cell.appendChild(spiritBadgeEl(l.spiritN));
+    cell.appendChild(Object.assign(document.createElement("span"), { className: "market-cell-name", textContent: `${l.spiritN}・${spiritName(l.spiritN)}` }));
+    cell.appendChild(Object.assign(document.createElement("span"), { className: "market-cell-seller", textContent: `賣家：${l.sellerName}` }));
+    cell.appendChild(Object.assign(document.createElement("span"), { className: "market-cell-price", textContent: `🫙 ${l.price}` }));
+    const alreadyOwn = ownsSpirit(l.spiritN);
+    const buyBtn = Object.assign(document.createElement("button"), { type: "button", className: "market-buy-btn" });
+    const affordable = stardustBalance() >= l.price;
+    buyBtn.disabled = !open || alreadyOwn || !affordable;
+    buyBtn.textContent = !open ? "非市集日" : alreadyOwn ? "已擁有" : !affordable ? "星屑不足" : "購買";
+    buyBtn.addEventListener("click", async () => {
+      const r = await buyListing(l.id);
+      if (r?.ok) {
+        spendStardust(r.price);
+        const got = captureSpirit(r.spiritN);
+        showToast(got?.isNew ? `✦ 買下「${spiritName(r.spiritN)}」` : `✦ 買下「${spiritName(r.spiritN)}」`, "success");
+      } else {
+        showToast(r?.message ?? "購買失敗", "warn");
+      }
+      renderFusion();
+    });
+    cell.appendChild(buyBtn);
+    grid.appendChild(cell);
+  });
+  boardBody.appendChild(grid);
 }
 
 // ---------- 神殿競技場（房號 + 月賽季雲端比分） ----------

@@ -35,3 +35,22 @@ CREATE TABLE IF NOT EXISTS arena_results (
 );
 
 CREATE INDEX IF NOT EXISTS idx_arena_lookup ON arena_results(room_code, season, strand_id);
+
+CREATE TABLE IF NOT EXISTS market_listings (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  room_code TEXT NOT NULL,
+  season TEXT NOT NULL,
+  seller_device TEXT NOT NULL,
+  seller_name TEXT NOT NULL,
+  spirit_n INTEGER NOT NULL,
+  price INTEGER NOT NULL,
+  status TEXT NOT NULL DEFAULT 'open',
+  buyer_device TEXT,
+  buyer_name TEXT,
+  payout_claimed INTEGER NOT NULL DEFAULT 0,
+  created_at INTEGER NOT NULL,
+  sold_at INTEGER
+);
+
+CREATE INDEX IF NOT EXISTS idx_market_open ON market_listings(room_code, season, status);
+CREATE INDEX IF NOT EXISTS idx_market_seller ON market_listings(seller_device, status);
