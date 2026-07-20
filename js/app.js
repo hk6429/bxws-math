@@ -27,6 +27,12 @@ import {
 import {
   buildSeededQuestions, newChallengeSeed, recordPvpRun, pvpChallengeFor,
 } from "./pvp.js";
+import {
+  SPIRIT_MAX, EQUIP_MAX, GUARDIAN_SPIRIT, HERO_SPIRITS,
+  isPrime, divisors, divisorCount, isPerfect, classify, spiritName, spiritArt,
+  canFuse, resolveFusion, getSpiritBook, ownsSpirit, captureSpirit,
+  stardustBalance, spendStardust, getEquippedSpirits, setEquippedSpirits, spiritBonusFor,
+} from "./fusion.js";
 import { pickQuote, QUOTES, unlockedExtraQuotes } from "./quotes.js";
 import {
   store, exportNamespace, importNamespace, isStorageBroken, recordActivityStreak, runMigrations,
@@ -61,11 +67,13 @@ const views = {
   quiz: document.getElementById("view-quiz"),
   dashboard: document.getElementById("view-dashboard"),
   workshop: document.getElementById("view-workshop"),
+  fusion: document.getElementById("view-fusion"),
 };
 
 let tree = null;
 let session = { queue: [], index: 0, node: null, mascot: null, streak: 0, streakShielded: false, maxStreak: 0, roundCorrect: 0, roundTotal: 0 };
 let nextBtnEl = null;
+let fusionState = { tab: "fuse", pick: [], lastResult: null };
 const pendingTimers = new Set();
 const preloadedMascots = new Set();
 let migrationsRun = false;
@@ -172,11 +180,11 @@ function showView(name) {
   if (changed) clearPendingTimers();
   if (name !== "quiz") clearSprintTimer();
   Object.entries(views).forEach(([key, el]) => el.classList.toggle("active", key === name));
-  const navByView = { home: "nav-home", workshop: "nav-workshop", dashboard: "nav-dashboard" };
+  const navByView = { home: "nav-home", workshop: "nav-workshop", fusion: "nav-fusion", dashboard: "nav-dashboard" };
   Object.values(navByView).forEach((id) => document.getElementById(id)?.removeAttribute("aria-current"));
   if (navByView[name]) document.getElementById(navByView[name])?.setAttribute("aria-current", "page");
   window.scrollTo(0, 0);
-  const labels = { home: "神話星圖", quiz: "練習題", dashboard: "我的儀表板", workshop: "奧林帕斯五座神殿" };
+  const labels = { home: "神話星圖", quiz: "練習題", dashboard: "我的儀表板", workshop: "奧林帕斯五座神殿", fusion: "星靈融合殿" };
   const heading = views[name]?.querySelector("h2");
   if (heading) {
     heading.focus({ preventScroll: true });
@@ -1138,6 +1146,273 @@ async function startPvpChallenge(strandId, seedInput) {
   renderCurrentQuestion();
 }
 
+// ---------- 星靈融合殿 ----------
+function spiritBadgeEl(n) {
+  const el = document.createElement("div");
+  const cls = classify(n);
+  el.className = `spirit-badge spirit-${cls.kind}`;
+  el.title = `${spiritName(n)}・${cls.rarity}`;
+  const art = spiritArt(n);
+  if (art) {
+    const img = document.createElement("img");
+    img.src = `assets/spirits/${art}.png`;
+    img.alt = spiritName(n);
+    img.loading = "lazy";
+    img.decoding = "async";
+    img.addEventListener("error", () => {
+      img.remove();
+      el.prepend(Object.assign(document.createElement("span"), { className: "spirit-num", textContent: String(n) }));
+    });
+    el.appendChild(img);
+  } else {
+    el.appendChild(Object.assign(document.createElement("span"), { className: "spirit-num", textContent: String(n) }));
+  }
+  return el;
+}
+
+const SHOP_STOCK = [
+  { n: 13, price: 8 }, { n: 17, price: 8 }, { n: 19, price: 8 }, { n: 23, price: 10 },
+  { n: 29, price: 10 }, { n: 31, price: 12 }, { n: 37, price: 12 }, { n: 6, price: 6 },
+  { n: 12, price: 6 }, { n: 28, price: 20 },
+];
+const SHOP_DAILY_LIMIT = 3;
+
+function shopPurchasesToday() {
+  return Number(getDaily().spiritShop ?? 0);
+}
+
+function showFusion() {
+  showView("fusion");
+  // 新手起手：圖鑑空時送 2、3 兩顆質數種子，讓學生馬上能融合 2×3=6 學起來
+  if (Object.keys(getSpiritBook()).length === 0) {
+    captureSpirit(2);
+    captureSpirit(3);
+    showToast("✦ 雅典娜先送你兩顆質靈：2 與 3，試著融合出 6 吧", "success");
+  }
+  renderFusion();
+}
+
+function renderFusion() {
+  const root = document.getElementById("fusion-content");
+  root.innerHTML = "";
+
+  const header = document.createElement("div");
+  header.className = "fusion-header";
+  header.appendChild(Object.assign(document.createElement("h3"), { textContent: "星靈融合殿" }));
+  header.appendChild(Object.assign(document.createElement("span"), {
+    className: "fusion-wallet",
+    textContent: `🫙 星屑餘額：${stardustBalance()}`,
+  }));
+  root.appendChild(header);
+
+  const tabs = document.createElement("div");
+  tabs.className = "fusion-tabs";
+  [["fuse", "融合"], ["codex", "星靈圖鑑"], ["equip", "出戰"], ["shop", "赫米斯市集"]].forEach(([key, label]) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "fusion-tab" + (fusionState.tab === key ? " active" : "");
+    btn.textContent = label;
+    btn.addEventListener("click", () => { fusionState.tab = key; renderFusion(); });
+    tabs.appendChild(btn);
+  });
+  root.appendChild(tabs);
+
+  const body = document.createElement("div");
+  body.className = "fusion-body";
+  root.appendChild(body);
+  if (fusionState.tab === "fuse") renderFuseTab(body);
+  else if (fusionState.tab === "codex") renderCodexTab(body);
+  else if (fusionState.tab === "equip") renderEquipTab(body);
+  else renderShopTab(body);
+}
+
+function ownedSpiritNumbers() {
+  return Object.keys(getSpiritBook()).map(Number).sort((a, b) => a - b);
+}
+
+function renderFuseTab(body) {
+  const owned = ownedSpiritNumbers();
+  if (owned.length === 0) {
+    body.appendChild(Object.assign(document.createElement("p"), {
+      className: "fusion-empty",
+      textContent: "還沒有任何星靈。去五座神殿打贏守護者、或答對神諭啟示，就能收服質數星靈。",
+    }));
+    return;
+  }
+
+  body.appendChild(Object.assign(document.createElement("p"), {
+    className: "fusion-hint",
+    textContent: "選兩顆星靈相乘融合出新星靈。質數星靈永遠只能收服、無法融合誕生——這正是質數的祕密。父方不會消失。",
+  }));
+
+  const slots = document.createElement("div");
+  slots.className = "fusion-slots";
+  [0, 1].forEach((i) => {
+    const slot = document.createElement("div");
+    slot.className = "fusion-slot";
+    const pick = fusionState.pick[i];
+    if (pick != null) {
+      slot.appendChild(spiritBadgeEl(pick));
+      slot.appendChild(Object.assign(document.createElement("span"), { className: "fusion-slot-name", textContent: spiritName(pick) }));
+    } else {
+      slot.appendChild(Object.assign(document.createElement("span"), { className: "fusion-slot-empty", textContent: i === 0 ? "選第一顆" : "選第二顆" }));
+    }
+    slots.appendChild(slot);
+    if (i === 0) slots.appendChild(Object.assign(document.createElement("span"), { className: "fusion-times", textContent: "×" }));
+  });
+  body.appendChild(slots);
+
+  const a = fusionState.pick[0];
+  const b = fusionState.pick[1];
+  const check = a != null && b != null ? canFuse(a, b) : null;
+  const guessWrap = document.createElement("div");
+  guessWrap.className = "fusion-guess";
+  if (check?.ok) {
+    guessWrap.appendChild(Object.assign(document.createElement("label"), { textContent: `${a} × ${b} = ？`, htmlFor: "fusion-guess-input" }));
+    const input = document.createElement("input");
+    input.id = "fusion-guess-input";
+    input.type = "number";
+    input.inputMode = "numeric";
+    input.className = "fusion-guess-input";
+    input.placeholder = "算算看乘積";
+    guessWrap.appendChild(input);
+    const fuseBtn = document.createElement("button");
+    fuseBtn.type = "button";
+    fuseBtn.className = "fusion-do-btn";
+    fuseBtn.textContent = "✦ 融合";
+    fuseBtn.addEventListener("click", () => {
+      const result = resolveFusion(a, b, input.value.trim() === "" ? null : Number(input.value));
+      fusionState.lastResult = result;
+      fusionState.pick = [];
+      renderFusion();
+    });
+    guessWrap.appendChild(fuseBtn);
+  } else if (a != null && b != null) {
+    guessWrap.appendChild(Object.assign(document.createElement("p"), { className: "fusion-cant", textContent: check?.reason ?? "這兩顆無法融合" }));
+  }
+  body.appendChild(guessWrap);
+
+  if (fusionState.lastResult?.ok) {
+    const r = fusionState.lastResult;
+    const reveal = document.createElement("div");
+    reveal.className = `fusion-reveal ${r.correct ? "fusion-correct" : "fusion-gentle"}`;
+    reveal.appendChild(spiritBadgeEl(r.product));
+    reveal.appendChild(Object.assign(document.createElement("strong"), { textContent: `${r.recipe}` }));
+    reveal.appendChild(Object.assign(document.createElement("p"), {
+      textContent: r.correct
+        ? `算對了！免費融合出「${spiritName(r.product)}」${r.captured?.isNew ? "（新星靈！）" : ""}`
+        : `融合成功，得到「${spiritName(r.product)}」；乘積算錯了，溫和收 ${r.cost} 星屑，下次再算準一點。`,
+    }));
+    body.appendChild(reveal);
+  }
+
+  const grid = document.createElement("div");
+  grid.className = "fusion-picker";
+  owned.forEach((n) => {
+    const cell = document.createElement("button");
+    cell.type = "button";
+    cell.className = "fusion-pick-cell" + (fusionState.pick.includes(n) ? " picked" : "");
+    cell.appendChild(spiritBadgeEl(n));
+    cell.appendChild(Object.assign(document.createElement("span"), { className: "fusion-pick-num", textContent: String(n) }));
+    cell.addEventListener("click", () => {
+      const idx = fusionState.pick.indexOf(n);
+      if (idx >= 0) fusionState.pick.splice(idx, 1);
+      else if (fusionState.pick.length < 2) fusionState.pick.push(n);
+      else fusionState.pick = [fusionState.pick[1], n];
+      fusionState.lastResult = null;
+      renderFusion();
+    });
+    grid.appendChild(cell);
+  });
+  body.appendChild(grid);
+}
+
+function renderCodexTab(body) {
+  const owned = new Set(ownedSpiritNumbers());
+  body.appendChild(Object.assign(document.createElement("p"), {
+    className: "fusion-hint",
+    textContent: `已收服 ${owned.size} / ${SPIRIT_MAX - 1} 顆星靈。金框＝完全數傳說靈，藍框＝質數／平方數，一般＝合成數。`,
+  }));
+  const grid = document.createElement("div");
+  grid.className = "codex-grid";
+  for (let n = 2; n <= SPIRIT_MAX; n += 1) {
+    const cls = classify(n);
+    const cell = document.createElement("div");
+    cell.className = `codex-cell spirit-${cls.kind}` + (owned.has(n) ? " owned" : " locked");
+    if (owned.has(n)) {
+      cell.appendChild(spiritBadgeEl(n));
+    } else {
+      cell.appendChild(Object.assign(document.createElement("span"), { className: "codex-locked-num", textContent: String(n) }));
+    }
+    grid.appendChild(cell);
+  }
+  body.appendChild(grid);
+}
+
+function renderEquipTab(body) {
+  const owned = ownedSpiritNumbers();
+  const equipped = getEquippedSpirits();
+  body.appendChild(Object.assign(document.createElement("p"), {
+    className: "fusion-hint",
+    textContent: `出戰最多 ${EQUIP_MAX} 顆星靈，每顆依「因數個數」給 boss 戰傷害加成（因數愈多加成愈高）。目前總加成 ${Math.round(spiritBonusFor() * 100)}%（與收集品合計上限 25%）。`,
+  }));
+  if (owned.length === 0) {
+    body.appendChild(Object.assign(document.createElement("p"), { className: "fusion-empty", textContent: "還沒有星靈可以出戰。" }));
+    return;
+  }
+  const grid = document.createElement("div");
+  grid.className = "equip-grid";
+  owned.forEach((n) => {
+    const on = equipped.includes(n);
+    const cell = document.createElement("button");
+    cell.type = "button";
+    cell.className = "equip-cell" + (on ? " equipped" : "");
+    cell.appendChild(spiritBadgeEl(n));
+    cell.appendChild(Object.assign(document.createElement("span"), { className: "equip-info", textContent: `${n}・${divisorCount(n)} 因數・+${Math.min(6, divisorCount(n))}%` }));
+    cell.addEventListener("click", () => {
+      const next = on ? equipped.filter((x) => x !== n) : [...equipped, n];
+      setEquippedSpirits(next);
+      renderFusion();
+    });
+    grid.appendChild(cell);
+  });
+  body.appendChild(grid);
+}
+
+function renderShopTab(body) {
+  const remaining = Math.max(0, SHOP_DAILY_LIMIT - shopPurchasesToday());
+  const balance = stardustBalance();
+  body.appendChild(Object.assign(document.createElement("p"), {
+    className: "fusion-hint",
+    textContent: `赫米斯用星屑跟你換稀有星靈。明碼標價、無隨機開箱，每天最多買 ${SHOP_DAILY_LIMIT} 顆（今天還能買 ${remaining} 顆）。`,
+  }));
+  const grid = document.createElement("div");
+  grid.className = "shop-grid";
+  SHOP_STOCK.forEach(({ n, price }) => {
+    const cell = document.createElement("div");
+    cell.className = `shop-cell spirit-${classify(n).kind}`;
+    cell.appendChild(spiritBadgeEl(n));
+    cell.appendChild(Object.assign(document.createElement("span"), { className: "shop-name", textContent: spiritName(n) }));
+    cell.appendChild(Object.assign(document.createElement("span"), { className: "shop-price", textContent: `🫙 ${price}` }));
+    const buyBtn = document.createElement("button");
+    buyBtn.type = "button";
+    buyBtn.className = "shop-buy-btn";
+    const affordable = balance >= price && remaining > 0;
+    buyBtn.disabled = !affordable;
+    buyBtn.textContent = remaining <= 0 ? "今日售罄" : balance < price ? "星屑不足" : "購買";
+    buyBtn.addEventListener("click", () => {
+      if (!spendStardust(price)) { showToast("星屑不足", "warn"); return; }
+      bumpDaily("spiritShop", 1);
+      const got = captureSpirit(n);
+      showToast(got?.isNew ? `✦ 買下「${spiritName(n)}」` : `✦ 再買一顆「${spiritName(n)}」`, "success");
+      renderFusion();
+    });
+    cell.appendChild(buyBtn);
+    grid.appendChild(cell);
+  });
+  body.appendChild(grid);
+}
+
 function renderPvpOutcome(result, quizArea) {
   const beatOwnBest = session.pvp.totalDmg > session.pvp.startingBest;
   const card = document.createElement("div");
@@ -1324,6 +1599,19 @@ function renderBossOutcome(outcome, quizArea) {
   card.className = `boss-outcome boss-outcome-${outcome}`;
   const title = outcome === "victory" ? `🏆 擊敗${meta.name}！神殿甦醒了一角` : `🛡 這次先撤退——${meta.name}還在守著神殿`;
   card.appendChild(Object.assign(document.createElement("h3"), { textContent: title }));
+  if (outcome === "victory") {
+    // 守護者鎮守一顆質數種子——質數是融合的建材，只能靠戰勝取得
+    const seed = GUARDIAN_SPIRIT[boss.strandId];
+    if (seed) {
+      const got = captureSpirit(seed);
+      card.appendChild(Object.assign(document.createElement("p"), {
+        className: "boss-spirit-drop",
+        textContent: got?.isNew
+          ? `✦ ${meta.name}留下了質數種子「${spiritName(seed)}」，去星靈融合殿試著融合吧！`
+          : `✦ 又收服一顆「${spiritName(seed)}」，融合殿見。`,
+      }));
+    }
+  }
   card.appendChild(Object.assign(document.createElement("p"), {
     textContent: outcome === "victory"
       ? "你的正確率把守護神的血量打空了。回工坊看看神殿甦醒度吧。"
@@ -1530,7 +1818,8 @@ function handleAnswer(question, isCorrect, meta = {}) {
   }
   if (session.kind === "boss" && session.boss) {
     const strandNodeIds = (tree.strands.find((s) => s.id === session.boss.strandId)?.nodes ?? []).map((n) => n.id);
-    const bonus = collectionBonusFor(strandNodeIds, getCollection(), getRareStamps());
+    // 總加成 = 收集品（上限 15%）+ 出戰星靈（上限 10%），合計自然封頂 25%
+    const bonus = collectionBonusFor(strandNodeIds, getCollection(), getRareStamps()) + spiritBonusFor();
     session.boss = applyBossAnswer(session.boss, isCorrect, session.streak, bonus);
   }
   if (session.kind === "pvp" && session.pvp && isCorrect) {
@@ -1578,6 +1867,18 @@ function handleEncounterWin() {
       stardust.textContent = reward.message;
       card.appendChild(stardust);
     }
+  }
+  // 奇遇同時捕獲一顆較大的質數星靈——這是守護者以外唯一的質數來源
+  const primePool = [13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
+  const prime = primePool[Math.floor(Math.random() * primePool.length)];
+  const gotSpirit = captureSpirit(prime);
+  if (card) {
+    const spiritLine = document.createElement("div");
+    spiritLine.className = "stardust-drop spirit-drop";
+    spiritLine.textContent = gotSpirit?.isNew
+      ? `✦ 神諭指引一顆質靈「${spiritName(prime)}」入你的星靈圖鑑`
+      : `✦ 再收一顆「${spiritName(prime)}」`;
+    card.appendChild(spiritLine);
   }
   return reward;
 }
@@ -1691,6 +1992,13 @@ function finishSession() {
     drop.item,
     drop.item.id === MASTER_TRIAL_ID ? "傳說" : drop.tier >= 2 ? "稀有" : "普通"
   ));
+  // 節點蠟封（精熟）時掉一顆合成數星靈當融合素材，讓還沒打贏 boss 的學生也能開始融合
+  if (newDrops.some((drop) => drop.tier >= 2)) {
+    const starterPool = [4, 6, 8, 9, 10, 12];
+    const composite = starterPool[Math.floor(Math.random() * starterPool.length)];
+    const gotSpirit = captureSpirit(composite);
+    if (gotSpirit?.isNew) showToast(`✦ 精熟獎勵：收服星靈「${spiritName(composite)}」，融合殿見`, "success");
+  }
 
   const player = getPlayerName();
   if (player) {
@@ -2614,6 +2922,7 @@ function setupOptionalMythosArt() {
 
 document.getElementById("nav-home").addEventListener("click", goHome);
 document.getElementById("nav-workshop").addEventListener("click", showWorkshop);
+document.getElementById("nav-fusion").addEventListener("click", showFusion);
 document.getElementById("nav-dashboard").addEventListener("click", showDashboard);
 setupSfxToggle();
 setupAccessibilitySettings();

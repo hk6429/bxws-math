@@ -13,7 +13,7 @@ const KEY_TYPES = {
   leaderboard: "array", manuscriptCare: "object", masterTrialBest: "nullable-object",
   masterTrialTiers: "object",
   player: "nullable-string", playerId: "string", pvpChallenges: "object", roomCode: "nullable-string", rareStampBook: "object", rareStamps: "array-or-object",
-  schemaVersion: "number", seenTip: "boolean", sfxOn: "boolean", stardustBonus: "number",
+  schemaVersion: "number", seenTip: "boolean", sfxOn: "boolean", spiritBook: "object", equippedSpirits: "array", stardustSpent: "number", stardustBonus: "number",
   stardustMilestones: "object",
 };
 
