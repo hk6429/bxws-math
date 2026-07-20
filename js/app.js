@@ -3,7 +3,7 @@ import {
 } from "./schema.js";
 import { renderSkillTree, computeOverview } from "./skilltree-ui.js";
 import {
-  buildSession, buildMasterSession, buildReviewSession, countDueReviews,
+  buildSession, buildMasterSession, buildReviewSession, countDueReviews, flattenBank,
   insertMentorCoachingQuestion, loadQuestionBank, mentorCoachingTransition,
 } from "./quiz-loader.js";
 import {
@@ -18,8 +18,15 @@ import { getPlayerName, setPlayerName, submitScore, getLeaderboard } from "./lea
 import {
   MANUSCRIPTS, getCollection, evaluateCollection,
   RARE_STAMPS, getRareStamps, resolveEncounterReward,
-  RARITY_MYTHOS, manuscriptDustStatus, addManuscriptCare,
+  RARITY_MYTHOS, manuscriptDustStatus, addManuscriptCare, collectionBonusFor,
 } from "./collection.js";
+import {
+  bossFor, bossGate, newBossState, applyAnswer as applyBossAnswer, bossOutcome, recordBossOutcome,
+  reviveWithBlessing, playerDamage,
+} from "./boss.js";
+import {
+  buildSeededQuestions, newChallengeSeed, recordPvpRun, pvpChallengeFor,
+} from "./pvp.js";
 import { pickQuote, QUOTES, unlockedExtraQuotes } from "./quotes.js";
 import {
   store, exportNamespace, importNamespace, isStorageBroken, recordActivityStreak, runMigrations,
@@ -543,6 +550,47 @@ async function showWorkshop() {
     const roomScore = document.createElement("strong");
     roomScore.textContent = room.available ? `${Number(room.repairPct) || 0}%` : "待開放";
     copy.append(roomStage, roomTitle, roomGuardian, roomMessage, roomMeter, roomScore);
+    if (room.available && bossFor(room.id)) {
+      const strand = tree.strands.find((s) => s.id === room.id);
+      const gate = bossGate(strand, store.read("progress", {}), tree.masteryThreshold ?? 0.8);
+      const bossBtn = document.createElement("button");
+      bossBtn.type = "button";
+      bossBtn.className = "boss-challenge-btn" + (gate.eligible ? "" : " boss-challenge-btn-locked");
+      bossBtn.disabled = !gate.eligible;
+      bossBtn.textContent = gate.eligible
+        ? `⚔ 挑戰${bossFor(room.id).name}`
+        : `🔒 精熟度達 ${Math.round((tree.masteryThreshold ?? 0.8) * 100)}% 解鎖神殿試煉`;
+      bossBtn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        startBossFight(room.id);
+      });
+      bossBtn.addEventListener("keydown", (event) => event.stopPropagation());
+      copy.appendChild(bossBtn);
+    }
+    if (room.available) {
+      const pvpStrand = tree.strands.find((s) => s.id === room.id);
+      const pvpHasPlayable = (pvpStrand?.nodes ?? []).some((n) => isNodePlayable(n, tree));
+      const pvpWrap = document.createElement("div");
+      pvpWrap.className = "pvp-challenge-wrap";
+      const seedInput = document.createElement("input");
+      seedInput.type = "text";
+      seedInput.inputMode = "numeric";
+      seedInput.placeholder = "挑戰碼（留空自動產生）";
+      seedInput.className = "pvp-seed-input";
+      seedInput.addEventListener("click", (event) => event.stopPropagation());
+      seedInput.addEventListener("keydown", (event) => event.stopPropagation());
+      const pvpBtn = document.createElement("button");
+      pvpBtn.type = "button";
+      pvpBtn.className = "pvp-challenge-btn";
+      pvpBtn.disabled = !pvpHasPlayable;
+      pvpBtn.textContent = pvpHasPlayable ? "🎲 挑戰書（10 題本機比分）" : "🔒 先解鎖此神殿至少一節點";
+      pvpBtn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        startPvpChallenge(room.id, seedInput.value.trim());
+      });
+      pvpWrap.append(seedInput, pvpBtn);
+      copy.appendChild(pvpWrap);
+    }
     card.append(scene, copy);
     grid.appendChild(card);
   });
@@ -1011,6 +1059,111 @@ async function startQuizWithStrategy(node, strategyId) {
   renderCurrentQuestion();
 }
 
+function shuffleSample(arr, n) {
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy.slice(0, n);
+}
+
+// 神殿試煉：答對＝對守護神造成傷害，出題沿用既有 buildMasterSession，不重造出題邏輯
+async function startBossFight(strandId) {
+  const strand = tree.strands.find((s) => s.id === strandId);
+  const boss = bossFor(strandId);
+  if (!strand || !boss) return;
+  const gate = bossGate(strand, store.read("progress", {}), tree.masteryThreshold ?? 0.8);
+  if (!gate.eligible) return;
+  showView("quiz");
+  clearSprintTimer();
+  document.getElementById("quiz-node-name").textContent = `神殿試煉・${boss.name}`;
+  document.getElementById("quiz-progressbar").innerHTML = "";
+  document.getElementById("quiz-streak").innerHTML = "";
+  const quizArea = document.getElementById("quiz-area");
+  quizArea.innerHTML = "";
+  const playableIds = strand.nodes.filter((n) => isNodePlayable(n, tree)).map((n) => n.id);
+  const pool = playableIds.length > 20 ? shuffleSample(playableIds, 20) : playableIds;
+  const queue = await buildMasterSession(pool, 30);
+  const collection = getCollection();
+  const freeRetryAvailable = strand.nodes.some((n) => (collection[n.id]?.tier ?? 0) >= 2);
+  session = newSession({
+    queue,
+    node: { id: `boss-${strandId}`, name: `神殿試煉・${boss.name}` },
+    mascot: tree.strandVisuals?.[strandId]?.mascot ?? "davinci",
+    kind: "boss",
+    boss: { ...newBossState(strandId), freeRetryAvailable },
+  });
+  preloadMascot(session.mascot);
+  renderCurrentQuestion();
+}
+
+// PvP 本機挑戰書：同一組 seed 產出同一份題目，可以跟自己（或告訴同學同一組碼）比分。
+// 不接後端，先把「可重現題目＋記戰績」這一半做穩，日後要接即時對戰時沿用同一套 seed 機制。
+async function startPvpChallenge(strandId, seedInput) {
+  const strand = tree.strands.find((s) => s.id === strandId);
+  if (!strand) return;
+  const seed = seedInput && Number.isFinite(Number(seedInput)) && seedInput !== ""
+    ? Number(seedInput)
+    : newChallengeSeed();
+  showView("quiz");
+  clearSprintTimer();
+  document.getElementById("quiz-node-name").textContent = `挑戰書・${strand.name}`;
+  document.getElementById("quiz-progressbar").innerHTML = "";
+  document.getElementById("quiz-streak").innerHTML = "";
+  const quizArea = document.getElementById("quiz-area");
+  quizArea.innerHTML = "";
+  const playableIds = strand.nodes.filter((n) => isNodePlayable(n, tree)).map((n) => n.id);
+  const pool = playableIds.length > 20 ? shuffleSample(playableIds, 20) : playableIds;
+  const banks = await Promise.all(pool.map((id) => loadQuestionBank(id)
+    .then((bank) => flattenBank(bank).map((q) => ({ ...q, _nodeId: id })))
+    .catch(() => [])));
+  const allQuestions = banks.flat();
+  if (allQuestions.length === 0) {
+    quizArea.appendChild(Object.assign(document.createElement("p"), {
+      className: "pvp-empty-msg",
+      textContent: "這座神殿還沒有可挑戰的題目，先去解鎖幾個節點吧。",
+    }));
+    return;
+  }
+  const queue = buildSeededQuestions(seed, allQuestions, 10);
+  session = newSession({
+    queue,
+    node: { id: `pvp-${strandId}`, name: `挑戰書・${strand.name}` },
+    mascot: tree.strandVisuals?.[strandId]?.mascot ?? "davinci",
+    kind: "pvp",
+    pvp: { seed, strandId, totalDmg: 0, maxCombo: 0, startingBest: pvpChallengeFor(seed)?.bestDmg ?? 0 },
+  });
+  preloadMascot(session.mascot);
+  renderCurrentQuestion();
+}
+
+function renderPvpOutcome(result, quizArea) {
+  const beatOwnBest = session.pvp.totalDmg > session.pvp.startingBest;
+  const card = document.createElement("div");
+  card.className = "pvp-outcome";
+  card.appendChild(Object.assign(document.createElement("h3"), {
+    textContent: beatOwnBest ? "🎉 打破自己這份考卷的紀錄了！" : "這次的分數",
+  }));
+  card.appendChild(Object.assign(document.createElement("p"), {
+    textContent: `這次總傷害：${session.pvp.totalDmg}（最高連擊 ${session.pvp.maxCombo}）`,
+  }));
+  card.appendChild(Object.assign(document.createElement("p"), {
+    textContent: `目前最佳：${result.bestDmg}・已挑戰 ${result.attempts} 次`,
+  }));
+  card.appendChild(Object.assign(document.createElement("p"), {
+    className: "pvp-seed-code",
+    textContent: `挑戰碼：${session.pvp.seed}——把這串數字告訴同學，他輸入同一組碼開同一顆神殿的「挑戰書」，就會拿到同一份題目，可以互相比分！`,
+  }));
+  const backBtn = document.createElement("button");
+  backBtn.className = "q-next";
+  backBtn.textContent = "回五座神殿";
+  backBtn.addEventListener("click", showWorkshop);
+  card.appendChild(backBtn);
+  quizArea.appendChild(card);
+  announce(beatOwnBest ? "打破自己的挑戰書紀錄" : "挑戰書結算完成");
+}
+
 async function startPrerequisiteDiagnostic(node) {
   showView("quiz");
   clearSprintTimer();
@@ -1139,17 +1292,97 @@ function renderGhostLine() {
   document.getElementById("quiz-progressbar").after(el);
 }
 
+function renderBossPanel(quizArea) {
+  const boss = session.boss;
+  const meta = bossFor(boss.strandId);
+  const panel = document.createElement("section");
+  panel.className = "boss-panel";
+  panel.setAttribute("aria-label", "神殿試煉血量");
+  const foe = document.createElement("div");
+  foe.className = "boss-side boss-foe";
+  foe.innerHTML = `<span class="boss-icon">${meta.icon}</span><strong>${meta.name}</strong>`;
+  const foeBar = document.createElement("div");
+  foeBar.className = "boss-hp";
+  foeBar.innerHTML = `<span class="boss-hp-fill" style="width:${Math.round((boss.hp / boss.maxHp) * 100)}%"></span>`;
+  foe.appendChild(foeBar);
+  const me = document.createElement("div");
+  me.className = "boss-side boss-player";
+  me.innerHTML = "<strong>你</strong>";
+  const meBar = document.createElement("div");
+  meBar.className = "boss-hp boss-hp-player";
+  meBar.innerHTML = `<span class="boss-hp-fill" style="width:${Math.round((boss.playerHp / boss.playerMaxHp) * 100)}%"></span>`;
+  me.appendChild(meBar);
+  panel.append(foe, me);
+  quizArea.appendChild(panel);
+}
+
+function renderBossOutcome(outcome, quizArea) {
+  const boss = session.boss;
+  const meta = bossFor(boss.strandId);
+  recordBossOutcome(boss.strandId, outcome, session.maxStreak);
+  const card = document.createElement("div");
+  card.className = `boss-outcome boss-outcome-${outcome}`;
+  const title = outcome === "victory" ? `🏆 擊敗${meta.name}！神殿甦醒了一角` : `🛡 這次先撤退——${meta.name}還在守著神殿`;
+  card.appendChild(Object.assign(document.createElement("h3"), { textContent: title }));
+  card.appendChild(Object.assign(document.createElement("p"), {
+    textContent: outcome === "victory"
+      ? "你的正確率把守護神的血量打空了。回工坊看看神殿甦醒度吧。"
+      : "血量歸零了沒關係，這一路的作答都已經算進精熟度，再練一輪就能再挑戰。",
+  }));
+  if (outcome !== "victory") {
+    const retryBtn = document.createElement("button");
+    retryBtn.className = "q-next";
+    retryBtn.textContent = "再挑戰一次";
+    retryBtn.addEventListener("click", () => startBossFight(boss.strandId));
+    card.appendChild(retryBtn);
+  }
+  const backBtn = document.createElement("button");
+  backBtn.className = "q-next";
+  backBtn.textContent = "回五座神殿";
+  backBtn.addEventListener("click", showWorkshop);
+  card.appendChild(backBtn);
+  quizArea.appendChild(card);
+  announce(outcome === "victory" ? `擊敗${meta.name}` : "神殿試煉未過關，可以再挑戰");
+}
+
 function renderCurrentQuestion(focusStem = false) {
   const quizArea = document.getElementById("quiz-area");
   preloadMascot(session.mascot);
   quizArea.innerHTML = "";
   document.getElementById("quiz-node-name").textContent = session.node.name;
-  renderProgressBar();
+  if (session.kind === "boss") {
+    const outcome = bossOutcome(session.boss);
+    if (outcome === "defeat" && session.boss.freeRetryAvailable) {
+      session.boss = { ...reviveWithBlessing(session.boss), freeRetryAvailable: false };
+      announce("神諭卷軸的祝福發動，血量回復一半，再撐一下！");
+    } else if (outcome) {
+      renderBossOutcome(outcome, quizArea);
+      return;
+    }
+    renderBossPanel(quizArea);
+  } else {
+    renderProgressBar();
+  }
   renderMasteryProgress();
   renderStreakBadge();
   renderGhostLine();
 
   if (session.index >= session.queue.length) {
+    if (session.kind === "boss") {
+      // 題目用盡仍未分勝負（極罕見）：依血量占比判定，玩家占優時判定過關
+      const boss = session.boss;
+      const outcome = boss.hp / boss.maxHp <= boss.playerHp / boss.playerMaxHp ? "victory" : "defeat";
+      renderBossOutcome(outcome, quizArea);
+      return;
+    }
+    if (session.kind === "pvp") {
+      const result = recordPvpRun(session.pvp.seed, session.pvp.strandId, {
+        totalDmg: session.pvp.totalDmg,
+        maxCombo: session.pvp.maxCombo,
+      });
+      renderPvpOutcome(result, quizArea);
+      return;
+    }
     finishSession();
     return;
   }
@@ -1294,6 +1527,15 @@ function handleAnswer(question, isCorrect, meta = {}) {
       );
       if (inserted) session.mentorRetryUsed = false;
     }
+  }
+  if (session.kind === "boss" && session.boss) {
+    const strandNodeIds = (tree.strands.find((s) => s.id === session.boss.strandId)?.nodes ?? []).map((n) => n.id);
+    const bonus = collectionBonusFor(strandNodeIds, getCollection(), getRareStamps());
+    session.boss = applyBossAnswer(session.boss, isCorrect, session.streak, bonus);
+  }
+  if (session.kind === "pvp" && session.pvp && isCorrect) {
+    session.pvp.totalDmg += playerDamage(session.streak, 100, 100, 0);
+    session.pvp.maxCombo = Math.max(session.pvp.maxCombo, session.streak);
   }
   renderStreakBadge();
   renderMasteryProgress(nodeId);

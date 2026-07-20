@@ -150,6 +150,14 @@ export function addManuscriptCare(nodeId) {
   return all[nodeId];
 }
 
+// 收集品給 boss 戰的傷害加成：只讀既有 collection/rareStampBook，不改掉落規則。
+// 每個節點的蠟封卷軸 +3%、印記 +2%，上限 15%——錦上添花，不能靠收集贏過精熟度。
+export function collectionBonusFor(nodeIds, collection = {}, rareStamps = {}) {
+  const manuscriptBonus = nodeIds.filter((id) => (collection[id]?.tier ?? 0) >= 2).length * 0.03;
+  const stampBonus = nodeIds.filter((id) => rareStamps[`stamp-${id}`]).length * 0.02;
+  return Math.min(0.15, manuscriptBonus + stampBonus);
+}
+
 // 只升不降、冪等；同輪連跳兩階只回報最高階
 export function evaluateCollection(nodeId, stats, ctx) {
   const col = getCollection();

@@ -2151,6 +2151,120 @@ body::before {
   opacity: 0.65;
 }
 
+/* 神殿試煉入口按鈕 */
+.boss-challenge-btn {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(242, 201, 76, 0.5);
+  background: linear-gradient(180deg, rgba(242, 201, 76, 0.22), rgba(242, 201, 76, 0.08));
+  color: var(--star-gold);
+  font-family: var(--font-hand);
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+.boss-challenge-btn-locked {
+  border-color: rgba(159, 175, 220, 0.25);
+  background: rgba(13, 18, 38, 0.6);
+  color: var(--starlight-faint);
+  cursor: not-allowed;
+}
+
+/* 神殿試煉：boss 戰血條 */
+.boss-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(242, 201, 76, 0.35);
+  background: linear-gradient(180deg, #182042, #131a34);
+}
+.boss-side {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--starlight-text);
+  font-family: var(--font-hand);
+}
+.boss-icon { font-size: 1.4rem; }
+.boss-hp {
+  flex: 1;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(13, 18, 38, 0.85);
+  box-shadow: inset 0 0 0 1px rgba(159, 175, 220, 0.25);
+  overflow: hidden;
+}
+.boss-hp-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--cp-red), var(--star-gold));
+  transition: width 0.4s ease;
+}
+.boss-hp-player .boss-hp-fill {
+  background: linear-gradient(90deg, var(--strand-number), var(--cp-green));
+}
+.boss-outcome {
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(242, 201, 76, 0.4);
+  background: linear-gradient(180deg, #182042, #131a34);
+  color: var(--starlight-text);
+  text-align: center;
+}
+.boss-outcome h3 { color: var(--star-gold); font-family: var(--font-hand); margin: 0 0 8px; }
+.boss-outcome p { color: var(--starlight-faint); margin: 0 0 14px; }
+.boss-outcome .q-next { margin: 4px 6px; }
+
+/* PvP 本機挑戰書 */
+.pvp-challenge-wrap {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+.pvp-seed-input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(159, 175, 220, 0.3);
+  background: rgba(13, 18, 38, 0.6);
+  color: var(--starlight-text);
+  font-family: var(--font-hand);
+  font-size: 0.85rem;
+}
+.pvp-challenge-btn {
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(159, 175, 220, 0.35);
+  background: linear-gradient(180deg, rgba(122, 154, 220, 0.25), rgba(122, 154, 220, 0.08));
+  color: var(--starlight-text);
+  font-family: var(--font-hand);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.pvp-outcome {
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(159, 175, 220, 0.35);
+  background: linear-gradient(180deg, #182042, #131a34);
+  color: var(--starlight-text);
+  text-align: center;
+}
+.pvp-outcome h3 { color: var(--star-gold); font-family: var(--font-hand); margin: 0 0 8px; }
+.pvp-outcome p { color: var(--starlight-faint); margin: 0 0 12px; }
+.pvp-outcome .pvp-seed-code {
+  font-variant-numeric: tabular-nums;
+  color: var(--starlight-text);
+}
+.pvp-outcome .q-next { margin: 4px 6px; }
+
 /* ---------- 10. 學徒出題所／旅行皮箱 ---------- */
 .challenge-locked {
   padding: 14px 16px;
