@@ -3801,3 +3801,29 @@ input[type="radio"] { accent-color: var(--star-gold); }
 .deco-glyph { font-size: 1.6rem; line-height: 1; }
 .deco-name { font-size: 0.78rem; text-align: center; }
 .deco-req { font-size: 0.68rem; opacity: 0.75; text-align: center; }
+
+/* 神殿競技場 */
+.arena-header { text-align: center; margin-bottom: 12px; }
+.arena-header h3 { margin: 0; color: var(--star-gold-core); font-size: 1.5rem; }
+.arena-season { color: var(--star-gold); margin: 4px 0; font-size: 1.05rem; }
+.arena-hint, .arena-loading, .arena-empty, .arena-offline { color: var(--starlight-text); font-size: 0.9rem; }
+.arena-room { display: flex; flex-direction: column; gap: 6px; max-width: 320px; margin: 10px auto; }
+.arena-room label { color: var(--starlight-text); font-size: 0.9rem; }
+.arena-room-input { padding: 8px 12px; border-radius: 10px; border: 1px solid var(--star-gold-glow); background: var(--night-mist); color: var(--star-gold-core); font-size: 1.2rem; letter-spacing: 3px; text-align: center; text-transform: uppercase; }
+.arena-strands { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 10px 0; }
+.arena-strand-btn { padding: 8px 14px; border-radius: 999px; border: 1px solid var(--star-gold-glow); background: var(--night-mist); color: var(--starlight-text); cursor: pointer; }
+.arena-strand-btn.active { background: var(--star-gold); color: var(--night-deep); font-weight: 700; }
+.arena-start-btn { display: block; margin: 12px auto; padding: 12px 28px; border-radius: 999px; border: none; background: linear-gradient(120deg, var(--star-gold), var(--star-gold-core)); color: var(--night-deep); font-size: 1.1rem; font-weight: 700; cursor: pointer; }
+.arena-start-btn:disabled { background: rgba(154, 166, 207, 0.3); color: rgba(240, 226, 189, 0.5); cursor: not-allowed; }
+.arena-board { max-width: 420px; margin: 16px auto 0; }
+.arena-board h4, .arena-outcome h4 { color: var(--star-gold); text-align: center; margin: 8px 0; }
+.arena-rank { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.arena-rank-row { display: grid; grid-template-columns: 40px 1fr auto; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 10px; background: var(--night-mist); color: var(--starlight-text); }
+.arena-rank-row.top { border: 1px solid var(--star-gold); box-shadow: 0 0 10px var(--star-gold-glow); }
+.arena-rank-medal { font-size: 1.2rem; text-align: center; }
+.arena-rank-score { color: var(--star-gold-core); font-variant-numeric: tabular-nums; }
+.arena-outcome { max-width: 460px; margin: 0 auto; text-align: center; }
+.arena-outcome h3 { color: var(--star-gold-core); }
+.arena-outcome-score { color: var(--star-gold); font-size: 1.1rem; }
+.arena-outcome-status { color: var(--starlight-text); font-size: 0.9rem; }
+.arena-back-btn { margin: 10px auto; padding: 8px 20px; border-radius: 999px; border: 1px solid var(--star-gold-glow); background: var(--night-mist); color: var(--starlight-text); cursor: pointer; }

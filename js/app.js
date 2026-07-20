@@ -39,6 +39,10 @@ import {
   TITLES, unlockedTitles, getInscription, setInscription, inscriptionText,
   totalMasteredCount,
 } from "./sanctuary.js";
+import {
+  ARENA_QUESTION_COUNT, seasonKey, seasonLabel, normalizeRoomCode, isValidRoomCode,
+  roomSeed, recordLocalArenaBest, getLocalArenaBest, submitArenaResult, fetchArenaBoard,
+} from "./arena.js";
 import { pickQuote, QUOTES, unlockedExtraQuotes } from "./quotes.js";
 import {
   store, exportNamespace, importNamespace, isStorageBroken, recordActivityStreak, runMigrations,
@@ -75,6 +79,7 @@ const views = {
   workshop: document.getElementById("view-workshop"),
   fusion: document.getElementById("view-fusion"),
   sanctuary: document.getElementById("view-sanctuary"),
+  arena: document.getElementById("view-arena"),
 };
 
 let tree = null;
@@ -82,6 +87,7 @@ let session = { queue: [], index: 0, node: null, mascot: null, streak: 0, streak
 let nextBtnEl = null;
 let fusionState = { tab: "fuse", pick: [], lastResult: null };
 let sanctuarySelectedPedestal = null;
+let arenaState = { strandId: null };
 const pendingTimers = new Set();
 const preloadedMascots = new Set();
 let migrationsRun = false;
@@ -188,11 +194,11 @@ function showView(name) {
   if (changed) clearPendingTimers();
   if (name !== "quiz") clearSprintTimer();
   Object.entries(views).forEach(([key, el]) => el.classList.toggle("active", key === name));
-  const navByView = { home: "nav-home", workshop: "nav-workshop", fusion: "nav-fusion", sanctuary: "nav-sanctuary", dashboard: "nav-dashboard" };
+  const navByView = { home: "nav-home", workshop: "nav-workshop", fusion: "nav-fusion", sanctuary: "nav-sanctuary", arena: "nav-arena", dashboard: "nav-dashboard" };
   Object.values(navByView).forEach((id) => document.getElementById(id)?.removeAttribute("aria-current"));
   if (navByView[name]) document.getElementById(navByView[name])?.setAttribute("aria-current", "page");
   window.scrollTo(0, 0);
-  const labels = { home: "神話星圖", quiz: "練習題", dashboard: "我的儀表板", workshop: "奧林帕斯五座神殿", fusion: "星靈融合殿", sanctuary: "繆思聖所" };
+  const labels = { home: "神話星圖", quiz: "練習題", dashboard: "我的儀表板", workshop: "奧林帕斯五座神殿", fusion: "星靈融合殿", sanctuary: "繆思聖所", arena: "神殿競技場" };
   const heading = views[name]?.querySelector("h2");
   if (heading) {
     heading.focus({ preventScroll: true });
@@ -1558,6 +1564,200 @@ function renderSanctuary() {
   root.appendChild(gallery);
 }
 
+// ---------- 神殿競技場（房號 + 月賽季雲端比分） ----------
+async function showArena() {
+  tree = tree ?? (await loadSkillTree());
+  showView("arena");
+  if (!arenaState.strandId) arenaState.strandId = store.read("arenaStrand", null) ?? tree.strands[0]?.id ?? null;
+  renderArena();
+}
+
+function arenaRoomValue() {
+  return store.read("arenaRoom", "") ?? "";
+}
+
+async function renderArena() {
+  const root = document.getElementById("arena-content");
+  root.innerHTML = "";
+
+  const header = document.createElement("div");
+  header.className = "arena-header";
+  header.appendChild(Object.assign(document.createElement("h3"), { textContent: "神殿競技場" }));
+  header.appendChild(Object.assign(document.createElement("p"), { className: "arena-season", textContent: `🏆 ${seasonLabel()}（每月初重置排行）` }));
+  header.appendChild(Object.assign(document.createElement("p"), {
+    className: "arena-hint",
+    textContent: "輸入班級房號，選一座神殿開戰——同房同月的人拿到完全相同的 10 題，比誰答得又對又快。戰績上傳雲端戰況牆（只露前五）。",
+  }));
+  root.appendChild(header);
+
+  // 房號輸入
+  const roomWrap = document.createElement("div");
+  roomWrap.className = "arena-room";
+  roomWrap.appendChild(Object.assign(document.createElement("label"), { textContent: "班級房號（3–8 碼英數）", htmlFor: "arena-room-input" }));
+  const roomInput = document.createElement("input");
+  roomInput.id = "arena-room-input";
+  roomInput.className = "arena-room-input";
+  roomInput.value = arenaRoomValue();
+  roomInput.placeholder = "例如 5A2026";
+  roomInput.maxLength = 8;
+  roomInput.addEventListener("input", () => {
+    roomInput.value = normalizeRoomCode(roomInput.value);
+    store.write("arenaRoom", roomInput.value || null);
+  });
+  roomWrap.appendChild(roomInput);
+  root.appendChild(roomWrap);
+
+  // 神殿選擇
+  const strandWrap = document.createElement("div");
+  strandWrap.className = "arena-strands";
+  tree.strands.forEach((s) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "arena-strand-btn" + (arenaState.strandId === s.id ? " active" : "");
+    btn.textContent = s.name;
+    btn.addEventListener("click", () => {
+      arenaState.strandId = s.id;
+      store.write("arenaStrand", s.id);
+      renderArena();
+    });
+    strandWrap.appendChild(btn);
+  });
+  root.appendChild(strandWrap);
+
+  const strand = tree.strands.find((s) => s.id === arenaState.strandId);
+  const hasPlayable = (strand?.nodes ?? []).some((n) => isNodePlayable(n, tree));
+
+  const startBtn = document.createElement("button");
+  startBtn.type = "button";
+  startBtn.className = "arena-start-btn";
+  startBtn.disabled = !hasPlayable;
+  startBtn.textContent = hasPlayable ? "⚔️ 開戰（10 題計分）" : "🔒 先解鎖此神殿至少一節點";
+  startBtn.addEventListener("click", () => {
+    const room = normalizeRoomCode(roomInput.value);
+    if (!isValidRoomCode(room)) { showToast("請先輸入 3–8 碼房號", "warn"); return; }
+    store.write("arenaRoom", room);
+    startArenaChallenge(arenaState.strandId, room);
+  });
+  root.appendChild(startBtn);
+
+  // 戰況牆
+  const boardWrap = document.createElement("div");
+  boardWrap.className = "arena-board";
+  boardWrap.appendChild(Object.assign(document.createElement("h4"), { textContent: "本月戰況牆（前五）" }));
+  const boardBody = document.createElement("div");
+  boardBody.className = "arena-board-body";
+  boardBody.appendChild(Object.assign(document.createElement("p"), { className: "arena-loading", textContent: "讀取中…" }));
+  boardWrap.appendChild(boardBody);
+  root.appendChild(boardWrap);
+
+  const room = normalizeRoomCode(roomInput.value);
+  if (isValidRoomCode(room) && strand) {
+    const rows = await fetchArenaBoard(room, strand.id);
+    renderArenaBoard(boardBody, rows, room, strand);
+  } else {
+    boardBody.innerHTML = "";
+    boardBody.appendChild(Object.assign(document.createElement("p"), { className: "arena-empty", textContent: "輸入房號後即可看到這座神殿的本月排行。" }));
+  }
+}
+
+function renderArenaBoard(boardBody, rows, room, strand) {
+  boardBody.innerHTML = "";
+  if (rows === null) {
+    // 雲端打不到（Vercel/Netlify 無 D1 或離線）：退本機自我最佳
+    const localBest = getLocalArenaBest()[`${normalizeRoomCode(room)}|${seasonKey()}|${strand.id}`];
+    boardBody.appendChild(Object.assign(document.createElement("p"), {
+      className: "arena-offline",
+      textContent: localBest
+        ? `目前連不到雲端戰況牆，改顯示你的本機最佳：答對率 ${localBest.pct}%、用時 ${localBest.totalSec} 秒。`
+        : "目前連不到雲端戰況牆（可能離線或此平台未接資料庫）。打一場後會存本機最佳，之後可自我比分。",
+    }));
+    return;
+  }
+  if (rows.length === 0) {
+    boardBody.appendChild(Object.assign(document.createElement("p"), { className: "arena-empty", textContent: "這座神殿本月還沒有人上榜，你可以當第一個！" }));
+    return;
+  }
+  const list = document.createElement("ol");
+  list.className = "arena-rank";
+  rows.forEach((r, i) => {
+    const li = document.createElement("li");
+    li.className = "arena-rank-row" + (i === 0 ? " top" : "");
+    li.appendChild(Object.assign(document.createElement("span"), { className: "arena-rank-medal", textContent: ["🥇", "🥈", "🥉", "4", "5"][i] ?? String(i + 1) }));
+    li.appendChild(Object.assign(document.createElement("span"), { className: "arena-rank-name", textContent: r.name + (r.flagged ? " ⚠️" : "") }));
+    li.appendChild(Object.assign(document.createElement("span"), { className: "arena-rank-score", textContent: `${r.pct}%・${r.totalSec}s` }));
+    list.appendChild(li);
+  });
+  boardBody.appendChild(list);
+}
+
+async function startArenaChallenge(strandId, roomCode) {
+  const strand = tree.strands.find((s) => s.id === strandId);
+  if (!strand) return;
+  const season = seasonKey();
+  const seed = roomSeed(roomCode, strandId, season);
+  showView("quiz");
+  clearSprintTimer();
+  document.getElementById("quiz-node-name").textContent = `競技場・${strand.name}`;
+  document.getElementById("quiz-progressbar").innerHTML = "";
+  document.getElementById("quiz-streak").innerHTML = "";
+  const quizArea = document.getElementById("quiz-area");
+  quizArea.innerHTML = "";
+  const playableIds = strand.nodes.filter((n) => isNodePlayable(n, tree)).map((n) => n.id);
+  const pool = playableIds.length > 20 ? shuffleSample(playableIds, 20) : playableIds;
+  const banks = await Promise.all(pool.map((id) => loadQuestionBank(id)
+    .then((bank) => flattenBank(bank).map((q) => ({ ...q, _nodeId: id })))
+    .catch(() => [])));
+  const allQuestions = banks.flat();
+  if (allQuestions.length === 0) {
+    quizArea.appendChild(Object.assign(document.createElement("p"), { className: "pvp-empty-msg", textContent: "這座神殿還沒有可挑戰的題目，先去解鎖幾個節點吧。" }));
+    return;
+  }
+  const queue = buildSeededQuestions(seed, allQuestions, ARENA_QUESTION_COUNT);
+  session = newSession({
+    queue,
+    node: { id: `arena-${strandId}`, name: `競技場・${strand.name}` },
+    mascot: tree.strandVisuals?.[strandId]?.mascot ?? "davinci",
+    kind: "arena",
+    arena: { roomCode: normalizeRoomCode(roomCode), strandId, season, seed, correct: 0, totalDmg: 0, maxCombo: 0, startAt: Date.now(), count: queue.length },
+  });
+  preloadMascot(session.mascot);
+  renderCurrentQuestion();
+}
+
+async function finishArenaSession(quizArea) {
+  const a = session.arena;
+  const totalSec = Math.max(1, Math.round((Date.now() - a.startAt) / 1000));
+  const pct = Math.round((a.correct / a.count) * 100);
+  const result = { pct, totalSec, totalDmg: a.totalDmg, maxCombo: a.maxCombo, questionCount: a.count };
+  recordLocalArenaBest(a.roomCode, a.strandId, result, a.season);
+
+  const card = document.createElement("div");
+  card.className = "arena-outcome";
+  card.appendChild(Object.assign(document.createElement("h3"), { textContent: "競技場結算" }));
+  card.appendChild(Object.assign(document.createElement("p"), { className: "arena-outcome-score", textContent: `答對 ${a.correct} / ${a.count}（${pct}%）・用時 ${totalSec} 秒・最高連擊 ${a.maxCombo}` }));
+  const statusEl = Object.assign(document.createElement("p"), { className: "arena-outcome-status", textContent: "上傳戰績中…" });
+  card.appendChild(statusEl);
+  const backBtn = Object.assign(document.createElement("button"), { type: "button", className: "arena-back-btn", textContent: "回競技場看戰況牆" });
+  backBtn.addEventListener("click", showArena);
+  card.appendChild(backBtn);
+  quizArea.innerHTML = "";
+  quizArea.appendChild(card);
+
+  const strand = tree.strands.find((s) => s.id === a.strandId);
+  const resp = await submitArenaResult(a.roomCode, a.strandId, result, a.season);
+  if (resp?.ok && resp.updated) statusEl.textContent = resp.flagged ? "已上傳（系統標記建議複驗）✅" : "已刷新你在戰況牆的最佳成績 ✅";
+  else if (resp?.ok) statusEl.textContent = "已上傳，但沒有超過你先前的最佳成績。";
+  else statusEl.textContent = "雲端連不到，已存本機最佳（之後可自我比分）。";
+
+  // 順帶把最新戰況牆補在下面
+  const rows = strand ? await fetchArenaBoard(a.roomCode, a.strandId, a.season) : null;
+  const boardBody = document.createElement("div");
+  boardBody.className = "arena-board-body";
+  card.appendChild(Object.assign(document.createElement("h4"), { textContent: "本月戰況牆（前五）" }));
+  card.appendChild(boardBody);
+  if (strand) renderArenaBoard(boardBody, rows, a.roomCode, strand);
+}
+
 function renderPvpOutcome(result, quizArea) {
   const beatOwnBest = session.pvp.totalDmg > session.pvp.startingBest;
   const card = document.createElement("div");
@@ -1816,6 +2016,10 @@ function renderCurrentQuestion(focusStem = false) {
       renderPvpOutcome(result, quizArea);
       return;
     }
+    if (session.kind === "arena") {
+      finishArenaSession(quizArea);
+      return;
+    }
     finishSession();
     return;
   }
@@ -1970,6 +2174,13 @@ function handleAnswer(question, isCorrect, meta = {}) {
   if (session.kind === "pvp" && session.pvp && isCorrect) {
     session.pvp.totalDmg += playerDamage(session.streak, 100, 100, 0);
     session.pvp.maxCombo = Math.max(session.pvp.maxCombo, session.streak);
+  }
+  if (session.kind === "arena" && session.arena) {
+    if (isCorrect) {
+      session.arena.correct += 1;
+      session.arena.totalDmg += playerDamage(session.streak, 100, 100, 0);
+      session.arena.maxCombo = Math.max(session.arena.maxCombo, session.streak);
+    }
   }
   renderStreakBadge();
   renderMasteryProgress(nodeId);
@@ -3069,6 +3280,7 @@ document.getElementById("nav-home").addEventListener("click", goHome);
 document.getElementById("nav-workshop").addEventListener("click", showWorkshop);
 document.getElementById("nav-fusion").addEventListener("click", showFusion);
 document.getElementById("nav-sanctuary").addEventListener("click", showSanctuary);
+document.getElementById("nav-arena").addEventListener("click", showArena);
 document.getElementById("nav-dashboard").addEventListener("click", showDashboard);
 setupSfxToggle();
 setupAccessibilitySettings();

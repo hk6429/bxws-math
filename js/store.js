@@ -14,6 +14,7 @@ const KEY_TYPES = {
   masterTrialTiers: "object",
   player: "nullable-string", playerId: "string", pvpChallenges: "object", roomCode: "nullable-string", rareStampBook: "object", rareStamps: "array-or-object",
   sanctuaryLayout: "object", sanctuaryInscription: "string",
+  arenaBest: "object", arenaRoom: "nullable-string", arenaStrand: "nullable-string",
   schemaVersion: "number", seenTip: "boolean", sfxOn: "boolean", spiritBook: "object", equippedSpirits: "array", stardustSpent: "number", stardustBonus: "number",
   stardustMilestones: "object",
 };
