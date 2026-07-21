@@ -4024,6 +4024,15 @@ input[type="radio"] { accent-color: var(--star-gold); }
   margin: 2px 0 8px; font-size: 0.85rem; color: var(--star-gold, #d6b25e);
   opacity: 0.95;
 }
+
+/* C2 市集：一鍵跳去競技場設定房號 */
+.market-goroom-btn {
+  min-height: 44px; margin: 6px 0 2px; padding: 8px 16px;
+  border-radius: 10px; border: 1px solid var(--star-gold, #d6b25e);
+  background: color-mix(in srgb, var(--star-gold, #d6b25e) 18%, transparent);
+  color: inherit; font-weight: 700; cursor: pointer;
+}
+.market-goroom-btn:hover { background: color-mix(in srgb, var(--star-gold, #d6b25e) 30%, transparent); }
 .topbar-nav {
   position: relative;
   -webkit-mask-image: linear-gradient(to right, #000 92%, transparent);

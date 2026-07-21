@@ -1909,8 +1909,13 @@ async function renderMarketTab(body) {
   if (!hasRoom) {
     body.appendChild(Object.assign(document.createElement("p"), {
       className: "fusion-empty",
-      textContent: "想和同班同學互相掛單交易？先到「神殿競技場」輸入班級房號。（上方系統商隊一個人也能買）",
+      textContent: "想和同班同學互相掛單交易？先設定班級房號。（上方系統商隊一個人也能買）",
     }));
+    const goRoomBtn = Object.assign(document.createElement("button"), {
+      type: "button", className: "market-goroom-btn", textContent: "⚔️ 去神殿競技場設定房號",
+    });
+    goRoomBtn.addEventListener("click", () => showArena());
+    body.appendChild(goRoomBtn);
     return;
   }
   body.appendChild(Object.assign(document.createElement("p"), { className: "market-room-tag", textContent: `班級房號：${rawRoom}` }));
