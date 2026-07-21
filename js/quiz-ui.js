@@ -6,11 +6,11 @@ function el(tag, className, text) {
 }
 
 const GUARDIAN_IMAGES = {
-  "num-quantity": "assets/mythos/guardians/minotaur.png",
-  algebra: "assets/mythos/guardians/sphinx.png",
-  "space-shape": "assets/mythos/guardians/cyclops.png",
-  "relation-pattern": "assets/mythos/guardians/moirai.png",
-  "data-uncertainty": "assets/mythos/guardians/pythia.png",
+  "num-quantity": "assets/mythos/guardians/minotaur.webp",
+  algebra: "assets/mythos/guardians/sphinx.webp",
+  "space-shape": "assets/mythos/guardians/cyclops.webp",
+  "relation-pattern": "assets/mythos/guardians/moirai.webp",
+  "data-uncertainty": "assets/mythos/guardians/pythia.webp",
 };
 
 export function guardianImageForStrand(strandId) {

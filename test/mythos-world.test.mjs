@@ -56,11 +56,11 @@ test("答題反應與星圖依分支使用指定守護者圖片並保留容錯",
   assert.deepEqual(
     ["num-quantity", "algebra", "space-shape", "relation-pattern", "data-uncertainty"].map(guardianImageForStrand),
     [
-      "assets/mythos/guardians/minotaur.png",
-      "assets/mythos/guardians/sphinx.png",
-      "assets/mythos/guardians/cyclops.png",
-      "assets/mythos/guardians/moirai.png",
-      "assets/mythos/guardians/pythia.png",
+      "assets/mythos/guardians/minotaur.webp",
+      "assets/mythos/guardians/sphinx.webp",
+      "assets/mythos/guardians/cyclops.webp",
+      "assets/mythos/guardians/moirai.webp",
+      "assets/mythos/guardians/pythia.webp",
     ]
   );
   const [quizUi, app, skilltreeUi] = await Promise.all([
