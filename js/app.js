@@ -1,5 +1,5 @@
 import {
-  loadSkillTree, allNodes, nodeState, getNodeMastery, isNodePlayable, recommendedNextNode,
+  loadSkillTree, allNodes, nodeState, getNodeMastery, isNodeMastered, isNodePlayable, recommendedNextNode,
 } from "./schema.js";
 import { renderSkillTree, computeOverview } from "./skilltree-ui.js";
 import {
@@ -44,7 +44,7 @@ import {
   roomSeed, recordLocalArenaBest, getLocalArenaBest, submitArenaResult, fetchArenaBoard,
 } from "./arena.js";
 import {
-  isMarketOpen, nextMarketText, MARKET_MIN_PRICE, MARKET_MAX_PRICE,
+  isMarketOpen, isMarketBonus, nextMarketText, npcListings, MARKET_MIN_PRICE, MARKET_MAX_PRICE,
   listSpirit, fetchMarketBoard, buyListing, fetchMyListings, claimPayout,
 } from "./market.js";
 import { pickQuote, QUOTES, unlockedExtraQuotes } from "./quotes.js";
@@ -91,6 +91,7 @@ let session = { queue: [], index: 0, node: null, mascot: null, streak: 0, streak
 let nextBtnEl = null;
 let fusionState = { tab: "fuse", pick: [], lastResult: null };
 let sanctuarySelectedPedestal = null;
+let sanctuaryJustPlaced = null;
 let arenaState = { strandId: null };
 const pendingTimers = new Set();
 const preloadedMascots = new Set();
@@ -155,6 +156,36 @@ function showCardReveal(item, rarity = "普通") {
   overlay.addEventListener("click", close, { once: true });
   document.body.appendChild(overlay);
   setTimeout(close, 2200);
+}
+
+// 完全數融合高光：確定性、每次融成完全數必觸發（不是拉霸機率），並解釋為什麼特別
+function showPerfectFusionCelebration(n) {
+  document.querySelector(".perfect-fusion-overlay")?.remove();
+  if (isSfxOn()) sfx.rare();
+  const overlay = document.createElement("div");
+  overlay.className = "perfect-fusion-overlay";
+  overlay.setAttribute("role", "dialog");
+  overlay.setAttribute("aria-label", `融合出完全數 ${n}`);
+  const card = document.createElement("div");
+  card.className = "perfect-fusion-card";
+  const rays = document.createElement("div");
+  rays.className = "perfect-fusion-rays";
+  card.appendChild(rays);
+  card.appendChild(Object.assign(document.createElement("span"), { className: "perfect-fusion-badge", textContent: "傳說・完全數" }));
+  card.appendChild(spiritBadgeEl(n));
+  card.appendChild(Object.assign(document.createElement("h3"), { textContent: `${spiritName(n)}（${n}）` }));
+  const proper = divisors(n).filter((d) => d !== n);
+  card.appendChild(Object.assign(document.createElement("p"), {
+    className: "perfect-fusion-why",
+    textContent: `${n} 的真因數 ${proper.join(" ＋ ")} ＝ ${n}——自己等於自己所有真因數的和，這種數叫「完全數」，超級稀有！`,
+  }));
+  card.appendChild(Object.assign(document.createElement("p"), { className: "perfect-fusion-tap", textContent: "點一下繼續" }));
+  overlay.appendChild(card);
+  const close = () => overlay.remove();
+  overlay.addEventListener("click", close, { once: true });
+  document.body.appendChild(overlay);
+  const t = window.setTimeout(() => { close(); pendingTimers.delete(t); }, 4200);
+  pendingTimers.add(t);
 }
 
 function showStorageNoticeIfNeeded() {
@@ -923,10 +954,11 @@ function startSprintTimer() {
   const tick = () => {
     const left = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
     if (left > 0) {
-      el.textContent = `⏱ 疾筆倒數 ${left} 秒`;
       const settings = getAccessibilitySettings();
+      // 警示關（預設）：溫和「挑戰自己」框架、不閃紅、不滴答；警示開：倒數＋最後 5 秒催促
+      el.textContent = settings.sprintWarning ? `⏱ 疾筆倒數 ${left} 秒` : `⏱ 挑戰自己・約 ${left} 秒`;
       el.classList.toggle("timer-hot", settings.sprintWarning && left <= 5);
-      if (left <= 5 && left !== lastShown) sfx.tick();
+      if (settings.sprintWarning && left <= 5 && left !== lastShown) sfx.tick();
       lastShown = left;
     } else {
       el.textContent = "超時了？沒關係，這題慢慢想，只是不記疾筆";
@@ -1303,6 +1335,8 @@ function renderFuseTab(body) {
       const result = resolveFusion(a, b, input.value.trim() === "" ? null : Number(input.value));
       fusionState.lastResult = result;
       fusionState.pick = [];
+      // 完全數（6/28…）是本作最稀有的融合成果，值得一次確定性的高光演出（非亂數掉落）
+      if (result?.ok && isPerfect(result.product)) showPerfectFusionCelebration(result.product);
       renderFusion();
     });
     guessWrap.appendChild(fuseBtn);
@@ -1358,6 +1392,7 @@ function renderCodexTab(body) {
     const cls = classify(n);
     const cell = document.createElement("div");
     cell.className = `codex-cell spirit-${cls.kind}` + (owned.has(n) ? " owned" : " locked");
+    if (isPrime(n)) cell.title = `${n} 是質數：只有 1 和 ${n} 兩個因數，沒有任何兩個大於 1 的數相乘做得出它——這就是為什麼質數只能收服、不能融合誕生。`;
     if (owned.has(n)) {
       cell.appendChild(spiritBadgeEl(n));
     } else {
@@ -1373,7 +1408,7 @@ function renderEquipTab(body) {
   const equipped = getEquippedSpirits();
   body.appendChild(Object.assign(document.createElement("p"), {
     className: "fusion-hint",
-    textContent: `出戰最多 ${EQUIP_MAX} 顆星靈，每顆依「因數個數」給 boss 戰傷害加成（因數愈多加成愈高）。目前總加成 ${Math.round(spiritBonusFor() * 100)}%（與收集品合計上限 25%）。`,
+    textContent: `出戰最多 ${EQUIP_MAX} 顆星靈，每顆的「因數共振」給 boss 戰一點傷害加成。目前總加成 ${Math.round(spiritBonusFor() * 100)}%（與收集品合計上限 25%）。這只是遊戲效果——數學上 13 和 12 沒有誰比較強，只是因數多寡不同。`,
   }));
   if (owned.length === 0) {
     body.appendChild(Object.assign(document.createElement("p"), { className: "fusion-empty", textContent: "還沒有星靈可以出戰。" }));
@@ -1387,7 +1422,8 @@ function renderEquipTab(body) {
     cell.type = "button";
     cell.className = "equip-cell" + (on ? " equipped" : "");
     cell.appendChild(spiritBadgeEl(n));
-    cell.appendChild(Object.assign(document.createElement("span"), { className: "equip-info", textContent: `${n}・${divisorCount(n)} 因數・+${Math.min(6, divisorCount(n))}%` }));
+    cell.appendChild(Object.assign(document.createElement("span"), { className: "equip-info", textContent: `${n}・因數共振 +${Math.min(6, divisorCount(n))}%` }));
+    cell.title = `${n} 有 ${divisorCount(n)} 個因數。因數共振只是遊戲加成，數學上因數多的數並不「比較強」。`;
     cell.addEventListener("click", () => {
       const next = on ? equipped.filter((x) => x !== n) : [...equipped, n];
       setEquippedSpirits(next);
@@ -1455,11 +1491,15 @@ function renderSanctuary() {
     className: "sanctuary-inscription",
     textContent: `「${inscriptionText()}」`,
   }));
+  const placedCount = Object.keys(layout).filter((k) => decorationById(layout[k]) && unlockedIds.has(layout[k])).length;
   header.appendChild(Object.assign(document.createElement("span"), {
     className: "sanctuary-stat",
-    textContent: `已點亮陳設 ${unlockedIds.size} / ${DECORATIONS.length}　·　已精熟 ${mastered} 節點`,
+    textContent: `已點亮陳設 ${unlockedIds.size} / ${DECORATIONS.length}　·　已擺放 ${placedCount} / ${PEDESTAL_COUNT} 座　·　已精熟 ${mastered} 節點`,
   }));
   root.appendChild(header);
+  // 只在剛擺放的那一次播 pop 動畫，讀取後即清旗標，避免每次 render 都重播
+  const popIndex = sanctuaryJustPlaced;
+  sanctuaryJustPlaced = null;
 
   // 門楣銘文選擇
   const titleWrap = document.createElement("div");
@@ -1500,7 +1540,7 @@ function renderSanctuary() {
     const stillUnlocked = deco && unlockedIds.has(deco.id);
     const cell = document.createElement("button");
     cell.type = "button";
-    cell.className = "sanctuary-pedestal" + (sanctuarySelectedPedestal === i ? " selected" : "") + (deco ? " filled" : "");
+    cell.className = "sanctuary-pedestal" + (sanctuarySelectedPedestal === i ? " selected" : "") + (deco ? " filled" : "") + (popIndex === i ? " pedestal-pop" : "");
     if (deco && stillUnlocked) {
       cell.appendChild(Object.assign(document.createElement("span"), { className: "pedestal-glyph", textContent: deco.glyph }));
       cell.appendChild(Object.assign(document.createElement("span"), { className: "pedestal-name", textContent: deco.name }));
@@ -1557,6 +1597,8 @@ function renderSanctuary() {
         cell.addEventListener("click", () => {
           if (sanctuarySelectedPedestal == null) { showToast("先點一座基座", "warn"); return; }
           placeDecoration(sanctuarySelectedPedestal, d.id, unlockedIds);
+          if (isSfxOn()) sfx.correct();
+          sanctuaryJustPlaced = sanctuarySelectedPedestal;
           showToast(`✦ 「${d.name}」已擺上基座 ${sanctuarySelectedPedestal + 1}`, "success");
           renderSanctuary();
         });
@@ -1569,22 +1611,100 @@ function renderSanctuary() {
   root.appendChild(gallery);
 }
 
+// 兩段式「冷靜期」確認：第一次點變成「確定買？」，幾秒內再點一次才真的買，取代會卡住的原生 confirm()。
+function armConfirmBuy(btn, onConfirm) {
+  if (btn.dataset.armed === "1") { onConfirm(); return; }
+  btn.dataset.armed = "1";
+  const original = btn.textContent;
+  btn.textContent = "再點一次確定購買";
+  btn.classList.add("buy-armed");
+  const t = window.setTimeout(() => {
+    btn.dataset.armed = "";
+    btn.textContent = original;
+    btn.classList.remove("buy-armed");
+    pendingTimers.delete(t);
+  }, 3500);
+  pendingTimers.add(t);
+}
+
 async function renderMarketTab(body) {
-  const open = isMarketOpen();
+  const bonus = isMarketBonus();
+  const p2pDisabled = store.read("marketP2PDisabled", false) === true;
   body.appendChild(Object.assign(document.createElement("p"), {
     className: "fusion-hint",
-    textContent: `班級同學互相掛單交易星靈（星屑買賣）。赫米斯＝商業之神，${nextMarketText()}——只在週五能掛單與購買，其他天可先逛。`,
+    textContent: `${nextMarketText()}。這裡的星屑是遊戲幣、不是真錢——買賣星靈是好玩，別勉強同學交易。`,
   }));
 
-  const room = normalizeRoomCode(store.read("arenaRoom", "") ?? "");
-  if (!isValidRoomCode(room)) {
+  // 教師開關：關閉同學間 P2P 交易，只留系統商隊（預設開放 P2P）
+  const teacherWrap = document.createElement("label");
+  teacherWrap.className = "market-teacher-toggle";
+  const teacherChk = document.createElement("input");
+  teacherChk.type = "checkbox";
+  teacherChk.checked = p2pDisabled;
+  teacherChk.addEventListener("change", () => {
+    store.write("marketP2PDisabled", teacherChk.checked);
+    renderFusion();
+  });
+  teacherWrap.append(teacherChk, Object.assign(document.createElement("span"), { textContent: "老師模式：關閉同學互相交易，只留系統商隊" }));
+  body.appendChild(teacherWrap);
+
+  const rawRoom = normalizeRoomCode(store.read("arenaRoom", "") ?? "");
+  const hasRoom = isValidRoomCode(rawRoom);
+  // NPC 商隊不需要班級房號：沒設房號就用今日單人房號，讓一個人在家也能買
+  const caravanRoom = hasRoom ? rawRoom : dailySoloRoomCode();
+
+  // ---- 系統商隊（NPC 補空，天天有貨） ----
+  const npcWrap = document.createElement("div");
+  npcWrap.className = "market-npc";
+  npcWrap.appendChild(Object.assign(document.createElement("h4"), { textContent: bonus ? "🐫 赫米斯商隊（加碼日補貨）" : "🐫 赫米斯商隊（今日補貨）" }));
+  const boughtToday = store.read("npcBought", {});
+  const todayKey = caravanRoom && npcListings(caravanRoom)[0]?.id.split("-")[1];
+  const npcGrid = document.createElement("div");
+  npcGrid.className = "market-grid";
+  const availableNpc = npcListings(caravanRoom).filter((l) => !ownsSpirit(l.spiritN) && boughtToday[l.id] !== todayKey);
+  if (availableNpc.length === 0) {
+    npcWrap.appendChild(Object.assign(document.createElement("p"), { className: "fusion-hint", textContent: "今天商隊的貨你都收齊了，明天再來補新貨！" }));
+  } else {
+    availableNpc.forEach((l) => {
+      const cell = document.createElement("div");
+      cell.className = `market-cell spirit-${classify(l.spiritN).kind}`;
+      cell.appendChild(spiritBadgeEl(l.spiritN));
+      cell.appendChild(Object.assign(document.createElement("span"), { className: "market-cell-name", textContent: `${l.spiritN}・${spiritName(l.spiritN)}` }));
+      cell.appendChild(Object.assign(document.createElement("span"), { className: "market-cell-seller", textContent: l.sellerName }));
+      cell.appendChild(Object.assign(document.createElement("span"), { className: "market-cell-price", textContent: `🫙 ${l.price}` }));
+      const affordable = stardustBalance() >= l.price;
+      const buyBtn = Object.assign(document.createElement("button"), { type: "button", className: "market-buy-btn" });
+      buyBtn.disabled = !affordable;
+      buyBtn.textContent = affordable ? "購買" : "星屑不足";
+      buyBtn.addEventListener("click", () => armConfirmBuy(buyBtn, () => {
+        if (!spendStardust(l.price)) { showToast("星屑不足", "warn"); return; }
+        const got = captureSpirit(l.spiritN);
+        const bought = store.read("npcBought", {});
+        bought[l.id] = todayKey;
+        store.write("npcBought", bought);
+        showToast(got?.isNew ? `✦ 從商隊買下「${spiritName(l.spiritN)}」` : `✦ 再收一顆「${spiritName(l.spiritN)}」`, "success");
+        renderFusion();
+      }));
+      cell.appendChild(buyBtn);
+      npcGrid.appendChild(cell);
+    });
+    npcWrap.appendChild(npcGrid);
+  }
+  body.appendChild(npcWrap);
+
+  if (p2pDisabled) {
+    body.appendChild(Object.assign(document.createElement("p"), { className: "fusion-hint", textContent: "老師模式開啟中：同學互相交易已關閉，只保留上方系統商隊。" }));
+    return;
+  }
+  if (!hasRoom) {
     body.appendChild(Object.assign(document.createElement("p"), {
       className: "fusion-empty",
-      textContent: "還沒設定班級房號。先到「神殿競技場」輸入房號，才能和同班同學交易。",
+      textContent: "想和同班同學互相掛單交易？先到「神殿競技場」輸入班級房號。（上方系統商隊一個人也能買）",
     }));
     return;
   }
-  body.appendChild(Object.assign(document.createElement("p"), { className: "market-room-tag", textContent: `班級房號：${room}` }));
+  body.appendChild(Object.assign(document.createElement("p"), { className: "market-room-tag", textContent: `班級房號：${rawRoom}` }));
+  const room = rawRoom;
 
   // 領款橫幅：別人買了你的掛單，回來領星屑
   const mine = await fetchMyListings();
@@ -1602,14 +1722,12 @@ async function renderMarketTab(body) {
     body.appendChild(banner);
   }
 
-  // 掛單表單（週五限定）
+  // 掛單表單（天天可掛）
   const owned = ownedSpiritNumbers();
   const listWrap = document.createElement("div");
   listWrap.className = "market-list-form";
   listWrap.appendChild(Object.assign(document.createElement("h4"), { textContent: "我要掛單" }));
-  if (!open) {
-    listWrap.appendChild(Object.assign(document.createElement("p"), { className: "fusion-hint", textContent: "今天不是市集日，週五再來掛單。" }));
-  } else if (owned.length === 0) {
+  if (owned.length === 0) {
     listWrap.appendChild(Object.assign(document.createElement("p"), { className: "fusion-hint", textContent: "你還沒有星靈可以賣。" }));
   } else {
     const row = document.createElement("div");
@@ -1630,7 +1748,7 @@ async function renderMarketTab(body) {
       if (!(price >= MARKET_MIN_PRICE && price <= MARKET_MAX_PRICE)) { showToast(`價格需在 ${MARKET_MIN_PRICE}–${MARKET_MAX_PRICE}`, "warn"); return; }
       const r = await listSpirit(room, Number(sel.value), price);
       if (r?.ok) showToast(`✦ 已掛單「${spiritName(Number(sel.value))}」${price} 星屑`, "success");
-      else showToast(r?.message ?? "掛單失敗（可能非市集日或已達上限）", "warn");
+      else showToast(r?.message ?? "掛單失敗（可能已達上限）", "warn");
       renderFusion();
     });
     row.append(sel, priceInput, listBtn);
@@ -1666,7 +1784,7 @@ async function renderMarketTab(body) {
     return;
   }
   if (listings.length === 0) {
-    boardBody.appendChild(Object.assign(document.createElement("p"), { className: "fusion-empty", textContent: "目前沒有同學掛單。週五開市時來逛逛！" }));
+    boardBody.appendChild(Object.assign(document.createElement("p"), { className: "fusion-empty", textContent: "目前沒有同學掛單。可以先逛上方的系統商隊！" }));
     return;
   }
   const grid = document.createElement("div");
@@ -1681,19 +1799,19 @@ async function renderMarketTab(body) {
     const alreadyOwn = ownsSpirit(l.spiritN);
     const buyBtn = Object.assign(document.createElement("button"), { type: "button", className: "market-buy-btn" });
     const affordable = stardustBalance() >= l.price;
-    buyBtn.disabled = !open || alreadyOwn || !affordable;
-    buyBtn.textContent = !open ? "非市集日" : alreadyOwn ? "已擁有" : !affordable ? "星屑不足" : "購買";
-    buyBtn.addEventListener("click", async () => {
+    buyBtn.disabled = alreadyOwn || !affordable;
+    buyBtn.textContent = alreadyOwn ? "已擁有" : !affordable ? "星屑不足" : "購買";
+    buyBtn.addEventListener("click", () => armConfirmBuy(buyBtn, async () => {
       const r = await buyListing(l.id);
       if (r?.ok) {
         spendStardust(r.price);
-        const got = captureSpirit(r.spiritN);
-        showToast(got?.isNew ? `✦ 買下「${spiritName(r.spiritN)}」` : `✦ 買下「${spiritName(r.spiritN)}」`, "success");
+        captureSpirit(r.spiritN);
+        showToast(`✦ 買下「${spiritName(r.spiritN)}」`, "success");
       } else {
         showToast(r?.message ?? "購買失敗", "warn");
       }
       renderFusion();
-    });
+    }));
     cell.appendChild(buyBtn);
     grid.appendChild(cell);
   });
@@ -1710,6 +1828,13 @@ async function showArena() {
 
 function arenaRoomValue() {
   return store.read("arenaRoom", "") ?? "";
+}
+
+// 今日單人房房號：S + YYMMDD（≤8 碼、每天不同）。同日同房＝同 seed 同題，可自我／全球比分。
+function dailySoloRoomCode() {
+  const d = new Date();
+  const p = (n) => String(n).padStart(2, "0");
+  return normalizeRoomCode(`S${p(d.getFullYear() % 100)}${p(d.getMonth() + 1)}${p(d.getDate())}`);
 }
 
 async function renderArena() {
@@ -1742,6 +1867,19 @@ async function renderArena() {
   });
   roomWrap.appendChild(roomInput);
   root.appendChild(roomWrap);
+
+  // 每日單人房：一個人在家也能玩，房號按日期自動生成（同一天全世界同房＝同題可比分）
+  const soloBtn = document.createElement("button");
+  soloBtn.type = "button";
+  soloBtn.className = "arena-solo-btn";
+  soloBtn.textContent = "🎯 今日單人房（自動填房號，一個人也能挑戰）";
+  soloBtn.addEventListener("click", () => {
+    const code = dailySoloRoomCode();
+    roomInput.value = code;
+    store.write("arenaRoom", code);
+    renderArena();
+  });
+  root.appendChild(soloBtn);
 
   // 神殿選擇
   const strandWrap = document.createElement("div");
@@ -1856,11 +1994,16 @@ async function startArenaChallenge(strandId, roomCode) {
     kind: "arena",
     arena: { roomCode: normalizeRoomCode(roomCode), strandId, season, seed, correct: 0, totalDmg: 0, maxCombo: 0, startAt: Date.now(), count: queue.length },
   });
+  const best = getLocalArenaBest()[`${normalizeRoomCode(roomCode)}|${season}|${strandId}`];
+  session.arena.ghostSecPerQ = best?.totalSec ? Math.max(2, best.totalSec / (best.questionCount || ARENA_QUESTION_COUNT)) : 12;
+  session.arena.ghostLabel = best?.totalSec ? "你的最佳幽靈" : "系統幽靈（12秒/題）";
   preloadMascot(session.mascot);
   renderCurrentQuestion();
+  mountArenaGhost();
 }
 
 async function finishArenaSession(quizArea) {
+  removeArenaGhost();
   const a = session.arena;
   const totalSec = Math.max(1, Math.round((Date.now() - a.startAt) / 1000));
   const pct = Math.round((a.correct / a.count) * 100);
@@ -1892,6 +2035,46 @@ async function finishArenaSession(quizArea) {
   card.appendChild(Object.assign(document.createElement("h4"), { textContent: "本月戰況牆（前五）" }));
   card.appendChild(boardBody);
   if (strand) renderArenaBoard(boardBody, rows, a.roomCode, strand);
+}
+
+// 競技場幽靈對手：拿「你這房這神殿的本機最佳用時」當幽靈，沒有就用系統幽靈（12秒/題），
+// 每答一題更新「你 vs 幽靈」的進度條，做出即時競速感（純本機、不需連線）。
+function mountArenaGhost() {
+  removeArenaGhost();
+  const quizArea = document.getElementById("quiz-area");
+  const host = quizArea?.parentElement;
+  if (!host) return;
+  const box = document.createElement("div");
+  box.id = "arena-ghost";
+  box.className = "arena-ghost";
+  box.innerHTML =
+    `<div class="arena-ghost-label"></div>` +
+    `<div class="arena-ghost-track"><span class="arena-ghost-you"></span></div>` +
+    `<div class="arena-ghost-track ghost"><span class="arena-ghost-foe"></span></div>` +
+    `<div class="arena-ghost-gap"></div>`;
+  host.insertBefore(box, quizArea);
+  updateArenaGhost(0);
+}
+function updateArenaGhost(answeredCount) {
+  const box = document.getElementById("arena-ghost");
+  const a = session?.arena;
+  if (!box || !a) return;
+  const count = a.count || ARENA_QUESTION_COUNT;
+  const perQ = a.ghostSecPerQ || 12;
+  const elapsedSec = Math.max(0, (Date.now() - a.startAt) / 1000);
+  const ghostDone = Math.min(count, elapsedSec / perQ); // 幽靈以固定步速前進
+  box.querySelector(".arena-ghost-label").textContent = `🏁 你 vs ${a.ghostLabel}`;
+  box.querySelector(".arena-ghost-you").style.width = `${Math.round((answeredCount / count) * 100)}%`;
+  box.querySelector(".arena-ghost-foe").style.width = `${Math.round((ghostDone / count) * 100)}%`;
+  const lead = answeredCount - ghostDone;
+  const gap = box.querySelector(".arena-ghost-gap");
+  if (answeredCount === 0) gap.textContent = "開跑！和幽靈比誰先答完又答得對。";
+  else if (lead >= 0.15) { gap.textContent = `領先幽靈 ${(lead * perQ).toFixed(0)} 秒 🔥`; gap.className = "arena-ghost-gap ahead"; }
+  else if (lead <= -0.15) { gap.textContent = `落後幽靈 ${(-lead * perQ).toFixed(0)} 秒，加油追！`; gap.className = "arena-ghost-gap behind"; }
+  else { gap.textContent = "和幽靈並駕齊驅"; gap.className = "arena-ghost-gap"; }
+}
+function removeArenaGhost() {
+  document.getElementById("arena-ghost")?.remove();
 }
 
 function renderPvpOutcome(result, quizArea) {
@@ -2072,6 +2255,30 @@ function renderBossPanel(quizArea) {
   quizArea.appendChild(panel);
 }
 
+// 答題當下就更新血條與飄傷害數字：讓既有 transition 真正觸發（不再等下一題重建）
+function updateBossFeedback(boss, isCorrect) {
+  const foe = document.querySelector(".boss-foe");
+  const player = document.querySelector(".boss-player");
+  if (!foe || !player) return;
+  const foeFill = foe.querySelector(".boss-hp-fill");
+  const playerFill = player.querySelector(".boss-hp-fill");
+  if (foeFill) foeFill.style.width = `${Math.round((boss.hp / boss.maxHp) * 100)}%`;
+  if (playerFill) playerFill.style.width = `${Math.round((boss.playerHp / boss.playerMaxHp) * 100)}%`;
+  const dmg = boss.lastEvent?.dmg ?? 0;
+  const target = isCorrect ? foe : player;
+  const float = document.createElement("span");
+  float.className = `damage-float ${isCorrect ? "damage-hit" : "damage-miss"}`;
+  float.textContent = `-${dmg}`;
+  target.appendChild(float);
+  target.classList.add("boss-flinch");
+  const cleanup = window.setTimeout(() => {
+    float.remove();
+    target.classList.remove("boss-flinch");
+    pendingTimers.delete(cleanup);
+  }, 700);
+  pendingTimers.add(cleanup);
+}
+
 function renderBossOutcome(outcome, quizArea) {
   const boss = session.boss;
   const meta = bossFor(boss.strandId);
@@ -2118,6 +2325,7 @@ function renderCurrentQuestion(focusStem = false) {
   const quizArea = document.getElementById("quiz-area");
   preloadMascot(session.mascot);
   quizArea.innerHTML = "";
+  if (session.kind !== "arena") removeArenaGhost();
   document.getElementById("quiz-node-name").textContent = session.node.name;
   if (session.kind === "boss") {
     const outcome = bossOutcome(session.boss);
@@ -2306,6 +2514,7 @@ function handleAnswer(question, isCorrect, meta = {}) {
     // 總加成 = 收集品（上限 15%）+ 出戰星靈（上限 10%），合計自然封頂 25%
     const bonus = collectionBonusFor(strandNodeIds, getCollection(), getRareStamps()) + spiritBonusFor();
     session.boss = applyBossAnswer(session.boss, isCorrect, session.streak, bonus);
+    updateBossFeedback(session.boss, isCorrect);
   }
   if (session.kind === "pvp" && session.pvp && isCorrect) {
     session.pvp.totalDmg += playerDamage(session.streak, 100, 100, 0);
@@ -2317,6 +2526,7 @@ function handleAnswer(question, isCorrect, meta = {}) {
       session.arena.totalDmg += playerDamage(session.streak, 100, 100, 0);
       session.arena.maxCombo = Math.max(session.arena.maxCombo, session.streak);
     }
+    updateArenaGhost(session.index + 1);
   }
   renderStreakBadge();
   renderMasteryProgress(nodeId);
@@ -2340,11 +2550,12 @@ function handleEncounterWin() {
   const reward = resolveEncounterReward(nodeId, session.mascot);
   if (!reward) return null;
 
-  sfx.rare();
+  // 奇遇是隨機掉落，刻意「收斂拉霸感」：不放全螢幕開獎動畫、不用 rare 大獎音效，
+  // 只留低調的行內提示，把高光留給「靠實力賺到」的完全數融合（見 showPerfectFusionCelebration）。
+  sfx.correct();
   const card = document.querySelector("#quiz-area .q-card");
   if (reward.type === "stamp") {
     session.rareDrops.push(reward.stamp);
-    showCardReveal(reward.stamp, reward.stamp.rarity);
     if (card) {
       const rare = document.createElement("div");
       rare.className = "rare-stamp";
@@ -3054,6 +3265,26 @@ async function showDashboard() {
   summary.innerHTML = `<h3>整體戰力值</h3><p>${overview.masteredCount} / ${overview.totalNodes} 個學習點已開通</p>
     <p class="dash-records">歷史最長連詠：${bestStreak}${trialBest ? ` ・ 賢者試煉最佳：${Math.round(trialBest.pct * 100)}%` : ""}</p>`;
   el.appendChild(summary);
+
+  // 診斷跳關但尚未精熟的節點：誠實標示「基礎未精熟」，提醒回頭補練，不讓跳關假裝已學會
+  const dashProgress = store.read("progress", {});
+  const diagSkipped = allNodes(tree).filter((n) => dashProgress[n.id]?.diagnosticUnlocked === true && !isNodeMastered(n.id, tree, dashProgress));
+  if (diagSkipped.length > 0) {
+    const diagSection = document.createElement("div");
+    diagSection.className = "dash-diag-skipped";
+    diagSection.appendChild(Object.assign(document.createElement("h3"), { textContent: `診斷跳關的節點（${diagSkipped.length}）` }));
+    diagSection.appendChild(Object.assign(document.createElement("p"), { className: "dash-diag-note", textContent: "這些是你靠先備診斷直接開通、還沒真正精熟的節點。標示「基礎未精熟」只是提醒——想更穩，回頭把它們練到精熟。" }));
+    diagSkipped.slice(0, 12).forEach((n) => {
+      const row = document.createElement("button");
+      row.type = "button";
+      row.className = "dash-diag-row";
+      row.innerHTML = `<span class="dash-diag-name"></span><span class="dash-diag-tag">基礎未精熟</span>`;
+      row.querySelector(".dash-diag-name").textContent = n.name;
+      row.addEventListener("click", () => startQuiz(n));
+      diagSection.appendChild(row);
+    });
+    el.appendChild(diagSection);
+  }
 
   // 神諭卷軸集（含完成度與入手日期）
   const col = getCollection();

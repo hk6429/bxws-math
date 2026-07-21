@@ -31,10 +31,16 @@ test("神話印記與神諭卷軸解鎖會立即依稀有度開卡", async () =>
     readFile(new URL("../js/app.js", import.meta.url), "utf8"),
     readFile(new URL("../css/style.css", import.meta.url), "utf8"),
   ]);
-  assert.match(app, /showCardReveal\(reward\.stamp/);
+  // 靠實力賺到的收藏卡（精熟解鎖）仍保留開卡演出
   assert.match(app, /newDrops\.forEach[\s\S]*showCardReveal/);
   assert.match(css, /\.card-reveal-overlay/);
   assert.match(css, /\.reveal-common/);
   assert.match(css, /\.reveal-rare/);
   assert.match(css, /\.reveal-legendary/);
+  // 隨機奇遇掉落刻意「收斂拉霸感」：不再全螢幕開獎、不用 rare 大獎音效，只留行內提示
+  assert.doesNotMatch(app, /showCardReveal\(reward\.stamp/);
+  assert.match(app, /sfx\.correct\(\);\n {2}const card = document\.querySelector\("#quiz-area \.q-card"\)/);
+  // 完全數融合改用確定性高光（賺到才觸發，非亂數）
+  assert.match(app, /function showPerfectFusionCelebration/);
+  assert.match(css, /\.perfect-fusion-overlay/);
 });

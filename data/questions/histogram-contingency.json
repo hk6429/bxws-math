@@ -14,12 +14,12 @@
       "challenge": "12-1",
       "stem": "某直方圖中 10–未滿20 分有 7 人，20–未滿30 分有 12 人。哪組人數較多？",
       "options": [
-        "10–未滿20",
         "20–未滿30",
+        "10–未滿20",
         "一樣多",
         "無法判斷"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "12>7，所以 20–未滿30 分組較多。",
       "difficulty": "easy",
       "errorPath": "interval-reading"
@@ -30,12 +30,12 @@
       "challenge": "12-2",
       "stem": "列聯表：男生喜歡球類 8 人、音樂 5 人；女生喜歡球類 6 人、音樂 9 人。喜歡音樂共幾人？",
       "options": [
-        "11",
-        "13",
         "14",
-        "15"
+        "13",
+        "15",
+        "11"
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "音樂欄合計 5+9=14。",
       "difficulty": "easy",
       "errorPath": "row-column-total"
@@ -46,12 +46,12 @@
       "challenge": "12-1",
       "stem": "同上表，受調查總人數為何？",
       "options": [
-        "20",
         "24",
-        "28",
-        "30"
+        "20",
+        "30",
+        "28"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "8+5+6+9=28。",
       "difficulty": "medium",
       "errorPath": "row-column-total"
@@ -62,10 +62,10 @@
       "challenge": "12-2",
       "stem": "直方圖的 30–未滿40 組有 4 人。分數恰為 40 的人屬於哪組？",
       "options": [
-        "30–未滿40",
+        "兩組都不算",
         "40–未滿50",
         "兩組都算",
-        "兩組都不算"
+        "30–未滿40"
       ],
       "answer": 1,
       "explanation": "區間右端不包含 40，應歸入下一組。",
@@ -78,12 +78,12 @@
       "challenge": "12-1",
       "stem": "哪一項最能區分一般長條圖與連續資料直方圖？",
       "options": [
-        "直方圖的柱通常相連",
+        "直方圖沒有橫軸",
         "直方圖一定是圓形",
-        "長條圖不能標人數",
-        "直方圖沒有橫軸"
+        "直方圖的柱通常相連",
+        "長條圖不能標人數"
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "連續組距相接，因此直方圖柱通常相連。",
       "difficulty": "medium",
       "errorPath": "chart-type-confusion"
@@ -145,9 +145,9 @@
       "wrongSolution": "把分數 10 算進第一組",
       "errorOptions": [
         "10 應進 10–未滿20 組",
-        "10 不屬於任何組",
         "兩組都要算",
-        "人數應相乘"
+        "人數應相乘",
+        "10 不屬於任何組"
       ],
       "correctErrorIndex": 0,
       "explanation": "『未滿10』不包含 10。",
@@ -161,12 +161,12 @@
       "problem": "列聯表中球類欄為男 7、女 8",
       "wrongSolution": "說喜歡球類共 8 人",
       "errorOptions": [
-        "只看了女生格，應加 7+8=15",
         "應算 8-7",
+        "列聯表不能加總",
         "應看列總計",
-        "列聯表不能加總"
+        "只看了女生格，應加 7+8=15"
       ],
-      "correctErrorIndex": 0,
+      "correctErrorIndex": 3,
       "explanation": "欄總計要加總同欄各列。",
       "difficulty": "easy",
       "errorPath": "row-column-total"
@@ -178,12 +178,12 @@
       "problem": "類別是紅、藍、綠三種顏色",
       "wrongSolution": "用柱子相連的直方圖呈現",
       "errorOptions": [
-        "顏色是離散類別，宜用有間隔的長條圖",
-        "直方圖不能有顏色",
         "柱高不能是人數",
-        "應改用數線"
+        "應改用數線",
+        "顏色是離散類別，宜用有間隔的長條圖",
+        "直方圖不能有顏色"
       ],
-      "correctErrorIndex": 0,
+      "correctErrorIndex": 2,
       "explanation": "直方圖用於連續分組資料。",
       "difficulty": "medium",
       "errorPath": "chart-type-confusion"
@@ -196,9 +196,9 @@
       "wrongSolution": "總人數算成 5+8=13",
       "errorOptions": [
         "只加對角格，應四格全加得 26",
-        "應相乘",
+        "應只加第一列",
         "應取最大值",
-        "應只加第一列"
+        "應相乘"
       ],
       "correctErrorIndex": 0,
       "explanation": "總數是所有互斥交叉格的合計。",
@@ -212,12 +212,12 @@
       "problem": "20–未滿30 組有 9 人",
       "wrongSolution": "說分數 30 也算在這組",
       "errorOptions": [
+        "9 人應改成 30 人",
         "30 應進下一組",
         "30 應同時計兩組",
-        "30 不可出現在資料",
-        "9 人應改成 30 人"
+        "30 不可出現在資料"
       ],
-      "correctErrorIndex": 0,
+      "correctErrorIndex": 1,
       "explanation": "右端點『未滿30』不包含 30。",
       "difficulty": "easy",
       "errorPath": "interval-boundary"
@@ -232,11 +232,11 @@
       "question": "哪一組人數最多？",
       "options": [
         "0–未滿10",
-        "10–未滿20",
+        "一樣多",
         "20–未滿30",
-        "一樣多"
+        "10–未滿20"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "11 人最多。",
       "difficulty": "easy",
       "errorPath": "interval-reading"
@@ -248,12 +248,12 @@
       "scenario": "列聯表：七年級搭公車 12、步行 8；八年級搭公車 9、步行 11。",
       "question": "步行學生共有幾人？",
       "options": [
-        "17",
         "19",
-        "20",
-        "40"
+        "17",
+        "40",
+        "20"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "8+11=19。",
       "difficulty": "easy",
       "errorPath": "row-column-total"
@@ -265,12 +265,12 @@
       "scenario": "同上資料。",
       "question": "受調查學生共幾人？",
       "options": [
-        "20",
         "21",
         "40",
-        "48"
+        "48",
+        "20"
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "12+8+9+11=40。",
       "difficulty": "medium",
       "errorPath": "row-column-total"
@@ -283,11 +283,11 @@
       "question": "恰好閱讀 30 分鐘歸入哪組？",
       "options": [
         "15–未滿30",
-        "30–未滿45",
         "兩組",
+        "30–未滿45",
         "皆非"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "30 不在前組的『未滿30』內，屬於下一組。",
       "difficulty": "medium",
       "errorPath": "interval-boundary"
@@ -299,12 +299,12 @@
       "scenario": "要比較不同社團（籃球、合唱、美術）人數。",
       "question": "較適合哪一種圖？",
       "options": [
-        "柱子相連的直方圖",
         "有間隔的長條圖",
         "數線",
+        "柱子相連的直方圖",
         "散布圖"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "社團是離散類別，適合長條圖。",
       "difficulty": "medium",
       "errorPath": "chart-type-confusion"

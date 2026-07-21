@@ -5,8 +5,13 @@
       "id": "numbers-to-100-bm-1",
       "type": "basic-mastery",
       "stem": "37 的下一個數是多少？",
-      "options": ["38", "36", "47", "40"],
-      "answer": 0,
+      "options": [
+        "47",
+        "36",
+        "38",
+        "40"
+      ],
+      "answer": 2,
       "explanation": "順著數，37 再來就是 38。36 是往回數，40 是跳太多了。",
       "challenge": "1-1",
       "errorPath": 3
@@ -15,8 +20,13 @@
       "id": "numbers-to-100-bm-2",
       "type": "basic-mastery",
       "stem": "倒著數：42、41、40，再來是？",
-      "options": ["41", "39", "30", "49"],
-      "answer": 1,
+      "options": [
+        "49",
+        "41",
+        "30",
+        "39"
+      ],
+      "answer": 3,
       "explanation": "倒著數是每次少 1，40 再來是 39。跨過 40 時別跳號喔。",
       "challenge": "1-1",
       "errorPath": 3
@@ -25,8 +35,13 @@
       "id": "numbers-to-100-bm-3",
       "type": "basic-mastery",
       "stem": "5 個 5 個數：35、40、45，再來？",
-      "options": ["50", "46", "55", "40"],
-      "answer": 0,
+      "options": [
+        "46",
+        "50",
+        "40",
+        "55"
+      ],
+      "answer": 1,
       "explanation": "5 個 5 個數，45 再多 5 就是 50。46 是只多數了 1。",
       "challenge": "1-1",
       "errorPath": 3
@@ -35,8 +50,13 @@
       "id": "numbers-to-100-bm-4",
       "type": "basic-mastery",
       "stem": "4 個十和 6 個一合起來是多少？",
-      "options": ["46", "64", "10", "40"],
-      "answer": 0,
+      "options": [
+        "64",
+        "40",
+        "10",
+        "46"
+      ],
+      "answer": 3,
       "explanation": "4 個十是 40，再加 6 個一就是 46。寫成 64 是把十位和個位放顛倒了。",
       "challenge": "1-2",
       "errorPath": 1
@@ -45,8 +65,13 @@
       "id": "numbers-to-100-bm-5",
       "type": "basic-mastery",
       "stem": "58 的十位數字是多少？",
-      "options": ["8", "5", "50", "58"],
-      "answer": 1,
+      "options": [
+        "5",
+        "8",
+        "58",
+        "50"
+      ],
+      "answer": 0,
       "explanation": "58 是 5 個十和 8 個一，左邊的 5 才是十位數字。",
       "challenge": "1-2",
       "errorPath": 1
@@ -55,8 +80,13 @@
       "id": "numbers-to-100-bm-6",
       "type": "basic-mastery",
       "stem": "「七十二」寫成數字是多少？",
-      "options": ["27", "72", "702", "7"],
-      "answer": 1,
+      "options": [
+        "702",
+        "27",
+        "72",
+        "7"
+      ],
+      "answer": 2,
       "explanation": "七十二是 7 個十和 2 個一，寫成 72。寫成 27 是十位個位放反了。",
       "challenge": "1-2",
       "errorPath": 1
@@ -65,7 +95,12 @@
       "id": "numbers-to-100-bm-7",
       "type": "basic-mastery",
       "stem": "48、84、67，哪個數最大？",
-      "options": ["48", "67", "84", "一樣大"],
+      "options": [
+        "67",
+        "一樣大",
+        "84",
+        "48"
+      ],
       "answer": 2,
       "explanation": "比大小先比十位：8 個十最多，所以 84 最大。48 的個位雖然是 8，但十位只有 4。",
       "challenge": "1-4",
@@ -75,7 +110,12 @@
       "id": "numbers-to-100-bm-8",
       "type": "basic-mastery",
       "stem": "62 和 59，哪個數比較大？",
-      "options": ["59", "62", "一樣大", "不能比較"],
+      "options": [
+        "一樣大",
+        "62",
+        "59",
+        "不能比較"
+      ],
       "answer": 1,
       "explanation": "先比十位：6 個十比 5 個十多，所以 62 比較大。不能因為 9 比 2 大就選 59。",
       "challenge": "1-4",
@@ -85,8 +125,13 @@
       "id": "numbers-to-100-bm-9",
       "type": "basic-mastery",
       "stem": "35、38、31，哪個數最小？",
-      "options": ["38", "35", "31", "一樣小"],
-      "answer": 2,
+      "options": [
+        "31",
+        "38",
+        "一樣小",
+        "35"
+      ],
+      "answer": 0,
       "explanation": "十位都是 3，再比個位：1 最小，所以 31 最小。",
       "challenge": "1-4",
       "errorPath": 2
@@ -95,7 +140,12 @@
       "id": "numbers-to-100-bm-10",
       "type": "basic-mastery",
       "stem": "數線上，60 和 70 正中間的數是？",
-      "options": ["56", "65", "75", "60"],
+      "options": [
+        "56",
+        "65",
+        "75",
+        "60"
+      ],
       "answer": 1,
       "explanation": "60 和 70 的正中間是 65。56 是把 65 的十位個位寫顛倒了。",
       "challenge": "1-5",
@@ -105,8 +155,13 @@
       "id": "numbers-to-100-bm-11",
       "type": "basic-mastery",
       "stem": "數線上，比 40 少 1 的數是？",
-      "options": ["41", "39", "30", "49"],
-      "answer": 1,
+      "options": [
+        "49",
+        "41",
+        "30",
+        "39"
+      ],
+      "answer": 3,
       "explanation": "比 40 少 1 要往左邊數一格，是 39。41 是往右多數了 1。",
       "challenge": "1-5",
       "errorPath": 3
@@ -115,8 +170,13 @@
       "id": "numbers-to-100-bm-12",
       "type": "basic-mastery",
       "stem": "數線上，79 右邊一格的數是？",
-      "options": ["78", "80", "89", "70"],
-      "answer": 1,
+      "options": [
+        "80",
+        "89",
+        "70",
+        "78"
+      ],
+      "answer": 0,
       "explanation": "右邊一格就是多 1，79 再來是 80，剛好跨到新的十。",
       "challenge": "1-5",
       "errorPath": 3
@@ -157,7 +217,12 @@
       "type": "error-diagnosis",
       "problem": "把 6 個十和 3 個一寫成數字",
       "wrongSolution": "小明寫成 36",
-      "errorOptions": ["把十位和個位寫顛倒了", "把 6 和 3 加起來了", "數錯十的個數", "忘了寫個位"],
+      "errorOptions": [
+        "把十位和個位寫顛倒了",
+        "數錯十的個數",
+        "忘了寫個位",
+        "把 6 和 3 加起來了"
+      ],
       "correctErrorIndex": 0,
       "explanation": "6 個十和 3 個一是 63。小明把 6 寫到個位、3 寫到十位，位置放反了。",
       "challenge": "1-6",
@@ -168,7 +233,12 @@
       "type": "error-diagnosis",
       "problem": "把「八十五」寫成數字",
       "wrongSolution": "小美寫成 58",
-      "errorOptions": ["少寫了一個字", "把十位和個位寫反了", "多寫了一個 0", "把 8 看成 5"],
+      "errorOptions": [
+        "多寫了一個 0",
+        "把十位和個位寫反了",
+        "少寫了一個字",
+        "把 8 看成 5"
+      ],
       "correctErrorIndex": 1,
       "explanation": "八十五是 8 個十和 5 個一，要寫成 85。小美把兩個數字的位置放反了。",
       "challenge": "1-6",
@@ -179,7 +249,12 @@
       "type": "error-diagnosis",
       "problem": "說出 47 裡面有幾個十",
       "wrongSolution": "小華說有 7 個十",
-      "errorOptions": ["數數時跳掉一個", "把 4 和 7 加起來", "把個位的 7 當成十位", "看錯題目數字"],
+      "errorOptions": [
+        "數數時跳掉一個",
+        "把 4 和 7 加起來",
+        "把個位的 7 當成十位",
+        "看錯題目數字"
+      ],
       "correctErrorIndex": 2,
       "explanation": "47 是 4 個十和 7 個一，有 4 個十。小華把個位的 7 誤當成十位了。",
       "challenge": "1-6",
@@ -190,8 +265,13 @@
       "type": "error-diagnosis",
       "problem": "從 42 開始倒著數三個數",
       "wrongSolution": "小真數：41、40、38",
-      "errorOptions": ["不小心順著數了", "跳過了 39 沒有數", "從 43 開始數了", "每次都少數 2"],
-      "correctErrorIndex": 1,
+      "errorOptions": [
+        "跳過了 39 沒有數",
+        "從 43 開始數了",
+        "每次都少數 2",
+        "不小心順著數了"
+      ],
+      "correctErrorIndex": 0,
       "explanation": "倒著數應該是 41、40、39。小真從 40 直接跳到 38，把 39 跳過去了。",
       "challenge": "1-7",
       "errorPath": 3
@@ -201,7 +281,12 @@
       "type": "error-diagnosis",
       "problem": "說出比 30 少 1 的數",
       "wrongSolution": "小凱說是 31",
-      "errorOptions": ["十位看錯了", "把「少 1」算成「多 1」", "跳過了 30", "把 30 看成 13"],
+      "errorOptions": [
+        "跳過了 30",
+        "把「少 1」算成「多 1」",
+        "十位看錯了",
+        "把 30 看成 13"
+      ],
       "correctErrorIndex": 1,
       "explanation": "比 30 少 1 要往回數，是 29。小凱往後數，把「少 1」做成「多 1」了。",
       "challenge": "1-7",
@@ -212,8 +297,13 @@
       "type": "error-diagnosis",
       "problem": "2 個 2 個數：26、28，再來",
       "wrongSolution": "小安接著說 32",
-      "errorOptions": ["一次只多數了 1", "倒著數回去了", "跳過了 30 沒有數", "把 28 看成 30"],
-      "correctErrorIndex": 2,
+      "errorOptions": [
+        "一次只多數了 1",
+        "把 28 看成 30",
+        "倒著數回去了",
+        "跳過了 30 沒有數"
+      ],
+      "correctErrorIndex": 3,
       "explanation": "28 再多 2 是 30。小安直接說 32，把跨十的 30 跳過去了。",
       "challenge": "1-7",
       "errorPath": 3
@@ -225,8 +315,13 @@
       "type": "context-application",
       "scenario": "教室有 4 排椅子，每排 10 張，另外還有 3 張備用椅。",
       "question": "教室共有幾張椅子？",
-      "options": ["43", "34", "17", "40"],
-      "answer": 0,
+      "options": [
+        "40",
+        "43",
+        "34",
+        "17"
+      ],
+      "answer": 1,
       "explanation": "4 排每排 10 張是 4 個十，加 3 張備用椅，合起來是 43 張。",
       "challenge": "1-8",
       "errorPath": 1
@@ -236,8 +331,13 @@
       "type": "context-application",
       "scenario": "果園裝橘子，每盒裝 10 顆，裝滿了 7 盒，外面還剩 6 顆。",
       "question": "橘子一共有幾顆？",
-      "options": ["67", "76", "13", "70"],
-      "answer": 1,
+      "options": [
+        "76",
+        "70",
+        "67",
+        "13"
+      ],
+      "answer": 0,
       "explanation": "7 盒是 7 個十，再加 6 顆，一共 76 顆。67 是把十位和個位放反了。",
       "challenge": "1-8",
       "errorPath": 1
@@ -247,8 +347,13 @@
       "type": "context-application",
       "scenario": "小安收集了 59 張貼紙，今天又得到 1 張。",
       "question": "小安現在有幾張貼紙？",
-      "options": ["69", "60", "50", "59"],
-      "answer": 1,
+      "options": [
+        "69",
+        "59",
+        "60",
+        "50"
+      ],
+      "answer": 2,
       "explanation": "59 再多 1 張就跨到 60 張。個位滿十要進到十位，不是把十位加 1 變 69。",
       "challenge": "1-8",
       "errorPath": 3

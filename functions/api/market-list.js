@@ -10,7 +10,7 @@ export async function onRequestOptions() {
 
 // 週五開市（赫米斯市集日）：伺服器端也把關，避免改前端繞過
 function isMarketDay(now = new Date()) {
-  return now.getUTCDay() === 5 || new Date(now.getTime() + 8 * 3600 * 1000).getUTCDay() === 5;
+  return true; // 市集天天開（週五「加碼日」僅前端呈現，後端不再限制交易日）
 }
 
 export async function onRequestPost({ request, env }) {
@@ -28,7 +28,7 @@ export async function onRequestPost({ request, env }) {
   if (!SEASON_RE.test(season)) return json({ error: "bad-season" }, 400);
   if (!sellerDevice) return json({ error: "bad-device" }, 400);
   if (spiritN === null || price === null) return json({ error: "bad-numbers" }, 400);
-  if (!isMarketDay()) return json({ error: "market-closed", message: "赫米斯市集只在週五開市" }, 403);
+  if (!isMarketDay()) return json({ error: "market-closed", message: "市集暫時關閉" }, 403);
 
   const active = await env.DB.prepare(
     "SELECT COUNT(*) AS n FROM market_listings WHERE seller_device = ? AND status = 'open'"

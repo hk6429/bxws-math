@@ -1,15 +1,34 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
-  isMarketOpen, nextMarketText, reconcileEconomy,
+  isMarketOpen, isMarketBonus, nextMarketText, npcListings, reconcileEconomy,
   MARKET_MIN_PRICE, MARKET_MAX_PRICE, MAX_ACTIVE_LISTINGS, MAX_BUYS_PER_DAY,
 } from "../js/market.js";
 
-test("週五開市，其他天休市", () => {
-  assert.equal(isMarketOpen(new Date(2026, 6, 17)), true, "2026-07-17 是週五");
-  assert.equal(isMarketOpen(new Date(2026, 6, 20)), false, "週一休市");
-  assert.equal(nextMarketText(new Date(2026, 6, 17)), "赫米斯市集日・開市中");
-  assert.equal(nextMarketText(new Date(2026, 6, 20)), "下次開市：本週五");
+test("市集天天開，週五是加碼日", () => {
+  assert.equal(isMarketOpen(), true, "天天開");
+  assert.equal(isMarketBonus(new Date(2026, 6, 17)), true, "2026-07-17 是週五＝加碼日");
+  assert.equal(isMarketBonus(new Date(2026, 6, 20)), false, "週一非加碼");
+  assert.equal(nextMarketText(new Date(2026, 6, 17)), "赫米斯加碼日・今日開市");
+  assert.equal(nextMarketText(new Date(2026, 6, 20)), "市集天天開・週五加碼");
+});
+
+test("NPC 商隊：同房同日固定內容、隔天不同，價格在合法區間，週五多一件", () => {
+  const room = "5A2026";
+  const monA = npcListings(room, new Date(2026, 6, 20));
+  const monB = npcListings(room, new Date(2026, 6, 20));
+  assert.deepEqual(monA, monB, "同房同日內容固定");
+  const tue = npcListings(room, new Date(2026, 6, 21));
+  assert.notDeepEqual(monA.map((l) => l.spiritN), tue.map((l) => l.spiritN), "隔天換一批");
+  assert.equal(monA.length, 3, "平日 3 件");
+  assert.equal(npcListings(room, new Date(2026, 6, 17)).length, 4, "週五加碼 4 件");
+  monA.forEach((l) => {
+    assert.ok(l.price >= MARKET_MIN_PRICE && l.price <= MARKET_MAX_PRICE, "價格合法");
+    assert.ok(l.spiritN >= 2 && l.spiritN <= 100, "星靈編號合法");
+    assert.equal(l.npc, true);
+  });
+  // 同房同日不重複星靈
+  assert.equal(new Set(monA.map((l) => l.spiritN)).size, monA.length, "不重複");
 });
 
 test("經濟對帳：P2P 交易是重分配、不通膨（買方付＝賣方收）", () => {

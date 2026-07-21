@@ -14,12 +14,12 @@
       "challenge": "6-1",
       "stem": "解 x+3>7",
       "options": [
-        "x>4",
-        "x<4",
         "x≥4",
-        "x≤4"
+        "x<4",
+        "x≤4",
+        "x>4"
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "兩邊同減 3，得 x>4。",
       "difficulty": "easy",
       "errorPath": "move-term-sign"
@@ -48,8 +48,8 @@
       "options": [
         "x>−2",
         "x<−2",
-        "x≥−2",
-        "x≤−2"
+        "x≤−2",
+        "x≥−2"
       ],
       "answer": 1,
       "explanation": "兩邊同除以負數 -3，不等號方向要反轉。",
@@ -62,12 +62,12 @@
       "challenge": "6-2",
       "stem": "解 5-2x≥1",
       "options": [
+        "x≤−2",
         "x≥2",
         "x≤2",
-        "x>−2",
-        "x≤−2"
+        "x>−2"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "-2x≥-4，再除以 -2 並反轉，得 x≤2。",
       "difficulty": "hard",
       "errorPath": "negative-reverse"
@@ -78,12 +78,12 @@
       "challenge": "6-1",
       "stem": "解 (x-1)/3<2",
       "options": [
-        "x<5",
         "x<7",
         "x>7",
-        "x≤7"
+        "x≤7",
+        "x<5"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "兩邊乘 3 得 x-1<6，再加 1 得 x<7。",
       "difficulty": "medium",
       "errorPath": "coefficient-inverse-operation"
@@ -144,12 +144,12 @@
       "problem": "解 x-5>2",
       "wrongSolution": "寫成 x>2-5=-3",
       "errorOptions": [
+        "x 應為等號",
         "-5 移項應變 +5，得 x>7",
-        "不等號應反轉",
         "應除以 5",
-        "x 應為等號"
+        "不等號應反轉"
       ],
-      "correctErrorIndex": 0,
+      "correctErrorIndex": 1,
       "explanation": "兩邊同加 5 得 x>7。",
       "difficulty": "easy",
       "errorPath": "move-term-sign"
@@ -161,12 +161,12 @@
       "problem": "解 4x≤20",
       "wrongSolution": "寫成 x≤20-4=16",
       "errorOptions": [
-        "消去係數要除以 4，得 x≤5",
         "應反轉不等號",
+        "應加 4",
         "20-4 算錯",
-        "應加 4"
+        "消去係數要除以 4，得 x≤5"
       ],
-      "correctErrorIndex": 0,
+      "correctErrorIndex": 3,
       "explanation": "係數 4 以除法消去。",
       "difficulty": "easy",
       "errorPath": "coefficient-inverse-operation"
@@ -178,12 +178,12 @@
       "problem": "解 -2x≤8",
       "wrongSolution": "兩邊除以 -2，寫成 x≤-4",
       "errorOptions": [
+        "應寫 x≤4",
         "除法算錯",
         "除以負數忘了反轉，應 x≥-4",
-        "應寫 x≤4",
         "不等式無解"
       ],
-      "correctErrorIndex": 1,
+      "correctErrorIndex": 2,
       "explanation": "乘除負數必須反轉不等號。",
       "difficulty": "medium",
       "errorPath": "negative-reverse"
@@ -196,9 +196,9 @@
       "wrongSolution": "移項寫成 3x<11+2",
       "errorOptions": [
         "+2 移項應變 -2，得 3x<9",
-        "應反轉不等號",
         "3 應加到右邊",
-        "應用等號"
+        "應用等號",
+        "應反轉不等號"
       ],
       "correctErrorIndex": 0,
       "explanation": "兩邊同減 2。",
@@ -212,12 +212,12 @@
       "problem": "解 6-3x>0",
       "wrongSolution": "得到 -3x>-6 後寫 x>-2",
       "errorOptions": [
-        "-6 算錯",
         "除以負數未反轉，應 x<2",
-        "應得 x<-2",
-        "應用實心點"
+        "應用實心點",
+        "-6 算錯",
+        "應得 x<-2"
       ],
-      "correctErrorIndex": 1,
+      "correctErrorIndex": 0,
       "explanation": "6-3x>0 得 -3x>-6，除以 -3 後 x<2。",
       "difficulty": "hard",
       "errorPath": "negative-reverse"
@@ -231,12 +231,12 @@
       "scenario": "計程車起跳 70 元，每公里加 20 元，預算不超過 250 元，行駛 x 公里。",
       "question": "最多可行駛幾公里？",
       "options": [
+        "12 公里",
         "8 公里",
         "9 公里",
-        "12 公里",
         "16 公里"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "70+20x≤250，20x≤180，x≤9。",
       "difficulty": "medium",
       "errorPath": "coefficient-inverse-operation"
@@ -248,12 +248,12 @@
       "scenario": "電梯限重 600 公斤，已有 455 公斤，每位學生 48 公斤。",
       "question": "最多還可進入幾位學生？",
       "options": [
-        "2 位",
         "3 位",
-        "4 位",
-        "5 位"
+        "2 位",
+        "5 位",
+        "4 位"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "455+48x≤600，x≤145/48≈3.02，取整數最多 3 位。",
       "difficulty": "hard",
       "errorPath": "solution-interpretation"
@@ -266,9 +266,9 @@
       "question": "考試至少幾分？",
       "options": [
         "52 分",
-        "70 分",
+        "42 分",
         "88 分",
-        "42 分"
+        "70 分"
       ],
       "answer": 0,
       "explanation": "18+x≥70，所以 x≥52。",
@@ -284,8 +284,8 @@
       "options": [
         "3 小時",
         "4 小時",
-        "5 小時",
-        "6 小時"
+        "6 小時",
+        "5 小時"
       ],
       "answer": 1,
       "explanation": "30+25x≤130，25x≤100，x≤4。",
@@ -299,12 +299,12 @@
       "scenario": "某數的 5 倍減 4 小於 21。",
       "question": "這個數 x 的範圍為何？",
       "options": [
-        "x<5",
-        "x≤5",
         "x>5",
-        "x<17/5"
+        "x≤5",
+        "x<17/5",
+        "x<5"
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "5x-4<21，5x<25，x<5。",
       "difficulty": "medium",
       "errorPath": "move-term-sign"

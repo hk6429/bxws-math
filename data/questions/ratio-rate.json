@@ -23,8 +23,8 @@
       "options": [
         "12",
         "15",
-        "10",
-        "20"
+        "20",
+        "10"
       ],
       "answer": 0,
       "explanation": "每份 = 30 ÷ 5 = 6，甲數 = 2 × 6 = 12",
@@ -37,11 +37,11 @@
       "stem": "12:18 的最簡整數比是多少？",
       "options": [
         "6:9",
-        "2:3",
+        "4:6",
         "3:2",
-        "4:6"
+        "2:3"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "12 和 18 的最大公因數是 6，前後項同除以 6：12÷6 : 18÷6 = 2:3。",
       "difficulty": "easy",
       "errorPath": "ratio-simplification"
@@ -51,12 +51,12 @@
       "type": "basic-mastery",
       "stem": "8:5 的比值是多少？",
       "options": [
-        "5/8",
         "3",
         "8/5",
+        "5/8",
         "13"
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "比值 = 前項 ÷ 後項 = 8 ÷ 5 = 8/5。",
       "difficulty": "easy",
       "errorPath": "ratio-order"
@@ -66,12 +66,12 @@
       "type": "basic-mastery",
       "stem": "0.4 : 0.6 的最簡整數比是多少？",
       "options": [
-        "4:6",
-        "3:2",
+        "6:4",
         "2:3",
-        "6:4"
+        "3:2",
+        "4:6"
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "前後項同乘 10 化成整數比 4:6，再同除以最大公因數 2，得 2:3。",
       "difficulty": "medium",
       "errorPath": "ratio-simplification"
@@ -81,12 +81,12 @@
       "type": "basic-mastery",
       "stem": "2/3 : 1/2 化成最簡整數比是多少？",
       "options": [
-        "3:4",
-        "4:3",
+        "2:1",
         "2:3",
-        "2:1"
+        "4:3",
+        "3:4"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "前後項同乘分母的最小公倍數 6：2/3 × 6 = 4，1/2 × 6 = 3，所以是 4:3。",
       "difficulty": "hard",
       "errorPath": "ratio-simplification"
@@ -149,12 +149,12 @@
       "problem": "化簡比 8:12",
       "wrongSolution": "小杰算成 8:12 = 2:4",
       "errorOptions": [
+        "算成加法",
         "只除了一次，還沒化到最簡",
         "分子分母顛倒",
-        "算成加法",
         "抄錯數字"
       ],
-      "correctErrorIndex": 0,
+      "correctErrorIndex": 1,
       "explanation": "8 和 12 的最大公因數是 4，8÷4:12÷4 = 2:3 才是最簡整數比。",
       "difficulty": "easy",
       "errorPath": "ratio-simplification"
@@ -165,12 +165,12 @@
       "problem": "求 5:2 的比值",
       "wrongSolution": "小華算成 5:2 的比值是 2/5",
       "errorOptions": [
-        "前後項顛倒了",
+        "抄錯數字",
         "忘記化簡",
         "算成百分比",
-        "抄錯數字"
+        "前後項顛倒了"
       ],
-      "correctErrorIndex": 0,
+      "correctErrorIndex": 3,
       "explanation": "比值應為前項除以後項：5 ÷ 2 = 5/2",
       "difficulty": "easy",
       "errorPath": "ratio-order"
@@ -181,12 +181,12 @@
       "problem": "化簡比 15:25",
       "wrongSolution": "小安把前後項各減 5，算成 10:20，再化成 1:2",
       "errorOptions": [
+        "忘記寫比號",
         "化簡要同除以公因數，不能同減，應同除以 5 得 3:5",
         "最大公因數找錯",
-        "前後項顛倒",
-        "忘記寫比號"
+        "前後項顛倒"
       ],
-      "correctErrorIndex": 0,
+      "correctErrorIndex": 1,
       "explanation": "前後項同減相同的數會改變比值。15 和 25 的最大公因數是 5，15÷5 : 25÷5 = 3:5 才是最簡整數比。",
       "difficulty": "medium",
       "errorPath": "invalid-equivalent-operation"
@@ -197,12 +197,12 @@
       "problem": "全班 35 人，男生與女生人數比是 4:3，求男生人數",
       "wrongSolution": "小傑算 35 ÷ (4+3) = 5，男生 = 3 × 5 = 15 人",
       "errorOptions": [
-        "總份數算錯",
-        "每份的人數算錯",
         "把男生和女生的份數用反了，男生應為 4 × 5 = 20 人",
-        "加法算錯"
+        "加法算錯",
+        "每份的人數算錯",
+        "總份數算錯"
       ],
-      "correctErrorIndex": 2,
+      "correctErrorIndex": 0,
       "explanation": "每份 = 35 ÷ 7 = 5 是對的，但男生占 4 份，應為 4 × 5 = 20 人；3 × 5 = 15 是女生人數。",
       "difficulty": "medium",
       "errorPath": "ratio-order"
@@ -213,12 +213,12 @@
       "problem": "求 1.2 : 0.8 的最簡整數比",
       "wrongSolution": "小凡把前後項同乘 10，回答 12:8",
       "errorOptions": [
-        "小數點移錯位",
         "化成整數比 12:8 後，還要同除以 4 得 3:2",
+        "小數點移錯位",
         "前後項顛倒",
         "應該乘 100 而不是乘 10"
       ],
-      "correctErrorIndex": 1,
+      "correctErrorIndex": 0,
       "explanation": "同乘 10 得 12:8 沒有錯，但還不是最簡：12 和 8 的最大公因數是 4，12÷4 : 8÷4 = 3:2。",
       "difficulty": "medium",
       "errorPath": "ratio-simplification"
@@ -229,12 +229,12 @@
       "problem": "已知 3 : x = 9 : 12，求 x",
       "wrongSolution": "小庭想 3 × 3 = 9，所以 x = 12 × 3 = 36",
       "errorOptions": [
-        "外項相乘算錯",
-        "比值算錯",
         "抄錯數字",
-        "倍數方向弄反了，應為 x = 12 ÷ 3 = 4"
+        "比值算錯",
+        "倍數方向弄反了，應為 x = 12 ÷ 3 = 4",
+        "外項相乘算錯"
       ],
-      "correctErrorIndex": 3,
+      "correctErrorIndex": 2,
       "explanation": "9 是 3 的 3 倍，表示 9:12 的每一項是 3:x 的 3 倍，所以 12 = x × 3，x = 12 ÷ 3 = 4。驗算：3:4 = 9:12。",
       "difficulty": "hard",
       "errorPath": "proportional-scale"
@@ -247,12 +247,12 @@
       "scenario": "班上男生和女生人數比是 3:2，全班共 30 人。",
       "question": "女生有幾人？",
       "options": [
+        "10 人",
         "12 人",
-        "18 人",
         "15 人",
-        "10 人"
+        "18 人"
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "每份 = 30 ÷ (3+2) = 6，女生 = 2 × 6 = 12",
       "difficulty": "medium",
       "errorPath": "ratio-order"
@@ -263,12 +263,12 @@
       "scenario": "食譜中麵粉和糖的比是 5:1，這次用了糖 40 公克。",
       "question": "需要多少公克的麵粉？",
       "options": [
-        "200 公克",
-        "40 公克",
         "250 公克",
+        "40 公克",
+        "200 公克",
         "160 公克"
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "每份 = 40 ÷ 1 = 40，麵粉 = 5 × 40 = 200",
       "difficulty": "medium",
       "errorPath": "proportional-scale"
@@ -279,12 +279,12 @@
       "scenario": "調配柳橙汁時，濃縮汁和水的比是 1:4，要調出 600 毫升的柳橙汁。",
       "question": "需要多少毫升的濃縮汁？",
       "options": [
-        "150 毫升",
         "120 毫升",
         "480 毫升",
-        "100 毫升"
+        "100 毫升",
+        "150 毫升"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "總份數 = 1 + 4 = 5，每份 = 600 ÷ 5 = 120，濃縮汁占 1 份 = 120 毫升（水是 480 毫升）。",
       "difficulty": "medium",
       "errorPath": "ratio-order"
@@ -296,11 +296,11 @@
       "question": "每枝鉛筆的單價是多少元？",
       "options": [
         "6 元",
-        "42 元",
         "8 元",
-        "288 元"
+        "288 元",
+        "42 元"
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "單價 = 總價 ÷ 數量 = 48 ÷ 6 = 8 元。",
       "difficulty": "easy",
       "errorPath": "proportional-scale"
@@ -312,8 +312,8 @@
       "question": "小翔平均每小時騎多少公里？",
       "options": [
         "3.75 公里",
-        "7.5 公里",
         "8 公里",
+        "7.5 公里",
         "15 公里"
       ],
       "answer": 3,
@@ -328,9 +328,9 @@
       "question": "學校到火車站的實際距離是多少公里？",
       "options": [
         "1.6 公里",
-        "16 公里",
         "0.16 公里",
-        "6.4 公里"
+        "6.4 公里",
+        "16 公里"
       ],
       "answer": 0,
       "explanation": "實際距離 = 3.2 × 50000 = 160000 公分 = 1600 公尺 = 1.6 公里。",

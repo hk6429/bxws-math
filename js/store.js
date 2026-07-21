@@ -15,6 +15,7 @@ const KEY_TYPES = {
   player: "nullable-string", playerId: "string", pvpChallenges: "object", roomCode: "nullable-string", rareStampBook: "object", rareStamps: "array-or-object",
   sanctuaryLayout: "object", sanctuaryInscription: "string",
   arenaBest: "object", arenaRoom: "nullable-string", arenaStrand: "nullable-string",
+  marketP2PDisabled: "boolean", npcBought: "object",
   schemaVersion: "number", seenTip: "boolean", sfxOn: "boolean", spiritBook: "object", equippedSpirits: "array", stardustSpent: "number", stardustBonus: "number",
   stardustMilestones: "object",
 };

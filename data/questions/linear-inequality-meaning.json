@@ -14,12 +14,12 @@
       "challenge": "5-1",
       "stem": "x 至少是 8，可寫成？",
       "options": [
-        "x>8",
-        "x≥8",
         "x<8",
-        "x≤8"
+        "x≤8",
+        "x≥8",
+        "x>8"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "至少包含 8，所以是 x≥8。",
       "difficulty": "easy",
       "errorPath": "boundary-symbol"
@@ -30,12 +30,12 @@
       "challenge": "5-2",
       "stem": "x 小於 5，可寫成？",
       "options": [
-        "x≤5",
-        "x>5",
         "x<5",
+        "x>5",
+        "x≤5",
         "x≥5"
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "『小於』不包含 5。",
       "difficulty": "easy",
       "errorPath": "boundary-symbol"
@@ -46,12 +46,12 @@
       "challenge": "5-1",
       "stem": "每枝筆 12 元，帶 100 元買 x 枝且錢足夠，可列？",
       "options": [
-        "12x≥100",
         "12x≤100",
-        "12+x≤100",
-        "100x≤12"
+        "100x≤12",
+        "12x≥100",
+        "12+x≤100"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "總價 12x 不可超過 100。",
       "difficulty": "medium",
       "errorPath": "direction-translation"
@@ -62,12 +62,12 @@
       "challenge": "5-2",
       "stem": "下列哪一個數符合 2x+1>9？",
       "options": [
-        "x=3",
         "x=4",
-        "x=5",
-        "x=0"
+        "x=3",
+        "x=0",
+        "x=5"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "代入 x=5 得 11>9；x=4 只得到 9，不符合嚴格大於。",
       "difficulty": "medium",
       "errorPath": "single-value-as-set"
@@ -78,10 +78,10 @@
       "challenge": "5-1",
       "stem": "氣溫 t 不高於 18°C，可列？",
       "options": [
-        "t<18",
+        "t≥18",
         "t≤18",
-        "t>18",
-        "t≥18"
+        "t<18",
+        "t>18"
       ],
       "answer": 1,
       "explanation": "不高於包含等於 18。",
@@ -145,9 +145,9 @@
       "wrongSolution": "寫成 h>140",
       "errorOptions": [
         "至少要包含 140，應用 ≥",
-        "方向應改成 h<140",
         "h 應寫在右邊",
-        "不等式不能有單位"
+        "不等式不能有單位",
+        "方向應改成 h<140"
       ],
       "correctErrorIndex": 0,
       "explanation": "正確為 h≥140。",
@@ -162,9 +162,9 @@
       "wrongSolution": "寫成 x≥500",
       "errorOptions": [
         "不可超支表示 x≤500",
-        "500 應除以 x",
+        "x 只能是整數",
         "應用等號",
-        "x 只能是整數"
+        "500 應除以 x"
       ],
       "correctErrorIndex": 0,
       "explanation": "花費的上限是 500。",
@@ -179,11 +179,11 @@
       "wrongSolution": "只寫答案 x=3",
       "errorOptions": [
         "3 不符合",
-        "把整個解集誤成單一解",
+        "4 也一定是解",
         "應寫 x>4",
-        "4 也一定是解"
+        "把整個解集誤成單一解"
       ],
-      "correctErrorIndex": 1,
+      "correctErrorIndex": 3,
       "explanation": "3 只是眾多解中的一個，完整範圍是 x<4。",
       "difficulty": "medium",
       "errorPath": "single-value-as-set"
@@ -195,12 +195,12 @@
       "problem": "年齡 a 未滿 18 歲",
       "wrongSolution": "寫成 a≤18",
       "errorOptions": [
-        "未滿不包含 18，應為 a<18",
+        "18 應放左邊",
         "應為 a≥18",
-        "年齡不能用未知數",
-        "18 應放左邊"
+        "未滿不包含 18，應為 a<18",
+        "年齡不能用未知數"
       ],
-      "correctErrorIndex": 0,
+      "correctErrorIndex": 2,
       "explanation": "『未滿』是嚴格小於。",
       "difficulty": "easy",
       "errorPath": "boundary-symbol"
@@ -212,10 +212,10 @@
       "problem": "搭電梯總重不可超過 600 公斤，已有 420 公斤，再上 x 公斤",
       "wrongSolution": "列成 420+x≥600",
       "errorOptions": [
-        "總重應小於 0",
+        "只能列等式",
         "不可超過表示 420+x≤600",
         "應列 420x≤600",
-        "只能列等式"
+        "總重應小於 0"
       ],
       "correctErrorIndex": 1,
       "explanation": "600 是上限，總重不得超過。",
@@ -231,10 +231,10 @@
       "scenario": "遊樂設施規定身高至少 130 公分。小安身高 h 公分。",
       "question": "正確不等式為何？",
       "options": [
-        "h>130",
-        "h≥130",
         "h<130",
-        "h≤130"
+        "h≥130",
+        "h≤130",
+        "h>130"
       ],
       "answer": 1,
       "explanation": "至少包含邊界 130。",
@@ -249,9 +249,9 @@
       "question": "正確不等式為何？",
       "options": [
         "75x≤500",
-        "75x≥500",
+        "500x≤75",
         "75+x≤500",
-        "500x≤75"
+        "75x≥500"
       ],
       "answer": 0,
       "explanation": "總價不超過 500。",
@@ -265,12 +265,12 @@
       "scenario": "班級活動至少需要 24 人，已有 17 人，還需 x 人。",
       "question": "正確不等式為何？",
       "options": [
-        "17+x≤24",
-        "17+x≥24",
         "17x≥24",
-        "x-17≥24"
+        "x-17≥24",
+        "17+x≤24",
+        "17+x≥24"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "總人數至少 24。",
       "difficulty": "medium",
       "errorPath": "direction-translation"
@@ -282,12 +282,12 @@
       "scenario": "包裹重量不得超過 5 公斤，目前重 w 公斤。",
       "question": "w 的範圍為何？",
       "options": [
+        "w>5",
         "w<5",
         "w≤5",
-        "w>5",
         "w≥5"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "不得超過包含等於 5。",
       "difficulty": "easy",
       "errorPath": "boundary-symbol"
@@ -301,8 +301,8 @@
       "options": [
         "x=3",
         "x=4",
-        "x=5",
-        "x=10"
+        "x=10",
+        "x=5"
       ],
       "answer": 0,
       "explanation": "代入 x=3 得 3×3-2=7<10；其餘選項不符合。",

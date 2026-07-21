@@ -19,8 +19,10 @@ const STRAND_DECOR = {
 const TIER_RATIOS = [0.25, 0.5, 0.75, 1];
 
 // 全域里程碑中心裝飾：精熟總節點數達門檻解鎖
+// 冷啟動：第一件中心裝飾在「精熟第一個節點」時就點亮，讓聖所首訪不是空的，
+// 又仍綁真實學習（精熟，非練習次數）。後兩件維持較高里程碑當長線目標。
 const MILESTONE_DECOR = [
-  { id: "center-athena-torch", name: "雅典娜智慧火炬", glyph: "🔥", milestone: 10 },
+  { id: "center-athena-torch", name: "雅典娜智慧火炬", glyph: "🔥", milestone: 1 },
   { id: "center-olympus-gate", name: "奧林帕斯之門", glyph: "⛩", milestone: 25 },
   { id: "center-wisdom-tree", name: "智慧神木", glyph: "🌳", milestone: 50 },
 ];

@@ -10,13 +10,53 @@ export const MARKET_MAX_PRICE = 100;
 export const MAX_ACTIVE_LISTINGS = 3;
 export const MAX_BUYS_PER_DAY = 3;
 
-// 台灣時間週五開市
-export function isMarketOpen(now = new Date()) {
+// 市集天天開（原本只有週五，讓在家的孩子每天都能玩）；週五是「赫米斯加碼日」保留儀式感。
+export function isMarketOpen() {
+  return true;
+}
+
+export function isMarketBonus(now = new Date()) {
   return now.getDay() === 5;
 }
 
 export function nextMarketText(now = new Date()) {
-  return isMarketOpen(now) ? "赫米斯市集日・開市中" : "下次開市：本週五";
+  return isMarketBonus(now) ? "赫米斯加碼日・今日開市" : "市集天天開・週五加碼";
+}
+
+// 系統商隊（NPC 補空）：一個人在家、班上沒人掛單時，也永遠有東西可買。
+// 這是純星屑「出口」（花星屑換星靈），不付款給任何玩家，不新增星屑、不通膨。
+// 用 (房號＋日期) 當種子，同一天內容固定、隔天換一批；週五加碼日多補一件。
+const NPC_SELLER = "赫米斯商隊";
+function seedFrom(str) {
+  let h = 2166136261;
+  for (let i = 0; i < str.length; i += 1) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return (h >>> 0);
+}
+function mulberry32(a) {
+  return function () {
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+export function npcListings(roomCode, now = new Date()) {
+  const p = (n) => String(n).padStart(2, "0");
+  const dayKey = `${now.getFullYear()}${p(now.getMonth() + 1)}${p(now.getDate())}`;
+  const rng = mulberry32(seedFrom(`${normalizeRoomCode(roomCode)}|${dayKey}`));
+  const count = isMarketBonus(now) ? 4 : 3;
+  const seen = new Set();
+  const out = [];
+  let guard = 0;
+  while (out.length < count && guard < 40) {
+    guard += 1;
+    const n = 2 + Math.floor(rng() * 99); // 2..100
+    if (seen.has(n)) continue;
+    seen.add(n);
+    const price = MARKET_MIN_PRICE + Math.floor(rng() * (MARKET_MAX_PRICE - MARKET_MIN_PRICE + 1));
+    out.push({ id: `npc-${dayKey}-${n}`, spiritN: n, price, sellerName: NPC_SELLER, npc: true });
+  }
+  return out;
 }
 
 // 經濟對帳（D7）：星屑水龍頭 vs 各出口是否對得上目前餘額。

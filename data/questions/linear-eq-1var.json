@@ -7,8 +7,8 @@
       "stem": "解方程式 2x + 3 = 11",
       "options": [
         "4",
-        "5",
         "3",
+        "5",
         "8"
       ],
       "answer": 0,
@@ -21,12 +21,12 @@
       "type": "basic-mastery",
       "stem": "解方程式 3x - 5 = 2x + 1",
       "options": [
-        "6",
-        "4",
         "-6",
-        "1"
+        "4",
+        "1",
+        "6"
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "移項：3x-2x = 1+5，x = 6",
       "difficulty": "medium",
       "errorPath": "move-term-sign"
@@ -36,12 +36,12 @@
       "type": "basic-mastery",
       "stem": "解方程式 x - 6 = 9",
       "options": [
-        "3",
         "15",
         "-15",
-        "54"
+        "54",
+        "3"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "根據等量公理，兩邊同加 6：x = 9+6 = 15。檢驗：15-6 = 9 ✓",
       "difficulty": "easy",
       "errorPath": "move-term-sign"
@@ -51,12 +51,12 @@
       "type": "basic-mastery",
       "stem": "解方程式 x÷4 = 3",
       "options": [
-        "7",
-        "3/4",
+        "-1",
         "12",
-        "-1"
+        "3/4",
+        "7"
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "根據等量公理，兩邊同乘 4：x = 3×4 = 12。檢驗：12÷4 = 3 ✓",
       "difficulty": "easy",
       "errorPath": "coefficient-inverse-operation"
@@ -66,12 +66,12 @@
       "type": "basic-mastery",
       "stem": "解方程式 5x + 4 = 2x - 8",
       "options": [
+        "-12",
         "-4",
         "4",
-        "-4/3",
-        "-12"
+        "-4/3"
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "2x 移到左邊變 -2x，+4 移到右邊變 -4：5x-2x = -8-4，3x = -12，兩邊同除以 3 得 x = -4。檢驗：5×(-4)+4 = -16，2×(-4)-8 = -16 ✓",
       "difficulty": "hard",
       "errorPath": "move-term-sign"
@@ -82,9 +82,9 @@
       "stem": "解方程式 (2/3)x - 1 = 5",
       "options": [
         "4",
-        "6",
+        "18",
         "9",
-        "18"
+        "6"
       ],
       "answer": 2,
       "explanation": "-1 移項到右邊變 +1：(2/3)x = 5+1 = 6。兩邊同乘 3/2（即除以係數 2/3）：x = 6×(3/2) = 9。檢驗：(2/3)×9-1 = 6-1 = 5 ✓",
@@ -149,12 +149,12 @@
       "problem": "解方程式 x + 7 = 15",
       "wrongSolution": "算成 x = 15 + 7 = 22",
       "errorOptions": [
-        "移項時正負號沒有改變（應該用減法）",
-        "加法算錯",
+        "漏看等號",
         "抄錯數字",
-        "漏看等號"
+        "加法算錯",
+        "移項時正負號沒有改變（應該用減法）"
       ],
-      "correctErrorIndex": 0,
+      "correctErrorIndex": 3,
       "explanation": "正確做法為兩邊同減 7：x = 15-7 = 8",
       "difficulty": "easy",
       "errorPath": "move-term-sign"
@@ -165,12 +165,12 @@
       "problem": "解方程式 2x = 10",
       "wrongSolution": "算成 x = 10 - 2 = 8",
       "errorOptions": [
-        "消去係數時用了減法而非除法",
         "除法算錯",
+        "消去係數時用了減法而非除法",
         "看錯係數",
         "抄錯數字"
       ],
-      "correctErrorIndex": 0,
+      "correctErrorIndex": 1,
       "explanation": "消去係數 2 應該兩邊同除以 2：x = 10÷2 = 5",
       "difficulty": "easy",
       "errorPath": "coefficient-inverse-operation"
@@ -183,8 +183,8 @@
       "errorOptions": [
         "加法算錯",
         "+9 移項到右邊時忘了變號（應該變成 -9）",
-        "抄錯數字",
-        "把未知數放錯邊"
+        "把未知數放錯邊",
+        "抄錯數字"
       ],
       "correctErrorIndex": 1,
       "explanation": "+9 移到等號右邊要變成 -9：x = 4-9 = -5。檢驗：-5+9 = 4 ✓。答案是負數也沒關係，不要因為怕負數就把減法改成加法。",
@@ -197,12 +197,12 @@
       "problem": "解方程式 x - 4 = 10",
       "wrongSolution": "小凱算成 x = 10 - 4 = 6",
       "errorOptions": [
-        "減法算錯",
-        "看錯等號方向",
         "-4 移項到右邊時忘了變號（應該變成 +4）",
-        "抄錯題目"
+        "抄錯題目",
+        "減法算錯",
+        "看錯等號方向"
       ],
-      "correctErrorIndex": 2,
+      "correctErrorIndex": 0,
       "explanation": "-4 移到等號右邊要變成 +4：x = 10+4 = 14。檢驗：14-4 = 10 ✓，而 6-4 = 2 ≠ 10。",
       "difficulty": "easy",
       "errorPath": "move-term-sign"
@@ -213,12 +213,12 @@
       "problem": "解方程式 4x - 3 = 2x + 5",
       "wrongSolution": "小威算成 4x + 2x = 5 + 3，6x = 8，x = 4/3",
       "errorOptions": [
-        "-3 移項時變號錯誤",
-        "除法算錯",
+        "2x 移到左邊時忘了變號（應該是 4x-2x）",
         "係數相加算錯",
-        "2x 移到左邊時忘了變號（應該是 4x-2x）"
+        "-3 移項時變號錯誤",
+        "除法算錯"
       ],
-      "correctErrorIndex": 3,
+      "correctErrorIndex": 0,
       "explanation": "右邊的 2x 移到左邊要變成 -2x：4x-2x = 5+3，2x = 8，x = 4。檢驗：4×4-3 = 13，2×4+5 = 13 ✓。小威把 -3 的移項做對了，卻把 2x 移項時沒變號。",
       "difficulty": "hard",
       "errorPath": "move-term-sign"
@@ -229,12 +229,12 @@
       "problem": "解方程式 2(x + 3) = 10",
       "wrongSolution": "小芸算成 2x + 3 = 10，2x = 7，x = 3.5",
       "errorOptions": [
-        "用分配律去括號時，2 沒有乘到括號內的第二項 3",
         "移項忘了變號",
         "除法算錯",
+        "用分配律去括號時，2 沒有乘到括號內的第二項 3",
         "抄錯係數"
       ],
-      "correctErrorIndex": 0,
+      "correctErrorIndex": 2,
       "explanation": "分配律要把 2 乘到括號內每一項：2(x+3) = 2x+6。所以 2x+6 = 10，2x = 10-6 = 4，x = 2。檢驗：2×(2+3) = 2×5 = 10 ✓",
       "difficulty": "hard",
       "errorPath": "distribute-all-terms"
@@ -247,12 +247,12 @@
       "scenario": "小美買了 3 枝相同的筆，又買了一本 20 元的筆記本，總共花了 65 元（設每枝筆 x 元）。",
       "question": "每枝筆多少元？",
       "options": [
-        "15 元",
         "45 元",
+        "15 元",
         "20 元",
         "5 元"
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "3x + 20 = 65 ⇒ 3x = 45 ⇒ x = 15",
       "difficulty": "medium",
       "errorPath": "coefficient-inverse-operation"
@@ -264,8 +264,8 @@
       "question": "這個數是多少？",
       "options": [
         "8",
-        "16",
         "9",
+        "16",
         "11.5"
       ],
       "answer": 0,
@@ -279,9 +279,9 @@
       "scenario": "姐姐的年齡比小林年齡的 2 倍少 3 歲，姐姐今年 15 歲（設小林今年 x 歲）。",
       "question": "小林今年幾歲？",
       "options": [
-        "6 歲",
-        "9 歲",
         "12 歲",
+        "9 歲",
+        "6 歲",
         "7.5 歲"
       ],
       "answer": 1,
@@ -297,10 +297,10 @@
       "options": [
         "13 公分",
         "48 公分",
-        "35 公分",
-        "83 公分"
+        "83 公分",
+        "35 公分"
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "依題意列式：x-35 = 48。-35 移項變 +35：x = 48+35 = 83。檢驗：83-35 = 48 ✓。若誤算 48-35 = 13，剪掉 35 後會比 35 還短，不合理。",
       "difficulty": "easy",
       "errorPath": "move-term-sign"
@@ -311,12 +311,12 @@
       "scenario": "門票每張 x 元，爸爸買了 4 張門票，拿 1000 元付款，店員找回 120 元。",
       "question": "每張門票多少元？",
       "options": [
-        "250 元",
-        "200 元",
         "220 元",
-        "280 元"
+        "200 元",
+        "280 元",
+        "250 元"
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "依題意列式：1000-4x = 120（付款減花費等於找零），或 4x = 1000-120。4x = 880，兩邊同除以 4：x = 220。檢驗：4×220 = 880，1000-880 = 120 ✓。若忘了扣找零直接算 1000÷4 會誤得 250。",
       "difficulty": "hard",
       "errorPath": "move-term-sign"
@@ -327,12 +327,12 @@
       "scenario": "三個連續整數的和是 72（設最小的整數為 x）。",
       "question": "最小的整數是多少？",
       "options": [
-        "23",
-        "24",
         "25",
-        "22"
+        "22",
+        "24",
+        "23"
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "三個連續整數為 x、x+1、x+2，依題意列式：x+(x+1)+(x+2) = 72，合併同類項：3x+3 = 72，+3 移項變 -3：3x = 69，兩邊同除以 3：x = 23。檢驗：23+24+25 = 72 ✓",
       "difficulty": "hard",
       "errorPath": "distribute-all-terms"

@@ -15,12 +15,12 @@
       "challenge": "4-1",
       "stem": "每枝筆 x 元，買 3 枝再付 20 元，共 95 元。下列何者正確？",
       "options": [
-        "3x+20=95",
-        "3(x+20)=95",
         "x+23=95",
-        "20x+3=95"
+        "20x+3=95",
+        "3(x+20)=95",
+        "3x+20=95"
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "三枝的價錢是 3x，再加固定費用 20，所以列式 3x+20=95。",
       "difficulty": "easy",
       "errorPath": "operation-translation"
@@ -47,10 +47,10 @@
       "challenge": "4-1",
       "stem": "長方形長為 x 公分、寬為 5 公分，周長 34 公分。方程式為何？",
       "options": [
-        "x+5=34",
+        "5x=34",
         "2x+5=34",
         "2(x+5)=34",
-        "5x=34"
+        "x+5=34"
       ],
       "answer": 2,
       "explanation": "周長為 2×(長+寬)，所以 2(x+5)=34。",
@@ -63,12 +63,12 @@
       "challenge": "4-2",
       "stem": "小安原有 x 元，買 48 元文具後剩 72 元。方程式為何？",
       "options": [
-        "x+48=72",
-        "48-x=72",
         "x-48=72",
-        "72-48=x"
+        "x+48=72",
+        "72-48=x",
+        "48-x=72"
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "原有金額減支出等於剩餘：x-48=72。",
       "difficulty": "easy",
       "errorPath": "quantity-reference"
@@ -79,12 +79,12 @@
       "challenge": "4-1",
       "stem": "三個連續整數最小為 x，總和是 63。方程式為何？",
       "options": [
-        "3x=63",
         "x+(x+1)+(x+2)=63",
+        "3x=63",
         "x+(x+2)+(x+4)=63",
         "3(x+1)=60"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "三數依序為 x、x+1、x+2。",
       "difficulty": "hard",
       "errorPath": "quantity-reference"
@@ -145,12 +145,12 @@
       "problem": "每張票 x 元，4 張加手續費 30 元共 430 元",
       "wrongSolution": "列成 4(x+30)=430",
       "errorOptions": [
-        "手續費只收一次，不應每張都加 30",
         "4 張應寫 x+4",
-        "總價應用減法",
-        "未知數不能代表票價"
+        "未知數不能代表票價",
+        "手續費只收一次，不應每張都加 30",
+        "總價應用減法"
       ],
-      "correctErrorIndex": 0,
+      "correctErrorIndex": 2,
       "explanation": "正確方程式是 4x+30=430。",
       "difficulty": "medium",
       "errorPath": "operation-translation"
@@ -162,12 +162,12 @@
       "problem": "哥哥 x 歲，弟弟比哥哥小 3 歲，兩人共 27 歲",
       "wrongSolution": "列成 x+(x+3)=27",
       "errorOptions": [
-        "弟弟應是 x-3",
-        "總年齡不能相加",
+        "27 應移到左邊",
         "哥哥應是 3x",
-        "27 應移到左邊"
+        "總年齡不能相加",
+        "弟弟應是 x-3"
       ],
-      "correctErrorIndex": 0,
+      "correctErrorIndex": 3,
       "explanation": "弟弟較小，應列 x+(x-3)=27。",
       "difficulty": "medium",
       "errorPath": "quantity-reference"
@@ -179,12 +179,12 @@
       "problem": "5 本同價筆記本加 15 元運費共 215 元",
       "wrongSolution": "解得 x=40，回答總價是 40 元",
       "errorOptions": [
-        "方程式無解",
         "40 是每本單價，不是總價",
-        "應把 40 乘運費",
-        "單位應是本"
+        "方程式無解",
+        "單位應是本",
+        "應把 40 乘運費"
       ],
-      "correctErrorIndex": 1,
+      "correctErrorIndex": 0,
       "explanation": "5x+15=215 得 x=40；x 代表每本單價。",
       "difficulty": "easy",
       "errorPath": "solution-interpretation"
@@ -196,10 +196,10 @@
       "problem": "某數的 3 倍再減 8 等於 25",
       "wrongSolution": "列成 3(x-8)=25",
       "errorOptions": [
-        "應先減 8 再乘 3",
+        "等號方向錯誤",
         "3 只乘未知數，應列 3x-8=25",
-        "應列 x-24=25",
-        "等號方向錯誤"
+        "應先減 8 再乘 3",
+        "應列 x-24=25"
       ],
       "correctErrorIndex": 1,
       "explanation": "語句是先取三倍，再減 8。",
@@ -214,9 +214,9 @@
       "wrongSolution": "列成 x+(x+4)=28",
       "errorOptions": [
         "只算了半周長，右邊應是 14 或左邊乘 2",
+        "未知數不能是寬",
         "長應是 x-4",
-        "周長應用乘法 x(x+4)",
-        "未知數不能是寬"
+        "周長應用乘法 x(x+4)"
       ],
       "correctErrorIndex": 0,
       "explanation": "x+(x+4)=14，或 2[x+(x+4)]=28。",
@@ -232,10 +232,10 @@
       "scenario": "園遊會門票每張 x 元，買 6 張另付 40 元郵資，共 640 元。",
       "question": "每張門票多少元？",
       "options": [
-        "90 元",
+        "600 元",
         "100 元",
-        "106 元",
-        "600 元"
+        "90 元",
+        "106 元"
       ],
       "answer": 1,
       "explanation": "6x+40=640，6x=600，x=100。",
@@ -249,10 +249,10 @@
       "scenario": "一條繩子剪去 2 段，每段 35 公分後，還剩 80 公分。原長為 x 公分。",
       "question": "原繩長是多少？",
       "options": [
-        "10 公分",
+        "220 公分",
         "115 公分",
         "150 公分",
-        "220 公分"
+        "10 公分"
       ],
       "answer": 2,
       "explanation": "x-2×35=80，所以 x=150。",
@@ -266,12 +266,12 @@
       "scenario": "長方形的長比寬多 3 公分，周長 30 公分。設寬為 x。",
       "question": "寬是多少？",
       "options": [
-        "5 公分",
         "6 公分",
         "7 公分",
+        "5 公分",
         "9 公分"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "2[x+(x+3)]=30，4x+6=30，x=6。",
       "difficulty": "hard",
       "errorPath": "quantity-reference"
@@ -283,12 +283,12 @@
       "scenario": "媽媽與小芸年齡和為 52 歲，媽媽年齡是小芸的 3 倍。",
       "question": "小芸幾歲？",
       "options": [
-        "12 歲",
-        "13 歲",
         "17 歲",
-        "39 歲"
+        "39 歲",
+        "12 歲",
+        "13 歲"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "設小芸 x 歲，x+3x=52，x=13。",
       "difficulty": "medium",
       "errorPath": "solution-interpretation"
@@ -300,12 +300,12 @@
       "scenario": "三個連續奇數的和為 57，設最小奇數為 x。",
       "question": "最大的奇數是多少？",
       "options": [
-        "17",
-        "19",
         "21",
-        "23"
+        "23",
+        "19",
+        "17"
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "x+(x+2)+(x+4)=57，3x+6=57，x=17，最大為 21。",
       "difficulty": "hard",
       "errorPath": "solution-interpretation"
