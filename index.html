@@ -18,15 +18,16 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <a class="skip-link" href="#view-home">跳到主要內容</a>
   <header class="topbar">
     <h1>步學吾數</h1>
-    <nav>
-      <button id="nav-home" aria-current="page">神話星圖</button>
-      <button id="nav-workshop">五座神殿</button>
-      <button id="nav-fusion">星靈融合殿</button>
-      <button id="nav-sanctuary">繆思聖所</button>
-      <button id="nav-arena">神殿競技場</button>
-      <button id="nav-dashboard">我的儀表板</button>
+    <nav class="topbar-nav">
+      <button id="nav-home" aria-current="page" title="回到神話星圖，開始練習"><span class="nav-icon" aria-hidden="true">🗺️</span>神話星圖</button>
+      <button id="nav-workshop" title="五座神殿：挑戰守護者 Boss 戰"><span class="nav-icon" aria-hidden="true">🏛️</span>五座神殿</button>
+      <button id="nav-fusion" title="星靈融合殿：把數字融合成新星靈、逛班級市集"><span class="nav-icon" aria-hidden="true">✨</span>星靈融合殿</button>
+      <button id="nav-sanctuary" title="繆思聖所：用精熟度佈置你的神殿"><span class="nav-icon" aria-hidden="true">🏺</span>繆思聖所</button>
+      <button id="nav-arena" title="神殿競技場：和同學比速度與正確率"><span class="nav-icon" aria-hidden="true">⚔️</span>神殿競技場</button>
+      <button id="nav-dashboard" title="我的儀表板：看進度與弱點"><span class="nav-icon" aria-hidden="true">📊</span>我的儀表板</button>
       <a class="teacher-link" href="teacher.html">教師成果頁</a>
       <button id="nav-sfx" class="nav-sfx" aria-label="音效開關" aria-pressed="false">🔇</button>
       <details id="accessibility-settings" class="accessibility-settings">
@@ -37,12 +38,13 @@
             <label><input type="radio" name="font-size" value="large">大</label>
             <label><input type="radio" name="font-size" value="xlarge">特大</label>
           </fieldset>
-          <label><input id="setting-sprint-warning" type="checkbox">顯示疾筆倒數紅色閃動警示</label>
-          <label><input id="setting-combo-break" type="checkbox">顯示連詠中斷視覺效果</label>
+          <label class="setting-check"><input id="setting-sprint-warning" type="checkbox">顯示疾筆倒數紅色閃動警示</label>
+          <label class="setting-check"><input id="setting-combo-break" type="checkbox">顯示連詠中斷視覺效果</label>
         </div>
       </details>
     </nav>
   </header>
+  <div id="toast-live" role="status" aria-live="polite" class="visually-hidden"></div>
 
   <main>
     <section id="view-home" class="view active" aria-labelledby="home-heading">

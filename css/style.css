@@ -3387,7 +3387,9 @@ body::before {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.28;
+  opacity: 0.2;
+  /* 暖色日景背景疊在深藍夜空星圖上會色溫互打、稀釋節點對比：壓暗＋降飽和當純氛圍底（V4） */
+  filter: brightness(0.62) saturate(0.7) hue-rotate(-8deg);
   pointer-events: none;
 }
 .skill-map > svg { position: relative; z-index: 1; }
@@ -3779,7 +3781,7 @@ input[type="radio"] { accent-color: var(--star-gold); }
 .sanctuary-header h3 { margin: 0; color: var(--star-gold-core); font-size: 1.5rem; }
 .sanctuary-inscription { margin: 4px 0; color: var(--star-gold); font-size: 1.15rem; letter-spacing: 1px; }
 .sanctuary-stat { color: var(--starlight-text); font-size: 0.9rem; }
-.sanctuary-subtitle, .sanctuary-hint { color: var(--starlight-text); font-size: 0.9rem; margin: 10px 0 6px; text-align: center; }
+.sanctuary-subtitle, .sanctuary-hint { color: var(--starlight-text); font-size: 0.95rem; margin: 10px 0 6px; text-align: center; }
 .sanctuary-title-row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 8px; }
 .sanctuary-title-btn { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--star-gold-glow); background: var(--night-mist); color: var(--starlight-text); cursor: pointer; font-size: 0.9rem; }
 .sanctuary-title-btn.active { background: var(--star-gold); color: var(--night-deep); font-weight: 700; }
@@ -3789,7 +3791,7 @@ input[type="radio"] { accent-color: var(--star-gold); }
 .sanctuary-pedestal.filled { border-style: solid; background: linear-gradient(160deg, var(--night-mist), var(--night-deep)); }
 .sanctuary-pedestal.selected { border-color: var(--star-gold); box-shadow: 0 0 12px var(--star-gold-glow); }
 .pedestal-glyph { font-size: 2rem; line-height: 1; }
-.pedestal-name { font-size: 0.75rem; text-align: center; }
+.pedestal-name { font-size: 0.82rem; text-align: center; }
 .pedestal-empty { font-size: 0.85rem; opacity: 0.6; }
 .sanctuary-clear-btn { display: block; margin: 0 auto 12px; padding: 6px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: var(--starlight-text); cursor: pointer; }
 .sanctuary-group { margin-bottom: 14px; }
@@ -3799,8 +3801,8 @@ input[type="radio"] { accent-color: var(--star-gold); }
 .sanctuary-deco.locked { opacity: 0.5; border-style: dashed; cursor: not-allowed; }
 .sanctuary-deco:disabled { cursor: not-allowed; }
 .deco-glyph { font-size: 1.6rem; line-height: 1; }
-.deco-name { font-size: 0.78rem; text-align: center; }
-.deco-req { font-size: 0.68rem; opacity: 0.75; text-align: center; }
+.deco-name { font-size: 0.85rem; text-align: center; }
+.deco-req { font-size: 0.8rem; opacity: 0.9; text-align: center; }
 
 /* 神殿競技場 */
 .arena-header { text-align: center; margin-bottom: 12px; }
@@ -3973,9 +3975,9 @@ input[type="radio"] { accent-color: var(--star-gold); }
 .sanctuary-banner-img {
   display: block;
   width: 100%;
-  height: 120px;
+  height: clamp(104px, 30vw, 150px);
   object-fit: cover;
-  filter: saturate(1.05);
+  object-position: center 42%; /* 神殿主體多在中上部，避免 cover 把主視覺裁掉（V7/M5） */
 }
 .sanctuary-banner-title {
   position: absolute;
@@ -3993,3 +3995,144 @@ input[type="radio"] { accent-color: var(--star-gold); }
 }
 /* 有橫幅時，底下重複的 h4 標題收掉，避免兩份標題 */
 .sanctuary-banner + h4 { display: none; }
+
+/* ===== 專家審查全套修正（2026-07-21）===== */
+
+/* M1 skip-link */
+.skip-link {
+  position: fixed; top: 8px; left: 8px; z-index: 2147483600;
+  background: var(--star-gold, #d6b25e); color: #1a1206;
+  padding: 10px 16px; border-radius: 10px; font-weight: 700;
+  transform: translateY(-160%); transition: transform .15s ease;
+}
+.skip-link:focus { transform: translateY(0); outline: 3px solid #fff; }
+
+/* U2/M2 導覽 icon 提示 + M6 捲動漸層提示 */
+.nav-icon { margin-right: 4px; }
+.topbar-nav {
+  position: relative;
+  -webkit-mask-image: linear-gradient(to right, #000 92%, transparent);
+          mask-image: linear-gradient(to right, #000 92%, transparent);
+}
+@media (min-width: 760px) { .topbar-nav { -webkit-mask-image: none; mask-image: none; } }
+
+/* M3 設定面板控制項放大到易點 */
+.setting-check { display: flex; align-items: center; gap: 8px; min-height: 44px; }
+.accessibility-settings-panel input[type="radio"],
+.accessibility-settings-panel input[type="checkbox"] {
+  width: 24px; height: 24px; accent-color: var(--star-gold, #d6b25e);
+}
+
+/* U1 策略頁：返回鍵 + 一鍵直接開始 + 白話別名 */
+.strategy-back-btn {
+  align-self: flex-start; background: transparent; border: none;
+  color: var(--starlight-faint, #9fb0d6); font-size: 0.95rem;
+  padding: 8px 4px; min-height: 44px; cursor: pointer;
+}
+.strategy-back-btn:hover { color: var(--starlight-text, #e7eefc); }
+.strategy-quickstart {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  width: 100%; padding: 16px; margin: 6px 0 4px; border: none; cursor: pointer;
+  border-radius: 14px; font-size: 1.25rem; font-weight: 800;
+  color: #1a1206; background: linear-gradient(135deg, #f4d78a, #d6b25e);
+  box-shadow: 0 6px 18px rgba(214,178,94,.4);
+}
+.strategy-quickstart small { font-size: 0.82rem; font-weight: 600; opacity: .85; }
+.strategy-quickstart:hover { filter: brightness(1.05); }
+.strategy-picker-or { text-align: center; color: var(--starlight-faint, #9fb0d6); font-size: 0.85rem; margin: 6px 0; }
+.strategy-plain { font-style: normal; font-size: 0.85em; opacity: .8; }
+
+/* U9 中途離開 */
+.quiz-leave-btn {
+  display: block; margin: 12px auto 0; background: transparent; border: none;
+  color: var(--starlight-faint, #9fb0d6); font-size: 0.9rem; text-decoration: underline;
+  padding: 10px; min-height: 44px; cursor: pointer;
+}
+.quiz-leave-btn:hover { color: var(--starlight-text, #e7eefc); }
+
+/* K2 每題答對浮字 */
+.combo-pop {
+  position: absolute; top: 8px; right: 12px; z-index: 5; pointer-events: none;
+  font-weight: 800; font-size: 1.05rem; color: #2f7d4f;
+  animation: combo-pop-rise .85s ease-out forwards;
+}
+.combo-pop-hot { color: #d06a1f; font-size: 1.2rem; }
+@keyframes combo-pop-rise {
+  0% { opacity: 0; transform: translateY(6px) scale(.8); }
+  25% { opacity: 1; transform: translateY(-2px) scale(1.12); }
+  100% { opacity: 0; transform: translateY(-22px) scale(1); }
+}
+
+/* K3 平方數／豐饒數分級高光 */
+.special-fusion-toast {
+  position: fixed; left: 50%; bottom: 88px; transform: translateX(-50%);
+  z-index: 2147483200; max-width: min(92vw, 420px);
+  display: flex; flex-direction: column; gap: 4px; text-align: center;
+  padding: 14px 18px; border-radius: 14px; color: #1a1206;
+  background: linear-gradient(135deg, #bfe3c8, #7fc79b);
+  box-shadow: 0 10px 30px rgba(0,0,0,.4); animation: special-rise .3s ease-out;
+}
+.special-fusion-toast.special-square { background: linear-gradient(135deg, #a9e3e6, #6fc0c9); }
+.special-fusion-badge { font-size: 0.8rem; font-weight: 800; letter-spacing: .08em; }
+.special-fusion-toast strong { font-size: 1.15rem; }
+.special-fusion-why { font-size: 0.88rem; }
+@keyframes special-rise { from { opacity: 0; transform: translate(-50%, 12px); } to { opacity: 1; transform: translate(-50%, 0); } }
+
+/* K1 星靈程序化差異化：色相外框 + 因數點陣 */
+.spirit-badge.spirit-fallback {
+  background:
+    radial-gradient(circle at 50% 38%, hsl(var(--spirit-hue, 210) 70% 82%), hsl(var(--spirit-hue, 210) 55% 62%));
+  border: 2px solid hsl(var(--spirit-hue, 210) 60% 45%);
+  color: #1a1206;
+}
+.spirit-badge.spirit-fallback.spirit-prime { border-color: #7c5cc4; box-shadow: 0 0 0 2px rgba(124,92,196,.35) inset; }
+.spirit-badge.spirit-fallback.spirit-square { border-radius: 8px; border-color: #2f9aa6; }
+.spirit-badge.spirit-fallback.spirit-perfect { border-color: #d6a12e; box-shadow: 0 0 12px rgba(214,161,46,.6); }
+.spirit-num { font-weight: 800; font-size: 1.05rem; }
+.spirit-factors { display: flex; gap: 2px; justify-content: center; margin-top: 2px; flex-wrap: wrap; max-width: 80%; }
+.spirit-dot { width: 4px; height: 4px; border-radius: 50%; background: hsl(var(--spirit-hue, 210) 60% 30%); opacity: .8; }
+
+/* U3 聖所空狀態 */
+.sanctuary-empty {
+  text-align: center; margin: 14px auto; max-width: 460px; padding: 20px;
+  border-radius: 16px; border: 1px dashed rgba(214,178,94,.4);
+  background: rgba(20,26,54,.5);
+}
+.sanctuary-empty-title { font-size: 1.15rem; font-weight: 800; color: var(--star-gold, #d6b25e); margin-bottom: 6px; }
+.sanctuary-empty-body { color: var(--starlight-text, #e7eefc); font-size: 0.95rem; line-height: 1.6; margin-bottom: 14px; }
+.sanctuary-empty-cta {
+  border: none; cursor: pointer; padding: 12px 22px; min-height: 44px; border-radius: 12px;
+  font-weight: 700; color: #1a1206; background: linear-gradient(135deg, #f4d78a, #d6b25e);
+}
+
+/* U7 未選基座時點陳設 → 基座區抖動提示 */
+.sanctuary-pedestals.pedestals-nudge { animation: pedestals-nudge .5s ease; }
+@keyframes pedestals-nudge {
+  0%,100% { transform: translateX(0); }
+  20%,60% { transform: translateX(-6px); }
+  40%,80% { transform: translateX(6px); }
+}
+
+/* U11 市集軟性提醒 */
+.market-note-soft { opacity: .8; font-size: 0.88rem; }
+
+/* M2 頁內分頁：選中除了金色底，再加底線非顏色線索 */
+.fusion-tab.active, .arena-strand-btn.active, .sanctuary-title-btn.active {
+  box-shadow: inset 0 -3px 0 currentColor;
+}
+
+/* U4/K6 首頁主要行動大按鈕 */
+.home-hero-action {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  width: 100%; max-width: 520px; margin: 4px auto 14px; padding: 18px 20px;
+  border: none; cursor: pointer; border-radius: 18px;
+  color: #1a1206; background: linear-gradient(135deg, #f4d78a, #d9b968 60%, #cf9f3e);
+  box-shadow: 0 8px 24px rgba(214,178,94,.45);
+  transition: filter .15s ease, transform .1s ease;
+}
+.home-hero-action:hover { filter: brightness(1.05); }
+.home-hero-action:active { transform: translateY(1px); }
+.hero-action-label { font-size: 1.35rem; font-weight: 800; letter-spacing: .02em; }
+.hero-action-sub { font-size: 0.9rem; font-weight: 600; opacity: .82; }
+/* 次要 CTA 降一階，避免和主要行動打架（U4） */
+.placement-entry { opacity: .96; }

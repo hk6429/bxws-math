@@ -116,10 +116,26 @@ function showToast(message, tone = "success") {
   document.querySelector(".action-toast")?.remove();
   const toast = document.createElement("div");
   toast.className = `action-toast toast-${tone}`;
-  toast.role = "status";
   toast.textContent = message;
   document.body.appendChild(toast);
+  // 更新常駐的 aria-live 區（插入即帶字的 live region 讀屏常不播報，改寫既有區才穩）
+  const live = document.getElementById("toast-live");
+  if (live) live.textContent = message;
   setTimeout(() => toast.remove(), 2200);
+}
+
+// 每題答對就給一個即時「連詠」浮字，讓每一下都有打擊感（K2，非只在里程碑）
+function showComboPop(streak) {
+  const quizArea = document.getElementById("quiz-area");
+  const card = quizArea?.querySelector(".q-card");
+  if (!card) return;
+  const pop = document.createElement("div");
+  pop.className = "combo-pop";
+  pop.setAttribute("aria-hidden", "true");
+  pop.textContent = streak >= 2 ? `連詠 ×${streak}！` : "答對 ＋1";
+  if (streak >= 5) pop.classList.add("combo-pop-hot");
+  card.appendChild(pop);
+  scheduleTimer(() => pop.remove(), 850);
 }
 
 function showStreakMilestone(streak) {
@@ -197,6 +213,31 @@ function showPerfectFusionCelebration(n) {
   pendingTimers.add(t);
 }
 
+// 分級高光：完全數是最高階（另有 showPerfectFusionCelebration）；平方數、豐饒數是次一階，
+// 各給一支比普通答對強、比完全數弱的演出，並用一句話解釋它為什麼特別（K3）。
+function specialFusionKind(n) {
+  if (isPerfect(n)) return null; // 完全數走專屬高光
+  if (Number.isInteger(Math.sqrt(n)) && n > 1) return "square";
+  const properSum = divisors(n).filter((d) => d !== n).reduce((s, d) => s + d, 0);
+  if (properSum > n) return "abundant";
+  return null;
+}
+function showSpecialFusionCelebration(n, kind) {
+  document.querySelector(".special-fusion-toast")?.remove();
+  if (isSfxOn()) sfx.rare();
+  const root = Math.sqrt(n);
+  const why = kind === "square"
+    ? `${n} ＝ ${root}×${root}，是一個「平方數」，剛好排成正方形！`
+    : `${n} 的真因數全部加起來比 ${n} 還大，因數超級多，是「豐饒數」！`;
+  const badge = kind === "square" ? "稀有・平方數" : "稀有・豐饒數";
+  const el = document.createElement("div");
+  el.className = `special-fusion-toast special-${kind}`;
+  el.setAttribute("role", "status");
+  el.innerHTML = `<span class="special-fusion-badge">${badge}</span><strong>${spiritName(n)}（${n}）</strong><span class="special-fusion-why">${why}</span>`;
+  document.body.appendChild(el);
+  scheduleTimer(() => el.remove(), 3200);
+}
+
 function showStorageNoticeIfNeeded() {
   if (!isStorageBroken() || storageNoticeShown) return;
   storageNoticeShown = true;
@@ -227,9 +268,9 @@ const WEEKLY_ID = "weekly-cup";
 
 // 雅典娜智慧引路人的練功策略（CD3）
 const STRATEGIES = [
-  { id: "slow", name: "沉思描解", color: "--cp-blue", desc: "雅典娜的智慧引路人提醒：穩定的推理是一筆一筆描出的。答錯的題目，這一輪排到隊尾再想一次。" },
-  { id: "repair", name: "智慧回溯", color: "--cp-red", desc: "雅典娜的智慧引路人提醒：神諭卷軸還留著待釐清的痕跡。優先練習錯題，答對就解開一處迷霧。" },
-  { id: "sprint", name: "飛翼疾行", color: "--cp-orange", desc: "雅典娜的智慧引路人提醒：每題 20 秒內答對記一次疾行。超時不算錯，只是不記疾行。" },
+  { id: "slow", name: "沉思描解", plain: "慢慢想", color: "--cp-blue", desc: "答錯的題目，這一輪排到隊尾再想一次。適合想穩穩學會。" },
+  { id: "repair", name: "智慧回溯", plain: "先練錯題", color: "--cp-red", desc: "優先練習之前錯過的題目，答對就把它從錯題本清掉。" },
+  { id: "sprint", name: "飛翼疾行", plain: "限時挑戰", color: "--cp-orange", desc: "每題 20 秒內答對記一次疾行。超時不算錯，只是不記疾行。" },
 ];
 const SPRINT_LIMIT_MS = 20000;
 
@@ -486,10 +527,27 @@ async function makeDailyBoard(container) {
   return { dueCount, welcome };
 }
 
+// 首頁單一主要行動：把「今日第一步」升級成會依現況變化的大按鈕，
+// 一眼看到「現在最該做的一件事」，其餘卡片降為次要（U4/K6）。
 function makeTodayFirstStep(container, dueCount) {
+  const saved = store.read("activeSession", null);
+  let label;
+  let sub;
+  if (saved?.queue && saved.index < saved.queue.length) {
+    label = "▶ 繼續上次的練習";
+    sub = `還剩 ${saved.queue.length - saved.index} 題`;
+  } else if (dueCount > 0) {
+    label = "📖 複習今天到期的題目";
+    sub = `有 ${dueCount} 題該複習了`;
+  } else {
+    const rec = recommendedNextNode(tree);
+    label = "✦ 開始今天的練習";
+    sub = rec ? `推薦：${rec.name}` : "挑一顆星圖節點開始";
+  }
   const button = document.createElement("button");
-  button.className = "q-next today-first-step";
-  button.textContent = "今日第一步";
+  button.className = "home-hero-action";
+  button.appendChild(Object.assign(document.createElement("span"), { className: "hero-action-label", textContent: label }));
+  button.appendChild(Object.assign(document.createElement("span"), { className: "hero-action-sub", textContent: sub }));
   button.addEventListener("click", () => takeTodayFirstStep(dueCount));
   container.prepend(button);
 }
@@ -989,7 +1047,7 @@ function maybeShowOnboardingTip(dueCount = 0) {
   if (isBrandNew && noStrategy) {
     const steps = [
       { title: "1 / 3・今日看板", text: "今日看板會顯示到期複習、本日任務、神殿盃與五座神殿進度；它已預設展開。" },
-      { title: "2 / 3・今日第一步", text: "首頁上方的「今日第一步」是固定起點，不知道先練什麼時就按它。" },
+      { title: "2 / 3・今日第一步", text: "首頁最上方那顆金色大按鈕就是「今日第一步」，不知道先練什麼時按它，會帶你到最適合的地方。" },
       { title: "3 / 3・雅典娜帶路", text: "按下後，會依序接回未完測驗、到期複習，或推薦星圖上的下一個學習點。" },
     ];
     const dialog = document.createElement("dialog");
@@ -1028,7 +1086,7 @@ function maybeShowOnboardingTip(dueCount = 0) {
     root.id = "tip-bubble-root";
   }
   document.querySelector(".home-brief-dock")?.after(root);
-  const message = "想接著練？點上面的「今日第一步」，智慧引路人會帶你走到最適合的地方。";
+  const message = "想接著練？點首頁上方那顆金色大按鈕（今日第一步），智慧引路人會帶你走到最適合的地方。";
   const box = document.createElement("div");
   box.className = "tip-bubble";
   box.innerHTML = `${message}<br /><button>知道了</button>`;
@@ -1052,9 +1110,18 @@ function startQuiz(node) {
 
   const picker = document.createElement("div");
   picker.className = "strategy-picker";
+
+  // 返回鍵：選錯或想退出時不必被卡在策略頁（U1）
+  const backBtn = document.createElement("button");
+  backBtn.type = "button";
+  backBtn.className = "strategy-back-btn";
+  backBtn.innerHTML = "← 返回星圖";
+  backBtn.addEventListener("click", () => showView("home"));
+  picker.appendChild(backBtn);
+
   picker.appendChild(Object.assign(document.createElement("div"), {
     className: "strategy-picker-title",
-    textContent: "翻開智慧引路人的引導頁——這一輪要怎麼練？",
+    textContent: "這一輪要怎麼練？（不確定就直接開始）",
   }));
 
   if (node.lessonMedia?.src) {
@@ -1078,23 +1145,38 @@ function startQuiz(node) {
   const isFirstTime = lastUsedRaw === null;
   const lastUsed = lastUsedRaw ?? "slow";
   const nodeErrorCount = listWrongQuestions().filter((e) => e.nodeId === node.id).length;
+  const recommendedId = (lastUsed === "repair" && nodeErrorCount === 0) ? "slow" : lastUsed;
+  const recommended = STRATEGIES.find((s) => s.id === recommendedId) ?? STRATEGIES[0];
+
+  // 一鍵直接開始：用推薦策略立刻開局，孩子不必先讀懂三張卡（U1）
+  const quickStart = document.createElement("button");
+  quickStart.type = "button";
+  quickStart.className = "strategy-quickstart";
+  quickStart.innerHTML = `⚡ 直接開始<small>用推薦：${recommended.plain}</small>`;
+  quickStart.addEventListener("click", () => startQuizWithStrategy(node, recommended.id));
+  picker.appendChild(quickStart);
+
+  picker.appendChild(Object.assign(document.createElement("div"), {
+    className: "strategy-picker-or", textContent: "或自己選一種練法",
+  }));
+
   STRATEGIES.forEach((s) => {
     const card = document.createElement("button");
     const unavailable = s.id === "repair" && nodeErrorCount === 0;
-    const isRecommended = !unavailable && s.id === lastUsed;
+    const isRecommended = !unavailable && s.id === recommendedId;
     card.className = "strategy-card" + (isRecommended ? " last-used" : "");
     card.style.setProperty("--strategy-color", `var(${s.color})`);
     card.disabled = unavailable;
     const title = document.createElement("strong");
-    title.textContent = s.name;
+    title.innerHTML = `${s.name}<i class="strategy-plain">（${s.plain}）</i>`;
     const desc = document.createElement("span");
-    desc.textContent = unavailable ? "這卷神諭目前沒有黯淡處" : s.desc;
+    desc.textContent = unavailable ? "目前沒有錯題可以練" : s.desc;
     card.appendChild(title);
     card.appendChild(desc);
     if (isRecommended) {
       const tag = document.createElement("em");
       tag.className = "strategy-recommend-tag";
-      tag.textContent = isFirstTime ? "新手推薦先選這個" : "上次的秘傳";
+      tag.textContent = isFirstTime ? "新手推薦" : "上次用的";
       card.appendChild(tag);
     }
     if (!unavailable) card.addEventListener("click", () => startQuizWithStrategy(node, s.id));
@@ -1206,11 +1288,23 @@ async function startPvpChallenge(strandId, seedInput) {
 }
 
 // ---------- 星靈融合殿 ----------
+// 沒有立繪的星靈（90+ 隻）用程序化差異化：外框依 kind、色相依數字本身、
+// 底部因數點陣＝真實因數個數，讓每隻一眼可辨且視覺特徵綁真實數學性質（K1）。
+function spiritFactorDots(n) {
+  const wrap = document.createElement("span");
+  wrap.className = "spirit-factors";
+  wrap.setAttribute("aria-hidden", "true");
+  const count = Math.min(8, divisorCount(n));
+  for (let i = 0; i < count; i += 1) wrap.appendChild(Object.assign(document.createElement("i"), { className: "spirit-dot" }));
+  return wrap;
+}
 function spiritBadgeEl(n) {
   const el = document.createElement("div");
   const cls = classify(n);
   el.className = `spirit-badge spirit-${cls.kind}`;
-  el.title = `${spiritName(n)}・${cls.rarity}`;
+  el.title = `${spiritName(n)}・${cls.rarity}・${divisorCount(n)} 個因數`;
+  // 色相由數字決定（黃金比例散開，相鄰數字顏色明顯不同）
+  el.style.setProperty("--spirit-hue", String(Math.round((n * 137.508) % 360)));
   const art = spiritArt(n);
   if (art) {
     const img = document.createElement("img");
@@ -1220,11 +1314,15 @@ function spiritBadgeEl(n) {
     img.decoding = "async";
     img.addEventListener("error", () => {
       img.remove();
+      el.classList.add("spirit-fallback");
+      el.prepend(spiritFactorDots(n));
       el.prepend(Object.assign(document.createElement("span"), { className: "spirit-num", textContent: String(n) }));
     });
     el.appendChild(img);
   } else {
+    el.classList.add("spirit-fallback");
     el.appendChild(Object.assign(document.createElement("span"), { className: "spirit-num", textContent: String(n) }));
+    el.appendChild(spiritFactorDots(n));
   }
   return el;
 }
@@ -1269,7 +1367,9 @@ function renderFusion() {
   [["fuse", "融合"], ["codex", "星靈圖鑑"], ["equip", "出戰"], ["shop", "赫米斯商店"], ["market", "班級市集"]].forEach(([key, label]) => {
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.className = "fusion-tab" + (fusionState.tab === key ? " active" : "");
+    const isActive = fusionState.tab === key;
+    btn.className = "fusion-tab" + (isActive ? " active" : "");
+    btn.setAttribute("aria-pressed", isActive ? "true" : "false");
     btn.textContent = label;
     btn.addEventListener("click", () => { fusionState.tab = key; renderFusion(); });
     tabs.appendChild(btn);
@@ -1345,7 +1445,13 @@ function renderFuseTab(body) {
       fusionState.lastResult = result;
       fusionState.pick = [];
       // 完全數（6/28…）是本作最稀有的融合成果，值得一次確定性的高光演出（非亂數掉落）
-      if (result?.ok && isPerfect(result.product)) showPerfectFusionCelebration(result.product);
+      if (result?.ok && isPerfect(result.product)) {
+        showPerfectFusionCelebration(result.product);
+      } else if (result?.ok) {
+        // 次一階：平方數／豐饒數也給分級高光，讓「哇」的一刻不再一輩子只有 6 和 28（K3）
+        const kind = specialFusionKind(result.product);
+        if (kind) showSpecialFusionCelebration(result.product, kind);
+      }
       renderFusion();
     });
     guessWrap.appendChild(fuseBtn);
@@ -1506,6 +1612,27 @@ function renderSanctuary() {
     textContent: `已點亮陳設 ${unlockedIds.size} / ${DECORATIONS.length}　·　已擺放 ${placedCount} / ${PEDESTAL_COUNT} 座　·　已精熟 ${mastered} 節點`,
   }));
   root.appendChild(header);
+
+  // 空狀態引導：全新玩家還沒精熟任何節點時，聖所全是鎖，給一張說明卡＋去練習的出口（U3）
+  if (unlockedIds.size === 0) {
+    const empty = document.createElement("div");
+    empty.className = "sanctuary-empty";
+    empty.appendChild(Object.assign(document.createElement("p"), {
+      className: "sanctuary-empty-title", textContent: "🏛 你的神殿還在沉睡",
+    }));
+    empty.appendChild(Object.assign(document.createElement("p"), {
+      className: "sanctuary-empty-body",
+      textContent: "每精熟一個數學節點，就會點亮一件神殿陳設，可以擺上基座佈置。先去神話星圖練習，回來就有東西可以擺了！",
+    }));
+    const go = document.createElement("button");
+    go.type = "button";
+    go.className = "sanctuary-empty-cta";
+    go.textContent = "→ 去神話星圖練習";
+    go.addEventListener("click", () => showView("home"));
+    empty.appendChild(go);
+    root.appendChild(empty);
+  }
+
   // 只在剛擺放的那一次播 pop 動畫，讀取後即清旗標，避免每次 render 都重播
   const popIndex = sanctuaryJustPlaced;
   sanctuaryJustPlaced = null;
@@ -1522,6 +1649,7 @@ function renderSanctuary() {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "sanctuary-title-btn" + (t.id === current ? " active" : "") + (unlocked ? "" : " locked");
+    btn.setAttribute("aria-pressed", t.id === current ? "true" : "false");
     btn.textContent = unlocked ? t.text : `🔒 ${t.text}（需精熟 ${t.need}）`;
     btn.disabled = !unlocked;
     btn.addEventListener("click", () => {
@@ -1595,7 +1723,7 @@ function renderSanctuary() {
       img.className = "sanctuary-banner-img";
       img.loading = "lazy";
       img.alt = `${theme}・神殿甦醒`;
-      img.src = `assets/mythos/temples/${templeKey}-awaken.png`;
+      img.src = `assets/mythos/temples/${templeKey}-awaken.webp`;
       // 圖若未落地就整個橫幅收掉，改回純文字標題（emoji 仍在各陳設格）
       img.addEventListener("error", () => banner.remove());
       banner.appendChild(img);
@@ -1610,7 +1738,8 @@ function renderSanctuary() {
       const cell = document.createElement("button");
       cell.type = "button";
       cell.className = "sanctuary-deco" + (unlocked ? "" : " locked");
-      cell.disabled = !unlocked || sanctuarySelectedPedestal == null;
+      // 未選基座時陳設仍可點（不 disable），點了就引導去選基座——建立「先選誰、再選誰」的因果（U7）
+      cell.disabled = !unlocked;
       cell.appendChild(Object.assign(document.createElement("span"), { className: "deco-glyph", textContent: unlocked ? d.glyph : "🔒" }));
       cell.appendChild(Object.assign(document.createElement("span"), { className: "deco-name", textContent: d.name }));
       cell.appendChild(Object.assign(document.createElement("span"), {
@@ -1619,7 +1748,17 @@ function renderSanctuary() {
       }));
       if (unlocked) {
         cell.addEventListener("click", () => {
-          if (sanctuarySelectedPedestal == null) { showToast("先點一座基座", "warn"); return; }
+          if (sanctuarySelectedPedestal == null) {
+            showToast("先點上方一座基座，再選這件擺上去", "warn");
+            const pedRow = document.querySelector(".sanctuary-pedestals");
+            if (pedRow) {
+              pedRow.classList.remove("pedestals-nudge");
+              void pedRow.offsetWidth; // 重觸動畫
+              pedRow.classList.add("pedestals-nudge");
+              pedRow.scrollIntoView({ block: "center", behavior: "smooth" });
+            }
+            return;
+          }
           placeDecoration(sanctuarySelectedPedestal, d.id, unlockedIds);
           if (isSfxOn()) sfx.correct();
           sanctuaryJustPlaced = sanctuarySelectedPedestal;
@@ -1635,28 +1774,46 @@ function renderSanctuary() {
   root.appendChild(gallery);
 }
 
-// 兩段式「冷靜期」確認：第一次點變成「確定買？」，幾秒內再點一次才真的買，取代會卡住的原生 confirm()。
+// 兩段式「冷靜期」確認：第一次點變成「確定買？」＋可見倒數，時間內再點一次才真的買，
+// 取代會卡住的原生 confirm()；還原時說明「已取消」，避免孩子以為壞掉（U6）。
+const BUY_CONFIRM_MS = 6000;
 function armConfirmBuy(btn, onConfirm) {
-  if (btn.dataset.armed === "1") { onConfirm(); return; }
+  if (btn.dataset.armed === "1") {
+    if (btn._buyTimer) { clearInterval(btn._buyTimer); pendingTimers.delete(btn._buyTimer); btn._buyTimer = null; }
+    onConfirm();
+    return;
+  }
   btn.dataset.armed = "1";
-  const original = btn.textContent;
-  btn.textContent = "再點一次確定購買";
+  const original = btn.dataset.origLabel || btn.textContent;
+  btn.dataset.origLabel = original;
   btn.classList.add("buy-armed");
-  const t = window.setTimeout(() => {
-    btn.dataset.armed = "";
-    btn.textContent = original;
-    btn.classList.remove("buy-armed");
-    pendingTimers.delete(t);
-  }, 3500);
-  pendingTimers.add(t);
+  let left = Math.round(BUY_CONFIRM_MS / 1000);
+  btn.textContent = `再點一次確定購買（${left}）`;
+  const iv = window.setInterval(() => {
+    left -= 1;
+    if (left <= 0) {
+      clearInterval(iv); pendingTimers.delete(iv); btn._buyTimer = null;
+      btn.dataset.armed = "";
+      btn.textContent = original;
+      btn.classList.remove("buy-armed");
+      showToast("已取消購買", "warn");
+      return;
+    }
+    btn.textContent = `再點一次確定購買（${left}）`;
+  }, 1000);
+  btn._buyTimer = iv;
+  pendingTimers.add(iv);
 }
 
 async function renderMarketTab(body) {
   const bonus = isMarketBonus();
   const p2pDisabled = store.read("marketP2PDisabled", false) === true;
   body.appendChild(Object.assign(document.createElement("p"), {
-    className: "fusion-hint",
-    textContent: `${nextMarketText()}。這裡的星屑是遊戲幣、不是真錢——買賣星靈是好玩，別勉強同學交易。`,
+    className: "fusion-hint", textContent: nextMarketText(),
+  }));
+  body.appendChild(Object.assign(document.createElement("p"), {
+    className: "fusion-hint market-note-soft",
+    textContent: "💡 星屑是遊戲幣、不是真錢，買賣星靈只是好玩，別勉強同學交易。",
   }));
 
   // 教師開關：關閉同學間 P2P 交易，只留系統商隊（預設開放 P2P）
@@ -1912,6 +2069,7 @@ async function renderArena() {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "arena-strand-btn" + (arenaState.strandId === s.id ? " active" : "");
+    btn.setAttribute("aria-pressed", arenaState.strandId === s.id ? "true" : "false");
     btn.textContent = s.name;
     btn.addEventListener("click", () => {
       arenaState.strandId = s.id;
@@ -2078,11 +2236,20 @@ function mountArenaGhost() {
     `<div class="arena-ghost-gap"></div>`;
   host.insertBefore(box, quizArea);
   updateArenaGhost(0);
+  // 幽靈依真實時間前進：每秒刷新，讓競速感在作答當下也持續跳動（U5）
+  if (session?.arena) {
+    session.arena.ghostIv = window.setInterval(() => {
+      if (!document.getElementById("arena-ghost") || !session?.arena) return;
+      updateArenaGhost(session.arena._answered ?? 0);
+    }, 1000);
+    pendingTimers.add(session.arena.ghostIv);
+  }
 }
 function updateArenaGhost(answeredCount) {
   const box = document.getElementById("arena-ghost");
   const a = session?.arena;
   if (!box || !a) return;
+  a._answered = answeredCount;
   const count = a.count || ARENA_QUESTION_COUNT;
   const perQ = a.ghostSecPerQ || 12;
   const elapsedSec = Math.max(0, (Date.now() - a.startAt) / 1000);
@@ -2098,6 +2265,7 @@ function updateArenaGhost(answeredCount) {
   else { gap.textContent = "和幽靈並駕齊驅"; gap.className = "arena-ghost-gap"; }
 }
 function removeArenaGhost() {
+  if (session?.arena?.ghostIv) { clearInterval(session.arena.ghostIv); pendingTimers.delete(session.arena.ghostIv); session.arena.ghostIv = null; }
   document.getElementById("arena-ghost")?.remove();
 }
 
@@ -2432,6 +2600,18 @@ function renderCurrentQuestion(focusStem = false) {
   });
   quizArea.appendChild(nextBtn);
   nextBtnEl = nextBtn;
+
+  // 中途離開出口：一般練習會保留進度，孩子不必怕切走就白做（U9）
+  const leaveBtn = document.createElement("button");
+  leaveBtn.type = "button";
+  leaveBtn.className = "quiz-leave-btn";
+  const keepsProgress = session.kind === "node";
+  leaveBtn.textContent = keepsProgress ? "先離開（進度會保留）" : "先離開";
+  leaveBtn.addEventListener("click", () => {
+    if (keepsProgress) saveActiveSession();
+    showView("home");
+  });
+  quizArea.appendChild(leaveBtn);
 }
 
 function handleAnswer(question, isCorrect, meta = {}) {
@@ -2467,6 +2647,7 @@ function handleAnswer(question, isCorrect, meta = {}) {
     const best = Number(store.read("bestStreak", 0)) || 0;
     if (session.streak > best) store.write("bestStreak", session.streak);
     sfx.correct(session.streak);
+    if (session.kind !== "boss") showComboPop(session.streak); // boss 已有飄傷害數字
     showStreakMilestone(session.streak);
     if (question._retry) session.retryDone += 1;
     if (session.strategy === "sprint" && elapsed <= SPRINT_LIMIT_MS) {

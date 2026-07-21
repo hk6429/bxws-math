@@ -31,7 +31,12 @@ test("今日第一步依序檢查斷點、到期複習、推薦節點", async ()
   assert.ok(block.indexOf("dueCount > 0") < block.indexOf("recommendedNextNode"));
   assert.match(block, /lastStrategy === null[\s\S]*startQuiz\(recommended\)/);
   assert.match(block, /startQuizWithStrategy\(recommended, lastStrategy\)/);
-  assert.match(app, /textContent = "今日第一步"/);
+  // 「今日第一步」已升級成會依現況變化的主要行動大按鈕（U4/K6），仍走 takeTodayFirstStep 派發
+  const step = app.indexOf("function makeTodayFirstStep");
+  const stepBlock = app.slice(step, app.indexOf("\n}", step) + 2);
+  assert.match(stepBlock, /home-hero-action/);
+  assert.match(stepBlock, /takeTodayFirstStep\(dueCount\)/);
+  assert.match(stepBlock, /繼續上次的練習/);
 });
 
 test("新手提示改指向今日第一步，回訪者也不會收到矛盾指令", async () => {
