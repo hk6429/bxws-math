@@ -17,7 +17,7 @@ import { evaluateBadges, getUnlockedBadges, unlockBadge, BADGES } from "./achiev
 import { getPlayerName, setPlayerName, submitScore, getLeaderboard } from "./leaderboard.js";
 import {
   MANUSCRIPTS, getCollection, evaluateCollection,
-  RARE_STAMPS, getRareStamps, resolveEncounterReward,
+  RARE_STAMPS, STAMP_RARITIES, getRareStamps, resolveEncounterReward,
   RARITY_MYTHOS, manuscriptDustStatus, addManuscriptCare, collectionBonusFor,
 } from "./collection.js";
 import {
@@ -31,7 +31,7 @@ import {
   SPIRIT_MAX, EQUIP_MAX, GUARDIAN_SPIRIT, HERO_SPIRITS,
   isPrime, divisors, divisorCount, isPerfect, classify, spiritName, spiritArt,
   canFuse, resolveFusion, getSpiritBook, ownsSpirit, captureSpirit,
-  stardustBalance, spendStardust, getEquippedSpirits, setEquippedSpirits, spiritBonusFor,
+  stardustBalance, spendStardust, forceSettleStardust, getEquippedSpirits, setEquippedSpirits, spiritBonusFor,
 } from "./fusion.js";
 import {
   PEDESTAL_COUNT, DECORATIONS, decorationById, unlockedDecorationIds,
@@ -289,6 +289,25 @@ function showView(name) {
     heading.focus({ preventScroll: true });
     announce(`已進入：${labels[name]}`);
   }
+  updateNavGating();
+}
+
+// B1：全新玩家（還沒有任何有意義進度）先把神殿/融合/聖所/競技場的導覽做成「柔鎖」——
+// 只是變淡＋加提示，仍可點進去探索，但一眼看得出「該先去神話星圖練習解鎖」，
+// 而不是點進去才撞空狀態。一旦有進度就自動解除。
+function updateNavGating() {
+  const brandNew = !hasMeaningfulProgress(store.read("progress", {}));
+  const gated = { "nav-workshop": "先在神話星圖練習，精熟後解鎖 Boss 戰",
+    "nav-fusion": "先練出精熟節點，會掉星靈素材開始融合",
+    "nav-sanctuary": "先精熟第一個節點，就能開始佈置聖所",
+    "nav-arena": "先解鎖節點，再和同學比速度與正確率" };
+  Object.entries(gated).forEach(([id, hint]) => {
+    const btn = document.getElementById(id);
+    if (!btn) return;
+    btn.classList.toggle("nav-locked", brandNew);
+    if (brandNew) btn.setAttribute("data-lock-hint", hint);
+    else btn.removeAttribute("data-lock-hint");
+  });
 }
 
 function preloadMascot(variant) {
@@ -713,6 +732,10 @@ async function showWorkshop() {
         startPvpChallenge(room.id, seedInput.value.trim());
       });
       pvpWrap.append(seedInput, pvpBtn);
+      pvpWrap.appendChild(Object.assign(document.createElement("p"), {
+        className: "score-disclosure",
+        textContent: "挑戰書是本機紀錄、和同學口頭比分，未經伺服器驗證，同一組挑戰碼才是同一份題目。",
+      }));
       copy.appendChild(pvpWrap);
     }
     card.append(scene, copy);
@@ -1442,6 +1465,12 @@ function renderFuseTab(body) {
     fuseBtn.textContent = "✦ 融合";
     fuseBtn.addEventListener("click", () => {
       const result = resolveFusion(a, b, input.value.trim() === "" ? null : Number(input.value));
+      // 認真心算的正向誘因：算對乘積才有 2 星屑獎勵（綁「真的算對一題乘法」這個真實能力，非操作次數）；
+      // 算錯仍能拿到星靈、只溫和收 1 星屑，維持不挫折。用正向差距取代懲罰導向。
+      if (result?.ok && result.correct && input.value.trim() !== "") {
+        addStardust(2);
+        result.bonus = 2;
+      }
       fusionState.lastResult = result;
       fusionState.pick = [];
       // 完全數（6/28…）是本作最稀有的融合成果，值得一次確定性的高光演出（非亂數掉落）
@@ -1468,8 +1497,8 @@ function renderFuseTab(body) {
     reveal.appendChild(Object.assign(document.createElement("strong"), { textContent: `${r.recipe}` }));
     reveal.appendChild(Object.assign(document.createElement("p"), {
       textContent: r.correct
-        ? `算對了！免費融合出「${spiritName(r.product)}」${r.captured?.isNew ? "（新星靈！）" : ""}`
-        : `融合成功，得到「${spiritName(r.product)}」；乘積算錯了，溫和收 ${r.cost} 星屑，下次再算準一點。`,
+        ? `算對了！融合出「${spiritName(r.product)}」${r.captured?.isNew ? "（新星靈！）" : ""}${r.bonus ? `，心算正確 +${r.bonus} 星屑 🫙` : ""}`
+        : `融合成功，得到「${spiritName(r.product)}」；乘積算錯了，溫和收 ${r.cost} 星屑，下次算準就有 +2 星屑獎勵。`,
     }));
     body.appendChild(reveal);
   }
@@ -1826,7 +1855,7 @@ async function renderMarketTab(body) {
     store.write("marketP2PDisabled", teacherChk.checked);
     renderFusion();
   });
-  teacherWrap.append(teacherChk, Object.assign(document.createElement("span"), { textContent: "老師模式：關閉同學互相交易，只留系統商隊" }));
+  teacherWrap.append(teacherChk, Object.assign(document.createElement("span"), { textContent: "本機顯示設定：隱藏同學互相交易，只留系統商隊（只影響這台裝置的畫面）" }));
   body.appendChild(teacherWrap);
 
   const rawRoom = normalizeRoomCode(store.read("arenaRoom", "") ?? "");
@@ -1985,9 +2014,15 @@ async function renderMarketTab(body) {
     buyBtn.addEventListener("click", () => armConfirmBuy(buyBtn, async () => {
       const r = await buyListing(l.id);
       if (r?.ok) {
-        spendStardust(r.price);
+        // 伺服器已成交、無法回滾：本機餘額若在冷靜期內被別筆消費用掉導致扣款失敗，
+        // 就把餘額結清到 0（付到付得起為止），避免白拿星靈＋帳目對不起來
+        if (spendStardust(r.price)) {
+          showToast(`✦ 買下「${spiritName(r.spiritN)}」`, "success");
+        } else {
+          forceSettleStardust();
+          showToast(`✦ 買下「${spiritName(r.spiritN)}」（星屑已結清）`, "warn");
+        }
         captureSpirit(r.spiritN);
-        showToast(`✦ 買下「${spiritName(r.spiritN)}」`, "success");
       } else {
         showToast(r?.message ?? "購買失敗", "warn");
       }
@@ -2100,6 +2135,10 @@ async function renderArena() {
   const boardWrap = document.createElement("div");
   boardWrap.className = "arena-board";
   boardWrap.appendChild(Object.assign(document.createElement("h4"), { textContent: "本月戰況牆（前五）" }));
+  boardWrap.appendChild(Object.assign(document.createElement("p"), {
+    className: "score-disclosure",
+    textContent: "成績由學生自行回報、未經伺服器驗證；名字後的 ⚠️ 是系統標記，僅供教師與家長決定是否複驗。",
+  }));
   const boardBody = document.createElement("div");
   boardBody.className = "arena-board-body";
   boardBody.appendChild(Object.assign(document.createElement("p"), { className: "arena-loading", textContent: "讀取中…" }));
@@ -3557,6 +3596,20 @@ async function showDashboard() {
   stampSection.appendChild(Object.assign(document.createElement("h3"), {
     textContent: `神話印記圖鑑（${stampCount} / ${RARE_STAMPS.length}）——神諭啟示裡答對有機會出土`,
   }));
+  // 保底進度露出：資料本就存在 encounterPityByRarity，只是以前沒顯示，玩家不知道離保底還多遠
+  const pityState = store.read("encounterPityByRarity", {});
+  const pityHints = ["傳說", "稀有", "普通"]
+    .filter((rarity) => RARE_STAMPS.some((s) => s.rarity === rarity && !stampBook[s.id]))
+    .map((rarity) => {
+      const remain = Math.max(0, (STAMP_RARITIES[rarity]?.pity ?? 0) - (pityState[rarity] ?? 0));
+      return `${rarity}保底剩 ${remain} 次`;
+    });
+  if (pityHints.length) {
+    stampSection.appendChild(Object.assign(document.createElement("p"), {
+      className: "stamp-pity-hint",
+      textContent: `🎯 ${pityHints.join("　·　")}（保底＝這麼多次「神諭啟示」內必得一枚）`,
+    }));
+  }
   const stampGrid = document.createElement("div");
   stampGrid.className = "stamp-grid";
   RARE_STAMPS.forEach((s) => {

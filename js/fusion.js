@@ -120,6 +120,12 @@ export function spendStardust(amount) {
   return true;
 }
 
+// 伺服器交易已成交無法回滾、但本機餘額不足時的兜底：把餘額結清到 0（付到你付得起為止），
+// 避免「白拿星靈＋餘額對不出帳」的落差。只在 spendStardust 回 false 的異常路徑用。
+export function forceSettleStardust() {
+  store.write("stardustSpent", getStardustCount());
+}
+
 // ---- 星靈圖鑑（收藏）----
 export function getSpiritBook() {
   return store.read("spiritBook", {});

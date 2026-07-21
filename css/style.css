@@ -4012,6 +4012,18 @@ input[type="radio"] { accent-color: var(--star-gold); }
 
 /* U2/M2 導覽 icon 提示 + M6 捲動漸層提示 */
 .nav-icon { margin-right: 4px; }
+
+/* B1 全新玩家柔鎖：變淡＋小鎖頭提示，仍可點擊探索 */
+.topbar-nav button.nav-locked { opacity: 0.5; }
+.topbar-nav button.nav-locked::after {
+  content: "🔒"; font-size: 0.72em; margin-left: 3px; opacity: 0.85;
+}
+
+/* A3 保底進度提示 */
+.stamp-pity-hint {
+  margin: 2px 0 8px; font-size: 0.85rem; color: var(--star-gold, #d6b25e);
+  opacity: 0.95;
+}
 .topbar-nav {
   position: relative;
   -webkit-mask-image: linear-gradient(to right, #000 92%, transparent);

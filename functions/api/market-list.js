@@ -8,11 +8,6 @@ export async function onRequestOptions() {
   return corsPreflight();
 }
 
-// 週五開市（赫米斯市集日）：伺服器端也把關，避免改前端繞過
-function isMarketDay(now = new Date()) {
-  return true; // 市集天天開（週五「加碼日」僅前端呈現，後端不再限制交易日）
-}
-
 export async function onRequestPost({ request, env }) {
   let body;
   try { body = await request.json(); } catch { return json({ error: "invalid-json" }, 400); }
@@ -28,7 +23,6 @@ export async function onRequestPost({ request, env }) {
   if (!SEASON_RE.test(season)) return json({ error: "bad-season" }, 400);
   if (!sellerDevice) return json({ error: "bad-device" }, 400);
   if (spiritN === null || price === null) return json({ error: "bad-numbers" }, 400);
-  if (!isMarketDay()) return json({ error: "market-closed", message: "市集暫時關閉" }, 403);
 
   const active = await env.DB.prepare(
     "SELECT COUNT(*) AS n FROM market_listings WHERE seller_device = ? AND status = 'open'"

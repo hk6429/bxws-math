@@ -6,10 +6,6 @@ export async function onRequestOptions() {
   return corsPreflight();
 }
 
-function isMarketDay(now = new Date()) {
-  return true; // 市集天天開（週五「加碼日」僅前端呈現，後端不再限制交易日）
-}
-
 // 台灣日界（UTC+8）的今日零點毫秒
 function startOfTodayMs(now = Date.now()) {
   const shifted = now + 8 * 3600 * 1000;
@@ -27,7 +23,6 @@ export async function onRequestPost({ request, env }) {
 
   if (!Number.isInteger(id) || id <= 0) return json({ error: "bad-id" }, 400);
   if (!buyerDevice) return json({ error: "bad-device" }, 400);
-  if (!isMarketDay()) return json({ error: "market-closed", message: "市集暫時關閉" }, 403);
 
   const listing = await env.DB.prepare(
     "SELECT id, seller_device, spirit_n, price, status FROM market_listings WHERE id = ?"
