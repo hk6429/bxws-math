@@ -273,6 +273,7 @@ const STRATEGIES = [
   { id: "sprint", name: "飛翼疾行", plain: "限時挑戰", color: "--cp-orange", desc: "每題 20 秒內答對記一次疾行。超時不算錯，只是不記疾行。" },
 ];
 const SPRINT_LIMIT_MS = 20000;
+const SPRINT_AUTONEXT_MS = 1200; // 疾行模式答對後停留看一眼眉批再自動跳題（答錯不自動跳）
 
 function showView(name) {
   const changed = !views[name]?.classList.contains("active");
@@ -2557,6 +2558,60 @@ function renderBossOutcome(outcome, quizArea) {
   announce(outcome === "victory" ? `擊敗${meta.name}` : "神殿試煉未過關，可以再挑戰");
 }
 
+// F2 小怪：一般練習的即時「打到東西」爽感——每答對一題打一下，三下擊退一隻，換下一隻。
+// 純視覺、無血條門檻、無失敗代價（Boss 戰前的暖身），所以答錯不懲罰、小怪只是站在那。
+const MINI_FOES = ["👾", "🦑", "🐙", "🦖", "🦂", "🕷️", "🦇", "🐲"];
+const MINI_FOE_HITS = 3;
+function miniFoeState() {
+  if (!session.miniFoe) session.miniFoe = { hits: 0, defeated: 0, idx: 0 };
+  return session.miniFoe;
+}
+function renderMiniFoe(container) {
+  const s = miniFoeState();
+  const strip = document.createElement("div");
+  strip.className = "mini-foe";
+  strip.id = "mini-foe";
+  strip.appendChild(Object.assign(document.createElement("span"), { className: "mini-foe-sprite", textContent: MINI_FOES[s.idx % MINI_FOES.length] }));
+  const pips = document.createElement("span");
+  pips.className = "mini-foe-pips";
+  for (let i = 0; i < MINI_FOE_HITS; i += 1) {
+    pips.appendChild(Object.assign(document.createElement("i"), { className: "mini-foe-pip" + (i < s.hits ? " hit" : "") }));
+  }
+  strip.appendChild(pips);
+  strip.appendChild(Object.assign(document.createElement("span"), { className: "mini-foe-tally", textContent: s.defeated > 0 ? `已擊退 ${s.defeated} 隻` : "答對就打退小怪！" }));
+  container.appendChild(strip);
+}
+function updateMiniFoe(isCorrect) {
+  const s = miniFoeState();
+  const strip = document.getElementById("mini-foe");
+  if (!isCorrect) { strip?.classList.add("mini-foe-miss"); return; }
+  s.hits += 1;
+  const sprite = strip?.querySelector(".mini-foe-sprite");
+  const pips = strip?.querySelectorAll(".mini-foe-pip");
+  if (pips && pips[s.hits - 1]) pips[s.hits - 1].classList.add("hit");
+  if (sprite) { sprite.classList.remove("mini-foe-shake"); void sprite.offsetWidth; sprite.classList.add("mini-foe-shake"); }
+  if (s.hits >= MINI_FOE_HITS) {
+    s.hits = 0; s.defeated += 1; s.idx += 1;
+    if (sprite) {
+      sprite.classList.add("mini-foe-defeated");
+      const burst = document.createElement("span");
+      burst.className = "mini-foe-burst"; burst.textContent = "💥";
+      strip?.appendChild(burst);
+    }
+    if (isSfxOn()) sfx.correct(2);
+  }
+}
+
+// 進下一題的唯一出口：每題只跑一次（手動按或疾行自動跳都走這裡）
+let advancedThisQuestion = false;
+function advanceQuestion() {
+  if (advancedThisQuestion) return;
+  advancedThisQuestion = true;
+  session.index += 1;
+  saveActiveSession();
+  renderCurrentQuestion(true);
+}
+
 function renderCurrentQuestion(focusStem = false) {
   const quizArea = document.getElementById("quiz-area");
   preloadMascot(session.mascot);
@@ -2610,6 +2665,7 @@ function renderCurrentQuestion(focusStem = false) {
   else clearSprintTimer();
   const guardianStrand = strandIdForNode(question._nodeId ?? question._placementNodeId ?? session.node?.id);
   const opts = { encounter: session.index === session.encounterIdx, guardianStrand };
+  if (session.kind === "node") renderMiniFoe(quizArea);
   if (question._mentorCoaching) {
     quizArea.appendChild(Object.assign(document.createElement("div"), {
       className: "mentor-coaching-line",
@@ -2634,14 +2690,8 @@ function renderCurrentQuestion(focusStem = false) {
   const nextBtn = document.createElement("button");
   nextBtn.className = "q-next q-next-hidden";
   nextBtn.textContent = session.index === session.queue.length - 1 ? "看成果" : "下一題";
-  let advanced = false;
-  nextBtn.addEventListener("click", () => {
-    if (advanced) return;
-    advanced = true;
-    session.index += 1;
-    saveActiveSession();
-    renderCurrentQuestion(true);
-  });
+  advancedThisQuestion = false;
+  nextBtn.addEventListener("click", advanceQuestion);
   quizArea.appendChild(nextBtn);
   nextBtnEl = nextBtn;
 
@@ -2761,7 +2811,10 @@ function handleAnswer(question, isCorrect, meta = {}) {
   if (session.kind === "boss" && session.boss) {
     const strandNodeIds = (tree.strands.find((s) => s.id === session.boss.strandId)?.nodes ?? []).map((n) => n.id);
     // 總加成 = 收集品（上限 15%）+ 出戰星靈（上限 10%），合計自然封頂 25%
-    const bonus = collectionBonusFor(strandNodeIds, getCollection(), getRareStamps()) + spiritBonusFor();
+    // C3：裝備加成不再開局固定生效，要當場連詠≥3才解鎖——「打得好」才發揮潛力，
+    // 勝負主要仍靠答對率，同時保留裝備價值（上限不變，只是改成戰場上賺）
+    const gearBonus = collectionBonusFor(strandNodeIds, getCollection(), getRareStamps()) + spiritBonusFor();
+    const bonus = session.streak >= 3 ? gearBonus : 0;
     session.boss = applyBossAnswer(session.boss, isCorrect, session.streak, bonus);
     updateBossFeedback(session.boss, isCorrect);
   }
@@ -2782,6 +2835,13 @@ function handleAnswer(question, isCorrect, meta = {}) {
   saveActiveSession(1);
   nextBtnEl?.classList.remove("q-next-hidden");
   nextBtnEl?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  // F1 疾行模式：答對就自動跳下一題（停一下看眉批），答錯仍停留讓學生看懂；最後一題不自動跳，等按「看成果」
+  if (session.strategy === "sprint" && isCorrect && session.kind === "node"
+      && session.index < session.queue.length - 1) {
+    scheduleTimer(() => advanceQuestion(), SPRINT_AUTONEXT_MS);
+  }
+  // F2 小怪：一般練習每答對一題就打退一隻小怪，把「打到東西」的爽感前移到 Boss 戰之前
+  if (session.kind === "node") updateMiniFoe(isCorrect);
   const messages = [isCorrect
     ? "答對了！"
     : `答錯了，正解是：選項${meta.correctLabel ?? ""}「${meta.correctText ?? ""}」`];

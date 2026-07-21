@@ -1,4 +1,4 @@
-import { json, normStr, corsPreflight } from "./_util.js";
+import { json, normStr, corsPreflight, ensureDeviceAuth } from "./_util.js";
 
 export async function onRequestOptions() {
   return corsPreflight();
@@ -11,17 +11,19 @@ export async function onRequestPost({ request, env }) {
   try { body = await request.json(); } catch { return json({ error: "invalid-json" }, 400); }
   const deviceId = normStr(body.deviceId, 40);
   if (!deviceId) return json({ error: "bad-device" }, 400);
+  const auth = await ensureDeviceAuth(env, deviceId, body.authToken);
+  if (!auth.ok) return json({ error: "auth-mismatch", message: "裝置驗證失敗" }, 403);
 
   const pending = await env.DB.prepare(
     "SELECT COALESCE(SUM(price), 0) AS total, COUNT(*) AS n FROM market_listings WHERE seller_device = ? AND status = 'sold' AND payout_claimed = 0"
   ).bind(deviceId).first();
 
   const total = pending?.total ?? 0;
-  if (!total) return json({ ok: true, claimed: 0, count: 0 });
+  if (!total) return json({ ok: true, claimed: 0, count: 0, authToken: auth.token });
 
   await env.DB.prepare(
     "UPDATE market_listings SET payout_claimed = 1 WHERE seller_device = ? AND status = 'sold' AND payout_claimed = 0"
   ).bind(deviceId).run();
 
-  return json({ ok: true, claimed: total, count: pending.n });
+  return json({ ok: true, claimed: total, count: pending.n, authToken: auth.token });
 }

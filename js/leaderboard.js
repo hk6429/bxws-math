@@ -18,6 +18,18 @@ export function getPlayerId() {
   return id;
 }
 
+// C6 裝置認證 token：伺服器首次核發後存本機，之後每次改動性請求都帶上，冒充者只有 deviceId
+// 沒有 token 就打不進來。回應若帶新 token 就更新（用 syncDeviceToken）。
+export function getDeviceToken() {
+  return store.read("deviceAuthToken", "") || "";
+}
+export function syncDeviceToken(resp) {
+  if (resp && typeof resp.authToken === "string" && resp.authToken && resp.authToken !== getDeviceToken()) {
+    store.write("deviceAuthToken", resp.authToken);
+  }
+  return resp;
+}
+
 export function submitScore(name, overallMasteryPct) {
   const board = store.read("leaderboard", []);
   const id = getPlayerId();

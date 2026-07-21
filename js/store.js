@@ -12,7 +12,7 @@ const KEY_TYPES = {
   lastCreatedChallenge: "nullable-object", lastPlayed: "nullable-object", lastStrategy: "nullable-string",
   leaderboard: "array", manuscriptCare: "object", masterTrialBest: "nullable-object",
   masterTrialTiers: "object",
-  player: "nullable-string", playerId: "string", pvpChallenges: "object", roomCode: "nullable-string", rareStampBook: "object", rareStamps: "array-or-object",
+  player: "nullable-string", playerId: "string", deviceAuthToken: "string", pvpChallenges: "object", roomCode: "nullable-string", rareStampBook: "object", rareStamps: "array-or-object",
   sanctuaryLayout: "object", sanctuaryInscription: "string",
   arenaBest: "object", arenaRoom: "nullable-string", arenaStrand: "nullable-string",
   marketP2PDisabled: "boolean", npcBought: "object",

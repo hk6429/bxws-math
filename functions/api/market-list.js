@@ -1,4 +1,4 @@
-import { json, normStr, clampInt, corsPreflight } from "./_util.js";
+import { json, normStr, clampInt, corsPreflight, ensureDeviceAuth } from "./_util.js";
 
 const ROOM_CODE_RE = /^[0-9A-Z]{3,8}$/;
 const SEASON_RE = /^\d{4}-\d{2}$/;
@@ -23,6 +23,8 @@ export async function onRequestPost({ request, env }) {
   if (!SEASON_RE.test(season)) return json({ error: "bad-season" }, 400);
   if (!sellerDevice) return json({ error: "bad-device" }, 400);
   if (spiritN === null || price === null) return json({ error: "bad-numbers" }, 400);
+  const auth = await ensureDeviceAuth(env, sellerDevice, body.authToken);
+  if (!auth.ok) return json({ error: "auth-mismatch", message: "裝置驗證失敗" }, 403);
 
   const active = await env.DB.prepare(
     "SELECT COUNT(*) AS n FROM market_listings WHERE seller_device = ? AND status = 'open'"
@@ -36,5 +38,5 @@ export async function onRequestPost({ request, env }) {
      VALUES (?, ?, ?, ?, ?, ?, 'open', ?)`
   ).bind(roomCode, season, sellerDevice, sellerName, spiritN, price, Date.now()).run();
 
-  return json({ ok: true, id: res.meta?.last_row_id ?? null });
+  return json({ ok: true, id: res.meta?.last_row_id ?? null, authToken: auth.token });
 }

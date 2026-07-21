@@ -1,4 +1,4 @@
-import { json, normStr, corsPreflight } from "./_util.js";
+import { json, normStr, corsPreflight, ensureDeviceAuth } from "./_util.js";
 
 const MAX_BUYS_PER_DAY = 3;
 
@@ -23,6 +23,8 @@ export async function onRequestPost({ request, env }) {
 
   if (!Number.isInteger(id) || id <= 0) return json({ error: "bad-id" }, 400);
   if (!buyerDevice) return json({ error: "bad-device" }, 400);
+  const auth = await ensureDeviceAuth(env, buyerDevice, body.authToken);
+  if (!auth.ok) return json({ error: "auth-mismatch", message: "裝置驗證失敗" }, 403);
 
   const listing = await env.DB.prepare(
     "SELECT id, seller_device, spirit_n, price, status FROM market_listings WHERE id = ?"
@@ -47,5 +49,5 @@ export async function onRequestPost({ request, env }) {
     return json({ error: "already-sold", message: "這件剛剛被買走了" }, 409);
   }
 
-  return json({ ok: true, spiritN: listing.spirit_n, price: listing.price });
+  return json({ ok: true, spiritN: listing.spirit_n, price: listing.price, authToken: auth.token });
 }

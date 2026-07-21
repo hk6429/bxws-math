@@ -186,6 +186,19 @@ export function renderQuestion(question, onAnswered, mascotVariant, opts = {}) {
 
   const explain = el("div", "q-explain", question.explanation);
   explain.style.display = "none";
+  // F4 唸出來：閱讀能力弱的學生可讓瀏覽器朗讀老師眉批（純本機 speechSynthesis、不連網）
+  if (typeof window !== "undefined" && "speechSynthesis" in window && question.explanation) {
+    const speakBtn = el("button", "q-speak-btn", "🔊 唸出來");
+    speakBtn.type = "button";
+    speakBtn.addEventListener("click", () => {
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(question.explanation);
+      utter.lang = "zh-TW";
+      utter.rate = 0.95;
+      window.speechSynthesis.speak(utter);
+    });
+    explain.appendChild(speakBtn);
+  }
 
   const handleAnswered = (isCorrect, answerMeta) => {
     explain.style.display = "block";

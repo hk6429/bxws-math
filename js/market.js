@@ -1,4 +1,4 @@
-import { getPlayerId, getPlayerName } from "./leaderboard.js";
+import { getPlayerId, getPlayerName, getDeviceToken, syncDeviceToken } from "./leaderboard.js";
 import { seasonKey, normalizeRoomCode, isValidRoomCode } from "./arena.js";
 
 // 赫米斯市集：班級內玩家互相掛單交易星靈，星屑買賣。赫米斯＝商業之神，每週五「市集日」開市。
@@ -72,9 +72,9 @@ export async function listSpirit(roomCode, spiritN, price, season = seasonKey())
     const res = await fetch(`${API_BASE}/api/market-list`, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ roomCode: normalizeRoomCode(roomCode), season, deviceId: getPlayerId(), name: getPlayerName() || "匿名", spiritN, price }),
+      body: JSON.stringify({ roomCode: normalizeRoomCode(roomCode), season, deviceId: getPlayerId(), authToken: getDeviceToken(), name: getPlayerName() || "匿名", spiritN, price }),
     });
-    return await res.json();
+    return syncDeviceToken(await res.json());
   } catch { return { error: "offline" }; }
 }
 
@@ -93,9 +93,9 @@ export async function buyListing(id) {
     const res = await fetch(`${API_BASE}/api/market-buy`, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ id, deviceId: getPlayerId(), name: getPlayerName() || "匿名" }),
+      body: JSON.stringify({ id, deviceId: getPlayerId(), authToken: getDeviceToken(), name: getPlayerName() || "匿名" }),
     });
-    return await res.json();
+    return syncDeviceToken(await res.json());
   } catch { return { error: "offline" }; }
 }
 
@@ -112,8 +112,8 @@ export async function claimPayout() {
     const res = await fetch(`${API_BASE}/api/market-claim`, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ deviceId: getPlayerId() }),
+      body: JSON.stringify({ deviceId: getPlayerId(), authToken: getDeviceToken() }),
     });
-    return await res.json();
+    return syncDeviceToken(await res.json());
   } catch { return { error: "offline" }; }
 }

@@ -4025,6 +4025,44 @@ input[type="radio"] { accent-color: var(--star-gold); }
   opacity: 0.95;
 }
 
+/* F2 小怪暖身條 */
+.mini-foe {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin: 0 0 10px; padding: 6px 12px; border-radius: 12px;
+  background: color-mix(in srgb, var(--star-gold, #d6b25e) 12%, transparent);
+  border: 1px dashed color-mix(in srgb, var(--star-gold, #d6b25e) 45%, transparent);
+  font-size: 0.9rem;
+}
+.mini-foe-sprite { font-size: 1.5rem; display: inline-block; }
+.mini-foe-shake { animation: mini-foe-shake 0.32s ease; }
+.mini-foe-defeated { animation: mini-foe-defeated 0.5s ease forwards; }
+.mini-foe-pips { display: inline-flex; gap: 4px; }
+.mini-foe-pip {
+  width: 12px; height: 12px; border-radius: 50%;
+  border: 1.5px solid color-mix(in srgb, var(--star-gold, #d6b25e) 60%, transparent);
+  background: transparent; transition: background 0.2s;
+}
+.mini-foe-pip.hit { background: var(--star-gold, #d6b25e); }
+.mini-foe-tally { opacity: 0.9; }
+.mini-foe-burst { font-size: 1.3rem; animation: mini-foe-burst 0.6s ease forwards; }
+.mini-foe-miss .mini-foe-sprite { animation: mini-foe-nudge 0.3s ease; }
+@keyframes mini-foe-shake { 0%,100% { transform: translateX(0);} 25% { transform: translateX(-4px) rotate(-6deg);} 75% { transform: translateX(4px) rotate(6deg);} }
+@keyframes mini-foe-defeated { to { transform: translateY(6px) rotate(20deg) scale(0.6); opacity: 0.2; } }
+@keyframes mini-foe-burst { 0% { transform: scale(0.4); opacity: 1;} 100% { transform: scale(1.6); opacity: 0;} }
+@keyframes mini-foe-nudge { 0%,100% { transform: translateX(0);} 50% { transform: translateX(3px);} }
+@media (prefers-reduced-motion: reduce) {
+  .mini-foe-shake, .mini-foe-defeated, .mini-foe-burst, .mini-foe-miss .mini-foe-sprite { animation: none; }
+}
+
+/* F4 解析朗讀鍵 */
+.q-speak-btn {
+  display: inline-block; margin-top: 8px; min-height: 40px; padding: 6px 14px;
+  border-radius: 10px; border: 1px solid color-mix(in srgb, var(--cp-blue, #3b6ea5) 55%, transparent);
+  background: color-mix(in srgb, var(--cp-blue, #3b6ea5) 12%, transparent);
+  color: inherit; font-weight: 600; cursor: pointer;
+}
+.q-speak-btn:hover { background: color-mix(in srgb, var(--cp-blue, #3b6ea5) 22%, transparent); }
+
 /* C2 市集：一鍵跳去競技場設定房號 */
 .market-goroom-btn {
   min-height: 44px; margin: 6px 0 2px; padding: 8px 16px;

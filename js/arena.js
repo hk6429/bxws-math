@@ -1,6 +1,6 @@
 import { store } from "./store.js";
 import { mulberry32 } from "./pvp.js";
-import { getPlayerId, getPlayerName } from "./leaderboard.js";
+import { getPlayerId, getPlayerName, getDeviceToken, syncDeviceToken } from "./leaderboard.js";
 
 // 神殿競技場：房號 + 月賽季 → 決定一組所有人都相同的題目 seed（沿用 pvp.js 的 mulberry32），
 // 同房同賽季的人各自打完同一套題，把戰績上傳雲端比分。採「非同步比分」而非即時輪詢——
@@ -74,6 +74,7 @@ export async function submitArenaResult(roomCode, strandId, result, season = sea
         season,
         strandId,
         deviceId: getPlayerId(),
+        authToken: getDeviceToken(),
         name: getPlayerName() || "匿名",
         pct: result.pct,
         totalSec: result.totalSec,
@@ -83,7 +84,7 @@ export async function submitArenaResult(roomCode, strandId, result, season = sea
       }),
     });
     if (!res.ok) return { ok: false };
-    return await res.json();
+    return syncDeviceToken(await res.json());
   } catch {
     return { ok: false, offline: true };
   }
