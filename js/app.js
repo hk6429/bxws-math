@@ -93,6 +93,15 @@ let fusionState = { tab: "fuse", pick: [], lastResult: null };
 let sanctuarySelectedPedestal = null;
 let sanctuaryJustPlaced = null;
 let arenaState = { strandId: null };
+
+// 繆思聖所五神殿甦醒橫幅圖（生圖檔在 assets/mythos/temples/，缺檔會自動退回純文字標題）
+const TEMPLE_IMG = {
+  "num-quantity": "labyrinth",
+  algebra: "sphinx",
+  "space-shape": "cyclops",
+  "relation-pattern": "moirai",
+  "data-uncertainty": "delphi",
+};
 const pendingTimers = new Set();
 const preloadedMascots = new Set();
 let migrationsRun = false;
@@ -1578,6 +1587,21 @@ function renderSanctuary() {
   byStrand.forEach((items, theme) => {
     const group = document.createElement("div");
     group.className = "sanctuary-group";
+    const templeKey = TEMPLE_IMG[items[0]?.strand];
+    if (templeKey) {
+      const banner = document.createElement("div");
+      banner.className = "sanctuary-banner";
+      const img = document.createElement("img");
+      img.className = "sanctuary-banner-img";
+      img.loading = "lazy";
+      img.alt = `${theme}・神殿甦醒`;
+      img.src = `assets/mythos/temples/${templeKey}-awaken.png`;
+      // 圖若未落地就整個橫幅收掉，改回純文字標題（emoji 仍在各陳設格）
+      img.addEventListener("error", () => banner.remove());
+      banner.appendChild(img);
+      banner.appendChild(Object.assign(document.createElement("span"), { className: "sanctuary-banner-title", textContent: theme }));
+      group.appendChild(banner);
+    }
     group.appendChild(Object.assign(document.createElement("h4"), { textContent: theme }));
     const grid = document.createElement("div");
     grid.className = "sanctuary-deco-grid";

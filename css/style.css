@@ -3960,3 +3960,36 @@ input[type="radio"] { accent-color: var(--star-gold); }
 .dash-diag-row:hover { background: rgba(154,166,207,.2); }
 .dash-diag-tag { flex: 0 0 auto; margin-left: 8px; padding: 2px 10px; border-radius: 999px; font-size: .75rem; font-weight: 700;
   background: rgba(224,87,79,.85); color: #fff; }
+
+/* 繆思聖所・神殿甦醒橫幅 */
+.sanctuary-banner {
+  position: relative;
+  margin: 0 0 10px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(214, 178, 94, 0.35);
+}
+.sanctuary-banner-img {
+  display: block;
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  filter: saturate(1.05);
+}
+.sanctuary-banner-title {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 20px 14px 8px;
+  box-sizing: border-box;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #f7e9c6;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85);
+  background: linear-gradient(to top, rgba(12, 10, 6, 0.85), rgba(12, 10, 6, 0));
+}
+/* 有橫幅時，底下重複的 h4 標題收掉，避免兩份標題 */
+.sanctuary-banner + h4 { display: none; }
