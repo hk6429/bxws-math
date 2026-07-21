@@ -25,5 +25,10 @@ const nearMiss = evaluateMastery([
   { questionId: "near-1", challenge: "1-1", type: "basic-mastery", correct: false },
 ], { tier: "elem-mid", gateChallenges: ["1-1"] });
 assert.deepEqual(nearMiss.unmetConditions, ["A", "B", "C", "D"]);
-nearMiss.unmetConditions.forEach((condition) => assert.match(nearMiss.feedback, new RegExp(`${condition} `)));
-console.log("OK B/C: prereq quick-check gate, tier thresholds, and all unmet A-E feedback verified");
+assert.deepEqual(Object.keys(nearMiss.criteriaProgress), ["A", "B", "C", "D", "E"]);
+assert.match(nearMiss.feedback, /答對率要接近 75%/);
+assert.match(nearMiss.feedback, /練習量/);
+assert.match(nearMiss.feedback, /再點亮這些挑戰：1-1/);
+assert.match(nearMiss.feedback, /四種題型/);
+assert.doesNotMatch(nearMiss.feedback, /A 視窗|B 樣本|C 挑戰覆蓋|D 題型|E 錯誤/);
+console.log("OK B/C: prereq quick-check gate, tier thresholds, A-E progress, and plain-language feedback verified");

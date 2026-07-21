@@ -21,30 +21,30 @@
       "type": "basic-mastery",
       "challenge": "6-1",
       "errorPath": 2,
-      "stem": "資料 4、10、13、18 的全距是多少？",
+      "stem": "資料 6、9、12、15 的全距是幾？",
       "options": [
-        "22",
-        "14",
-        "10",
-        "13"
+        "12",
+        "21",
+        "6",
+        "9"
       ],
-      "answer": 1,
-      "explanation": "全距=18-4=14。"
+      "answer": 3,
+      "explanation": "全距=最大值-最小值=15-6=9。"
     },
     {
       "id": "range-data-interpretation-bm-v1-3",
       "type": "basic-mastery",
       "challenge": "6-1",
       "errorPath": 3,
-      "stem": "資料 11、16、20、27 的全距是多少？",
+      "stem": "資料 6、9、12、15 的全距是幾？",
       "options": [
-        "38",
-        "18",
-        "16",
-        "11"
+        "21",
+        "6",
+        "9",
+        "12"
       ],
       "answer": 2,
-      "explanation": "全距=27-11=16。"
+      "explanation": "全距=最大值-最小值=15-6=9。"
     },
     {
       "id": "range-data-interpretation-bm-2",
@@ -66,30 +66,30 @@
       "type": "basic-mastery",
       "challenge": "6-2",
       "errorPath": 2,
-      "stem": "甲組 60、75、90；乙組 70、75、80。哪組全距較小？",
+      "stem": "甲70、80、90；乙78、80、82，誰全距小？",
       "options": [
         "乙組",
+        "甲組",
         "無法比較",
-        "兩組相同",
-        "甲組"
+        "兩組相同"
       ],
       "answer": 0,
-      "explanation": "甲組全距 30，乙組全距 10，所以乙組較小。"
+      "explanation": "甲組全距 90-70=20；乙組全距 82-78=4，所以乙組較小。"
     },
     {
       "id": "range-data-interpretation-bm-v2-3",
       "type": "basic-mastery",
       "challenge": "6-2",
       "errorPath": 3,
-      "stem": "甲組 42、50、58；乙組 47、50、53。哪組全距較小？",
+      "stem": "甲70、80、90；乙78、80、82，誰全距小？",
       "options": [
-        "兩組相同",
-        "無法比較",
         "甲組",
+        "無法比較",
+        "兩組相同",
         "乙組"
       ],
       "answer": 3,
-      "explanation": "甲組全距 16，乙組全距 6，所以乙組較小。"
+      "explanation": "甲組全距 90-70=20；乙組全距 82-78=4，所以乙組較小。"
     }
   ],
   "conceptId": [
@@ -170,32 +170,32 @@
       "type": "error-diagnosis",
       "challenge": "6-5",
       "errorPath": 2,
-      "problem": "求 3、8、12、16 的全距",
-      "wrongSolution": "小豪算成 16+3=19",
+      "problem": "算出 4、7、10、13 的全距",
+      "wrongSolution": "小豪把最大值和最小值相加，算成 13+4=17",
       "errorOptions": [
-        "最大值找錯",
-        "應除資料數",
+        "應除以資料個數",
         "最小值找錯",
-        "全距應最大減最小，不是相加"
+        "最大值找錯",
+        "全距應是最大值減最小值，不是相加"
       ],
       "correctErrorIndex": 3,
-      "explanation": "全距為 16-3=13。"
+      "explanation": "全距為 13-4=9。"
     },
     {
       "id": "range-data-interpretation-ed-v5-3",
       "type": "error-diagnosis",
       "challenge": "6-5",
       "errorPath": 3,
-      "problem": "求 7、11、15、20 的全距",
-      "wrongSolution": "小豪算成 20+7=27",
+      "problem": "找出 4、7、10、13 的全距",
+      "wrongSolution": "小豪把最大值和最小值相加，算成 13+4=17",
       "errorOptions": [
         "最小值找錯",
         "最大值找錯",
-        "全距應最大減最小，不是相加",
-        "應除資料數"
+        "全距應是最大值減最小值，不是相加",
+        "應除以資料個數"
       ],
       "correctErrorIndex": 2,
-      "explanation": "全距為 20-7=13。"
+      "explanation": "全距為 13-4=9。"
     },
     {
       "id": "range-data-interpretation-ed-2",
@@ -218,32 +218,32 @@
       "type": "error-diagnosis",
       "challenge": "6-6",
       "errorPath": 2,
-      "problem": "比較甲組 8、8、8 與乙組 6、8、10",
-      "wrongSolution": "小晴說平均都是 8，所以分散程度相同",
+      "problem": "比較甲組 5、5、5 與乙組 3、5、7",
+      "wrongSolution": "小晴說兩組平均數都是 5，所以分散程度相同",
       "errorOptions": [
-        "全距都為 8",
-        "只看平均，忽略全距 0 與 4",
-        "兩組平均不同",
-        "資料筆數不同"
+        "兩組平均數不同",
+        "全距都等於 5",
+        "資料筆數不同",
+        "只看平均數，忽略甲組全距 0、乙組全距 4"
       ],
-      "correctErrorIndex": 1,
-      "explanation": "平均相同不代表分散相同；兩組全距為 0 與 4。"
+      "correctErrorIndex": 3,
+      "explanation": "平均數相同不代表分散相同；甲組全距 0，乙組全距 4。"
     },
     {
       "id": "range-data-interpretation-ed-v6-3",
       "type": "error-diagnosis",
       "challenge": "6-6",
       "errorPath": 3,
-      "problem": "比較甲組 12、12、12 與乙組 9、12、15",
-      "wrongSolution": "小晴說平均都是 12，所以分散程度相同",
+      "problem": "比較甲組 5、5、5 與乙組 3、5、7",
+      "wrongSolution": "小晴說兩組平均數都是 5，所以分散程度相同",
       "errorOptions": [
-        "全距都為 12",
-        "只看平均，忽略全距 0 與 6",
+        "全距都等於 5",
         "資料筆數不同",
-        "兩組平均不同"
+        "只看平均數，忽略甲組全距 0、乙組全距 4",
+        "兩組平均數不同"
       ],
-      "correctErrorIndex": 1,
-      "explanation": "平均相同不代表分散相同；兩組全距為 0 與 6。"
+      "correctErrorIndex": 2,
+      "explanation": "平均數相同不代表分散相同；甲組全距 0，乙組全距 4。"
     }
   ],
   "contextApplication": [
@@ -271,12 +271,12 @@
       "scenario": "兩地一週氣溫：甲地最低 18°C、最高 30°C；乙地最低 22°C、最高 28°C。",
       "question": "哪一地的氣溫全距較大？",
       "options": [
-        "兩地相同",
         "乙地",
-        "資料不足",
-        "甲地"
+        "甲地",
+        "兩地相同",
+        "資料不足"
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "甲地全距 30-18=12°C；乙地全距 28-22=6°C，所以甲地較大。"
     },
     {
@@ -288,9 +288,9 @@
       "question": "哪一地的氣溫全距較大？",
       "options": [
         "甲地",
-        "乙地",
         "兩地相同",
-        "資料不足"
+        "資料不足",
+        "乙地"
       ],
       "answer": 0,
       "explanation": "甲地全距 30-18=12°C；乙地全距 28-22=6°C，所以甲地較大。"
@@ -319,12 +319,12 @@
       "scenario": "甲班成績平均 80 分、全距 30 分；乙班平均 80 分、全距 12 分。",
       "question": "只根據這些資料，以下何者合理？",
       "options": [
-        "兩班每一個分數都相同",
-        "乙班成績的最大值與最小值較接近",
+        "乙班成績的最大值一定較高",
         "甲班每人都比乙班高分",
-        "乙班成績的最大值一定較高"
+        "兩班每一個分數都相同",
+        "乙班成績的最大值與最小值較接近"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "全距較小表示最大值和最小值的差較小；其餘敘述無法由平均數與全距推出。"
     },
     {
@@ -336,11 +336,11 @@
       "question": "只根據這些資料，哪個何者合理？",
       "options": [
         "甲班每人都比乙班高分",
-        "乙班成績的最大值與最小值較接近",
         "兩班每一個分數都相同",
+        "乙班成績的最大值與最小值較接近",
         "乙班成績的最大值一定較高"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "全距較小表示最大值和最小值的差較小；其餘敘述無法由平均數與全距推出。"
     }
   ]

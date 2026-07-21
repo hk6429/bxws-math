@@ -21,30 +21,30 @@
       "type": "basic-mastery",
       "challenge": "6-1",
       "errorPath": 2,
-      "stem": "點 R(-6,2) 位於第幾象限？",
+      "stem": "點 P(-3,4) 位於第幾象限？",
       "options": [
-        "第二象限",
+        "第一象限",
         "第四象限",
-        "第三象限",
-        "第一象限"
+        "第二象限",
+        "第三象限"
       ],
-      "answer": 0,
-      "explanation": "x<0、y>0，位於第二象限。"
+      "answer": 2,
+      "explanation": "x<0、y>0 的點位於第二象限。"
     },
     {
       "id": "coordinate-plane-bm-v1-3",
       "type": "basic-mastery",
       "challenge": "6-1",
       "errorPath": 3,
-      "stem": "點 S(-4,7) 位於第幾象限？",
+      "stem": "點 P(-3,4) 位於第幾象限？",
       "options": [
-        "第三象限",
+        "第四象限",
         "第二象限",
-        "第一象限",
-        "第四象限"
+        "第三象限",
+        "第一象限"
       ],
       "answer": 1,
-      "explanation": "x<0、y>0，位於第二象限。"
+      "explanation": "x<0、y>0 的點位於第二象限。"
     },
     {
       "id": "coordinate-plane-bm-2",
@@ -66,30 +66,30 @@
       "type": "basic-mastery",
       "challenge": "6-2",
       "errorPath": 2,
-      "stem": "點 R(-4,6) 投影到 x 軸，投影點座標為何？",
+      "stem": "點 Q(5,-2) 對 x 軸作垂直投影時，投影點的座標是幾？",
       "options": [
-        "(-4,6)",
-        "(-4,0)",
-        "(4,0)",
-        "(0,6)"
+        "(5,2)",
+        "(5,0)",
+        "(-5,-2)",
+        "(0,-2)"
       ],
       "answer": 1,
-      "explanation": "投影到 x 軸後 x 不變、y 變 0，所以是 (-4,0)。"
+      "explanation": "投影到 x 軸後 x 座標不變，y 座標變為 0，所以是 (5,0)。"
     },
     {
       "id": "coordinate-plane-bm-v2-3",
       "type": "basic-mastery",
       "challenge": "6-2",
       "errorPath": 3,
-      "stem": "點 S(7,-5) 投影到 x 軸，投影點座標為何？",
+      "stem": "點 Q(5,-2) 對 x 軸作垂直投影時，投影點的座標是幾？",
       "options": [
-        "(7,0)",
-        "(0,-5)",
-        "(7,-5)",
-        "(-7,0)"
+        "(5,0)",
+        "(-5,-2)",
+        "(0,-2)",
+        "(5,2)"
       ],
       "answer": 0,
-      "explanation": "投影到 x 軸後 x 不變、y 變 0，所以是 (7,0)。"
+      "explanation": "投影到 x 軸後 x 座標不變，y 座標變為 0，所以是 (5,0)。"
     }
   ],
   "conceptId": [
@@ -107,18 +107,18 @@
       "type": "concept-id",
       "challenge": "6-3",
       "errorPath": 2,
-      "statement": "點 (0,6) 位於 y 軸上。",
+      "statement": "位於 y 軸上的點，其 x 座標一定是 0。",
       "correctAnswer": true,
-      "explanation": "y 軸上各點的 x 座標都是 0。"
+      "explanation": "y 軸上的所有點都沒有向左或向右的位移，因此 x=0。"
     },
     {
       "id": "coordinate-plane-ci-v3-3",
       "type": "concept-id",
       "challenge": "6-3",
       "errorPath": 3,
-      "statement": "點 (0,-4) 位於 y 軸上。",
+      "statement": "位於 y 軸上的點，其 x 座標一定是 0。",
       "correctAnswer": true,
-      "explanation": "不論 y 正負，只要 x=0，該點就在 y 軸上。"
+      "explanation": "y 軸上的所有點都沒有向左或向右的位移，因此 x=0。"
     },
     {
       "id": "coordinate-plane-ci-2",
@@ -134,18 +134,18 @@
       "type": "concept-id",
       "challenge": "6-4",
       "errorPath": 2,
-      "statement": "點 (-6,-1) 位於第四象限。",
+      "statement": "點 (-2,-5) 位於第四象限。",
       "correctAnswer": false,
-      "explanation": "x、y 都是負數，應位於第三象限。"
+      "explanation": "x、y 都是負數的點位於第三象限；第四象限是 x>0、y<0。"
     },
     {
       "id": "coordinate-plane-ci-v4-3",
       "type": "concept-id",
       "challenge": "6-4",
       "errorPath": 3,
-      "statement": "點 (-3,-7) 位於第四象限。",
+      "statement": "點 (-2,-5) 位於第四象限。",
       "correctAnswer": false,
-      "explanation": "x、y 都是負數，應位於第三象限。"
+      "explanation": "x、y 都是負數的點位於第三象限；第四象限是 x>0、y<0。"
     }
   ],
   "errorDiagnosis": [
@@ -170,32 +170,32 @@
       "type": "error-diagnosis",
       "challenge": "6-5",
       "errorPath": 2,
-      "problem": "判斷點 B(-2,8) 的位置",
-      "wrongSolution": "小凱說 B 在第四象限，因為有一個負號。",
+      "problem": "判斷點 A(-4,3) 的位置",
+      "wrongSolution": "小凱說：A 在第四象限，因為座標中有一個負號。",
       "errorOptions": [
-        "負號應改正",
-        "只看負號；(-,+) 應為第二象限",
-        "座標不能負",
-        "象限從左上編號"
+        "象限從左上角開始編號",
+        "只看有負號，沒有依 x<0、y>0 判斷；應為",
+        "座標不能有負數",
+        "負號應改成正號"
       ],
       "correctErrorIndex": 1,
-      "explanation": "象限由 x、y 正負共同決定；(-,+) 是第二象限。"
+      "explanation": "象限由 x、y 的正負共同決定；(-,+) 對應第二象限。"
     },
     {
       "id": "coordinate-plane-ed-v5-3",
       "type": "error-diagnosis",
       "challenge": "6-5",
       "errorPath": 3,
-      "problem": "判斷點 C(-7,5) 的位置",
-      "wrongSolution": "小凱說 C 在第四象限，因為有一個負號。",
+      "problem": "判斷點 A(-4,3) 的位置",
+      "wrongSolution": "小凱說：A 在第四象限，因為座標中有一個負號。",
       "errorOptions": [
-        "只看負號；(-,+) 應為第二象限",
-        "負號應改正",
-        "象限從左上編號",
-        "座標不能負"
+        "只看有負號，沒有依 x<0、y>0 判斷；應為",
+        "座標不能有負數",
+        "負號應改成正號",
+        "象限從左上角開始編號"
       ],
       "correctErrorIndex": 0,
-      "explanation": "象限由 x、y 正負共同決定；(-,+) 是第二象限。"
+      "explanation": "象限由 x、y 的正負共同決定；(-,+) 對應第二象限。"
     },
     {
       "id": "coordinate-plane-ed-2",
@@ -218,32 +218,32 @@
       "type": "error-diagnosis",
       "challenge": "6-6",
       "errorPath": 2,
-      "problem": "點 C 從 (3,4) 向下移 6 單位，求新座標",
-      "wrongSolution": "小琳寫成 (-3,4)。",
+      "problem": "點 B 從 (-1,2) 向下移 5 單位，算出新座標",
+      "wrongSolution": "小琳寫成 (-6,2)。",
       "errorOptions": [
-        "應同時改兩座標",
-        "負數不能再減",
-        "6 應改 4",
-        "向下應改 y，卻改了 x"
+        "向下應改變 y 座標，卻改了 x 座標",
+        "應同時改變兩個座標",
+        "5 應改成 2",
+        "負數不能再減"
       ],
-      "correctErrorIndex": 3,
-      "explanation": "向下只讓 y 減 6，新座標是 (3,-2)。"
+      "correctErrorIndex": 0,
+      "explanation": "向下移只讓 y 減少 5：2-5=-3，x 不變，所以新座標是 (-1,-3)。"
     },
     {
       "id": "coordinate-plane-ed-v6-3",
       "type": "error-diagnosis",
       "challenge": "6-6",
       "errorPath": 3,
-      "problem": "點 D 從 (-2,5) 向下移 8 單位，求新座標",
-      "wrongSolution": "小琳寫成 (-10,5)。",
+      "problem": "點 B 從 (-1,2) 向下移 5 單位，找出新座標",
+      "wrongSolution": "小琳寫成 (-6,2)。",
       "errorOptions": [
-        "向下應改 y，卻改了 x",
+        "應同時改變兩個座標",
+        "5 應改成 2",
         "負數不能再減",
-        "應同時改兩座標",
-        "8 應改 5"
+        "向下應改變 y 座標，卻改了 x 座標"
       ],
-      "correctErrorIndex": 0,
-      "explanation": "向下只讓 y 減 8，新座標是 (-2,-3)。"
+      "correctErrorIndex": 3,
+      "explanation": "向下移只讓 y 減少 5：2-5=-3，x 不變，所以新座標是 (-1,-3)。"
     }
   ],
   "contextApplication": [
@@ -271,12 +271,12 @@
       "scenario": "遊戲角色從原點出發，先向左 4 步，再向下 3 步。",
       "question": "角色最後的座標與所在象限為何？",
       "options": [
+        "(-4,3)，第二象限",
         "(4,3)，第一象限",
-        "(-4,-3)，第三象限",
         "(4,-3)，第四象限",
-        "(-4,3)，第二象限"
+        "(-4,-3)，第三象限"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "向左使 x=-4，向下使 y=-3；兩者皆負，位於第三象限。"
     },
     {
@@ -287,12 +287,12 @@
       "scenario": "遊戲角色從原點出發，先向左 4 步，再向下 3 步。",
       "question": "角色最後的座標與所在象限為何？",
       "options": [
-        "(-4,-3)，第三象限",
+        "(4,3)，第一象限",
         "(4,-3)，第四象限",
-        "(-4,3)，第二象限",
-        "(4,3)，第一象限"
+        "(-4,-3)，第三象限",
+        "(-4,3)，第二象限"
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "向左使 x=-4，向下使 y=-3；兩者皆負，位於第三象限。"
     },
     {
@@ -320,11 +320,11 @@
       "question": "雨區中心的座標是幾？",
       "options": [
         "(2,6)",
-        "(2,-6)",
+        "(-2,-6)",
         "(-2,6)",
-        "(-2,-6)"
+        "(2,-6)"
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "西方對應 x<0，南方對應 y<0，所以座標是 (-2,-6)。"
     },
     {
@@ -335,12 +335,12 @@
       "scenario": "氣象圖以測站為原點，東方為 x 正方向、北方為 y 正方向。雨區中心在測站西方 2 公里、南方 6 公里。",
       "question": "雨區中心的座標是幾？",
       "options": [
-        "(2,6)",
         "(-2,-6)",
         "(-2,6)",
-        "(2,-6)"
+        "(2,-6)",
+        "(2,6)"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "西方對應 x<0，南方對應 y<0，所以座標是 (-2,-6)。"
     }
   ]

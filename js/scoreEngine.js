@@ -16,6 +16,10 @@ export function recordAnswer(nodeId, questionOrId, correct, msElapsed, node = {}
     ...(question.type ? { type: question.type } : {}),
     ...(question.errorPath !== undefined ? { errorPath: question.errorPath } : {}),
     ...(question._prereqQuickCheck ? { prereqQuickCheck: true } : {}),
+    // 導師安撫題（連錯後插入的簡單題）與慢筆重描題（看過正解＋解析後重答同題）都不是
+    // 乾淨的能力證據，打標後排除於精熟窗口，避免灌水答對率、假性完卷（仍照常記錯題本／Leitner）。
+    ...(question._mentorCoaching ? { coachingAttempt: true } : {}),
+    ...(question._retry ? { retryAttempt: true } : {}),
     ...(question._prereqNodeId ? { prereqNodeId: question._prereqNodeId } : {}),
     ...(question._remediationPath !== undefined ? { remediationPath: question._remediationPath } : {}),
     correct,

@@ -21,30 +21,30 @@
       "type": "basic-mastery",
       "challenge": "7-1",
       "errorPath": 2,
-      "stem": "若 y=3x-2，當 x=5 時，y 是多少？",
+      "stem": "若 y=2x+3，當 x=4 時，y 的值是幾？",
       "options": [
-        "11",
-        "13",
-        "17",
-        "15"
+        "14",
+        "9",
+        "8",
+        "11"
       ],
-      "answer": 1,
-      "explanation": "代入 x=5，y=3×5-2=13。"
+      "answer": 3,
+      "explanation": "把 x=4 代入，y=2×4+3=11。"
     },
     {
       "id": "function-relation-bm-v1-3",
       "type": "basic-mastery",
       "challenge": "7-1",
       "errorPath": 3,
-      "stem": "若 y=5x+2，當 x=4 時，y 是多少？",
+      "stem": "若 y=2x+3，當 x=4 時，y 的值是幾？",
       "options": [
-        "20",
-        "22",
-        "24",
-        "18"
+        "9",
+        "8",
+        "11",
+        "14"
       ],
-      "answer": 1,
-      "explanation": "代入 x=4，y=5×4+2=22。"
+      "answer": 2,
+      "explanation": "把 x=4 代入，y=2×4+3=11。"
     },
     {
       "id": "function-relation-bm-2",
@@ -66,30 +66,30 @@
       "type": "basic-mastery",
       "challenge": "7-2",
       "errorPath": 2,
-      "stem": "下列哪組對應符合 y=x+3？",
+      "stem": "以下哪一組對應符合 y=x-2？",
       "options": [
-        "x=3，y=3",
-        "x=5，y=2",
-        "x=1，y=3",
-        "x=2，y=5"
+        "x=3，y=5",
+        "x=5，y=3",
+        "x=2，y=2",
+        "x=-1，y=1"
       ],
-      "answer": 3,
-      "explanation": "x=2 時，y=2+3=5，所以 (2,5) 符合。"
+      "answer": 1,
+      "explanation": "x=5 時，y=5-2=3，因此 (5,3) 符合。"
     },
     {
       "id": "function-relation-bm-v2-3",
       "type": "basic-mastery",
       "challenge": "7-2",
       "errorPath": 3,
-      "stem": "下列哪組對應符合 y=2x-1？",
+      "stem": "哪個哪一組對應符合 y=x-2？",
       "options": [
-        "x=4，y=7",
-        "x=3，y=7",
-        "x=2，y=5",
-        "x=4，y=8"
+        "x=5，y=3",
+        "x=2，y=2",
+        "x=-1，y=1",
+        "x=3，y=5"
       ],
       "answer": 0,
-      "explanation": "x=4 時，y=2×4-1=7，所以 (4,7) 符合。"
+      "explanation": "x=5 時，y=5-2=3，因此 (5,3) 符合。"
     }
   ],
   "conceptId": [
@@ -107,18 +107,18 @@
       "type": "concept-id",
       "challenge": "7-3",
       "errorPath": 2,
-      "statement": "在 y=4x-2 中，每個 x 都對應唯一的 y。",
+      "statement": "在 y=3x+1 中，給定一個 x 值，就能依規則算出唯一的 y 值。",
       "correctAnswer": true,
-      "explanation": "固定 x 後，4x-2 的結果只有一個。"
+      "explanation": "固定 x 後，3x+1 的計算結果只有一個，因此 y 值唯一。"
     },
     {
       "id": "function-relation-ci-v3-3",
       "type": "concept-id",
       "challenge": "7-3",
       "errorPath": 3,
-      "statement": "在 y=-2x+5 中，每個 x 都對應唯一的 y。",
+      "statement": "在 y=3x+1 中，給定一個 x 值，就能依規則算出唯一的 y 值。",
       "correctAnswer": true,
-      "explanation": "固定 x 後，-2x+5 的結果只有一個。"
+      "explanation": "固定 x 後，3x+1 的計算結果只有一個，因此 y 值唯一。"
     },
     {
       "id": "function-relation-ci-2",
@@ -170,32 +170,32 @@
       "type": "error-diagnosis",
       "challenge": "7-5",
       "errorPath": 2,
-      "problem": "已知 y=5x-2，求 x=4 時的 y",
-      "wrongSolution": "小翔算成 y=5×(4-2)=10。",
+      "problem": "已知 y=4x-5，算出 x=3 時的 y",
+      "wrongSolution": "小翔算成 y=4×(3-5)=-8。",
       "errorOptions": [
-        "答案不能偶數",
-        "把 5x-2 看成 5(x-2)",
+        "負數不能當答案",
+        "3-5 算錯",
         "x 應代成 y",
-        "4-2 算錯"
+        "把 4x-5 誤看成 4(x-5)"
       ],
-      "correctErrorIndex": 1,
-      "explanation": "應先算 5×4 再減 2，得到 y=18。"
+      "correctErrorIndex": 3,
+      "explanation": "4x-5 要先算 4×3，再減 5，得到 y=12-5=7。"
     },
     {
       "id": "function-relation-ed-v5-3",
       "type": "error-diagnosis",
       "challenge": "7-5",
       "errorPath": 3,
-      "problem": "已知 y=3x+4，求 x=6 時的 y",
-      "wrongSolution": "小翔算成 y=3×(6+4)=30。",
+      "problem": "已知 y=4x-5，找出 x=3 時的 y",
+      "wrongSolution": "小翔算成 y=4×(3-5)=-8。",
       "errorOptions": [
-        "6+4 算錯",
-        "把 3x+4 看成 3(x+4)",
+        "3-5 算錯",
         "x 應代成 y",
-        "答案不能超過 20"
+        "把 4x-5 誤看成 4(x-5)",
+        "負數不能當答案"
       ],
-      "correctErrorIndex": 1,
-      "explanation": "應先算 3×6 再加 4，得到 y=22。"
+      "correctErrorIndex": 2,
+      "explanation": "4x-5 要先算 4×3，再減 5，得到 y=12-5=7。"
     },
     {
       "id": "function-relation-ed-2",
@@ -218,32 +218,32 @@
       "type": "error-diagnosis",
       "challenge": "7-6",
       "errorPath": 2,
-      "problem": "檢查點 (3,10) 是否符合 y=3x+1",
-      "wrongSolution": "小庭把 x=10、y=3 代入，說 3≠31。",
+      "problem": "檢查點 (2,7) 是否符合 y=3x+1",
+      "wrongSolution": "小庭把 x=7、y=2 代入，算得 2≠22，所以說不符合。",
       "errorOptions": [
-        "應把 1 改 -1",
-        "3×10 算錯",
-        "把有序數對 x、y 顛倒",
-        "等號不能檢查"
+        "應把 1 改成 -1",
+        "等號不能用來檢查",
+        "把有序數對中的 x、y 順序顛倒",
+        "3×7 算錯"
       ],
       "correctErrorIndex": 2,
-      "explanation": "(3,10) 表示 x=3、y=10；3×3+1=10，所以符合。"
+      "explanation": "(2,7) 表示 x=2、y=7；代入右式得 3×2+1=7，與 y 相等，所以符合。"
     },
     {
       "id": "function-relation-ed-v6-3",
       "type": "error-diagnosis",
       "challenge": "7-6",
       "errorPath": 3,
-      "problem": "檢查點 (4,9) 是否符合 y=2x+1",
-      "wrongSolution": "小庭把 x=9、y=4 代入，說 4≠19。",
+      "problem": "檢查點 (2,7) 是否符合 y=3x+1",
+      "wrongSolution": "小庭把 x=7、y=2 代入，算得 2≠22，所以說不符合。",
       "errorOptions": [
-        "把有序數對 x、y 顛倒",
-        "2×9 算錯",
-        "應把 1 改 -1",
-        "等號不能檢查"
+        "等號不能用來檢查",
+        "把有序數對中的 x、y 順序顛倒",
+        "3×7 算錯",
+        "應把 1 改成 -1"
       ],
-      "correctErrorIndex": 0,
-      "explanation": "(4,9) 表示 x=4、y=9；2×4+1=9，所以符合。"
+      "correctErrorIndex": 1,
+      "explanation": "(2,7) 表示 x=2、y=7；代入右式得 3×2+1=7，與 y 相等，所以符合。"
     }
   ],
   "contextApplication": [
@@ -272,9 +272,9 @@
       "question": "行駛 6 公里，車資是幾元？",
       "options": [
         "205 元",
-        "510 元",
+        "120 元",
         "105 元",
-        "120 元"
+        "510 元"
       ],
       "answer": 0,
       "explanation": "代入 x=6：y=85+20×6=85+120=205 元。"
@@ -319,12 +319,12 @@
       "scenario": "水箱原有 50 公升水，每分鐘流出 4 公升。經過 x 分鐘後，剩水量為 y=50-4x。",
       "question": "經過 8 分鐘後，剩下幾公升？",
       "options": [
+        "82 公升",
         "42 公升",
         "32 公升",
-        "18 公升",
-        "82 公升"
+        "18 公升"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "代入 x=8：y=50-4×8=50-32=18 公升。"
     },
     {
@@ -335,12 +335,12 @@
       "scenario": "水箱原有 50 公升水，每分鐘流出 4 公升。經過 x 分鐘後，剩水量為 y=50-4x。",
       "question": "經過 8 分鐘後，剩下幾公升？",
       "options": [
-        "82 公升",
-        "18 公升",
         "42 公升",
-        "32 公升"
+        "32 公升",
+        "18 公升",
+        "82 公升"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "代入 x=8：y=50-4×8=50-32=18 公升。"
     }
   ]

@@ -16,24 +16,25 @@ ROOT = Path(__file__).resolve().parents[1]
 QDIR = ROOT / "data" / "questions"
 ARRAYS = ("basicMastery", "conceptId", "errorDiagnosis", "contextApplication")
 NODES = "repeat-pattern growing-pattern input-output-table pattern-rule coordinate-first-quadrant coordinate-plane function-relation direct-proportion data-table-basic bar-chart-reading line-chart-reading mean-basic median-mode range-data-interpretation chance-sample-space probability-basic".split()
+STABLE_PATH_NODES = {"median-mode", "probability-basic"}
 def seq(a,d,n): return a+d*(n-1)
 ORIGINAL_HASHES = {
-"repeat-pattern": ['86852896d0622c6c','d59f93c7caa3800f','86db8a00bdf8870e','d258f19a3f17cfa2','8ecae458ad503052','9cf3086f48688333','bae99fbe4b5c715e','62333eb77c5f3677'],
-"growing-pattern": ['b06607157043cc40','1d7dfb19176c57da','1444d0d6846e076d','b659357fd6f13037','f247b49ddc0b4ab9','692853d216712bb2','97dc2ffb6a3536a1','29f82899f13a96ac'],
-"input-output-table": ['697b75fe53d9b44e','a28e5e8bb1fc79b8','73b3e5329e309f25','c59275f035f3f4e2','2142cabc9b4ae762','c550a0a04232b649','fef3bad6a3f0d9ec','f5bb5034dcc78846'],
-"pattern-rule": ['352ef53d52e33e9b','b20fee61b829e49a','5a0ad412aa88c9c9','a9ff00ec4e92bb1a','3a2e8a7e1d9da30e','82d09e9566a4490e','942947f30a9ffa99','009a098f0731d88d'],
-"coordinate-first-quadrant": ['5d09d61302f1e3ab','145f4ef47359667b','dfd069f1561c2f9f','bd8161da9c1f1230','daa1ad4c23a65528','4e2fcdee39cc7e04','fd5cbbd2942cf3eb','f21be93c46de9344'],
-"coordinate-plane": ['e37b26e1ec35cd38','d765f006a718eff7','5517fe52934cc2c8','4a250c82e38a8811','43bdfed5c07b0676','8db86f29cbdc1f23','472ec9c27c9b7ca9','0e221078be94b000'],
-"function-relation": ['f01daf6428223af6','e855673921e5a2be','d34c61b32c5b1934','551b9233b5117c96','fe6dfad7b527fe26','53fca39bb9fc9352','70639f1690dc6f54','2f4373f9a5dc822f'],
-"direct-proportion": ['f78f1342d02bf5c3','115fbd1878e08099','00b9078f019ac70e','db56f4495cc1e0ec','53147bc189189fe6','6c8bc5a72f8e8efa','579d5512a7eac1c9','2f1705bed7dbecaa'],
-"data-table-basic": ['52b34cf404d150fc','bd15a08ef8d67ec8','23e709a1bbef459a','7191b08c296450e5','5156eda7ddb835f0','bda0ea3e8c55aab4','64b8d44a47bd9c57','9dbbf713705280a6'],
-"bar-chart-reading": ['6cdb92a9455bc50d','4bdcc4970dc8a5bc','a46387b877be39e5','c65b83aba0888e7f','170240c102f5ef4e','8cf221c43cebd7af','4eed47d4e60ccdaa','991a955e632ad36f'],
-"line-chart-reading": ['cbb4c5d0f550f66f','611a67cb2f5f2603','89e2d414bd681c95','5132ed0fedd0db44','18ca649d865028a8','d1096120997de192','d15d110d897c1eed','abef65b267cebf24'],
-"mean-basic": ['c77593aef29f2c04','0378d0e1c919bef7','eafae30ccb884478','9e98f4fc7c0b94fb','068b6a25941f356e','7b57994d847ccfb8','69c643236c599eb1','78fc197800a1e454'],
-"median-mode": ['5f417d662b72e2f2','9b84cf9295ee539d','c753ce6e4d0a32be','dc8e3ea196370a17','d7acb8f6d6af25e6','d43c318b3bea7d9a','09be5ded6f4d089c','184fad8a20d258d2'],
-"range-data-interpretation": ['e1fcf5a9f732c187','1a15d9b2fc1c47c0','64d6a6197d1ec3cc','1241358ab336fe9b','238cc0d4989ce224','9d30392d501875fc','0bbcd7363ef122c6','41454bfd7b1bb95e'],
-"chance-sample-space": ['1ce1eb48507c7c2a','353526d414c1fa8d','cdaf8a26cd65f822','30009790110961be','445dff0fc48d0e82','2e9645dd69ce0ae7','fe9478f9e0a3aedb','ce9fed4c0adfd87c'],
-"probability-basic": ['7a61a10ea2c52e55','2fbe21b61f97905e','841c2a10692e11e0','4544afafbdd8a4ad','e751d4ca9c516ce8','a9642c6c3132abad','970434343b304fe4','473d1040196ca7ed']}
+"repeat-pattern": ['69952c2fc73f4c1f','3522b44fba4d8971','86db8a00bdf8870e','d258f19a3f17cfa2','4dd1587ddc2efff4','dd1cfadc9d3aff09','574a8c168be4fc5c','b610cd15933d3779'],
+"growing-pattern": ['a8f226c09eac98bf','1d7dfb19176c57da','1444d0d6846e076d','b659357fd6f13037','5e625761187f3664','8a53506ed4881044','2ec2bb7ce5ba2777','45426ca355d0c5c2'],
+"input-output-table": ['588a474acd063ada','00ea571e76326847','73b3e5329e309f25','c59275f035f3f4e2','5c4eb30953f519c0','56dcd36461e361bf','71f2374db1c7a6e8','7359531ee69afc0f'],
+"pattern-rule": ['57e8f9e98ce0a7b2','1764183eb009836a','5a0ad412aa88c9c9','a9ff00ec4e92bb1a','0d56820c84315171','1e5bff432e8ccda9','d7740d2f336b48d5','4fc1b6f2a1eeaaf6'],
+"coordinate-first-quadrant": ['5d09d61302f1e3ab','fc416ce200c4d9cb','dfd069f1561c2f9f','bd8161da9c1f1230','05879682401f06da','4e2fcdee39cc7e04','c8a074505e84a142','d0263ef877bc9a79'],
+"coordinate-plane": ['a6b1d3f98f9147fb','74b4733b620809d0','5517fe52934cc2c8','4a250c82e38a8811','56f06c2ddc431167','2429b67cf6c734e5','e9c14d9d2b347730','fe29370a52219a42'],
+"function-relation": ['824b7c887281e101','cca755557ff097ac','d34c61b32c5b1934','551b9233b5117c96','26eff4da1c750612','27006bf86e334ab0','1758830713505f82','4e967e15e79a989f'],
+"direct-proportion": ['e2f3d3e1d300826c','ce0606169a931280','00b9078f019ac70e','db56f4495cc1e0ec','aea08f647a571bda','bc29c456ded37b9c','579d5512a7eac1c9','6b0108af89a91655'],
+"data-table-basic": ['e535f72724c2b563','3f8c34fe2d65fc30','23e709a1bbef459a','7191b08c296450e5','0195c7cd0e04ea32','d620d902be7c9000','6e94631fa2cc1bbf','243ac59acccab260'],
+"bar-chart-reading": ['e47869ff3c2bf15c','b1a450f26ff08751','a46387b877be39e5','c65b83aba0888e7f','a56815bf855c8cab','56be07580d974f90','9634e41601cfe679','9d198a6b99453e84'],
+"line-chart-reading": ['d55d7b1b26a477a6','b023a9559300d77c','89e2d414bd681c95','5132ed0fedd0db44','2e5c52f96765cfff','47f20f1978cb4a1d','ad1c25ebc0387800','ff31ef45f6e09390'],
+"mean-basic": ['46cf400ca38541d3','4ea23bf2fca315f0','eafae30ccb884478','9e98f4fc7c0b94fb','e52127d185e2bae4','7f70ee8521d435ce','d0225bc8f4a1688e','2507c2d7954cf644'],
+"median-mode": ['5b345b274f50fc1a','7dcfda76b833490a','17676c8597a71d1a','6b8b6b3cd129c46c','2be29354e64ff45b','d67617c3ba958494','d785e877b3a61a9b','cb023fc6576e000b'],
+"range-data-interpretation": ['a4972355720804a3','b0a9d4ba72130f93','64d6a6197d1ec3cc','1241358ab336fe9b','48822f3c228bc98a','2741500389854763','0e560f1a07b7a3b8','b307d0f9102b64df'],
+"chance-sample-space": ['cc9ad6540205fd56','97da27ed9933a726','cdaf8a26cd65f822','30009790110961be','113f5abfe4058ae0','6f2c553aee658a7a','56734b5afb718c06','a5c659149f0f3178'],
+"probability-basic": ['ee0330e900736a55','102bd32dca5b2a6d','b1533fee104c1ab4','883a6929945a2b4a','0d3a4335c9588d49','90a2ecb404b025f6','82ebb12e736ae080','db3b65ed3b378633']}
 SEED_ORACLES={
 "repeat-pattern":["△","2",True,False,"餘 1 應對應一組中的第 1 個□，不是第 3 個△","漏掉每組中的第二個紅，最短單位應是「紅、紅、藍」","綠","綠燈"],
 "growing-pattern":[str(seq(4,3,5)),"10 顆",True,False,"把第一項 5 當成每次增加量；實際每次增加 4","第 1 個已有 3 根，到第 4 個只增加 3 次，應算3+2×3","50 元","27 個"],
@@ -95,8 +96,6 @@ def variants(node):
     for key in ARRAYS:
         seeds.extend(q for q in data[key] if re.fullmatch(rf"{re.escape(node)}-(bm|ci|ed|ca)-[12]",q["id"]))
     short={
-      "growing-pattern-bm-2":"第1圖2顆星，每圖多2顆，第5圖幾顆？",
-      "growing-pattern-ed-2":"第1圖3根，往後各多2根，求第4圖",
       "input-output-table-bm-1":"輸入1、2、3輸出4、7、10，輸入4呢？",
       "direct-proportion-bm-1":"x=3時y=12且成正比，x=5時y為何？",
       "direct-proportion-ci-1":"正比時，x變2倍，y也變2倍。",
@@ -155,7 +154,7 @@ def build():
         if [stripped_hash(q) for q in originals] != ORIGINAL_HASHES[node]: raise SystemExit(f"{node}: protected original changed")
         made=variants(node)
         if len(made)!=16: raise SystemExit(f"{node}: variant count {len(made)}")
-        out={"nodeId":node, **{k:[] for k in ARRAYS}}
+        out={"nodeId":node, **({"curriculum": data["curriculum"]} if data.get("curriculum") else {}), **{k:[] for k in ARRAYS}}
         counters=Counter()
         for ch in range(1,9):
             key=ARRAYS[(ch-1)//2]; short=("bm","ci","ed","ca")[(ch-1)//2]
@@ -163,7 +162,8 @@ def build():
             original=copy.deepcopy(next(q for q in data[key] if q["id"]==wanted)); trio=[original,*made[(ch-1)*2:ch*2]]
             for v,q in enumerate(trio,1):
                 expected=q.pop("_expected",None)
-                q["challenge"]=f"{node_index}-{ch}"; q["errorPath"]=v
+                q["challenge"]=f"{node_index}-{ch}"
+                q["errorPath"]=original["errorPath"] if node in STABLE_PATH_NODES else v
                 ordered={"id":q.get("id") or "","type":q["type"],"challenge":q["challenge"],"errorPath":q["errorPath"]}
                 if not q.get("id"):
                     counters[short]+=1; ordered["id"]=f"{node}-{short}-v{ch}-{v}"
@@ -248,7 +248,11 @@ def verify():
                 all_ids.append(q.get("id"))
                 if any(str(k).startswith("_") for k in q): errors.append(f"{q.get('id')}: private field leaked")
                 if q.get("challenge") not in {f"{ni}-{i}" for i in range(1,9)}: errors.append(f"{q['id']}: bad challenge")
-                if q.get("errorPath") not in (1,2,3): errors.append(f"{q['id']}: bad errorPath")
+                if node in STABLE_PATH_NODES:
+                    if not isinstance(q.get("errorPath"), str) or not q["errorPath"]:
+                        errors.append(f"{q['id']}: bad stable errorPath")
+                elif q.get("errorPath") not in (1,2,3):
+                    errors.append(f"{q['id']}: bad errorPath")
                 prompt=q.get("stem") or q.get("statement") or q.get("problem") or q.get("question","")
                 original=bool(re.fullmatch(rf"{re.escape(node)}-(bm|ci|ed|ca)-[12]",q["id"]))
                 if original: original_seen.append(stripped_hash(q))
@@ -273,7 +277,11 @@ def verify():
         paths=defaultdict(list)
         for k in ARRAYS:
             for q in data[k]: paths[q["challenge"]].append(q["errorPath"])
-        if any(sorted(v)!=[1,2,3] for v in paths.values()): errors.append(f"{node}: error paths must be 1,2,3 per challenge")
+        if node in STABLE_PATH_NODES:
+            if any(len(set(v)) != 1 for v in paths.values()):
+                errors.append(f"{node}: stable errorPath must match within each challenge")
+        elif any(sorted(v)!=[1,2,3] for v in paths.values()):
+            errors.append(f"{node}: error paths must be 1,2,3 per challenge")
     if total!=384: errors.append(f"total {total}, expected 384")
     if len(set(all_ids))!=len(all_ids): errors.append("question ids are not globally unique")
     if min(positions.values(),default=0)<40: errors.append(f"answer positions too concentrated: {positions}")

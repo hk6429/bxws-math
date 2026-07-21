@@ -21,30 +21,30 @@
       "type": "basic-mastery",
       "challenge": "8-1",
       "errorPath": 2,
-      "stem": "y 與 x 成正比，x=4 時 y=20。x=7 時 y 是多少？",
+      "stem": "x=3時y=12且成正比，x=5時y為何？",
       "options": [
-        "40",
-        "35",
-        "28",
-        "30"
+        "18",
+        "24",
+        "15",
+        "20"
       ],
-      "answer": 1,
-      "explanation": "固定比值是 5，所以 x=7 時 y=35。"
+      "answer": 3,
+      "explanation": "y÷x 的固定比值是 12÷3=4，所以 y=4x；x=5 時 y=20。"
     },
     {
       "id": "direct-proportion-bm-v1-3",
       "type": "basic-mastery",
       "challenge": "8-1",
       "errorPath": 3,
-      "stem": "y 與 x 成正比，x=6 時 y=18。x=10 時 y 是多少？",
+      "stem": "x=3時y=12且成正比，x=5時y為何？",
       "options": [
         "24",
-        "60",
-        "36",
-        "30"
+        "15",
+        "20",
+        "18"
       ],
-      "answer": 3,
-      "explanation": "固定比值是 3，所以 x=10 時 y=30。"
+      "answer": 2,
+      "explanation": "y÷x 的固定比值是 12÷3=4，所以 y=4x；x=5 時 y=20。"
     },
     {
       "id": "direct-proportion-bm-2",
@@ -68,12 +68,12 @@
       "errorPath": 2,
       "stem": "以下哪一個關係表示 y 與 x 成正比？",
       "options": [
+        "y=3÷x",
         "y=3x",
-        "y=3x+1",
         "y=x-3",
-        "y=3÷x"
+        "y=3x+1"
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "正比關係可寫成 y=kx（k 為固定且不為 0 的數），因此 y=3x 是正比關係。"
     },
     {
@@ -83,12 +83,12 @@
       "errorPath": 3,
       "stem": "哪個哪一個關係表示 y 與 x 成正比？",
       "options": [
-        "y=3÷x",
         "y=3x",
         "y=x-3",
-        "y=3x+1"
+        "y=3x+1",
+        "y=3÷x"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "正比關係可寫成 y=kx（k 為固定且不為 0 的數），因此 y=3x 是正比關係。"
     }
   ],
@@ -107,18 +107,18 @@
       "type": "concept-id",
       "challenge": "8-3",
       "errorPath": 2,
-      "statement": "若 y 與 x 成正比，x 變成 3 倍，y 也變成 3 倍。",
+      "statement": "正比時，x變2倍，y也變2倍。",
       "correctAnswer": true,
-      "explanation": "正比的 x、y 會乘相同倍數。"
+      "explanation": "正比可寫成 y=kx；x 乘以 2 時，y=k(2x)=2kx，也乘以 2。"
     },
     {
       "id": "direct-proportion-ci-v3-3",
       "type": "concept-id",
       "challenge": "8-3",
       "errorPath": 3,
-      "statement": "若 y 與 x 成正比，x 變成 4 倍，y 也變成 4 倍。",
+      "statement": "正比時，x變2倍，y也變2倍。",
       "correctAnswer": true,
-      "explanation": "正比的固定比值不變，x、y 會乘相同倍數。"
+      "explanation": "正比可寫成 y=kx；x 乘以 2 時，y=k(2x)=2kx，也乘以 2。"
     },
     {
       "id": "direct-proportion-ci-2",
@@ -134,18 +134,18 @@
       "type": "concept-id",
       "challenge": "8-4",
       "errorPath": 2,
-      "statement": "關係 y=3x+4 中，y 與 x 成正比。",
+      "statement": "關係 y=5x+2 中，y 與 x 成正比。",
       "correctAnswer": false,
-      "explanation": "正比須為 y=kx；固定加 4 後不是正比。"
+      "explanation": "正比必須是 y=kx，且 x=0 時 y=0。y=5x+2 多了固定的 2，不是正比。"
     },
     {
       "id": "direct-proportion-ci-v4-3",
       "type": "concept-id",
       "challenge": "8-4",
       "errorPath": 3,
-      "statement": "關係 y=7x-5 中，y 與 x 成正比。",
+      "statement": "關係 y=5x+2 中，y 與 x 成正比。",
       "correctAnswer": false,
-      "explanation": "正比須為 y=kx；固定減 5 後不是正比。"
+      "explanation": "正比必須是 y=kx，且 x=0 時 y=0。y=5x+2 多了固定的 2，不是正比。"
     }
   ],
   "errorDiagnosis": [
@@ -170,32 +170,32 @@
       "type": "error-diagnosis",
       "challenge": "8-5",
       "errorPath": 2,
-      "problem": "y 與 x 成正比，x=3 時 y=12，求 x=9 時的 y",
-      "wrongSolution": "小光因 x 增加 6，便算 y=12+6=18。",
+      "problem": "y 與 x 成正比，x=4 時 y=10，算出 x=8 時的 y",
+      "wrongSolution": "小光認為 x 增加 4，所以 y 也增加 4，得到 14。",
       "errorOptions": [
-        "正比時 y 不變",
-        "把倍數關係當增加同量",
-        "12+6 算錯",
-        "x 不可為 9"
+        "10+4 算錯",
+        "正比時 y 應保持不變",
+        "x 不可等於 8",
+        "把正比的倍數關係誤當成增加相同的數量"
       ],
-      "correctErrorIndex": 1,
-      "explanation": "x 變 3 倍，y 也變 3 倍，正確是 36。"
+      "correctErrorIndex": 3,
+      "explanation": "x 從 4 變 8 是原來的 2 倍，所以 y 也應是 10 的 2 倍，等於 20。"
     },
     {
       "id": "direct-proportion-ed-v5-3",
       "type": "error-diagnosis",
       "challenge": "8-5",
       "errorPath": 3,
-      "problem": "y 與 x 成正比，x=5 時 y=15，求 x=10 時的 y",
-      "wrongSolution": "小光因 x 增加 5，便算 y=15+5=20。",
+      "problem": "y 與 x 成正比，x=4 時 y=10，找出 x=8 時的 y",
+      "wrongSolution": "小光認為 x 增加 4，所以 y 也增加 4，得到 14。",
       "errorOptions": [
-        "15+5 算錯",
-        "把倍數關係當增加同量",
-        "x 不可為 10",
-        "正比時 y 不變"
+        "正比時 y 應保持不變",
+        "x 不可等於 8",
+        "把正比的倍數關係誤當成增加相同的數量",
+        "10+4 算錯"
       ],
-      "correctErrorIndex": 1,
-      "explanation": "x 變 2 倍，y 也變 2 倍，正確是 30。"
+      "correctErrorIndex": 2,
+      "explanation": "x 從 4 變 8 是原來的 2 倍，所以 y 也應是 10 的 2 倍，等於 20。"
     },
     {
       "id": "direct-proportion-ed-2",
@@ -218,32 +218,32 @@
       "type": "error-diagnosis",
       "challenge": "8-6",
       "errorPath": 2,
-      "problem": "判斷 x=1、2、4，y=5、10、21 是否成正比",
-      "wrongSolution": "小萱說 y 都增加，所以一定成正比。",
+      "problem": "判斷表格 x=1、2、3，y=4、8、13 是否為正比",
+      "wrongSolution": "小萱說 y 都在增加，所以一定成正比。",
       "errorOptions": [
-        "y 必須小於 x",
-        "x 不能不連續",
-        "正比只能兩組",
-        "只看增加，未檢查 y÷x 固定"
+        "正比只能有兩組資料",
+        "x 不能是連續整數",
+        "y 必須比 x 小",
+        "只看 y 增加，沒有檢查 y÷x 是否固定"
       ],
       "correctErrorIndex": 3,
-      "explanation": "第三組 21÷4 不等於 5，因此不成正比。"
+      "explanation": "前兩組 y÷x 都是 4，但第三組 13÷3 不等於 4，因此比值不固定，不成正比。"
     },
     {
       "id": "direct-proportion-ed-v6-3",
       "type": "error-diagnosis",
       "challenge": "8-6",
       "errorPath": 3,
-      "problem": "判斷 x=2、4、6，y=6、12、19 是否成正比",
-      "wrongSolution": "小萱說 y 都增加，所以一定成正比。",
+      "problem": "判斷表格 x=1、2、3，y=4、8、13 是否為正比",
+      "wrongSolution": "小萱說 y 都在增加，所以一定成正比。",
       "errorOptions": [
-        "y 必須小於 x",
-        "x 不能偶數",
-        "只看增加，未檢查 y÷x 固定",
-        "正比只能兩組"
+        "x 不能是連續整數",
+        "y 必須比 x 小",
+        "只看 y 增加，沒有檢查 y÷x 是否固定",
+        "正比只能有兩組資料"
       ],
       "correctErrorIndex": 2,
-      "explanation": "第三組 19÷6 不等於 3，因此不成正比。"
+      "explanation": "前兩組 y÷x 都是 4，但第三組 13÷3 不等於 4，因此比值不固定，不成正比。"
     }
   ],
   "contextApplication": [
@@ -271,12 +271,12 @@
       "scenario": "蘋果每公斤 60 元，總價 y（元）與重量 x（公斤）成正比。",
       "question": "買 2.5 公斤蘋果需付幾元？",
       "options": [
-        "120 元",
         "150 元",
         "180 元",
-        "240 元"
+        "240 元",
+        "120 元"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "y=60x，代入 x=2.5，得 y=60×2.5=150 元。"
     },
     {
@@ -288,8 +288,8 @@
       "question": "買 2.5 公斤蘋果需付幾元？",
       "options": [
         "180 元",
-        "120 元",
         "240 元",
+        "120 元",
         "150 元"
       ],
       "answer": 3,
@@ -319,12 +319,12 @@
       "scenario": "水龍頭流量固定，4 分鐘可裝 28 公升水。",
       "question": "照相同流量，9 分鐘可裝幾公升水？",
       "options": [
+        "252 公升",
         "56 公升",
         "33 公升",
-        "63 公升",
-        "252 公升"
+        "63 公升"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "每分鐘流量為 28÷4=7 公升，9 分鐘可裝 7×9=63 公升。"
     },
     {
@@ -335,12 +335,12 @@
       "scenario": "水龍頭流量固定，4 分鐘可裝 28 公升水。",
       "question": "照相同流量，9 分鐘可裝幾公升水？",
       "options": [
-        "63 公升",
         "56 公升",
-        "252 公升",
-        "33 公升"
+        "33 公升",
+        "63 公升",
+        "252 公升"
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "每分鐘流量為 28÷4=7 公升，9 分鐘可裝 7×9=63 公升。"
     }
   ]

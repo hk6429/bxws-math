@@ -23,10 +23,10 @@
       "errorPath": 2,
       "stem": "8時20°C、9時22°C、10時25°C，末段升幾度？",
       "options": [
-        "2°C",
-        "3°C",
         "7°C",
-        "5°C"
+        "3°C",
+        "5°C",
+        "2°C"
       ],
       "answer": 1,
       "explanation": "25-22=3°C。"
@@ -40,8 +40,8 @@
       "options": [
         "3°C",
         "5°C",
-        "7°C",
-        "2°C"
+        "2°C",
+        "7°C"
       ],
       "answer": 0,
       "explanation": "25-22=3°C。"
@@ -66,30 +66,30 @@
       "type": "basic-mastery",
       "challenge": "3-2",
       "errorPath": 2,
-      "stem": "四次測量值為 18、21、21、16。哪兩次間沒變化？",
+      "stem": "四次數值為12、15、15、11，哪段持平？",
       "options": [
-        "第 1、4 次",
-        "第 3、4 次",
         "第 1、2 次",
+        "第 3、4 次",
+        "第 1、4 次",
         "第 2、3 次"
       ],
       "answer": 3,
-      "explanation": "第 2、3 次都是 21，折線呈水平。"
+      "explanation": "第 2 次與第 3 次都是 15，兩點間的折線呈水平。"
     },
     {
       "id": "line-chart-reading-bm-v2-3",
       "type": "basic-mastery",
       "challenge": "3-2",
       "errorPath": 3,
-      "stem": "四次測量值為 9、9、13、17。哪兩次間沒變化？",
+      "stem": "四次數值為12、15、15、11，哪段持平？",
       "options": [
+        "第 3、4 次",
         "第 1、4 次",
-        "第 1、2 次",
         "第 2、3 次",
-        "第 3、4 次"
+        "第 1、2 次"
       ],
-      "answer": 1,
-      "explanation": "第 1、2 次都是 9，折線呈水平。"
+      "answer": 2,
+      "explanation": "第 2 次與第 3 次都是 15，兩點間的折線呈水平。"
     }
   ],
   "conceptId": [
@@ -134,18 +134,18 @@
       "type": "concept-id",
       "challenge": "3-4",
       "errorPath": 2,
-      "statement": "數值從 40 降到 32，表示 32 一定小於 0。",
+      "statement": "折線向下就表示數值一定小於 0。",
       "correctAnswer": false,
-      "explanation": "下降只表示後值較小；32 仍是正數。"
+      "explanation": "折線向下只表示後一個數值比前一個小，不代表數值小於 0。"
     },
     {
       "id": "line-chart-reading-ci-v4-3",
       "type": "concept-id",
       "challenge": "3-4",
       "errorPath": 3,
-      "statement": "數值從 18 降到 11，表示 11 是負數。",
+      "statement": "折線向下就表示數值一定小於 0。",
       "correctAnswer": false,
-      "explanation": "下降不代表小於 0；11 仍是正數。"
+      "explanation": "折線向下只表示後一個數值比前一個小，不代表數值小於 0。"
     }
   ],
   "errorDiagnosis": [
@@ -170,32 +170,32 @@
       "type": "error-diagnosis",
       "challenge": "3-5",
       "errorPath": 2,
-      "problem": "水量從週一 55 公升降到週二 47 公升",
-      "wrongSolution": "小文說水量增加 8 公升",
+      "problem": "水量從週一 40 公升降到週二 35 公升",
+      "wrongSolution": "小文說水量增加 5 公升",
       "errorOptions": [
         "把下降誤判為增加",
-        "單位換算錯",
-        "漏看資料點",
-        "減法算錯"
+        "減法算錯",
+        "漏看一個資料點",
+        "單位換算錯誤"
       ],
       "correctErrorIndex": 0,
-      "explanation": "47 比 55 少 8，應是下降 8 公升。"
+      "explanation": "35 比 40 少 5，因此是下降 5 公升。"
     },
     {
       "id": "line-chart-reading-ed-v5-3",
       "type": "error-diagnosis",
       "challenge": "3-5",
       "errorPath": 3,
-      "problem": "水量從週一 28 公升降到週二 19 公升",
-      "wrongSolution": "小文說水量增加 9 公升",
+      "problem": "水量從週一 40 公升降到週二 35 公升",
+      "wrongSolution": "小文說水量增加 5 公升",
       "errorOptions": [
-        "單位換算錯",
-        "漏看資料點",
-        "把下降誤判為增加",
-        "減法算錯"
+        "減法算錯",
+        "漏看一個資料點",
+        "單位換算錯誤",
+        "把下降誤判為增加"
       ],
-      "correctErrorIndex": 2,
-      "explanation": "19 比 28 少 9，應是下降 9 公升。"
+      "correctErrorIndex": 3,
+      "explanation": "35 比 40 少 5，因此是下降 5 公升。"
     },
     {
       "id": "line-chart-reading-ed-2",
@@ -218,32 +218,32 @@
       "type": "error-diagnosis",
       "challenge": "3-6",
       "errorPath": 2,
-      "problem": "縱軸每格 5 公分，資料點位於第 8 格",
-      "wrongSolution": "小宇讀成 13 公分",
+      "problem": "折線圖縱軸從 0 公分起，每格代表 10 公分，資料點位於第 7 格",
+      "wrongSolution": "小宇讀成 17 公分",
       "errorOptions": [
-        "應算 8-5",
-        "把格數與每格數量相加",
-        "把 8 看成 1",
-        "折線圖不能讀值"
+        "把 7 看成 1",
+        "折線圖不能讀數值",
+        "應該用 10-7",
+        "把格數與每格數量相加，應該相乘"
       ],
-      "correctErrorIndex": 1,
-      "explanation": "應相乘：5×8=40 公分。"
+      "correctErrorIndex": 3,
+      "explanation": "縱軸從 0 起，每格 10 公分，第 7 格表示 10×7=70 公分。"
     },
     {
       "id": "line-chart-reading-ed-v6-3",
       "type": "error-diagnosis",
       "challenge": "3-6",
       "errorPath": 3,
-      "problem": "縱軸每格 20 公分，資料點位於第 6 格",
-      "wrongSolution": "小宇讀成 26 公分",
+      "problem": "折線圖縱軸從 0 公分起，每格代表 10 公分，資料點位於第 7 格",
+      "wrongSolution": "小宇讀成 17 公分",
       "errorOptions": [
-        "把 6 看成 1",
-        "應算 20-6",
-        "折線圖不能讀值",
-        "把格數與每格數量相加"
+        "折線圖不能讀數值",
+        "應該用 10-7",
+        "把格數與每格數量相加，應該相乘",
+        "把 7 看成 1"
       ],
-      "correctErrorIndex": 3,
-      "explanation": "應相乘：20×6=120 公分。"
+      "correctErrorIndex": 2,
+      "explanation": "縱軸從 0 起，每格 10 公分，第 7 格表示 10×7=70 公分。"
     }
   ],
   "contextApplication": [
@@ -271,12 +271,12 @@
       "scenario": "小宇一週跑步距離依序為 2、3、5、4、5 公里。",
       "question": "哪一天到隔天的增加量最大？",
       "options": [
-        "第 1 天到第 2 天",
         "第 2 天到第 3 天",
-        "第 4 天到第 5 天",
-        "第 3 天到第 4 天"
+        "第 1 天到第 2 天",
+        "第 3 天到第 4 天",
+        "第 4 天到第 5 天"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "相鄰變化量依序為 +1、+2、-1、+1；最大增加量為 2 公里，出現在第 2 天到第 3 天。"
     },
     {
@@ -287,12 +287,12 @@
       "scenario": "小恩一週跑步距離依序為 2、3、5、4、5 公里。",
       "question": "哪一天到隔天的增加量最大？",
       "options": [
-        "第 2 天到第 3 天",
         "第 1 天到第 2 天",
+        "第 3 天到第 4 天",
         "第 4 天到第 5 天",
-        "第 3 天到第 4 天"
+        "第 2 天到第 3 天"
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "相鄰變化量依序為 +1、+2、-1、+1；最大增加量為 2 公里，出現在第 2 天到第 3 天。"
     },
     {
@@ -320,9 +320,9 @@
       "question": "以下敘述何者正確？",
       "options": [
         "四週持續上升",
-        "第 2 週比第 1 週高 3 公尺",
+        "第 1 週最低",
         "第 3 週到第 4 週持平",
-        "第 1 週最低"
+        "第 2 週比第 1 週高 3 公尺"
       ],
       "answer": 2,
       "explanation": "第 3、4 週都是 75 公尺，所以這段時間水位持平。"
@@ -335,12 +335,12 @@
       "scenario": "水庫水位四週依序為 82、79、75、75 公尺。",
       "question": "哪個敘述何者正確？",
       "options": [
-        "第 3 週到第 4 週持平",
         "第 1 週最低",
-        "四週持續上升",
-        "第 2 週比第 1 週高 3 公尺"
+        "第 3 週到第 4 週持平",
+        "第 2 週比第 1 週高 3 公尺",
+        "四週持續上升"
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "第 3、4 週都是 75 公尺，所以這段時間水位持平。"
     }
   ]

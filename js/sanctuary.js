@@ -47,7 +47,9 @@ export function decorationById(id) {
 function masteredCountByStrand(tree, progress) {
   const counts = {};
   (tree?.strands ?? []).forEach((strand) => {
-    const nodes = strand.nodes ?? [];
+    // 分母只算「目前已上線、真的能精熟」的節點——contentPending 節點永遠無法 mastered，
+    // 若算進分母會讓整座神殿的比例永遠達不到 100%，頂級裝飾對任何人永久鎖死。
+    const nodes = (strand.nodes ?? []).filter((n) => !n.contentPending);
     const mastered = nodes.filter((n) => isNodeMastered(n.id, tree, progress)).length;
     counts[strand.id] = { mastered, total: nodes.length };
   });

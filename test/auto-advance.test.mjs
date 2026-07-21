@@ -14,7 +14,8 @@ test("疾行模式（sprint）答對才自動跳題，答錯仍停留看眉批",
   const app = await readFile(new URL("../js/app.js", import.meta.url), "utf8");
   // 自動跳只綁在 sprint + isCorrect + node 模式，且經由統一的 advanceQuestion 出口
   assert.match(app, /session\.strategy === "sprint" && isCorrect && session\.kind === "node"/);
-  assert.match(app, /scheduleTimer\(\(\) => advanceQuestion\(\), SPRINT_AUTONEXT_MS\)/);
+  // 排程時捕捉當下題號，玩家已手動前進則失效，避免跳過一題（競態防護）
+  assert.match(app, /scheduleTimer\(\(\) => \{ if \(session\.index === scheduledIndex\) advanceQuestion\(\); \}, SPRINT_AUTONEXT_MS\)/);
   // 最後一題不自動跳，等使用者按「看成果」
   assert.match(app, /session\.index < session\.queue\.length - 1/);
 });

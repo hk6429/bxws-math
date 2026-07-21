@@ -1025,7 +1025,6 @@ main { padding: 24px; max-width: 960px; margin: 0 auto; }
 }
 .q-next:active { transform: translate(2px, 3px); box-shadow: none; }
 .q-next-secondary { opacity: 0.72; }
-.today-first-step { width: min(100%, 32rem); margin: 0 auto 1rem; display: block; }
 .dash-ink.stardust-30 { box-shadow: inset 0 0 0 2px rgba(242, 201, 76, 0.55); }
 .dash-ink.stardust-100 { box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.8); }
 
@@ -4083,6 +4082,46 @@ input[type="radio"] { accent-color: var(--star-gold); }
 .accessibility-settings-panel input[type="radio"],
 .accessibility-settings-panel input[type="checkbox"] {
   width: 24px; height: 24px; accent-color: var(--star-gold, #d6b25e);
+}
+
+/* 給家長與老師：頁尾透明度說明 + 一鍵清除本機資料 */
+.site-footer { max-width: 52rem; margin: 2.5rem auto 3rem; padding: 0 1rem; }
+.parents-note { border: 1px solid rgba(214, 178, 94, 0.28); border-radius: 12px;
+  background: rgba(20, 24, 38, 0.35); padding: 0.5rem 1rem; }
+.parents-note > summary { cursor: pointer; font-weight: 700; color: var(--star-gold, #d6b25e);
+  padding: 0.6rem 0.2rem; min-height: 44px; display: flex; align-items: center; list-style: revert; }
+.parents-note-body { font-size: 0.92rem; line-height: 1.7; opacity: 0.9; padding-bottom: 0.6rem; }
+.parents-note-body ul { margin: 0.6rem 0; padding-left: 1.2rem; }
+.parents-note-body li { margin: 0.5rem 0; }
+.parents-clear-btn { margin-top: 0.6rem; padding: 0.6rem 1rem; min-height: 44px;
+  border: 1px solid rgba(214, 100, 100, 0.5); border-radius: 10px;
+  background: rgba(120, 40, 40, 0.25); color: #f0c9c9; cursor: pointer; font: inherit; }
+.parents-clear-btn:hover { background: rgba(150, 50, 50, 0.35); }
+.parents-clear-note { margin-top: 0.5rem; color: var(--star-gold, #d6b25e); min-height: 1.2rem; }
+
+/* Boss 勝利慶祝：金光爆閃 + 星屑迸射 */
+.boss-outcome.boss-victory-burst { animation: boss-victory-flash 0.9s ease-out 1; position: relative; overflow: hidden; }
+@keyframes boss-victory-flash {
+  0% { box-shadow: 0 0 0 0 rgba(255, 236, 170, 0); }
+  25% { box-shadow: 0 0 40px 12px rgba(255, 236, 170, 0.85); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 236, 170, 0); }
+}
+.boss-victory-sparks { position: absolute; inset: 0; pointer-events: none; display: flex;
+  justify-content: space-around; align-items: flex-start; }
+.boss-victory-sparks span { font-size: 1.4rem; opacity: 0; animation: boss-spark-rise 1.1s ease-out 1; }
+.boss-victory-sparks span:nth-child(2) { animation-delay: 0.08s; }
+.boss-victory-sparks span:nth-child(3) { animation-delay: 0.16s; }
+.boss-victory-sparks span:nth-child(4) { animation-delay: 0.24s; }
+.boss-victory-sparks span:nth-child(5) { animation-delay: 0.32s; }
+@keyframes boss-spark-rise {
+  0% { opacity: 0; transform: translateY(30px) scale(0.6); }
+  40% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-40px) scale(1.2); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .boss-outcome.boss-victory-burst,
+  .boss-victory-sparks span { animation: none; }
+  .boss-victory-sparks span { opacity: 0.9; }
 }
 
 /* U1 策略頁：返回鍵 + 一鍵直接開始 + 白話別名 */

@@ -38,10 +38,10 @@
       "errorPath": 3,
       "stem": "規律：□、○、□、○、□、？",
       "options": [
-        "☆",
+        "□",
         "○",
         "△",
-        "□"
+        "☆"
       ],
       "answer": 1,
       "explanation": "最短單位是□、○。"
@@ -69,11 +69,11 @@
       "stem": "3、8 重複排列，第12個數是？",
       "options": [
         "3",
+        "5",
         "8",
-        "12",
-        "5"
+        "12"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "12除以2餘0，取每組第2個。"
     },
     {
@@ -83,12 +83,12 @@
       "errorPath": 3,
       "stem": "甲乙丙重複排列，第11個是？",
       "options": [
-        "乙",
-        "丁",
         "甲",
-        "丙"
+        "丙",
+        "丁",
+        "乙"
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "11除以3餘2，取每組第2個。"
     }
   ],
@@ -173,12 +173,12 @@
       "problem": "求甲乙丙循環的第7個",
       "wrongSolution": "小光答丙。",
       "errorOptions": [
-        "應取乙",
         "餘1應取甲",
+        "除法不可用",
         "循環有2項",
-        "除法不可用"
+        "應取乙"
       ],
-      "correctErrorIndex": 1,
+      "correctErrorIndex": 0,
       "explanation": "7除以3餘1，所以是甲。"
     },
     {
@@ -189,12 +189,12 @@
       "problem": "求紅藍循環的第9個",
       "wrongSolution": "小芸答藍。",
       "errorOptions": [
-        "循環有3項",
-        "9不能除2",
         "應取綠",
-        "餘1應取紅"
+        "餘1應取紅",
+        "循環有3項",
+        "9不能除2"
       ],
-      "correctErrorIndex": 3,
+      "correctErrorIndex": 1,
       "explanation": "9除以2餘1，所以是紅。"
     },
     {
@@ -222,11 +222,11 @@
       "wrongSolution": "小杰答紅藍。",
       "errorOptions": [
         "多寫一個藍",
+        "顏色不能循環",
         "漏掉第二個紅",
-        "應為藍紅",
-        "顏色不能循環"
+        "應為藍紅"
       ],
-      "correctErrorIndex": 1,
+      "correctErrorIndex": 2,
       "explanation": "完整單位是紅、紅、藍。"
     },
     {
@@ -237,12 +237,12 @@
       "problem": "找甲乙乙的最短單位",
       "wrongSolution": "小安答甲乙。",
       "errorOptions": [
-        "漏掉第二個乙",
-        "多寫一個甲",
         "應為乙甲",
-        "不能用文字"
+        "不能用文字",
+        "多寫一個甲",
+        "漏掉第二個乙"
       ],
-      "correctErrorIndex": 0,
+      "correctErrorIndex": 3,
       "explanation": "完整單位是甲、乙、乙。"
     }
   ],
@@ -271,12 +271,12 @@
       "scenario": "彩旗依紅、黃、綠循環懸掛。",
       "question": "第17面是什麼顏色？",
       "options": [
-        "藍",
         "黃",
         "紅",
-        "綠"
+        "綠",
+        "藍"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "17除以3餘2。"
     },
     {
@@ -287,12 +287,12 @@
       "scenario": "貼紙依星、月、雲循環黏貼。",
       "question": "第20張是哪一種？",
       "options": [
+        "星",
         "月",
         "雲",
-        "太陽",
-        "星"
+        "太陽"
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "20除以3餘2。"
     },
     {
@@ -319,12 +319,12 @@
       "scenario": "燈號依綠、黃、紅循環。",
       "question": "黃燈後面是哪一種燈？",
       "options": [
-        "同時亮",
-        "紅燈",
         "綠燈",
-        "黃燈"
+        "黃燈",
+        "紅燈",
+        "同時亮"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "依循環順序，黃後是紅。"
     },
     {
@@ -335,12 +335,12 @@
       "scenario": "值日依甲、乙、丙循環。",
       "question": "丙組後面輪到哪一組？",
       "options": [
-        "甲組",
-        "丁組",
+        "乙組",
         "丙組",
-        "乙組"
+        "丁組",
+        "甲組"
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "一輪結束後回到甲組。"
     }
   ]

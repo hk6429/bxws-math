@@ -154,7 +154,8 @@ export function lockedNodeMessage(node, tree, progress, nodesById) {
   if (node.contentPending) return `「${node.name}」題庫尚未完成，現在還不能進入`;
   if (!node.prereq || node.prereq.length === 0) return "";
   const names = node.prereq
-    .filter((id) => !isNodeMastered(id, tree, progress))
+    // 不把「未上線的前置」列進解鎖條件——否則會叫學生去精通一個進不去的節點（自相矛盾）
+    .filter((id) => !nodesById[id]?.contentPending && !isNodeMastered(id, tree, progress))
     .map((id) => `「${nodesById[id]?.name ?? id}」`);
   return names.length > 0 ? `先精通${names.join("、")}才能解鎖` : "";
 }

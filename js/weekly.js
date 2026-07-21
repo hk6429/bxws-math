@@ -1,6 +1,6 @@
 import { store } from "./store.js";
 import { flattenBank, loadQuestionBank } from "./quiz-loader.js";
-import { getPlayerId, getPlayerName } from "./leaderboard.js";
+import { getPlayerId, getPlayerName, getDeviceToken, syncDeviceToken } from "./leaderboard.js";
 
 // 每週大師盃：ISO 週數當種子，全班同一套題；結算產生可互報的戰績碼（無後端天梯）
 
@@ -200,6 +200,7 @@ export async function syncWeeklyResultToServer(record) {
         roomCode,
         week: isoWeekKey(),
         deviceId: getPlayerId(),
+        authToken: getDeviceToken(),
         name: getPlayerName() || "匿名",
         pct: record.pct,
         totalSec: record.totalSec,
@@ -208,7 +209,7 @@ export async function syncWeeklyResultToServer(record) {
       }),
     });
     if (!res.ok) return { ok: false };
-    return await res.json();
+    return syncDeviceToken(await res.json());
   } catch {
     return { ok: false, offline: true };
   }

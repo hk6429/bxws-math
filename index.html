@@ -40,6 +40,7 @@
           </fieldset>
           <label class="setting-check"><input id="setting-sprint-warning" type="checkbox">顯示疾筆倒數紅色閃動警示</label>
           <label class="setting-check"><input id="setting-combo-break" type="checkbox">顯示連詠中斷視覺效果</label>
+          <label class="setting-check"><input id="setting-haptics" type="checkbox">開啟手機震動回饋（觸覺敏感可關閉）</label>
         </div>
       </details>
     </nav>
@@ -99,6 +100,23 @@
       <div id="arena-content"></div>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <details class="parents-note" id="parents-note">
+      <summary>給家長與老師</summary>
+      <div class="parents-note-body">
+        <p><strong>這是一個給孩子練數學的遊戲，沒有帳號、沒有廣告、沒有內購。</strong></p>
+        <ul>
+          <li><strong>資料只存在這台裝置</strong>：所有學習進度、收藏與紀錄都存在瀏覽器本機（localStorage），我們的伺服器不保存孩子的個人學習資料。換裝置可用儀表板的「神使行囊」匯出／匯入。</li>
+          <li><strong>沒有真實金流</strong>：遊戲裡的「星屑」「星靈」「市集」全是虛擬的，且獎勵綁在「真的答對、真的精熟」上，不是登入天數或點擊次數。</li>
+          <li><strong>連續紀錄與排行榜的設計</strong>：連續紀錄採「只加不罰、斷了不清零」，不製造每日打卡壓力；競技場／班級排行榜是同學互相回報、未經嚴格驗證，僅供老師與家長參考。倒數警示與手機震動都可在右上角「Aa」設定關閉。</li>
+          <li><strong>計數器只記造訪數</strong>：頁面右下的訪客計數只統計造訪次數，不記錄任何個人資訊。</li>
+        </ul>
+        <button type="button" id="clear-local-data" class="parents-clear-btn">清除這台裝置上的所有學習資料</button>
+        <p class="parents-clear-note" id="clear-local-data-note" role="status"></p>
+      </div>
+    </details>
+  </footer>
 
   <div id="tip-bubble-root"></div>
   <img src="assets/deco/quill.png" class="quill-deco" alt="" loading="lazy" decoding="async" />

@@ -62,7 +62,13 @@ export function isNodeUnlocked(node, tree, progress = getProgress()) {
   if (node.contentPending) return false;
   if (progress[node.id]?.diagnosticUnlocked === true) return true;
   if (!node.prereq || node.prereq.length === 0) return true;
-  return node.prereq.every((id) => isNodeMastered(id, tree, progress));
+  // 未上線（contentPending）的前置節點永遠無法精熟，不應把一個已上線、有題庫的節點卡成死路——
+  // 視為「暫不阻擋」，等它日後真的上線再自動納入解鎖條件。
+  const pendingIds = new Set((tree?.strands ?? []).flatMap((s) => s.nodes ?? [])
+    .filter((n) => n.contentPending).map((n) => n.id));
+  const blocking = node.prereq.filter((id) => !pendingIds.has(id));
+  if (blocking.length === 0) return true;
+  return blocking.every((id) => isNodeMastered(id, tree, progress));
 }
 
 export function nodeState(node, tree, progress = getProgress()) {

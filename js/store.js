@@ -16,8 +16,8 @@ const KEY_TYPES = {
   sanctuaryLayout: "object", sanctuaryInscription: "string",
   arenaBest: "object", arenaRoom: "nullable-string", arenaStrand: "nullable-string",
   marketP2PDisabled: "boolean", npcBought: "object",
-  schemaVersion: "number", seenTip: "boolean", sfxOn: "boolean", spiritBook: "object", equippedSpirits: "array", stardustSpent: "number", stardustBonus: "number",
-  stardustMilestones: "object",
+  schemaVersion: "number", seenTip: "boolean", sfxOn: "boolean", hapticsOn: "boolean", spiritBook: "object", equippedSpirits: "array", stardustSpent: "number", stardustBonus: "number",
+  stardustMilestones: "object", fusionRewarded: "object",
 };
 
 export const CURRENT_SCHEMA_VERSION = 2;
@@ -178,23 +178,30 @@ function activityDateKey(now) {
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 }
 
-function dateSerial(key) {
-  const [year, month, day] = key.split("-").map(Number);
-  return Math.floor(Date.UTC(year, month - 1, day) / 86400000);
-}
-
 export function getActivityStreak() {
   return store.read("activityStreak", { count: 0, lastDate: null });
 }
 
+// 累計制（非連續制）：每個「有練習的新一天」就 +1，中斷不歸零。
+// 對國小生用「累計練習 N 天」比「連續 N 天」友善——請假一天不會前功盡棄，不製造 streak 焦慮。
 export function recordActivityStreak(now = Date.now()) {
   const today = activityDateKey(now);
   const current = getActivityStreak();
   if (current.lastDate === today) return current;
-  const consecutive = current.lastDate && dateSerial(today) - dateSerial(current.lastDate) === 1;
-  const next = { count: consecutive ? current.count + 1 : 1, lastDate: today };
+  const next = { count: (current.count ?? 0) + 1, lastDate: today };
   store.write("activityStreak", next);
   return next;
+}
+
+// 家長／老師可一鍵清除這台裝置上的所有本機學習資料（透明度＋可控性）
+export function clearNamespace(storage = localStorage) {
+  const keys = [];
+  for (let index = 0; index < storage.length; index += 1) {
+    const key = storage.key(index);
+    if (key?.startsWith(NS)) keys.push(key);
+  }
+  keys.forEach((key) => storage.removeItem?.(key));
+  return keys.length;
 }
 
 export function exportNamespace(storage = localStorage) {

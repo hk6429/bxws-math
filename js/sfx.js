@@ -12,6 +12,16 @@ export function setSfxOn(on) {
   if (on) ensureCtx();
 }
 
+// 觸覺回饋（手機震動）與音效分開開關：對觸覺敏感／感覺統合的孩子，震動可能是無法規避的
+// 負向刺激，讓他們能只關震動、保留音效（反之亦然）。預設開啟。
+export function areHapticsOn() {
+  return store.read("hapticsOn", true);
+}
+
+export function setHapticsOn(on) {
+  store.write("hapticsOn", !!on);
+}
+
 function ensureCtx() {
   if (!ctx) {
     const AC = window.AudioContext || window.webkitAudioContext;
@@ -58,6 +68,7 @@ function noiseBurst({ dur = 0.09, gain = 0.22, delay = 0 } = {}) {
 }
 
 function buzz(pattern) {
+  if (!areHapticsOn()) return;
   navigator.vibrate?.(pattern);
 }
 
@@ -74,7 +85,7 @@ export const sfx = {
   wrong() {
     if (!isSfxOn()) return;
     tone(150, { dur: 0.22, type: "sine", gain: 0.14 });
-    buzz([50, 40, 50]);
+    buzz(40); // 溫和單次，不用三連震動當懲罰
   },
   stamp() {
     if (!isSfxOn()) return;

@@ -9,12 +9,12 @@ expected=(
   geometry-shapes-solids geometry-symmetry
 )
 
-[[ $(find "$asset_dir" -maxdepth 1 -type f -name 'geometry-*.png' | wc -l | tr -d ' ') == 10 ]]
+[[ $(find "$asset_dir" -maxdepth 1 -type f -name 'geometry-*.webp' | wc -l | tr -d ' ') == 10 ]]
 grep -q 'sketch pencil-line-art' "$root/scripts/generate-p3-geometry.sh"
 grep -q '禁止高飽和糖果色' "$root/scripts/generate-p3-geometry.sh"
 
 for id in "${expected[@]}"; do
-  file="$asset_dir/$id.png"
+  file="$asset_dir/$id.webp"
   [[ -s $file ]]
   ffmpeg -v error -i "$file" -f rawvideo -pix_fmt rgba - \
     | perl -e '

@@ -143,8 +143,13 @@ function expectedChallenges(attempts, node) {
   return Array.from({ length: count }, (_, index) => `${prefix}${index + 1}`);
 }
 
+// 精熟計分要排除的「非乾淨證據」：先備快篩、導師安撫題、慢筆同題重描
+const isScoredAttempt = (attempt) => attempt.prereqQuickCheck !== true
+  && attempt.coachingAttempt !== true
+  && attempt.retryAttempt !== true;
+
 export function activeErrorLocks(attempts = []) {
-  const relevant = attempts.filter((attempt) => attempt.prereqQuickCheck !== true);
+  const relevant = attempts.filter(isScoredAttempt);
   if (!relevant.some((attempt) => attempt.challenge)) return [];
   const window = relevant.slice(-10);
   const pathHits = new Map();
@@ -181,7 +186,7 @@ export function prereqQuickCheckPassed(attempts = [], errorPath, prereqNodeId) {
 
 export function evaluateMastery(attempts = [], node = {}, threshold, alreadyMastered = false) {
   const resolvedThreshold = masteryThresholdFor(node, threshold);
-  const scoredAttempts = attempts.filter((attempt) => attempt.prereqQuickCheck !== true);
+  const scoredAttempts = attempts.filter(isScoredAttempt);
   const window = scoredAttempts.slice(-10);
   const correctCount = window.filter((attempt) => attempt.correct).length;
   const accuracy = window.length === 0 ? 0 : correctCount / window.length;
@@ -327,7 +332,8 @@ export function prioritizeBasicWarmup(sequence = [], candidates = sequence, limi
 }
 
 export function buildAdaptiveSequence(questions, attempts = [], limit = 8, random = Math.random, node = {}) {
-  const recent = attempts.slice(-10);
+  // 難度自適應只看乾淨作答：安撫題／同題重描不能拉高「近期答對率」，否則會掩蓋真實掙扎、把難度反推高
+  const recent = attempts.filter(isScoredAttempt).slice(-10);
   const accuracy = recent.length === 0
     ? 0
     : recent.filter((attempt) => attempt.correct).length / recent.length;

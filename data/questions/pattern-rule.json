@@ -21,30 +21,30 @@
       "type": "basic-mastery",
       "challenge": "4-1",
       "errorPath": 2,
-      "stem": "數列 3、7、11、15、……的第 n 項是哪個式子？",
+      "stem": "數列 6、11、16、21、……的第 n 項可以用哪個式子表示？",
       "options": [
-        "4n-1",
-        "4n+1",
-        "n+3",
-        "3n"
+        "n+5",
+        "5n+1",
+        "6n-1",
+        "5n"
       ],
-      "answer": 0,
-      "explanation": "第 n 項為 4n-1，首項是 3，公差是 4。"
+      "answer": 1,
+      "explanation": "每項比項次的 5 倍多 1；n=1 時 5×1+1=6，且每增加一項就增加 5。"
     },
     {
       "id": "pattern-rule-bm-v1-3",
       "type": "basic-mastery",
       "challenge": "4-1",
       "errorPath": 3,
-      "stem": "數列 8、14、20、26、……的第 n 項是哪個式子？",
+      "stem": "數列 6、11、16、21、……的第 n 項可以用哪個式子表示？",
       "options": [
-        "8n-2",
-        "n+6",
-        "6n",
-        "6n+2"
+        "5n+1",
+        "6n-1",
+        "5n",
+        "n+5"
       ],
-      "answer": 3,
-      "explanation": "第 n 項為 6n+2，首項是 8，公差是 6。"
+      "answer": 0,
+      "explanation": "每項比項次的 5 倍多 1；n=1 時 5×1+1=6，且每增加一項就增加 5。"
     },
     {
       "id": "pattern-rule-bm-2",
@@ -66,30 +66,30 @@
       "type": "basic-mastery",
       "challenge": "4-2",
       "errorPath": 2,
-      "stem": "某規律第 n 項是 5n-1，第 6 項是多少？",
+      "stem": "某規律的第 n 項是 3n+2，第 7 項是幾？",
       "options": [
-        "30",
-        "29",
-        "24",
-        "34"
+        "23",
+        "19",
+        "21",
+        "27"
       ],
-      "answer": 1,
-      "explanation": "代入 n=6：5×6-1=29。"
+      "answer": 0,
+      "explanation": "把 n=7 代入：3×7+2=23。"
     },
     {
       "id": "pattern-rule-bm-v2-3",
       "type": "basic-mastery",
       "challenge": "4-2",
       "errorPath": 3,
-      "stem": "某規律第 n 項是 2n+7，第 8 項是多少？",
+      "stem": "某規律的第 n 項是 3n+2，第 7 項是幾？",
       "options": [
-        "23",
-        "16",
+        "19",
         "21",
-        "30"
+        "27",
+        "23"
       ],
-      "answer": 0,
-      "explanation": "代入 n=8：2×8+7=23。"
+      "answer": 3,
+      "explanation": "把 n=7 代入：3×7+2=23。"
     }
   ],
   "conceptId": [
@@ -134,18 +134,18 @@
       "type": "concept-id",
       "challenge": "4-4",
       "errorPath": 2,
-      "statement": "數列 5、9、13、17、……的第 n 項是 4n。",
+      "statement": "數列 4、7、10、13、……的第 n 項是 3n。",
       "correctAnswer": false,
-      "explanation": "4n 各項都少 1；正確式子是 4n+1。"
+      "explanation": "3n 會得到 3、6、9、12，均少 1；正確式子是 3n+1。"
     },
     {
       "id": "pattern-rule-ci-v4-3",
       "type": "concept-id",
       "challenge": "4-4",
       "errorPath": 3,
-      "statement": "數列 2、7、12、17、……的第 n 項是 5n。",
+      "statement": "數列 4、7、10、13、……的第 n 項是 3n。",
       "correctAnswer": false,
-      "explanation": "5n 不符合首項；正確式子是 5n-3。"
+      "explanation": "3n 會得到 3、6、9、12，均少 1；正確式子是 3n+1。"
     }
   ],
   "errorDiagnosis": [
@@ -170,32 +170,32 @@
       "type": "error-diagnosis",
       "challenge": "4-5",
       "errorPath": 2,
-      "problem": "已知第 n 項是 5n-2，求第 4 項",
-      "wrongSolution": "小傑算成 5×(4-2)=10。",
+      "problem": "已知第 n 項是 4n-1，算出第 5 項",
+      "wrongSolution": "小傑算成 4×(5-1)=16。",
       "errorOptions": [
-        "把 n 代成 5",
-        "把 5n-2 看成 5(n-2)",
-        "不能代 n=4",
-        "乘法算錯"
+        "乘法算錯",
+        "把 4n-1 誤看成 4(n-1)",
+        "把 n 代成 4",
+        "第 5 項不能代入 n=5"
       ],
       "correctErrorIndex": 1,
-      "explanation": "應算 5×4-2=18，不能先算 4-2。"
+      "explanation": "4n-1 表示先算 4×n 再減 1；代入 n=5 得 4×5-1=19。"
     },
     {
       "id": "pattern-rule-ed-v5-3",
       "type": "error-diagnosis",
       "challenge": "4-5",
       "errorPath": 3,
-      "problem": "已知第 n 項是 6n-2，求第 5 項",
-      "wrongSolution": "小傑算成 6×(5-2)=18。",
+      "problem": "已知第 n 項是 4n-1，找出第 5 項",
+      "wrongSolution": "小傑算成 4×(5-1)=16。",
       "errorOptions": [
-        "不能代 n=5",
-        "把 6n-2 看成 6(n-2)",
-        "乘法算錯",
-        "把 n 代成 6"
+        "把 4n-1 誤看成 4(n-1)",
+        "把 n 代成 4",
+        "第 5 項不能代入 n=5",
+        "乘法算錯"
       ],
-      "correctErrorIndex": 1,
-      "explanation": "應算 6×5-2=28，不能先算 5-2。"
+      "correctErrorIndex": 0,
+      "explanation": "4n-1 表示先算 4×n 再減 1；代入 n=5 得 4×5-1=19。"
     },
     {
       "id": "pattern-rule-ed-2",
@@ -218,32 +218,32 @@
       "type": "error-diagnosis",
       "challenge": "4-6",
       "errorPath": 2,
-      "problem": "找出 5、8、11、14、……的第 n 項規則",
-      "wrongSolution": "小柔寫成 3n+5。",
+      "problem": "找出 2、6、10、14、……的第 n 項規則",
+      "wrongSolution": "小柔寫成 4n+2。",
       "errorOptions": [
-        "增加量應是 5",
-        "n 前不能有係數",
-        "應寫 n+3",
-        "忽略首項位置；3n+5 首項是 8"
+        "n 前面不能有係數",
+        "應寫成 n+4",
+        "增加量應是 2",
+        "把第 1 項的對應位置忽略了；4n+2 的第 "
       ],
       "correctErrorIndex": 3,
-      "explanation": "每次加 3，首項是 5；正確規則是 3n+2。"
+      "explanation": "每次增加 4，但第 1 項是 2。4n-2 才會在 n=1 時得到 2，後續得到 6、10、14。"
     },
     {
       "id": "pattern-rule-ed-v6-3",
       "type": "error-diagnosis",
       "challenge": "4-6",
       "errorPath": 3,
-      "problem": "找出 1、6、11、16、……的第 n 項規則",
-      "wrongSolution": "小柔寫成 5n+1。",
+      "problem": "找出 2、6、10、14、……的第 n 項規則",
+      "wrongSolution": "小柔寫成 4n+2。",
       "errorOptions": [
-        "忽略首項位置；5n+1 首項是 6",
-        "應寫 n+5",
-        "增加量應是 1",
-        "n 前不能有係數"
+        "應寫成 n+4",
+        "增加量應是 2",
+        "把第 1 項的對應位置忽略了；4n+2 的第 ",
+        "n 前面不能有係數"
       ],
-      "correctErrorIndex": 0,
-      "explanation": "每次加 5，首項是 1；正確規則是 5n-4。"
+      "correctErrorIndex": 2,
+      "explanation": "每次增加 4，但第 1 項是 2。4n-2 才會在 n=1 時得到 2，後續得到 6、10、14。"
     }
   ],
   "contextApplication": [
@@ -272,11 +272,11 @@
       "question": "停車費可用哪個式子表示？",
       "options": [
         "20+n+30",
-        "20n+30",
         "50n",
+        "20n+30",
         "30n+20"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "n 小時的加收費是 20n 元，再加固定基本費 30 元，共 20n+30 元。"
     },
     {
@@ -287,10 +287,10 @@
       "scenario": "停車場收費為基本費 30 元，再按停車時數 n 加收每小時 20 元。",
       "question": "停車費可用哪個式子表示？",
       "options": [
-        "30n+20",
+        "50n",
         "20n+30",
-        "20+n+30",
-        "50n"
+        "30n+20",
+        "20+n+30"
       ],
       "answer": 1,
       "explanation": "n 小時的加收費是 20n 元，再加固定基本費 30 元，共 20n+30 元。"
@@ -320,11 +320,11 @@
       "question": "排 n 個正方形需要幾根火柴棒？",
       "options": [
         "3n",
+        "4n-1",
         "4n",
-        "3n+1",
-        "4n-1"
+        "3n+1"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "第 1 個用 4 根，此後增加 n-1 次，每次 3 根：4+3(n-1)=3n+1。"
     },
     {
@@ -335,12 +335,12 @@
       "scenario": "正方形拼圖排成一直線：1 個正方形用 4 根火柴棒，之後每增加 1 個正方形只需再加 3 根。",
       "question": "排 n 個正方形需要幾根火柴棒？",
       "options": [
-        "3n+1",
         "4n-1",
         "4n",
+        "3n+1",
         "3n"
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "第 1 個用 4 根，此後增加 n-1 次，每次 3 根：4+3(n-1)=3n+1。"
     }
   ]

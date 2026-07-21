@@ -1,4 +1,4 @@
-import { json, normStr, clampInt, assessImplausibleResult, corsPreflight } from "./_util.js";
+import { json, normStr, clampInt, assessImplausibleResult, corsPreflight, ensureDeviceAuth } from "./_util.js";
 
 const ROOM_CODE_RE = /^[0-9A-Za-z一-鿿_-]{1,40}$/;
 const WEEK_RE = /^\d{4}W\d{2}$/;
@@ -31,6 +31,9 @@ export async function onRequestPost({ request, env }) {
     return json({ error: "bad-numbers" }, 400);
   }
 
+  const auth = await ensureDeviceAuth(env, deviceId, body.authToken);
+  if (!auth.ok) return json({ error: "auth-mismatch", message: "裝置驗證失敗" }, 403);
+
   const plausibility = assessImplausibleResult({ pct, totalSec, questionCount });
 
   const existing = await env.DB.prepare(
@@ -39,7 +42,7 @@ export async function onRequestPost({ request, env }) {
 
   const better = !existing || pct > existing.pct || (pct === existing.pct && totalSec < existing.total_sec);
   if (!better) {
-    return json({ ok: true, updated: false, flagged: plausibility.flagged, reasons: plausibility.reasons });
+    return json({ ok: true, updated: false, flagged: plausibility.flagged, reasons: plausibility.reasons, authToken: auth.token });
   }
 
   await env.DB.prepare(
@@ -60,5 +63,5 @@ export async function onRequestPost({ request, env }) {
     plausibility.flagged ? 1 : 0, JSON.stringify(plausibility.reasons), Date.now()
   ).run();
 
-  return json({ ok: true, updated: true, flagged: plausibility.flagged, reasons: plausibility.reasons });
+  return json({ ok: true, updated: true, flagged: plausibility.flagged, reasons: plausibility.reasons, authToken: auth.token });
 }

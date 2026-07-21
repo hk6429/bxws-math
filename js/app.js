@@ -18,7 +18,7 @@ import { getPlayerName, setPlayerName, submitScore, getLeaderboard } from "./lea
 import {
   MANUSCRIPTS, getCollection, evaluateCollection,
   RARE_STAMPS, STAMP_RARITIES, getRareStamps, resolveEncounterReward,
-  RARITY_MYTHOS, manuscriptDustStatus, addManuscriptCare, collectionBonusFor,
+  RARITY_MYTHOS, collectionBonusFor,
 } from "./collection.js";
 import {
   bossFor, bossGate, newBossState, applyAnswer as applyBossAnswer, bossOutcome, recordBossOutcome,
@@ -47,15 +47,15 @@ import {
   isMarketOpen, isMarketBonus, nextMarketText, npcListings, MARKET_MIN_PRICE, MARKET_MAX_PRICE,
   listSpirit, fetchMarketBoard, buyListing, fetchMyListings, claimPayout,
 } from "./market.js";
-import { pickQuote, QUOTES, unlockedExtraQuotes } from "./quotes.js";
+import { pickQuote, QUOTES, unlockedExtraQuotes, EXTRA_QUOTES } from "./quotes.js";
 import {
-  store, exportNamespace, importNamespace, isStorageBroken, recordActivityStreak, runMigrations,
+  store, exportNamespace, importNamespace, isStorageBroken, recordActivityStreak, runMigrations, clearNamespace,
 } from "./store.js";
-import { sfx, isSfxOn, setSfxOn } from "./sfx.js";
+import { sfx, isSfxOn, setSfxOn, areHapticsOn, setHapticsOn } from "./sfx.js";
 import { applyAccessibilitySettings, getAccessibilitySettings, setAccessibilitySetting } from "./accessibility.js";
 import {
   getDaily, bumpDaily, dailyTasks, maybeDropInk, getInkDays, getStardustCount,
-  addStardust, claimStardustMilestones, inkThisMonth, returningWelcome,
+  addStardust, claimStardustMilestones, returningWelcome,
 } from "./daily.js";
 import {
   isoWeekKey, buildWeeklySession, getWeeklyBest, submitWeeklyResult, decodeClassResults, decodeResult,
@@ -306,8 +306,13 @@ function updateNavGating() {
     const btn = document.getElementById(id);
     if (!btn) return;
     btn.classList.toggle("nav-locked", brandNew);
-    if (brandNew) btn.setAttribute("data-lock-hint", hint);
-    else btn.removeAttribute("data-lock-hint");
+    if (brandNew) {
+      btn.setAttribute("data-lock-hint", hint);
+      btn.title = hint; // 原生 tooltip：滑鼠停留也能看到「為什麼還不能點」，不只靠 CSS ::after
+    } else {
+      btn.removeAttribute("data-lock-hint");
+      btn.removeAttribute("title");
+    }
   });
 }
 
@@ -369,6 +374,7 @@ function newSession(fields) {
     challengeCode: null,
     streak: 0,
     streakShielded: false,
+    concluded: false,
     maxStreak: 0,
     roundCorrect: 0,
     roundTotal: 0,
@@ -380,12 +386,17 @@ function newSession(fields) {
   };
 }
 
+// 只有一般練習／每日注光是「可續讀」的；Boss、競技場、PvP、神殿盃、賢者試煉都是一次性對局，
+// 半途不該被存成殘局——否則首頁會把已結束的 Boss 結算誤標成「繼續練習 還剩 N 題」，
+// 點回去還會重跑 renderBossOutcome 重複發質數融合建材。
+const RESUMABLE_KINDS = new Set(["node", "review"]);
+
 // ── session 斷點續傳：每答一題落盤，關掉分頁也不蒸發 ──
 // 作答完成後存 index+1（該題已記錄，續傳從下一題開始）
 function saveActiveSession(indexOffset = 0) {
   const idx = session.index + indexOffset;
-  if (!session.node || idx >= session.queue.length) {
-    if (indexOffset > 0) clearActiveSession();
+  if (!session.node || !RESUMABLE_KINDS.has(session.kind) || idx >= session.queue.length) {
+    if (indexOffset > 0 && RESUMABLE_KINDS.has(session.kind)) clearActiveSession();
     return;
   }
   const { qStartAt, consecutiveWrong, mentorRetryUsed, mentorPool, ...rest } = session;
@@ -477,7 +488,8 @@ async function makeDailyBoard(container) {
   const allDone = tasks.every((t) => t.satisfied);
   const lastPlayed = store.read("lastPlayed", null);
   const welcome = returningWelcome(lastPlayed, dueCount);
-  const activityStreak = recordActivityStreak();
+  // 只讀不寫：練習天數只在真的作答時累加（見 handleAnswer），不因「打開首頁」就 +1
+  const activityStreak = store.read("activityStreak", { count: 0, lastDate: null });
 
   const board = document.createElement("div");
   board.className = "daily-board" + (allDone ? " daily-done" : "");
@@ -489,7 +501,7 @@ async function makeDailyBoard(container) {
   board.appendChild(title);
   board.appendChild(Object.assign(document.createElement("div"), {
     className: "activity-streak-home",
-    textContent: `🔥 連續返校 ${activityStreak.count} 天`,
+    textContent: `🔥 累計練習 ${activityStreak.count} 天`,
   }));
 
   const list = document.createElement("div");
@@ -515,7 +527,8 @@ async function makeDailyBoard(container) {
   }
   const ink = document.createElement("span");
   ink.className = "ink-bottle";
-  ink.textContent = `🫙 星屑瓶：本月 ${inkThisMonth()} 粒（共 ${getStardustCount()} 粒）`;
+  // 可用餘額（能拿去市集／融合花的）擺第一個、最顯眼；累計量是里程碑用的，放後面括號
+  ink.textContent = `🫙 星屑：可用 ${stardustBalance()} 粒（累計 ${getStardustCount()} 粒）`;
   actions.appendChild(ink);
   board.appendChild(actions);
 
@@ -1082,10 +1095,15 @@ function maybeShowOnboardingTip(dueCount = 0) {
     const renderStep = () => {
       const step = steps[index];
       dialog.innerHTML = `<h3 id="onboarding-title"></h3><p></p><button type="button"></button>`;
-      dialog.querySelector("h3").textContent = step.title;
+      const heading = dialog.querySelector("h3");
+      heading.textContent = step.title;
       dialog.querySelector("p").textContent = step.text;
       const button = dialog.querySelector("button");
       button.textContent = index === steps.length - 1 ? "完成導覽，開始探索" : "下一步";
+      // 換頁時把焦點移到新標題並播報，讓讀屏使用者知道進到第幾步（否則焦點卡在同一顆按鈕、內容默默換掉）
+      heading.tabIndex = -1;
+      heading.focus({ preventScroll: true });
+      announce(`${step.title}。${step.text}`);
       button.addEventListener("click", () => {
         if (index < steps.length - 1) {
           index += 1;
@@ -1095,7 +1113,7 @@ function maybeShowOnboardingTip(dueCount = 0) {
         store.write("seenTip", true);
         dialog.close();
         dialog.remove();
-        document.querySelector(".today-first-step")?.focus();
+        document.querySelector(".home-hero-action")?.focus();
       });
     };
     renderStep();
@@ -1468,9 +1486,16 @@ function renderFuseTab(body) {
       const result = resolveFusion(a, b, input.value.trim() === "" ? null : Number(input.value));
       // 認真心算的正向誘因：算對乘積才有 2 星屑獎勵（綁「真的算對一題乘法」這個真實能力，非操作次數）；
       // 算錯仍能拿到星靈、只溫和收 1 星屑，維持不挫折。用正向差距取代懲罰導向。
+      // 去重：因融合不消耗父星靈、同一對可重複融合，只在「首次正確算出某個乘積」時發獎，
+      // 之後重融同一乘積不再給，避免記住答案反覆刷星屑（比照里程碑一次性旗標）。
       if (result?.ok && result.correct && input.value.trim() !== "") {
-        addStardust(2);
-        result.bonus = 2;
+        const rewarded = store.read("fusionRewarded", {});
+        if (!rewarded[result.product]) {
+          rewarded[result.product] = true;
+          store.write("fusionRewarded", rewarded);
+          addStardust(2);
+          result.bonus = 2;
+        }
       }
       fusionState.lastResult = result;
       fusionState.pick = [];
@@ -2230,6 +2255,7 @@ async function startArenaChallenge(strandId, roomCode) {
 }
 
 async function finishArenaSession(quizArea) {
+  session.concluded = true;
   removeArenaGhost();
   const a = session.arena;
   const totalSec = Math.max(1, Math.round((Date.now() - a.startAt) / 1000));
@@ -2315,6 +2341,7 @@ function removeArenaGhost() {
 }
 
 function renderPvpOutcome(result, quizArea) {
+  session.concluded = true;
   const beatOwnBest = session.pvp.totalDmg > session.pvp.startingBest;
   const card = document.createElement("div");
   card.className = "pvp-outcome";
@@ -2401,17 +2428,23 @@ async function startPlacementDiagnostic() {
 function renderProgressBar() {
   const bar = document.getElementById("quiz-progressbar");
   bar.innerHTML = "";
-  const total = Math.max(1, session.queue.length);
+  // 分母鎖在「開局時的題數」：慢筆重描／導師安撫在作答中插進來的題，不會讓分母變大、
+  // 讓進度看起來倒退（6/8 → 6/9），已答比例只增不減；額外練習題併入最後一格。
+  if (!Number.isFinite(session.plannedTotal) || session.plannedTotal < 1) {
+    session.plannedTotal = Math.max(1, session.queue.length);
+  }
+  const total = session.plannedTotal;
+  const answered = Math.min(total, session.index);
   const current = Math.min(total, session.index + 1);
   bar.setAttribute("aria-valuemin", "1");
   bar.setAttribute("aria-valuemax", String(total));
   bar.setAttribute("aria-valuenow", String(current));
   bar.setAttribute("aria-label", `第 ${current} 題，共 ${total} 題`);
-  session.queue.forEach((_, idx) => {
+  for (let idx = 0; idx < total; idx += 1) {
     const seg = document.createElement("div");
-    seg.className = "seg" + (idx < session.index ? " filled" : "");
+    seg.className = "seg" + (idx < answered ? " filled" : "");
     bar.appendChild(seg);
-  });
+  }
 }
 
 function renderStreakBadge() {
@@ -2518,6 +2551,7 @@ function updateBossFeedback(boss, isCorrect) {
 
 function renderBossOutcome(outcome, quizArea) {
   const boss = session.boss;
+  session.concluded = true;
   const meta = bossFor(boss.strandId);
   recordBossOutcome(boss.strandId, outcome, session.maxStreak);
   const card = document.createElement("div");
@@ -2525,6 +2559,14 @@ function renderBossOutcome(outcome, quizArea) {
   const title = outcome === "victory" ? `🏆 擊敗${meta.name}！神殿甦醒了一角` : `🛡 這次先撤退——${meta.name}還在守著神殿`;
   card.appendChild(Object.assign(document.createElement("h3"), { textContent: title }));
   if (outcome === "victory") {
+    // 擊敗守護神是整站最大的成就，給足慶祝力道：勝利音效＋金光爆閃＋星屑迸射
+    if (isSfxOn()) sfx.rare();
+    card.classList.add("boss-victory-burst");
+    const burst = document.createElement("div");
+    burst.className = "boss-victory-sparks";
+    burst.setAttribute("aria-hidden", "true");
+    burst.innerHTML = "✦✧★✦✧".split("").map((s) => `<span>${s}</span>`).join("");
+    card.appendChild(burst);
     // 守護者鎮守一顆質數種子——質數是融合的建材，只能靠戰勝取得
     const seed = GUARDIAN_SPIRIT[boss.strandId];
     if (seed) {
@@ -2661,7 +2703,8 @@ function renderCurrentQuestion(focusStem = false) {
 
   const question = session.queue[session.index];
   session.qStartAt = Date.now();
-  if (session.strategy === "sprint") startSprintTimer();
+  // 疾行計時只對正式題目施壓；導師安撫題是「喘口氣」不該倒數，否則安撫變成另一種壓力
+  if (session.strategy === "sprint" && !question._mentorCoaching) startSprintTimer();
   else clearSprintTimer();
   const guardianStrand = strandIdForNode(question._nodeId ?? question._placementNodeId ?? session.node?.id);
   const opts = { encounter: session.index === session.encounterIdx, guardianStrand };
@@ -2737,6 +2780,9 @@ function handleAnswer(question, isCorrect, meta = {}) {
     }
     session.roundCorrect += 1;
     session.streak += 1;
+    // 每段熱連擊（streak 每次爬到 5）重新武裝連詠護盾，讓「破 ≥5 連擊只掉 2」在每一段都穩定成立，
+    // 而不是一場只軟著陸一次、之後全部硬歸零（原本 shield 觸發後永不重設造成軟／硬交替、無法預期）
+    if (session.streak === 5) session.streakShielded = false;
     session.maxStreak = Math.max(session.maxStreak, session.streak);
     const best = Number(store.read("bestStreak", 0)) || 0;
     if (session.streak > best) store.write("bestStreak", session.streak);
@@ -2752,7 +2798,6 @@ function handleAnswer(question, isCorrect, meta = {}) {
       session.repairedCount += 1;
       bumpDaily("repair");
     }
-    if (wasReviewDue && (getCollection()[nodeId]?.tier ?? 0) >= 2) addManuscriptCare(nodeId);
     if (meta.encounter) meta.encounterReward = handleEncounterWin();
   } else {
     const streakBeforeWrong = session.streak;
@@ -2767,6 +2812,8 @@ function handleAnswer(question, isCorrect, meta = {}) {
     if (session.streak >= 5 && !session.streakShielded) {
       session.streakShielded = true;
       session.streak = Math.max(0, session.streak - 2);
+      // 外顯隱藏機制：讓孩子知道是護盾救了連詠、只掉 2，而不是困惑「為什麼沒歸零」
+      showToast("🛡 連詠護盾發動！這次只掉 2 連詠", "success");
     } else {
       session.streak = 0;
       session.streakShielded = false;
@@ -2793,7 +2840,7 @@ function handleAnswer(question, isCorrect, meta = {}) {
         Math.random,
         { nodeId, nodeName: node.name ?? nodeId }
       );
-    } else if (!isAssessment && !question._mentorCoaching && session.consecutiveWrong >= 3) {
+    } else if (session.kind === "node" && !question._mentorCoaching && session.consecutiveWrong >= 3) {
       const comfort = QUOTES.comfort.filter((quote) => quote.mascot === session.mascot);
       const candidates = comfort.length > 0 ? comfort : QUOTES.comfort;
       const quote = candidates[Math.floor(Math.random() * candidates.length)];
@@ -2833,12 +2880,16 @@ function handleAnswer(question, isCorrect, meta = {}) {
   renderStreakBadge();
   renderMasteryProgress(nodeId);
   saveActiveSession(1);
+  // 佇列在答錯後可能被加長（慢筆重描／導師安撫題），原本「看成果」的按鈕要改回「下一題」
+  if (nextBtnEl) nextBtnEl.textContent = session.index === session.queue.length - 1 ? "看成果" : "下一題";
   nextBtnEl?.classList.remove("q-next-hidden");
   nextBtnEl?.scrollIntoView({ block: "nearest", behavior: "smooth" });
   // F1 疾行模式：答對就自動跳下一題（停一下看眉批），答錯仍停留讓學生看懂；最後一題不自動跳，等按「看成果」
+  // 導師安撫題不自動跳（配合上面不倒數）；捕捉當下題號，若玩家已手動前進則排程失效，避免跳過一題（C1 競態）
   if (session.strategy === "sprint" && isCorrect && session.kind === "node"
-      && session.index < session.queue.length - 1) {
-    scheduleTimer(() => advanceQuestion(), SPRINT_AUTONEXT_MS);
+      && !question._mentorCoaching && session.index < session.queue.length - 1) {
+    const scheduledIndex = session.index;
+    scheduleTimer(() => { if (session.index === scheduledIndex) advanceQuestion(); }, SPRINT_AUTONEXT_MS);
   }
   // F2 小怪：一般練習每答對一題就打退一隻小怪，把「打到東西」的爽感前移到 Boss 戰之前
   if (session.kind === "node") updateMiniFoe(isCorrect);
@@ -2896,8 +2947,11 @@ function handleEncounterWin() {
 }
 
 function finishSession() {
+  session.concluded = true;
   clearSprintTimer();
-  clearActiveSession();
+  // 只清掉「這一場可續讀的練習」本身；weekly/master/challenge 不寫 activeSession，
+  // 就別在收尾時順手把使用者另一場未完的一般練習續讀點也擦掉。
+  if (RESUMABLE_KINDS.has(session.kind)) clearActiveSession();
   if (session.kind === "diagnostic") {
     finishPrerequisiteDiagnostic();
     return;
@@ -2906,7 +2960,11 @@ function finishSession() {
     finishPlacementDiagnostic();
     return;
   }
-  bumpDaily("rounds");
+  // 每日「完成一輪」要真的答對半數以上才算數——否則「全錯跑完一輪」也能滿足每日任務、
+  // 觸發滴墨得星屑，等於用出席／操作次數換獎勵，違反「獎勵綁真實學習量」的教育鐵律。
+  if (session.roundTotal > 0 && session.roundCorrect / session.roundTotal >= 0.5) {
+    bumpDaily("rounds");
+  }
   store.write("lastPlayed", { at: Date.now(), nodeName: session.node.name });
 
   const overview = computeOverview(tree);
@@ -2999,7 +3057,13 @@ function finishSession() {
   const newDrops = session.kind === "node" || isMasterTrial
     ? evaluateCollection(session.node.id, stats, ctx)
     : [];
-  quizArea.appendChild(makeSummary(stats, newBadges, newDrops, weeklyRecord, challengeReply, nextStep));
+  const summaryEl = makeSummary(stats, newBadges, newDrops, weeklyRecord, challengeReply, nextStep);
+  quizArea.appendChild(summaryEl);
+  // a11y：最常見的收尾路徑也要像兩個診斷收尾一樣播報成績＋把焦點移到結算卡（原本焦點會掉回 body）
+  announce(`本輪完成，答對 ${session.roundCorrect}/${session.roundTotal} 題`);
+  const summaryHeading = summaryEl.querySelector("h3") ?? summaryEl;
+  summaryHeading.tabIndex = -1;
+  summaryHeading.focus({ preventScroll: true });
   newDrops.forEach((drop) => showCardReveal(
     drop.item,
     drop.item.id === MASTER_TRIAL_ID ? "傳說" : drop.tier >= 2 ? "稀有" : "普通"
@@ -3560,9 +3624,6 @@ async function showDashboard() {
   tree = tree ?? (await loadSkillTree());
   const overview = computeOverview(tree);
   const unlocked = new Set(getUnlockedBadges());
-  const challengeCatalog = await getChallengeCatalog();
-  const leitnerState = store.read("leitner", {});
-  const careState = store.read("manuscriptCare", {});
 
   const el = document.getElementById("dashboard-content");
   el.innerHTML = "";
@@ -3613,14 +3674,6 @@ async function showDashboard() {
     const tier = record?.tier ?? 0;
     const card = document.createElement("div");
     card.className = "ms-card" + (tier === 0 ? " locked" : "");
-    const dust = manuscriptDustStatus(
-      m.id,
-      col,
-      leitnerState,
-      challengeCatalog.filter((q) => q._nodeId === m.id).map((q) => q.id),
-      careState[m.id]
-    );
-    if (dust.dusty) card.classList.add("manuscript-dusty");
     const sym = document.createElement("div");
     sym.className = "ms-sym";
     sym.textContent = tier === 0 ? "？" : m.sym;
@@ -3641,12 +3694,6 @@ async function showDashboard() {
     }
     if (tier >= 2) {
       card.appendChild(Object.assign(document.createElement("div"), { className: "ms-seal", textContent: "蠟封" }));
-    }
-    if (dust.dusty) {
-      card.appendChild(Object.assign(document.createElement("div"), {
-        className: "dust-note",
-        textContent: `神諭卷軸沉暗・答對 ${3 - dust.careCount} 題星光黯淡處即重新發亮`,
-      }));
     }
     grid.appendChild(card);
   });
@@ -3712,7 +3759,10 @@ async function showDashboard() {
   const inkSection = document.createElement("div");
   inkSection.className = "dash-ink";
   milestones.unlocked.forEach((milestone) => inkSection.classList.add(`stardust-${milestone}`));
-  inkSection.innerHTML = `<h3>星屑瓶（共 ${inkTotal} 粒 · 每 7 粒解鎖一則古賢者卷軸番外）</h3>`;
+  const extraLabel = extras.length >= EXTRA_QUOTES.length
+    ? `古賢者卷軸番外 ${EXTRA_QUOTES.length}/${EXTRA_QUOTES.length}・已全數收齊`
+    : `古賢者卷軸番外 ${extras.length}/${EXTRA_QUOTES.length}（每 7 粒解鎖一則）`;
+  inkSection.innerHTML = `<h3>星屑瓶（累計 ${inkTotal} 粒 · ${extraLabel}）</h3>`;
   milestones.unlocked.forEach((milestone) => {
     inkSection.appendChild(Object.assign(document.createElement("div"), {
       className: "stardust-milestone-marker",
@@ -3943,6 +3993,8 @@ function setupAccessibilitySettings() {
     });
     document.getElementById("setting-sprint-warning").checked = settings.sprintWarning;
     document.getElementById("setting-combo-break").checked = settings.comboBreakEffect;
+    const haptics = document.getElementById("setting-haptics");
+    if (haptics) haptics.checked = areHapticsOn();
   };
   document.querySelectorAll('input[name="font-size"]').forEach((input) => input.addEventListener("change", () => {
     if (input.checked) setAccessibilitySetting("fontSize", input.value);
@@ -3953,6 +4005,19 @@ function setupAccessibilitySettings() {
   });
   document.getElementById("setting-combo-break").addEventListener("change", (event) => {
     setAccessibilitySetting("comboBreakEffect", event.currentTarget.checked); sync();
+  });
+  document.getElementById("setting-haptics")?.addEventListener("change", (event) => {
+    setHapticsOn(event.currentTarget.checked);
+    if (event.currentTarget.checked) sfx.buzz(30); // 開啟時震一下當確認回饋
+    sync();
+  });
+  const clearBtn = document.getElementById("clear-local-data");
+  const clearNote = document.getElementById("clear-local-data-note");
+  clearBtn?.addEventListener("click", () => {
+    if (!window.confirm("這會清除這台裝置上所有《步學吾數》的學習進度、收集與設定，且無法復原。確定要清除嗎？")) return;
+    const removed = clearNamespace();
+    if (clearNote) clearNote.textContent = `已清除 ${removed} 筆本機資料，重新整理後就是全新的開始。`;
+    announce("已清除這台裝置上的所有學習資料");
   });
   sync();
 }
@@ -3966,12 +4031,27 @@ function setupOptionalMythosArt() {
   if (image.complete && image.naturalWidth === 0) hideMissingArt();
 }
 
-document.getElementById("nav-home").addEventListener("click", goHome);
-document.getElementById("nav-workshop").addEventListener("click", showWorkshop);
-document.getElementById("nav-fusion").addEventListener("click", showFusion);
-document.getElementById("nav-sanctuary").addEventListener("click", showSanctuary);
-document.getElementById("nav-arena").addEventListener("click", showArena);
-document.getElementById("nav-dashboard").addEventListener("click", showDashboard);
+// 對戰局（Boss／PvP／競技場／大師盃／賢者試煉）半途按導覽切走＝放棄整局，先問一句避免手滑；
+// 一般練習與複習是可續讀的（saveActiveSession），不必攔。
+const BATTLE_KINDS = new Set(["boss", "pvp", "arena", "weekly", "master"]);
+function inActiveBattle() {
+  return views.quiz?.classList.contains("active")
+    && BATTLE_KINDS.has(session?.kind)
+    && !session?.concluded
+    && (session?.index ?? 0) < (session?.queue?.length ?? 0);
+}
+function guardNav(handler) {
+  return (event) => {
+    if (inActiveBattle() && !window.confirm("這一局還沒打完，離開就會放棄這局，確定要離開嗎？")) return;
+    handler(event);
+  };
+}
+document.getElementById("nav-home").addEventListener("click", guardNav(goHome));
+document.getElementById("nav-workshop").addEventListener("click", guardNav(showWorkshop));
+document.getElementById("nav-fusion").addEventListener("click", guardNav(showFusion));
+document.getElementById("nav-sanctuary").addEventListener("click", guardNav(showSanctuary));
+document.getElementById("nav-arena").addEventListener("click", guardNav(showArena));
+document.getElementById("nav-dashboard").addEventListener("click", guardNav(showDashboard));
 setupSfxToggle();
 setupAccessibilitySettings();
 setupOptionalMythosArt();
