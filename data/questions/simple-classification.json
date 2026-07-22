@@ -1,0 +1,375 @@
+{
+  "nodeId": "simple-classification",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "國小低年級簡單分類題庫，涵蓋單一或雙屬性分類、分類後計數與分類標準一致性；全數自編。"
+  },
+  "basicMastery": [
+    {
+      "id": "simple-classification-bm-1",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "difficulty": "easy",
+      "errorPath": "single-attribute-classification",
+      "stem": "要把紅球、藍球、紅積木、藍積木依顏色分成兩組，應分成哪兩組？",
+      "options": [
+        "球和積木",
+        "大的和小的",
+        "紅色和藍色",
+        "圓的和方的"
+      ],
+      "answer": 2,
+      "explanation": "題目指定依顏色分類，所以應分成紅色物品與藍色物品兩組。"
+    },
+    {
+      "id": "simple-classification-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "difficulty": "easy",
+      "errorPath": "single-attribute-classification",
+      "stem": "蘋果、香蕉、蘋果、橘子依水果種類分類，蘋果應放在哪一組？",
+      "options": [
+        "蘋果組",
+        "香蕉組",
+        "橘子組",
+        "顏色組"
+      ],
+      "answer": 0,
+      "explanation": "分類標準是水果種類，因此所有蘋果都應放進蘋果組。"
+    },
+    {
+      "id": "simple-classification-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "difficulty": "easy",
+      "errorPath": "single-attribute-classification",
+      "stem": "要依形狀分類，圓形餅乾應和哪一個物品放同組？",
+      "options": [
+        "紅色方盒",
+        "藍色圓片",
+        "黃色三角旗",
+        "綠色長尺"
+      ],
+      "answer": 1,
+      "explanation": "分類標準是形狀，圓形餅乾和藍色圓片都是圓形。"
+    },
+    {
+      "id": "simple-classification-bm-2",
+      "type": "basic-mastery",
+      "challenge": "1-2",
+      "difficulty": "easy",
+      "errorPath": "category-counting",
+      "stem": "水果籃有蘋果、香蕉、蘋果、橘子、蘋果。蘋果有幾個？",
+      "options": [
+        "2 個",
+        "3 個",
+        "4 個",
+        "5 個"
+      ],
+      "answer": 1,
+      "explanation": "逐一找出蘋果，共出現 3 次，所以有 3 個。"
+    },
+    {
+      "id": "simple-classification-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "1-2",
+      "difficulty": "easy",
+      "errorPath": "category-counting",
+      "stem": "玩具有 2 輛車、4 顆球、1 隻熊。哪一類最多？",
+      "options": [
+        "車",
+        "球",
+        "熊",
+        "一樣多"
+      ],
+      "answer": 1,
+      "explanation": "4 大於 2 和 1，所以球這一類最多。"
+    },
+    {
+      "id": "simple-classification-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "1-2",
+      "difficulty": "medium",
+      "errorPath": "category-counting",
+      "stem": "鉛筆盒裡有 3 枝紅筆、2 枝藍筆、3 枝黑筆。紅筆和黑筆合起來有幾枝？",
+      "options": [
+        "5 枝",
+        "6 枝",
+        "7 枝",
+        "8 枝"
+      ],
+      "answer": 1,
+      "explanation": "紅筆 3 枝加黑筆 3 枝，3+3=6 枝。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "simple-classification-ci-1",
+      "type": "concept-id",
+      "challenge": "1-3",
+      "difficulty": "easy",
+      "errorPath": "consistent-grouping-rule",
+      "statement": "如果一開始依顏色分類，就應用同一個顏色標準分完所有物品。",
+      "correctAnswer": true,
+      "explanation": "同一次分類要使用一致的標準，分組結果才清楚。"
+    },
+    {
+      "id": "simple-classification-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "1-3",
+      "difficulty": "easy",
+      "errorPath": "consistent-grouping-rule",
+      "statement": "把紅蘋果放在紅色組，卻把紅球改放在玩具組，仍是只依顏色分類。",
+      "correctAnswer": false,
+      "explanation": "紅球若改依用途放進玩具組，就混用了顏色與物品種類兩種標準。"
+    },
+    {
+      "id": "simple-classification-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "1-3",
+      "difficulty": "medium",
+      "errorPath": "consistent-grouping-rule",
+      "statement": "同一批物品可以改用不同標準重新分類，但每一次分類內的標準要一致。",
+      "correctAnswer": true,
+      "explanation": "例如可先依顏色分，再另一次依形狀分；只要每次都清楚遵守同一標準即可。"
+    },
+    {
+      "id": "simple-classification-ci-2",
+      "type": "concept-id",
+      "challenge": "1-4",
+      "difficulty": "easy",
+      "errorPath": "dual-attribute-intersection",
+      "statement": "找「紅色而且是圓形」的物品時，物品必須同時符合紅色和圓形。",
+      "correctAnswer": true,
+      "explanation": "「而且」表示兩個條件都要符合，缺少任一條件都不算。"
+    },
+    {
+      "id": "simple-classification-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "1-4",
+      "difficulty": "easy",
+      "errorPath": "dual-attribute-intersection",
+      "statement": "藍色三角形符合「藍色而且圓形」這個分類。",
+      "correctAnswer": false,
+      "explanation": "它雖然是藍色，但形狀是三角形，不同時符合圓形條件。"
+    },
+    {
+      "id": "simple-classification-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "1-4",
+      "difficulty": "medium",
+      "errorPath": "dual-attribute-intersection",
+      "statement": "在「大的紅球」這一組中，小紅球和大藍球都不應放入。",
+      "correctAnswer": true,
+      "explanation": "小紅球不符合大小條件，大藍球不符合顏色條件，兩者都沒有同時符合「大」和「紅」。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "simple-classification-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "1-5",
+      "difficulty": "easy",
+      "errorPath": "wrong-grouping-key",
+      "problem": "老師要求把紅圓片、藍圓片、紅方片、藍方片依形狀分類。",
+      "wrongSolution": "小明分成紅色組和藍色組。",
+      "errorOptions": [
+        "物品數量太少",
+        "應分成三組",
+        "應依大小分類",
+        "用了顏色標準，應依形狀分成圓形組和方形組"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "題目指定的分類標準是形狀，小明卻使用顏色分類，所以應改分圓形與方形。"
+    },
+    {
+      "id": "simple-classification-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "1-5",
+      "difficulty": "easy",
+      "errorPath": "wrong-grouping-key",
+      "problem": "要把蘋果、香蕉、蘋果、橘子依水果種類分類。",
+      "wrongSolution": "小美把香蕉和橘子放在黃色組。",
+      "errorOptions": [
+        "混用了顏色標準，應把香蕉和橘子分在各自種類組",
+        "香蕉不能分類",
+        "所有水果都應放一起",
+        "應依數量分類"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "指定標準是水果種類，所以香蕉應在香蕉組、橘子應在橘子組，不能改看顏色。"
+    },
+    {
+      "id": "simple-classification-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "1-5",
+      "difficulty": "medium",
+      "errorPath": "wrong-grouping-key",
+      "problem": "要找出所有「小的」玩具。清單有大車、小車、小球、大熊。",
+      "wrongSolution": "小志選了大車和小車，因為它們都是車。",
+      "errorOptions": [
+        "應只選大車",
+        "用了種類標準，應選小車和小球",
+        "還要選大熊",
+        "所有玩具都算小的"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "題目只看大小，小車與小球才符合「小的」；選兩輛車是誤用種類分類。"
+    },
+    {
+      "id": "simple-classification-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "1-6",
+      "difficulty": "easy",
+      "errorPath": "category-count-omission",
+      "problem": "圖卡是貓、狗、貓、鳥、貓，求貓的數量。",
+      "wrongSolution": "小安說有 2 隻貓。",
+      "errorOptions": [
+        "應把所有動物算成貓",
+        "鳥也算貓",
+        "漏數了第 5 張貓圖卡，應有 3 隻",
+        "貓只有 1 隻"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "貓出現在第 1、3、5 張，共 3 次；小安漏數了最後一張。"
+    },
+    {
+      "id": "simple-classification-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "1-6",
+      "difficulty": "medium",
+      "errorPath": "category-count-omission",
+      "problem": "紅色圓片有 2 個、紅色方片有 3 個，求所有紅色圖片數。",
+      "wrongSolution": "小妍只算紅色圓片，回答 2 個。",
+      "errorOptions": [
+        "只按形狀算，答案正確",
+        "應只算方片 3 個",
+        "紅色圖片不能相加",
+        "漏了紅色方片，應算 2+3=5 個"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "問題要算所有紅色圖片，圓片與方片都要計入，因此共有 2+3=5 個。"
+    },
+    {
+      "id": "simple-classification-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "1-6",
+      "difficulty": "medium",
+      "errorPath": "category-count-omission",
+      "problem": "清單有大紅球、小紅球、大藍球、小藍球，求「紅色而且大的」球數。",
+      "wrongSolution": "小傑把兩顆紅球都算進去，回答 2 顆。",
+      "errorOptions": [
+        "小紅球不符合大的條件，只有大紅球 1 顆",
+        "藍球也都要算",
+        "所有大球都不能算",
+        "應有 4 顆"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "要同時符合紅色與大的只有大紅球，小紅球不符合大小條件，所以答案是 1 顆。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "simple-classification-ca-1",
+      "type": "context-application",
+      "challenge": "1-7",
+      "difficulty": "easy",
+      "errorPath": "everyday-sorting-choice",
+      "scenario": "老師要整理蠟筆，桌上有紅、藍、黃三種顏色。",
+      "question": "若依顏色分類，需要準備哪三個盒子？",
+      "options": [
+        "長、短、大",
+        "紅、藍、黃",
+        "新、舊、尖",
+        "圓、方、三角"
+      ],
+      "answer": 1,
+      "explanation": "依顏色分類時，盒子的標示應對應紅、藍、黃三種顏色。"
+    },
+    {
+      "id": "simple-classification-ca-v7-2",
+      "type": "context-application",
+      "challenge": "1-7",
+      "difficulty": "easy",
+      "errorPath": "everyday-sorting-choice",
+      "scenario": "點心有 3 塊餅乾、2 顆糖、1 個果凍。",
+      "question": "依點心種類分好後，哪一組有 2 個？",
+      "options": [
+        "餅乾組",
+        "糖果組",
+        "果凍組",
+        "每組都有 2 個"
+      ],
+      "answer": 1,
+      "explanation": "糖有 2 顆，所以糖果組的數量是 2。"
+    },
+    {
+      "id": "simple-classification-ca-v7-3",
+      "type": "context-application",
+      "challenge": "1-7",
+      "difficulty": "medium",
+      "errorPath": "everyday-sorting-choice",
+      "scenario": "衣櫃裡有 2 件上衣、3 件褲子、2 頂帽子。",
+      "question": "哪兩類的數量一樣多？",
+      "options": [
+        "上衣和褲子",
+        "褲子和帽子",
+        "三類都一樣",
+        "上衣和帽子"
+      ],
+      "answer": 3,
+      "explanation": "上衣有 2 件，帽子有 2 頂，兩類數量相同。"
+    },
+    {
+      "id": "simple-classification-ca-2",
+      "type": "context-application",
+      "challenge": "1-8",
+      "difficulty": "easy",
+      "errorPath": "dual-rule-application",
+      "scenario": "盤子裡有大紅蘋果、小紅蘋果、大綠蘋果、小綠蘋果。",
+      "question": "媽媽要「大的紅蘋果」，應拿哪一個？",
+      "options": [
+        "大紅蘋果",
+        "小紅蘋果",
+        "大綠蘋果",
+        "小綠蘋果"
+      ],
+      "answer": 0,
+      "explanation": "大紅蘋果同時符合「大的」和「紅色」兩個條件。"
+    },
+    {
+      "id": "simple-classification-ca-v8-2",
+      "type": "context-application",
+      "challenge": "1-8",
+      "difficulty": "medium",
+      "errorPath": "dual-rule-application",
+      "scenario": "圖卡有紅圓形 2 張、紅方形 1 張、藍圓形 3 張。",
+      "question": "「圓形而且藍色」的圖卡有幾張？",
+      "options": [
+        "1 張",
+        "2 張",
+        "3 張",
+        "5 張"
+      ],
+      "answer": 2,
+      "explanation": "同時是圓形與藍色的只有藍圓形，共 3 張。"
+    },
+    {
+      "id": "simple-classification-ca-v8-3",
+      "type": "context-application",
+      "challenge": "1-8",
+      "difficulty": "medium",
+      "errorPath": "dual-rule-application",
+      "scenario": "積木有大黃方塊、小黃方塊、大黃圓柱、大藍方塊。",
+      "question": "符合「黃色而且方形」的積木有幾個？",
+      "options": [
+        "1 個",
+        "2 個",
+        "3 個",
+        "4 個"
+      ],
+      "answer": 1,
+      "explanation": "大黃方塊與小黃方塊都同時符合黃色、方形，共 2 個。"
+    }
+  ]
+}

@@ -14,11 +14,7 @@
         "半徑"
       ],
       "answer": 1,
-      "explanation": "圓正中心的點叫圓心；圍成圓的那一圈彎曲的線叫圓周。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "圓正中心的點叫圓心；圍成圓的那一圈彎曲的線叫圓周。"
     },
     {
       "id": "circle-parts-bm-2",
@@ -33,11 +29,7 @@
         "半徑"
       ],
       "answer": 3,
-      "explanation": "從圓心到圓周的線段是半徑；直徑要通過圓心、兩端都在圓周上，是半徑的 2 倍長。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "從圓心到圓周的線段是半徑；直徑要通過圓心、兩端都在圓周上，是半徑的 2 倍長。"
     },
     {
       "id": "circle-parts-bm-3",
@@ -52,11 +44,7 @@
         "圓周"
       ],
       "answer": 0,
-      "explanation": "通過圓心、兩端都在圓周上的線段是直徑。「通過圓心」這個條件不能少。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "通過圓心、兩端都在圓周上的線段是直徑。「通過圓心」這個條件不能少。"
     },
     {
       "id": "circle-parts-bm-4",
@@ -71,11 +59,7 @@
         "20公分"
       ],
       "answer": 1,
-      "explanation": "直徑是半徑的 2 倍：5×2＝10 公分。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "直徑是半徑的 2 倍：5×2＝10 公分。"
     },
     {
       "id": "circle-parts-bm-5",
@@ -90,11 +74,7 @@
         "8公分"
       ],
       "answer": 2,
-      "explanation": "直徑＝半徑×2＝8×2＝16 公分。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "直徑＝半徑×2＝8×2＝16 公分。"
     },
     {
       "id": "circle-parts-bm-6",
@@ -109,11 +89,7 @@
         "24公分"
       ],
       "answer": 3,
-      "explanation": "直徑＝半徑×2＝12×2＝24 公分。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "直徑＝半徑×2＝12×2＝24 公分。"
     },
     {
       "id": "circle-parts-bm-7",
@@ -128,11 +104,7 @@
         "6公分"
       ],
       "answer": 3,
-      "explanation": "半徑是直徑的一半：12÷2＝6 公分。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "半徑是直徑的一半：12÷2＝6 公分。"
     },
     {
       "id": "circle-parts-bm-8",
@@ -147,11 +119,7 @@
         "36公分"
       ],
       "answer": 2,
-      "explanation": "半徑＝直徑÷2＝18÷2＝9 公分。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "半徑＝直徑÷2＝18÷2＝9 公分。"
     },
     {
       "id": "circle-parts-bm-9",
@@ -166,11 +134,7 @@
         "60公分"
       ],
       "answer": 2,
-      "explanation": "半徑＝直徑÷2＝30÷2＝15 公分。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "半徑＝直徑÷2＝30÷2＝15 公分。"
     },
     {
       "id": "circle-parts-bm-10",
@@ -185,11 +149,7 @@
         "是直徑，兩端都在圓周上"
       ],
       "answer": 0,
-      "explanation": "直徑必須同時符合「兩端在圓周上」和「通過圓心」，少了通過圓心就不是直徑。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "直徑必須同時符合「兩端在圓周上」和「通過圓心」，少了通過圓心就不是直徑。"
     },
     {
       "id": "circle-parts-bm-11",
@@ -204,11 +164,7 @@
         "圓周"
       ],
       "answer": 1,
-      "explanation": "通過圓心、長度是半徑 2 倍、兩端在圓周上的線段就是直徑。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "通過圓心、長度是半徑 2 倍、兩端在圓周上的線段就是直徑。"
     },
     {
       "id": "circle-parts-bm-12",
@@ -223,11 +179,7 @@
         "不可能，直徑應該是3公分"
       ],
       "answer": 0,
-      "explanation": "直徑＝半徑×2＝6×2＝12 公分，9 公分的線段不夠長，不可能是這個圓的直徑。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "直徑＝半徑×2＝6×2＝12 公分，9 公分的線段不夠長，不可能是這個圓的直徑。"
     }
   ],
   "conceptId": [
@@ -238,11 +190,7 @@
       "errorPath": 1,
       "statement": "同一個圓裡，每一條半徑都一樣長。",
       "correctAnswer": true,
-      "explanation": "圓周上每一點到圓心的距離都相等，所以同一個圓的半徑都一樣長。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "圓周上每一點到圓心的距離都相等，所以同一個圓的半徑都一樣長。"
     },
     {
       "id": "circle-parts-ci-2",
@@ -251,11 +199,7 @@
       "errorPath": 1,
       "statement": "同一個圓裡，直徑的長度是半徑的 2 倍。",
       "correctAnswer": true,
-      "explanation": "直徑通過圓心，可以看成兩條半徑接起來，所以是半徑的 2 倍長。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "直徑通過圓心，可以看成兩條半徑接起來，所以是半徑的 2 倍長。"
     },
     {
       "id": "circle-parts-ci-3",
@@ -264,11 +208,7 @@
       "errorPath": 1,
       "statement": "同一個圓裡，有的半徑比較長，有的半徑比較短。",
       "correctAnswer": false,
-      "explanation": "同一個圓裡所有半徑都一樣長，不會有長有短；不同的圓半徑才可能不同。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "同一個圓裡所有半徑都一樣長，不會有長有短；不同的圓半徑才可能不同。"
     },
     {
       "id": "circle-parts-ci-4",
@@ -277,11 +217,7 @@
       "errorPath": 2,
       "statement": "直徑是圓裡面最長的直線段。",
       "correctAnswer": true,
-      "explanation": "圓裡所有兩端在圓周上的線段中，通過圓心的直徑最長。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "圓裡所有兩端在圓周上的線段中，通過圓心的直徑最長。"
     },
     {
       "id": "circle-parts-ci-5",
@@ -290,11 +226,7 @@
       "errorPath": 2,
       "statement": "兩端都在圓周上的線段，一定是直徑。",
       "correctAnswer": false,
-      "explanation": "還要通過圓心才是直徑；沒通過圓心的線段比直徑短，不是直徑。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "還要通過圓心才是直徑；沒通過圓心的線段比直徑短，不是直徑。"
     },
     {
       "id": "circle-parts-ci-6",
@@ -303,11 +235,7 @@
       "errorPath": 2,
       "statement": "通過圓心、兩端在圓周上的線段，比沒通過圓心的長。",
       "correctAnswer": true,
-      "explanation": "通過圓心的線段就是直徑，是圓裡最長的直線段，沒通過圓心的都比它短。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "通過圓心的線段就是直徑，是圓裡最長的直線段，沒通過圓心的都比它短。"
     }
   ],
   "errorDiagnosis": [
@@ -325,11 +253,7 @@
         "圓規張開的長度是圓周"
       ],
       "correctErrorIndex": 2,
-      "explanation": "圓規兩腳的距離就是半徑，畫半徑 4 公分的圓應張開 4 公分；8 公分是直徑的長度。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "圓規兩腳的距離就是半徑，畫半徑 4 公分的圓應張開 4 公分；8 公分是直徑的長度。"
     },
     {
       "id": "circle-parts-ed-2",
@@ -345,11 +269,7 @@
         "應該減10才對"
       ],
       "correctErrorIndex": 0,
-      "explanation": "半徑是直徑的一半：10÷2＝5 公分。小珊把「除以 2」做成「乘以 2」，方向弄反了。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "半徑是直徑的一半：10÷2＝5 公分。小珊把「除以 2」做成「乘以 2」，方向弄反了。"
     },
     {
       "id": "circle-parts-ed-3",
@@ -365,11 +285,7 @@
         "線段畫得不夠直"
       ],
       "correctErrorIndex": 1,
-      "explanation": "直徑必須通過圓心。兩端在圓周上但沒過圓心的線段，比直徑短，不是直徑。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "直徑必須通過圓心。兩端在圓周上但沒過圓心的線段，比直徑短，不是直徑。"
     }
   ],
   "contextApplication": [
@@ -387,11 +303,7 @@
         "45公分"
       ],
       "answer": 0,
-      "explanation": "從邊緣到正中心是半徑：30÷2＝15 公分。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "從邊緣到正中心是半徑：30÷2＝15 公分。"
     },
     {
       "id": "circle-parts-ca-2",
@@ -407,11 +319,7 @@
         "9公尺"
       ],
       "answer": 2,
-      "explanation": "通過中心從一邊到另一邊走的是直徑：3×2＝6 公尺。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "通過中心從一邊到另一邊走的是直徑：3×2＝6 公尺。"
     },
     {
       "id": "circle-parts-ca-3",
@@ -427,11 +335,7 @@
         "28公分"
       ],
       "answer": 1,
-      "explanation": "圓規張開的距離是半徑：14÷2＝7 公分，不能直接張開直徑的長度。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "圓規張開的距離是半徑：14÷2＝7 公分，不能直接張開直徑的長度。"
     }
   ]
 }

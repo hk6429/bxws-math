@@ -1,0 +1,375 @@
+{
+  "nodeId": "pictogram-simple-table",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "國小低年級象形圖與簡單表格題庫，涵蓋一圖示代表 1 或多個、資料整理成表格及圖表互換；全數自編。"
+  },
+  "basicMastery": [
+    {
+      "id": "pictogram-simple-table-bm-1",
+      "type": "basic-mastery",
+      "challenge": "2-1",
+      "difficulty": "easy",
+      "errorPath": "count-pictogram-symbols",
+      "stem": "象形圖中，蘋果這一列有 4 個🍎，每個🍎代表 1 顆。共有幾顆蘋果？",
+      "options": [
+        "3 顆",
+        "4 顆",
+        "5 顆",
+        "8 顆"
+      ],
+      "answer": 1,
+      "explanation": "每個圖示代表 1 顆，4 個圖示就是 4 顆蘋果。"
+    },
+    {
+      "id": "pictogram-simple-table-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "2-1",
+      "difficulty": "easy",
+      "errorPath": "count-pictogram-symbols",
+      "stem": "象形圖中，汽車這一列有 3 個🚗，每個🚗代表 1 輛。共有幾輛車？",
+      "options": [
+        "2 輛",
+        "3 輛",
+        "4 輛",
+        "6 輛"
+      ],
+      "answer": 1,
+      "explanation": "3 個汽車圖示，每個代表 1 輛，所以共有 3 輛。"
+    },
+    {
+      "id": "pictogram-simple-table-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "2-1",
+      "difficulty": "easy",
+      "errorPath": "count-pictogram-symbols",
+      "stem": "象形圖中，故事書有 5 個📘，每個📘代表 1 本。哪個數字應填入表格？",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "10"
+      ],
+      "answer": 1,
+      "explanation": "每圖代表 1 本，5 個圖示對應表格中的數量 5。"
+    },
+    {
+      "id": "pictogram-simple-table-bm-2",
+      "type": "basic-mastery",
+      "challenge": "2-2",
+      "difficulty": "easy",
+      "errorPath": "scale-symbol-value",
+      "stem": "象形圖中每個★代表 2 人，游泳項目有 3 個★。喜歡游泳的有幾人？",
+      "options": [
+        "3 人",
+        "5 人",
+        "6 人",
+        "8 人"
+      ],
+      "answer": 2,
+      "explanation": "3 個★，每個代表 2 人，所以 3×2=6 人。"
+    },
+    {
+      "id": "pictogram-simple-table-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "2-2",
+      "difficulty": "medium",
+      "errorPath": "scale-symbol-value",
+      "stem": "每個●代表 5 顆糖，圖上有 4 個●。共有幾顆糖？",
+      "options": [
+        "9 顆",
+        "15 顆",
+        "20 顆",
+        "25 顆"
+      ],
+      "answer": 2,
+      "explanation": "4 個圖示各代表 5 顆，4×5=20 顆。"
+    },
+    {
+      "id": "pictogram-simple-table-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "2-2",
+      "difficulty": "medium",
+      "errorPath": "scale-symbol-value",
+      "stem": "每個▲代表 2 朵花。若表格記錄有 8 朵花，象形圖要畫幾個▲？",
+      "options": [
+        "2 個",
+        "4 個",
+        "6 個",
+        "8 個"
+      ],
+      "answer": 1,
+      "explanation": "8 朵每 2 朵用一個圖示表示，8÷2=4 個▲。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "pictogram-simple-table-ci-1",
+      "type": "concept-id",
+      "challenge": "2-3",
+      "difficulty": "easy",
+      "errorPath": "legend-value-meaning",
+      "statement": "讀象形圖前，要先看一個圖示代表多少數量。",
+      "correctAnswer": true,
+      "explanation": "圖例決定每個圖示的數值，不先確認就可能把總數算錯。"
+    },
+    {
+      "id": "pictogram-simple-table-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "2-3",
+      "difficulty": "easy",
+      "errorPath": "legend-value-meaning",
+      "statement": "象形圖有 3 個圖示時，不論圖例怎麼寫，數量都一定是 3。",
+      "correctAnswer": false,
+      "explanation": "若一個圖示代表 2，3 個圖示就是 6；總數會隨圖例改變。"
+    },
+    {
+      "id": "pictogram-simple-table-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "2-3",
+      "difficulty": "medium",
+      "errorPath": "legend-value-meaning",
+      "statement": "同一張象形圖裡，若圖例寫「★代表 2 人」，每個完整的★都應按 2 人計算。",
+      "correctAnswer": true,
+      "explanation": "同一圖表的完整圖示使用相同代表值，才能正確比較各類數量。"
+    },
+    {
+      "id": "pictogram-simple-table-ci-2",
+      "type": "concept-id",
+      "challenge": "2-4",
+      "difficulty": "easy",
+      "errorPath": "table-category-alignment",
+      "statement": "把象形圖整理成表格時，類別名稱和該類數量要寫在同一列。",
+      "correctAnswer": true,
+      "explanation": "同一列配對類別與數量，才看得出每個數字屬於哪一類。"
+    },
+    {
+      "id": "pictogram-simple-table-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "2-4",
+      "difficulty": "easy",
+      "errorPath": "table-category-alignment",
+      "statement": "製作表格時，可以把香蕉的數量寫在蘋果那一列，讀者仍會知道意思。",
+      "correctAnswer": false,
+      "explanation": "數量若放錯列，就會被誤認為另一類資料，表格無法正確表達。"
+    },
+    {
+      "id": "pictogram-simple-table-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "2-4",
+      "difficulty": "medium",
+      "errorPath": "table-category-alignment",
+      "statement": "象形圖和簡單表格可以表達同一批資料，只是呈現方式不同。",
+      "correctAnswer": true,
+      "explanation": "只要類別與數量一致，圖示和數字表格都能呈現同樣的資料。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "pictogram-simple-table-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "2-5",
+      "difficulty": "easy",
+      "errorPath": "miscount-symbol-value",
+      "problem": "圖例寫「每個●代表 2 人」，閱讀組有 4 個●。",
+      "wrongSolution": "小宇說閱讀組有 4 人。",
+      "errorOptions": [
+        "漏看圖例，應算 4×2=8 人",
+        "應算 4+2=6 人",
+        "應算 4÷2=2 人",
+        "圖示不能表示人數"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "4 是圖示個數，每個代表 2 人，因此實際人數為 4×2=8。"
+    },
+    {
+      "id": "pictogram-simple-table-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "2-5",
+      "difficulty": "medium",
+      "errorPath": "miscount-symbol-value",
+      "problem": "圖例寫「每個★代表 5 本書」，圖上有 3 個★。",
+      "wrongSolution": "小恩算 5+3=8 本。",
+      "errorOptions": [
+        "應只算 5 本",
+        "圖示數和代表值要相乘，應是 3×5=15 本",
+        "應算 5-3=2 本",
+        "答案應是 3 本"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "每個★各代表 5 本，3 個★就是 5+5+5=15 本。"
+    },
+    {
+      "id": "pictogram-simple-table-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "2-5",
+      "difficulty": "medium",
+      "errorPath": "miscount-symbol-value",
+      "problem": "每個▲代表 2 票，甲有 5 個▲，乙有 3 個▲。",
+      "wrongSolution": "小樂說甲比乙多 2 票。",
+      "errorOptions": [
+        "甲乙票數相同",
+        "甲比乙多 8 票",
+        "圖示多 2 個，每個代表 2 票，所以多 4 票",
+        "乙比甲多 4 票"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "甲比乙多 5-3=2 個圖示，每個代表 2 票，所以多 2×2=4 票。"
+    },
+    {
+      "id": "pictogram-simple-table-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "2-6",
+      "difficulty": "easy",
+      "errorPath": "chart-table-mismatch",
+      "problem": "象形圖中蘋果有 3 個圖示，每個代表 1 顆；香蕉有 2 個圖示。",
+      "wrongSolution": "小芬在表格寫蘋果 2 顆、香蕉 3 根。",
+      "errorOptions": [
+        "表格不能寫水果",
+        "每類都應寫 5",
+        "只要總數相同就正確",
+        "把兩類數量對調了，應寫蘋果 3、香蕉 2"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "蘋果列有 3 個圖示、香蕉列有 2 個，小芬將兩個類別的數量寫反。"
+    },
+    {
+      "id": "pictogram-simple-table-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "2-6",
+      "difficulty": "medium",
+      "errorPath": "chart-table-mismatch",
+      "problem": "表格記錄紅球 4 顆、藍球 2 顆，每個●代表 1 顆。",
+      "wrongSolution": "小正畫紅球 4 個●、藍球 4 個●。",
+      "errorOptions": [
+        "藍球應畫 2 個●，不是 4 個",
+        "紅球應畫 2 個●",
+        "兩類都應畫 6 個●",
+        "每類只能畫 1 個●"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "每個圖示代表 1 顆，藍球數量是 2，所以藍球列應畫 2 個●。"
+    },
+    {
+      "id": "pictogram-simple-table-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "2-6",
+      "difficulty": "medium",
+      "errorPath": "chart-table-mismatch",
+      "problem": "表格記錄貓 6 隻、狗 4 隻，每個🐾代表 2 隻。",
+      "wrongSolution": "小琳畫貓 6 個🐾、狗 4 個🐾。",
+      "errorOptions": [
+        "圖示應比動物數更多",
+        "應除以每圖代表數，貓畫 3 個、狗畫 2 個",
+        "兩類都畫 2 個",
+        "只畫貓，不畫狗"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "一個🐾代表 2 隻，因此貓需 6÷2=3 個圖示，狗需 4÷2=2 個。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "pictogram-simple-table-ca-1",
+      "type": "context-application",
+      "challenge": "2-7",
+      "difficulty": "easy",
+      "errorPath": "pictogram-comparison",
+      "scenario": "喜歡的顏色象形圖：紅色有 4 個●，藍色有 2 個●，黃色有 3 個●；每個●代表 1 人。",
+      "question": "哪一種顏色最多人喜歡？",
+      "options": [
+        "紅色",
+        "藍色",
+        "黃色",
+        "一樣多"
+      ],
+      "answer": 0,
+      "explanation": "紅色有 4 個圖示，比黃色 3 個和藍色 2 個都多。"
+    },
+    {
+      "id": "pictogram-simple-table-ca-v7-2",
+      "type": "context-application",
+      "challenge": "2-7",
+      "difficulty": "medium",
+      "errorPath": "pictogram-comparison",
+      "scenario": "運動票選：跑步 3 個★，跳繩 5 個★；每個★代表 2 人。",
+      "question": "喜歡跳繩的比喜歡跑步的多幾人？",
+      "options": [
+        "2 人",
+        "4 人",
+        "6 人",
+        "8 人"
+      ],
+      "answer": 1,
+      "explanation": "跳繩比跑步多 5-3=2 個圖示，每個代表 2 人，所以多 4 人。"
+    },
+    {
+      "id": "pictogram-simple-table-ca-v7-3",
+      "type": "context-application",
+      "challenge": "2-7",
+      "difficulty": "medium",
+      "errorPath": "pictogram-comparison",
+      "scenario": "借書圖：故事書 4 個📘，科學書 2 個📘；每個📘代表 3 本。",
+      "question": "兩類書合計借出幾本？",
+      "options": [
+        "6 本",
+        "12 本",
+        "18 本",
+        "24 本"
+      ],
+      "answer": 2,
+      "explanation": "共有 4+2=6 個圖示，每個代表 3 本，所以 6×3=18 本。"
+    },
+    {
+      "id": "pictogram-simple-table-ca-2",
+      "type": "context-application",
+      "challenge": "2-8",
+      "difficulty": "easy",
+      "errorPath": "table-to-pictogram-conversion",
+      "scenario": "表格記錄：蘋果 3 顆、香蕉 2 根。每個圖示代表 1 個水果。",
+      "question": "香蕉列應畫幾個圖示？",
+      "options": [
+        "1 個",
+        "2 個",
+        "3 個",
+        "5 個"
+      ],
+      "answer": 1,
+      "explanation": "香蕉數量是 2，且每圖代表 1，所以應畫 2 個圖示。"
+    },
+    {
+      "id": "pictogram-simple-table-ca-v8-2",
+      "type": "context-application",
+      "challenge": "2-8",
+      "difficulty": "medium",
+      "errorPath": "table-to-pictogram-conversion",
+      "scenario": "表格記錄：晴天 8 天、雨天 4 天。每個☀代表 2 天。",
+      "question": "晴天應畫幾個代表圖示？",
+      "options": [
+        "2 個",
+        "4 個",
+        "6 個",
+        "8 個"
+      ],
+      "answer": 1,
+      "explanation": "8 天每 2 天用一個圖示表示，8÷2=4 個。"
+    },
+    {
+      "id": "pictogram-simple-table-ca-v8-3",
+      "type": "context-application",
+      "challenge": "2-8",
+      "difficulty": "medium",
+      "errorPath": "table-to-pictogram-conversion",
+      "scenario": "象形圖中牛奶有 3 個🥛、果汁有 2 個🥤，每個圖示代表 2 杯。",
+      "question": "轉成表格後，牛奶和果汁的數量應寫成哪一組？",
+      "options": [
+        "牛奶 3、果汁 2",
+        "牛奶 5、果汁 2",
+        "牛奶 6、果汁 4",
+        "牛奶 6、果汁 2"
+      ],
+      "answer": 2,
+      "explanation": "牛奶是 3×2=6 杯，果汁是 2×2=4 杯。"
+    }
+  ]
+}

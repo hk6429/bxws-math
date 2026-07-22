@@ -14,11 +14,7 @@
         "底面積×高"
       ],
       "answer": 3,
-      "explanation": "所有柱體的體積都是底面積×高。底面周長×高算的是側面積，不是體積。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "所有柱體的體積都是底面積×高。底面周長×高算的是側面積，不是體積。"
     },
     {
       "id": "prism-volume-bm-2",
@@ -33,11 +29,7 @@
         "底面積和側面積"
       ],
       "answer": 2,
-      "explanation": "柱體體積＝底面積×高，所以只要知道底面積和高就能算。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "柱體體積＝底面積×高，所以只要知道底面積和高就能算。"
     },
     {
       "id": "prism-volume-bm-3",
@@ -52,11 +44,7 @@
         "直徑×圓周率×高"
       ],
       "answer": 2,
-      "explanation": "圓柱體積＝底面積×高，底面積是半徑×半徑×圓周率，再乘高。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "圓柱體積＝底面積×高，底面積是半徑×半徑×圓周率，再乘高。"
     },
     {
       "id": "prism-volume-bm-4",
@@ -71,11 +59,7 @@
         "100 立方公分"
       ],
       "answer": 2,
-      "explanation": "體積＝底面積×高＝25×8＝200 立方公分。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "體積＝底面積×高＝25×8＝200 立方公分。"
     },
     {
       "id": "prism-volume-bm-5",
@@ -90,11 +74,7 @@
         "480 立方公分"
       ],
       "answer": 0,
-      "explanation": "體積＝40×6＝240 立方公分。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "體積＝40×6＝240 立方公分。"
     },
     {
       "id": "prism-volume-bm-6",
@@ -109,11 +89,7 @@
         "225 立方公分"
       ],
       "answer": 3,
-      "explanation": "底面積＝5×5＝25 平方公分，體積＝25×9＝225 立方公分。45 是只用一邊 5 乘高，忘了先算底面積。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "底面積＝5×5＝25 平方公分，體積＝25×9＝225 立方公分。45 是只用一邊 5 乘高，忘了先算底面積。"
     },
     {
       "id": "prism-volume-bm-7",
@@ -128,11 +104,7 @@
         "62.8 立方公分"
       ],
       "answer": 0,
-      "explanation": "底面積＝2×2×3.14＝12.56 平方公分，體積＝12.56×10＝125.6 立方公分。62.8 是用圓周長×高算的，那是側面積。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "底面積＝2×2×3.14＝12.56 平方公分，體積＝12.56×10＝125.6 立方公分。62.8 是用圓周長×高算的，那是側面積。"
     },
     {
       "id": "prism-volume-bm-8",
@@ -147,11 +119,7 @@
         "94.2 立方公分"
       ],
       "answer": 0,
-      "explanation": "底面積＝3×3×3.14＝28.26 平方公分，體積＝28.26×5＝141.3 立方公分。94.2 是拿圓周長（6×3.14）去乘高，算錯了。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "底面積＝3×3×3.14＝28.26 平方公分，體積＝28.26×5＝141.3 立方公分。94.2 是拿圓周長（6×3.14）去乘高，算錯了。"
     },
     {
       "id": "prism-volume-bm-9",
@@ -166,11 +134,7 @@
         "125.6 立方公分"
       ],
       "answer": 1,
-      "explanation": "半徑＝10÷2＝5 公分，底面積＝5×5×3.14＝78.5，體積＝78.5×4＝314 立方公分。1256 是把直徑 10 當半徑算的。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "半徑＝10÷2＝5 公分，底面積＝5×5×3.14＝78.5，體積＝78.5×4＝314 立方公分。1256 是把直徑 10 當半徑算的。"
     },
     {
       "id": "prism-volume-bm-10",
@@ -185,11 +149,7 @@
         "168 立方公分"
       ],
       "answer": 1,
-      "explanation": "底面積＝6×4÷2＝12 平方公分，體積＝12×7＝84 立方公分。168 是底面三角形忘了除以 2。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "底面積＝6×4÷2＝12 平方公分，體積＝12×7＝84 立方公分。168 是底面三角形忘了除以 2。"
     },
     {
       "id": "prism-volume-bm-11",
@@ -204,11 +164,7 @@
         "240 立方公分"
       ],
       "answer": 1,
-      "explanation": "底面積＝10×3÷2＝15 平方公分，體積＝15×8＝120 立方公分。240 是底面積忘了除以 2。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "底面積＝10×3÷2＝15 平方公分，體積＝15×8＝120 立方公分。240 是底面積忘了除以 2。"
     },
     {
       "id": "prism-volume-bm-12",
@@ -223,11 +179,7 @@
         "6 公分"
       ],
       "answer": 3,
-      "explanation": "柱高＝體積÷底面積＝96÷16＝6 公分。80 是用減法算的，要用除法。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "柱高＝體積÷底面積＝96÷16＝6 公分。80 是用減法算的，要用除法。"
     }
   ],
   "conceptId": [
@@ -238,11 +190,7 @@
       "errorPath": 1,
       "statement": "不管底面是三角形、四邊形還是圓形，柱體體積都是底面積×高。",
       "correctAnswer": true,
-      "explanation": "柱體可以看成底面往上堆疊出來的，所以體積一律是底面積×高，底面形狀不影響公式。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "柱體可以看成底面往上堆疊出來的，所以體積一律是底面積×高，底面形狀不影響公式。"
     },
     {
       "id": "prism-volume-ci-2",
@@ -251,11 +199,7 @@
       "errorPath": 1,
       "statement": "圓柱的體積是底面圓周長乘以高。",
       "correctAnswer": false,
-      "explanation": "圓周長×高算出來的是側面展開的長方形面積（側面積）。體積要用底面積（半徑×半徑×圓周率）×高。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "圓周長×高算出來的是側面展開的長方形面積（側面積）。體積要用底面積（半徑×半徑×圓周率）×高。"
     },
     {
       "id": "prism-volume-ci-3",
@@ -264,11 +208,7 @@
       "errorPath": 1,
       "statement": "三角柱算體積時，底面積要用「底×高÷2」先算出三角形面積。",
       "correctAnswer": true,
-      "explanation": "三角柱的底面是三角形，面積是底×高÷2，算好底面積再乘柱高才是體積。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "三角柱的底面是三角形，面積是底×高÷2，算好底面積再乘柱高才是體積。"
     },
     {
       "id": "prism-volume-ci-4",
@@ -277,11 +217,7 @@
       "errorPath": 2,
       "statement": "兩個柱體的高一樣，底面積大的那個體積一定比較大。",
       "correctAnswer": true,
-      "explanation": "體積＝底面積×高，高相同時，底面積越大體積越大。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "體積＝底面積×高，高相同時，底面積越大體積越大。"
     },
     {
       "id": "prism-volume-ci-5",
@@ -290,11 +226,7 @@
       "errorPath": 2,
       "statement": "柱體的底面積不變、高變成 2 倍，體積也變成 2 倍。",
       "correctAnswer": true,
-      "explanation": "體積＝底面積×高，底面積不變時，高變 2 倍體積就變 2 倍。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "體積＝底面積×高，底面積不變時，高變 2 倍體積就變 2 倍。"
     },
     {
       "id": "prism-volume-ci-6",
@@ -303,11 +235,7 @@
       "errorPath": 2,
       "statement": "把一個柱體斜放在桌上，它的體積就會變小。",
       "correctAnswer": false,
-      "explanation": "體積是柱體本身佔的空間，不管怎麼擺都不變。斜放時要小心別把斜邊當成高來算。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "體積是柱體本身佔的空間，不管怎麼擺都不變。斜放時要小心別把斜邊當成高來算。"
     }
   ],
   "errorDiagnosis": [
@@ -325,11 +253,7 @@
         "乘法計算錯誤"
       ],
       "correctErrorIndex": 2,
-      "explanation": "3×2×3.14 是圓周長。底面積應為 3×3×3.14＝28.26，體積＝28.26×5＝141.3 立方公分。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "3×2×3.14 是圓周長。底面積應為 3×3×3.14＝28.26，體積＝28.26×5＝141.3 立方公分。"
     },
     {
       "id": "prism-volume-ed-2",
@@ -345,11 +269,7 @@
         "8×5 相乘算錯"
       ],
       "correctErrorIndex": 0,
-      "explanation": "底面積＝8×5÷2＝20 平方公分，體積＝20×6＝120 立方公分。三角形面積一定要除以 2。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "底面積＝8×5÷2＝20 平方公分，體積＝20×6＝120 立方公分。三角形面積一定要除以 2。"
     },
     {
       "id": "prism-volume-ed-3",
@@ -365,11 +285,7 @@
         "應該用體積公式來算"
       ],
       "correctErrorIndex": 1,
-      "explanation": "三角柱表面積＝3 個側面＋上下 2 個三角形底面，共 5 個面，缺一不可。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "三角柱表面積＝3 個側面＋上下 2 個三角形底面，共 5 個面，缺一不可。"
     }
   ],
   "contextApplication": [
@@ -387,11 +303,7 @@
         "28000 平方公分"
       ],
       "answer": 2,
-      "explanation": "體積＝底面積×高＝700×40＝28000 立方公分。體積單位要用立方公分。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "體積＝底面積×高＝700×40＝28000 立方公分。體積單位要用立方公分。"
     },
     {
       "id": "prism-volume-ca-2",
@@ -407,11 +319,7 @@
         "60 平方公尺"
       ],
       "answer": 1,
-      "explanation": "體積＝12×5＝60 立方公尺。底面積和高相乘就是柱體體積。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "體積＝12×5＝60 立方公尺。底面積和高相乘就是柱體體積。"
     },
     {
       "id": "prism-volume-ca-3",
@@ -427,11 +335,7 @@
         "沒辦法比較"
       ],
       "answer": 0,
-      "explanation": "甲＝50×8＝400 立方公分，乙＝80×5＝400 立方公分，一樣大。不能只看誰比較高或底面積誰大。",
-      "media": {
-        "src": "assets/geometry/geometry-box-volume.webp",
-        "alt": "長方體與柱體的體積與表面積示意圖"
-      }
+      "explanation": "甲＝50×8＝400 立方公分，乙＝80×5＝400 立方公分，一樣大。不能只看誰比較高或底面積誰大。"
     }
   ]
 }

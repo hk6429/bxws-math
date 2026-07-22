@@ -1,0 +1,375 @@
+{
+  "nodeId": "two-dimensional-pattern",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "國小中年級二維排列規律題庫，涵蓋方陣點數、行列數量關係、乘法陣列與簡單座標式規律；全數自編。"
+  },
+  "basicMastery": [
+    {
+      "id": "two-dimensional-pattern-bm-1",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "difficulty": "easy",
+      "errorPath": "row-column-product",
+      "stem": "每排放 4 顆棋子，共放 3 排，一共有幾顆棋子？",
+      "options": [
+        "7 顆",
+        "12 顆",
+        "16 顆",
+        "24 顆"
+      ],
+      "answer": 1,
+      "explanation": "每排 4 顆、共有 3 排，所以用 4×3=12，共 12 顆。"
+    },
+    {
+      "id": "two-dimensional-pattern-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "difficulty": "easy",
+      "errorPath": "row-column-product",
+      "stem": "貼紙排成 5 行，每行 2 張，一共有幾張貼紙？",
+      "options": [
+        "7 張",
+        "8 張",
+        "10 張",
+        "12 張"
+      ],
+      "answer": 2,
+      "explanation": "5 行且每行 2 張，總數是 5×2=10 張。"
+    },
+    {
+      "id": "two-dimensional-pattern-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "1-1",
+      "difficulty": "medium",
+      "errorPath": "row-column-product",
+      "stem": "一個點陣有 4 排、每排 6 點。若再增加 1 排，一共有幾點？",
+      "options": [
+        "24 點",
+        "25 點",
+        "28 點",
+        "30 點"
+      ],
+      "answer": 3,
+      "explanation": "增加後共有 5 排，每排 6 點，因此 5×6=30 點。"
+    },
+    {
+      "id": "two-dimensional-pattern-bm-2",
+      "type": "basic-mastery",
+      "challenge": "1-2",
+      "difficulty": "easy",
+      "errorPath": "square-array-count",
+      "stem": "正方形點陣每邊有 3 點，共有幾點？",
+      "options": [
+        "6 點",
+        "8 點",
+        "9 點",
+        "12 點"
+      ],
+      "answer": 2,
+      "explanation": "每邊 3 點表示有 3 行、每行 3 點，所以 3×3=9 點。"
+    },
+    {
+      "id": "two-dimensional-pattern-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "1-2",
+      "difficulty": "medium",
+      "errorPath": "square-array-count",
+      "stem": "第 1 個方陣是 1×1，第 2 個是 2×2，第 3 個是 3×3。第 4 個方陣有幾點？",
+      "options": [
+        "8 點",
+        "12 點",
+        "16 點",
+        "20 點"
+      ],
+      "answer": 2,
+      "explanation": "第 4 個方陣是 4 行、每行 4 點，4×4=16 點。"
+    },
+    {
+      "id": "two-dimensional-pattern-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "1-2",
+      "difficulty": "medium",
+      "errorPath": "square-array-count",
+      "stem": "一個正方形座位區共有 25 張椅子，每排和排數一樣多。每排有幾張？",
+      "options": [
+        "4 張",
+        "5 張",
+        "6 張",
+        "7 張"
+      ],
+      "answer": 1,
+      "explanation": "5×5=25，所以排數和每排張數都是 5。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "two-dimensional-pattern-ci-1",
+      "type": "concept-id",
+      "challenge": "1-3",
+      "difficulty": "easy",
+      "errorPath": "row-column-order",
+      "statement": "3 行、每行 5 個的陣列，總數可以用 3×5 計算。",
+      "correctAnswer": true,
+      "explanation": "3 行各有 5 個，就是 3 個 5，相乘得到 15。"
+    },
+    {
+      "id": "two-dimensional-pattern-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "1-3",
+      "difficulty": "easy",
+      "errorPath": "row-column-order",
+      "statement": "2 行、每行 6 個，總數是 2+6=8 個。",
+      "correctAnswer": false,
+      "explanation": "陣列總數要算每行數量的重複相加，即 6+6=12，也就是 2×6。"
+    },
+    {
+      "id": "two-dimensional-pattern-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "1-3",
+      "difficulty": "medium",
+      "errorPath": "row-column-order",
+      "statement": "4 行、每行 3 個與 3 行、每行 4 個的排列形狀不同，但總數相同。",
+      "correctAnswer": true,
+      "explanation": "兩者形狀的行列方向不同，但 4×3 和 3×4 都等於 12。"
+    },
+    {
+      "id": "two-dimensional-pattern-ci-2",
+      "type": "concept-id",
+      "challenge": "1-4",
+      "difficulty": "easy",
+      "errorPath": "coordinate-step-pattern",
+      "statement": "位置依序是（1，2）、（2，3）、（3，4），下一個可接（4，5）。",
+      "correctAnswer": true,
+      "explanation": "每往下一個位置，前後兩個數都增加 1，所以接（4，5）符合規律。"
+    },
+    {
+      "id": "two-dimensional-pattern-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "1-4",
+      "difficulty": "medium",
+      "errorPath": "coordinate-step-pattern",
+      "statement": "位置（1，1）、（2，3）、（3，5）中，第二個數每次增加 1。",
+      "correctAnswer": false,
+      "explanation": "第二個數是 1、3、5，每次增加 2，不是增加 1。"
+    },
+    {
+      "id": "two-dimensional-pattern-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "1-4",
+      "difficulty": "medium",
+      "errorPath": "coordinate-step-pattern",
+      "statement": "位置（2，1）、（2，2）、（2，3）都在同一行，只有第二個數依序改變。",
+      "correctAnswer": true,
+      "explanation": "三個位置的第一個數都固定為 2，第二個數由 1 增到 3，表示沿同一行移動。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "two-dimensional-pattern-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "1-5",
+      "difficulty": "easy",
+      "errorPath": "add-instead-of-multiply",
+      "problem": "一個陣列有 3 排，每排 4 顆球，求總數。",
+      "wrongSolution": "小凱算 3+4=7，說共有 7 顆。",
+      "errorOptions": [
+        "把排數和每排顆數相加了，應算 3×4",
+        "少數了最後一排",
+        "把 4 看成 5",
+        "總數應用 4÷3"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "3 排都各有 4 顆，應算 4+4+4=12，也就是 3×4，不能只把 3 和 4 相加。"
+    },
+    {
+      "id": "two-dimensional-pattern-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "1-5",
+      "difficulty": "medium",
+      "errorPath": "add-instead-of-multiply",
+      "problem": "花盆排成 5 行，每行 3 盆，求總數。",
+      "wrongSolution": "小晴算 5+3=8，回答 8 盆。",
+      "errorOptions": [
+        "應算 5-3",
+        "行數和每行數量要相乘，應算 5×3",
+        "每行只能有 5 盆",
+        "應算 5÷3"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "5 行各有 3 盆，總數是 3+3+3+3+3=15，也就是 5×3。"
+    },
+    {
+      "id": "two-dimensional-pattern-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "1-5",
+      "difficulty": "medium",
+      "errorPath": "add-instead-of-multiply",
+      "problem": "方形磁磚排成 4 行、每行 4 塊，求總數。",
+      "wrongSolution": "小文說 4+4=8，所以有 8 塊。",
+      "errorOptions": [
+        "正方形不能計算",
+        "應把 4 加四次，但答案是 12",
+        "應算 4×4=16，不是把兩個 4 只加一次",
+        "應算 4÷4=1"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "共有 4 行，每一行都有 4 塊，因此是 4×4=16 塊。"
+    },
+    {
+      "id": "two-dimensional-pattern-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "1-6",
+      "difficulty": "medium",
+      "errorPath": "pattern-growth-misread",
+      "problem": "方陣依序為 2×2、3×3、4×4，求下一個方陣點數。",
+      "wrongSolution": "小安看到點數 4、9、16，就直接加 5，回答 21 點。",
+      "errorOptions": [
+        "下一個應減 5",
+        "只要加上排數 4",
+        "點數永遠增加 5",
+        "邊長每次增 1，下一個是 5×5=25"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "規律是方陣邊長由 2、3、4 增為 5，下一個點數應是 5×5=25。"
+    },
+    {
+      "id": "two-dimensional-pattern-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "1-6",
+      "difficulty": "medium",
+      "errorPath": "pattern-growth-misread",
+      "problem": "長方形點陣依序是 2 行3列、3 行3列、4 行3列，求下一個總點數。",
+      "wrongSolution": "小哲說每次行列都增加 1，所以下一個是 5×4=20 點。",
+      "errorOptions": [
+        "列數一直固定為 3，下一個應是 5×3=15",
+        "行數也應固定為 2",
+        "下一個應是 4×4=16",
+        "總點數應是 5+4=9"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "題目只有行數由 2、3、4 增加，列數都維持 3，因此下一個是 5×3=15 點。"
+    },
+    {
+      "id": "two-dimensional-pattern-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "1-6",
+      "difficulty": "hard",
+      "errorPath": "pattern-growth-misread",
+      "problem": "位置依序為（1，2）、（2，4）、（3，6），求下一個位置。",
+      "wrongSolution": "小美回答（4，7）。",
+      "errorOptions": [
+        "第一個數應固定為 1",
+        "第二個數每次增加 2，下一個應是（4，8）",
+        "兩個數都應減 1",
+        "下一個應是（3，8）"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "第一個數每次加 1，第二個數每次加 2，所以（3，6）之後是（4，8）。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "two-dimensional-pattern-ca-1",
+      "type": "context-application",
+      "challenge": "1-7",
+      "difficulty": "easy",
+      "errorPath": "array-total-application",
+      "scenario": "教室把桌子排成 4 排，每排 6 張。",
+      "question": "一共排了幾張桌子？",
+      "options": [
+        "10 張",
+        "20 張",
+        "24 張",
+        "28 張"
+      ],
+      "answer": 2,
+      "explanation": "4 排各有 6 張，所以 4×6=24 張。"
+    },
+    {
+      "id": "two-dimensional-pattern-ca-v7-2",
+      "type": "context-application",
+      "challenge": "1-7",
+      "difficulty": "medium",
+      "errorPath": "array-total-application",
+      "scenario": "餅乾盒有 3 層，每層排成 2 行、每行 4 片。",
+      "question": "整盒共有幾片餅乾？",
+      "options": [
+        "9 片",
+        "12 片",
+        "18 片",
+        "24 片"
+      ],
+      "answer": 3,
+      "explanation": "每層有 2×4=8 片，3 層共有 3×8=24 片。"
+    },
+    {
+      "id": "two-dimensional-pattern-ca-v7-3",
+      "type": "context-application",
+      "challenge": "1-7",
+      "difficulty": "medium",
+      "errorPath": "array-total-application",
+      "scenario": "園遊會座位共有 28 張，排成 4 排且每排一樣多。",
+      "question": "每排有幾張椅子？",
+      "options": [
+        "6 張",
+        "7 張",
+        "8 張",
+        "9 張"
+      ],
+      "answer": 1,
+      "explanation": "28÷4=7，因此每排有 7 張。"
+    },
+    {
+      "id": "two-dimensional-pattern-ca-2",
+      "type": "context-application",
+      "challenge": "1-8",
+      "difficulty": "easy",
+      "errorPath": "grid-position-rule",
+      "scenario": "機器人在方格上依序走到（1，1）、（2，2）、（3，3）。",
+      "question": "照規律，下一格是哪裡？",
+      "options": [
+        "（3，4）",
+        "（4，3）",
+        "（4，4）",
+        "（5，4）"
+      ],
+      "answer": 2,
+      "explanation": "每一步兩個位置數都增加 1，所以（3，3）後是（4，4）。"
+    },
+    {
+      "id": "two-dimensional-pattern-ca-v8-2",
+      "type": "context-application",
+      "challenge": "1-8",
+      "difficulty": "medium",
+      "errorPath": "grid-position-rule",
+      "scenario": "小華在座位表上圈出（2，1）、（2，2）、（2，3）。",
+      "question": "下一個依同樣方向圈選的位置最可能是哪一個？",
+      "options": [
+        "（2，4）",
+        "（3，3）",
+        "（3，4）",
+        "（1，4）"
+      ],
+      "answer": 0,
+      "explanation": "第一個數保持 2，第二個數依序增加 1，因此下一個是（2，4）。"
+    },
+    {
+      "id": "two-dimensional-pattern-ca-v8-3",
+      "type": "context-application",
+      "challenge": "1-8",
+      "difficulty": "medium",
+      "errorPath": "grid-position-rule",
+      "scenario": "尋寶圖上的提示位置是（1，2）、（2，4）、（3，6）。",
+      "question": "第 4 個提示位置是哪一個？",
+      "options": [
+        "（4，7）",
+        "（4，8）",
+        "（5，8）",
+        "（5，10）"
+      ],
+      "answer": 1,
+      "explanation": "第一個數每次加 1，第二個數每次加 2，所以第 4 個位置是（4，8）。"
+    }
+  ]
+}

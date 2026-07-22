@@ -121,6 +121,11 @@ const readyGates = {
   "perpendicular-bisector": ["9-6", "9-8"],
   "symmetry-properties-jhs": ["10-6", "10-8"],
   "statistical-chart-design": ["11-6", "11-8"],
+  // 四個國小骨架節點已補齊內容（Codex 產、主線程獨立驗收）
+  "two-dimensional-pattern": ["1-6", "1-8"],
+  "simple-classification": ["1-6", "1-8"],
+  "pictogram-simple-table": ["2-6", "2-8"],
+  "table-reading-making": ["3-6", "3-8"],
 };
 
 test("全技能骨架共 110 節點，id 全域唯一", () => {
@@ -156,8 +161,8 @@ test("tier、六組合併與兩組改名遵守總綱裁決", () => {
   assert.equal(nodesById["cuboid-volume"].strand, "space-shape");
 });
 
-test("七年級八骨架補齊內容後僅餘 4 個 contentPending，既有題庫守門挑戰符合裁決", () => {
-  assert.equal(nodes.filter((node) => node.contentPending === true).length, 4);
+test("十二骨架補齊內容後已無 contentPending，既有題庫守門挑戰符合裁決", () => {
+  assert.equal(nodes.filter((node) => node.contentPending === true).length, 0);
   for (const node of nodes.filter((item) => !existingIds.has(item.id) && !newestIds.has(item.id))) {
     assert.ok(Array.isArray(node.gateChallenges), `${node.id} 應有 gateChallenges 陣列`);
     if (readyGates[node.id]) {

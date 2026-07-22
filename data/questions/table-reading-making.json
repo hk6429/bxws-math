@@ -1,0 +1,375 @@
+{
+  "nodeId": "table-reading-making",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "國小中年級表格判讀與製作題庫，涵蓋一維與二維表格、列欄交會格意義及依表格回答；全數自編。"
+  },
+  "basicMastery": [
+    {
+      "id": "table-reading-making-bm-1",
+      "type": "basic-mastery",
+      "challenge": "3-1",
+      "difficulty": "easy",
+      "errorPath": "single-table-value-reading",
+      "stem": "水果數量表：蘋果 5、香蕉 3、橘子 4。香蕉有幾個？",
+      "options": [
+        "3 個",
+        "4 個",
+        "5 個",
+        "12 個"
+      ],
+      "answer": 0,
+      "explanation": "查看香蕉所在的一列，對應數量是 3 個。"
+    },
+    {
+      "id": "table-reading-making-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "3-1",
+      "difficulty": "easy",
+      "errorPath": "single-table-value-reading",
+      "stem": "借書表：小安 2 本、小美 5 本、小凱 3 本。誰借的書最多？",
+      "options": [
+        "小安",
+        "小美",
+        "小凱",
+        "三人一樣"
+      ],
+      "answer": 1,
+      "explanation": "小美的 5 本大於小凱的 3 本和小安的 2 本。"
+    },
+    {
+      "id": "table-reading-making-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "3-1",
+      "difficulty": "medium",
+      "errorPath": "single-table-value-reading",
+      "stem": "氣溫表：星期一 24 度、星期二 26 度、星期三 23 度。星期二比星期三高幾度？",
+      "options": [
+        "1 度",
+        "2 度",
+        "3 度",
+        "4 度"
+      ],
+      "answer": 2,
+      "explanation": "星期二 26 度減星期三 23 度，26-23=3 度。"
+    },
+    {
+      "id": "table-reading-making-bm-2",
+      "type": "basic-mastery",
+      "challenge": "3-2",
+      "difficulty": "easy",
+      "errorPath": "row-column-intersection",
+      "stem": "二維表格的列是班級，欄是球類。三班這一列和籃球這一欄交會的格子是 7，表示什麼？",
+      "options": [
+        "三班有 7 顆籃球",
+        "共有 7 個班",
+        "籃球有 3 顆",
+        "三班有 7 種球"
+      ],
+      "answer": 0,
+      "explanation": "交會格同時對應「三班」與「籃球」，所以表示三班有 7 顆籃球。"
+    },
+    {
+      "id": "table-reading-making-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "3-2",
+      "difficulty": "medium",
+      "errorPath": "row-column-intersection",
+      "stem": "表格列是星期一、星期二，欄是上午、下午。星期二與下午交會格為 12 人，表示哪個時段有 12 人？",
+      "options": [
+        "星期一上午",
+        "星期一下午",
+        "星期二上午",
+        "星期二下午"
+      ],
+      "answer": 3,
+      "explanation": "沿星期二的列和下午的欄找到交會格，因此是星期二下午有 12 人。"
+    },
+    {
+      "id": "table-reading-making-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "3-2",
+      "difficulty": "medium",
+      "errorPath": "row-column-intersection",
+      "stem": "課表的列是節次，欄是星期。第 3 節與星期四交會格寫「自然」，代表什麼？",
+      "options": [
+        "星期三第 4 節上自然",
+        "星期四第 3 節上自然",
+        "星期四全天上自然",
+        "第 3 節每天都上自然"
+      ],
+      "answer": 1,
+      "explanation": "交會格由星期四這一欄與第 3 節這一列共同決定，所以是星期四第 3 節上自然。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "table-reading-making-ci-1",
+      "type": "concept-id",
+      "challenge": "3-3",
+      "difficulty": "easy",
+      "errorPath": "table-heading-meaning",
+      "statement": "讀表格時，先看表格標題和列、欄名稱，可以知道數字代表什麼。",
+      "correctAnswer": true,
+      "explanation": "標題說明整張表的主題，列欄名稱則指出每個數值所屬的類別。"
+    },
+    {
+      "id": "table-reading-making-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "3-3",
+      "difficulty": "easy",
+      "errorPath": "table-heading-meaning",
+      "statement": "只要看到表格中的數字，不看列欄名稱也一定知道它的意思。",
+      "correctAnswer": false,
+      "explanation": "相同數字可能屬於不同日期或類別，必須配合列欄名稱才知道含意。"
+    },
+    {
+      "id": "table-reading-making-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "3-3",
+      "difficulty": "medium",
+      "errorPath": "table-heading-meaning",
+      "statement": "表格中的單位是「人」時，數字 6 表示 6 人，而不是 6 元。",
+      "correctAnswer": true,
+      "explanation": "數值要配合表格標示的單位解讀；單位為人，就代表人數。"
+    },
+    {
+      "id": "table-reading-making-ci-2",
+      "type": "concept-id",
+      "challenge": "3-4",
+      "difficulty": "easy",
+      "errorPath": "table-data-organization",
+      "statement": "製作簡單表格時，同一類資料應放在同一列或同一欄，並清楚標示名稱。",
+      "correctAnswer": true,
+      "explanation": "一致排列並加上名稱，能讓讀者正確找到和比較資料。"
+    },
+    {
+      "id": "table-reading-making-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "3-4",
+      "difficulty": "easy",
+      "errorPath": "table-data-organization",
+      "statement": "把星期一到星期五的資料任意打散放入表格，仍能清楚看出每天的變化。",
+      "correctAnswer": false,
+      "explanation": "日期若任意打散，讀者難以依時間順序閱讀；應依星期順序排列。"
+    },
+    {
+      "id": "table-reading-making-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "3-4",
+      "difficulty": "medium",
+      "errorPath": "table-data-organization",
+      "statement": "若要同時比較兩個班在三種活動的人數，可以用班級當列、活動當欄製作二維表格。",
+      "correctAnswer": true,
+      "explanation": "班級與活動是兩個分類方向，放在列和欄後，每個交會格可記錄對應人數。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "table-reading-making-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "3-5",
+      "difficulty": "easy",
+      "errorPath": "row-column-confusion",
+      "problem": "課表中，列是節次、欄是星期。星期二第 2 節的交會格是數學。",
+      "wrongSolution": "小宏沿著星期二的欄看到第 1 節是國語，就回答國語。",
+      "errorOptions": [
+        "只找到星期二，沒有再找到第 2 節交會格",
+        "星期二不能看課表",
+        "應看星期一",
+        "數學不能放在第 2 節"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "要同時沿星期二欄與第 2 節列定位，交會格才是數學；小宏停在第 1 節。"
+    },
+    {
+      "id": "table-reading-making-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "3-5",
+      "difficulty": "medium",
+      "errorPath": "row-column-confusion",
+      "problem": "點心表的列是班級，欄是餅乾、果凍。一班餅乾 8 份，一班果凍 5 份。",
+      "wrongSolution": "小莉問一班果凍數量時，回答 8 份。",
+      "errorOptions": [
+        "應把 8 和 5 相加",
+        "看了一班的餅乾欄，應改看果凍欄的 5",
+        "一班沒有果凍",
+        "表格數字都要減 1"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "一班列與果凍欄的交會值是 5；8 是同一班但餅乾欄的數字。"
+    },
+    {
+      "id": "table-reading-making-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "3-5",
+      "difficulty": "medium",
+      "errorPath": "row-column-confusion",
+      "problem": "天氣表的列是城市，欄是上午、下午。新竹上午 22 度、下午 27 度。",
+      "wrongSolution": "小華說新竹上午是 27 度。",
+      "errorOptions": [
+        "新竹不能測溫度",
+        "上午下午要相加",
+        "把下午欄的 27 當成上午，上午應是 22",
+        "上午一定比下午高"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "新竹列與上午欄交會是 22；27 位於下午欄，所以小華看錯欄。"
+    },
+    {
+      "id": "table-reading-making-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "3-6",
+      "difficulty": "easy",
+      "errorPath": "missing-table-label",
+      "problem": "小安把紅球 4 顆、藍球 3 顆整理成兩列數字 4、3。",
+      "wrongSolution": "他沒有寫紅球、藍球的類別名稱。",
+      "errorOptions": [
+        "數字不能寫進表格",
+        "每列都應寫 0",
+        "只需刪除 3",
+        "缺少類別標示，讀者不知道 4 和 3 各指什麼"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "沒有紅球、藍球的列名，就無法判斷每個數字對應哪種球。"
+    },
+    {
+      "id": "table-reading-making-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "3-6",
+      "difficulty": "medium",
+      "errorPath": "missing-table-label",
+      "problem": "表格記錄三天雨量，數字是 2、0、5，但沒有標示單位。",
+      "wrongSolution": "小美直接說最高雨量是 5 公斤。",
+      "errorOptions": [
+        "缺少單位，不能自行把雨量當成公斤",
+        "最高值應是 0",
+        "三天數字都要相加才是單位",
+        "雨量不能放表格"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "表格沒有提供單位，只能知道最大數值為 5，不能自行推定為公斤。"
+    },
+    {
+      "id": "table-reading-making-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "3-6",
+      "difficulty": "medium",
+      "errorPath": "missing-table-label",
+      "problem": "一張二維表格填了兩班在跑步和跳繩的人數，但上方兩個活動欄都沒有名稱。",
+      "wrongSolution": "小傑說仍能確定左欄是跑步、右欄是跳繩。",
+      "errorOptions": [
+        "兩欄一定都是跑步",
+        "沒有欄名就無法確定兩欄分別是哪個活動",
+        "班級名稱應刪掉",
+        "只要有人數就不需標示"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "缺少跑步、跳繩的欄名時，數值與活動無法正確配對，因此不能自行判定。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "table-reading-making-ca-1",
+      "type": "context-application",
+      "challenge": "3-7",
+      "difficulty": "easy",
+      "errorPath": "table-answer-comparison",
+      "scenario": "午餐水果表：星期一蘋果 6 個、星期二香蕉 8 根、星期三橘子 5 個。",
+      "question": "哪一天記錄的水果數量最多？",
+      "options": [
+        "星期一",
+        "星期二",
+        "星期三",
+        "三天一樣"
+      ],
+      "answer": 1,
+      "explanation": "星期二的 8 大於星期一的 6 和星期三的 5，所以星期二最多。"
+    },
+    {
+      "id": "table-reading-making-ca-v7-2",
+      "type": "context-application",
+      "challenge": "3-7",
+      "difficulty": "medium",
+      "errorPath": "table-answer-comparison",
+      "scenario": "閱讀表：小安星期一讀 3 頁、星期二讀 5 頁、星期三讀 4 頁。",
+      "question": "三天共讀幾頁？",
+      "options": [
+        "8 頁",
+        "9 頁",
+        "12 頁",
+        "15 頁"
+      ],
+      "answer": 2,
+      "explanation": "把三天頁數相加，3+5+4=12 頁。"
+    },
+    {
+      "id": "table-reading-making-ca-v7-3",
+      "type": "context-application",
+      "challenge": "3-7",
+      "difficulty": "medium",
+      "errorPath": "table-answer-comparison",
+      "scenario": "回收表：一班紙類 7 公斤、塑膠 3 公斤；二班紙類 5 公斤、塑膠 6 公斤。",
+      "question": "哪一班的兩類回收物合計較多？",
+      "options": [
+        "一班，多 1 公斤",
+        "二班，多 1 公斤",
+        "一班，多 2 公斤",
+        "兩班一樣多"
+      ],
+      "answer": 1,
+      "explanation": "一班合計 7+3=10 公斤，二班合計 5+6=11 公斤，二班多 1 公斤。"
+    },
+    {
+      "id": "table-reading-making-ca-2",
+      "type": "context-application",
+      "challenge": "3-8",
+      "difficulty": "easy",
+      "errorPath": "make-table-from-data",
+      "scenario": "調查最喜歡的寵物：貓 4 人、狗 3 人、兔子 2 人。",
+      "question": "表格中「狗」那一列應填哪個數字？",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "9"
+      ],
+      "answer": 1,
+      "explanation": "原始資料記錄喜歡狗的有 3 人，因此狗那一列填 3。"
+    },
+    {
+      "id": "table-reading-making-ca-v8-2",
+      "type": "context-application",
+      "challenge": "3-8",
+      "difficulty": "medium",
+      "errorPath": "make-table-from-data",
+      "scenario": "要整理小文週一借 2 本、週二借 4 本、週三借 1 本的紀錄。",
+      "question": "哪一組表格列名最合適？",
+      "options": [
+        "紅、黃、藍",
+        "大、中、小",
+        "週一、週二、週三",
+        "國語、數學、自然"
+      ],
+      "answer": 2,
+      "explanation": "資料是依星期記錄，列名應使用週一、週二、週三，才能對應每天的借書量。"
+    },
+    {
+      "id": "table-reading-making-ca-v8-3",
+      "type": "context-application",
+      "challenge": "3-8",
+      "difficulty": "medium",
+      "errorPath": "make-table-from-data",
+      "scenario": "一班男生喜歡跑步 3 人、跳繩 2 人；女生喜歡跑步 4 人、跳繩 5 人。要做二維表格。",
+      "question": "女生這一列與跳繩這一欄的交會格應填多少？",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "answer": 3,
+      "explanation": "資料中女生喜歡跳繩的是 5 人，所以對應交會格填 5。"
+    }
+  ]
+}

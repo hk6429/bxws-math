@@ -14,11 +14,7 @@
         "2個"
       ],
       "answer": 0,
-      "explanation": "正方形有 4 條邊，每兩條邊相接的地方有一個角，共 4 個角。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "正方形有 4 條邊，每兩條邊相接的地方有一個角，共 4 個角。"
     },
     {
       "id": "shape-feature-bm-2",
@@ -33,11 +29,7 @@
         "5條"
       ],
       "answer": 0,
-      "explanation": "長方形有 4 條邊：兩條長邊、兩條短邊。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "長方形有 4 條邊：兩條長邊、兩條短邊。"
     },
     {
       "id": "shape-feature-bm-3",
@@ -52,11 +44,7 @@
         "10個"
       ],
       "answer": 1,
-      "explanation": "圖形有幾條邊，就有幾個角。五邊形有 5 條邊，所以有 5 個角。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "圖形有幾條邊，就有幾個角。五邊形有 5 條邊，所以有 5 個角。"
     },
     {
       "id": "shape-feature-bm-4",
@@ -71,11 +59,7 @@
         "6個"
       ],
       "answer": 3,
-      "explanation": "長方體有 6 個面：上下、前後、左右各一組，數的時候別漏掉看不到的背面。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "長方體有 6 個面：上下、前後、左右各一組，數的時候別漏掉看不到的背面。"
     },
     {
       "id": "shape-feature-bm-5",
@@ -90,11 +74,7 @@
         "8個"
       ],
       "answer": 3,
-      "explanation": "正方體有 8 個頂點，就是尖尖的地方；6 是面的數目、12 是邊的數目，不要混在一起。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "正方體有 8 個頂點，就是尖尖的地方；6 是面的數目、12 是邊的數目，不要混在一起。"
     },
     {
       "id": "shape-feature-bm-6",
@@ -109,11 +89,7 @@
         "24條"
       ],
       "answer": 0,
-      "explanation": "正方體有 12 條邊：上面 4 條、下面 4 條、直立的 4 條，別漏數直立的邊。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "正方體有 12 條邊：上面 4 條、下面 4 條、直立的 4 條，別漏數直立的邊。"
     },
     {
       "id": "shape-feature-bm-7",
@@ -128,11 +104,7 @@
         "長方體"
       ],
       "answer": 1,
-      "explanation": "球整個表面都是彎彎的曲面；圓柱雖然會滾，但它上下還有兩個平平的圓面。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "球整個表面都是彎彎的曲面；圓柱雖然會滾，但它上下還有兩個平平的圓面。"
     },
     {
       "id": "shape-feature-bm-8",
@@ -147,11 +119,7 @@
         "0個"
       ],
       "answer": 2,
-      "explanation": "圓柱上下各有一個平平的圓面，共 2 個；側面是彎彎的曲面。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "圓柱上下各有一個平平的圓面，共 2 個；側面是彎彎的曲面。"
     },
     {
       "id": "shape-feature-bm-9",
@@ -166,11 +134,7 @@
         "圓柱"
       ],
       "answer": 3,
-      "explanation": "圓柱上下是平平的圓面，側面是彎彎的曲面；球只有曲面，正方體和長方體只有平面。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "圓柱上下是平平的圓面，側面是彎彎的曲面；球只有曲面，正方體和長方體只有平面。"
     },
     {
       "id": "shape-feature-bm-10",
@@ -185,11 +149,7 @@
         "3個"
       ],
       "answer": 1,
-      "explanation": "平面圖形的邊數和角數一樣多，5 條邊就有 5 個角。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "平面圖形的邊數和角數一樣多，5 條邊就有 5 個角。"
     },
     {
       "id": "shape-feature-bm-11",
@@ -204,11 +164,7 @@
         "12條"
       ],
       "answer": 2,
-      "explanation": "平面圖形的角數和邊數一樣多，6 個角就有 6 條邊。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "平面圖形的角數和邊數一樣多，6 個角就有 6 條邊。"
     },
     {
       "id": "shape-feature-bm-12",
@@ -223,11 +179,7 @@
         "4條邊、3個角"
       ],
       "answer": 2,
-      "explanation": "四邊形有 4 條邊，邊和角一樣多，所以也有 4 個角。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "四邊形有 4 條邊，邊和角一樣多，所以也有 4 個角。"
     }
   ],
   "conceptId": [
@@ -238,11 +190,7 @@
       "errorPath": 1,
       "statement": "圓柱有 2 個平平的圓面和 1 個彎曲的面。",
       "correctAnswer": true,
-      "explanation": "圓柱上下各有一個平平的圓面，側面是一整片彎曲的面。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "圓柱上下各有一個平平的圓面，側面是一整片彎曲的面。"
     },
     {
       "id": "shape-feature-ci-2",
@@ -251,11 +199,7 @@
       "errorPath": 1,
       "statement": "球有一個平平的面。",
       "correctAnswer": false,
-      "explanation": "球整個表面都是彎彎的曲面，一個平面也沒有，所以放著容易滾動。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "球整個表面都是彎彎的曲面，一個平面也沒有，所以放著容易滾動。"
     },
     {
       "id": "shape-feature-ci-3",
@@ -264,11 +208,7 @@
       "errorPath": 1,
       "statement": "正方體的每一個面都是正方形。",
       "correctAnswer": true,
-      "explanation": "正方體有 6 個面，每個面都是一樣大的正方形。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "正方體有 6 個面，每個面都是一樣大的正方形。"
     },
     {
       "id": "shape-feature-ci-4",
@@ -277,11 +217,7 @@
       "errorPath": 3,
       "statement": "四邊形一定是正方形。",
       "correctAnswer": false,
-      "explanation": "只要有 4 條邊的圖形都叫四邊形，長方形、梯形也是四邊形，不一定是正方形。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "只要有 4 條邊的圖形都叫四邊形，長方形、梯形也是四邊形，不一定是正方形。"
     },
     {
       "id": "shape-feature-ci-5",
@@ -290,11 +226,7 @@
       "errorPath": 3,
       "statement": "只要有 4 條邊的圖形，都可以叫做四邊形。",
       "correctAnswer": true,
-      "explanation": "四邊形是照「邊有 4 條」這個特徵來分類的，不管長得像不像正方形。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "四邊形是照「邊有 4 條」這個特徵來分類的，不管長得像不像正方形。"
     },
     {
       "id": "shape-feature-ci-6",
@@ -303,11 +235,7 @@
       "errorPath": 3,
       "statement": "長得瘦瘦長長的三角形，就不能算是三角形。",
       "correctAnswer": false,
-      "explanation": "只要有 3 條邊、3 個角就是三角形，跟長得胖胖的還是瘦瘦的沒有關係。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "只要有 3 條邊、3 個角就是三角形，跟長得胖胖的還是瘦瘦的沒有關係。"
     }
   ],
   "errorDiagnosis": [
@@ -325,11 +253,7 @@
         "把面當成邊來數"
       ],
       "correctErrorIndex": 0,
-      "explanation": "正方體有 12 條邊：上面 4 條、下面 4 條，還有直立的 4 條。小華只數了上下兩面的邊。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "正方體有 12 條邊：上面 4 條、下面 4 條，還有直立的 4 條。小華只數了上下兩面的邊。"
     },
     {
       "id": "shape-feature-ed-2",
@@ -345,11 +269,7 @@
         "把邊數成面"
       ],
       "correctErrorIndex": 1,
-      "explanation": "長方體有 6 個面。從一個角度只看得到 3 個面，別忘了背面、底面和另一側還有 3 個。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "長方體有 6 個面。從一個角度只看得到 3 個面，別忘了背面、底面和另一側還有 3 個。"
     },
     {
       "id": "shape-feature-ed-3",
@@ -365,11 +285,7 @@
         "正方體真的有8個面"
       ],
       "correctErrorIndex": 2,
-      "explanation": "尖尖的地方是「頂點」，正方體有 8 個頂點；平平的地方才是「面」，共 6 個面。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "尖尖的地方是「頂點」，正方體有 8 個頂點；平平的地方才是「面」，共 6 個面。"
     }
   ],
   "contextApplication": [
@@ -387,11 +303,7 @@
         "5張"
       ],
       "answer": 1,
-      "explanation": "長方體有 6 個面，每面貼一張，共要 6 張色紙，別漏了底面和背面。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "長方體有 6 個面，每面貼一張，共要 6 張色紙，別漏了底面和背面。"
     },
     {
       "id": "shape-feature-ca-2",
@@ -407,11 +319,7 @@
         "12顆"
       ],
       "answer": 2,
-      "explanation": "正方體有 8 個頂點，所以要 8 顆亮片；6 是面的數目、12 是邊的數目。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "正方體有 8 個頂點，所以要 8 顆亮片；6 是面的數目、12 是邊的數目。"
     },
     {
       "id": "shape-feature-ca-3",
@@ -427,11 +335,7 @@
         "6根"
       ],
       "answer": 0,
-      "explanation": "正方體有 12 條邊：上面 4 條、下面 4 條、直立 4 條，所以要 12 根吸管。",
-      "media": {
-        "src": "assets/geometry/geometry-shapes-solids.webp",
-        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
-      }
+      "explanation": "正方體有 12 條邊：上面 4 條、下面 4 條、直立 4 條，所以要 12 根吸管。"
     }
   ]
 }

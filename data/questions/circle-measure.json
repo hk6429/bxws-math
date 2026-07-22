@@ -14,11 +14,7 @@
         "圓周長÷直徑"
       ],
       "answer": 3,
-      "explanation": "任何圓的圓周長除以直徑都是同一個數，這個比值就是圓周率，約 3.14。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "任何圓的圓周長除以直徑都是同一個數，這個比值就是圓周率，約 3.14。"
     },
     {
       "id": "circle-measure-bm-2",
@@ -33,11 +29,7 @@
         "2 倍"
       ],
       "answer": 1,
-      "explanation": "圓周長 = 直徑 × 圓周率，所以圓周長約是直徑的 3.14 倍。6.28 倍是相對於半徑的倍數。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "圓周長 = 直徑 × 圓周率，所以圓周長約是直徑的 3.14 倍。6.28 倍是相對於半徑的倍數。"
     },
     {
       "id": "circle-measure-bm-3",
@@ -52,11 +44,7 @@
         "半徑"
       ],
       "answer": 1,
-      "explanation": "圓周長 = 直徑 × 圓周率，反過來圓周長 ÷ 圓周率 = 直徑。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "圓周長 = 直徑 × 圓周率，反過來圓周長 ÷ 圓周率 = 直徑。"
     },
     {
       "id": "circle-measure-bm-4",
@@ -71,11 +59,7 @@
         "78.5 公分"
       ],
       "answer": 1,
-      "explanation": "圓周長 = 直徑 × 3.14 = 10×3.14 = 31.4 公分。62.8 是把直徑誤當半徑再乘 2，78.5 是算成面積。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "圓周長 = 直徑 × 3.14 = 10×3.14 = 31.4 公分。62.8 是把直徑誤當半徑再乘 2，78.5 是算成面積。"
     },
     {
       "id": "circle-measure-bm-5",
@@ -90,11 +74,7 @@
         "31.4 公分"
       ],
       "answer": 2,
-      "explanation": "半徑要先乘 2 變直徑：10×2×3.14 = 62.8 公分。31.4 是把半徑誤當直徑，314 是算成面積。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "半徑要先乘 2 變直徑：10×2×3.14 = 62.8 公分。31.4 是把半徑誤當直徑，314 是算成面積。"
     },
     {
       "id": "circle-measure-bm-6",
@@ -109,11 +89,7 @@
         "37.68 公分"
       ],
       "answer": 0,
-      "explanation": "圓周長 = 6×3.14 = 18.84 公分。37.68 是把直徑誤當半徑再乘 2，28.26 是算成面積。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "圓周長 = 6×3.14 = 18.84 公分。37.68 是把直徑誤當半徑再乘 2，28.26 是算成面積。"
     },
     {
       "id": "circle-measure-bm-7",
@@ -128,11 +104,7 @@
         "78.5 平方公分"
       ],
       "answer": 3,
-      "explanation": "圓面積 = 半徑 × 半徑 ×3.14 = 5×5×3.14 = 78.5 平方公分。314 是誤用直徑平方，31.4 是算成周長。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "圓面積 = 半徑 × 半徑 ×3.14 = 5×5×3.14 = 78.5 平方公分。314 是誤用直徑平方，31.4 是算成周長。"
     },
     {
       "id": "circle-measure-bm-8",
@@ -147,11 +119,7 @@
         "200.96 平方公分"
       ],
       "answer": 2,
-      "explanation": "先把直徑除以 2 得半徑 4 公分：4×4×3.14 = 50.24 平方公分。200.96 是誤用直徑平方，25.12 是算成周長。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "先把直徑除以 2 得半徑 4 公分：4×4×3.14 = 50.24 平方公分。200.96 是誤用直徑平方，25.12 是算成周長。"
     },
     {
       "id": "circle-measure-bm-9",
@@ -166,11 +134,7 @@
         "113.04 平方公分"
       ],
       "answer": 2,
-      "explanation": "圓面積 = 3×3×3.14 = 28.26 平方公分。18.84 是算成周長，113.04 是誤用直徑 6 的平方。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "圓面積 = 3×3×3.14 = 28.26 平方公分。18.84 是算成周長，113.04 是誤用直徑 6 的平方。"
     },
     {
       "id": "circle-measure-bm-10",
@@ -185,11 +149,7 @@
         "6.28 平方公分"
       ],
       "answer": 0,
-      "explanation": "整圓面積 4×4×3.14 = 50.24，扇形占 90/360 = 1/4：50.24÷4 = 12.56 平方公分。50.24 是忘記乘占比。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "整圓面積 4×4×3.14 = 50.24，扇形占 90/360 = 1/4：50.24÷4 = 12.56 平方公分。50.24 是忘記乘占比。"
     },
     {
       "id": "circle-measure-bm-11",
@@ -204,11 +164,7 @@
         "157 平方公分"
       ],
       "answer": 3,
-      "explanation": "整圓面積 10×10×3.14 = 314，扇形占 180/360 = 1/2：314÷2 = 157 平方公分。314 是忘記乘占比。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "整圓面積 10×10×3.14 = 314，扇形占 180/360 = 1/2：314÷2 = 157 平方公分。314 是忘記乘占比。"
     },
     {
       "id": "circle-measure-bm-12",
@@ -223,11 +179,7 @@
         "56.52 平方公分"
       ],
       "answer": 0,
-      "explanation": "整圓面積 6×6×3.14 = 113.04，扇形占 60/360 = 1/6：113.04÷6 = 18.84 平方公分。113.04 是忘記乘占比。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "整圓面積 6×6×3.14 = 113.04，扇形占 60/360 = 1/6：113.04÷6 = 18.84 平方公分。113.04 是忘記乘占比。"
     }
   ],
   "conceptId": [
@@ -238,11 +190,7 @@
       "errorPath": 2,
       "statement": "用繩子繞水桶一圈再量繩長，量到的就是桶口的圓周長。",
       "correctAnswer": true,
-      "explanation": "繩子貼著圓形桶口繞一圈的長度，就是圓周長，這是實際測量圓周長的好方法。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "繩子貼著圓形桶口繞一圈的長度，就是圓周長，這是實際測量圓周長的好方法。"
     },
     {
       "id": "circle-measure-ci-2",
@@ -251,11 +199,7 @@
       "errorPath": 2,
       "statement": "量出圓桌面繞一圈的長度，再除以 3.14，就能算出桌面的直徑。",
       "correctAnswer": true,
-      "explanation": "圓周長 = 直徑 ×3.14，所以直徑 = 圓周長 ÷3.14，實測周長就能反推直徑。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "圓周長 = 直徑 ×3.14，所以直徑 = 圓周長 ÷3.14，實測周長就能反推直徑。"
     },
     {
       "id": "circle-measure-ci-3",
@@ -264,11 +208,7 @@
       "errorPath": 2,
       "statement": "用繩子繞圓罐一圈量出的長度，就是圓罐罐口的面積。",
       "correctAnswer": false,
-      "explanation": "繞一圈量到的是圓周長，不是面積；面積要用半徑 × 半徑 ×3.14 計算，單位也不同。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "繞一圈量到的是圓周長，不是面積；面積要用半徑 × 半徑 ×3.14 計算，單位也不同。"
     },
     {
       "id": "circle-measure-ci-4",
@@ -277,11 +217,7 @@
       "errorPath": 2,
       "statement": "半徑變 2 倍，圓周長變 2 倍，圓面積也變 2 倍。",
       "correctAnswer": false,
-      "explanation": "周長變 2 倍沒錯，但面積是半徑 × 半徑，會變 2×2 = 4 倍。例如半徑 1 面積 3.14，半徑 2 面積 12.56。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "周長變 2 倍沒錯，但面積是半徑 × 半徑，會變 2×2 = 4 倍。例如半徑 1 面積 3.14，半徑 2 面積 12.56。"
     },
     {
       "id": "circle-measure-ci-5",
@@ -290,11 +226,7 @@
       "errorPath": 2,
       "statement": "直徑變 3 倍，圓周長也變 3 倍。",
       "correctAnswer": true,
-      "explanation": "圓周長 = 直徑 ×3.14，直徑變 3 倍，周長跟著變 3 倍。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "圓周長 = 直徑 ×3.14，直徑變 3 倍，周長跟著變 3 倍。"
     },
     {
       "id": "circle-measure-ci-6",
@@ -303,11 +235,7 @@
       "errorPath": 2,
       "statement": "半徑變 2 倍，圓面積會變 4 倍。",
       "correctAnswer": true,
-      "explanation": "面積 = 半徑 × 半徑 ×3.14，半徑變 2 倍，面積變 2×2 = 4 倍。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "面積 = 半徑 × 半徑 ×3.14，半徑變 2 倍，面積變 2×2 = 4 倍。"
     }
   ],
   "errorDiagnosis": [
@@ -325,11 +253,7 @@
         "忘記寫單位"
       ],
       "correctErrorIndex": 1,
-      "explanation": "要先把直徑 8 除以 2 得半徑 4，再算 4×4×3.14 = 50.24 平方公分。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "要先把直徑 8 除以 2 得半徑 4，再算 4×4×3.14 = 50.24 平方公分。"
     },
     {
       "id": "circle-measure-ed-2",
@@ -345,11 +269,7 @@
         "面積公式忘記除以 2"
       ],
       "correctErrorIndex": 2,
-      "explanation": "半徑 = 10÷2 = 5 公分，面積 = 5×5×3.14 = 78.5 平方公分，不能直接拿直徑平方。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "半徑 = 10÷2 = 5 公分，面積 = 5×5×3.14 = 78.5 平方公分，不能直接拿直徑平方。"
     },
     {
       "id": "circle-measure-ed-3",
@@ -365,11 +285,7 @@
         "圓周長要再除以 2"
       ],
       "correctErrorIndex": 0,
-      "explanation": "6×6×3.14 算的是面積。圓周長 = 半徑 ×2×3.14 = 6×2×3.14 = 37.68 公分。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "6×6×3.14 算的是面積。圓周長 = 半徑 ×2×3.14 = 6×2×3.14 = 37.68 公分。"
     }
   ],
   "contextApplication": [
@@ -387,11 +303,7 @@
         "6.28 公尺"
       ],
       "answer": 2,
-      "explanation": "繞一圈是圓周長：3×2×3.14 = 18.84 公尺。9.42 是把半徑誤當直徑，28.26 是算成面積。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "繞一圈是圓周長：3×2×3.14 = 18.84 公尺。9.42 是把半徑誤當直徑，28.26 是算成面積。"
     },
     {
       "id": "circle-measure-ca-2",
@@ -407,11 +319,7 @@
         "50.24 公尺"
       ],
       "answer": 0,
-      "explanation": "圓周長 = 直徑 ×3.14 = 4×3.14 = 12.56 公尺。25.12 是把直徑誤當半徑再乘 2。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "圓周長 = 直徑 ×3.14 = 4×3.14 = 12.56 公尺。25.12 是把直徑誤當半徑再乘 2。"
     },
     {
       "id": "circle-measure-ca-3",
@@ -427,11 +335,7 @@
         "31.4 平方公分"
       ],
       "answer": 1,
-      "explanation": "面積 = 10×10×3.14 = 314 平方公分。1256 是誤用直徑 20 的平方，62.8 是算成周長。",
-      "media": {
-        "src": "assets/geometry/geometry-circle-family.webp",
-        "alt": "圓、扇形、圓周長與圓面積示意圖"
-      }
+      "explanation": "面積 = 10×10×3.14 = 314 平方公分。1256 是誤用直徑 20 的平方，62.8 是算成周長。"
     }
   ]
 }

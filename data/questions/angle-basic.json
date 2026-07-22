@@ -14,11 +14,7 @@
         "1 條"
       ],
       "answer": 0,
-      "explanation": "角是由 1 個頂點和 2 條邊組成的，兩條邊從頂點張開，形成角。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "角是由 1 個頂點和 2 條邊組成的，兩條邊從頂點張開，形成角。"
     },
     {
       "id": "angle-basic-bm-2",
@@ -33,11 +29,7 @@
         "鈍角"
       ],
       "answer": 1,
-      "explanation": "兩邊張開得比直角窄的角叫銳角；比直角開的角叫鈍角。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "兩邊張開得比直角窄的角叫銳角；比直角開的角叫鈍角。"
     },
     {
       "id": "angle-basic-bm-3",
@@ -52,11 +44,7 @@
         "尖角"
       ],
       "answer": 0,
-      "explanation": "比直角張得更開的角是鈍角。角的大小看兩邊張開的程度。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "比直角張得更開的角是鈍角。角的大小看兩邊張開的程度。"
     },
     {
       "id": "angle-basic-bm-4",
@@ -71,11 +59,7 @@
         "兩邊張開的程度"
       ],
       "answer": 3,
-      "explanation": "角的大小只和兩邊張開的程度有關，和邊的長短、大小都沒有關係。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "角的大小只和兩邊張開的程度有關，和邊的長短、大小都沒有關係。"
     },
     {
       "id": "angle-basic-bm-5",
@@ -90,11 +74,7 @@
         "兩角一樣大"
       ],
       "answer": 2,
-      "explanation": "甲角比直角大、乙角比直角小，所以甲角比較大。用直角當中間標準來比。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "甲角比直角大、乙角比直角小，所以甲角比較大。用直角當中間標準來比。"
     },
     {
       "id": "angle-basic-bm-6",
@@ -109,11 +89,7 @@
         "一樣小"
       ],
       "answer": 1,
-      "explanation": "丙角比直角小，乙角等於直角，甲角比直角大，所以丙角最小。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "丙角比直角小，乙角等於直角，甲角比直角大，所以丙角最小。"
     },
     {
       "id": "angle-basic-bm-7",
@@ -128,11 +104,7 @@
         "3 個"
       ],
       "answer": 0,
-      "explanation": "正方形的 4 個角都是直角，所以有 4 個直角。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "正方形的 4 個角都是直角，所以有 4 個直角。"
     },
     {
       "id": "angle-basic-bm-8",
@@ -147,11 +119,7 @@
         "小圓圈記號"
       ],
       "answer": 2,
-      "explanation": "直角會在角的地方畫一個小正方形記號，看到這個記號就知道是直角。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "直角會在角的地方畫一個小正方形記號，看到這個記號就知道是直角。"
     },
     {
       "id": "angle-basic-bm-9",
@@ -166,11 +134,7 @@
         "直角"
       ],
       "answer": 3,
-      "explanation": "用三角板的直角去比，剛好完全疊合的角就是直角。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "用三角板的直角去比，剛好完全疊合的角就是直角。"
     }
   ],
   "conceptId": [
@@ -181,11 +145,7 @@
       "errorPath": 1,
       "statement": "角的兩條邊畫得越長，角就越大。",
       "correctAnswer": false,
-      "explanation": "角的大小只看兩邊張開的程度，和邊畫多長沒有關係。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "角的大小只看兩邊張開的程度，和邊畫多長沒有關係。"
     },
     {
       "id": "angle-basic-ci-2",
@@ -194,11 +154,7 @@
       "errorPath": 2,
       "statement": "角度比較大的圖形，面積一定也比較大。",
       "correctAnswer": false,
-      "explanation": "角度和面積是兩回事：小張紙片上也能畫出很大的角，大圖形裡也可能只有很小的角。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "角度和面積是兩回事：小張紙片上也能畫出很大的角，大圖形裡也可能只有很小的角。"
     },
     {
       "id": "angle-basic-ci-3",
@@ -207,11 +163,7 @@
       "errorPath": 1,
       "statement": "把角的兩條邊延長，角的大小不會改變。",
       "correctAnswer": true,
-      "explanation": "延長邊只是把邊畫長，兩邊張開的程度沒變，所以角的大小不變。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "延長邊只是把邊畫長，兩邊張開的程度沒變，所以角的大小不變。"
     },
     {
       "id": "angle-basic-ci-4",
@@ -220,11 +172,7 @@
       "errorPath": 3,
       "statement": "用三角板的直角去比，剛好疊合的角就是直角。",
       "correctAnswer": true,
-      "explanation": "三角板的直角可以當「直角的樣本」，剛好疊合表示這個角和直角一樣大。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "三角板的直角可以當「直角的樣本」，剛好疊合表示這個角和直角一樣大。"
     },
     {
       "id": "angle-basic-ci-5",
@@ -233,11 +181,7 @@
       "errorPath": 3,
       "statement": "長方形的 4 個角都是直角。",
       "correctAnswer": true,
-      "explanation": "長方形和正方形的 4 個角都是直角，可以用三角板的直角去比對確認。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "長方形和正方形的 4 個角都是直角，可以用三角板的直角去比對確認。"
     },
     {
       "id": "angle-basic-ci-6",
@@ -246,11 +190,7 @@
       "errorPath": 3,
       "statement": "直角斜著放之後，就不是直角了。",
       "correctAnswer": false,
-      "explanation": "把角轉個方向，兩邊張開的程度沒有改變，斜放的直角還是直角。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "把角轉個方向，兩邊張開的程度沒有改變，斜放的直角還是直角。"
     }
   ],
   "errorDiagnosis": [
@@ -268,11 +208,7 @@
         "把甲角和乙角看反了"
       ],
       "correctErrorIndex": 1,
-      "explanation": "角的大小要比兩邊張開的程度，邊畫得長不代表角大。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "角的大小要比兩邊張開的程度，邊畫得長不代表角大。"
     },
     {
       "id": "angle-basic-ed-2",
@@ -288,11 +224,7 @@
         "延長邊不會改變角的大小"
       ],
       "correctErrorIndex": 3,
-      "explanation": "延長邊只是把線畫長，兩邊張開的程度沒變，角的大小不會改變。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "延長邊只是把線畫長，兩邊張開的程度沒變，角的大小不會改變。"
     },
     {
       "id": "angle-basic-ed-3",
@@ -308,11 +240,7 @@
         "應該比紙片的重量"
       ],
       "correctErrorIndex": 0,
-      "explanation": "紙片大小是面積，角的大小是兩邊張開的程度，小紙片上的角也可能比較大。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "紙片大小是面積，角的大小是兩邊張開的程度，小紙片上的角也可能比較大。"
     },
     {
       "id": "angle-basic-ed-4",
@@ -328,11 +256,7 @@
         "紙片要一樣大才能比"
       ],
       "correctErrorIndex": 1,
-      "explanation": "疊合比較角時，要先把兩個角的頂點對齊、一條邊重合，再看另一邊誰張得開。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "疊合比較角時，要先把兩個角的頂點對齊、一條邊重合，再看另一邊誰張得開。"
     },
     {
       "id": "angle-basic-ed-5",
@@ -348,11 +272,7 @@
         "要改用繩子繞一圈來比"
       ],
       "correctErrorIndex": 0,
-      "explanation": "疊合比較的步驟是：頂點對頂點、一條邊重合，再比另一條邊的張開程度。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "疊合比較的步驟是：頂點對頂點、一條邊重合，再比另一條邊的張開程度。"
     },
     {
       "id": "angle-basic-ed-6",
@@ -368,11 +288,7 @@
         "要先把窗框拆下來平放"
       ],
       "correctErrorIndex": 2,
-      "explanation": "用三角板比直角時，直角的頂點要對準角的頂點、一邊貼齊，才能正確判斷。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "用三角板比直角時，直角的頂點要對準角的頂點、一邊貼齊，才能正確判斷。"
     }
   ],
   "contextApplication": [
@@ -390,11 +306,7 @@
         "鈍角"
       ],
       "answer": 1,
-      "explanation": "3 點整時，時針和分針張開的程度剛好和三角板的直角一樣，是直角。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "3 點整時，時針和分針張開的程度剛好和三角板的直角一樣，是直角。"
     },
     {
       "id": "angle-basic-ca-2",
@@ -410,11 +322,7 @@
         "剛好是直角"
       ],
       "answer": 0,
-      "explanation": "3 點整剛好是直角，4 點整時針又多走了一格，張開得比直角更開，所以比直角大。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "3 點整剛好是直角，4 點整時針又多走了一格，張開得比直角更開，所以比直角大。"
     },
     {
       "id": "angle-basic-ca-3",
@@ -430,11 +338,7 @@
         "鈍角"
       ],
       "answer": 2,
-      "explanation": "扇子只張開一條小縫，張開程度比直角窄很多，是銳角。扇骨再長也不會讓角變大。",
-      "media": {
-        "src": "assets/geometry/geometry-angle-family.webp",
-        "alt": "角的種類與量角器示意圖"
-      }
+      "explanation": "扇子只張開一條小縫，張開程度比直角窄很多，是銳角。扇骨再長也不會讓角變大。"
     }
   ]
 }

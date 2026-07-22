@@ -14,11 +14,7 @@
         "14 平方公尺"
       ],
       "answer": 1,
-      "explanation": "8 × 6 = 48 塊，每塊 1 平方公尺，面積 48 平方公尺。單位要寫平方公尺，寫公尺就變成長度了。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "8 × 6 = 48 塊，每塊 1 平方公尺，面積 48 平方公尺。單位要寫平方公尺，寫公尺就變成長度了。"
     },
     {
       "id": "area-m2-bm-2",
@@ -33,11 +29,7 @@
         "36 公尺"
       ],
       "answer": 2,
-      "explanation": "9 × 4 = 36 塊，面積 36 平方公尺。13 是 9+4，26 是周界誤算，36 公尺是單位寫錯。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "9 × 4 = 36 塊，面積 36 平方公尺。13 是 9+4，26 是周界誤算，36 公尺是單位寫錯。"
     },
     {
       "id": "area-m2-bm-3",
@@ -52,11 +44,7 @@
         "12 平方公尺"
       ],
       "answer": 0,
-      "explanation": "7 × 5 = 35 塊，面積 35 平方公尺。24 是周界誤算（2×(7+5)），12 是 7+5，35 公尺單位錯。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "7 × 5 = 35 塊，面積 35 平方公尺。24 是周界誤算（2×(7+5)），12 是 7+5，35 公尺單位錯。"
     },
     {
       "id": "area-m2-bm-4",
@@ -71,11 +59,7 @@
         "60 平方公尺"
       ],
       "answer": 3,
-      "explanation": "12 × 5 = 60，面積 60 平方公尺。34 是周長（2×(12+5)），17 是 12+5，60 公尺是單位寫錯。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "12 × 5 = 60，面積 60 平方公尺。34 是周長（2×(12+5)），17 是 12+5，60 公尺是單位寫錯。"
     },
     {
       "id": "area-m2-bm-5",
@@ -90,11 +74,7 @@
         "32 平方公尺"
       ],
       "answer": 0,
-      "explanation": "9 × 7 = 63，面積 63 平方公尺。32 是周長（2×(9+7)），16 是 9+7。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "9 × 7 = 63，面積 63 平方公尺。32 是周長（2×(9+7)），16 是 9+7。"
     },
     {
       "id": "area-m2-bm-6",
@@ -109,11 +89,7 @@
         "24 平方公尺"
       ],
       "answer": 1,
-      "explanation": "6 × 6 = 36，面積 36 平方公尺。12 是邊長×2（把長度想法搬到面積），24 是周長。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "6 × 6 = 36，面積 36 平方公尺。12 是邊長×2（把長度想法搬到面積），24 是周長。"
     }
   ],
   "conceptId": [
@@ -124,11 +100,7 @@
       "errorPath": 3,
       "statement": "一張雙人床墊的面積大約是3平方公尺。",
       "correctAnswer": true,
-      "explanation": "雙人床墊大約長 2 公尺、寬 1.5 公尺，面積約 3 平方公尺，是合理的量感。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "雙人床墊大約長 2 公尺、寬 1.5 公尺，面積約 3 平方公尺，是合理的量感。"
     },
     {
       "id": "area-m2-ci-2",
@@ -137,11 +109,7 @@
       "errorPath": 3,
       "statement": "一張郵票的面積大約是1平方公尺。",
       "correctAnswer": false,
-      "explanation": "1 平方公尺是邊長 1 公尺的正方形，跟一張書桌桌面差不多大；郵票比指甲大一點而已，差太多了。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "1 平方公尺是邊長 1 公尺的正方形，跟一張書桌桌面差不多大；郵票比指甲大一點而已，差太多了。"
     },
     {
       "id": "area-m2-ci-3",
@@ -150,11 +118,7 @@
       "errorPath": 3,
       "statement": "量操場的面積，用平方公尺比用平方公分合適。",
       "correctAnswer": true,
-      "explanation": "操場很大，用平方公尺當單位數字才不會大得離譜；平方公分太小，適合量卡片、貼紙。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "操場很大，用平方公尺當單位數字才不會大得離譜；平方公分太小，適合量卡片、貼紙。"
     },
     {
       "id": "area-m2-ci-4",
@@ -163,11 +127,7 @@
       "errorPath": 2,
       "statement": "1平方公尺和1平方公分一樣大。",
       "correctAnswer": false,
-      "explanation": "1 平方公尺是邊長 1 公尺的正方形，1 平方公分只有邊長 1 公分，兩者大小差非常多，不能混用。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "1 平方公尺是邊長 1 公尺的正方形，1 平方公分只有邊長 1 公分，兩者大小差非常多，不能混用。"
     },
     {
       "id": "area-m2-ci-5",
@@ -175,11 +135,7 @@
       "challenge": "15-4",
       "statement": "邊長1公尺的正方形，面積是1平方公尺。",
       "correctAnswer": true,
-      "explanation": "這就是 1 平方公尺的定義：邊長 1 公尺的正方形的大小。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "這就是 1 平方公尺的定義：邊長 1 公尺的正方形的大小。"
     },
     {
       "id": "area-m2-ci-6",
@@ -188,11 +144,7 @@
       "errorPath": 2,
       "statement": "正方形的邊長變成2倍，面積也剛好變成2倍。",
       "correctAnswer": false,
-      "explanation": "邊長 2 倍時，面積變 4 倍。例如邊長 1 公尺變 2 公尺，面積從 1 平方公尺變 2×2＝4 平方公尺。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "邊長 2 倍時，面積變 4 倍。例如邊長 1 公尺變 2 公尺，面積從 1 平方公尺變 2×2＝4 平方公尺。"
     }
   ],
   "errorDiagnosis": [
@@ -210,11 +162,7 @@
         "3×3算錯了"
       ],
       "correctErrorIndex": 0,
-      "explanation": "計算 3 × 3 = 9 沒有錯，錯在單位：面積的單位是平方公尺，寫公尺就變成長度了。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "計算 3 × 3 = 9 沒有錯，錯在單位：面積的單位是平方公尺，寫公尺就變成長度了。"
     },
     {
       "id": "area-m2-ed-2",
@@ -230,11 +178,7 @@
         "寬的數字抄錯了"
       ],
       "correctErrorIndex": 2,
-      "explanation": "6 × 4 = 24 正確，但面積要寫 24 平方公尺；24 公尺是長度，意思完全不同。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "6 × 4 = 24 正確，但面積要寫 24 平方公尺；24 公尺是長度，意思完全不同。"
     },
     {
       "id": "area-m2-ed-3",
@@ -250,11 +194,7 @@
         "地墊不能拿來算面積"
       ],
       "correctErrorIndex": 1,
-      "explanation": "20 塊 1 平方公尺的地墊，面積是 20 平方公尺。數字對了，單位寫成公尺就錯了。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "20 塊 1 平方公尺的地墊，面積是 20 平方公尺。數字對了，單位寫成公尺就錯了。"
     },
     {
       "id": "area-m2-ed-4",
@@ -270,11 +210,7 @@
         "教室地板要用平方公尺，平方公分太小"
       ],
       "correctErrorIndex": 3,
-      "explanation": "1 平方公分只有指甲蓋那麼小，48 平方公分連一張卡片都不到；教室地板該說 48 平方公尺。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "1 平方公分只有指甲蓋那麼小，48 平方公分連一張卡片都不到；教室地板該說 48 平方公尺。"
     },
     {
       "id": "area-m2-ed-5",
@@ -290,11 +226,7 @@
         "應該量周長，不是面積"
       ],
       "correctErrorIndex": 0,
-      "explanation": "平方公分是量小東西用的；操場這麼大的場地，要用平方公尺表示才合理。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "平方公分是量小東西用的；操場這麼大的場地，要用平方公尺表示才合理。"
     },
     {
       "id": "area-m2-ed-6",
@@ -310,11 +242,7 @@
         "郵票不能算面積"
       ],
       "correctErrorIndex": 1,
-      "explanation": "4 平方公尺比一張床還大！郵票是很小的東西，面積要用平方公分表示。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "4 平方公尺比一張床還大！郵票是很小的東西，面積要用平方公分表示。"
     }
   ],
   "contextApplication": [
@@ -332,11 +260,7 @@
         "70 平方公尺"
       ],
       "answer": 1,
-      "explanation": "20 × 15 = 300，要買 300 平方公尺。70 是周長（2×(20+15)），35 是 20+15。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "20 × 15 = 300，要買 300 平方公尺。70 是周長（2×(20+15)），35 是 20+15。"
     },
     {
       "id": "area-m2-ca-2",
@@ -352,11 +276,7 @@
         "48 公尺"
       ],
       "answer": 0,
-      "explanation": "8 × 6 = 48，要買 48 平方公尺。28 是周長，14 是 8+6，48 公尺是單位寫錯。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "8 × 6 = 48，要買 48 平方公尺。28 是周長，14 是 8+6，48 公尺是單位寫錯。"
     },
     {
       "id": "area-m2-ca-3",
@@ -372,11 +292,7 @@
         "70 平方公尺"
       ],
       "answer": 1,
-      "explanation": "25 × 10 = 250，要鋪 250 平方公尺。70 是周長（2×(25+10)），35 是 25+10。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "25 × 10 = 250，要鋪 250 平方公尺。70 是周長（2×(25+10)），35 是 25+10。"
     },
     {
       "id": "area-m2-ca-4",
@@ -392,11 +308,7 @@
         "甲教室"
       ],
       "answer": 0,
-      "explanation": "先算乙：9 × 8 = 72 平方公尺，72 > 63，所以乙教室比較大。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "先算乙：9 × 8 = 72 平方公尺，72 > 63，所以乙教室比較大。"
     },
     {
       "id": "area-m2-ca-5",
@@ -412,11 +324,7 @@
         "一樣大"
       ],
       "answer": 2,
-      "explanation": "乙：7 × 4 = 28 平方公尺，30 > 28，甲花圃比較大。比較前要先把乙的面積算出來。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "乙：7 × 4 = 28 平方公尺，30 > 28，甲花圃比較大。比較前要先把乙的面積算出來。"
     },
     {
       "id": "area-m2-ca-6",
@@ -432,11 +340,7 @@
         "一樣大"
       ],
       "answer": 3,
-      "explanation": "乙：8 × 5 = 40 平方公尺，和甲一樣都是 40 平方公尺，兩個球場一樣大。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "乙：8 × 5 = 40 平方公尺，和甲一樣都是 40 平方公尺，兩個球場一樣大。"
     }
   ]
 }

@@ -14,11 +14,7 @@
         "26 公分"
       ],
       "answer": 3,
-      "explanation": "周長 =（長＋寬）×2 =（8＋5）×2 = 26 公分。13 是忘記乘 2，40 是算成面積。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "周長 =（長＋寬）×2 =（8＋5）×2 = 26 公分。13 是忘記乘 2，40 是算成面積。"
     },
     {
       "id": "perimeter-area-formula-bm-2",
@@ -33,11 +29,7 @@
         "28 平方公分"
       ],
       "answer": 1,
-      "explanation": "正方形面積 = 邊長 × 邊長 = 7×7 = 49 平方公分。28 是算成周長（7×4）。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "正方形面積 = 邊長 × 邊長 = 7×7 = 49 平方公分。28 是算成周長（7×4）。"
     },
     {
       "id": "perimeter-area-formula-bm-3",
@@ -52,11 +44,7 @@
         "72 平方公分"
       ],
       "answer": 3,
-      "explanation": "面積 = 長 × 寬 = 12×6 = 72 平方公分。36 是算成周長（(12+6)×2），18 是只把長寬相加。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "面積 = 長 × 寬 = 12×6 = 72 平方公分。36 是算成周長（(12+6)×2），18 是只把長寬相加。"
     },
     {
       "id": "perimeter-area-formula-bm-4",
@@ -71,11 +59,7 @@
         "12 公分"
       ],
       "answer": 0,
-      "explanation": "正方形有 4 條一樣長的邊，邊長 = 周長 ÷4 = 36÷4 = 9 公分。18 是只除以 2。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "正方形有 4 條一樣長的邊，邊長 = 周長 ÷4 = 36÷4 = 9 公分。18 是只除以 2。"
     },
     {
       "id": "perimeter-area-formula-bm-5",
@@ -90,11 +74,7 @@
         "20 平方公分"
       ],
       "answer": 2,
-      "explanation": "先求邊長：20÷4 = 5 公分，再算面積 5×5 = 25 平方公分。100 是誤把周長的一半 10 當邊長。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "先求邊長：20÷4 = 5 公分，再算面積 5×5 = 25 平方公分。100 是誤把周長的一半 10 當邊長。"
     },
     {
       "id": "perimeter-area-formula-bm-6",
@@ -109,11 +89,7 @@
         "64 公分"
       ],
       "answer": 0,
-      "explanation": "先想哪個數自己乘自己是 64：8×8 = 64，邊長 8 公分，周長 = 8×4 = 32 公分。16 是把 64÷4 當周長。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "先想哪個數自己乘自己是 64：8×8 = 64，邊長 8 公分，周長 = 8×4 = 32 公分。16 是把 64÷4 當周長。"
     },
     {
       "id": "perimeter-area-formula-bm-7",
@@ -128,11 +104,7 @@
         "27 公分"
       ],
       "answer": 0,
-      "explanation": "面積 = 長 × 寬，所以寬 = 36÷9 = 4 公分。27 是用減法 36−9，這是錯的。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "面積 = 長 × 寬，所以寬 = 36÷9 = 4 公分。27 是用減法 36−9，這是錯的。"
     },
     {
       "id": "perimeter-area-formula-bm-8",
@@ -147,11 +119,7 @@
         "12 公分"
       ],
       "answer": 2,
-      "explanation": "長 = 面積 ÷ 寬 = 48÷6 = 8 公分。42 是用減法 48−6，面積要用除法逆推。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "長 = 面積 ÷ 寬 = 48÷6 = 8 公分。42 是用減法 48−6，面積要用除法逆推。"
     },
     {
       "id": "perimeter-area-formula-bm-9",
@@ -166,11 +134,7 @@
         "3 公分"
       ],
       "answer": 1,
-      "explanation": "長＋寬 = 周長 ÷2 = 15 公分，寬 = 15−9 = 6 公分。21 是直接 30−9，忘記周長裡有兩個長、兩個寬。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "長＋寬 = 周長 ÷2 = 15 公分，寬 = 15−9 = 6 公分。21 是直接 30−9，忘記周長裡有兩個長、兩個寬。"
     }
   ],
   "conceptId": [
@@ -181,11 +145,7 @@
       "errorPath": 3,
       "statement": "周長的單位是公分，面積的單位是平方公分，兩種不能直接比較大小。",
       "correctAnswer": true,
-      "explanation": "周長量的是「邊界多長」，面積量的是「佔多大」，是兩種不同的量，單位不同不能互比。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "周長量的是「邊界多長」，面積量的是「佔多大」，是兩種不同的量，單位不同不能互比。"
     },
     {
       "id": "perimeter-area-formula-ci-2",
@@ -194,11 +154,7 @@
       "errorPath": 3,
       "statement": "一個長方形的面積是 20 平方公分，也可以說它的面積是 20 公分。",
       "correctAnswer": false,
-      "explanation": "面積的單位是平方公分，公分是長度單位，兩者不能混用。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "面積的單位是平方公分，公分是長度單位，兩者不能混用。"
     },
     {
       "id": "perimeter-area-formula-ci-3",
@@ -207,11 +163,7 @@
       "errorPath": 3,
       "statement": "計算長方形面積時，長和寬要先化成相同單位，才能相乘。",
       "correctAnswer": true,
-      "explanation": "例如長 1 公尺、寬 50 公分，要先化成 100 公分 ×50 公分 = 5000 平方公分，單位不同不能直接乘。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "例如長 1 公尺、寬 50 公分，要先化成 100 公分 ×50 公分 = 5000 平方公分，單位不同不能直接乘。"
     },
     {
       "id": "perimeter-area-formula-ci-4",
@@ -220,11 +172,7 @@
       "errorPath": 2,
       "statement": "周長一樣長的兩個長方形，面積一定一樣大。",
       "correctAnswer": false,
-      "explanation": "反例：長 5 寬 1 和長 3 寬 3 的長方形周長都是 12 公分，面積卻是 5 和 9 平方公分，不一樣大。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "反例：長 5 寬 1 和長 3 寬 3 的長方形周長都是 12 公分，面積卻是 5 和 9 平方公分，不一樣大。"
     },
     {
       "id": "perimeter-area-formula-ci-5",
@@ -233,11 +181,7 @@
       "errorPath": 2,
       "statement": "長 4 寬 2 和長 5 寬 1 的長方形，周長都是 12 公分，但面積不同。",
       "correctAnswer": true,
-      "explanation": "周長：(4+2)×2 = 12、(5+1)×2 = 12，一樣；面積：4×2 = 8、5×1 = 5，不一樣。周長相等不代表面積相等。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "周長：(4+2)×2 = 12、(5+1)×2 = 12，一樣；面積：4×2 = 8、5×1 = 5，不一樣。周長相等不代表面積相等。"
     },
     {
       "id": "perimeter-area-formula-ci-6",
@@ -246,11 +190,7 @@
       "errorPath": 2,
       "statement": "面積一樣大的兩個長方形，周長也一定一樣長。",
       "correctAnswer": false,
-      "explanation": "反例：長 12 寬 1 和長 4 寬 3 的長方形面積都是 12 平方公分，周長卻是 26 公分和 14 公分。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "反例：長 12 寬 1 和長 4 寬 3 的長方形面積都是 12 平方公分，周長卻是 26 公分和 14 公分。"
     }
   ],
   "errorDiagnosis": [
@@ -268,11 +208,7 @@
         "忘記寫單位"
       ],
       "correctErrorIndex": 1,
-      "explanation": "6×4 是周長的算法。面積 = 邊長 × 邊長 = 6×6 = 36 平方公分。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "6×4 是周長的算法。面積 = 邊長 × 邊長 = 6×6 = 36 平方公分。"
     },
     {
       "id": "perimeter-area-formula-ed-2",
@@ -288,11 +224,7 @@
         "把面積公式當成周長公式"
       ],
       "correctErrorIndex": 3,
-      "explanation": "7×3 是面積的算法。周長 =（7＋3）×2 = 20 公分。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "7×3 是面積的算法。周長 =（7＋3）×2 = 20 公分。"
     },
     {
       "id": "perimeter-area-formula-ed-3",
@@ -308,11 +240,7 @@
         "單位寫錯了"
       ],
       "correctErrorIndex": 0,
-      "explanation": "長方形有兩個長、兩個寬，周長 =（10＋4）×2 = 28 公分，只算 10＋4 少了一半。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "長方形有兩個長、兩個寬，周長 =（10＋4）×2 = 28 公分，只算 10＋4 少了一半。"
     },
     {
       "id": "perimeter-area-formula-ed-4",
@@ -328,11 +256,7 @@
         "應該用周長公式來算"
       ],
       "correctErrorIndex": 2,
-      "explanation": "切掉的角面積是 4×3 = 12 平方公尺，剩下 80−12 = 68 平方公尺。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "切掉的角面積是 4×3 = 12 平方公尺，剩下 80−12 = 68 平方公尺。"
     },
     {
       "id": "perimeter-area-formula-ed-5",
@@ -348,11 +272,7 @@
         "面積公式用錯了"
       ],
       "correctErrorIndex": 1,
-      "explanation": "剪掉的小正方形面積是 2×2 = 4 平方公分，剩下 54−4 = 50 平方公分。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "剪掉的小正方形面積是 2×2 = 4 平方公分，剩下 54−4 = 50 平方公分。"
     },
     {
       "id": "perimeter-area-formula-ed-6",
@@ -368,11 +288,7 @@
         "應該用周長公式"
       ],
       "correctErrorIndex": 0,
-      "explanation": "複合圖形要分塊：6×2 = 12、4×2 = 8，合計 12＋8 = 20 平方公分，不能隨便拿兩個數相乘。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "複合圖形要分塊：6×2 = 12、4×2 = 8，合計 12＋8 = 20 平方公分，不能隨便拿兩個數相乘。"
     }
   ],
   "contextApplication": [
@@ -390,11 +306,7 @@
         "16 公尺"
       ],
       "answer": 2,
-      "explanation": "牆當一條長邊不用圍，只要圍 6＋4＋4 = 14 公尺。20 是硬套周長公式，多算了靠牆那邊。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "牆當一條長邊不用圍，只要圍 6＋4＋4 = 14 公尺。20 是硬套周長公式，多算了靠牆那邊。"
     },
     {
       "id": "perimeter-area-formula-ca-2",
@@ -410,11 +322,7 @@
         "32 公尺"
       ],
       "answer": 0,
-      "explanation": "四周都圍就是周長：(12＋8)×2 = 40 公尺。96 是算成面積，20 是忘記乘 2。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "四周都圍就是周長：(12＋8)×2 = 40 公尺。96 是算成面積，20 是忘記乘 2。"
     },
     {
       "id": "perimeter-area-formula-ca-3",
@@ -430,11 +338,7 @@
         "20 公尺"
       ],
       "answer": 1,
-      "explanation": "牆當一邊，只要圍另外 3 邊：5×3 = 15 公尺。20 是硬套周長公式，25 是算成面積。",
-      "media": {
-        "src": "assets/geometry/geometry-area-family.webp",
-        "alt": "周長、面積與平面圖形面積公式示意圖"
-      }
+      "explanation": "牆當一邊，只要圍另外 3 邊：5×3 = 15 公尺。20 是硬套周長公式，25 是算成面積。"
     }
   ]
 }

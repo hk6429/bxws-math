@@ -1574,7 +1574,9 @@
             "1-6",
             "1-8"
           ],
-          "contentPending": true
+          "diagnosticPrereq": [
+            "growing-pattern"
+          ]
         }
       ]
     },
@@ -1718,8 +1720,7 @@
           "gateChallenges": [
             "1-6",
             "1-8"
-          ],
-          "contentPending": true
+          ]
         },
         {
           "id": "pictogram-simple-table",
@@ -1731,8 +1732,7 @@
           "gateChallenges": [
             "2-6",
             "2-8"
-          ],
-          "contentPending": true
+          ]
         },
         {
           "id": "table-reading-making",
@@ -1745,7 +1745,9 @@
             "3-6",
             "3-8"
           ],
-          "contentPending": true
+          "diagnosticPrereq": [
+            "pictogram-simple-table"
+          ]
         },
         {
           "id": "statistical-chart-design",
