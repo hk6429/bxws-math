@@ -14,7 +14,11 @@
         "等腰三角形"
       ],
       "answer": 0,
-      "explanation": "三邊等長的三角形叫正三角形，它同時也是等腰三角形的一種。"
+      "explanation": "三邊等長的三角形叫正三角形，它同時也是等腰三角形的一種。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-types-bm-2",
@@ -29,7 +33,11 @@
         "有一個是直角"
       ],
       "answer": 0,
-      "explanation": "正三角形三邊等長，三個角也都相等。"
+      "explanation": "正三角形三邊等長，三個角也都相等。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-types-bm-3",
@@ -44,7 +52,11 @@
         "正三角形"
       ],
       "answer": 2,
-      "explanation": "有兩邊等長的三角形叫等腰三角形；若三邊都等長就是正三角形。"
+      "explanation": "有兩邊等長的三角形叫等腰三角形；若三邊都等長就是正三角形。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-types-bm-4",
@@ -59,7 +71,11 @@
         "直角三角形"
       ],
       "answer": 3,
-      "explanation": "有一個直角的三角形叫直角三角形，另外兩個角都是銳角。"
+      "explanation": "有一個直角的三角形叫直角三角形，另外兩個角都是銳角。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-types-bm-5",
@@ -74,7 +90,11 @@
         "鈍角三角形"
       ],
       "answer": 2,
-      "explanation": "三個角都是銳角（比直角小）的三角形叫銳角三角形。"
+      "explanation": "三個角都是銳角（比直角小）的三角形叫銳角三角形。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-types-bm-6",
@@ -89,7 +109,11 @@
         "直角三角形"
       ],
       "answer": 1,
-      "explanation": "有一個鈍角（比直角大）的三角形叫鈍角三角形。"
+      "explanation": "有一個鈍角（比直角大）的三角形叫鈍角三角形。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-types-bm-7",
@@ -104,7 +128,11 @@
         "三角形"
       ],
       "answer": 0,
-      "explanation": "兩組對邊分別平行的四邊形叫平行四邊形；只有一組對邊平行的是梯形。"
+      "explanation": "兩組對邊分別平行的四邊形叫平行四邊形；只有一組對邊平行的是梯形。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-types-bm-8",
@@ -119,7 +147,11 @@
         "1 組"
       ],
       "answer": 2,
-      "explanation": "平行四邊形有 2 組對邊，每一組都互相平行。"
+      "explanation": "平行四邊形有 2 組對邊，每一組都互相平行。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-types-bm-9",
@@ -134,7 +166,11 @@
         "兩長兩短"
       ],
       "answer": 1,
-      "explanation": "菱形四條邊都等長，但四個角不一定是直角。"
+      "explanation": "菱形四條邊都等長，但四個角不一定是直角。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-types-bm-10",
@@ -149,7 +185,11 @@
         "梯形"
       ],
       "answer": 3,
-      "explanation": "只有一組對邊平行的四邊形叫梯形；兩組都平行的才是平行四邊形。"
+      "explanation": "只有一組對邊平行的四邊形叫梯形；兩組都平行的才是平行四邊形。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-types-bm-11",
@@ -164,7 +204,11 @@
         "恰好 1 組"
       ],
       "answer": 3,
-      "explanation": "梯形恰好有 1 組對邊平行，這是它和平行四邊形最大的差別。"
+      "explanation": "梯形恰好有 1 組對邊平行，這是它和平行四邊形最大的差別。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-types-bm-12",
@@ -179,7 +223,11 @@
         "資料不夠，無法判斷"
       ],
       "answer": 1,
-      "explanation": "兩組對邊都平行的是平行四邊形；梯形只能有一組對邊平行。"
+      "explanation": "兩組對邊都平行的是平行四邊形；梯形只能有一組對邊平行。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     }
   ],
   "conceptId": [
@@ -190,7 +238,11 @@
       "errorPath": 1,
       "statement": "正三角形也是一種等腰三角形。",
       "correctAnswer": true,
-      "explanation": "三邊等長的三角形，一定有兩邊等長，所以正三角形也算等腰三角形。"
+      "explanation": "三邊等長的三角形，一定有兩邊等長，所以正三角形也算等腰三角形。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-types-ci-2",
@@ -199,7 +251,11 @@
       "errorPath": 1,
       "statement": "正方形也是一種菱形，因為四條邊都等長。",
       "correctAnswer": true,
-      "explanation": "菱形的條件是四邊等長，正方形符合，所以正方形是特別的菱形。"
+      "explanation": "菱形的條件是四邊等長，正方形符合，所以正方形是特別的菱形。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-types-ci-3",
@@ -208,7 +264,11 @@
       "errorPath": 1,
       "statement": "等腰三角形一定是正三角形。",
       "correctAnswer": false,
-      "explanation": "等腰只保證兩邊等長，第三邊不一定一樣長，所以不一定是正三角形。"
+      "explanation": "等腰只保證兩邊等長，第三邊不一定一樣長，所以不一定是正三角形。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-types-ci-4",
@@ -217,7 +277,11 @@
       "errorPath": 3,
       "statement": "兩個全等的圖形，對應邊相等、對應角也相等。",
       "correctAnswer": true,
-      "explanation": "全等表示形狀、大小完全相同，疊起來會完全疊合，對應邊和對應角都相等。"
+      "explanation": "全等表示形狀、大小完全相同，疊起來會完全疊合，對應邊和對應角都相等。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-types-ci-5",
@@ -226,7 +290,11 @@
       "errorPath": 3,
       "statement": "兩個三角形形狀相同但一大一小，它們也算全等。",
       "correctAnswer": false,
-      "explanation": "全等要形狀和大小都相同；一大一小疊不起來，就不是全等。"
+      "explanation": "全等要形狀和大小都相同；一大一小疊不起來，就不是全等。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-types-ci-6",
@@ -235,7 +303,11 @@
       "errorPath": 3,
       "statement": "一張三角形卡片旋轉或翻面後，和原本的圖形仍然全等。",
       "correctAnswer": true,
-      "explanation": "旋轉或翻面不會改變形狀和大小，圖形仍能完全疊合，所以仍然全等。"
+      "explanation": "旋轉或翻面不會改變形狀和大小，圖形仍能完全疊合，所以仍然全等。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     }
   ],
   "errorDiagnosis": [
@@ -253,7 +325,11 @@
         "菱形其實只有兩條邊等長"
       ],
       "correctErrorIndex": 2,
-      "explanation": "正方形要四邊等長「而且」四個角都是直角；菱形的角不一定是直角。"
+      "explanation": "正方形要四邊等長「而且」四個角都是直角；菱形的角不一定是直角。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-types-ed-2",
@@ -269,7 +345,11 @@
         "對邊平行的一定是正方形"
       ],
       "correctErrorIndex": 0,
-      "explanation": "只有一組對邊平行是梯形；要兩組對邊都平行，才是平行四邊形。"
+      "explanation": "只有一組對邊平行是梯形；要兩組對邊都平行，才是平行四邊形。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-types-ed-3",
@@ -285,7 +365,11 @@
         "邊長變 2 倍還是全等"
       ],
       "correctErrorIndex": 1,
-      "explanation": "全等的圖形疊起來要完全疊合；形狀相同但大小不同，只是放大縮小，不是全等。"
+      "explanation": "全等的圖形疊起來要完全疊合；形狀相同但大小不同，只是放大縮小，不是全等。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     }
   ],
   "contextApplication": [
@@ -303,7 +387,11 @@
         "丙"
       ],
       "answer": 0,
-      "explanation": "梯形只有一組對邊平行，所以是乙；甲是平行四邊形，丙是正三角形。"
+      "explanation": "梯形只有一組對邊平行，所以是乙；甲是平行四邊形，丙是正三角形。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-types-ca-2",
@@ -319,7 +407,11 @@
         "丙"
       ],
       "answer": 1,
-      "explanation": "三邊等長的乙是正三角形；甲是直角三角形，丙是鈍角三角形。"
+      "explanation": "三邊等長的乙是正三角形；甲是直角三角形，丙是鈍角三角形。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-types-ca-3",
@@ -335,7 +427,11 @@
         "梯形"
       ],
       "answer": 2,
-      "explanation": "四邊等長但角不是直角，是菱形；若四個角都是直角才是正方形。"
+      "explanation": "四邊等長但角不是直角，是菱形；若四個角都是直角才是正方形。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     }
   ]
 }

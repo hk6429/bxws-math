@@ -14,7 +14,11 @@
         "立體圖形"
       ],
       "answer": 2,
-      "explanation": "對摺後兩邊完全疊合的圖形叫線對稱圖形，摺線就是對稱軸。"
+      "explanation": "對摺後兩邊完全疊合的圖形叫線對稱圖形，摺線就是對稱軸。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     },
     {
       "id": "line-symmetry-bm-2",
@@ -29,7 +33,11 @@
         "中線"
       ],
       "answer": 1,
-      "explanation": "讓圖形對摺後完全疊合的那條直線叫對稱軸，它不一定是對角線。"
+      "explanation": "讓圖形對摺後完全疊合的那條直線叫對稱軸，它不一定是對角線。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     },
     {
       "id": "line-symmetry-bm-3",
@@ -44,7 +52,11 @@
         "兩邊大小差不多"
       ],
       "answer": 0,
-      "explanation": "一定要「完全疊合」才算線對稱，只是看起來差不多並不算。"
+      "explanation": "一定要「完全疊合」才算線對稱，只是看起來差不多並不算。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     },
     {
       "id": "line-symmetry-bm-4",
@@ -59,7 +71,11 @@
         "2 條"
       ],
       "answer": 1,
-      "explanation": "正方形有 4 條對稱軸：橫、直各 1 條，再加 2 條對角線。"
+      "explanation": "正方形有 4 條對稱軸：橫、直各 1 條，再加 2 條對角線。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     },
     {
       "id": "line-symmetry-bm-5",
@@ -74,7 +90,11 @@
         "1 條"
       ],
       "answer": 2,
-      "explanation": "長方形只有通過兩組對邊中點的 2 條對稱軸，對角線不是對稱軸。"
+      "explanation": "長方形只有通過兩組對邊中點的 2 條對稱軸，對角線不是對稱軸。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     },
     {
       "id": "line-symmetry-bm-6",
@@ -89,7 +109,11 @@
         "6 條"
       ],
       "answer": 0,
-      "explanation": "正三角形從每個頂點到對邊中點各有 1 條對稱軸，共 3 條。"
+      "explanation": "正三角形從每個頂點到對邊中點各有 1 條對稱軸，共 3 條。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     },
     {
       "id": "line-symmetry-bm-7",
@@ -104,7 +128,11 @@
         "3 條"
       ],
       "answer": 1,
-      "explanation": "等腰三角形只有 1 條對稱軸：從頂角到底邊中點的直線。"
+      "explanation": "等腰三角形只有 1 條對稱軸：從頂角到底邊中點的直線。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     },
     {
       "id": "line-symmetry-bm-8",
@@ -119,7 +147,11 @@
         "2 條"
       ],
       "answer": 3,
-      "explanation": "菱形的 2 條對角線都是對稱軸，共 2 條；通過對邊中點的線不是。"
+      "explanation": "菱形的 2 條對角線都是對稱軸，共 2 條；通過對邊中點的線不是。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     },
     {
       "id": "line-symmetry-bm-9",
@@ -134,7 +166,11 @@
         "0 條"
       ],
       "answer": 3,
-      "explanation": "一般平行四邊形不管沿哪條線對摺都不會疊合，對稱軸是 0 條。"
+      "explanation": "一般平行四邊形不管沿哪條線對摺都不會疊合，對稱軸是 0 條。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     },
     {
       "id": "line-symmetry-bm-10",
@@ -149,7 +185,11 @@
         "2 條"
       ],
       "answer": 2,
-      "explanation": "通過圓心的每一條直線都是對稱軸，所以圓有無數條對稱軸。"
+      "explanation": "通過圓心的每一條直線都是對稱軸，所以圓有無數條對稱軸。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     },
     {
       "id": "line-symmetry-bm-11",
@@ -164,7 +204,11 @@
         "圓的外面"
       ],
       "answer": 0,
-      "explanation": "圓的對稱軸就是通過圓心的直線（直徑所在的直線）。"
+      "explanation": "圓的對稱軸就是通過圓心的直線（直徑所在的直線）。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     },
     {
       "id": "line-symmetry-bm-12",
@@ -179,7 +223,11 @@
         "1 條"
       ],
       "answer": 3,
-      "explanation": "半圓形只有 1 條對稱軸：通過圓心、垂直於直徑邊的那條直線。"
+      "explanation": "半圓形只有 1 條對稱軸：通過圓心、垂直於直徑邊的那條直線。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     }
   ],
   "conceptId": [
@@ -190,7 +238,11 @@
       "errorPath": 1,
       "statement": "一般的平行四邊形沿對角線對摺，兩邊會完全疊合。",
       "correctAnswer": false,
-      "explanation": "一般平行四邊形沿對角線對摺不會疊合，它沒有任何對稱軸。"
+      "explanation": "一般平行四邊形沿對角線對摺不會疊合，它沒有任何對稱軸。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     },
     {
       "id": "line-symmetry-ci-2",
@@ -199,7 +251,11 @@
       "errorPath": 1,
       "statement": "一般的平行四邊形不是線對稱圖形。",
       "correctAnswer": true,
-      "explanation": "它找不到任何一條摺線能讓兩邊完全疊合，所以不是線對稱圖形。"
+      "explanation": "它找不到任何一條摺線能讓兩邊完全疊合，所以不是線對稱圖形。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     },
     {
       "id": "line-symmetry-ci-3",
@@ -208,7 +264,11 @@
       "errorPath": 2,
       "statement": "菱形沿對角線對摺，兩邊會完全疊合。",
       "correctAnswer": true,
-      "explanation": "菱形的兩條對角線都是對稱軸，沿對角線對摺會完全疊合。"
+      "explanation": "菱形的兩條對角線都是對稱軸，沿對角線對摺會完全疊合。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     },
     {
       "id": "line-symmetry-ci-4",
@@ -216,7 +276,11 @@
       "challenge": "13-6",
       "statement": "線對稱圖形中，對稱點的連線會被對稱軸垂直平分。",
       "correctAnswer": true,
-      "explanation": "把對稱點連起來，這條線段和對稱軸垂直，而且被對稱軸分成等長兩段。"
+      "explanation": "把對稱點連起來，這條線段和對稱軸垂直，而且被對稱軸分成等長兩段。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     },
     {
       "id": "line-symmetry-ci-5",
@@ -224,7 +288,11 @@
       "challenge": "13-6",
       "statement": "對稱軸兩側的對應邊等長、對應角相等。",
       "correctAnswer": true,
-      "explanation": "對摺後兩邊完全疊合，所以對應邊一樣長、對應角一樣大。"
+      "explanation": "對摺後兩邊完全疊合，所以對應邊一樣長、對應角一樣大。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     },
     {
       "id": "line-symmetry-ci-6",
@@ -232,7 +300,11 @@
       "challenge": "13-6",
       "statement": "一組對稱點到對稱軸的距離，兩邊不一定相等。",
       "correctAnswer": false,
-      "explanation": "對稱點到對稱軸的距離一定相等，這樣對摺時兩點才會疊在一起。"
+      "explanation": "對稱點到對稱軸的距離一定相等，這樣對摺時兩點才會疊在一起。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     }
   ],
   "errorDiagnosis": [
@@ -250,7 +322,11 @@
         "對稱軸一定是鉛直的直線"
       ],
       "correctErrorIndex": 0,
-      "explanation": "長方形沿對角線對摺兩邊不會疊合；它的 2 條對稱軸通過兩組對邊的中點。"
+      "explanation": "長方形沿對角線對摺兩邊不會疊合；它的 2 條對稱軸通過兩組對邊的中點。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     },
     {
       "id": "line-symmetry-ed-2",
@@ -266,7 +342,11 @@
         "橫的那條其實不算對稱軸"
       ],
       "correctErrorIndex": 1,
-      "explanation": "正方形沿對角線對摺也會完全疊合，所以對稱軸是橫、直加兩條對角線，共 4 條。"
+      "explanation": "正方形沿對角線對摺也會完全疊合，所以對稱軸是橫、直加兩條對角線，共 4 條。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     },
     {
       "id": "line-symmetry-ed-3",
@@ -282,7 +362,11 @@
         "平行四邊形其實有 2 條對稱軸"
       ],
       "correctErrorIndex": 2,
-      "explanation": "轉半圈重合是另一種對稱（點對稱）；線對稱必須「對摺」後疊合，平行四邊形做不到。"
+      "explanation": "轉半圈重合是另一種對稱（點對稱）；線對稱必須「對摺」後疊合，平行四邊形做不到。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     }
   ],
   "contextApplication": [
@@ -300,7 +384,11 @@
         "全等圖形"
       ],
       "answer": 0,
-      "explanation": "對摺剪出來的圖形沿摺線兩邊完全疊合，一定是線對稱圖形。"
+      "explanation": "對摺剪出來的圖形沿摺線兩邊完全疊合，一定是線對稱圖形。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     },
     {
       "id": "line-symmetry-ca-2",
@@ -316,7 +404,11 @@
         "高"
       ],
       "answer": 2,
-      "explanation": "能讓圖形對摺後完全疊合的直線就是對稱軸。"
+      "explanation": "能讓圖形對摺後完全疊合的直線就是對稱軸。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     },
     {
       "id": "line-symmetry-ca-3",
@@ -332,7 +424,11 @@
         "只有甲"
       ],
       "answer": 1,
-      "explanation": "等腰梯形有 1 條通過兩底中點的對稱軸；一般平行四邊形沒有對稱軸。"
+      "explanation": "等腰梯形有 1 條通過兩底中點的對稱軸；一般平行四邊形沒有對稱軸。",
+      "media": {
+        "src": "assets/geometry/geometry-symmetry.webp",
+        "alt": "線對稱示意圖"
+      }
     }
   ]
 }

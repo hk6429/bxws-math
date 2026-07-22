@@ -14,7 +14,11 @@
         "10 立方公分"
       ],
       "answer": 0,
-      "explanation": "1 公升 = 1000 毫升 = 1000 立方公分。這是容量與體積互通的橋樑。"
+      "explanation": "1 公升 = 1000 毫升 = 1000 立方公分。這是容量與體積互通的橋樑。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     },
     {
       "id": "capacity-volume-bm-2",
@@ -29,7 +33,11 @@
         "1000 立方公分"
       ],
       "answer": 1,
-      "explanation": "1 毫升 = 1 立方公分，兩個單位可以直接互換。"
+      "explanation": "1 毫升 = 1 立方公分，兩個單位可以直接互換。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     },
     {
       "id": "capacity-volume-bm-3",
@@ -44,7 +52,11 @@
         "200 公升"
       ],
       "answer": 2,
-      "explanation": "1000 立方公分 = 1 公升，2000 ÷ 1000 = 2 公升。"
+      "explanation": "1000 立方公分 = 1 公升，2000 ÷ 1000 = 2 公升。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     },
     {
       "id": "capacity-volume-bm-4",
@@ -59,7 +71,11 @@
         "3000 毫升"
       ],
       "answer": 3,
-      "explanation": "20 × 10 × 15 = 3000 立方公分，1 立方公分 = 1 毫升，所以是 3000 毫升。"
+      "explanation": "20 × 10 × 15 = 3000 立方公分，1 立方公分 = 1 毫升，所以是 3000 毫升。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     },
     {
       "id": "capacity-volume-bm-5",
@@ -74,7 +90,11 @@
         "200 公升"
       ],
       "answer": 0,
-      "explanation": "25 × 8 × 10 = 2000 立方公分 = 2000 毫升 = 2 公升。"
+      "explanation": "25 × 8 × 10 = 2000 立方公分 = 2000 毫升 = 2 公升。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     },
     {
       "id": "capacity-volume-bm-6",
@@ -89,7 +109,11 @@
         "10000 毫升"
       ],
       "answer": 1,
-      "explanation": "10 × 10 × 10 = 1000 立方公分 = 1000 毫升，剛好是 1 公升。"
+      "explanation": "10 × 10 × 10 = 1000 立方公分 = 1000 毫升，剛好是 1 公升。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     }
   ],
   "conceptId": [
@@ -100,7 +124,11 @@
       "errorPath": 3,
       "statement": "容積是容器內部能裝的量，體積是物體本身佔的空間。",
       "correctAnswer": true,
-      "explanation": "容積看「裡面能裝多少」，體積看「自己佔多大空間」，兩個概念要分清楚。"
+      "explanation": "容積看「裡面能裝多少」，體積看「自己佔多大空間」，兩個概念要分清楚。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     },
     {
       "id": "capacity-volume-ci-2",
@@ -109,7 +137,11 @@
       "errorPath": 2,
       "statement": "1000 毫升的水，體積就是 1000 立方公分。",
       "correctAnswer": true,
-      "explanation": "1 毫升 = 1 立方公分，液體的量可以用容量單位說，也可以用體積單位說。"
+      "explanation": "1 毫升 = 1 立方公分，液體的量可以用容量單位說，也可以用體積單位說。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     },
     {
       "id": "capacity-volume-ci-3",
@@ -118,7 +150,11 @@
       "errorPath": 2,
       "statement": "容量單位和體積單位完全無關，不能互相換算。",
       "correctAnswer": false,
-      "explanation": "1 毫升 = 1 立方公分、1 公升 = 1000 立方公分，容量和體積可以互換。"
+      "explanation": "1 毫升 = 1 立方公分、1 公升 = 1000 立方公分，容量和體積可以互換。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     },
     {
       "id": "capacity-volume-ci-4",
@@ -127,7 +163,11 @@
       "errorPath": 3,
       "statement": "同一個鐵盒，外面量出的體積和裡面量出的容積一樣大。",
       "correctAnswer": false,
-      "explanation": "盒壁有厚度，外面量含壁厚、裡面量不含，所以容積一定比外量體積小。"
+      "explanation": "盒壁有厚度，外面量含壁厚、裡面量不含，所以容積一定比外量體積小。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     },
     {
       "id": "capacity-volume-ci-5",
@@ -136,7 +176,11 @@
       "errorPath": 3,
       "statement": "保溫瓶的瓶壁很厚，所以容積比外觀看起來的體積小很多。",
       "correctAnswer": true,
-      "explanation": "壁越厚，裡面能裝的空間就比外觀小越多，這就是容積與體積的差別。"
+      "explanation": "壁越厚，裡面能裝的空間就比外觀小越多，這就是容積與體積的差別。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     },
     {
       "id": "capacity-volume-ci-6",
@@ -145,7 +189,11 @@
       "errorPath": 3,
       "statement": "兩個外觀一樣大的杯子，容積一定一樣大。",
       "correctAnswer": false,
-      "explanation": "杯壁厚薄可能不同，外觀一樣大，厚壁杯子的容積比較小。"
+      "explanation": "杯壁厚薄可能不同，外觀一樣大，厚壁杯子的容積比較小。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     }
   ],
   "errorDiagnosis": [
@@ -163,7 +211,11 @@
         "毫升不能換算成立方公分"
       ],
       "correctErrorIndex": 1,
-      "explanation": "石頭體積 = 放入後讀數 − 原來讀數 = 450 − 300 = 150 立方公分。450 是水加石頭的總量。"
+      "explanation": "石頭體積 = 放入後讀數 − 原來讀數 = 450 − 300 = 150 立方公分。450 是水加石頭的總量。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     },
     {
       "id": "capacity-volume-ed-2",
@@ -179,7 +231,11 @@
         "水位上升和鐵球體積沒有關係"
       ],
       "correctErrorIndex": 1,
-      "explanation": "鐵球體積 = 水位上升量 × 底面積 = (15 − 12) × 100 = 300 立方公分。15 公分算的是全部水加球。"
+      "explanation": "鐵球體積 = 水位上升量 × 底面積 = (15 − 12) × 100 = 300 立方公分。15 公分算的是全部水加球。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     },
     {
       "id": "capacity-volume-ed-3",
@@ -195,7 +251,11 @@
         "彈珠太小，不能用排水法"
       ],
       "correctErrorIndex": 0,
-      "explanation": "彈珠總體積 = 260 − 200 = 60 立方公分。200 是還沒放彈珠時的水量。"
+      "explanation": "彈珠總體積 = 260 − 200 = 60 立方公分。200 是還沒放彈珠時的水量。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     },
     {
       "id": "capacity-volume-ed-4",
@@ -211,7 +271,11 @@
         "體積算錯，20 × 10 × 15 不是 3000"
       ],
       "correctErrorIndex": 0,
-      "explanation": "3000 立方公分 = 3000 毫升 = 3 公升。立方公分和公升之間差 1000 倍，不能直接照抄數字。"
+      "explanation": "3000 立方公分 = 3000 毫升 = 3 公升。立方公分和公升之間差 1000 倍，不能直接照抄數字。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     },
     {
       "id": "capacity-volume-ed-5",
@@ -227,7 +291,11 @@
         "公升只能換成毫升，不能換立方公分"
       ],
       "correctErrorIndex": 2,
-      "explanation": "1 公升 = 1000 立方公分，4.5 × 1000 = 4500 立方公分。×100 是換算率記錯一階。"
+      "explanation": "1 公升 = 1000 立方公分，4.5 × 1000 = 4500 立方公分。×100 是換算率記錯一階。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     },
     {
       "id": "capacity-volume-ed-6",
@@ -243,7 +311,11 @@
         "少除以 1000：24000 立方公分是 24 公升"
       ],
       "correctErrorIndex": 3,
-      "explanation": "24000 ÷ 1000 = 24 公升。24000 公升是 24 立方公尺，那是一整個房間大的水量。"
+      "explanation": "24000 ÷ 1000 = 24 公升。24000 公升是 24 立方公尺，那是一整個房間大的水量。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     }
   ],
   "contextApplication": [
@@ -261,7 +333,11 @@
         "240 公升"
       ],
       "answer": 1,
-      "explanation": "40 × 25 × 30 = 30000 立方公分，八分滿是 30000 × 8/10 = 24000 立方公分 = 24 公升。"
+      "explanation": "40 × 25 × 30 = 30000 立方公分，八分滿是 30000 × 8/10 = 24000 立方公分 = 24 公升。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     },
     {
       "id": "capacity-volume-ca-2",
@@ -277,7 +353,11 @@
         "90 毫升"
       ],
       "answer": 1,
-      "explanation": "1.5 公升 = 1500 毫升，600 立方公分 = 600 毫升，1500 − 600 = 900 毫升。"
+      "explanation": "1.5 公升 = 1500 毫升，600 立方公分 = 600 毫升，1500 − 600 = 900 毫升。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     },
     {
       "id": "capacity-volume-ca-3",
@@ -293,7 +373,11 @@
         "不能，容積只有 0.6 公升"
       ],
       "answer": 0,
-      "explanation": "30 × 20 × 10 = 6000 立方公分 = 6 公升 > 5.5 公升，裝得下。"
+      "explanation": "30 × 20 × 10 = 6000 立方公分 = 6 公升 > 5.5 公升，裝得下。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     },
     {
       "id": "capacity-volume-ca-4",
@@ -309,7 +393,11 @@
         "1000 公升"
       ],
       "answer": 3,
-      "explanation": "1000000 立方公分 ÷ 1000 = 1000 公升。1 立方公尺的水塔能裝 1000 公升。"
+      "explanation": "1000000 立方公分 ÷ 1000 = 1000 公升。1 立方公尺的水塔能裝 1000 公升。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     },
     {
       "id": "capacity-volume-ca-5",
@@ -325,7 +413,11 @@
         "5 公升"
       ],
       "answer": 0,
-      "explanation": "0.5 立方公尺 = 500000 立方公分，500000 ÷ 1000 = 500 公升。"
+      "explanation": "0.5 立方公尺 = 500000 立方公分，500000 ÷ 1000 = 500 公升。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     },
     {
       "id": "capacity-volume-ca-6",
@@ -341,7 +433,11 @@
         "不對，能裝 100000 公升"
       ],
       "answer": 2,
-      "explanation": "1000000 立方公分 ÷ 1000 = 1000 公升，小魚少算了 10 倍。"
+      "explanation": "1000000 立方公分 ÷ 1000 = 1000 公升，小魚少算了 10 倍。",
+      "media": {
+        "src": "assets/geometry/geometry-box-volume.webp",
+        "alt": "長方體與柱體的體積與表面積示意圖"
+      }
     }
   ]
 }

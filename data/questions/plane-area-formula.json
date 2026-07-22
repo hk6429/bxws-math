@@ -14,7 +14,11 @@
         "32 平方公分"
       ],
       "answer": 2,
-      "explanation": "三角形面積 = 底 × 高 ÷2 = 10×6÷2 = 30 平方公分。60 是忘記除以 2。"
+      "explanation": "三角形面積 = 底 × 高 ÷2 = 10×6÷2 = 30 平方公分。60 是忘記除以 2。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "plane-area-formula-bm-2",
@@ -29,7 +33,11 @@
         "30 平方公分"
       ],
       "answer": 2,
-      "explanation": "三角形面積 = 8×7÷2 = 28 平方公分。56 是忘記除以 2，15 是把底和高相加。"
+      "explanation": "三角形面積 = 8×7÷2 = 28 平方公分。56 是忘記除以 2，15 是把底和高相加。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "plane-area-formula-bm-3",
@@ -44,7 +52,11 @@
         "17 平方公分"
       ],
       "answer": 1,
-      "explanation": "三角形面積 = 12×5÷2 = 30 平方公分。60 是忘記除以 2。"
+      "explanation": "三角形面積 = 12×5÷2 = 30 平方公分。60 是忘記除以 2。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "plane-area-formula-bm-4",
@@ -59,7 +71,11 @@
         "20 平方公分"
       ],
       "answer": 0,
-      "explanation": "平行四邊形面積 = 底 × 高 = 8×5 = 40 平方公分。20 是多除了 2（和三角形公式弄混）。"
+      "explanation": "平行四邊形面積 = 底 × 高 = 8×5 = 40 平方公分。20 是多除了 2（和三角形公式弄混）。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "plane-area-formula-bm-5",
@@ -74,7 +90,11 @@
         "27 平方公分"
       ],
       "answer": 1,
-      "explanation": "平行四邊形面積 = 9×6 = 54 平方公分，不用除以 2。27 是誤用三角形公式。"
+      "explanation": "平行四邊形面積 = 9×6 = 54 平方公分，不用除以 2。27 是誤用三角形公式。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "plane-area-formula-bm-6",
@@ -89,7 +109,11 @@
         "14 平方公分"
       ],
       "answer": 0,
-      "explanation": "平行四邊形面積 = 7×4 = 28 平方公分。14 是多除了 2，11 是把底和高相加。"
+      "explanation": "平行四邊形面積 = 7×4 = 28 平方公分。14 是多除了 2，11 是把底和高相加。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "plane-area-formula-bm-7",
@@ -104,7 +128,11 @@
         "30 平方公分"
       ],
       "answer": 1,
-      "explanation": "梯形面積 =（上底＋下底）× 高 ÷2 =（4＋10）×6÷2 = 42 平方公分。84 是忘記除以 2，30 是忘記加上底。"
+      "explanation": "梯形面積 =（上底＋下底）× 高 ÷2 =（4＋10）×6÷2 = 42 平方公分。84 是忘記除以 2，30 是忘記加上底。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "plane-area-formula-bm-8",
@@ -119,7 +147,11 @@
         "14 平方公分"
       ],
       "answer": 0,
-      "explanation": "梯形面積 =（3＋7）×4÷2 = 20 平方公分。40 是忘記除以 2，14 是忘記加上底（7×4÷2）。"
+      "explanation": "梯形面積 =（3＋7）×4÷2 = 20 平方公分。40 是忘記除以 2，14 是忘記加上底（7×4÷2）。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "plane-area-formula-bm-9",
@@ -134,7 +166,11 @@
         "56 平方公分"
       ],
       "answer": 3,
-      "explanation": "梯形面積 =（5＋9）×8÷2 = 56 平方公分。112 是忘記除以 2，36 是忘記加上底（9×8÷2）。"
+      "explanation": "梯形面積 =（5＋9）×8÷2 = 56 平方公分。112 是忘記除以 2，36 是忘記加上底（9×8÷2）。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "plane-area-formula-bm-10",
@@ -149,7 +185,11 @@
         "6 公分"
       ],
       "answer": 3,
-      "explanation": "面積 = 底 × 高 ÷2，所以高 = 24×2÷8 = 6 公分。3 是忘記先把面積乘回 2。"
+      "explanation": "面積 = 底 × 高 ÷2，所以高 = 24×2÷8 = 6 公分。3 是忘記先把面積乘回 2。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "plane-area-formula-bm-11",
@@ -164,7 +204,11 @@
         "8 公分"
       ],
       "answer": 3,
-      "explanation": "底 = 面積 ×2÷ 高 = 20×2÷5 = 8 公分。4 是直接 20÷5，忘了公式裡的 ÷2。"
+      "explanation": "底 = 面積 ×2÷ 高 = 20×2÷5 = 8 公分。4 是直接 20÷5，忘了公式裡的 ÷2。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "plane-area-formula-bm-12",
@@ -179,7 +223,11 @@
         "6 公分"
       ],
       "answer": 2,
-      "explanation": "平行四邊形面積 = 底 × 高，高 = 36÷9 = 4 公分。8 是誤用三角形公式多乘了 2。"
+      "explanation": "平行四邊形面積 = 底 × 高，高 = 36÷9 = 4 公分。8 是誤用三角形公式多乘了 2。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     }
   ],
   "conceptId": [
@@ -190,7 +238,11 @@
       "errorPath": 1,
       "statement": "兩個完全一樣的三角形可以拼成一個平行四邊形，所以三角形面積是底×高÷2。",
       "correctAnswer": true,
-      "explanation": "拼成的平行四邊形面積是底 × 高，三角形只占一半，所以要除以 2。這就是公式的由來。"
+      "explanation": "拼成的平行四邊形面積是底 × 高，三角形只占一半，所以要除以 2。這就是公式的由來。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "plane-area-formula-ci-2",
@@ -199,7 +251,11 @@
       "errorPath": 1,
       "statement": "平行四邊形可以切割重組成一個長方形，所以面積是底×高。",
       "correctAnswer": true,
-      "explanation": "把平行四邊形一邊的直角三角形切下來移到另一邊，就變成長方形，底和高不變，面積 = 底 × 高。"
+      "explanation": "把平行四邊形一邊的直角三角形切下來移到另一邊，就變成長方形，底和高不變，面積 = 底 × 高。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "plane-area-formula-ci-3",
@@ -208,7 +264,11 @@
       "errorPath": 1,
       "statement": "三角形面積公式裡的÷2 可以省略不寫，因為那只是習慣寫法。",
       "correctAnswer": false,
-      "explanation": "÷2 是因為兩個一樣的三角形才拼成一個平行四邊形，省略就變成平行四邊形的面積，會多算一倍。"
+      "explanation": "÷2 是因為兩個一樣的三角形才拼成一個平行四邊形，省略就變成平行四邊形的面積，會多算一倍。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "plane-area-formula-ci-4",
@@ -217,7 +277,11 @@
       "errorPath": 3,
       "statement": "三角形的底變 2 倍、高也變 2 倍，面積會變 2 倍。",
       "correctAnswer": false,
-      "explanation": "底和高各變 2 倍，面積變 2×2 = 4 倍。例如底 4 高 3 面積 6，變成底 8 高 6 面積 24。"
+      "explanation": "底和高各變 2 倍，面積變 2×2 = 4 倍。例如底 4 高 3 面積 6，變成底 8 高 6 面積 24。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "plane-area-formula-ci-5",
@@ -226,7 +290,11 @@
       "errorPath": 3,
       "statement": "平行四邊形的底不變、高變 3 倍，面積會變 3 倍。",
       "correctAnswer": true,
-      "explanation": "面積 = 底 × 高，只有高變 3 倍，面積就跟著變 3 倍。"
+      "explanation": "面積 = 底 × 高，只有高變 3 倍，面積就跟著變 3 倍。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "plane-area-formula-ci-6",
@@ -235,7 +303,11 @@
       "errorPath": 3,
       "statement": "兩個梯形的高相等，上底加下底的和也相等，面積就相等。",
       "correctAnswer": true,
-      "explanation": "梯形面積 =（上底＋下底）× 高 ÷2，兩個條件都相等時，算出來的面積一定相等。"
+      "explanation": "梯形面積 =（上底＋下底）× 高 ÷2，兩個條件都相等時，算出來的面積一定相等。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     }
   ],
   "errorDiagnosis": [
@@ -253,7 +325,11 @@
         "忘記除以 2"
       ],
       "correctErrorIndex": 2,
-      "explanation": "高 4 公分對應的底是 8 公分，不是 7 公分那條邊。正確算法：8×4÷2 = 16 平方公分。"
+      "explanation": "高 4 公分對應的底是 8 公分，不是 7 公分那條邊。正確算法：8×4÷2 = 16 平方公分。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "plane-area-formula-ed-2",
@@ -269,7 +345,11 @@
         "應該用 4×5 來算"
       ],
       "correctErrorIndex": 0,
-      "explanation": "面積要用底乘「垂直的高」，不能乘斜邊。正確算法：6×4 = 24 平方公分。"
+      "explanation": "面積要用底乘「垂直的高」，不能乘斜邊。正確算法：6×4 = 24 平方公分。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "plane-area-formula-ed-3",
@@ -285,7 +365,11 @@
         "答案忘記寫單位"
       ],
       "correctErrorIndex": 1,
-      "explanation": "高 6 公分對應的底是 10 公分。正確算法：10×6÷2 = 30 平方公分。"
+      "explanation": "高 6 公分對應的底是 10 公分。正確算法：10×6÷2 = 30 平方公分。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     }
   ],
   "contextApplication": [
@@ -303,7 +387,11 @@
         "40 平方公尺"
       ],
       "answer": 0,
-      "explanation": "梯形面積 =（3＋7）×4÷2 = 20 平方公尺。40 是忘記除以 2，28 是忘記加上底。"
+      "explanation": "梯形面積 =（3＋7）×4÷2 = 20 平方公尺。40 是忘記除以 2，28 是忘記加上底。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "plane-area-formula-ca-2",
@@ -319,7 +407,11 @@
         "100 平方公分"
       ],
       "answer": 1,
-      "explanation": "三角形面積 = 60×40÷2 = 1200 平方公分。2400 是忘記除以 2。"
+      "explanation": "三角形面積 = 60×40÷2 = 1200 平方公分。2400 是忘記除以 2。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "plane-area-formula-ca-3",
@@ -335,7 +427,11 @@
         "7.5 平方公尺"
       ],
       "answer": 2,
-      "explanation": "平行四邊形面積 = 5×3 = 15 平方公尺。7.5 是多除了 2，8 是把底和高相加。"
+      "explanation": "平行四邊形面積 = 5×3 = 15 平方公尺。7.5 是多除了 2，8 是把底和高相加。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     }
   ]
 }

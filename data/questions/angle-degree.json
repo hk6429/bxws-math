@@ -14,7 +14,11 @@
         "180 度"
       ],
       "answer": 3,
-      "explanation": "平角的兩邊剛好成一直線，是 180 度，等於 2 個直角。"
+      "explanation": "平角的兩邊剛好成一直線，是 180 度，等於 2 個直角。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     },
     {
       "id": "angle-degree-bm-2",
@@ -29,7 +33,11 @@
         "90 度"
       ],
       "answer": 2,
-      "explanation": "一邊繞著頂點轉一整圈回到原位，形成周角，是 360 度。"
+      "explanation": "一邊繞著頂點轉一整圈回到原位，形成周角，是 360 度。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     },
     {
       "id": "angle-degree-bm-3",
@@ -44,7 +52,11 @@
         "2 個"
       ],
       "answer": 0,
-      "explanation": "周角 360 度，直角 90 度，360 ÷ 90 = 4，周角等於 4 個直角。"
+      "explanation": "周角 360 度，直角 90 度，360 ÷ 90 = 4，周角等於 4 個直角。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     },
     {
       "id": "angle-degree-bm-4",
@@ -59,7 +71,11 @@
         "平角"
       ],
       "answer": 1,
-      "explanation": "135 度比 90 度大、比 180 度小，是鈍角。"
+      "explanation": "135 度比 90 度大、比 180 度小，是鈍角。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     },
     {
       "id": "angle-degree-bm-5",
@@ -74,7 +90,11 @@
         "直角"
       ],
       "answer": 0,
-      "explanation": "65 度比 90 度小，是銳角。"
+      "explanation": "65 度比 90 度小，是銳角。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     },
     {
       "id": "angle-degree-bm-6",
@@ -89,7 +109,11 @@
         "它比直角小"
       ],
       "answer": 0,
-      "explanation": "300 度在 180 度和 360 度之間，所以比平角大、比周角小。這種角是存在的。"
+      "explanation": "300 度在 180 度和 360 度之間，所以比平角大、比周角小。這種角是存在的。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     },
     {
       "id": "angle-degree-bm-7",
@@ -104,7 +128,11 @@
         "125 度"
       ],
       "answer": 3,
-      "explanation": "直角是 90 度，90 + 35 = 125 度。"
+      "explanation": "直角是 90 度，90 + 35 = 125 度。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     },
     {
       "id": "angle-degree-bm-8",
@@ -119,7 +147,11 @@
         "125 度"
       ],
       "answer": 1,
-      "explanation": "平角是 180 度，180 − 65 = 115 度。"
+      "explanation": "平角是 180 度，180 − 65 = 115 度。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     },
     {
       "id": "angle-degree-bm-9",
@@ -134,7 +166,11 @@
         "60 度"
       ],
       "answer": 2,
-      "explanation": "周角是 360 度，360 − 240 = 120 度。小心別算成 240 − 180 = 60。"
+      "explanation": "周角是 360 度，360 − 240 = 120 度。小心別算成 240 − 180 = 60。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     }
   ],
   "conceptId": [
@@ -145,7 +181,11 @@
       "errorPath": 1,
       "statement": "量角器的內圈和外圈刻度，讀哪一圈數字都一樣。",
       "correctAnswer": false,
-      "explanation": "內外圈的數字方向相反，要看角的一邊對齊 0 的那一圈讀，讀錯圈會把 60 度讀成 120 度。"
+      "explanation": "內外圈的數字方向相反，要看角的一邊對齊 0 的那一圈讀，讀錯圈會把 60 度讀成 120 度。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     },
     {
       "id": "angle-degree-ci-2",
@@ -154,7 +194,11 @@
       "errorPath": 1,
       "statement": "讀量角器時，要看角的一邊對齊 0 的那一圈刻度。",
       "correctAnswer": true,
-      "explanation": "從對齊 0 度的那一邊出發，沿同一圈刻度讀到另一邊，才是正確的度數。"
+      "explanation": "從對齊 0 度的那一邊出發，沿同一圈刻度讀到另一邊，才是正確的度數。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     },
     {
       "id": "angle-degree-ci-3",
@@ -163,7 +207,11 @@
       "errorPath": 2,
       "statement": "用量角器量角時，中心點要對準角的頂點。",
       "correctAnswer": true,
-      "explanation": "量角器的中心點對準頂點、0 度線對齊一邊，是量角的兩個必要步驟。"
+      "explanation": "量角器的中心點對準頂點、0 度線對齊一邊，是量角的兩個必要步驟。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     },
     {
       "id": "angle-degree-ci-4",
@@ -172,7 +220,11 @@
       "errorPath": 3,
       "statement": "比 180 度大、比 360 度小的角是不存在的。",
       "correctAnswer": false,
-      "explanation": "這種角是存在的，例如 270 度的角，比平角大、比周角小。"
+      "explanation": "這種角是存在的，例如 270 度的角，比平角大、比周角小。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     },
     {
       "id": "angle-degree-ci-5",
@@ -181,7 +233,11 @@
       "errorPath": 3,
       "statement": "周角是 360 度，等於 4 個直角合起來。",
       "correctAnswer": true,
-      "explanation": "360 ÷ 90 = 4，轉一整圈的周角剛好是 4 個直角。"
+      "explanation": "360 ÷ 90 = 4，轉一整圈的周角剛好是 4 個直角。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     },
     {
       "id": "angle-degree-ci-6",
@@ -190,7 +246,11 @@
       "errorPath": 3,
       "statement": "一個 200 度的角，比平角大 20 度。",
       "correctAnswer": true,
-      "explanation": "平角是 180 度，200 − 180 = 20，所以比平角大 20 度。"
+      "explanation": "平角是 180 度，200 − 180 = 20，所以比平角大 20 度。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     }
   ],
   "errorDiagnosis": [
@@ -208,7 +268,11 @@
         "內外圈讀反了，應讀 60 度"
       ],
       "correctErrorIndex": 3,
-      "explanation": "這個角比直角小，度數一定小於 90，應該讀對齊 0 那圈的 60 度，不是 120 度。"
+      "explanation": "這個角比直角小，度數一定小於 90，應該讀對齊 0 那圈的 60 度，不是 120 度。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     },
     {
       "id": "angle-degree-ed-2",
@@ -224,7 +288,11 @@
         "應該把 50 加上 90 才對"
       ],
       "correctErrorIndex": 0,
-      "explanation": "先判斷角的種類再讀數：這個角比直角大，度數必大於 90，正確答案是 130 度。"
+      "explanation": "先判斷角的種類再讀數：這個角比直角大，度數必大於 90，正確答案是 130 度。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     },
     {
       "id": "angle-degree-ed-3",
@@ -240,7 +308,11 @@
         "角畫得太小，沒辦法量"
       ],
       "correctErrorIndex": 1,
-      "explanation": "銳角一定小於 90 度，讀出 140 度就表示讀錯圈了，要從對齊 0 的那一圈讀起。"
+      "explanation": "銳角一定小於 90 度，讀出 140 度就表示讀錯圈了，要從對齊 0 的那一圈讀起。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     },
     {
       "id": "angle-degree-ed-4",
@@ -256,7 +328,11 @@
         "應該量三角形最大的角"
       ],
       "correctErrorIndex": 2,
-      "explanation": "量角的第一步是把量角器的中心點對準頂點，沒對準的話讀出來的度數不可靠。"
+      "explanation": "量角的第一步是把量角器的中心點對準頂點，沒對準的話讀出來的度數不可靠。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     },
     {
       "id": "angle-degree-ed-5",
@@ -272,7 +348,11 @@
         "課本上的角不能直接量"
       ],
       "correctErrorIndex": 0,
-      "explanation": "中心對頂點之後，還要讓 0 度線對齊角的一邊，再讀另一邊指的刻度。"
+      "explanation": "中心對頂點之後，還要讓 0 度線對齊角的一邊，再讀另一邊指的刻度。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     },
     {
       "id": "angle-degree-ed-6",
@@ -288,7 +368,11 @@
         "應該對齊 180 度線才對"
       ],
       "correctErrorIndex": 1,
-      "explanation": "角的一邊要對齊 0 度線，從 0 讀起；對齊 90 度線讀出來的數字要再換算，容易出錯。"
+      "explanation": "角的一邊要對齊 0 度線，從 0 讀起；對齊 90 度線讀出來的數字要再換算，容易出錯。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     }
   ],
   "contextApplication": [
@@ -306,7 +390,11 @@
         "180 度"
       ],
       "answer": 0,
-      "explanation": "分針從 12 到 3 走了一圈的四分之一，360 ÷ 4 = 90 度。"
+      "explanation": "分針從 12 到 3 走了一圈的四分之一，360 ÷ 4 = 90 度。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     },
     {
       "id": "angle-degree-ca-2",
@@ -322,7 +410,11 @@
         "180 度"
       ],
       "answer": 1,
-      "explanation": "半圈是 180 度，四分之一圈是 90 度，180 + 90 = 270 度。"
+      "explanation": "半圈是 180 度，四分之一圈是 90 度，180 + 90 = 270 度。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     },
     {
       "id": "angle-degree-ca-3",
@@ -338,7 +430,11 @@
         "180 度"
       ],
       "answer": 2,
-      "explanation": "半圈是 180 度，180 + 30 = 210 度。"
+      "explanation": "半圈是 180 度，180 + 30 = 210 度。",
+      "media": {
+        "src": "assets/geometry/geometry-angle-family.webp",
+        "alt": "角的種類與量角器示意圖"
+      }
     }
   ]
 }

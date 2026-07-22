@@ -14,7 +14,11 @@
         "不變"
       ],
       "answer": 2,
-      "explanation": "2 倍放大圖是每條邊的長度都變成原來的 2 倍；面積才會變 4 倍，不要混淆。"
+      "explanation": "2 倍放大圖是每條邊的長度都變成原來的 2 倍；面積才會變 4 倍，不要混淆。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     },
     {
       "id": "scale-map-bm-2",
@@ -29,7 +33,11 @@
         "不變"
       ],
       "answer": 1,
-      "explanation": "1/2 縮小圖是每條邊長度都變成原來的一半（1/2）。"
+      "explanation": "1/2 縮小圖是每條邊長度都變成原來的一半（1/2）。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     },
     {
       "id": "scale-map-bm-3",
@@ -44,7 +52,11 @@
         "12 公分"
       ],
       "answer": 3,
-      "explanation": "放大 3 倍是用乘的：4×3＝12 公分，不是加 3。"
+      "explanation": "放大 3 倍是用乘的：4×3＝12 公分，不是加 3。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     },
     {
       "id": "scale-map-bm-4",
@@ -59,7 +71,11 @@
         "跟著變小"
       ],
       "answer": 0,
-      "explanation": "放大縮小只改變邊的長度，對應角的大小完全不變，所以圖形形狀相同。"
+      "explanation": "放大縮小只改變邊的長度，對應角的大小完全不變，所以圖形形狀相同。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     },
     {
       "id": "scale-map-bm-5",
@@ -74,7 +90,11 @@
         "變成一半"
       ],
       "answer": 2,
-      "explanation": "縮小圖只有邊長變短，角的大小不變，形狀才會和原圖一樣。"
+      "explanation": "縮小圖只有邊長變短，角的大小不變，形狀才會和原圖一樣。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     },
     {
       "id": "scale-map-bm-6",
@@ -89,7 +109,11 @@
         "30 度"
       ],
       "answer": 2,
-      "explanation": "放大圖的對應角和原圖相等，還是 60 度；只有邊長變 2 倍。"
+      "explanation": "放大圖的對應角和原圖相等，還是 60 度；只有邊長變 2 倍。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     },
     {
       "id": "scale-map-bm-7",
@@ -104,7 +128,11 @@
         "500 公尺"
       ],
       "answer": 1,
-      "explanation": "5×1000＝5000 公分，再換算單位：5000 公分＝50 公尺。算完別忘了換單位。"
+      "explanation": "5×1000＝5000 公分，再換算單位：5000 公分＝50 公尺。算完別忘了換單位。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     },
     {
       "id": "scale-map-bm-8",
@@ -119,7 +147,11 @@
         "3 公尺"
       ],
       "answer": 0,
-      "explanation": "6×500＝3000 公分＝30 公尺。乘完比例尺後要把公分換成公尺。"
+      "explanation": "6×500＝3000 公分＝30 公尺。乘完比例尺後要把公分換成公尺。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     },
     {
       "id": "scale-map-bm-9",
@@ -134,7 +166,11 @@
         "400 公尺"
       ],
       "answer": 0,
-      "explanation": "4×100000＝400000 公分＝4000 公尺＝4 公里。"
+      "explanation": "4×100000＝400000 公分＝4000 公尺＝4 公里。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     },
     {
       "id": "scale-map-bm-10",
@@ -149,7 +185,11 @@
         "300 公分"
       ],
       "answer": 1,
-      "explanation": "3 公里＝300000 公分，300000÷100000＝3 公分。實際變圖上要用除的。"
+      "explanation": "3 公里＝300000 公分，300000÷100000＝3 公分。實際變圖上要用除的。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     },
     {
       "id": "scale-map-bm-11",
@@ -164,7 +204,11 @@
         "10 公分"
       ],
       "answer": 3,
-      "explanation": "200 公尺＝20000 公分，20000÷2000＝10 公分。先換單位再除以比例尺。"
+      "explanation": "200 公尺＝20000 公分，20000÷2000＝10 公分。先換單位再除以比例尺。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     },
     {
       "id": "scale-map-bm-12",
@@ -179,7 +223,11 @@
         "3 公分"
       ],
       "answer": 3,
-      "explanation": "150 公尺＝15000 公分，15000÷5000＝3 公分。"
+      "explanation": "150 公尺＝15000 公分，15000÷5000＝3 公分。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     }
   ],
   "conceptId": [
@@ -190,7 +238,11 @@
       "errorPath": 2,
       "statement": "邊長 2 倍放大圖的面積，是原圖面積的 2 倍。",
       "correctAnswer": false,
-      "explanation": "邊長變 2 倍，面積是 2×2＝4 倍。例如 1×1 變 2×2，面積從 1 變 4。"
+      "explanation": "邊長變 2 倍，面積是 2×2＝4 倍。例如 1×1 變 2×2，面積從 1 變 4。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     },
     {
       "id": "scale-map-ci-2",
@@ -199,7 +251,11 @@
       "errorPath": 2,
       "statement": "邊長 3 倍放大圖的面積，是原圖面積的 9 倍。",
       "correctAnswer": true,
-      "explanation": "長和寬都變 3 倍，面積變 3×3＝9 倍。"
+      "explanation": "長和寬都變 3 倍，面積變 3×3＝9 倍。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     },
     {
       "id": "scale-map-ci-3",
@@ -208,7 +264,11 @@
       "errorPath": 2,
       "statement": "放大圖和原圖的形狀相同，只有大小不同。",
       "correctAnswer": true,
-      "explanation": "放大圖每條邊等倍放大、每個角不變，所以形狀一樣、大小不同。"
+      "explanation": "放大圖每條邊等倍放大、每個角不變，所以形狀一樣、大小不同。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     },
     {
       "id": "scale-map-ci-4",
@@ -217,7 +277,11 @@
       "errorPath": 3,
       "statement": "地圖上兩地距離的比，和實際兩地距離的比相等。",
       "correctAnswer": true,
-      "explanation": "整張地圖用同一個比例尺縮小，所以圖上距離的比和實際距離的比相等。"
+      "explanation": "整張地圖用同一個比例尺縮小，所以圖上距離的比和實際距離的比相等。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     },
     {
       "id": "scale-map-ci-5",
@@ -226,7 +290,11 @@
       "errorPath": 1,
       "statement": "比例尺 1:1000 表示圖上 1 公分代表實際 1000 公分。",
       "correctAnswer": true,
-      "explanation": "1:1000 就是圖上長度：實際長度＝1:1000，圖上 1 公分代表實際 1000 公分（10 公尺）。"
+      "explanation": "1:1000 就是圖上長度：實際長度＝1:1000，圖上 1 公分代表實際 1000 公分（10 公尺）。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     },
     {
       "id": "scale-map-ci-6",
@@ -235,7 +303,11 @@
       "errorPath": 3,
       "statement": "比例尺 1:500 的地圖，比 1:100 的地圖縮得更小。",
       "correctAnswer": true,
-      "explanation": "1:500 是把實際縮成 1/500，比 1:100（縮成 1/100）縮得更小，畫出來的東西更小。"
+      "explanation": "1:500 是把實際縮成 1/500，比 1:100（縮成 1/100）縮得更小，畫出來的東西更小。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     }
   ],
   "errorDiagnosis": [
@@ -253,7 +325,11 @@
         "比例尺看錯，應該是 1:5000"
       ],
       "correctErrorIndex": 1,
-      "explanation": "圖上是公分，乘完比例尺得到的也是公分：2000 公分＝20 公尺，要記得換算單位。"
+      "explanation": "圖上是公分，乘完比例尺得到的也是公分：2000 公分＝20 公尺，要記得換算單位。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     },
     {
       "id": "scale-map-ed-2",
@@ -269,7 +345,11 @@
         "地圖上不能用公分來量"
       ],
       "correctErrorIndex": 0,
-      "explanation": "300000 公分＝3000 公尺＝3 公里。數字算對了，但單位沒換算，答案就差了 100 倍。"
+      "explanation": "300000 公分＝3000 公尺＝3 公里。數字算對了，但單位沒換算，答案就差了 100 倍。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     },
     {
       "id": "scale-map-ed-3",
@@ -285,7 +365,11 @@
         "除法的計算過程錯誤"
       ],
       "correctErrorIndex": 2,
-      "explanation": "要先統一單位：100 公尺＝10000 公分，再除以 2000 得 5 公分。直接拿公尺去除，單位就亂了。"
+      "explanation": "要先統一單位：100 公尺＝10000 公分，再除以 2000 得 5 公分。直接拿公尺去除，單位就亂了。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     }
   ],
   "contextApplication": [
@@ -303,7 +387,11 @@
         "0.5 公分"
       ],
       "answer": 1,
-      "explanation": "100 公尺＝10000 公分，10000÷2000＝5 公分。"
+      "explanation": "100 公尺＝10000 公分，10000÷2000＝5 公分。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     },
     {
       "id": "scale-map-ca-2",
@@ -319,7 +407,11 @@
         "8 公里"
       ],
       "answer": 2,
-      "explanation": "8×1000＝8000 公分＝80 公尺。"
+      "explanation": "8×1000＝8000 公分＝80 公尺。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     },
     {
       "id": "scale-map-ca-3",
@@ -335,7 +427,11 @@
         "150 公里"
       ],
       "answer": 0,
-      "explanation": "6×250000＝1500000 公分＝15000 公尺＝15 公里。"
+      "explanation": "6×250000＝1500000 公分＝15000 公尺＝15 公里。",
+      "media": {
+        "src": "assets/geometry/geometry-scale.webp",
+        "alt": "放大、縮小與比例尺示意圖"
+      }
     }
   ]
 }

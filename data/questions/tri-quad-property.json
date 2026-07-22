@@ -14,7 +14,11 @@
         "90 度"
       ],
       "answer": 1,
-      "explanation": "任何三角形的三個內角相加都是 180 度，跟大小、形狀無關。"
+      "explanation": "任何三角形的三個內角相加都是 180 度，跟大小、形狀無關。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-property-bm-2",
@@ -29,7 +33,11 @@
         "360 度"
       ],
       "answer": 3,
-      "explanation": "四邊形可以沿對角線切成 2 個三角形，內角和是 180×2 = 360 度。"
+      "explanation": "四邊形可以沿對角線切成 2 個三角形，內角和是 180×2 = 360 度。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-property-bm-3",
@@ -44,7 +52,11 @@
         "2 個"
       ],
       "answer": 3,
-      "explanation": "一條對角線把四邊形分成 2 個三角形，這就是內角和 360 度的由來。"
+      "explanation": "一條對角線把四邊形分成 2 個三角形，這就是內角和 360 度的由來。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-property-bm-4",
@@ -59,7 +71,11 @@
         "67 度"
       ],
       "answer": 3,
-      "explanation": "65 + 48 = 113，第三個內角是 180 - 113 = 67 度。"
+      "explanation": "65 + 48 = 113，第三個內角是 180 - 113 = 67 度。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-property-bm-5",
@@ -74,7 +90,11 @@
         "125 度"
       ],
       "answer": 0,
-      "explanation": "90 + 35 = 125，第三個內角是 180 - 125 = 55 度。"
+      "explanation": "90 + 35 = 125，第三個內角是 180 - 125 = 55 度。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-property-bm-6",
@@ -89,7 +109,11 @@
         "79 度"
       ],
       "answer": 2,
-      "explanation": "72 + 39 = 111，第三個內角是 180 - 111 = 69 度。"
+      "explanation": "72 + 39 = 111，第三個內角是 180 - 111 = 69 度。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-property-bm-7",
@@ -104,7 +128,11 @@
         "100 度"
       ],
       "answer": 2,
-      "explanation": "兩個底角相等：(180 - 40) ÷ 2 = 70 度。記得減完還要除以 2。"
+      "explanation": "兩個底角相等：(180 - 40) ÷ 2 = 70 度。記得減完還要除以 2。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-property-bm-8",
@@ -119,7 +147,11 @@
         "100 度"
       ],
       "answer": 0,
-      "explanation": "(180 - 100) ÷ 2 = 40 度。算成 80 度是忘了除以 2。"
+      "explanation": "(180 - 100) ÷ 2 = 40 度。算成 80 度是忘了除以 2。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-property-bm-9",
@@ -134,7 +166,11 @@
         "110 度"
       ],
       "answer": 0,
-      "explanation": "兩個底角都是 55 度，頂角是 180 - 55×2 = 70 度。只減一次會得到 125。"
+      "explanation": "兩個底角都是 55 度，頂角是 180 - 55×2 = 70 度。只減一次會得到 125。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-property-bm-10",
@@ -149,7 +185,11 @@
         "不能，9 是單數"
       ],
       "answer": 2,
-      "explanation": "兩邊的和要大於第三邊才能圍成：3 + 5 = 8 小於 9，所以圍不起來。"
+      "explanation": "兩邊的和要大於第三邊才能圍成：3 + 5 = 8 小於 9，所以圍不起來。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-property-bm-11",
@@ -164,7 +204,11 @@
         "不能，10 太長了"
       ],
       "answer": 1,
-      "explanation": "4 + 6 = 10 只是「等於」最長邊，會攤平成一直線，必須「大於」才能圍成。"
+      "explanation": "4 + 6 = 10 只是「等於」最長邊，會攤平成一直線，必須「大於」才能圍成。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-property-bm-12",
@@ -179,7 +223,11 @@
         "不可以，5+7 小於 8"
       ],
       "answer": 1,
-      "explanation": "檢查最短兩邊：5 + 7 = 12 大於 8，所以可以圍成三角形。"
+      "explanation": "檢查最短兩邊：5 + 7 = 12 大於 8，所以可以圍成三角形。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     }
   ],
   "conceptId": [
@@ -189,7 +237,11 @@
       "challenge": "10-5",
       "statement": "平行四邊形的對邊等長，對角也相等。",
       "correctAnswer": true,
-      "explanation": "平行四邊形的性質：兩組對邊分別等長，兩組對角分別相等。"
+      "explanation": "平行四邊形的性質：兩組對邊分別等長，兩組對角分別相等。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-property-ci-2",
@@ -197,7 +249,11 @@
       "challenge": "10-5",
       "statement": "長方形是一種平行四邊形，因為兩組對邊分別平行。",
       "correctAnswer": true,
-      "explanation": "長方形兩組對邊平行且等長，符合平行四邊形的條件，是特別的平行四邊形。"
+      "explanation": "長方形兩組對邊平行且等長，符合平行四邊形的條件，是特別的平行四邊形。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-property-ci-3",
@@ -206,7 +262,11 @@
       "errorPath": 1,
       "statement": "梯形的四個內角和也是 360 度。",
       "correctAnswer": true,
-      "explanation": "梯形也是四邊形，同樣可以切成 2 個三角形，內角和是 360 度。"
+      "explanation": "梯形也是四邊形，同樣可以切成 2 個三角形，內角和是 360 度。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-property-ci-4",
@@ -215,7 +275,11 @@
       "errorPath": 1,
       "statement": "一個三角形可以同時有兩個直角。",
       "correctAnswer": false,
-      "explanation": "兩個直角相加已經是 180 度，第三個角就沒有度數了，所以不可能。"
+      "explanation": "兩個直角相加已經是 180 度，第三個角就沒有度數了，所以不可能。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-property-ci-5",
@@ -224,7 +288,11 @@
       "errorPath": 1,
       "statement": "三角形畫得越大，內角和就越大。",
       "correctAnswer": false,
-      "explanation": "不管三角形多大多小，內角和永遠是 180 度，和圖形大小無關。"
+      "explanation": "不管三角形多大多小，內角和永遠是 180 度，和圖形大小無關。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-property-ci-6",
@@ -233,7 +301,11 @@
       "errorPath": 1,
       "statement": "一個三角形最多只能有一個鈍角。",
       "correctAnswer": true,
-      "explanation": "兩個鈍角相加就超過 180 度了，所以三角形最多只能有一個鈍角。"
+      "explanation": "兩個鈍角相加就超過 180 度了，所以三角形最多只能有一個鈍角。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     }
   ],
   "errorDiagnosis": [
@@ -251,7 +323,11 @@
         "三角形內角和其實是 360 度"
       ],
       "correctErrorIndex": 0,
-      "explanation": "四邊形沿對角線切成 2 個三角形，內角和是 180 × 2 = 360 度，不是隨便加 90。"
+      "explanation": "四邊形沿對角線切成 2 個三角形，內角和是 180 × 2 = 360 度，不是隨便加 90。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-property-ed-2",
@@ -267,7 +343,11 @@
         "頂角和底角本來就相等"
       ],
       "correctErrorIndex": 1,
-      "explanation": "180 - 80 = 100 是「兩個底角的和」，還要除以 2，一個底角是 50 度。"
+      "explanation": "180 - 80 = 100 是「兩個底角的和」，還要除以 2，一個底角是 50 度。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-property-ed-3",
@@ -283,7 +363,11 @@
         "4+7 算錯了，應該是 10"
       ],
       "correctErrorIndex": 2,
-      "explanation": "關鍵是「最短兩邊的和」要大於最長邊：2 + 4 = 6 小於 7，所以圍不成。"
+      "explanation": "關鍵是「最短兩邊的和」要大於最長邊：2 + 4 = 6 小於 7，所以圍不成。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     }
   ],
   "contextApplication": [
@@ -301,7 +385,11 @@
         "65 度"
       ],
       "answer": 1,
-      "explanation": "直角占 90 度，另一個銳角是 180 - 90 - 35 = 55 度。"
+      "explanation": "直角占 90 度，另一個銳角是 180 - 90 - 35 = 55 度。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-property-ca-2",
@@ -317,7 +405,11 @@
         "70 度"
       ],
       "answer": 0,
-      "explanation": "180 - 90 - 30 = 60 度，兩個銳角合起來剛好 90 度。"
+      "explanation": "180 - 90 - 30 = 60 度，兩個銳角合起來剛好 90 度。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     },
     {
       "id": "tri-quad-property-ca-3",
@@ -333,7 +425,11 @@
         "30 度"
       ],
       "answer": 2,
-      "explanation": "(180 - 30) ÷ 2 = 75 度。算成 150 度是忘了把兩個底角平分。"
+      "explanation": "(180 - 30) ÷ 2 = 75 度。算成 150 度是忘了把兩個底角平分。",
+      "media": {
+        "src": "assets/geometry/geometry-quadrilateral-family.webp",
+        "alt": "三角形與四邊形家族示意圖"
+      }
     }
   ]
 }

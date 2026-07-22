@@ -14,7 +14,11 @@
         "球"
       ],
       "answer": 3,
-      "explanation": "皮球是立體的「球」。「圓形」是畫在紙上平平的圖形，和立體的球不一樣。"
+      "explanation": "皮球是立體的「球」。「圓形」是畫在紙上平平的圖形，和立體的球不一樣。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     },
     {
       "id": "shape-recognize-bm-2",
@@ -29,7 +33,11 @@
         "圓柱"
       ],
       "answer": 1,
-      "explanation": "柳丁圓滾滾的，是立體的「球」。「圓形」是平面圖形，不能用來說立體的柳丁。"
+      "explanation": "柳丁圓滾滾的，是立體的「球」。「圓形」是平面圖形，不能用來說立體的柳丁。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     },
     {
       "id": "shape-recognize-bm-3",
@@ -44,7 +52,11 @@
         "圓柱"
       ],
       "answer": 0,
-      "explanation": "彈珠是立體的「球」，放在哪個方向看都是圓滾滾的。"
+      "explanation": "彈珠是立體的「球」，放在哪個方向看都是圓滾滾的。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     },
     {
       "id": "shape-recognize-bm-4",
@@ -59,7 +71,11 @@
         "球"
       ],
       "answer": 2,
-      "explanation": "骰子每一個面都是一樣大的正方形，是「正方體」。"
+      "explanation": "骰子每一個面都是一樣大的正方形，是「正方體」。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     },
     {
       "id": "shape-recognize-bm-5",
@@ -74,7 +90,11 @@
         "圓柱"
       ],
       "answer": 2,
-      "explanation": "魔術方塊每個面都是一樣大的正方形，是「正方體」。"
+      "explanation": "魔術方塊每個面都是一樣大的正方形，是「正方體」。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     },
     {
       "id": "shape-recognize-bm-6",
@@ -89,7 +109,11 @@
         "球"
       ],
       "answer": 2,
-      "explanation": "面紙盒有長有短、平平的六個面，是「長方體」。"
+      "explanation": "面紙盒有長有短、平平的六個面，是「長方體」。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     },
     {
       "id": "shape-recognize-bm-7",
@@ -104,7 +128,11 @@
         "三角形"
       ],
       "answer": 3,
-      "explanation": "有 3 條邊、3 個角的圖形就是三角形。"
+      "explanation": "有 3 條邊、3 個角的圖形就是三角形。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     },
     {
       "id": "shape-recognize-bm-8",
@@ -119,7 +147,11 @@
         "3個"
       ],
       "answer": 3,
-      "explanation": "三角形有 3 條邊，也有 3 個角，數一數不要多算或漏算。"
+      "explanation": "三角形有 3 條邊，也有 3 個角，數一數不要多算或漏算。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     },
     {
       "id": "shape-recognize-bm-9",
@@ -134,7 +166,11 @@
         "3條"
       ],
       "answer": 0,
-      "explanation": "正方形有 4 條邊，也有 4 個角。"
+      "explanation": "正方形有 4 條邊，也有 4 個角。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     },
     {
       "id": "shape-recognize-bm-10",
@@ -149,7 +185,11 @@
         "圓形"
       ],
       "answer": 1,
-      "explanation": "四條邊一樣長、有四個角的圖形是正方形。"
+      "explanation": "四條邊一樣長、有四個角的圖形是正方形。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     },
     {
       "id": "shape-recognize-bm-11",
@@ -164,7 +204,11 @@
         "圓形"
       ],
       "answer": 0,
-      "explanation": "兩條邊長、兩條邊短，共有四條邊四個角，是長方形。"
+      "explanation": "兩條邊長、兩條邊短，共有四條邊四個角，是長方形。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     },
     {
       "id": "shape-recognize-bm-12",
@@ -179,7 +223,11 @@
         "長方形"
       ],
       "answer": 1,
-      "explanation": "圓形由一條彎彎的線圍成，沒有直直的邊，也沒有角。"
+      "explanation": "圓形由一條彎彎的線圍成，沒有直直的邊，也沒有角。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     }
   ],
   "conceptId": [
@@ -190,7 +238,11 @@
       "errorPath": 3,
       "statement": "三角形有 4 條邊。",
       "correctAnswer": false,
-      "explanation": "三角形只有 3 條邊、3 個角，「三」就是它的名字由來。"
+      "explanation": "三角形只有 3 條邊、3 個角，「三」就是它的名字由來。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     },
     {
       "id": "shape-recognize-ci-2",
@@ -199,7 +251,11 @@
       "errorPath": 3,
       "statement": "正方形有 4 個角。",
       "correctAnswer": true,
-      "explanation": "正方形有 4 條邊、4 個角。"
+      "explanation": "正方形有 4 條邊、4 個角。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     },
     {
       "id": "shape-recognize-ci-3",
@@ -208,7 +264,11 @@
       "errorPath": 3,
       "statement": "圓形有 1 個角。",
       "correctAnswer": false,
-      "explanation": "圓形由一條彎彎的線圍成，沒有直直的邊，一個角也沒有。"
+      "explanation": "圓形由一條彎彎的線圍成，沒有直直的邊，一個角也沒有。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     },
     {
       "id": "shape-recognize-ci-4",
@@ -217,7 +277,11 @@
       "errorPath": 2,
       "statement": "罐頭盒的形狀像圓柱，可以在桌上滾動。",
       "correctAnswer": true,
-      "explanation": "圓柱側面是彎彎的曲面，橫放在桌上就能滾動。"
+      "explanation": "圓柱側面是彎彎的曲面，橫放在桌上就能滾動。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     },
     {
       "id": "shape-recognize-ci-5",
@@ -226,7 +290,11 @@
       "errorPath": 2,
       "statement": "球放在斜斜的木板上會自己滾下去。",
       "correctAnswer": true,
-      "explanation": "球整個表面都是彎彎的曲面，放在斜坡上會滾動。"
+      "explanation": "球整個表面都是彎彎的曲面，放在斜坡上會滾動。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     },
     {
       "id": "shape-recognize-ci-6",
@@ -235,7 +303,11 @@
       "errorPath": 2,
       "statement": "正方體像球一樣，輕輕一推就會滾動。",
       "correctAnswer": false,
-      "explanation": "正方體每個面都平平的，放在桌上很穩，推它會滑不會滾。"
+      "explanation": "正方體每個面都平平的，放在桌上很穩，推它會滑不會滾。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     }
   ],
   "errorDiagnosis": [
@@ -253,7 +325,11 @@
         "把鐘面看成立體的球"
       ],
       "correctErrorIndex": 0,
-      "explanation": "鐘面是圓圓的，由一條彎彎的線圍成，沒有邊也沒有角，是圓形不是正方形。"
+      "explanation": "鐘面是圓圓的，由一條彎彎的線圍成，沒有邊也沒有角，是圓形不是正方形。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     },
     {
       "id": "shape-recognize-ed-2",
@@ -269,7 +345,11 @@
         "圓形畫得不夠圓"
       ],
       "correctErrorIndex": 1,
-      "explanation": "圓形是畫在紙上平平的圖形，球是立體的形體，兩個名字不能混用。"
+      "explanation": "圓形是畫在紙上平平的圖形，球是立體的形體，兩個名字不能混用。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     },
     {
       "id": "shape-recognize-ed-3",
@@ -285,7 +365,11 @@
         "多數了一個角"
       ],
       "correctErrorIndex": 2,
-      "explanation": "正方形有 4 個角，小安只數出 3 個，是漏數了一個角。數角時可以邊數邊做記號。"
+      "explanation": "正方形有 4 個角，小安只數出 3 個，是漏數了一個角。數角時可以邊數邊做記號。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     }
   ],
   "contextApplication": [
@@ -303,7 +387,11 @@
         "圓柱"
       ],
       "answer": 0,
-      "explanation": "正方體每個面都平平的，疊起來最穩；球和圓柱有彎彎的面，容易滾動。"
+      "explanation": "正方體每個面都平平的，疊起來最穩；球和圓柱有彎彎的面，容易滾動。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     },
     {
       "id": "shape-recognize-ca-2",
@@ -319,7 +407,11 @@
         "每一種都會"
       ],
       "answer": 1,
-      "explanation": "球整個表面都是彎彎的曲面，放在斜坡上會自己滾下去；正方體和長方體的面平平的，只會滑不會滾。"
+      "explanation": "球整個表面都是彎彎的曲面，放在斜坡上會自己滾下去；正方體和長方體的面平平的，只會滑不會滾。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     },
     {
       "id": "shape-recognize-ca-3",
@@ -335,7 +427,11 @@
         "三角尺"
       ],
       "answer": 2,
-      "explanation": "罐頭盒是圓柱，它的底面是圓形，沿著底面描一圈就是圓形。"
+      "explanation": "罐頭盒是圓柱，它的底面是圓形，沿著底面描一圈就是圓形。",
+      "media": {
+        "src": "assets/geometry/geometry-shapes-solids.webp",
+        "alt": "各種平面圖形與立體形體及其構成要素的示意圖"
+      }
     }
   ]
 }

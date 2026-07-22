@@ -14,7 +14,11 @@
         "14 平方公分"
       ],
       "answer": 0,
-      "explanation": "每排 5 格 × 3 排 = 15 格，每格 1 平方公分，面積 15 平方公分。16 是把周界格數（2×(5+3)=16）當成面積。"
+      "explanation": "每排 5 格 × 3 排 = 15 格，每格 1 平方公分，面積 15 平方公分。16 是把周界格數（2×(5+3)=16）當成面積。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "area-cm2-bm-2",
@@ -29,7 +33,11 @@
         "20 平方公分"
       ],
       "answer": 1,
-      "explanation": "6 × 4 = 24 格，面積 24 平方公分。20 是周界格數（2×(6+4)=20），10 是 6+4，都不是面積。"
+      "explanation": "6 × 4 = 24 格，面積 24 平方公分。20 是周界格數（2×(6+4)=20），10 是 6+4，都不是面積。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "area-cm2-bm-3",
@@ -44,7 +52,11 @@
         "13 平方公分"
       ],
       "answer": 1,
-      "explanation": "7 × 2 = 14 格，面積 14 平方公分。18 是周界格數（2×(7+2)=18），9 是 7+2。"
+      "explanation": "7 × 2 = 14 格，面積 14 平方公分。18 是周界格數（2×(7+2)=18），9 是 7+2。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "area-cm2-bm-4",
@@ -59,7 +71,11 @@
         "8 平方公分"
       ],
       "answer": 0,
-      "explanation": "4 個半格＝2 個整格，8 + 2 = 10 平方公分。12 是把半格也當整格數的錯誤答案。"
+      "explanation": "4 個半格＝2 個整格，8 + 2 = 10 平方公分。12 是把半格也當整格數的錯誤答案。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "area-cm2-bm-5",
@@ -74,7 +90,11 @@
         "13 平方公分"
       ],
       "answer": 3,
-      "explanation": "6 個半格＝3 個整格，10 + 3 = 13 平方公分。16 是半格當整格，10 是漏掉半格。"
+      "explanation": "6 個半格＝3 個整格，10 + 3 = 13 平方公分。16 是半格當整格，10 是漏掉半格。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "area-cm2-bm-6",
@@ -89,7 +109,11 @@
         "8 平方公分"
       ],
       "answer": 2,
-      "explanation": "8 個半格＝4 個整格，5 + 4 = 9 平方公分。13 是把半格全當整格，5 是完全沒數半格。"
+      "explanation": "8 個半格＝4 個整格，5 + 4 = 9 平方公分。13 是把半格全當整格，5 是完全沒數半格。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     }
   ],
   "conceptId": [
@@ -99,7 +123,11 @@
       "challenge": "9-3",
       "statement": "1平方公分是邊長1公分的正方形的大小。",
       "correctAnswer": true,
-      "explanation": "邊長 1 公分的正方形，它的大小就是 1 平方公分，是面積的基本單位。"
+      "explanation": "邊長 1 公分的正方形，它的大小就是 1 平方公分，是面積的基本單位。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "area-cm2-ci-2",
@@ -108,7 +136,11 @@
       "errorPath": 1,
       "statement": "兩個半格合起來，可以當作1個平方公分來數。",
       "correctAnswer": true,
-      "explanation": "半格是整格的一半，兩個半格合起來剛好是 1 格，也就是 1 平方公分。數格子時半格不能直接當整格。"
+      "explanation": "半格是整格的一半，兩個半格合起來剛好是 1 格，也就是 1 平方公分。數格子時半格不能直接當整格。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "area-cm2-ci-3",
@@ -116,7 +148,11 @@
       "challenge": "9-3",
       "statement": "數方格算面積時，每格是1平方公分，數出幾格就是幾平方公分。",
       "correctAnswer": true,
-      "explanation": "平方公分板上每一格都是 1 平方公分，圖形蓋住幾格，面積就是幾平方公分。"
+      "explanation": "平方公分板上每一格都是 1 平方公分，圖形蓋住幾格，面積就是幾平方公分。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "area-cm2-ci-4",
@@ -125,7 +161,11 @@
       "errorPath": 3,
       "statement": "周界越長的圖形，面積一定越大。",
       "correctAnswer": false,
-      "explanation": "周界長不代表面積大。細細長長的圖形周界很長，蓋住的格子卻可能很少，面積要看蓋住幾格。"
+      "explanation": "周界長不代表面積大。細細長長的圖形周界很長，蓋住的格子卻可能很少，面積要看蓋住幾格。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "area-cm2-ci-5",
@@ -134,7 +174,11 @@
       "errorPath": 3,
       "statement": "兩個圖形面積一樣大，它們的周界長度也一定一樣。",
       "correctAnswer": false,
-      "explanation": "面積一樣、形狀不同的圖形，周界可以不一樣。例如同樣蓋 12 格，排成一長條的周界比排成方形的長。"
+      "explanation": "面積一樣、形狀不同的圖形，周界可以不一樣。例如同樣蓋 12 格，排成一長條的周界比排成方形的長。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "area-cm2-ci-6",
@@ -143,7 +187,11 @@
       "errorPath": 3,
       "statement": "圖形拉得越細越長，面積就一定越小。",
       "correctAnswer": false,
-      "explanation": "面積由蓋住的格數決定，和形狀細長或方正沒有關係。細長的圖形也可能蓋住很多格。"
+      "explanation": "面積由蓋住的格數決定，和形狀細長或方正沒有關係。細長的圖形也可能蓋住很多格。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     }
   ],
   "errorDiagnosis": [
@@ -161,7 +209,11 @@
         "應該數周界的格子數"
       ],
       "correctErrorIndex": 0,
-      "explanation": "4 個半格只等於 2 個整格，正確面積是 6 + 2 = 8 平方公分，不是 10。"
+      "explanation": "4 個半格只等於 2 個整格，正確面積是 6 + 2 = 8 平方公分，不是 10。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "area-cm2-ed-2",
@@ -177,7 +229,11 @@
         "單位寫錯了"
       ],
       "correctErrorIndex": 1,
-      "explanation": "2 個半格合起來是 1 個整格，正確面積是 7 + 1 = 8 平方公分。"
+      "explanation": "2 個半格合起來是 1 個整格，正確面積是 7 + 1 = 8 平方公分。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "area-cm2-ed-3",
@@ -193,7 +249,11 @@
         "漏數了被蓋住的格子"
       ],
       "correctErrorIndex": 2,
-      "explanation": "6 個半格＝3 個整格，正確面積是 9 + 3 = 12 平方公分。"
+      "explanation": "6 個半格＝3 個整格，正確面積是 9 + 3 = 12 平方公分。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "area-cm2-ed-4",
@@ -209,7 +269,11 @@
         "面積應該用加法算"
       ],
       "correctErrorIndex": 0,
-      "explanation": "格數 12 沒有錯，錯在單位：公分是量長度用的，面積要寫「平方公分」。"
+      "explanation": "格數 12 沒有錯，錯在單位：公分是量長度用的，面積要寫「平方公分」。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "area-cm2-ed-5",
@@ -225,7 +289,11 @@
         "面積單位是平方公分，不是公分"
       ],
       "correctErrorIndex": 3,
-      "explanation": "數格子求面積時，答案的單位是平方公分。寫 20 公分變成長度，意思完全不同。"
+      "explanation": "數格子求面積時，答案的單位是平方公分。寫 20 公分變成長度，意思完全不同。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "area-cm2-ed-6",
@@ -241,7 +309,11 @@
         "把4公分改寫成4平方公分就對了"
       ],
       "correctErrorIndex": 1,
-      "explanation": "量一邊的長度不是面積。面積要看貼紙蓋住幾個 1 平方公分，單位是平方公分，不是公分。"
+      "explanation": "量一邊的長度不是面積。面積要看貼紙蓋住幾個 1 平方公分，單位是平方公分，不是公分。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     }
   ],
   "contextApplication": [
@@ -259,7 +331,11 @@
         "甲比較大"
       ],
       "answer": 0,
-      "explanation": "面積看蓋住的格數：兩張都蓋 12 格，面積都是 12 平方公分，形狀不同也一樣大。"
+      "explanation": "面積看蓋住的格數：兩張都蓋 12 格，面積都是 12 平方公分，形狀不同也一樣大。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "area-cm2-ca-2",
@@ -275,7 +351,11 @@
         "一樣大"
       ],
       "answer": 3,
-      "explanation": "面積只看蓋住幾格，和細長或方正無關：都蓋 10 格，就是一樣大。"
+      "explanation": "面積只看蓋住幾格，和細長或方正無關：都蓋 10 格，就是一樣大。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "area-cm2-ca-3",
@@ -291,7 +371,11 @@
         "一樣大"
       ],
       "answer": 1,
-      "explanation": "比面積要數格子，不能只看外觀：14 − 11 = 3，甲比乙大 3 平方公分。"
+      "explanation": "比面積要數格子，不能只看外觀：14 − 11 = 3，甲比乙大 3 平方公分。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "area-cm2-ca-4",
@@ -307,7 +391,11 @@
         "9 平方公分"
       ],
       "answer": 0,
-      "explanation": "5 × 4 = 20 張紙片，每張 1 平方公分，面積 20 平方公分。18 是周界格數（2×(5+4)）。"
+      "explanation": "5 × 4 = 20 張紙片，每張 1 平方公分，面積 20 平方公分。18 是周界格數（2×(5+4)）。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "area-cm2-ca-5",
@@ -323,7 +411,11 @@
         "28 平方公分"
       ],
       "answer": 2,
-      "explanation": "6 × 5 = 30 張，面積 30 平方公分。22 是周界格數（2×(6+5)），11 是 6+5。"
+      "explanation": "6 × 5 = 30 張，面積 30 平方公分。22 是周界格數（2×(6+5)），11 是 6+5。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     },
     {
       "id": "area-cm2-ca-6",
@@ -339,7 +431,11 @@
         "10 平方公分"
       ],
       "answer": 1,
-      "explanation": "8 × 2 = 16 張，面積 16 平方公分。20 是周界格數（2×(8+2)），10 是 8+2。"
+      "explanation": "8 × 2 = 16 張，面積 16 平方公分。20 是周界格數（2×(8+2)），10 是 8+2。",
+      "media": {
+        "src": "assets/geometry/geometry-area-family.webp",
+        "alt": "周長、面積與平面圖形面積公式示意圖"
+      }
     }
   ]
 }
