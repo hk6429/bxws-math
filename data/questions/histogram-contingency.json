@@ -87,6 +87,22 @@
       "explanation": "連續組距相接，因此直方圖柱通常相連。",
       "difficulty": "medium",
       "errorPath": "chart-type-confusion"
+    },
+    {
+      "id": "histogram-contingency-bm-6",
+      "type": "basic-mastery",
+      "challenge": "12-2",
+      "difficulty": "hard",
+      "errorPath": "row-column-total",
+      "stem": "列聯表：男生喜歡籃球 8 人、足球 5 人；女生喜歡籃球 4 人、足球 7 人。喜歡籃球的總人數是多少？",
+      "options": [
+        "12 人",
+        "13 人",
+        "15 人",
+        "24 人"
+      ],
+      "answer": 0,
+      "explanation": "看「籃球」那一欄，男 8＋女 4＝12 人。"
     }
   ],
   "conceptId": [
@@ -134,6 +150,15 @@
       "correctAnswer": false,
       "explanation": "第一組不包含 20，第二組包含 20。",
       "difficulty": "medium"
+    },
+    {
+      "id": "histogram-contingency-ci-6",
+      "type": "concept-id",
+      "challenge": "12-4",
+      "difficulty": "medium",
+      "statement": "直方圖的長條之間通常沒有空隙，因為它表示連續的數值區間。",
+      "correctAnswer": true,
+      "explanation": "直方圖呈現連續區間資料，長條相鄰；長條圖表示不連續的類別，長條之間才有空隙。"
     }
   ],
   "errorDiagnosis": [
@@ -221,6 +246,23 @@
       "explanation": "右端點『未滿30』不包含 30。",
       "difficulty": "easy",
       "errorPath": "interval-boundary"
+    },
+    {
+      "id": "histogram-contingency-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "12-6",
+      "difficulty": "hard",
+      "errorPath": "row-column-total",
+      "problem": "列聯表某列「一年級：搭車 15 人、走路 10 人」，求一年級總人數。",
+      "wrongSolution": "小傑說一年級有 15 人。",
+      "errorOptions": [
+        "應把該列各欄相加，15+10=25 人",
+        "只看走路欄 10 人",
+        "應相減 15-10=5 人",
+        "一年級就是 15 人"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "某一列的總數要把該列各欄加起來，15+10=25 人。"
     }
   ],
   "contextApplication": [
@@ -308,6 +350,23 @@
       "explanation": "社團是離散類別，適合長條圖。",
       "difficulty": "medium",
       "errorPath": "chart-type-confusion"
+    },
+    {
+      "id": "histogram-contingency-ca-6",
+      "type": "context-application",
+      "challenge": "12-8",
+      "difficulty": "medium",
+      "errorPath": "interval-boundary",
+      "scenario": "成績直方圖：60-70 分有 8 人、70-80 分有 12 人，區間採「含下界、不含上界」。",
+      "question": "恰好 70 分的同學會被計入哪一組？",
+      "options": [
+        "70-80 分這一組",
+        "60-70 分這一組",
+        "兩組都算",
+        "都不算"
+      ],
+      "answer": 0,
+      "explanation": "「含下界不含上界」表示 70 分屬於以 70 為下界的 70-80 組，不算進 60-70 組。"
     }
   ]
 }

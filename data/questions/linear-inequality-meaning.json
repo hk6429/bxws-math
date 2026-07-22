@@ -87,6 +87,22 @@
       "explanation": "不高於包含等於 18。",
       "difficulty": "easy",
       "errorPath": "boundary-symbol"
+    },
+    {
+      "id": "linear-inequality-meaning-bm-6",
+      "type": "basic-mastery",
+      "challenge": "5-2",
+      "difficulty": "hard",
+      "errorPath": "single-value-as-set",
+      "stem": "「x 至少為 5」用不等式表示應為下列何者？",
+      "options": [
+        "x≥5",
+        "x>5",
+        "x≤5",
+        "x=5"
+      ],
+      "answer": 0,
+      "explanation": "「至少為 5」表示可以等於 5 或比 5 大，即 x≥5。"
     }
   ],
   "conceptId": [
@@ -134,6 +150,15 @@
       "correctAnswer": false,
       "explanation": "不等式也可描述分數、小數與所有實數範圍。",
       "difficulty": "medium"
+    },
+    {
+      "id": "linear-inequality-meaning-ci-6",
+      "type": "concept-id",
+      "challenge": "5-4",
+      "difficulty": "medium",
+      "statement": "不等式 x>3 的解只有 4 這一個數。",
+      "correctAnswer": false,
+      "explanation": "x>3 的解有無限多個，例如 3.1、4、5.5…，不是只有一個。"
     }
   ],
   "errorDiagnosis": [
@@ -221,6 +246,23 @@
       "explanation": "600 是上限，總重不得超過。",
       "difficulty": "medium",
       "errorPath": "direction-translation"
+    },
+    {
+      "id": "linear-inequality-meaning-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "5-6",
+      "difficulty": "hard",
+      "errorPath": "direction-translation",
+      "problem": "「這箱蘋果不超過 20 顆」列成不等式，設蘋果 x 顆。",
+      "wrongSolution": "小玲列成 x>20。",
+      "errorOptions": [
+        "「不超過」是小於或等於，應列 x≤20",
+        "應列 x<20",
+        "應列 x≥20",
+        "應列 x=20"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "「不超過 20」表示最多 20 顆、可以剛好 20，即 x≤20。"
     }
   ],
   "contextApplication": [
@@ -308,6 +350,23 @@
       "explanation": "代入 x=3 得 3×3-2=7<10；其餘選項不符合。",
       "difficulty": "hard",
       "errorPath": "single-value-as-set"
+    },
+    {
+      "id": "linear-inequality-meaning-ca-6",
+      "type": "context-application",
+      "challenge": "5-8",
+      "difficulty": "medium",
+      "errorPath": "boundary-symbol",
+      "scenario": "某遊樂設施規定「身高需滿 120 公分才能搭乘」（即 120 公分含以上可搭）。設身高 h 公分。",
+      "question": "下列哪一個身高不能搭乘？",
+      "options": [
+        "118 公分",
+        "120 公分",
+        "125 公分",
+        "130 公分"
+      ],
+      "answer": 0,
+      "explanation": "條件是 h≥120，118 小於 120 不符合，其餘皆可搭乘。"
     }
   ]
 }

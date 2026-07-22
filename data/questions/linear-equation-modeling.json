@@ -88,6 +88,22 @@
       "explanation": "三數依序為 x、x+1、x+2。",
       "difficulty": "hard",
       "errorPath": "quantity-reference"
+    },
+    {
+      "id": "linear-equation-modeling-bm-6",
+      "type": "basic-mastery",
+      "challenge": "4-2",
+      "difficulty": "hard",
+      "errorPath": "operation-translation",
+      "stem": "一個數的 3 倍再減 7 等於 20。設這個數為 x，下列哪個方程式正確？",
+      "options": [
+        "3x-7=20",
+        "3(x-7)=20",
+        "3x+7=20",
+        "7-3x=20"
+      ],
+      "answer": 0,
+      "explanation": "「3 倍」是 3x、「再減 7」是 -7、「等於 20」，合起來為 3x-7=20。"
     }
   ],
   "conceptId": [
@@ -135,6 +151,15 @@
       "correctAnswer": true,
       "explanation": "代數解不一定自動符合情境限制。",
       "difficulty": "medium"
+    },
+    {
+      "id": "linear-equation-modeling-ci-6",
+      "type": "concept-id",
+      "challenge": "4-4",
+      "difficulty": "medium",
+      "statement": "「小明有 x 元，買了 45 元的筆後剩 30 元」可以列成 x-45=30。",
+      "correctAnswer": true,
+      "explanation": "原有 x 元減去 45 元等於剩下的 30 元，即 x-45=30。"
     }
   ],
   "errorDiagnosis": [
@@ -222,6 +247,23 @@
       "explanation": "x+(x+4)=14，或 2[x+(x+4)]=28。",
       "difficulty": "hard",
       "errorPath": "quantity-reference"
+    },
+    {
+      "id": "linear-equation-modeling-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "4-6",
+      "difficulty": "hard",
+      "errorPath": "quantity-reference",
+      "problem": "姊姊比妹妹大 4 歲，兩人年齡和為 26 歲，求妹妹年齡。",
+      "wrongSolution": "小華設妹妹 x 歲，列成 x+4=26。",
+      "errorOptions": [
+        "年齡「和」是兩人相加，應列 x+(x+4)=26",
+        "應列 x-4=26",
+        "妹妹年齡就是 26 歲",
+        "應列 4x=26"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "兩人年齡和 = 妹妹 x + 姊姊 (x+4) = 26，不能只寫姊姊的年齡。"
     }
   ],
   "contextApplication": [
@@ -309,6 +351,23 @@
       "explanation": "x+(x+2)+(x+4)=57，3x+6=57，x=17，最大為 21。",
       "difficulty": "hard",
       "errorPath": "solution-interpretation"
+    },
+    {
+      "id": "linear-equation-modeling-ca-6",
+      "type": "context-application",
+      "challenge": "4-8",
+      "difficulty": "hard",
+      "errorPath": "solution-interpretation",
+      "scenario": "一件外套打八折後賣 720 元。設原價 x 元，可列式 0.8x=720。",
+      "question": "這件外套的原價是多少元？",
+      "options": [
+        "900 元",
+        "840 元",
+        "800 元",
+        "576 元"
+      ],
+      "answer": 0,
+      "explanation": "x=720÷0.8=900，原價 900 元（驗算：900×0.8=720）。"
     }
   ]
 }

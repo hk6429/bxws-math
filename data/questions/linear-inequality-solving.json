@@ -87,6 +87,22 @@
       "explanation": "兩邊乘 3 得 x-1<6，再加 1 得 x<7。",
       "difficulty": "medium",
       "errorPath": "coefficient-inverse-operation"
+    },
+    {
+      "id": "linear-inequality-solving-bm-6",
+      "type": "basic-mastery",
+      "challenge": "6-2",
+      "difficulty": "hard",
+      "errorPath": "negative-reverse",
+      "stem": "解不等式 -2x<6，x 的範圍為何？",
+      "options": [
+        "x>-3",
+        "x<-3",
+        "x>3",
+        "x<3"
+      ],
+      "answer": 0,
+      "explanation": "兩邊同除以 -2（負數），不等號要反向：x>-3。"
     }
   ],
   "conceptId": [
@@ -134,6 +150,15 @@
       "correctAnswer": true,
       "explanation": "人數不能取任意小數。",
       "difficulty": "medium"
+    },
+    {
+      "id": "linear-inequality-solving-ci-6",
+      "type": "concept-id",
+      "challenge": "6-4",
+      "difficulty": "medium",
+      "statement": "解不等式時，若兩邊同乘或同除以一個負數，不等號的方向要改變。",
+      "correctAnswer": true,
+      "explanation": "乘或除以負數會使大小關係反轉，所以不等號必須反向。"
     }
   ],
   "errorDiagnosis": [
@@ -221,6 +246,23 @@
       "explanation": "6-3x>0 得 -3x>-6，除以 -3 後 x<2。",
       "difficulty": "hard",
       "errorPath": "negative-reverse"
+    },
+    {
+      "id": "linear-inequality-solving-ed-6",
+      "type": "error-diagnosis",
+      "challenge": "6-6",
+      "difficulty": "hard",
+      "errorPath": "negative-reverse",
+      "problem": "解不等式 -3x≥12。",
+      "wrongSolution": "小安算得 x≥-4。",
+      "errorOptions": [
+        "除以負數 -3 時不等號要反向，應得 x≤-4",
+        "應得 x≥4",
+        "應得 x≤4",
+        "x=-4"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "兩邊同除以 -3（負數），不等號由 ≥ 變成 ≤，得 x≤-4。"
     }
   ],
   "contextApplication": [
@@ -308,6 +350,23 @@
       "explanation": "5x-4<21，5x<25，x<5。",
       "difficulty": "medium",
       "errorPath": "move-term-sign"
+    },
+    {
+      "id": "linear-inequality-solving-ca-6",
+      "type": "context-application",
+      "challenge": "6-8",
+      "difficulty": "medium",
+      "errorPath": "coefficient-inverse-operation",
+      "scenario": "一本筆記本 25 元。小華有 200 元，想買 x 本，並希望至少保留 50 元。可列式 25x≤150。",
+      "question": "小華最多能買幾本筆記本？",
+      "options": [
+        "6 本",
+        "7 本",
+        "8 本",
+        "5 本"
+      ],
+      "answer": 0,
+      "explanation": "要保留至少 50 元，花費不超過 200-50=150 元，25x≤150→x≤6，最多 6 本。"
     }
   ]
 }
