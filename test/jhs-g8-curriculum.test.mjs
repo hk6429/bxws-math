@@ -5,16 +5,21 @@ import tree from "../data/skilltree.json" with { type: "json" };
 
 const expectedByStrand = {
   "num-quantity": [
-    "square-root-radical",
+    "square-root-radical", "radical-operations",
   ],
   algebra: [
     "multiplication-formulas", "polynomial-operations", "factorization", "simultaneous-linear-2var",
+    "algebraic-fraction", "algebraic-fraction-ops",
   ],
   "space-shape": [
     "pythagorean-theorem", "triangle-congruence",
+    "triangle-angle-sum", "parallelogram-properties", "special-quadrilaterals",
   ],
   "relation-pattern": [
-    "linear-function-graph",
+    "linear-function-graph", "linear-function-application",
+  ],
+  "data-uncertainty": [
+    "frequency-distribution",
   ],
 };
 const newIds = new Set(Object.values(expectedByStrand).flat());
@@ -23,8 +28,8 @@ const allNodes = tree.strands.flatMap((strand) =>
 );
 const nodesById = Object.fromEntries(allNodes.map((node) => [node.id, node]));
 
-test("八年級新增 8 節點依指定 strand 完整落位", () => {
-  assert.equal(newIds.size, 8);
+test("八年級新增 16 節點依指定 strand 完整落位", () => {
+  assert.equal(newIds.size, 16);
   for (const [strandId, expectedIds] of Object.entries(expectedByStrand)) {
     const actualIds = tree.strands
       .find((strand) => strand.id === strandId)
@@ -62,9 +67,15 @@ test("八年級新節點 prereq 皆可解析且接上真實先備鏈", () => {
   assert.deepEqual(nodesById["pythagorean-theorem"].prereq, ["square-root-radical", "geometry-symbols"]);
   assert.deepEqual(nodesById["simultaneous-linear-2var"].prereq, ["linear-eq-1var"]);
   assert.deepEqual(nodesById["linear-function-graph"].prereq, ["function-relation", "coordinate-plane"]);
+  // 第二批鏈在第一批之上
+  assert.deepEqual(nodesById["algebraic-fraction"].prereq, ["factorization"]);
+  assert.deepEqual(nodesById["algebraic-fraction-ops"].prereq, ["algebraic-fraction"]);
+  assert.deepEqual(nodesById["radical-operations"].prereq, ["square-root-radical"]);
+  assert.deepEqual(nodesById["special-quadrilaterals"].prereq, ["parallelogram-properties"]);
+  assert.deepEqual(nodesById["frequency-distribution"].prereq, ["statistical-chart-design", "median-mode"]);
 });
 
-test("八年級 8 節點各有 8 挑戰 × 3 自編變式，答案索引均衡不可矇答", async () => {
+test("八年級 16 節點各有 8 挑戰 × 3 自編變式，答案索引均衡不可矇答", async () => {
   for (const nodeId of newIds) {
     const bank = JSON.parse(await readFile(new URL(`../data/questions/${nodeId}.json`, import.meta.url), "utf8"));
     const arrays = [bank.basicMastery, bank.conceptId, bank.errorDiagnosis, bank.contextApplication];

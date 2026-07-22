@@ -1,0 +1,375 @@
+{
+  "nodeId": "radical-operations",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "同類方根加減、根式乘除、分母有理化與最簡根式題庫；全數自編，未冒稱官方課綱代碼。"
+  },
+  "basicMastery": [
+    {
+      "id": "radical-operations-bm-1",
+      "type": "basic-mastery",
+      "challenge": "30-1",
+      "difficulty": "easy",
+      "errorPath": "radical-add-unlike",
+      "stem": "計算3√2+5√2。",
+      "options": [
+        "8√2",
+        "8√4",
+        "15√2",
+        "2√2"
+      ],
+      "answer": 0,
+      "explanation": "同類方根係數相加，(3+5)√2=8√2。"
+    },
+    {
+      "id": "radical-operations-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "30-1",
+      "difficulty": "easy",
+      "errorPath": "radical-add-unlike",
+      "stem": "計算7√3−2√3。",
+      "options": [
+        "5",
+        "5√3",
+        "9√3",
+        "5√6"
+      ],
+      "answer": 1,
+      "explanation": "同類方根係數相減得5√3。"
+    },
+    {
+      "id": "radical-operations-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "30-1",
+      "difficulty": "medium",
+      "errorPath": "radical-add-unlike",
+      "stem": "計算2√5+√20。",
+      "options": [
+        "3√5",
+        "2√25",
+        "4√5",
+        "6√5"
+      ],
+      "answer": 2,
+      "explanation": "√20=2√5，所以2√5+2√5=4√5。"
+    },
+    {
+      "id": "radical-operations-bm-2",
+      "type": "basic-mastery",
+      "challenge": "30-2",
+      "difficulty": "easy",
+      "errorPath": "radical-multiply-simplify",
+      "stem": "計算√2×√3。",
+      "options": [
+        "√5",
+        "√6",
+        "6",
+        "2√3"
+      ],
+      "answer": 1,
+      "explanation": "正數根式相乘可合併為√(2×3)=√6。"
+    },
+    {
+      "id": "radical-operations-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "30-2",
+      "difficulty": "medium",
+      "errorPath": "radical-multiply-simplify",
+      "stem": "計算√12÷√3。",
+      "options": [
+        "√4=2",
+        "4",
+        "√15",
+        "1/2"
+      ],
+      "answer": 0,
+      "explanation": "√12÷√3=√(12/3)=√4=2。"
+    },
+    {
+      "id": "radical-operations-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "30-2",
+      "difficulty": "hard",
+      "errorPath": "radical-multiply-simplify",
+      "stem": "將√72化為最簡根式。",
+      "options": [
+        "3√6",
+        "6√2",
+        "8√2",
+        "12√2"
+      ],
+      "answer": 1,
+      "explanation": "72=36×2，所以√72=6√2。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "radical-operations-ci-1",
+      "type": "concept-id",
+      "challenge": "30-3",
+      "difficulty": "easy",
+      "errorPath": "like-radical-identification",
+      "statement": "2√3與5√3是同類方根，可以合併。",
+      "correctAnswer": true,
+      "explanation": "兩者根號內同為3，可合併係數。"
+    },
+    {
+      "id": "radical-operations-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "30-3",
+      "difficulty": "easy",
+      "errorPath": "like-radical-identification",
+      "statement": "√2與√3可直接相加成√5。",
+      "correctAnswer": false,
+      "explanation": "不同類方根不能以根號內相加方式合併。"
+    },
+    {
+      "id": "radical-operations-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "30-3",
+      "difficulty": "medium",
+      "errorPath": "like-radical-identification",
+      "statement": "√8化簡為2√2後，與3√2是同類方根。",
+      "correctAnswer": true,
+      "explanation": "√8=2√2，根號內同為2。"
+    },
+    {
+      "id": "radical-operations-ci-2",
+      "type": "concept-id",
+      "challenge": "30-4",
+      "difficulty": "easy",
+      "errorPath": "rationalization-principle",
+      "statement": "1/√2 分母有理化後為√2/2。",
+      "correctAnswer": true,
+      "explanation": "分子分母乘√2，得√2/2。"
+    },
+    {
+      "id": "radical-operations-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "30-4",
+      "difficulty": "medium",
+      "errorPath": "rationalization-principle",
+      "statement": "3/√3 分母有理化後仍只能寫成3√3/3，不能化簡。",
+      "correctAnswer": false,
+      "explanation": "3√3/3可約為√3。"
+    },
+    {
+      "id": "radical-operations-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "30-4",
+      "difficulty": "hard",
+      "errorPath": "rationalization-principle",
+      "statement": "1/(2√5) 分母有理化可得√5/10。",
+      "correctAnswer": true,
+      "explanation": "分子分母乘√5，得√5/(2×5)=√5/10。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "radical-operations-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "30-5",
+      "difficulty": "easy",
+      "errorPath": "combine-radicands-in-addition",
+      "problem": "計算√2+√3",
+      "wrongSolution": "小明寫成√5。",
+      "errorOptions": [
+        "答案正確",
+        "加法不能把根號內直接相加，兩項不能合併",
+        "應得√6",
+        "應得2√5"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "根式加法只有同類方根才能合併；√2與√3不同類。"
+    },
+    {
+      "id": "radical-operations-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "30-5",
+      "difficulty": "medium",
+      "errorPath": "combine-radicands-in-addition",
+      "problem": "計算2√3+4√3",
+      "wrongSolution": "小華寫成6√6。",
+      "errorOptions": [
+        "應相乘得8√9",
+        "根號內應相加",
+        "只加係數，得6√3",
+        "答案應為2√3"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "同類方根保留√3，只將係數2與4相加。"
+    },
+    {
+      "id": "radical-operations-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "30-5",
+      "difficulty": "hard",
+      "errorPath": "combine-radicands-in-addition",
+      "problem": "計算√12+√3",
+      "wrongSolution": "小安寫成√15。",
+      "errorOptions": [
+        "應得√36",
+        "兩項不能處理",
+        "答案為5√3",
+        "先化簡√12=2√3，再得3√3"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "√12=2√3，故與√3合併為3√3。"
+    },
+    {
+      "id": "radical-operations-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "30-6",
+      "difficulty": "easy",
+      "errorPath": "incomplete-rationalization",
+      "problem": "將1/√2分母有理化",
+      "wrongSolution": "小哲只把分子乘√2，寫成√2/√2。",
+      "errorOptions": [
+        "分子分母須同乘√2，得√2/2",
+        "應只乘分母",
+        "答案應為1/2",
+        "不需有理化"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "為保持分式值不變，必須分子分母同乘√2。"
+    },
+    {
+      "id": "radical-operations-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "30-6",
+      "difficulty": "medium",
+      "errorPath": "incomplete-rationalization",
+      "problem": "將2/√5分母有理化",
+      "wrongSolution": "小文寫成2√5/5後又約成2。",
+      "errorOptions": [
+        "應約成√5",
+        "2√5與5無公因數，不能約成2",
+        "應得10√5",
+        "分母應是25"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "2√5/5已是結果，根號因子不能與5任意約掉。"
+    },
+    {
+      "id": "radical-operations-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "30-6",
+      "difficulty": "hard",
+      "errorPath": "incomplete-rationalization",
+      "problem": "將3/(2√3)分母有理化",
+      "wrongSolution": "小傑寫成3√3/(2√3)。",
+      "errorOptions": [
+        "只要分子乘√3",
+        "答案為3/2",
+        "分母也乘√3，得3√3/6=√3/2",
+        "應得√3/6"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "同乘√3後分母為2×3=6，再約分為√3/2。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "radical-operations-ca-1",
+      "type": "context-application",
+      "challenge": "30-7",
+      "difficulty": "easy",
+      "errorPath": "radical-length-combination",
+      "scenario": "兩段繩長分別為3√2公尺與5√2公尺。",
+      "question": "總長多少公尺？",
+      "options": [
+        "15√2",
+        "8",
+        "8√2",
+        "√16"
+      ],
+      "answer": 2,
+      "explanation": "同類方根相加為8√2。"
+    },
+    {
+      "id": "radical-operations-ca-v7-2",
+      "type": "context-application",
+      "challenge": "30-7",
+      "difficulty": "medium",
+      "errorPath": "radical-length-combination",
+      "scenario": "正方形邊長√8公尺。",
+      "question": "化成最簡根式為何？",
+      "options": [
+        "4√2",
+        "2√2",
+        "8",
+        "√4"
+      ],
+      "answer": 1,
+      "explanation": "√8=√(4×2)=2√2。"
+    },
+    {
+      "id": "radical-operations-ca-v7-3",
+      "type": "context-application",
+      "challenge": "30-7",
+      "difficulty": "hard",
+      "errorPath": "radical-length-combination",
+      "scenario": "兩段路程為√27公里與√12公里。",
+      "question": "總路程化簡為何？",
+      "options": [
+        "5√3",
+        "√39",
+        "3√15",
+        "15√3"
+      ],
+      "answer": 0,
+      "explanation": "√27=3√3、√12=2√3，相加為5√3。"
+    },
+    {
+      "id": "radical-operations-ca-2",
+      "type": "context-application",
+      "challenge": "30-8",
+      "difficulty": "easy",
+      "errorPath": "radical-area-rate",
+      "scenario": "長方形長√6公尺、寬√3公尺。",
+      "question": "面積化簡為何？",
+      "options": [
+        "√3",
+        "3√2",
+        "9√2",
+        "√18"
+      ],
+      "answer": 1,
+      "explanation": "√6×√3=√18=3√2。"
+    },
+    {
+      "id": "radical-operations-ca-v8-2",
+      "type": "context-application",
+      "challenge": "30-8",
+      "difficulty": "medium",
+      "errorPath": "radical-area-rate",
+      "scenario": "一條長√48公尺的帶子平均分成√3份（以代數量表示）。",
+      "question": "每份長多少公尺？",
+      "options": [
+        "4",
+        "√12",
+        "4√3",
+        "16"
+      ],
+      "answer": 0,
+      "explanation": "√48÷√3=√16=4。"
+    },
+    {
+      "id": "radical-operations-ca-v8-3",
+      "type": "context-application",
+      "challenge": "30-8",
+      "difficulty": "hard",
+      "errorPath": "radical-area-rate",
+      "scenario": "某比值為1/√8。",
+      "question": "分母有理化並化簡後為何？",
+      "options": [
+        "√8/8",
+        "√2/2",
+        "√2/4",
+        "1/(2√2)"
+      ],
+      "answer": 2,
+      "explanation": "√8=2√2，1/(2√2)同乘√2得√2/4。"
+    }
+  ]
+}

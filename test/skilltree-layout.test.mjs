@@ -49,7 +49,7 @@ test("跨 strand 的全域深度會壓密成連續畫布列", () => {
   assert.ok(positions["linear-eq-1var"].y < positions["linear-equation-modeling"].y);
   assert.ok(positions["linear-inequality-meaning"].y < positions["linear-inequality-solving"].y);
   assert.ok(Math.max(...Object.values(positions).map((pos) => pos.y)) < height);
-  assert.ok(height < 900, `5 個代數節點加上吉祥物安全留白後仍不應因全域深度撲高：${height}`);
+  assert.ok(height < 1100, `11 個代數節點（含八年級）壓密後仍不應因全域深度撲高：${height}`);
 });
 
 test("手機直向星圖使用容器寬度並改為較窄三欄排列", () => {

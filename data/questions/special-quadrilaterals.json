@@ -1,0 +1,375 @@
+{
+  "nodeId": "special-quadrilaterals",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "矩形、菱形、正方形、箏形與梯形判別及性質題庫；全數自編，未冒稱官方課綱代碼。日後補圖會更直觀的題目：special-quadrilaterals-bm-1、special-quadrilaterals-bm-v1-2、special-quadrilaterals-bm-v1-3、special-quadrilaterals-ca-1、special-quadrilaterals-ca-v7-2、special-quadrilaterals-ca-v7-3；現已用完整文字、邊與對角線關係敘述。"
+  },
+  "basicMastery": [
+    {
+      "id": "special-quadrilaterals-bm-1",
+      "type": "basic-mastery",
+      "challenge": "33-1",
+      "difficulty": "easy",
+      "errorPath": "rectangle-rhombus-diagonal-swap",
+      "stem": "矩形ABCD的對角線AC=10公分，求BD。",
+      "options": [
+        "5",
+        "10",
+        "20",
+        "無法確定"
+      ],
+      "answer": 1,
+      "explanation": "矩形兩條對角線相等，所以BD=AC=10。"
+    },
+    {
+      "id": "special-quadrilaterals-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "33-1",
+      "difficulty": "medium",
+      "errorPath": "rectangle-rhombus-diagonal-swap",
+      "stem": "菱形的兩條對角線長為12、16公分，其交點到四個頂點的距離分別為何？",
+      "options": [
+        "12與16",
+        "6與8",
+        "3與4",
+        "28與28"
+      ],
+      "answer": 1,
+      "explanation": "菱形對角線互相垂直平分，因此兩條對角線的半長分別為6與8公分。"
+    },
+    {
+      "id": "special-quadrilaterals-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "33-1",
+      "difficulty": "hard",
+      "errorPath": "rectangle-rhombus-diagonal-swap",
+      "stem": "正方形一條對角線長8√2公分，求邊長。",
+      "options": [
+        "4",
+        "8",
+        "8√2",
+        "16"
+      ],
+      "answer": 1,
+      "explanation": "正方形對角線=邊長×√2，所以邊長=8。"
+    },
+    {
+      "id": "special-quadrilaterals-bm-2",
+      "type": "basic-mastery",
+      "challenge": "33-2",
+      "difficulty": "easy",
+      "errorPath": "special-quadrilateral-classification",
+      "stem": "四邊等長且四角皆直角的四邊形是什麼？",
+      "options": [
+        "矩形",
+        "菱形",
+        "正方形",
+        "箏形"
+      ],
+      "answer": 2,
+      "explanation": "同時四邊等長且四角直角，為正方形。"
+    },
+    {
+      "id": "special-quadrilaterals-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "33-2",
+      "difficulty": "medium",
+      "errorPath": "special-quadrilateral-classification",
+      "stem": "只有一組對邊平行，且同一底邊兩底角相等的四邊形可判為何者？",
+      "options": [
+        "等腰梯形",
+        "平行四邊形",
+        "箏形",
+        "菱形"
+      ],
+      "answer": 0,
+      "explanation": "一組對邊平行且兩腰等長（等價地，同底角相等）是等腰梯形。"
+    },
+    {
+      "id": "special-quadrilaterals-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "33-2",
+      "difficulty": "medium",
+      "errorPath": "special-quadrilateral-classification",
+      "stem": "有兩組相鄰邊分別相等的四邊形是什麼？",
+      "options": [
+        "矩形",
+        "梯形",
+        "箏形",
+        "平行四邊形"
+      ],
+      "answer": 2,
+      "explanation": "箏形的定義是有兩組相鄰邊分別相等。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "special-quadrilaterals-ci-1",
+      "type": "concept-id",
+      "challenge": "33-3",
+      "difficulty": "easy",
+      "errorPath": "square-inheritance",
+      "statement": "正方形同時具有矩形與菱形的性質。",
+      "correctAnswer": true,
+      "explanation": "正方形四角直角且四邊等長，兼具兩者性質。"
+    },
+    {
+      "id": "special-quadrilaterals-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "33-3",
+      "difficulty": "easy",
+      "errorPath": "square-inheritance",
+      "statement": "每個矩形都是正方形。",
+      "correctAnswer": false,
+      "explanation": "矩形不一定四邊等長。"
+    },
+    {
+      "id": "special-quadrilaterals-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "33-3",
+      "difficulty": "medium",
+      "errorPath": "square-inheritance",
+      "statement": "正方形對角線相等、互相垂直且互相平分。",
+      "correctAnswer": true,
+      "explanation": "它兼具矩形對角線相等與菱形垂直平分的性質。"
+    },
+    {
+      "id": "special-quadrilaterals-ci-2",
+      "type": "concept-id",
+      "challenge": "33-4",
+      "difficulty": "easy",
+      "errorPath": "kite-trapezoid-property",
+      "statement": "箏形具有兩組相鄰邊分別相等。",
+      "correctAnswer": true,
+      "explanation": "這是箏形的定義性質。"
+    },
+    {
+      "id": "special-quadrilaterals-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "33-4",
+      "difficulty": "medium",
+      "errorPath": "kite-trapezoid-property",
+      "statement": "所有梯形的同一底邊兩底角都相等。",
+      "correctAnswer": false,
+      "explanation": "只有等腰梯形具有同底角相等。"
+    },
+    {
+      "id": "special-quadrilaterals-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "33-4",
+      "difficulty": "medium",
+      "errorPath": "kite-trapezoid-property",
+      "statement": "等腰梯形同一底邊上的兩個底角相等。",
+      "correctAnswer": true,
+      "explanation": "等腰梯形兩腰相等，因此同底角相等。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "special-quadrilaterals-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "33-5",
+      "difficulty": "easy",
+      "errorPath": "diagonal-property-confusion",
+      "problem": "矩形兩對角線",
+      "wrongSolution": "小明說矩形對角線一定互相垂直。",
+      "errorOptions": [
+        "矩形對角線相等且互相平分，但不一定垂直",
+        "矩形沒有對角線",
+        "只會垂直不會平分",
+        "矩形四邊一定等長"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "一般矩形對角線不必垂直；正方形是特殊情形。"
+    },
+    {
+      "id": "special-quadrilaterals-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "33-5",
+      "difficulty": "medium",
+      "errorPath": "diagonal-property-confusion",
+      "problem": "菱形兩對角線",
+      "wrongSolution": "小華說菱形對角線一定相等。",
+      "errorOptions": [
+        "一定相等且不平分",
+        "菱形對角線互相垂直平分，但不一定相等",
+        "只相等不垂直",
+        "完全沒有固定性質"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "一般菱形對角線長度可不同，但彼此垂直平分。"
+    },
+    {
+      "id": "special-quadrilaterals-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "33-5",
+      "difficulty": "hard",
+      "errorPath": "diagonal-property-confusion",
+      "problem": "正方形兩對角線",
+      "wrongSolution": "小安只套矩形性質，說兩線相等但不可能垂直。",
+      "errorOptions": [
+        "正方形不是矩形",
+        "正方形對角線只垂直",
+        "正方形兼具兩者性質，對角線相等且垂直平分",
+        "兩線不相等"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "正方形兼具矩形、菱形性質。"
+    },
+    {
+      "id": "special-quadrilaterals-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "33-6",
+      "difficulty": "easy",
+      "errorPath": "classification-overgeneralization",
+      "problem": "判別一個四角皆直角的四邊形",
+      "wrongSolution": "小哲直接判定它一定是正方形。",
+      "errorOptions": [
+        "四角直角只能保證是矩形，還需四邊等長才是正方形",
+        "一定是菱形",
+        "一定是箏形",
+        "不能是矩形"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "矩形已有四直角；正方形還需四邊等長。"
+    },
+    {
+      "id": "special-quadrilaterals-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "33-6",
+      "difficulty": "medium",
+      "errorPath": "classification-overgeneralization",
+      "problem": "判別兩組相鄰邊分別相等的四邊形",
+      "wrongSolution": "小文判定一定是菱形。",
+      "errorOptions": [
+        "一定是梯形",
+        "此條件符合箏形；若四邊全等才可進一步是菱形",
+        "一定是矩形",
+        "沒有任何名稱"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "箏形要求兩組相鄰邊分別相等，不保證四邊全等。"
+    },
+    {
+      "id": "special-quadrilaterals-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "33-6",
+      "difficulty": "hard",
+      "errorPath": "classification-overgeneralization",
+      "problem": "判別只有一組對邊平行且兩腰相等的四邊形",
+      "wrongSolution": "小傑判定為平行四邊形。",
+      "errorOptions": [
+        "應為正方形",
+        "應為箏形",
+        "這是等腰梯形",
+        "應為菱形"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "只有一組對邊平行且兩腰相等，是等腰梯形。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "special-quadrilaterals-ca-1",
+      "type": "context-application",
+      "challenge": "33-7",
+      "difficulty": "easy",
+      "errorPath": "quadrilateral-frame-measure",
+      "scenario": "矩形相框一條對角線長26公分。",
+      "question": "另一條對角線長多少？",
+      "options": [
+        "13",
+        "52",
+        "26",
+        "無法確定"
+      ],
+      "answer": 2,
+      "explanation": "矩形對角線相等，另一條也是26。"
+    },
+    {
+      "id": "special-quadrilaterals-ca-v7-2",
+      "type": "context-application",
+      "challenge": "33-7",
+      "difficulty": "medium",
+      "errorPath": "quadrilateral-frame-measure",
+      "scenario": "菱形裝飾四邊等長，其中一邊9公分。",
+      "question": "周長多少？",
+      "options": [
+        "18",
+        "27",
+        "36",
+        "81"
+      ],
+      "answer": 2,
+      "explanation": "四邊皆9，周長=4×9=36。"
+    },
+    {
+      "id": "special-quadrilaterals-ca-v7-3",
+      "type": "context-application",
+      "challenge": "33-7",
+      "difficulty": "medium",
+      "errorPath": "quadrilateral-frame-measure",
+      "scenario": "正方形地磚邊長5公分。",
+      "question": "對角線長多少？",
+      "options": [
+        "10",
+        "5√2",
+        "25",
+        "√5"
+      ],
+      "answer": 1,
+      "explanation": "正方形對角線由畢氏定理得√(5²+5²)=5√2。"
+    },
+    {
+      "id": "special-quadrilaterals-ca-2",
+      "type": "context-application",
+      "challenge": "33-8",
+      "difficulty": "easy",
+      "errorPath": "quadrilateral-design-identification",
+      "scenario": "一個風箏骨架的外框有兩組相鄰邊分別相等。",
+      "question": "此形狀最符合哪類四邊形？",
+      "options": [
+        "箏形",
+        "矩形",
+        "一般梯形",
+        "正方形"
+      ],
+      "answer": 0,
+      "explanation": "兩組相鄰邊分別相等是箏形特徵。"
+    },
+    {
+      "id": "special-quadrilaterals-ca-v8-2",
+      "type": "context-application",
+      "challenge": "33-8",
+      "difficulty": "medium",
+      "errorPath": "quadrilateral-design-identification",
+      "scenario": "橋面側框只有一組對邊平行，且兩腰相等。",
+      "question": "此框架是什麼？",
+      "options": [
+        "菱形",
+        "等腰梯形",
+        "矩形",
+        "箏形"
+      ],
+      "answer": 1,
+      "explanation": "只有一組對邊平行且兩腰等長，為等腰梯形。"
+    },
+    {
+      "id": "special-quadrilaterals-ca-v8-3",
+      "type": "context-application",
+      "challenge": "33-8",
+      "difficulty": "hard",
+      "errorPath": "quadrilateral-design-identification",
+      "scenario": "一塊板材四邊等長、四角皆90°。",
+      "question": "它同時可視為哪兩種特殊四邊形的特例？",
+      "options": [
+        "梯形與箏形",
+        "矩形與菱形",
+        "只有矩形",
+        "只有菱形"
+      ],
+      "answer": 1,
+      "explanation": "此形為正方形，兼具矩形與菱形性質。"
+    }
+  ]
+}

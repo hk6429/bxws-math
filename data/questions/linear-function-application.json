@@ -1,0 +1,376 @@
+{
+  "nodeId": "linear-function-application",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "計程車費、水塔進水、電話費等一次函數建模、代入與反求題庫；全數自編，未冒稱官方課綱代碼。"
+  },
+  "basicMastery": [
+    {
+      "id": "linear-function-application-bm-1",
+      "type": "basic-mastery",
+      "challenge": "34-1",
+      "difficulty": "easy",
+      "errorPath": "slope-intercept-swap",
+      "stem": "一次函數y=3x+5中，斜率與y截距依序為何？",
+      "options": [
+        "3、5",
+        "5、3",
+        "3、−5",
+        "−3、5"
+      ],
+      "answer": 0,
+      "explanation": "y=mx+b中m為斜率、b為y截距，所以是3、5。"
+    },
+    {
+      "id": "linear-function-application-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "34-1",
+      "difficulty": "medium",
+      "errorPath": "slope-intercept-swap",
+      "stem": "通過(0,−2)，斜率4的一次函數為何？",
+      "options": [
+        "y=−2x+4",
+        "y=4x−2",
+        "y=2x−4",
+        "y=4x+2"
+      ],
+      "answer": 1,
+      "explanation": "y截距−2、斜率4，故y=4x−2。"
+    },
+    {
+      "id": "linear-function-application-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "34-1",
+      "difficulty": "medium",
+      "errorPath": "slope-intercept-swap",
+      "stem": "函數y=ax+7且x=3時y=19，求a。",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "6"
+      ],
+      "answer": 2,
+      "explanation": "19=3a+7，3a=12，a=4。"
+    },
+    {
+      "id": "linear-function-application-bm-2",
+      "type": "basic-mastery",
+      "challenge": "34-2",
+      "difficulty": "easy",
+      "errorPath": "linear-function-substitution",
+      "stem": "y=2x+10，當x=5時y為何？",
+      "options": [
+        "15",
+        "20",
+        "25",
+        "30"
+      ],
+      "answer": 1,
+      "explanation": "y=2×5+10=20。"
+    },
+    {
+      "id": "linear-function-application-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "34-2",
+      "difficulty": "medium",
+      "errorPath": "linear-function-substitution",
+      "stem": "y=−3x+8，當x=2時y為何？",
+      "options": [
+        "2",
+        "−2",
+        "14",
+        "5"
+      ],
+      "answer": 0,
+      "explanation": "y=−3×2+8=2。"
+    },
+    {
+      "id": "linear-function-application-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "34-2",
+      "difficulty": "medium",
+      "errorPath": "linear-function-substitution",
+      "stem": "y=(1/2)x−4，當x=12時y為何？",
+      "options": [
+        "10",
+        "8",
+        "2",
+        "−2"
+      ],
+      "answer": 2,
+      "explanation": "y=6−4=2。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "linear-function-application-ci-1",
+      "type": "concept-id",
+      "challenge": "34-3",
+      "difficulty": "easy",
+      "errorPath": "linear-model-constant-rate",
+      "statement": "固定起始量加上每單位固定增加量，可用y=mx+b表示。",
+      "correctAnswer": true,
+      "explanation": "固定變化率m與初始值b構成一次函數模型。"
+    },
+    {
+      "id": "linear-function-application-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "34-3",
+      "difficulty": "easy",
+      "errorPath": "linear-model-constant-rate",
+      "statement": "一次函數y=mx+b中的b表示每增加1單位的變化量。",
+      "correctAnswer": false,
+      "explanation": "每單位變化量是斜率m；b是x=0時的初始值。"
+    },
+    {
+      "id": "linear-function-application-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "34-3",
+      "difficulty": "medium",
+      "errorPath": "linear-model-constant-rate",
+      "statement": "若水塔原有20公升且每分鐘增加5公升，可寫y=5x+20。",
+      "correctAnswer": true,
+      "explanation": "初始量20是截距，每分鐘增加5是斜率。"
+    },
+    {
+      "id": "linear-function-application-ci-2",
+      "type": "concept-id",
+      "challenge": "34-4",
+      "difficulty": "easy",
+      "errorPath": "solve-target-value",
+      "statement": "求一次函數何時達某值，可令y等於目標值再解x。",
+      "correctAnswer": true,
+      "explanation": "把目標代入輸出y即可反求輸入x。"
+    },
+    {
+      "id": "linear-function-application-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "34-4",
+      "difficulty": "medium",
+      "errorPath": "solve-target-value",
+      "statement": "y=4x+3要達到23時，x=5。",
+      "correctAnswer": true,
+      "explanation": "4×5+3=23。"
+    },
+    {
+      "id": "linear-function-application-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "34-4",
+      "difficulty": "medium",
+      "errorPath": "solve-target-value",
+      "statement": "y=2x+10要達30時，應計算x=30÷2=15。",
+      "correctAnswer": false,
+      "explanation": "須先扣初始值：2x+10=30，x=10。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "linear-function-application-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "34-5",
+      "difficulty": "easy",
+      "errorPath": "forgot-fixed-charge",
+      "problem": "計程車費起跳85元，每公里加20元，搭x公里",
+      "wrongSolution": "小明寫y=20x。",
+      "errorOptions": [
+        "應寫y=85x",
+        "漏了固定起跳費，應為y=20x+85",
+        "應寫y=x+105",
+        "應寫y=85x+20"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "85元是x=0時仍有的固定費用，為截距。"
+    },
+    {
+      "id": "linear-function-application-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "34-5",
+      "difficulty": "medium",
+      "errorPath": "forgot-fixed-charge",
+      "problem": "電話月租200元，每分鐘2元，使用x分鐘",
+      "wrongSolution": "小華寫y=202x。",
+      "errorOptions": [
+        "應為y=2x+200",
+        "應為y=200x+2",
+        "應為y=2(x+200)",
+        "應為y=200−2x"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "月租是固定200元，通話費是2x，合計2x+200。"
+    },
+    {
+      "id": "linear-function-application-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "34-5",
+      "difficulty": "hard",
+      "errorPath": "forgot-fixed-charge",
+      "problem": "水塔原有150公升，每分鐘進水12公升",
+      "wrongSolution": "小安寫y=150x+12。",
+      "errorOptions": [
+        "答案正確",
+        "應為y=162x",
+        "把斜率與截距交換了，應為y=12x+150",
+        "應為y=150−12x"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "每分鐘增加12是斜率，初始150是截距。"
+    },
+    {
+      "id": "linear-function-application-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "34-6",
+      "difficulty": "easy",
+      "errorPath": "target-equation-setup",
+      "problem": "y=15x+60，求y=180時x",
+      "wrongSolution": "小哲直接算180÷15=12。",
+      "errorOptions": [
+        "應先扣60：15x=120，x=8",
+        "應加60得16",
+        "答案就是12",
+        "應算60÷15"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "固定量60要先移項，x=(180−60)/15=8。"
+    },
+    {
+      "id": "linear-function-application-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "34-6",
+      "difficulty": "medium",
+      "errorPath": "target-equation-setup",
+      "problem": "水量y=8x+40，求達120公升的時間",
+      "wrongSolution": "小文解8x=120，得15分鐘。",
+      "errorOptions": [
+        "應為10分鐘",
+        "應為20分鐘",
+        "漏扣初始40：8x=80，x=10",
+        "應為5分鐘"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "令8x+40=120，得8x=80，x=10。"
+    },
+    {
+      "id": "linear-function-application-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "34-6",
+      "difficulty": "hard",
+      "errorPath": "target-equation-setup",
+      "problem": "費用y=25x+75，預算250元",
+      "wrongSolution": "小傑算x=(250+75)/25=13。",
+      "errorOptions": [
+        "應乘25",
+        "移項符號錯，x=(250−75)/25=7",
+        "應得10",
+        "無解"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "25x=250−75=175，x=7。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "linear-function-application-ca-1",
+      "type": "context-application",
+      "challenge": "34-7",
+      "difficulty": "easy",
+      "errorPath": "taxi-phone-model",
+      "scenario": "計程車起跳90元，每公里25元，行駛x公里。",
+      "question": "車資y與x的關係為何？",
+      "options": [
+        "y=90x+25",
+        "y=25x",
+        "y=25x+90",
+        "y=115x"
+      ],
+      "answer": 2,
+      "explanation": "每公里25元為斜率，起跳90元為截距。"
+    },
+    {
+      "id": "linear-function-application-ca-v7-2",
+      "type": "context-application",
+      "challenge": "34-7",
+      "difficulty": "medium",
+      "errorPath": "taxi-phone-model",
+      "scenario": "電話月租149元，每分鐘3元，使用40分鐘。",
+      "question": "本月費用多少？",
+      "options": [
+        "269元",
+        "160元",
+        "189元",
+        "447元"
+      ],
+      "answer": 0,
+      "explanation": "y=3×40+149=269。"
+    },
+    {
+      "id": "linear-function-application-ca-v7-3",
+      "type": "context-application",
+      "challenge": "34-7",
+      "difficulty": "hard",
+      "errorPath": "taxi-phone-model",
+      "scenario": "租車基本費500元，每小時120元，預算1100元。",
+      "question": "最多可租幾小時（恰用完預算）？",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "9"
+      ],
+      "answer": 1,
+      "explanation": "120x+500=1100，120x=600，x=5。"
+    },
+    {
+      "id": "linear-function-application-ca-2",
+      "type": "context-application",
+      "challenge": "34-8",
+      "difficulty": "easy",
+      "errorPath": "tank-linear-change",
+      "scenario": "水塔原有80公升，每分鐘進水6公升。",
+      "question": "x分鐘後水量y為何？",
+      "options": [
+        "y=80x+6",
+        "y=6x+80",
+        "y=86x",
+        "y=80−6x"
+      ],
+      "answer": 1,
+      "explanation": "初始80加每分鐘6x，故y=6x+80。"
+    },
+    {
+      "id": "linear-function-application-ca-v8-2",
+      "type": "context-application",
+      "challenge": "34-8",
+      "difficulty": "medium",
+      "errorPath": "tank-linear-change",
+      "scenario": "水塔原有50公升，每分鐘進水10公升。",
+      "question": "7分鐘後有多少公升？",
+      "options": [
+        "70",
+        "100",
+        "120",
+        "150"
+      ],
+      "answer": 2,
+      "explanation": "y=10×7+50=120。"
+    },
+    {
+      "id": "linear-function-application-ca-v8-3",
+      "type": "context-application",
+      "challenge": "34-8",
+      "difficulty": "hard",
+      "errorPath": "tank-linear-change",
+      "scenario": "水塔水量y=12x+36。",
+      "question": "何時達180公升？",
+      "options": [
+        "10分鐘",
+        "12分鐘",
+        "15分鐘",
+        "18分鐘"
+      ],
+      "answer": 1,
+      "explanation": "12x+36=180，12x=144，x=12。"
+    }
+  ]
+}
+

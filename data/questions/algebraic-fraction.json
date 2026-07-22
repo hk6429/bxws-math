@@ -1,0 +1,375 @@
+{
+  "nodeId": "algebraic-fraction",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "分式定義、分母不為 0、約分擴分與最簡分式題庫；全數自編，未冒稱官方課綱代碼。"
+  },
+  "basicMastery": [
+    {
+      "id": "algebraic-fraction-bm-1",
+      "type": "basic-mastery",
+      "challenge": "28-1",
+      "difficulty": "easy",
+      "errorPath": "forgot-domain-restriction",
+      "stem": "分式 3/(x−2) 有意義時，x 不可為何值？",
+      "options": [
+        "0",
+        "2",
+        "−2",
+        "3"
+      ],
+      "answer": 1,
+      "explanation": "分母 x−2 不可為 0，所以 x≠2。"
+    },
+    {
+      "id": "algebraic-fraction-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "28-1",
+      "difficulty": "medium",
+      "errorPath": "forgot-domain-restriction",
+      "stem": "分式 (x+1)/(x²−9) 有意義時，x 的限制為何？",
+      "options": [
+        "x≠3 且 x≠−3",
+        "x≠3",
+        "x≠−3",
+        "x≠0"
+      ],
+      "answer": 0,
+      "explanation": "x²−9=(x−3)(x+3)，分母不為 0，故 x≠±3。"
+    },
+    {
+      "id": "algebraic-fraction-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "28-1",
+      "difficulty": "medium",
+      "errorPath": "forgot-domain-restriction",
+      "stem": "當 x=−4 時，下列哪個分式沒有意義？",
+      "options": [
+        "1/(x−4)",
+        "x/(x−1)",
+        "2/(x+4)",
+        "3/(x+1)"
+      ],
+      "answer": 2,
+      "explanation": "x=−4 代入 x+4 得 0，因此 2/(x+4) 沒有意義。"
+    },
+    {
+      "id": "algebraic-fraction-bm-2",
+      "type": "basic-mastery",
+      "challenge": "28-2",
+      "difficulty": "easy",
+      "errorPath": "cancel-across-plus",
+      "stem": "化簡 (x²−1)/(x+1)，且 x≠−1。",
+      "options": [
+        "x+1",
+        "x−1",
+        "x²−1",
+        "1"
+      ],
+      "answer": 1,
+      "explanation": "x²−1=(x−1)(x+1)，約去 x+1 後得 x−1。"
+    },
+    {
+      "id": "algebraic-fraction-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "28-2",
+      "difficulty": "medium",
+      "errorPath": "cancel-across-plus",
+      "stem": "化簡 (6x²−12x)/(3x)，且 x≠0。",
+      "options": [
+        "2x−4",
+        "2x−12",
+        "3x−4",
+        "2x(x−2)"
+      ],
+      "answer": 0,
+      "explanation": "分子=6x(x−2)，除以3x後得2(x−2)=2x−4。"
+    },
+    {
+      "id": "algebraic-fraction-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "28-2",
+      "difficulty": "hard",
+      "errorPath": "cancel-across-plus",
+      "stem": "化簡 (x²−4x+4)/(x−2)，且 x≠2。",
+      "options": [
+        "x+2",
+        "(x−2)²",
+        "1",
+        "x−2"
+      ],
+      "answer": 3,
+      "explanation": "分子=(x−2)²，約去一個 x−2 後為 x−2。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "algebraic-fraction-ci-1",
+      "type": "concept-id",
+      "challenge": "28-3",
+      "difficulty": "easy",
+      "errorPath": "equivalent-fraction-factor",
+      "statement": "將分式分子、分母同乘同一個非零式，分式值不變。",
+      "correctAnswer": true,
+      "explanation": "這是擴分原理；同乘的式在取值時必須非零。"
+    },
+    {
+      "id": "algebraic-fraction-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "28-3",
+      "difficulty": "easy",
+      "errorPath": "equivalent-fraction-factor",
+      "statement": "把 a/b 的分子加 2、分母也加 2，分式值一定不變。",
+      "correctAnswer": false,
+      "explanation": "同加不是擴分，例如 1/2≠3/4。"
+    },
+    {
+      "id": "algebraic-fraction-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "28-3",
+      "difficulty": "medium",
+      "errorPath": "equivalent-fraction-factor",
+      "statement": "在 x≠0 時，2/(3x) 擴分為 2x/(3x²) 是等值分式。",
+      "correctAnswer": true,
+      "explanation": "分子分母同乘非零的 x，值不變。"
+    },
+    {
+      "id": "algebraic-fraction-ci-2",
+      "type": "concept-id",
+      "challenge": "28-4",
+      "difficulty": "easy",
+      "errorPath": "simplest-fraction-check",
+      "statement": "分式 (x+1)/(x+2) 已是最簡分式。",
+      "correctAnswer": true,
+      "explanation": "分子與分母沒有非常數公因式，不能再約分。"
+    },
+    {
+      "id": "algebraic-fraction-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "28-4",
+      "difficulty": "medium",
+      "errorPath": "simplest-fraction-check",
+      "statement": "分式 (x²−4)/(x−2) 已是最簡分式。",
+      "correctAnswer": false,
+      "explanation": "x²−4=(x−2)(x+2)，仍可約成 x+2（x≠2）。"
+    },
+    {
+      "id": "algebraic-fraction-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "28-4",
+      "difficulty": "medium",
+      "errorPath": "simplest-fraction-check",
+      "statement": "分式 6x/(9x²) 在 x≠0 時可再約分，所以不是最簡分式。",
+      "correctAnswer": true,
+      "explanation": "分子分母共有因式3x，可約為2/(3x)。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "algebraic-fraction-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "28-5",
+      "difficulty": "easy",
+      "errorPath": "illegal-cancellation",
+      "problem": "化簡 (x+2)/x",
+      "wrongSolution": "小明把分子、分母中的 x 約掉，得到 2。",
+      "errorOptions": [
+        "只能約公因式，x+2 是和，不能跨加號約掉 x",
+        "應把 2 約掉",
+        "答案應為 x+2",
+        "分母可改為 1"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "約分只能約去整個分子與分母的公因式；(x+2)/x 無法如此約分。"
+    },
+    {
+      "id": "algebraic-fraction-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "28-5",
+      "difficulty": "medium",
+      "errorPath": "illegal-cancellation",
+      "problem": "化簡 (x²+x)/x",
+      "wrongSolution": "小華約去 x 後寫成 x。",
+      "errorOptions": [
+        "完全不能約分",
+        "應先把分母平方",
+        "分子=x(x+1)，約分後應為 x+1",
+        "答案應為1"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "x²+x=x(x+1)，在x≠0時約去x得x+1。"
+    },
+    {
+      "id": "algebraic-fraction-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "28-5",
+      "difficulty": "hard",
+      "errorPath": "illegal-cancellation",
+      "problem": "化簡 (x²−4)/(x−2)",
+      "wrongSolution": "小安直接把式中的 x 約掉，得到 −4/−2=2。",
+      "errorOptions": [
+        "答案確為2",
+        "應把分母改成x+2",
+        "只能約常數",
+        "應先因式分解為(x−2)(x+2)，再得x+2"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "不能跨減號約 x；正確先因式分解，再約去公因式 x−2。"
+    },
+    {
+      "id": "algebraic-fraction-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "28-6",
+      "difficulty": "easy",
+      "errorPath": "lost-excluded-value",
+      "problem": "化簡 (x²−1)/(x+1)",
+      "wrongSolution": "小哲寫答案 x−1，並說 x 可為任意實數。",
+      "errorOptions": [
+        "化簡錯誤",
+        "仍須保留原式限制 x≠−1",
+        "應限制x≠1",
+        "原式沒有分母限制"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "雖約分後分母消失，原式在x=−1仍沒有意義。"
+    },
+    {
+      "id": "algebraic-fraction-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "28-6",
+      "difficulty": "medium",
+      "errorPath": "lost-excluded-value",
+      "problem": "化簡 (x²−4x+4)/(x−2)",
+      "wrongSolution": "小文寫成 x−2，並代入 x=2 得0。",
+      "errorOptions": [
+        "應代入得2",
+        "約分後不可代任何值",
+        "原式限制 x≠2，不能代入2",
+        "答案應是x+2"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "等值化簡只在原式定義域內成立，x=2使原分母為0。"
+    },
+    {
+      "id": "algebraic-fraction-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "28-6",
+      "difficulty": "hard",
+      "errorPath": "lost-excluded-value",
+      "problem": "將 (x²−9)/(x−3) 化簡",
+      "wrongSolution": "小傑得到 x+3，便認為原式在 x=3 時等於6。",
+      "errorOptions": [
+        "x=3 時原式分母為0，仍無意義",
+        "應等於0",
+        "化簡應為x−3",
+        "限制應是x≠−3"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "原式限制x≠3；可約成x+3不會補回被排除的值。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "algebraic-fraction-ca-1",
+      "type": "context-application",
+      "challenge": "28-7",
+      "difficulty": "easy",
+      "errorPath": "scale-equivalent-fraction",
+      "scenario": "食譜中糖與麵粉的比用分式 2/5 表示。",
+      "question": "若分子分母同乘3，等值分式為何？",
+      "options": [
+        "5/8",
+        "2/15",
+        "6/15",
+        "6/5"
+      ],
+      "answer": 2,
+      "explanation": "2/5 同乘3 得6/15。"
+    },
+    {
+      "id": "algebraic-fraction-ca-v7-2",
+      "type": "context-application",
+      "challenge": "28-7",
+      "difficulty": "medium",
+      "errorPath": "scale-equivalent-fraction",
+      "scenario": "地圖比例以 x/(x+2) 表示。",
+      "question": "分子分母同乘2後為何？",
+      "options": [
+        "2x/(2x+4)",
+        "2x/(x+4)",
+        "x/(2x+4)",
+        "(x+2)/(2x)"
+      ],
+      "answer": 0,
+      "explanation": "整個分子與分母都乘2，得2x/[2(x+2)]=2x/(2x+4)。"
+    },
+    {
+      "id": "algebraic-fraction-ca-v7-3",
+      "type": "context-application",
+      "challenge": "28-7",
+      "difficulty": "hard",
+      "errorPath": "scale-equivalent-fraction",
+      "scenario": "一份濃度比為 (x−1)/(x+1)。",
+      "question": "同乘 x（x≠0）後的等值分式為何？",
+      "options": [
+        "(x²−1)/(x+1)",
+        "x(x−1)/(x+1)",
+        "x(x−1)/[x(x+1)]",
+        "(x−1)/(x²+1)"
+      ],
+      "answer": 2,
+      "explanation": "分子分母同乘x，得x(x−1)/[x(x+1)]。"
+    },
+    {
+      "id": "algebraic-fraction-ca-2",
+      "type": "context-application",
+      "challenge": "28-8",
+      "difficulty": "easy",
+      "errorPath": "model-domain-restriction",
+      "scenario": "某單位成本以 120/(n−2) 元表示。",
+      "question": "此式有意義時，n 不可等於多少？",
+      "options": [
+        "−2",
+        "2",
+        "0",
+        "120"
+      ],
+      "answer": 1,
+      "explanation": "分母n−2不可為0，所以n≠2。"
+    },
+    {
+      "id": "algebraic-fraction-ca-v8-2",
+      "type": "context-application",
+      "challenge": "28-8",
+      "difficulty": "medium",
+      "errorPath": "model-domain-restriction",
+      "scenario": "長方形的長寬比為 (x²−9)/(x−3)，其中x≠3。",
+      "question": "化簡後的比為何？",
+      "options": [
+        "x−3",
+        "x+3",
+        "x²+3",
+        "1"
+      ],
+      "answer": 1,
+      "explanation": "x²−9=(x−3)(x+3)，約分得x+3，仍保留x≠3。"
+    },
+    {
+      "id": "algebraic-fraction-ca-v8-3",
+      "type": "context-application",
+      "challenge": "28-8",
+      "difficulty": "hard",
+      "errorPath": "model-domain-restriction",
+      "scenario": "一段材料的效率比為 (4x²−16)/(2x−4)，其中x≠2。",
+      "question": "化簡結果為何？",
+      "options": [
+        "2x+4",
+        "2x−4",
+        "4x+8",
+        "x+2"
+      ],
+      "answer": 0,
+      "explanation": "4(x²−4)/[2(x−2)]=4(x−2)(x+2)/[2(x−2)]=2x+4。"
+    }
+  ]
+}

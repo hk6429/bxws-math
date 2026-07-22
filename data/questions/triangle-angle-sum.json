@@ -1,0 +1,375 @@
+{
+  "nodeId": "triangle-angle-sum",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "三角形內外角、等腰三角形與多邊形內角和題庫；全數自編，未冒稱官方課綱代碼。日後補圖會更直觀的題目：triangle-angle-sum-bm-1、triangle-angle-sum-bm-v1-2、triangle-angle-sum-bm-v1-3、triangle-angle-sum-ed-1、triangle-angle-sum-ed-v5-2、triangle-angle-sum-ed-v5-3；現已用完整文字與角度敘述。"
+  },
+  "basicMastery": [
+    {
+      "id": "triangle-angle-sum-bm-1",
+      "type": "basic-mastery",
+      "challenge": "31-1",
+      "difficulty": "easy",
+      "errorPath": "triangle-interior-sum-error",
+      "stem": "三角形三內角為50°、60°與x°，求x。",
+      "options": [
+        "70°",
+        "80°",
+        "90°",
+        "110°"
+      ],
+      "answer": 0,
+      "explanation": "三角形內角和180°，x=180−50−60=70°。"
+    },
+    {
+      "id": "triangle-angle-sum-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "31-1",
+      "difficulty": "easy",
+      "errorPath": "triangle-interior-sum-error",
+      "stem": "三角形兩內角為35°、85°，第三角為何？",
+      "options": [
+        "50°",
+        "60°",
+        "70°",
+        "120°"
+      ],
+      "answer": 1,
+      "explanation": "第三角=180−35−85=60°。"
+    },
+    {
+      "id": "triangle-angle-sum-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "31-1",
+      "difficulty": "medium",
+      "errorPath": "triangle-interior-sum-error",
+      "stem": "三角形三內角為x°、2x°、3x°，求x。",
+      "options": [
+        "20°",
+        "25°",
+        "30°",
+        "60°"
+      ],
+      "answer": 2,
+      "explanation": "x+2x+3x=180，6x=180，所以x=30。"
+    },
+    {
+      "id": "triangle-angle-sum-bm-2",
+      "type": "basic-mastery",
+      "challenge": "31-2",
+      "difficulty": "easy",
+      "errorPath": "exterior-angle-wrong-pair",
+      "stem": "三角形一外角所對的兩個不相鄰內角為40°、65°，此外角為何？",
+      "options": [
+        "25°",
+        "115°",
+        "140°",
+        "105°"
+      ],
+      "answer": 3,
+      "explanation": "外角等於兩個不相鄰內角和：40+65=105°。"
+    },
+    {
+      "id": "triangle-angle-sum-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "31-2",
+      "difficulty": "medium",
+      "errorPath": "exterior-angle-wrong-pair",
+      "stem": "三角形一外角為130°，一個不相鄰內角為55°，另一個為何？",
+      "options": [
+        "75°",
+        "65°",
+        "125°",
+        "185°"
+      ],
+      "answer": 0,
+      "explanation": "另一不相鄰內角=130−55=75°。"
+    },
+    {
+      "id": "triangle-angle-sum-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "31-2",
+      "difficulty": "hard",
+      "errorPath": "exterior-angle-wrong-pair",
+      "stem": "等腰三角形頂角為40°，延長一腰形成與其中一個底角相鄰的外角。此相鄰外角為何？",
+      "options": [
+        "70°",
+        "110°",
+        "140°",
+        "40°"
+      ],
+      "answer": 1,
+      "explanation": "兩底角各(180−40)/2=70°，相鄰外角=180−70=110°。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "triangle-angle-sum-ci-1",
+      "type": "concept-id",
+      "challenge": "31-3",
+      "difficulty": "easy",
+      "errorPath": "isosceles-base-angle-confusion",
+      "statement": "等腰三角形的兩個底角相等。",
+      "correctAnswer": true,
+      "explanation": "等腰三角形兩腰所對的底角相等。"
+    },
+    {
+      "id": "triangle-angle-sum-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "31-3",
+      "difficulty": "easy",
+      "errorPath": "isosceles-base-angle-confusion",
+      "statement": "等腰三角形的頂角一定是60°。",
+      "correctAnswer": false,
+      "explanation": "只有正三角形三角皆60°，一般等腰三角形頂角不固定。"
+    },
+    {
+      "id": "triangle-angle-sum-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "31-3",
+      "difficulty": "medium",
+      "errorPath": "isosceles-base-angle-confusion",
+      "statement": "等腰三角形若頂角為80°，兩底角各為50°。",
+      "correctAnswer": true,
+      "explanation": "兩底角相等，且(180−80)/2=50°。"
+    },
+    {
+      "id": "triangle-angle-sum-ci-2",
+      "type": "concept-id",
+      "challenge": "31-4",
+      "difficulty": "easy",
+      "errorPath": "polygon-interior-formula",
+      "statement": "n邊形內角和為(n−2)×180°。",
+      "correctAnswer": true,
+      "explanation": "可由一頂點分成n−2個三角形。"
+    },
+    {
+      "id": "triangle-angle-sum-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "31-4",
+      "difficulty": "medium",
+      "errorPath": "polygon-interior-formula",
+      "statement": "六邊形內角和為720°。",
+      "correctAnswer": true,
+      "explanation": "(6−2)×180=720°。"
+    },
+    {
+      "id": "triangle-angle-sum-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "31-4",
+      "difficulty": "medium",
+      "errorPath": "polygon-interior-formula",
+      "statement": "八邊形內角和為8×180°。",
+      "correctAnswer": false,
+      "explanation": "應為(8−2)×180=1080°。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "triangle-angle-sum-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "31-5",
+      "difficulty": "easy",
+      "errorPath": "interior-sum-subtraction",
+      "problem": "三角形兩角40°、70°，求第三角",
+      "wrongSolution": "小明算40+70=110°，回答第三角110°。",
+      "errorOptions": [
+        "應把兩角相乘",
+        "第三角=180−110=70°",
+        "答案應為180°",
+        "只需算70−40"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "三角形內角和180°，第三角為70°。"
+    },
+    {
+      "id": "triangle-angle-sum-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "31-5",
+      "difficulty": "medium",
+      "errorPath": "interior-sum-subtraction",
+      "problem": "三角形三角為x、x+20°、x+40°",
+      "wrongSolution": "小華令三角和為360°，算得x=100°。",
+      "errorOptions": [
+        "應令和為90°",
+        "應令3x+60=180，得x=40°",
+        "答案應為60°",
+        "應令和為540°"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "三角形內角和是180°，3x+60=180，所以x=40。"
+    },
+    {
+      "id": "triangle-angle-sum-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "31-5",
+      "difficulty": "hard",
+      "errorPath": "interior-sum-subtraction",
+      "problem": "等腰三角形兩底角各65°，求頂角",
+      "wrongSolution": "小安算180−65=115°。",
+      "errorOptions": [
+        "只減了一個底角；應為180−65−65=50°",
+        "頂角為65°",
+        "應為130°",
+        "等腰三角形無法求"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "兩個底角都要扣除，頂角為50°。"
+    },
+    {
+      "id": "triangle-angle-sum-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "31-6",
+      "difficulty": "easy",
+      "errorPath": "exterior-linear-pair-confusion",
+      "problem": "三角形一內角為70°，求與它相鄰的外角",
+      "wrongSolution": "小哲把外角也寫成70°。",
+      "errorOptions": [
+        "相鄰內外角互補，外角=180−70=110°",
+        "外角=70÷2",
+        "外角=180+70",
+        "無法求"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "相鄰內角與外角成一直線，和為180°。"
+    },
+    {
+      "id": "triangle-angle-sum-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "31-6",
+      "difficulty": "medium",
+      "errorPath": "exterior-linear-pair-confusion",
+      "problem": "一外角為125°，兩不相鄰內角之一為45°",
+      "wrongSolution": "小文用125+45得到另一角170°。",
+      "errorOptions": [
+        "應算180−125",
+        "應算125−45=80°",
+        "另一角為125°",
+        "應算45÷2"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "外角=兩不相鄰內角和，所以另一角=125−45=80°。"
+    },
+    {
+      "id": "triangle-angle-sum-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "31-6",
+      "difficulty": "hard",
+      "errorPath": "exterior-linear-pair-confusion",
+      "problem": "外角為140°，其相鄰內角為40°",
+      "wrongSolution": "小傑說因140−40=100，所以兩者不互補。",
+      "errorOptions": [
+        "相鄰角應相等",
+        "應比較乘積",
+        "140+40=180，正好互補",
+        "外角應為40°"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "相鄰內外角的和為180°；140+40=180。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "triangle-angle-sum-ca-1",
+      "type": "context-application",
+      "challenge": "31-7",
+      "difficulty": "easy",
+      "errorPath": "polygon-angle-total",
+      "scenario": "五邊形庭園要計算所有內角總和。",
+      "question": "內角和是多少？",
+      "options": [
+        "360°",
+        "450°",
+        "540°",
+        "720°"
+      ],
+      "answer": 2,
+      "explanation": "(5−2)×180=540°。"
+    },
+    {
+      "id": "triangle-angle-sum-ca-v7-2",
+      "type": "context-application",
+      "challenge": "31-7",
+      "difficulty": "medium",
+      "errorPath": "polygon-angle-total",
+      "scenario": "六邊形標誌的所有內角總和。",
+      "question": "總和是多少？",
+      "options": [
+        "900°",
+        "720°",
+        "1080°",
+        "540°"
+      ],
+      "answer": 1,
+      "explanation": "(6−2)×180=720°。"
+    },
+    {
+      "id": "triangle-angle-sum-ca-v7-3",
+      "type": "context-application",
+      "challenge": "31-7",
+      "difficulty": "hard",
+      "errorPath": "polygon-angle-total",
+      "scenario": "十邊形展區規劃要核對內角總和。",
+      "question": "正確總和為何？",
+      "options": [
+        "1440°",
+        "1800°",
+        "1260°",
+        "1620°"
+      ],
+      "answer": 0,
+      "explanation": "(10−2)×180=1440°。"
+    },
+    {
+      "id": "triangle-angle-sum-ca-2",
+      "type": "context-application",
+      "challenge": "31-8",
+      "difficulty": "easy",
+      "errorPath": "triangle-angle-model",
+      "scenario": "屋架形成等腰三角形，頂角為36°。",
+      "question": "每個底角為何？",
+      "options": [
+        "72°",
+        "36°",
+        "108°",
+        "144°"
+      ],
+      "answer": 0,
+      "explanation": "兩底角相等，各為(180−36)/2=72°。"
+    },
+    {
+      "id": "triangle-angle-sum-ca-v8-2",
+      "type": "context-application",
+      "challenge": "31-8",
+      "difficulty": "medium",
+      "errorPath": "triangle-angle-model",
+      "scenario": "三角旗兩內角為48°與57°。",
+      "question": "第三內角為何？",
+      "options": [
+        "75°",
+        "85°",
+        "95°",
+        "105°"
+      ],
+      "answer": 0,
+      "explanation": "180−48−57=75°。"
+    },
+    {
+      "id": "triangle-angle-sum-ca-v8-3",
+      "type": "context-application",
+      "challenge": "31-8",
+      "difficulty": "hard",
+      "errorPath": "triangle-angle-model",
+      "scenario": "道路三角標記的一外角為150°，一個不相鄰內角為65°。",
+      "question": "另一個不相鄰內角為何？",
+      "options": [
+        "95°",
+        "85°",
+        "75°",
+        "215°"
+      ],
+      "answer": 1,
+      "explanation": "外角等於兩不相鄰內角和，150−65=85°。"
+    }
+  ]
+}

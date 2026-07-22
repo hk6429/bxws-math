@@ -1,0 +1,375 @@
+{
+  "nodeId": "frequency-distribution",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "組距、組界、組中點、相對次數、累積次數與眾數所在組題庫；全數自編，未冒稱官方課綱代碼。所有資料均以文字與數值完整提供。"
+  },
+  "basicMastery": [
+    {
+      "id": "frequency-distribution-bm-1",
+      "type": "basic-mastery",
+      "challenge": "35-1",
+      "difficulty": "easy",
+      "errorPath": "class-width-midpoint-confusion",
+      "stem": "某組資料的組界為10到20，組距為何？",
+      "options": [
+        "10",
+        "15",
+        "20",
+        "30"
+      ],
+      "answer": 0,
+      "explanation": "組距=上組界−下組界=20−10=10。"
+    },
+    {
+      "id": "frequency-distribution-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "35-1",
+      "difficulty": "easy",
+      "errorPath": "class-width-midpoint-confusion",
+      "stem": "某組組界為20到30，組中點為何？",
+      "options": [
+        "10",
+        "20",
+        "25",
+        "30"
+      ],
+      "answer": 2,
+      "explanation": "組中點=(20+30)/2=25。"
+    },
+    {
+      "id": "frequency-distribution-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "35-1",
+      "difficulty": "medium",
+      "errorPath": "class-width-midpoint-confusion",
+      "stem": "各組組界依序為0到5、5到10、10到15，每組組距為何？",
+      "options": [
+        "3",
+        "5",
+        "10",
+        "15"
+      ],
+      "answer": 1,
+      "explanation": "每組的上組界減下組界皆為5，所以組距為5。"
+    },
+    {
+      "id": "frequency-distribution-bm-2",
+      "type": "basic-mastery",
+      "challenge": "35-2",
+      "difficulty": "easy",
+      "errorPath": "relative-frequency-denominator",
+      "stem": "總人數40人，某組次數10人，相對次數為何？",
+      "options": [
+        "10%",
+        "20%",
+        "25%",
+        "40%"
+      ],
+      "answer": 2,
+      "explanation": "相對次數=10÷40=0.25=25%。"
+    },
+    {
+      "id": "frequency-distribution-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "35-2",
+      "difficulty": "medium",
+      "errorPath": "relative-frequency-denominator",
+      "stem": "總次數50，某組相對次數0.3，該組次數為何？",
+      "options": [
+        "10",
+        "15",
+        "20",
+        "30"
+      ],
+      "answer": 1,
+      "explanation": "次數=50×0.3=15。"
+    },
+    {
+      "id": "frequency-distribution-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "35-2",
+      "difficulty": "hard",
+      "errorPath": "relative-frequency-denominator",
+      "stem": "某組次數18、相對次數0.24，總次數為何？",
+      "options": [
+        "43.2",
+        "60",
+        "75",
+        "90"
+      ],
+      "answer": 2,
+      "explanation": "18÷總數=0.24，所以總數=18÷0.24=75。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "frequency-distribution-ci-1",
+      "type": "concept-id",
+      "challenge": "35-3",
+      "difficulty": "easy",
+      "errorPath": "cumulative-frequency-meaning",
+      "statement": "累積次數是從第一組起逐組把次數加總。",
+      "correctAnswer": true,
+      "explanation": "第k組累積次數等於前k組次數總和。"
+    },
+    {
+      "id": "frequency-distribution-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "35-3",
+      "difficulty": "easy",
+      "errorPath": "cumulative-frequency-meaning",
+      "statement": "最後一組的累積次數應等於資料總數。",
+      "correctAnswer": true,
+      "explanation": "所有組次數到最後已全部累加。"
+    },
+    {
+      "id": "frequency-distribution-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "35-3",
+      "difficulty": "medium",
+      "errorPath": "cumulative-frequency-meaning",
+      "statement": "各組次數為4、6、5時，第二組累積次數為6。",
+      "correctAnswer": false,
+      "explanation": "第二組累積次數=4+6=10。"
+    },
+    {
+      "id": "frequency-distribution-ci-2",
+      "type": "concept-id",
+      "challenge": "35-4",
+      "difficulty": "easy",
+      "errorPath": "modal-class-reading",
+      "statement": "次數最多的組稱為眾數所在組。",
+      "correctAnswer": true,
+      "explanation": "分組資料通常以最高次數的組指出眾數所在區間。"
+    },
+    {
+      "id": "frequency-distribution-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "35-4",
+      "difficulty": "medium",
+      "errorPath": "modal-class-reading",
+      "statement": "眾數所在組一定是組中點最大的組。",
+      "correctAnswer": false,
+      "explanation": "判斷依據是次數最高，不是組中點大小。"
+    },
+    {
+      "id": "frequency-distribution-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "35-4",
+      "difficulty": "medium",
+      "errorPath": "modal-class-reading",
+      "statement": "三組次數為8、12、10時，第二組是眾數所在組。",
+      "correctAnswer": true,
+      "explanation": "第二組次數12最高。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "frequency-distribution-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "35-5",
+      "difficulty": "easy",
+      "errorPath": "cumulative-frequency-not-single",
+      "problem": "各組次數依序為5、8、7，求第二組累積次數",
+      "wrongSolution": "小明直接回答8。",
+      "errorOptions": [
+        "應為5",
+        "累積需加前組，5+8=13",
+        "應為20",
+        "應為7"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "第二組累積次數包含第一、二組，共13。"
+    },
+    {
+      "id": "frequency-distribution-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "35-5",
+      "difficulty": "medium",
+      "errorPath": "cumulative-frequency-not-single",
+      "problem": "各組次數依序為3、6、9、2，求第三組累積次數",
+      "wrongSolution": "小華回答9。",
+      "errorOptions": [
+        "應為12",
+        "應為20",
+        "應累加3+6+9=18",
+        "應為15"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "第三組累積次數為前三組總和18。"
+    },
+    {
+      "id": "frequency-distribution-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "35-5",
+      "difficulty": "hard",
+      "errorPath": "cumulative-frequency-not-single",
+      "problem": "各組次數為4、7、5，求最後累積次數",
+      "wrongSolution": "小安只算7+5=12。",
+      "errorOptions": [
+        "應包含所有組：4+7+5=16",
+        "答案為7",
+        "答案為5",
+        "應為28"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "最後累積次數等於總次數16。"
+    },
+    {
+      "id": "frequency-distribution-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "35-6",
+      "difficulty": "easy",
+      "errorPath": "modal-class-wrong-basis",
+      "problem": "組別10到20、20到30、30到40的次數為6、11、8",
+      "wrongSolution": "小哲因30到40數值最大，選它為眾數所在組。",
+      "errorOptions": [
+        "應選10到20",
+        "應看次數最高11，故為20到30",
+        "三組都是",
+        "無法判斷"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "眾數所在組依次數最高判斷，非區間數值最大。"
+    },
+    {
+      "id": "frequency-distribution-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "35-6",
+      "difficulty": "medium",
+      "errorPath": "modal-class-wrong-basis",
+      "problem": "三組組中點為15、25、35，次數為9、7、5",
+      "wrongSolution": "小文選組中點35的組為眾數所在組。",
+      "errorOptions": [
+        "最高次數9在組中點15的組",
+        "應選25",
+        "應選35",
+        "三組都不是"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "眾數所在組是次數9的第一組。"
+    },
+    {
+      "id": "frequency-distribution-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "35-6",
+      "difficulty": "hard",
+      "errorPath": "modal-class-wrong-basis",
+      "problem": "四組次數為10、14、14、6",
+      "wrongSolution": "小傑說只能選最後一組為眾數所在組。",
+      "errorOptions": [
+        "最後一組次數最低",
+        "第一組才是",
+        "第二、三組並列最高，兩組都是眾數所在組",
+        "無眾數所在組"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "最高次數14同時出現在第二、三組，兩組並列。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "frequency-distribution-ca-1",
+      "type": "context-application",
+      "challenge": "35-7",
+      "difficulty": "easy",
+      "errorPath": "survey-relative-frequency",
+      "scenario": "班上40人，通勤時間20到30分鐘這組有12人。",
+      "question": "此組相對次數為何？",
+      "options": [
+        "12%",
+        "20%",
+        "30%",
+        "40%"
+      ],
+      "answer": 2,
+      "explanation": "12÷40=0.3=30%。"
+    },
+    {
+      "id": "frequency-distribution-ca-v7-2",
+      "type": "context-application",
+      "challenge": "35-7",
+      "difficulty": "medium",
+      "errorPath": "survey-relative-frequency",
+      "scenario": "閱讀本數調查共50人，其中5到9本這組15人。",
+      "question": "此組相對次數為何？",
+      "options": [
+        "15%",
+        "25%",
+        "30%",
+        "35%"
+      ],
+      "answer": 2,
+      "explanation": "15÷50=0.3=30%。"
+    },
+    {
+      "id": "frequency-distribution-ca-v7-3",
+      "type": "context-application",
+      "challenge": "35-7",
+      "difficulty": "medium",
+      "errorPath": "survey-relative-frequency",
+      "scenario": "運動時數調查中，某組相對次數為0.18，共有200人。",
+      "question": "該組次數為何？",
+      "options": [
+        "18",
+        "36",
+        "40",
+        "90"
+      ],
+      "answer": 1,
+      "explanation": "200×0.18=36人。"
+    },
+    {
+      "id": "frequency-distribution-ca-2",
+      "type": "context-application",
+      "challenge": "35-8",
+      "difficulty": "easy",
+      "errorPath": "table-cumulative-modal",
+      "scenario": "成績分組次數依序為4、9、12、5。",
+      "question": "第三組累積次數為何？",
+      "options": [
+        "12",
+        "21",
+        "25",
+        "30"
+      ],
+      "answer": 2,
+      "explanation": "4+9+12=25。"
+    },
+    {
+      "id": "frequency-distribution-ca-v8-2",
+      "type": "context-application",
+      "challenge": "35-8",
+      "difficulty": "medium",
+      "errorPath": "table-cumulative-modal",
+      "scenario": "身高三組次數依序為8、15、7。",
+      "question": "眾數所在組是第幾組？",
+      "options": [
+        "第一組",
+        "第二組",
+        "第三組",
+        "無法判斷"
+      ],
+      "answer": 1,
+      "explanation": "第二組次數15最高。"
+    },
+    {
+      "id": "frequency-distribution-ca-v8-3",
+      "type": "context-application",
+      "challenge": "35-8",
+      "difficulty": "hard",
+      "errorPath": "table-cumulative-modal",
+      "scenario": "四個組距均為10，組界依序從0到40；各組次數6、10、9、5。",
+      "question": "第二組（組界10到20）的組中點與截至第二組的累積次數依序為何？",
+      "options": [
+        "15、16",
+        "10、10",
+        "20、16",
+        "15、10"
+      ],
+      "answer": 0,
+      "explanation": "組中點=(10+20)/2=15；累積次數=6+10=16。"
+    }
+  ]
+}

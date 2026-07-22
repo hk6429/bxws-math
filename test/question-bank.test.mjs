@@ -32,6 +32,8 @@ const nodeIds = [
   "two-dimensional-pattern", "simple-classification", "pictogram-simple-table", "table-reading-making",
   "multiplication-formulas", "polynomial-operations", "factorization", "simultaneous-linear-2var",
   "square-root-radical", "pythagorean-theorem", "triangle-congruence", "linear-function-graph",
+  "algebraic-fraction", "algebraic-fraction-ops", "radical-operations", "triangle-angle-sum",
+  "parallelogram-properties", "special-quadrilaterals", "linear-function-application", "frequency-distribution",
 ];
 
 const questionArrays = ["basicMastery", "conceptId", "errorDiagnosis", "contextApplication"];
@@ -68,9 +70,9 @@ globalThis.localStorage = {
   setItem: (key, value) => storage.set(key, value),
 };
 
-test("quiz-loader 可載入全庫 110 個已完成節點題庫，且容忍頂層 curriculum", async () => {
+test("quiz-loader 可載入全庫 118 個已完成節點題庫，且容忍頂層 curriculum", async () => {
   const banks = await Promise.all(nodeIds.map(loadQuestionBank));
-  assert.equal(banks.length, 110);
+  assert.equal(banks.length, 118);
   for (const [index, bank] of banks.entries()) {
     const questions = questionArrays.flatMap((key) => bank[key] ?? []);
     if (newNodeIds.has(nodeIds[index])) {

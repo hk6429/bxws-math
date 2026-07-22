@@ -1,0 +1,376 @@
+{
+  "nodeId": "parallelogram-properties",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "平行四邊形對邊、對角、鄰角與對角線性質題庫；全數自編，未冒稱官方課綱代碼。日後補圖會更直觀的題目：parallelogram-properties-bm-1、parallelogram-properties-bm-v1-2、parallelogram-properties-bm-v1-3、parallelogram-properties-ca-1、parallelogram-properties-ca-v7-2、parallelogram-properties-ca-v7-3；現已用完整文字與數值敘述。"
+  },
+  "basicMastery": [
+    {
+      "id": "parallelogram-properties-bm-1",
+      "type": "basic-mastery",
+      "challenge": "32-1",
+      "difficulty": "easy",
+      "errorPath": "opposite-side-confusion",
+      "stem": "平行四邊形ABCD中，AB=8公分，求CD。",
+      "options": [
+        "8公分",
+        "4公分",
+        "16公分",
+        "無法確定"
+      ],
+      "answer": 0,
+      "explanation": "平行四邊形兩組對邊相等，所以CD=AB=8。"
+    },
+    {
+      "id": "parallelogram-properties-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "32-1",
+      "difficulty": "medium",
+      "errorPath": "opposite-side-confusion",
+      "stem": "平行四邊形ABCD中，BC=3x−1、AD=2x+4，求x。",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "answer": 2,
+      "explanation": "對邊相等，3x−1=2x+4，得x=5。"
+    },
+    {
+      "id": "parallelogram-properties-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "32-1",
+      "difficulty": "medium",
+      "errorPath": "opposite-side-confusion",
+      "stem": "平行四邊形一組相鄰邊長為7與11公分，求周長。",
+      "options": [
+        "18公分",
+        "36公分",
+        "77公分",
+        "22公分"
+      ],
+      "answer": 1,
+      "explanation": "兩組對邊分別相等，周長=2(7+11)=36。"
+    },
+    {
+      "id": "parallelogram-properties-bm-2",
+      "type": "basic-mastery",
+      "challenge": "32-2",
+      "difficulty": "easy",
+      "errorPath": "opposite-angle-confusion",
+      "stem": "平行四邊形ABCD中，∠A=65°，求∠C。",
+      "options": [
+        "115°",
+        "65°",
+        "90°",
+        "125°"
+      ],
+      "answer": 1,
+      "explanation": "對角相等，所以∠C=∠A=65°。"
+    },
+    {
+      "id": "parallelogram-properties-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "32-2",
+      "difficulty": "medium",
+      "errorPath": "opposite-angle-confusion",
+      "stem": "平行四邊形一內角為120°，相鄰內角為何？",
+      "options": [
+        "120°",
+        "30°",
+        "60°",
+        "240°"
+      ],
+      "answer": 2,
+      "explanation": "鄰角互補，180−120=60°。"
+    },
+    {
+      "id": "parallelogram-properties-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "32-2",
+      "difficulty": "hard",
+      "errorPath": "opposite-angle-confusion",
+      "stem": "平行四邊形ABCD中，∠A=2x+10°、∠B=3x−5°，求x。",
+      "options": [
+        "25",
+        "30",
+        "35",
+        "40"
+      ],
+      "answer": 2,
+      "explanation": "鄰角互補：(2x+10)+(3x−5)=180，5x=175，x=35。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "parallelogram-properties-ci-1",
+      "type": "concept-id",
+      "challenge": "32-3",
+      "difficulty": "easy",
+      "errorPath": "parallel-opposite-sides",
+      "statement": "平行四邊形的兩組對邊分別平行且相等。",
+      "correctAnswer": true,
+      "explanation": "這是平行四邊形的基本性質。"
+    },
+    {
+      "id": "parallelogram-properties-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "32-3",
+      "difficulty": "easy",
+      "errorPath": "parallel-opposite-sides",
+      "statement": "平行四邊形只有一組對邊相等。",
+      "correctAnswer": false,
+      "explanation": "兩組對邊都分別相等。"
+    },
+    {
+      "id": "parallelogram-properties-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "32-3",
+      "difficulty": "medium",
+      "errorPath": "parallel-opposite-sides",
+      "statement": "若ABCD為平行四邊形，則AB∥CD且BC∥AD。",
+      "correctAnswer": true,
+      "explanation": "兩組對邊分別平行。"
+    },
+    {
+      "id": "parallelogram-properties-ci-2",
+      "type": "concept-id",
+      "challenge": "32-4",
+      "difficulty": "easy",
+      "errorPath": "diagonal-bisect-property",
+      "statement": "平行四邊形的兩條對角線互相平分。",
+      "correctAnswer": true,
+      "explanation": "兩對角線交點分別是兩條對角線的中點。"
+    },
+    {
+      "id": "parallelogram-properties-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "32-4",
+      "difficulty": "medium",
+      "errorPath": "diagonal-bisect-property",
+      "statement": "平行四邊形的兩條對角線一定相等。",
+      "correctAnswer": false,
+      "explanation": "對角線互相平分但不一定等長；矩形才必定等長。"
+    },
+    {
+      "id": "parallelogram-properties-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "32-4",
+      "difficulty": "medium",
+      "errorPath": "diagonal-bisect-property",
+      "statement": "若平行四邊形AC、BD交於O，則AO=OC且BO=OD。",
+      "correctAnswer": true,
+      "explanation": "O為兩條對角線各自的中點。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "parallelogram-properties-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "32-5",
+      "difficulty": "easy",
+      "errorPath": "adjacent-angle-equal",
+      "problem": "平行四邊形∠A=70°，求∠B",
+      "wrongSolution": "小明說相鄰角相等，所以∠B=70°。",
+      "errorOptions": [
+        "應為20°",
+        "鄰角互補，∠B=110°",
+        "應為140°",
+        "無法求"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "平行四邊形鄰角和180°，所以∠B=110°。"
+    },
+    {
+      "id": "parallelogram-properties-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "32-5",
+      "difficulty": "medium",
+      "errorPath": "adjacent-angle-equal",
+      "problem": "平行四邊形∠B=125°，求∠D",
+      "wrongSolution": "小華算180−125=55°。",
+      "errorOptions": [
+        "∠B與∠D是對角，應相等為125°",
+        "答案正確",
+        "應為65°",
+        "應為250°"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "對角相等；互補關係用於相鄰角。"
+    },
+    {
+      "id": "parallelogram-properties-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "32-5",
+      "difficulty": "hard",
+      "errorPath": "adjacent-angle-equal",
+      "problem": "平行四邊形∠A=x+20°、∠C=3x−40°",
+      "wrongSolution": "小安令兩角和180°。",
+      "errorOptions": [
+        "兩角相鄰所以作法正確",
+        "應令兩角差180°",
+        "∠A與∠C為對角，應令x+20=3x−40，得x=30",
+        "應令x=20"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "對角相等，解得2x=60，x=30。"
+    },
+    {
+      "id": "parallelogram-properties-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "32-6",
+      "difficulty": "easy",
+      "errorPath": "diagonal-property-confusion",
+      "problem": "平行四邊形AC、BD交於O，AO=6，求OC",
+      "wrongSolution": "小哲因兩對角線相等，寫OC=BD=6。",
+      "errorOptions": [
+        "結論6正確，但理由應是O平分AC，AO=OC",
+        "OC=3",
+        "OC=12",
+        "無法求"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "對角線互相平分保證AO=OC；不保證AC=BD。"
+    },
+    {
+      "id": "parallelogram-properties-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "32-6",
+      "difficulty": "medium",
+      "errorPath": "diagonal-property-confusion",
+      "problem": "平行四邊形中AO=4、BO=7",
+      "wrongSolution": "小文說AC=BD，所以兩者都長8。",
+      "errorOptions": [
+        "AC=4、BD=7",
+        "AC=8、BD=14",
+        "AC=11、BD=11",
+        "兩線皆長14"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "O平分兩對角線，AC=2AO=8，BD=2BO=14。"
+    },
+    {
+      "id": "parallelogram-properties-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "32-6",
+      "difficulty": "hard",
+      "errorPath": "diagonal-property-confusion",
+      "problem": "平行四邊形對角線交於O，AC=18",
+      "wrongSolution": "小傑說AO=18。",
+      "errorOptions": [
+        "AO=36",
+        "AO=18",
+        "O平分AC，所以AO=9",
+        "無法確定"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "AO=AC÷2=9。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "parallelogram-properties-ca-1",
+      "type": "context-application",
+      "challenge": "32-7",
+      "difficulty": "easy",
+      "errorPath": "parallelogram-frame-length",
+      "scenario": "平行四邊形窗框相鄰邊長9與6公尺。",
+      "question": "外框周長為何？",
+      "options": [
+        "15",
+        "30",
+        "54",
+        "18"
+      ],
+      "answer": 1,
+      "explanation": "周長=2(9+6)=30公尺。"
+    },
+    {
+      "id": "parallelogram-properties-ca-v7-2",
+      "type": "context-application",
+      "challenge": "32-7",
+      "difficulty": "medium",
+      "errorPath": "parallelogram-frame-length",
+      "scenario": "平行四邊形花圃ABCD中AB=12公尺。",
+      "question": "對邊CD多長？",
+      "options": [
+        "6",
+        "24",
+        "12",
+        "無法確定"
+      ],
+      "answer": 2,
+      "explanation": "對邊相等，CD=12。"
+    },
+    {
+      "id": "parallelogram-properties-ca-v7-3",
+      "type": "context-application",
+      "challenge": "32-7",
+      "difficulty": "medium",
+      "errorPath": "parallelogram-frame-length",
+      "scenario": "平行四邊形支架的對角線AC長20公分，交點為O。",
+      "question": "AO長多少？",
+      "options": [
+        "10",
+        "20",
+        "40",
+        "5"
+      ],
+      "answer": 0,
+      "explanation": "對角線互相平分，AO=20÷2=10。"
+    },
+    {
+      "id": "parallelogram-properties-ca-2",
+      "type": "context-application",
+      "challenge": "32-8",
+      "difficulty": "easy",
+      "errorPath": "parallelogram-angle-design",
+      "scenario": "平行四邊形地磚一角為58°。",
+      "question": "相鄰角為何？",
+      "options": [
+        "58°",
+        "122°",
+        "32°",
+        "116°"
+      ],
+      "answer": 1,
+      "explanation": "鄰角互補，180−58=122°。"
+    },
+    {
+      "id": "parallelogram-properties-ca-v8-2",
+      "type": "context-application",
+      "challenge": "32-8",
+      "difficulty": "medium",
+      "errorPath": "parallelogram-angle-design",
+      "scenario": "平行四邊形標誌的兩個對角分別為2x+5°與3x−20°。",
+      "question": "求x。",
+      "options": [
+        "15",
+        "20",
+        "25",
+        "30"
+      ],
+      "answer": 2,
+      "explanation": "對角相等，2x+5=3x−20，得x=25。"
+    },
+    {
+      "id": "parallelogram-properties-ca-v8-3",
+      "type": "context-application",
+      "challenge": "32-8",
+      "difficulty": "hard",
+      "errorPath": "parallelogram-angle-design",
+      "scenario": "平行四邊形機構一組鄰角為x+30°與2x°。",
+      "question": "求x。",
+      "options": [
+        "40",
+        "50",
+        "60",
+        "70"
+      ],
+      "answer": 1,
+      "explanation": "鄰角互補，3x+30=180，x=50。"
+    }
+  ]
+}
+
