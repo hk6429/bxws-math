@@ -1,0 +1,375 @@
+{
+  "nodeId": "pythagorean-theorem",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "畢氏定理、第三邊、直角三角形判別與距離應用題庫；全數自編，未冒稱官方課綱代碼。日後補圖會更直觀的題目：pythagorean-theorem-bm-1、pythagorean-theorem-bm-v1-2、pythagorean-theorem-bm-v1-3、pythagorean-theorem-ca-1、pythagorean-theorem-ca-v7-2、pythagorean-theorem-ca-v7-3；現已用完整文字/數值敘述。"
+  },
+  "basicMastery": [
+    {
+      "id": "pythagorean-theorem-bm-1",
+      "type": "basic-mastery",
+      "challenge": "25-1",
+      "difficulty": "easy",
+      "errorPath": "hypotenuse-identification",
+      "stem": "直角三角形兩股長為3、4，斜邊長為何？",
+      "options": [
+        "7",
+        "6",
+        "5",
+        "√7"
+      ],
+      "answer": 2,
+      "explanation": "斜邊平方=3²+4²=9+16=25，所以斜邊=5。"
+    },
+    {
+      "id": "pythagorean-theorem-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "25-1",
+      "difficulty": "medium",
+      "errorPath": "hypotenuse-identification",
+      "stem": "直角三角形斜邊長13，一股長5，另一股長為何？",
+      "options": [
+        "12",
+        "10",
+        "8",
+        "18"
+      ],
+      "answer": 0,
+      "explanation": "另一股平方=13²−5²=169−25=144，所以長12。"
+    },
+    {
+      "id": "pythagorean-theorem-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "25-1",
+      "difficulty": "medium",
+      "errorPath": "hypotenuse-identification",
+      "stem": "直角三角形兩股長為6、8，斜邊長為何？",
+      "options": [
+        "12",
+        "10",
+        "14",
+        "√14"
+      ],
+      "answer": 1,
+      "explanation": "6²+8²=36+64=100，斜邊=√100=10。"
+    },
+    {
+      "id": "pythagorean-theorem-bm-2",
+      "type": "basic-mastery",
+      "challenge": "25-2",
+      "difficulty": "easy",
+      "errorPath": "right-triangle-square-check",
+      "stem": "邊長3、4、5的三角形是否為直角三角形？",
+      "options": [
+        "否，因三邊不同",
+        "是，因3+4=5",
+        "否，因3²+4²>5²",
+        "是，因3²+4²=5²"
+      ],
+      "answer": 3,
+      "explanation": "最長邊5，且3²+4²=9+16=25=5²，因此是直角三角形。"
+    },
+    {
+      "id": "pythagorean-theorem-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "25-2",
+      "difficulty": "medium",
+      "errorPath": "right-triangle-square-check",
+      "stem": "邊長5、12、13的三角形是否為直角三角形？",
+      "options": [
+        "是，因5+12=17",
+        "否，因5+12≠13",
+        "是，因5²+12²=13²",
+        "否，因三邊皆為奇偶混合"
+      ],
+      "answer": 2,
+      "explanation": "25+144=169=13²，所以符合畢氏定理逆敘述。"
+    },
+    {
+      "id": "pythagorean-theorem-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "25-2",
+      "difficulty": "hard",
+      "errorPath": "right-triangle-square-check",
+      "stem": "邊長6、8、11的三角形是否為直角三角形？",
+      "options": [
+        "否，因6²+8²=100≠121",
+        "是，因6²+8²=11²",
+        "是，因6+8>11",
+        "否，因11是奇數"
+      ],
+      "answer": 0,
+      "explanation": "最長邊11；6²+8²=100，而11²=121，兩者不等，因此不是直角三角形。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "pythagorean-theorem-ci-1",
+      "type": "concept-id",
+      "challenge": "25-3",
+      "difficulty": "easy",
+      "errorPath": "theorem-condition-confusion",
+      "statement": "畢氏定理 a²+b²=c² 適用於直角三角形，且 c 是斜邊。",
+      "correctAnswer": true,
+      "explanation": "斜邊是直角所對且最長的邊，兩股平方和等於斜邊平方。"
+    },
+    {
+      "id": "pythagorean-theorem-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "25-3",
+      "difficulty": "easy",
+      "errorPath": "theorem-condition-confusion",
+      "statement": "任何三角形的三邊都滿足 a²+b²=c²。",
+      "correctAnswer": false,
+      "explanation": "此等式是直角三角形的特徵，不適用於任意三角形。"
+    },
+    {
+      "id": "pythagorean-theorem-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "25-3",
+      "difficulty": "medium",
+      "errorPath": "theorem-condition-confusion",
+      "statement": "在直角三角形中，斜邊一定比任一股長。",
+      "correctAnswer": true,
+      "explanation": "c²=a²+b²>a² 且 >b²，邊長為正，所以 c>a、c>b。"
+    },
+    {
+      "id": "pythagorean-theorem-ci-2",
+      "type": "concept-id",
+      "challenge": "25-4",
+      "difficulty": "easy",
+      "errorPath": "theorem-converse-confusion",
+      "statement": "若三角形最長邊 c 滿足 a²+b²=c²，則此三角形為直角三角形。",
+      "correctAnswer": true,
+      "explanation": "這是畢氏定理的逆敘述，可用來判別直角三角形。"
+    },
+    {
+      "id": "pythagorean-theorem-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "25-4",
+      "difficulty": "medium",
+      "errorPath": "theorem-converse-confusion",
+      "statement": "只要三邊長都是整數，三角形就是直角三角形。",
+      "correctAnswer": false,
+      "explanation": "例如4、5、6都是整數，但4²+5²=41≠36=6²。"
+    },
+    {
+      "id": "pythagorean-theorem-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "25-4",
+      "difficulty": "medium",
+      "errorPath": "theorem-converse-confusion",
+      "statement": "8、15、17是一組畢氏數。",
+      "correctAnswer": true,
+      "explanation": "8²+15²=64+225=289=17²。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "pythagorean-theorem-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "25-5",
+      "difficulty": "easy",
+      "errorPath": "square-root-after-squares",
+      "problem": "直角三角形兩股為5、12，求斜邊",
+      "wrongSolution": "小明算 5²+12²=169，回答斜邊169。",
+      "errorOptions": [
+        "169是斜邊平方，還要開平方得13",
+        "應算12−5",
+        "答案應為17",
+        "兩股應先相乘"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "c²=169，因此 c=√169=13，邊長取正值。"
+    },
+    {
+      "id": "pythagorean-theorem-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "25-5",
+      "difficulty": "medium",
+      "errorPath": "square-root-after-squares",
+      "problem": "直角三角形斜邊10、一股6，求另一股",
+      "wrongSolution": "小華算 10²−6²=64，回答另一股64。",
+      "errorOptions": [
+        "答案應為4",
+        "應把兩平方相加",
+        "64是另一股平方，開平方得8",
+        "應開立方"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "b²=100−36=64，所以 b=8。"
+    },
+    {
+      "id": "pythagorean-theorem-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "25-5",
+      "difficulty": "hard",
+      "errorPath": "square-root-after-squares",
+      "problem": "直角三角形兩股為7、24，求斜邊",
+      "wrongSolution": "小安算 7²+24²=625，回答斜邊625。",
+      "errorOptions": [
+        "答案為31",
+        "應把625除2",
+        "應算24−7=17",
+        "應開平方：√625=25"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "c²=49+576=625，故 c=25。"
+    },
+    {
+      "id": "pythagorean-theorem-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "25-6",
+      "difficulty": "easy",
+      "errorPath": "legs-hypotenuse-operation",
+      "problem": "斜邊13、一股12，求另一股",
+      "wrongSolution": "小哲用 13²+12²。",
+      "errorOptions": [
+        "應算13+12",
+        "已知斜邊求股應用13²−12²=25，再開平方得5",
+        "應算13−12直接得1",
+        "斜邊不是最長邊"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "股平方=斜邊平方−另一股平方=169−144=25，故股長5。"
+    },
+    {
+      "id": "pythagorean-theorem-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "25-6",
+      "difficulty": "medium",
+      "errorPath": "legs-hypotenuse-operation",
+      "problem": "直角三角形兩股8、15，求斜邊",
+      "wrongSolution": "小文用 15²−8²=161。",
+      "errorOptions": [
+        "應算8+15=23",
+        "161開平方即可",
+        "答案為7",
+        "求斜邊應相加：8²+15²=289，斜邊17"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "兩股平方相加才等於斜邊平方：64+225=289=17²。"
+    },
+    {
+      "id": "pythagorean-theorem-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "25-6",
+      "difficulty": "hard",
+      "errorPath": "legs-hypotenuse-operation",
+      "problem": "判斷邊長7、24、25的三角形",
+      "wrongSolution": "小傑檢查 7²+25² 是否等於24²。",
+      "errorOptions": [
+        "三邊都要相加",
+        "應把最短邊7當斜邊",
+        "應把最長邊25當斜邊，檢查7²+24²=25²",
+        "只需檢查7+24>25"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "最長邊才可能是斜邊；49+576=625=25²，因此是直角三角形。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "pythagorean-theorem-ca-1",
+      "type": "context-application",
+      "challenge": "25-7",
+      "difficulty": "easy",
+      "errorPath": "rectangle-diagonal-calculation",
+      "scenario": "長方形長6公尺、寬8公尺，對角線與兩邊形成直角三角形。",
+      "question": "對角線長多少公尺？",
+      "options": [
+        "48",
+        "12",
+        "14",
+        "10"
+      ],
+      "answer": 3,
+      "explanation": "對角線平方=6²+8²=100，所以長10公尺。"
+    },
+    {
+      "id": "pythagorean-theorem-ca-v7-2",
+      "type": "context-application",
+      "challenge": "25-7",
+      "difficulty": "medium",
+      "errorPath": "rectangle-diagonal-calculation",
+      "scenario": "螢幕寬12吋、高9吋，對角線與寬高形成直角三角形。",
+      "question": "對角線長多少吋？",
+      "options": [
+        "18",
+        "15",
+        "21",
+        "√21"
+      ],
+      "answer": 1,
+      "explanation": "12²+9²=144+81=225，√225=15。"
+    },
+    {
+      "id": "pythagorean-theorem-ca-v7-3",
+      "type": "context-application",
+      "challenge": "25-7",
+      "difficulty": "hard",
+      "errorPath": "rectangle-diagonal-calculation",
+      "scenario": "長方形場地對角線25公尺、寬15公尺。",
+      "question": "場地長多少公尺？",
+      "options": [
+        "20",
+        "10",
+        "30",
+        "40"
+      ],
+      "answer": 0,
+      "explanation": "長²=25²−15²=625−225=400，所以長20公尺。"
+    },
+    {
+      "id": "pythagorean-theorem-ca-2",
+      "type": "context-application",
+      "challenge": "25-8",
+      "difficulty": "easy",
+      "errorPath": "coordinate-distance-components",
+      "scenario": "平面上甲點為(0,0)，乙點為(3,4)。",
+      "question": "兩點距離為何？",
+      "options": [
+        "12",
+        "7",
+        "5",
+        "25"
+      ],
+      "answer": 2,
+      "explanation": "水平差3、垂直差4，距離=√(3²+4²)=5。"
+    },
+    {
+      "id": "pythagorean-theorem-ca-v8-2",
+      "type": "context-application",
+      "challenge": "25-8",
+      "difficulty": "medium",
+      "errorPath": "coordinate-distance-components",
+      "scenario": "平面上A點為(1,2)，B點為(7,10)。",
+      "question": "AB距離為何？",
+      "options": [
+        "10",
+        "8",
+        "12",
+        "14"
+      ],
+      "answer": 0,
+      "explanation": "水平差6、垂直差8，距離=√(6²+8²)=√100=10。"
+    },
+    {
+      "id": "pythagorean-theorem-ca-v8-3",
+      "type": "context-application",
+      "challenge": "25-8",
+      "difficulty": "hard",
+      "errorPath": "coordinate-distance-components",
+      "scenario": "平面上P點為(−2,3)，Q點為(10,8)。",
+      "question": "PQ距離為何？",
+      "options": [
+        "15",
+        "13",
+        "17",
+        "√119"
+      ],
+      "answer": 1,
+      "explanation": "水平差12、垂直差5，距離=√(12²+5²)=√169=13。"
+    }
+  ]
+}

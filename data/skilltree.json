@@ -4,14 +4,16 @@
     "elem-low": "國小低年級",
     "elem-mid": "國小中年級",
     "elem-high": "國小高年級",
-    "jhs-g7": "國中七年級"
+    "jhs-g7": "國中七年級",
+    "jhs-g8": "國中八年級"
   },
   "masteryThreshold": 0.8,
   "masteryThresholds": {
     "elem-low": 0.75,
     "elem-mid": 0.75,
     "elem-high": 0.8,
-    "jhs-g7": 0.8
+    "jhs-g7": 0.8,
+    "jhs-g8": 0.8
   },
   "strandVisuals": {
     "num-quantity": {
@@ -908,6 +910,23 @@
             "3-6",
             "3-8"
           ]
+        },
+        {
+          "id": "square-root-radical",
+          "name": "平方根與根式",
+          "tier": "jhs-g8",
+          "prereq": [
+            "exponent-laws",
+            "scientific-notation"
+          ],
+          "diagnosticPrereq": [
+            "exponent-laws",
+            "scientific-notation"
+          ],
+          "gateChallenges": [
+            "24-6",
+            "24-8"
+          ]
         }
       ]
     },
@@ -986,6 +1005,68 @@
           "gateChallenges": [
             "6-6",
             "6-8"
+          ]
+        },
+        {
+          "id": "multiplication-formulas",
+          "name": "乘法公式",
+          "tier": "jhs-g8",
+          "prereq": [
+            "exponent-laws",
+            "algebra-symbol"
+          ],
+          "diagnosticPrereq": [
+            "exponent-laws",
+            "algebra-symbol"
+          ],
+          "gateChallenges": [
+            "20-6",
+            "20-8"
+          ]
+        },
+        {
+          "id": "polynomial-operations",
+          "name": "多項式的四則運算",
+          "tier": "jhs-g8",
+          "prereq": [
+            "multiplication-formulas"
+          ],
+          "diagnosticPrereq": [
+            "multiplication-formulas"
+          ],
+          "gateChallenges": [
+            "21-6",
+            "21-8"
+          ]
+        },
+        {
+          "id": "factorization",
+          "name": "因式分解",
+          "tier": "jhs-g8",
+          "prereq": [
+            "multiplication-formulas"
+          ],
+          "diagnosticPrereq": [
+            "multiplication-formulas"
+          ],
+          "gateChallenges": [
+            "22-6",
+            "22-8"
+          ]
+        },
+        {
+          "id": "simultaneous-linear-2var",
+          "name": "二元一次聯立方程式",
+          "tier": "jhs-g8",
+          "prereq": [
+            "linear-eq-1var"
+          ],
+          "diagnosticPrereq": [
+            "linear-eq-1var"
+          ],
+          "gateChallenges": [
+            "23-6",
+            "23-8"
           ]
         }
       ]
@@ -1427,6 +1508,38 @@
             "src": "assets/geometry/geometry-symmetry.webp",
             "alt": "線對稱示意圖"
           }
+        },
+        {
+          "id": "pythagorean-theorem",
+          "name": "畢氏定理",
+          "tier": "jhs-g8",
+          "prereq": [
+            "square-root-radical",
+            "geometry-symbols"
+          ],
+          "diagnosticPrereq": [
+            "square-root-radical",
+            "geometry-symbols"
+          ],
+          "gateChallenges": [
+            "25-6",
+            "25-8"
+          ]
+        },
+        {
+          "id": "triangle-congruence",
+          "name": "三角形的全等",
+          "tier": "jhs-g8",
+          "prereq": [
+            "geometry-symbols"
+          ],
+          "diagnosticPrereq": [
+            "geometry-symbols"
+          ],
+          "gateChallenges": [
+            "26-6",
+            "26-8"
+          ]
         }
       ]
     },
@@ -1576,6 +1689,23 @@
           ],
           "diagnosticPrereq": [
             "growing-pattern"
+          ]
+        },
+        {
+          "id": "linear-function-graph",
+          "name": "一次函數與圖形",
+          "tier": "jhs-g8",
+          "prereq": [
+            "function-relation",
+            "coordinate-plane"
+          ],
+          "diagnosticPrereq": [
+            "function-relation",
+            "coordinate-plane"
+          ],
+          "gateChallenges": [
+            "27-6",
+            "27-8"
           ]
         }
       ]

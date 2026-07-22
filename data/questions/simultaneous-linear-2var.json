@@ -1,0 +1,375 @@
+{
+  "nodeId": "simultaneous-linear-2var",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "二元一次聯立方程式的代入、消去、解的意義與應用題庫；全數自編，未冒稱官方課綱代碼。"
+  },
+  "basicMastery": [
+    {
+      "id": "simultaneous-linear-2var-bm-1",
+      "type": "basic-mastery",
+      "challenge": "23-1",
+      "difficulty": "easy",
+      "errorPath": "substitution-sign-slip",
+      "stem": "解聯立方程式 y=x+1、2x+y=7。",
+      "options": [
+        "x=2，y=3",
+        "x=3，y=4",
+        "x=1，y=2",
+        "x=2，y=5"
+      ],
+      "answer": 0,
+      "explanation": "代入得 2x+(x+1)=7，3x=6，所以 x=2、y=3。"
+    },
+    {
+      "id": "simultaneous-linear-2var-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "23-1",
+      "difficulty": "medium",
+      "errorPath": "substitution-sign-slip",
+      "stem": "解聯立方程式 x=2y−1、x+y=8。",
+      "options": [
+        "x=3，y=2",
+        "x=7，y=1",
+        "x=5，y=3",
+        "x=6，y=2"
+      ],
+      "answer": 2,
+      "explanation": "代入得 (2y−1)+y=8，3y=9，y=3，x=5。"
+    },
+    {
+      "id": "simultaneous-linear-2var-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "23-1",
+      "difficulty": "hard",
+      "errorPath": "substitution-sign-slip",
+      "stem": "解聯立方程式 y=3−2x、3x−2y=15。",
+      "options": [
+        "x=−3，y=9",
+        "x=1，y=1",
+        "x=2，y=−1",
+        "x=3，y=−3"
+      ],
+      "answer": 3,
+      "explanation": "代入得 3x−2(3−2x)=15，7x−6=15，7x=21，所以x=3、y=−3。"
+    },
+    {
+      "id": "simultaneous-linear-2var-bm-2",
+      "type": "basic-mastery",
+      "challenge": "23-2",
+      "difficulty": "easy",
+      "errorPath": "elimination-operation-slip",
+      "stem": "解聯立方程式 x+y=9、x−y=3。",
+      "options": [
+        "x=3，y=6",
+        "x=6，y=3",
+        "x=9，y=3",
+        "x=6，y=6"
+      ],
+      "answer": 1,
+      "explanation": "兩式相加得 2x=12，x=6；代回得 y=3。"
+    },
+    {
+      "id": "simultaneous-linear-2var-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "23-2",
+      "difficulty": "medium",
+      "errorPath": "elimination-operation-slip",
+      "stem": "解聯立方程式 2x+y=8、3x−y=7。",
+      "options": [
+        "x=3，y=2",
+        "x=2，y=4",
+        "x=1，y=6",
+        "x=3，y=−2"
+      ],
+      "answer": 0,
+      "explanation": "兩式相加得 5x=15，x=3；代回 2x+y=8 得 y=2。"
+    },
+    {
+      "id": "simultaneous-linear-2var-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "23-2",
+      "difficulty": "hard",
+      "errorPath": "elimination-operation-slip",
+      "stem": "解聯立方程式 3x+2y=13、2x−3y=0。",
+      "options": [
+        "x=1，y=5",
+        "x=2，y=3",
+        "x=3，y=2",
+        "x=−3，y=−2"
+      ],
+      "answer": 2,
+      "explanation": "第一式乘3得 9x+6y=39，第二式乘2得 4x−6y=0，相加 13x=39，x=3；代回得 y=2。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "simultaneous-linear-2var-ci-1",
+      "type": "concept-id",
+      "challenge": "23-3",
+      "difficulty": "easy",
+      "errorPath": "ordered-pair-meaning",
+      "statement": "聯立方程式的解必須同時滿足兩個方程式。",
+      "correctAnswer": true,
+      "explanation": "解是共同解；只滿足其中一式的數對不能算聯立方程式的解。"
+    },
+    {
+      "id": "simultaneous-linear-2var-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "23-3",
+      "difficulty": "easy",
+      "errorPath": "ordered-pair-meaning",
+      "statement": "數對 (2,3) 滿足 x+y=5 與 x−y=1。",
+      "correctAnswer": false,
+      "explanation": "2+3=5，但 2−3=−1，不等於1，因此不是共同解。"
+    },
+    {
+      "id": "simultaneous-linear-2var-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "23-3",
+      "difficulty": "medium",
+      "errorPath": "ordered-pair-meaning",
+      "statement": "數對 (x,y) 的順序不可任意交換。",
+      "correctAnswer": true,
+      "explanation": "第一個數代表 x、第二個數代表 y；交換後通常會改變代入結果。"
+    },
+    {
+      "id": "simultaneous-linear-2var-ci-2",
+      "type": "concept-id",
+      "challenge": "23-4",
+      "difficulty": "easy",
+      "errorPath": "equivalent-equation-operation",
+      "statement": "把方程式兩邊同乘同一個非零數，不會改變它的解。",
+      "correctAnswer": true,
+      "explanation": "等式兩邊做相同的非零倍乘仍保持等值，可用於製造相反係數。"
+    },
+    {
+      "id": "simultaneous-linear-2var-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "23-4",
+      "difficulty": "medium",
+      "errorPath": "equivalent-equation-operation",
+      "statement": "消去法相加兩式時，只需相加左邊，不必相加右邊。",
+      "correctAnswer": false,
+      "explanation": "等式兩邊必須同步運算；兩式相加時左右兩邊都要相加。"
+    },
+    {
+      "id": "simultaneous-linear-2var-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "23-4",
+      "difficulty": "medium",
+      "errorPath": "equivalent-equation-operation",
+      "statement": "若某式已寫成 y=2x−1，代入法通常很方便。",
+      "correctAnswer": true,
+      "explanation": "可直接以 2x−1 取代另一式中的 y，使方程式只剩 x。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "simultaneous-linear-2var-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "23-5",
+      "difficulty": "easy",
+      "errorPath": "substitution-parentheses-error",
+      "problem": "解 y=5−x、2x+3y=9",
+      "wrongSolution": "小明代入成 2x+3·5−x=9。",
+      "errorOptions": [
+        "右邊應乘3",
+        "y 應改成 x+5",
+        "3 應乘整個 (5−x)，要寫 2x+3(5−x)=9",
+        "不能使用代入法"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "以 5−x 取代 y 時必須加括號，3y=3(5−x)。"
+    },
+    {
+      "id": "simultaneous-linear-2var-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "23-5",
+      "difficulty": "medium",
+      "errorPath": "substitution-parentheses-error",
+      "problem": "解 x=4−2y、3x−y=5",
+      "wrongSolution": "小華寫成 3·4−2y−y=5。",
+      "errorOptions": [
+        "3 應乘整個 (4−2y)，所以是 3(4−2y)−y=5",
+        "第二式應改成 3x+y=5",
+        "4 不可代入",
+        "答案必為 y=0"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "3x=3(4−2y)=12−6y，不能只讓3乘4。"
+    },
+    {
+      "id": "simultaneous-linear-2var-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "23-5",
+      "difficulty": "hard",
+      "errorPath": "substitution-parentheses-error",
+      "problem": "解 y=2−3x、−2x−4y=10",
+      "wrongSolution": "小安代入後寫成 −2x−8−12x=10。",
+      "errorOptions": [
+        "−4 應變成 +4",
+        "−4(2−3x)=−8+12x，第二項符號應為 +12x",
+        "右邊應為 −10",
+        "y 不可為負"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "−4y=−4(2−3x)=−8+12x，負乘負為正。"
+    },
+    {
+      "id": "simultaneous-linear-2var-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "23-6",
+      "difficulty": "easy",
+      "errorPath": "elimination-side-mismatch",
+      "problem": "由 x+y=7 與 x−y=1 消去 y",
+      "wrongSolution": "小哲左邊相加得 2x，右邊只保留7，所以寫 2x=7。",
+      "errorOptions": [
+        "不可消去 y",
+        "左邊應為 2y",
+        "應把7乘1",
+        "右邊也要相加，應為 2x=8"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "兩個等式相加時，右邊為 7+1=8，所以 x=4。"
+    },
+    {
+      "id": "simultaneous-linear-2var-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "23-6",
+      "difficulty": "medium",
+      "errorPath": "elimination-side-mismatch",
+      "problem": "由 2x+y=8 與 3x−y=7 消去 y",
+      "wrongSolution": "小文相加寫成 5x=1。",
+      "errorOptions": [
+        "左邊應相減為 −x",
+        "右邊應相加為 8+7=15，所以 5x=15",
+        "y 不會消去",
+        "答案應為 x=5"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "同向相加兩式得 5x+(y−y)=15，故 x=3。"
+    },
+    {
+      "id": "simultaneous-linear-2var-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "23-6",
+      "difficulty": "hard",
+      "errorPath": "elimination-side-mismatch",
+      "problem": "將 2x+3y=7 乘2以便消去 y",
+      "wrongSolution": "小傑只乘左邊，寫成 4x+6y=7。",
+      "errorOptions": [
+        "等式右邊也要乘2，應為 4x+6y=14",
+        "只要乘 x 項",
+        "應改成 2x+6y=14",
+        "方程式不可倍乘"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "等式兩邊同乘2，才得到等價式 4x+6y=14。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "simultaneous-linear-2var-ca-1",
+      "type": "context-application",
+      "challenge": "23-7",
+      "difficulty": "easy",
+      "errorPath": "sum-difference-modeling",
+      "scenario": "兩數和為 20，差為 4，較大數為 x、較小數為 y。",
+      "question": "兩數各是多少？",
+      "options": [
+        "x=14，y=6",
+        "x=12，y=8",
+        "x=10，y=10",
+        "x=16，y=4"
+      ],
+      "answer": 1,
+      "explanation": "x+y=20、x−y=4，相加得2x=24，所以 x=12、y=8。"
+    },
+    {
+      "id": "simultaneous-linear-2var-ca-v7-2",
+      "type": "context-application",
+      "challenge": "23-7",
+      "difficulty": "medium",
+      "errorPath": "sum-difference-modeling",
+      "scenario": "哥哥與弟弟年齡和為 30 歲，哥哥比弟弟大 6 歲。",
+      "question": "哥哥與弟弟各幾歲？",
+      "options": [
+        "24、6",
+        "20、10",
+        "16、14",
+        "18、12"
+      ],
+      "answer": 3,
+      "explanation": "設哥哥 x、弟弟 y，x+y=30、x−y=6；相加得 x=18，再得 y=12。"
+    },
+    {
+      "id": "simultaneous-linear-2var-ca-v7-3",
+      "type": "context-application",
+      "challenge": "23-7",
+      "difficulty": "hard",
+      "errorPath": "sum-difference-modeling",
+      "scenario": "甲乙兩數的和為 52，甲的2倍比乙多 8。",
+      "question": "甲、乙各是多少？",
+      "options": [
+        "18、34",
+        "24、28",
+        "20、32",
+        "30、22"
+      ],
+      "answer": 2,
+      "explanation": "設甲 x、乙 y，x+y=52、2x−y=8；相加得3x=60，x=20、y=32。"
+    },
+    {
+      "id": "simultaneous-linear-2var-ca-2",
+      "type": "context-application",
+      "challenge": "23-8",
+      "difficulty": "easy",
+      "errorPath": "chicken-rabbit-equation-model",
+      "scenario": "籠中有雞與兔共 10 隻，共有 28 隻腳。",
+      "question": "雞、兔各幾隻？",
+      "options": [
+        "雞6、兔4",
+        "雞4、兔6",
+        "雞8、兔2",
+        "雞5、兔5"
+      ],
+      "answer": 0,
+      "explanation": "設雞 x、兔 y，x+y=10、2x+4y=28；第二式除2得 x+2y=14，故 y=4、x=6。"
+    },
+    {
+      "id": "simultaneous-linear-2var-ca-v8-2",
+      "type": "context-application",
+      "challenge": "23-8",
+      "difficulty": "medium",
+      "errorPath": "chicken-rabbit-equation-model",
+      "scenario": "籠中雞兔共 18 隻，共有 52 隻腳。",
+      "question": "兔有幾隻？",
+      "options": [
+        "6",
+        "10",
+        "8",
+        "12"
+      ],
+      "answer": 2,
+      "explanation": "x+y=18、2x+4y=52；以第二式減2倍第一式得2y=16，所以 y=8。"
+    },
+    {
+      "id": "simultaneous-linear-2var-ca-v8-3",
+      "type": "context-application",
+      "challenge": "23-8",
+      "difficulty": "hard",
+      "errorPath": "chicken-rabbit-equation-model",
+      "scenario": "停車場有機車與汽車共 25 輛，輪子共 76 個，機車2輪、汽車4輪。",
+      "question": "汽車有幾輛？",
+      "options": [
+        "11",
+        "12",
+        "14",
+        "13"
+      ],
+      "answer": 3,
+      "explanation": "設機車 x、汽車 y，x+y=25、2x+4y=76；減去2倍第一式得2y=26，所以 y=13。"
+    }
+  ]
+}

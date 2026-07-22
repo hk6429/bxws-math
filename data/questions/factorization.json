@@ -1,0 +1,375 @@
+{
+  "nodeId": "factorization",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "提公因式、平方差、完全平方式與十字交乘法題庫；全數自編，未冒稱官方課綱代碼。"
+  },
+  "basicMastery": [
+    {
+      "id": "factorization-bm-1",
+      "type": "basic-mastery",
+      "challenge": "22-1",
+      "difficulty": "easy",
+      "errorPath": "common-factor-incomplete",
+      "stem": "因式分解 6x+12。",
+      "options": [
+        "2(3x+12)",
+        "3(2x+12)",
+        "6(x+12)",
+        "6(x+2)"
+      ],
+      "answer": 3,
+      "explanation": "6 是兩項公因數，6x+12=6(x+2)。"
+    },
+    {
+      "id": "factorization-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "22-1",
+      "difficulty": "medium",
+      "errorPath": "common-factor-incomplete",
+      "stem": "完整因式分解 8x²−12x。",
+      "options": [
+        "4(2x²−3x)",
+        "4x(2x−3)",
+        "2x(4x−12)",
+        "8x(x−12)"
+      ],
+      "answer": 1,
+      "explanation": "最大公因式為 4x，完整提出後得 4x(2x−3)。"
+    },
+    {
+      "id": "factorization-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "22-1",
+      "difficulty": "medium",
+      "errorPath": "common-factor-incomplete",
+      "stem": "完整因式分解 15a³b−10a²b²。",
+      "options": [
+        "5ab(3a²−2ab)",
+        "5a²b²(3a−2b)",
+        "5a²b(3a−2b)",
+        "10a²b(5a−b)"
+      ],
+      "answer": 2,
+      "explanation": "最大公因式是 5a²b，完整提出後為 5a²b(3a−2b)。"
+    },
+    {
+      "id": "factorization-bm-2",
+      "type": "basic-mastery",
+      "challenge": "22-2",
+      "difficulty": "easy",
+      "errorPath": "difference-of-squares-factor",
+      "stem": "因式分解 x²−25。",
+      "options": [
+        "(x+5)(x−5)",
+        "(x−5)²",
+        "(x+25)(x−1)",
+        "x(x−25)"
+      ],
+      "answer": 0,
+      "explanation": "x²−25=x²−5²=(x+5)(x−5)。"
+    },
+    {
+      "id": "factorization-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "22-2",
+      "difficulty": "medium",
+      "errorPath": "difference-of-squares-factor",
+      "stem": "因式分解 9y²−16。",
+      "options": [
+        "(9y+4)(y−4)",
+        "(3y−4)²",
+        "(9y+16)(y−1)",
+        "(3y+4)(3y−4)"
+      ],
+      "answer": 3,
+      "explanation": "9y²−16=(3y)²−4²=(3y+4)(3y−4)。"
+    },
+    {
+      "id": "factorization-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "22-2",
+      "difficulty": "hard",
+      "errorPath": "difference-of-squares-factor",
+      "stem": "因式分解 4a²−49b²。",
+      "options": [
+        "(4a+49b)(a−b)",
+        "(2a+7b)(2a−7b)",
+        "(2a−7b)²",
+        "(4a+7b)(a−7b)"
+      ],
+      "answer": 1,
+      "explanation": "4a²−49b²=(2a)²−(7b)²=(2a+7b)(2a−7b)。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "factorization-ci-1",
+      "type": "concept-id",
+      "challenge": "22-3",
+      "difficulty": "easy",
+      "errorPath": "perfect-square-pattern",
+      "statement": "x²+6x+9 可因式分解為 (x+3)²。",
+      "correctAnswer": true,
+      "explanation": "x²+6x+9=x²+2·x·3+3²，符合完全平方公式。"
+    },
+    {
+      "id": "factorization-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "22-3",
+      "difficulty": "easy",
+      "errorPath": "perfect-square-pattern",
+      "statement": "x²−10x+25=(x+5)²。",
+      "correctAnswer": false,
+      "explanation": "中間項為負，正確為 (x−5)²=x²−10x+25。"
+    },
+    {
+      "id": "factorization-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "22-3",
+      "difficulty": "medium",
+      "errorPath": "perfect-square-pattern",
+      "statement": "4x²+12x+9=(2x+3)²。",
+      "correctAnswer": true,
+      "explanation": "(2x+3)²=4x²+12x+9。"
+    },
+    {
+      "id": "factorization-ci-2",
+      "type": "concept-id",
+      "challenge": "22-4",
+      "difficulty": "easy",
+      "errorPath": "cross-product-sum",
+      "statement": "x²+5x+6=(x+2)(x+3)。",
+      "correctAnswer": true,
+      "explanation": "2×3=6 且 2+3=5，展開即 x²+5x+6。"
+    },
+    {
+      "id": "factorization-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "22-4",
+      "difficulty": "medium",
+      "errorPath": "cross-product-sum",
+      "statement": "x²+7x+12 可分解為 (x+2)(x+6)。",
+      "correctAnswer": false,
+      "explanation": "2×6=12，但 2+6=8；應選 3、4，得 (x+3)(x+4)。"
+    },
+    {
+      "id": "factorization-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "22-4",
+      "difficulty": "medium",
+      "errorPath": "cross-product-sum",
+      "statement": "x²−x−6=(x−3)(x+2)。",
+      "correctAnswer": true,
+      "explanation": "(−3)×2=−6 且 −3+2=−1，展開為 x²−x−6。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "factorization-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "22-5",
+      "difficulty": "easy",
+      "errorPath": "factor-sign-pair",
+      "problem": "因式分解 x²−5x+6",
+      "wrongSolution": "小明寫成 (x+2)(x+3)。",
+      "errorOptions": [
+        "6 應改成 −6",
+        "常數為正且中間項為負，兩數應都負，答案為 (x−2)(x−3)",
+        "應寫成 (x−1)(x−6)",
+        "無法因式分解"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "(−2)(−3)=6，且 −2+(−3)=−5，所以為 (x−2)(x−3)。"
+    },
+    {
+      "id": "factorization-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "22-5",
+      "difficulty": "medium",
+      "errorPath": "factor-sign-pair",
+      "problem": "因式分解 x²+x−12",
+      "wrongSolution": "小華寫成 (x+3)(x+4)。",
+      "errorOptions": [
+        "兩數應為 6 與 2",
+        "中間項應刪除",
+        "答案為 (x−3)(x−4)",
+        "乘積應為 −12，應取 4 與 −3，答案為 (x+4)(x−3)"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "4×(−3)=−12 且 4+(−3)=1，所以為 (x+4)(x−3)。"
+    },
+    {
+      "id": "factorization-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "22-5",
+      "difficulty": "hard",
+      "errorPath": "factor-sign-pair",
+      "problem": "因式分解 2x²−5x−3",
+      "wrongSolution": "小安寫成 (2x−3)(x−1)。",
+      "errorOptions": [
+        "展開會得 2x²−5x+3，常數符號錯；應為 (2x+1)(x−3)",
+        "首項係數應為 1",
+        "答案應為 (2x−1)(x−3)",
+        "中間項無法產生"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "(2x+1)(x−3)=2x²−6x+x−3=2x²−5x−3。"
+    },
+    {
+      "id": "factorization-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "22-6",
+      "difficulty": "easy",
+      "errorPath": "perfect-square-middle-term",
+      "problem": "因式分解 x²+8x+16",
+      "wrongSolution": "小哲寫成 (x+8)²。",
+      "errorOptions": [
+        "應為 (x+16)(x+1)",
+        "應為 (x−4)²",
+        "平方後常數會是 64；正確為 (x+4)²",
+        "8x 不需處理"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "中間項 8x=2·x·4 且 16=4²，所以是 (x+4)²。"
+    },
+    {
+      "id": "factorization-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "22-6",
+      "difficulty": "medium",
+      "errorPath": "perfect-square-middle-term",
+      "problem": "因式分解 9x²−24x+16",
+      "wrongSolution": "小文寫成 (3x−8)²。",
+      "errorOptions": [
+        "常數平方根是 4，且 −2·3x·4=−24x，應為 (3x−4)²",
+        "應為 (9x−4)²",
+        "應為 (3x+4)²",
+        "不能因式分解"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "(3x−4)²=9x²−24x+16。"
+    },
+    {
+      "id": "factorization-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "22-6",
+      "difficulty": "hard",
+      "errorPath": "perfect-square-middle-term",
+      "problem": "判斷 4x²+10x+9 是否為完全平方式",
+      "wrongSolution": "小傑因首末項都是平方數，判定為 (2x+3)²。",
+      "errorOptions": [
+        "中間項必須為負",
+        "首項不是平方數",
+        "末項不是平方數",
+        "(2x+3)² 的中間項是 12x，不是 10x，因此不是該完全平方式"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "(2x+3)²=4x²+12x+9，與原式的 10x 不同。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "factorization-ca-1",
+      "type": "context-application",
+      "challenge": "22-7",
+      "difficulty": "easy",
+      "errorPath": "rectangle-dimensions-from-area",
+      "scenario": "長方形面積為 x²+5x+6 平方公尺。",
+      "question": "下列哪組長、寬可對應此面積？",
+      "options": [
+        "x+2 與 x+3",
+        "x+1 與 x+6",
+        "x−2 與 x−3",
+        "x+5 與 x+1"
+      ],
+      "answer": 0,
+      "explanation": "x²+5x+6=(x+2)(x+3)，所以長、寬可為 x+2 與 x+3。"
+    },
+    {
+      "id": "factorization-ca-v7-2",
+      "type": "context-application",
+      "challenge": "22-7",
+      "difficulty": "medium",
+      "errorPath": "rectangle-dimensions-from-area",
+      "scenario": "長方形面積為 2x²+7x+3 平方公尺。",
+      "question": "下列哪組邊長乘積正確？",
+      "options": [
+        "(x+1)(x+3)",
+        "(2x+3)(x+1)",
+        "(2x+1)(x+3)",
+        "(2x−1)(x−3)"
+      ],
+      "answer": 2,
+      "explanation": "(2x+1)(x+3)=2x²+6x+x+3=2x²+7x+3。"
+    },
+    {
+      "id": "factorization-ca-v7-3",
+      "type": "context-application",
+      "challenge": "22-7",
+      "difficulty": "hard",
+      "errorPath": "rectangle-dimensions-from-area",
+      "scenario": "長方形面積為 6x²−x−2 平方公尺。",
+      "question": "下列哪組邊長乘積正確？",
+      "options": [
+        "(3x+1)(2x−2)",
+        "(3x−2)(2x+1)",
+        "(6x+1)(x−2)",
+        "(3x+2)(2x−1)"
+      ],
+      "answer": 1,
+      "explanation": "(3x−2)(2x+1)=6x²+3x−4x−2=6x²−x−2。"
+    },
+    {
+      "id": "factorization-ca-2",
+      "type": "context-application",
+      "challenge": "22-8",
+      "difficulty": "easy",
+      "errorPath": "area-difference-factorization",
+      "scenario": "大正方形邊長 x 公尺，小正方形邊長 4 公尺，兩者面積相差 x²−16。",
+      "question": "面積差的因式分解為何？",
+      "options": [
+        "x(x−16)",
+        "(x−4)²",
+        "(x+8)(x−2)",
+        "(x+4)(x−4)"
+      ],
+      "answer": 3,
+      "explanation": "x²−16=x²−4²=(x+4)(x−4)。"
+    },
+    {
+      "id": "factorization-ca-v8-2",
+      "type": "context-application",
+      "challenge": "22-8",
+      "difficulty": "medium",
+      "errorPath": "area-difference-factorization",
+      "scenario": "外正方形邊長 3x 公尺，內正方形邊長 5 公尺。",
+      "question": "兩面積差 9x²−25 可分解為何？",
+      "options": [
+        "(9x+5)(x−5)",
+        "(3x+5)(3x−5)",
+        "(3x−5)²",
+        "(9x+25)(x−1)"
+      ],
+      "answer": 1,
+      "explanation": "9x²−25=(3x)²−5²=(3x+5)(3x−5)。"
+    },
+    {
+      "id": "factorization-ca-v8-3",
+      "type": "context-application",
+      "challenge": "22-8",
+      "difficulty": "hard",
+      "errorPath": "area-difference-factorization",
+      "scenario": "一塊面積為 4x²−36 平方公尺的區域要做完整因式分解。",
+      "question": "完整因式分解為何？",
+      "options": [
+        "(2x+3)(2x−3)",
+        "2(x+6)(x−6)",
+        "4(x+3)(x−3)",
+        "4(x−3)²"
+      ],
+      "answer": 2,
+      "explanation": "先提出公因數4：4x²−36=4(x²−9)，再用平方差得4(x+3)(x−3)。"
+    }
+  ]
+}

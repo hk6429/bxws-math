@@ -1,0 +1,375 @@
+{
+  "nodeId": "square-root-radical",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "平方根定義、根號化簡、根式運算與估算題庫；全數自編，未冒稱官方課綱代碼。"
+  },
+  "basicMastery": [
+    {
+      "id": "square-root-radical-bm-1",
+      "type": "basic-mastery",
+      "challenge": "24-1",
+      "difficulty": "easy",
+      "errorPath": "principal-root-sign-confusion",
+      "stem": "25 的平方根為何？",
+      "options": [
+        "5",
+        "±5",
+        "−5",
+        "±25"
+      ],
+      "answer": 1,
+      "explanation": "5²=25 且 (−5)²=25，所以25的平方根是 ±5。"
+    },
+    {
+      "id": "square-root-radical-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "24-1",
+      "difficulty": "easy",
+      "errorPath": "principal-root-sign-confusion",
+      "stem": "√49 的值為何？",
+      "options": [
+        "49",
+        "−7",
+        "±7",
+        "7"
+      ],
+      "answer": 3,
+      "explanation": "根號符號 √ 表示非負的主平方根，所以 √49=7。"
+    },
+    {
+      "id": "square-root-radical-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "24-1",
+      "difficulty": "medium",
+      "errorPath": "principal-root-sign-confusion",
+      "stem": "方程式 x²=36 的解為何？",
+      "options": [
+        "x=±6",
+        "x=−6",
+        "x=6",
+        "x=18"
+      ],
+      "answer": 0,
+      "explanation": "6²與(−6)²都等於36，因此 x=±6。"
+    },
+    {
+      "id": "square-root-radical-bm-2",
+      "type": "basic-mastery",
+      "challenge": "24-2",
+      "difficulty": "easy",
+      "errorPath": "radical-factor-extraction",
+      "stem": "化簡 √8。",
+      "options": [
+        "4√2",
+        "√4",
+        "2√2",
+        "8√2"
+      ],
+      "answer": 2,
+      "explanation": "√8=√(4×2)=√4·√2=2√2。"
+    },
+    {
+      "id": "square-root-radical-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "24-2",
+      "difficulty": "medium",
+      "errorPath": "radical-factor-extraction",
+      "stem": "化簡 √72。",
+      "options": [
+        "8√2",
+        "6√2",
+        "3√8",
+        "12√2"
+      ],
+      "answer": 1,
+      "explanation": "72=36×2，所以 √72=6√2。"
+    },
+    {
+      "id": "square-root-radical-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "24-2",
+      "difficulty": "medium",
+      "errorPath": "radical-factor-extraction",
+      "stem": "化簡 3√50。",
+      "options": [
+        "6√5",
+        "5√6",
+        "30√5",
+        "15√2"
+      ],
+      "answer": 3,
+      "explanation": "√50=√(25×2)=5√2，所以 3√50=15√2。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "square-root-radical-ci-1",
+      "type": "concept-id",
+      "challenge": "24-3",
+      "difficulty": "easy",
+      "errorPath": "square-root-definition",
+      "statement": "9 的平方根有 3 與 −3 兩個。",
+      "correctAnswer": true,
+      "explanation": "3²=9 且 (−3)²=9。"
+    },
+    {
+      "id": "square-root-radical-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "24-3",
+      "difficulty": "easy",
+      "errorPath": "square-root-definition",
+      "statement": "√16=±4。",
+      "correctAnswer": false,
+      "explanation": "√16 表示主平方根，值是4；只有問16的平方根或解 x²=16 時才寫 ±4。"
+    },
+    {
+      "id": "square-root-radical-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "24-3",
+      "difficulty": "medium",
+      "errorPath": "square-root-definition",
+      "statement": "0 的平方根只有 0。",
+      "correctAnswer": true,
+      "explanation": "只有0平方後等於0，而 +0 與 −0 是同一個數。"
+    },
+    {
+      "id": "square-root-radical-ci-2",
+      "type": "concept-id",
+      "challenge": "24-4",
+      "difficulty": "easy",
+      "errorPath": "radical-like-term-rule",
+      "statement": "2√3 與 5√3 是同類根式，可相加為 7√3。",
+      "correctAnswer": true,
+      "explanation": "根號部分相同，只需相加係數：2+5=7。"
+    },
+    {
+      "id": "square-root-radical-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "24-4",
+      "difficulty": "easy",
+      "errorPath": "radical-like-term-rule",
+      "statement": "√2+√3=√5。",
+      "correctAnswer": false,
+      "explanation": "不同被開方數的根式不能直接合併；平方檢查也可知兩邊不等。"
+    },
+    {
+      "id": "square-root-radical-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "24-4",
+      "difficulty": "medium",
+      "errorPath": "radical-like-term-rule",
+      "statement": "√12 與 √3 化簡後是同類根式。",
+      "correctAnswer": true,
+      "explanation": "√12=2√3，所以可與 √3 合併。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "square-root-radical-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "24-5",
+      "difficulty": "easy",
+      "errorPath": "radical-add-like-terms",
+      "problem": "計算 3√2+4√2",
+      "wrongSolution": "小明寫成 7√4=14。",
+      "errorOptions": [
+        "係數不能相加",
+        "根號內應相加成4",
+        "答案應為12√2",
+        "同類根式只加係數，答案為 7√2"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "3√2+4√2=(3+4)√2=7√2，根號內的2不變。"
+    },
+    {
+      "id": "square-root-radical-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "24-5",
+      "difficulty": "medium",
+      "errorPath": "radical-add-like-terms",
+      "problem": "計算 √8+√18",
+      "wrongSolution": "小華寫成 √26。",
+      "errorOptions": [
+        "根號內應相乘",
+        "先化簡：√8=2√2、√18=3√2，和為5√2",
+        "答案為26",
+        "兩項不能化簡"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "√8+√18=2√2+3√2=5√2。"
+    },
+    {
+      "id": "square-root-radical-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "24-5",
+      "difficulty": "hard",
+      "errorPath": "radical-add-like-terms",
+      "problem": "計算 2√12−√27",
+      "wrongSolution": "小安直接寫成 √(24−27)=√(−3)。",
+      "errorOptions": [
+        "答案為 −√3",
+        "應把根號內相減",
+        "先化簡得 4√3−3√3=√3",
+        "根式前係數可移入而不平方"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "2√12=2·2√3=4√3，√27=3√3，所以差為 √3。"
+    },
+    {
+      "id": "square-root-radical-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "24-6",
+      "difficulty": "easy",
+      "errorPath": "radical-product-quotient-slip",
+      "problem": "計算 √3×√12",
+      "wrongSolution": "小哲寫成 √15。",
+      "errorOptions": [
+        "乘法應乘被開方數：√36=6",
+        "應算 √(12−3)",
+        "答案為 3√12",
+        "根式不可相乘"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "√3·√12=√(3×12)=√36=6。"
+    },
+    {
+      "id": "square-root-radical-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "24-6",
+      "difficulty": "medium",
+      "errorPath": "radical-product-quotient-slip",
+      "problem": "計算 √48÷√3",
+      "wrongSolution": "小文寫成 √45。",
+      "errorOptions": [
+        "答案為16",
+        "應算 √51",
+        "除法應除被開方數：√(48÷3)=√16=4",
+        "不可約分"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "√48÷√3=√(48/3)=√16=4。"
+    },
+    {
+      "id": "square-root-radical-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "24-6",
+      "difficulty": "hard",
+      "errorPath": "radical-product-quotient-slip",
+      "problem": "計算 (2√6)(3√15)",
+      "wrongSolution": "小傑只乘根式，寫成 √90。",
+      "errorOptions": [
+        "答案為5√21",
+        "係數與根式都要乘：6√90=18√10",
+        "答案為6√21",
+        "係數應相加"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "2·3·√(6×15)=6√90=6·3√10=18√10。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "square-root-radical-ca-1",
+      "type": "context-application",
+      "challenge": "24-7",
+      "difficulty": "easy",
+      "errorPath": "radical-integer-bounds",
+      "scenario": "正方形面積為 50 平方公尺，邊長為 √50 公尺。",
+      "question": "邊長介於哪兩個相鄰整數之間？",
+      "options": [
+        "5與6",
+        "6與7",
+        "7與8",
+        "8與9"
+      ],
+      "answer": 2,
+      "explanation": "7²=49<50<64=8²，所以 7<√50<8。"
+    },
+    {
+      "id": "square-root-radical-ca-v7-2",
+      "type": "context-application",
+      "challenge": "24-7",
+      "difficulty": "medium",
+      "errorPath": "radical-integer-bounds",
+      "scenario": "某距離為 √70 公里。",
+      "question": "此距離介於哪兩個相鄰整數之間？",
+      "options": [
+        "8與9",
+        "7與8",
+        "6與7",
+        "9與10"
+      ],
+      "answer": 0,
+      "explanation": "8²=64<70<81=9²，所以 √70 介於8與9。"
+    },
+    {
+      "id": "square-root-radical-ca-v7-3",
+      "type": "context-application",
+      "challenge": "24-7",
+      "difficulty": "hard",
+      "errorPath": "radical-integer-bounds",
+      "scenario": "機器零件長度為 3√10 公分。",
+      "question": "此長度介於哪兩個相鄰整數之間？",
+      "options": [
+        "7與8",
+        "8與9",
+        "10與11",
+        "9與10"
+      ],
+      "answer": 3,
+      "explanation": "(3√10)²=90，而9²=81<90<100=10²，所以9<3√10<10。"
+    },
+    {
+      "id": "square-root-radical-ca-2",
+      "type": "context-application",
+      "challenge": "24-8",
+      "difficulty": "easy",
+      "errorPath": "radical-decimal-estimation",
+      "scenario": "計算器顯示 √2≈1.414。",
+      "question": "5√2 約為多少？",
+      "options": [
+        "5.414",
+        "7.07",
+        "2.828",
+        "10.414"
+      ],
+      "answer": 1,
+      "explanation": "5√2≈5×1.414=7.070。"
+    },
+    {
+      "id": "square-root-radical-ca-v8-2",
+      "type": "context-application",
+      "challenge": "24-8",
+      "difficulty": "medium",
+      "errorPath": "radical-decimal-estimation",
+      "scenario": "一段長度為 4+2√2 公尺，取 √2≈1.414。",
+      "question": "此長度約為多少公尺？",
+      "options": [
+        "5.414",
+        "10.656",
+        "8.242",
+        "6.828"
+      ],
+      "answer": 3,
+      "explanation": "4+2×1.414=4+2.828=6.828。"
+    },
+    {
+      "id": "square-root-radical-ca-v8-3",
+      "type": "context-application",
+      "challenge": "24-8",
+      "difficulty": "hard",
+      "errorPath": "radical-decimal-estimation",
+      "scenario": "兩段長度分別為 3√2 與 √8 公尺，取 √2≈1.414。",
+      "question": "總長約為多少公尺？",
+      "options": [
+        "7.07",
+        "5.656",
+        "8.484",
+        "4.242"
+      ],
+      "answer": 0,
+      "explanation": "√8=2√2，總長為5√2≈5×1.414=7.07。"
+    }
+  ]
+}

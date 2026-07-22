@@ -1,0 +1,375 @@
+{
+  "nodeId": "polynomial-operations",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "多項式四則運算、次數與係數辨識題庫；全數自編，未冒稱官方課綱代碼。"
+  },
+  "basicMastery": [
+    {
+      "id": "polynomial-operations-bm-1",
+      "type": "basic-mastery",
+      "challenge": "21-1",
+      "difficulty": "easy",
+      "errorPath": "combine-unlike-terms",
+      "stem": "化簡 (3x²+2x−1)+(x²−5x+4)。",
+      "options": [
+        "3x⁴−3x+3",
+        "4x²+7x+3",
+        "4x²−3x+3",
+        "4x²−3x−5"
+      ],
+      "answer": 2,
+      "explanation": "同類項分別相加：3x²+x²=4x²、2x−5x=−3x、−1+4=3。"
+    },
+    {
+      "id": "polynomial-operations-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "21-1",
+      "difficulty": "medium",
+      "errorPath": "combine-unlike-terms",
+      "stem": "化簡 (5a²−3a+2)−(2a²+a−4)。",
+      "options": [
+        "3a²−4a+6",
+        "7a²−4a+6",
+        "3a²−2a−2",
+        "3a²−4a−2"
+      ],
+      "answer": 0,
+      "explanation": "去括號得 5a²−3a+2−2a²−a+4=3a²−4a+6。"
+    },
+    {
+      "id": "polynomial-operations-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "21-1",
+      "difficulty": "medium",
+      "errorPath": "combine-unlike-terms",
+      "stem": "化簡 4y−(2y²−3y+5)。",
+      "options": [
+        "−2y²+y−5",
+        "−2y²+7y−5",
+        "2y²+7y+5",
+        "−2y²−7y−5"
+      ],
+      "answer": 1,
+      "explanation": "負號分配後為 4y−2y²+3y−5=−2y²+7y−5。"
+    },
+    {
+      "id": "polynomial-operations-bm-2",
+      "type": "basic-mastery",
+      "challenge": "21-2",
+      "difficulty": "easy",
+      "errorPath": "distributive-multiplication-slip",
+      "stem": "計算 3x(2x−5)。",
+      "options": [
+        "5x²−15x",
+        "6x²−5",
+        "6x−15",
+        "6x²−15x"
+      ],
+      "answer": 3,
+      "explanation": "3x 分別乘兩項：3x·2x=6x²，3x·(−5)=−15x。"
+    },
+    {
+      "id": "polynomial-operations-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "21-2",
+      "difficulty": "medium",
+      "errorPath": "distributive-multiplication-slip",
+      "stem": "計算 (x+2)(x−3)。",
+      "options": [
+        "x²−6",
+        "x²+5x−6",
+        "x²−x−6",
+        "x²−5x+6"
+      ],
+      "answer": 2,
+      "explanation": "x²−3x+2x−6=x²−x−6。"
+    },
+    {
+      "id": "polynomial-operations-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "21-2",
+      "difficulty": "hard",
+      "errorPath": "distributive-multiplication-slip",
+      "stem": "計算 (2x−1)(x²+3x+4)。",
+      "options": [
+        "2x³+5x²+5x−4",
+        "2x³+6x²+8x−1",
+        "2x³−5x²+5x−4",
+        "2x³+5x²+11x−4"
+      ],
+      "answer": 0,
+      "explanation": "2x³+6x²+8x−x²−3x−4=2x³+5x²+5x−4。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "polynomial-operations-ci-1",
+      "type": "concept-id",
+      "challenge": "21-3",
+      "difficulty": "easy",
+      "errorPath": "degree-coefficient-confusion",
+      "statement": "多項式 4x³−2x+7 的次數是 3。",
+      "correctAnswer": true,
+      "explanation": "最高次非零項為 4x³，所以多項式次數是 3。"
+    },
+    {
+      "id": "polynomial-operations-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "21-3",
+      "difficulty": "easy",
+      "errorPath": "degree-coefficient-confusion",
+      "statement": "多項式 −5x²+3x−1 的二次項係數是 5。",
+      "correctAnswer": false,
+      "explanation": "二次項是 −5x²，其係數包含符號，為 −5。"
+    },
+    {
+      "id": "polynomial-operations-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "21-3",
+      "difficulty": "medium",
+      "errorPath": "degree-coefficient-confusion",
+      "statement": "非零常數多項式的次數是 0。",
+      "correctAnswer": true,
+      "explanation": "非零常數可視為常數乘 x⁰，因此次數為 0。"
+    },
+    {
+      "id": "polynomial-operations-ci-2",
+      "type": "concept-id",
+      "challenge": "21-4",
+      "difficulty": "easy",
+      "errorPath": "like-term-identification",
+      "statement": "3x² 與 −7x² 是同類項。",
+      "correctAnswer": true,
+      "explanation": "兩項的文字部分都完全相同，都是 x²。"
+    },
+    {
+      "id": "polynomial-operations-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "21-4",
+      "difficulty": "easy",
+      "errorPath": "like-term-identification",
+      "statement": "2x 與 2x² 可以直接相加成 4x³。",
+      "correctAnswer": false,
+      "explanation": "x 與 x² 次數不同，不是同類項，且相加不會把指數相加。"
+    },
+    {
+      "id": "polynomial-operations-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "21-4",
+      "difficulty": "medium",
+      "errorPath": "like-term-identification",
+      "statement": "多項式相加減時，只能合併文字與次數都相同的同類項。",
+      "correctAnswer": true,
+      "explanation": "同類項才能以係數相加減；不同次數的項必須保留。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "polynomial-operations-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "21-5",
+      "difficulty": "easy",
+      "errorPath": "subtraction-parentheses-sign",
+      "problem": "計算 (4x+3)−(x−2)",
+      "wrongSolution": "小明寫成 3x+1。",
+      "errorOptions": [
+        "括號前負號應使 −2 變成 +2，答案為 3x+5",
+        "4x−x 應為 4",
+        "常數應相乘",
+        "答案應為 5x+1"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "4x+3−x+2=3x+5；第二個括號每一項都要變號。"
+    },
+    {
+      "id": "polynomial-operations-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "21-5",
+      "difficulty": "medium",
+      "errorPath": "subtraction-parentheses-sign",
+      "problem": "計算 (2x²−x+4)−(x²+3x−5)",
+      "wrongSolution": "小華寫成 x²−4x−1。",
+      "errorOptions": [
+        "二次項應為 3x²",
+        "一次項應為 2x",
+        "−5 變號後應為 +5，常數為 9",
+        "不能做減法"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "2x²−x+4−x²−3x+5=x²−4x+9。"
+    },
+    {
+      "id": "polynomial-operations-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "21-5",
+      "difficulty": "medium",
+      "errorPath": "subtraction-parentheses-sign",
+      "problem": "計算 7−(2x−3)",
+      "wrongSolution": "小安寫成 4−2x。",
+      "errorOptions": [
+        "應為 7−2x−3",
+        "答案為 2x+10",
+        "7 應乘 2x",
+        "括號內 −3 變號為 +3，所以答案為 10−2x"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "7−(2x−3)=7−2x+3=10−2x。"
+    },
+    {
+      "id": "polynomial-operations-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "21-6",
+      "difficulty": "easy",
+      "errorPath": "division-term-omission",
+      "problem": "計算 (6x²−9x)÷3x",
+      "wrongSolution": "小哲只算第一項，寫成 2x。",
+      "errorOptions": [
+        "答案應為 2x²−3x",
+        "每一項都要除以 3x，答案為 2x−3",
+        "除法要改成加法",
+        "常數項應為 +3"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "6x²÷3x=2x，−9x÷3x=−3，所以商為 2x−3。"
+    },
+    {
+      "id": "polynomial-operations-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "21-6",
+      "difficulty": "medium",
+      "errorPath": "division-term-omission",
+      "problem": "計算 (8a³+4a²−12a)÷4a",
+      "wrongSolution": "小文寫成 2a²+a−12。",
+      "errorOptions": [
+        "中項應為 4a",
+        "三項都要乘 4a",
+        "首項應為 2a³",
+        "末項 −12a÷4a=−3，不是 −12"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "逐項相除得 2a²+a−3。"
+    },
+    {
+      "id": "polynomial-operations-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "21-6",
+      "difficulty": "hard",
+      "errorPath": "division-term-omission",
+      "problem": "計算 (15x⁴−10x³+5x²)÷5x²",
+      "wrongSolution": "小傑寫成 3x²−2x。",
+      "errorOptions": [
+        "中項應為 −2x⁵",
+        "首項應為 3x⁶",
+        "第三項 5x²÷5x²=1 被漏掉，答案為 3x²−2x+1",
+        "商不能含常數"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "三項逐一除以 5x²，依序為 3x²、−2x、1。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "polynomial-operations-ca-1",
+      "type": "context-application",
+      "challenge": "21-7",
+      "difficulty": "easy",
+      "errorPath": "perimeter-polynomial-combination",
+      "scenario": "長方形長為 3x+2 公尺，寬為 x−1 公尺。",
+      "question": "周長的多項式為何？",
+      "options": [
+        "4x+1",
+        "8x−2",
+        "6x²−2",
+        "8x+2"
+      ],
+      "answer": 3,
+      "explanation": "周長=2[(3x+2)+(x−1)]=2(4x+1)=8x+2。"
+    },
+    {
+      "id": "polynomial-operations-ca-v7-2",
+      "type": "context-application",
+      "challenge": "21-7",
+      "difficulty": "medium",
+      "errorPath": "perimeter-polynomial-combination",
+      "scenario": "三角形三邊長分別為 x+1、2x−3、3x+2 公分。",
+      "question": "周長為何？",
+      "options": [
+        "6x−1",
+        "6x",
+        "6x+1",
+        "5x+1"
+      ],
+      "answer": 1,
+      "explanation": "(x+1)+(2x−3)+(3x+2)=6x+0=6x。"
+    },
+    {
+      "id": "polynomial-operations-ca-v7-3",
+      "type": "context-application",
+      "challenge": "21-7",
+      "difficulty": "medium",
+      "errorPath": "perimeter-polynomial-combination",
+      "scenario": "甲路段長 5x−2 公里，乙路段比甲少 2x+1 公里。",
+      "question": "乙路段長為何？",
+      "options": [
+        "3x−3",
+        "7x−1",
+        "3x+1",
+        "7x−3"
+      ],
+      "answer": 0,
+      "explanation": "(5x−2)−(2x+1)=5x−2−2x−1=3x−3。"
+    },
+    {
+      "id": "polynomial-operations-ca-2",
+      "type": "context-application",
+      "challenge": "21-8",
+      "difficulty": "easy",
+      "errorPath": "area-polynomial-product",
+      "scenario": "長方形長為 x+4 公尺，寬為 x+1 公尺。",
+      "question": "面積的多項式為何？",
+      "options": [
+        "2x+5",
+        "x²+4",
+        "x²+5x+4",
+        "x²+3x+4"
+      ],
+      "answer": 2,
+      "explanation": "(x+4)(x+1)=x²+x+4x+4=x²+5x+4。"
+    },
+    {
+      "id": "polynomial-operations-ca-v8-2",
+      "type": "context-application",
+      "challenge": "21-8",
+      "difficulty": "medium",
+      "errorPath": "area-polynomial-product",
+      "scenario": "長方形布料長為 2x+3 公尺，寬為 x−2 公尺。",
+      "question": "面積為何？",
+      "options": [
+        "2x²−x−6",
+        "2x²+7x−6",
+        "3x−6",
+        "2x²−4"
+      ],
+      "answer": 0,
+      "explanation": "(2x+3)(x−2)=2x²−4x+3x−6=2x²−x−6。"
+    },
+    {
+      "id": "polynomial-operations-ca-v8-3",
+      "type": "context-application",
+      "challenge": "21-8",
+      "difficulty": "hard",
+      "errorPath": "area-polynomial-product",
+      "scenario": "一塊長方形土地面積為 12x³−18x² 平方公尺，長為 6x 公尺，且 x≠0。",
+      "question": "寬為何？",
+      "options": [
+        "2x²−12x",
+        "2x²−3x",
+        "6x²−3x",
+        "2x−3"
+      ],
+      "answer": 1,
+      "explanation": "(12x³−18x²)÷6x=2x²−3x。"
+    }
+  ]
+}

@@ -1,0 +1,375 @@
+{
+  "nodeId": "linear-function-graph",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "一次函數、斜率、y截距、兩點定式與代入判斷題庫；全數自編，未冒稱官方課綱代碼。日後補圖會更直觀的題目：linear-function-graph-ci-1、linear-function-graph-ci-v3-2、linear-function-graph-ci-v3-3、linear-function-graph-ca-1、linear-function-graph-ca-v7-2、linear-function-graph-ca-v7-3；現已用完整文字/數值敘述。"
+  },
+  "basicMastery": [
+    {
+      "id": "linear-function-graph-bm-1",
+      "type": "basic-mastery",
+      "challenge": "27-1",
+      "difficulty": "easy",
+      "errorPath": "function-substitution-slip",
+      "stem": "函數 y=2x+3，當x=4時，y為何？",
+      "options": [
+        "11",
+        "10",
+        "8",
+        "14"
+      ],
+      "answer": 0,
+      "explanation": "代入x=4：y=2×4+3=8+3=11。"
+    },
+    {
+      "id": "linear-function-graph-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "27-1",
+      "difficulty": "easy",
+      "errorPath": "function-substitution-slip",
+      "stem": "函數 y=−3x+1，當x=−2時，y為何？",
+      "options": [
+        "−7",
+        "5",
+        "7",
+        "−5"
+      ],
+      "answer": 2,
+      "explanation": "y=−3×(−2)+1=6+1=7。"
+    },
+    {
+      "id": "linear-function-graph-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "27-1",
+      "difficulty": "medium",
+      "errorPath": "function-substitution-slip",
+      "stem": "函數 y=(1/2)x−4，當x=10時，y為何？",
+      "options": [
+        "−1",
+        "3",
+        "5",
+        "1"
+      ],
+      "answer": 3,
+      "explanation": "y=(1/2)×10−4=5−4=1。"
+    },
+    {
+      "id": "linear-function-graph-bm-2",
+      "type": "basic-mastery",
+      "challenge": "27-2",
+      "difficulty": "easy",
+      "errorPath": "slope-intercept-swap",
+      "stem": "一次函數 y=3x−5 的斜率與y截距分別為何？",
+      "options": [
+        "斜率−5，y截距3",
+        "斜率3，y截距−5",
+        "斜率3，y截距5",
+        "斜率−3，y截距−5"
+      ],
+      "answer": 1,
+      "explanation": "與y=ax+b比較，a=3是斜率，b=−5是y截距。"
+    },
+    {
+      "id": "linear-function-graph-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "27-2",
+      "difficulty": "medium",
+      "errorPath": "slope-intercept-swap",
+      "stem": "一次函數 y=−2x+7 的斜率為何？",
+      "options": [
+        "−2",
+        "7",
+        "2",
+        "−7"
+      ],
+      "answer": 0,
+      "explanation": "x的係數就是斜率，所以斜率為−2。"
+    },
+    {
+      "id": "linear-function-graph-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "27-2",
+      "difficulty": "medium",
+      "errorPath": "slope-intercept-swap",
+      "stem": "直線 y=(3/4)x−2 與y軸交於哪一點？",
+      "options": [
+        "(0,3/4)",
+        "(−2,0)",
+        "(0,−2)",
+        "(3/4,0)"
+      ],
+      "answer": 2,
+      "explanation": "y軸上的點x=0，代入得y=−2，所以交點是(0,−2)。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "linear-function-graph-ci-1",
+      "type": "concept-id",
+      "challenge": "27-3",
+      "difficulty": "easy",
+      "errorPath": "linear-graph-property",
+      "statement": "y=ax+b（a不等於0）的圖形是一條直線。",
+      "correctAnswer": true,
+      "explanation": "一次函數的x最高次為1，其所有解點排列成直線。"
+    },
+    {
+      "id": "linear-function-graph-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "27-3",
+      "difficulty": "easy",
+      "errorPath": "linear-graph-property",
+      "statement": "y=2x+1 的圖形經過原點。",
+      "correctAnswer": false,
+      "explanation": "x=0時y=1，所以通過(0,1)，不通過(0,0)。"
+    },
+    {
+      "id": "linear-function-graph-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "27-3",
+      "difficulty": "medium",
+      "errorPath": "linear-graph-property",
+      "statement": "兩條斜率相同但y截距不同的直線互相平行。",
+      "correctAnswer": true,
+      "explanation": "相同斜率代表傾斜程度相同，不同截距使兩線不重合，故互相平行。"
+    },
+    {
+      "id": "linear-function-graph-ci-2",
+      "type": "concept-id",
+      "challenge": "27-4",
+      "difficulty": "easy",
+      "errorPath": "slope-direction-confusion",
+      "statement": "若一次函數斜率為正，x增加時y也增加。",
+      "correctAnswer": true,
+      "explanation": "y的變化量=斜率×x的變化量；斜率為正時兩者同向變化。"
+    },
+    {
+      "id": "linear-function-graph-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "27-4",
+      "difficulty": "easy",
+      "errorPath": "slope-direction-confusion",
+      "statement": "直線 y=−4x+2 由左向右上升。",
+      "correctAnswer": false,
+      "explanation": "斜率−4為負，x增加時y減少，因此由左向右下降。"
+    },
+    {
+      "id": "linear-function-graph-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "27-4",
+      "difficulty": "medium",
+      "errorPath": "slope-direction-confusion",
+      "statement": "斜率2表示x每增加1，y增加2。",
+      "correctAnswer": true,
+      "explanation": "斜率=Δy/Δx=2，所以Δx=1時Δy=2。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "linear-function-graph-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "27-5",
+      "difficulty": "easy",
+      "errorPath": "slope-intercept-swap",
+      "problem": "辨識 y=5x−3 的斜率與y截距",
+      "wrongSolution": "小明說斜率是−3，y截距是5。",
+      "errorOptions": [
+        "斜率應為x",
+        "兩者都應為正",
+        "把a、b對調了；斜率5、y截距−3",
+        "y截距是(−3,0)"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "標準式y=ax+b中，a是斜率、b是y截距，因此分別為5、−3。"
+    },
+    {
+      "id": "linear-function-graph-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "27-5",
+      "difficulty": "medium",
+      "errorPath": "slope-intercept-swap",
+      "problem": "找 y=−(1/2)x+4 的y軸交點",
+      "wrongSolution": "小華回答(4,0)。",
+      "errorOptions": [
+        "y軸交點令x=0，應為(0,4)",
+        "應為(0,−1/2)",
+        "應為(−1/2,0)",
+        "直線不交y軸"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "x=0時y=4，所以y軸交點為(0,4)，不是x軸交點。"
+    },
+    {
+      "id": "linear-function-graph-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "27-5",
+      "difficulty": "hard",
+      "errorPath": "slope-intercept-swap",
+      "problem": "直線經(0,−2)，且斜率3，寫函數式",
+      "wrongSolution": "小安寫成 y=−2x+3。",
+      "errorOptions": [
+        "應為y=3x+2",
+        "斜率與截距對調；應為y=3x−2",
+        "應為y=−3x−2",
+        "應為y=x+1"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "a=3、b=−2，代入y=ax+b得y=3x−2。"
+    },
+    {
+      "id": "linear-function-graph-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "27-6",
+      "difficulty": "easy",
+      "errorPath": "slope-denominator-order",
+      "problem": "由(1,2)、(3,6)求斜率",
+      "wrongSolution": "小哲算成 (3−1)/(6−2)=1/2。",
+      "errorOptions": [
+        "應把座標全部相加",
+        "答案應為4",
+        "兩點不能求斜率",
+        "斜率應為Δy/Δx=(6−2)/(3−1)=2"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "斜率是y變化量除以x變化量，故4÷2=2。"
+    },
+    {
+      "id": "linear-function-graph-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "27-6",
+      "difficulty": "medium",
+      "errorPath": "slope-denominator-order",
+      "problem": "由(−1,4)、(2,−2)求斜率",
+      "wrongSolution": "小文算 (2−(−1))/(−2−4)=−1/2。",
+      "errorOptions": [
+        "斜率為2",
+        "分子分母顛倒；斜率=(−2−4)/(2−(−1))=−6/3=−2",
+        "斜率為−6",
+        "斜率為3"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "Δy=−6、Δx=3，所以斜率=−2。"
+    },
+    {
+      "id": "linear-function-graph-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "27-6",
+      "difficulty": "hard",
+      "errorPath": "slope-denominator-order",
+      "problem": "由(2,5)、(6,3)求斜率",
+      "wrongSolution": "小傑用 (6−2)/(3−5)=−2。",
+      "errorOptions": [
+        "顛倒了Δy與Δx；斜率=(3−5)/(6−2)=−1/2",
+        "斜率應為2",
+        "斜率應為−4",
+        "答案正確"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "斜率=Δy/Δx=−2/4=−1/2。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "linear-function-graph-ca-1",
+      "type": "context-application",
+      "challenge": "27-7",
+      "difficulty": "easy",
+      "errorPath": "two-point-equation-derivation",
+      "scenario": "一直線通過(0,1)與(2,5)。",
+      "question": "此一次函數為何？",
+      "options": [
+        "y=x+3",
+        "y=2x+1",
+        "y=2x−1",
+        "y=4x+1"
+      ],
+      "answer": 1,
+      "explanation": "斜率=(5−1)/(2−0)=2，且(0,1)給y截距1，所以y=2x+1。"
+    },
+    {
+      "id": "linear-function-graph-ca-v7-2",
+      "type": "context-application",
+      "challenge": "27-7",
+      "difficulty": "medium",
+      "errorPath": "two-point-equation-derivation",
+      "scenario": "一直線通過(1,3)與(3,7)。",
+      "question": "此一次函數為何？",
+      "options": [
+        "y=3x",
+        "y=2x−1",
+        "y=x+2",
+        "y=2x+1"
+      ],
+      "answer": 3,
+      "explanation": "斜率=(7−3)/(3−1)=2；代(1,3)得3=2+b，所以b=1。"
+    },
+    {
+      "id": "linear-function-graph-ca-v7-3",
+      "type": "context-application",
+      "challenge": "27-7",
+      "difficulty": "hard",
+      "errorPath": "two-point-equation-derivation",
+      "scenario": "一直線通過(−2,5)與(4,−1)。",
+      "question": "此一次函數為何？",
+      "options": [
+        "y=−x−3",
+        "y=x+7",
+        "y=−x+3",
+        "y=−2x+1"
+      ],
+      "answer": 2,
+      "explanation": "斜率=(−1−5)/(4−(−2))=−6/6=−1；代(−2,5)得5=2+b，所以b=3。"
+    },
+    {
+      "id": "linear-function-graph-ca-2",
+      "type": "context-application",
+      "challenge": "27-8",
+      "difficulty": "easy",
+      "errorPath": "point-on-line-substitution",
+      "scenario": "要判斷點(2,5)是否在直線y=2x+1上。",
+      "question": "判斷結果為何？",
+      "options": [
+        "是，因2×2+1=5",
+        "否，因2+5≠1",
+        "是，因2×5=10",
+        "否，因斜率不是2"
+      ],
+      "answer": 0,
+      "explanation": "將x=2代入得y=2×2+1=5，與點的y座標相同，所以在線上。"
+    },
+    {
+      "id": "linear-function-graph-ca-v8-2",
+      "type": "context-application",
+      "challenge": "27-8",
+      "difficulty": "medium",
+      "errorPath": "point-on-line-substitution",
+      "scenario": "要判斷點(−1,4)是否在直線y=−3x+1上。",
+      "question": "判斷結果為何？",
+      "options": [
+        "是，因−1+4=3",
+        "否，因−3−1+1=−3",
+        "是，因−3×(−1)+1=4",
+        "否，因x為負"
+      ],
+      "answer": 2,
+      "explanation": "代入x=−1得y=3+1=4，符合點的y座標。"
+    },
+    {
+      "id": "linear-function-graph-ca-v8-3",
+      "type": "context-application",
+      "challenge": "27-8",
+      "difficulty": "hard",
+      "errorPath": "point-on-line-substitution",
+      "scenario": "點(k,7)在直線y=2x−1上。",
+      "question": "k為何？",
+      "options": [
+        "3",
+        "8",
+        "5",
+        "4"
+      ],
+      "answer": 3,
+      "explanation": "7=2k−1，所以2k=8，k=4。"
+    }
+  ]
+}

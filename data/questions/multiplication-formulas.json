@@ -1,0 +1,375 @@
+{
+  "nodeId": "multiplication-formulas",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "乘法公式與速算應用題庫；全數自編，未冒稱官方課綱代碼。"
+  },
+  "basicMastery": [
+    {
+      "id": "multiplication-formulas-bm-1",
+      "type": "basic-mastery",
+      "challenge": "20-1",
+      "difficulty": "easy",
+      "errorPath": "sign-error-in-square",
+      "stem": "展開 (x+3)² 的結果為何？",
+      "options": [
+        "x²+9",
+        "x²+6x+9",
+        "x²+3x+9",
+        "x²−6x+9"
+      ],
+      "answer": 1,
+      "explanation": "套用 (a+b)²=a²+2ab+b²，得 x²+2·x·3+3²=x²+6x+9。"
+    },
+    {
+      "id": "multiplication-formulas-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "20-1",
+      "difficulty": "easy",
+      "errorPath": "sign-error-in-square",
+      "stem": "展開 (y−5)² 的結果為何？",
+      "options": [
+        "y²−25",
+        "y²−5y+25",
+        "y²+10y+25",
+        "y²−10y+25"
+      ],
+      "answer": 3,
+      "explanation": "(y−5)²=y²−2·y·5+5²=y²−10y+25。"
+    },
+    {
+      "id": "multiplication-formulas-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "20-1",
+      "difficulty": "medium",
+      "errorPath": "sign-error-in-square",
+      "stem": "展開 (2x−3)² 的結果為何？",
+      "options": [
+        "4x²−12x+9",
+        "4x²−6x+9",
+        "4x²−9",
+        "2x²−12x+9"
+      ],
+      "answer": 0,
+      "explanation": "(2x−3)²=(2x)²−2·(2x)·3+3²=4x²−12x+9。"
+    },
+    {
+      "id": "multiplication-formulas-bm-2",
+      "type": "basic-mastery",
+      "challenge": "20-2",
+      "difficulty": "easy",
+      "errorPath": "difference-of-squares-misuse",
+      "stem": "計算 (x+4)(x−4) 的結果為何？",
+      "options": [
+        "x²−8x+16",
+        "x²+16",
+        "x²−16",
+        "x²+8x+16"
+      ],
+      "answer": 2,
+      "explanation": "套用 (a+b)(a−b)=a²−b²，得 x²−4²=x²−16。"
+    },
+    {
+      "id": "multiplication-formulas-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "20-2",
+      "difficulty": "medium",
+      "errorPath": "difference-of-squares-misuse",
+      "stem": "計算 (3a+2)(3a−2) 的結果為何？",
+      "options": [
+        "9a²+4",
+        "9a²−4",
+        "6a²−4",
+        "9a²−12a+4"
+      ],
+      "answer": 1,
+      "explanation": "令 A=3a、B=2，則 (A+B)(A−B)=A²−B²=9a²−4。"
+    },
+    {
+      "id": "multiplication-formulas-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "20-2",
+      "difficulty": "medium",
+      "errorPath": "difference-of-squares-misuse",
+      "stem": "利用乘法公式計算 97×103。",
+      "options": [
+        "9409",
+        "10009",
+        "9999",
+        "9991"
+      ],
+      "answer": 3,
+      "explanation": "97×103=(100−3)(100+3)=100²−3²=10000−9=9991。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "multiplication-formulas-ci-1",
+      "type": "concept-id",
+      "challenge": "20-3",
+      "difficulty": "easy",
+      "errorPath": "missing-middle-term",
+      "statement": "(a+b)² 的展開式含有中間項 2ab。",
+      "correctAnswer": true,
+      "explanation": "依定義展開：(a+b)(a+b)=a²+ab+ab+b²=a²+2ab+b²。"
+    },
+    {
+      "id": "multiplication-formulas-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "20-3",
+      "difficulty": "easy",
+      "errorPath": "missing-middle-term",
+      "statement": "(a−b)²=a²−b²。",
+      "correctAnswer": false,
+      "explanation": "平方公式為 a²−2ab+b²；a²−b² 是 (a+b)(a−b) 的結果。"
+    },
+    {
+      "id": "multiplication-formulas-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "20-3",
+      "difficulty": "medium",
+      "errorPath": "missing-middle-term",
+      "statement": "若 a、b 都不為 0，則 (a+b)² 通常不等於 a²+b²。",
+      "correctAnswer": true,
+      "explanation": "兩式相差中間項 2ab；a、b 都不為 0 時，2ab不為0。"
+    },
+    {
+      "id": "multiplication-formulas-ci-2",
+      "type": "concept-id",
+      "challenge": "20-4",
+      "difficulty": "easy",
+      "errorPath": "formula-condition-confusion",
+      "statement": "(a+b)(a−b) 可直接化為 a²−b²。",
+      "correctAnswer": true,
+      "explanation": "交叉項 −ab 與 +ab 抵消，因此結果為 a²−b²。"
+    },
+    {
+      "id": "multiplication-formulas-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "20-4",
+      "difficulty": "medium",
+      "errorPath": "formula-condition-confusion",
+      "statement": "(a+b)(a−c) 在 b≠c 時仍可直接套用平方差公式。",
+      "correctAnswer": false,
+      "explanation": "平方差公式要求兩因式的第二項相同且符號相反；b≠c 時不符合。"
+    },
+    {
+      "id": "multiplication-formulas-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "20-4",
+      "difficulty": "medium",
+      "errorPath": "formula-condition-confusion",
+      "statement": "(2x+5)(2x−5)=4x²−25。",
+      "correctAnswer": true,
+      "explanation": "以 2x 為 a、5 為 b，得 (2x)²−5²=4x²−25。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "multiplication-formulas-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "20-5",
+      "difficulty": "easy",
+      "errorPath": "square-each-term-only",
+      "problem": "展開 (x+6)²",
+      "wrongSolution": "小明寫成 x²+36。",
+      "errorOptions": [
+        "加號應改成乘號",
+        "常數平方應是 12",
+        "x² 應改成 2x",
+        "漏掉中間項 12x"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "(x+6)²=x²+2·x·6+36=x²+12x+36，故漏了 12x。"
+    },
+    {
+      "id": "multiplication-formulas-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "20-5",
+      "difficulty": "medium",
+      "errorPath": "square-each-term-only",
+      "problem": "展開 (2a−1)²",
+      "wrongSolution": "小華寫成 4a²+1。",
+      "errorOptions": [
+        "一次項應是 +4a",
+        "漏掉一次項 −4a",
+        "常數項應是 −1",
+        "首項應是 2a²"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "(2a−1)²=4a²−4a+1，漏掉的是 −4a。"
+    },
+    {
+      "id": "multiplication-formulas-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "20-5",
+      "difficulty": "medium",
+      "errorPath": "square-each-term-only",
+      "problem": "展開 (3y+4)²",
+      "wrongSolution": "小安寫成 9y²+16。",
+      "errorOptions": [
+        "漏掉中間項 12y",
+        "常數應為 8",
+        "漏掉中間項 24y",
+        "首項應為 6y²"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "中間項為 2·3y·4=24y，正確式為 9y²+24y+16。"
+    },
+    {
+      "id": "multiplication-formulas-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "20-6",
+      "difficulty": "easy",
+      "errorPath": "difference-of-squares-sign",
+      "problem": "計算 (x+7)(x−7)",
+      "wrongSolution": "小哲寫成 x²+49。",
+      "errorOptions": [
+        "平方差末項應為 −7²，所以是 x²−49",
+        "兩平方應相加",
+        "應有中間項 14x",
+        "x² 應改為 x"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "(a+b)(a−b)=a²−b²，所以結果是 x²−49。"
+    },
+    {
+      "id": "multiplication-formulas-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "20-6",
+      "difficulty": "medium",
+      "errorPath": "difference-of-squares-sign",
+      "problem": "利用公式算 102²",
+      "wrongSolution": "小文算成 100²+2²=10004。",
+      "errorOptions": [
+        "2² 應是 2",
+        "100² 應是 1000",
+        "應用 (100+2)²=10000+400+4=10404",
+        "答案應為 10204"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "(100+2)²=100²+2·100·2+2²=10000+400+4=10404。"
+    },
+    {
+      "id": "multiplication-formulas-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "20-6",
+      "difficulty": "hard",
+      "errorPath": "difference-of-squares-sign",
+      "problem": "利用公式算 98×102",
+      "wrongSolution": "小傑算成 100²+2²=10004。",
+      "errorOptions": [
+        "應再加中間項 400",
+        "這是 (100−2)(100+2)，應算 100²−2²=9996",
+        "兩數相差 4，應算 100²−4²",
+        "應算 98²+102²"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "98×102=(100−2)(100+2)=10000−4=9996。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "multiplication-formulas-ca-1",
+      "type": "context-application",
+      "challenge": "20-7",
+      "difficulty": "easy",
+      "errorPath": "near-base-square-strategy",
+      "scenario": "正方形廣場邊長為 101 公尺。",
+      "question": "廣場面積是多少平方公尺？",
+      "options": [
+        "10001",
+        "10101",
+        "10201",
+        "10404"
+      ],
+      "answer": 2,
+      "explanation": "101²=(100+1)²=10000+200+1=10201。"
+    },
+    {
+      "id": "multiplication-formulas-ca-v7-2",
+      "type": "context-application",
+      "challenge": "20-7",
+      "difficulty": "medium",
+      "errorPath": "near-base-square-strategy",
+      "scenario": "正方形花圃邊長為 99 公尺。",
+      "question": "花圃面積是多少平方公尺？",
+      "options": [
+        "9801",
+        "9900",
+        "10001",
+        "9604"
+      ],
+      "answer": 0,
+      "explanation": "99²=(100−1)²=10000−200+1=9801。"
+    },
+    {
+      "id": "multiplication-formulas-ca-v7-3",
+      "type": "context-application",
+      "challenge": "20-7",
+      "difficulty": "medium",
+      "errorPath": "near-base-square-strategy",
+      "scenario": "一塊正方形地磚邊長為 48 公分。",
+      "question": "地磚面積是多少平方公分？",
+      "options": [
+        "2204",
+        "2500",
+        "2404",
+        "2304"
+      ],
+      "answer": 3,
+      "explanation": "48²=(50−2)²=2500−200+4=2304。"
+    },
+    {
+      "id": "multiplication-formulas-ca-2",
+      "type": "context-application",
+      "challenge": "20-8",
+      "difficulty": "easy",
+      "errorPath": "symmetric-product-strategy",
+      "scenario": "商店要快速計算 49 箱與 51 元單價的乘積。",
+      "question": "49×51 等於多少？",
+      "options": [
+        "2501",
+        "2499",
+        "2401",
+        "2601"
+      ],
+      "answer": 1,
+      "explanation": "49×51=(50−1)(50+1)=50²−1²=2499。"
+    },
+    {
+      "id": "multiplication-formulas-ca-v8-2",
+      "type": "context-application",
+      "challenge": "20-8",
+      "difficulty": "medium",
+      "errorPath": "symmetric-product-strategy",
+      "scenario": "長方形長 205 公尺、寬 195 公尺。",
+      "question": "面積是多少平方公尺？",
+      "options": [
+        "40000",
+        "40025",
+        "39000",
+        "39975"
+      ],
+      "answer": 3,
+      "explanation": "205×195=(200+5)(200−5)=200²−5²=40000−25=39975。"
+    },
+    {
+      "id": "multiplication-formulas-ca-v8-3",
+      "type": "context-application",
+      "challenge": "20-8",
+      "difficulty": "hard",
+      "errorPath": "symmetric-product-strategy",
+      "scenario": "某批商品每箱 997 件，共有 1003 箱。",
+      "question": "商品總數是多少件？",
+      "options": [
+        "999991",
+        "1000009",
+        "999009",
+        "1000991"
+      ],
+      "answer": 0,
+      "explanation": "997×1003=(1000−3)(1000+3)=1000²−3²=1000000−9=999991。"
+    }
+  ]
+}

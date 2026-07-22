@@ -1,0 +1,375 @@
+{
+  "nodeId": "triangle-congruence",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "三角形全等判別、對應邊角、全等符號與簡單推理題庫；全數自編，未冒稱官方課綱代碼。日後補圖會更直觀的題目：triangle-congruence-bm-1、triangle-congruence-bm-v1-2、triangle-congruence-bm-v1-3、triangle-congruence-ca-1、triangle-congruence-ca-v7-2、triangle-congruence-ca-v7-3；現已用完整文字/數值敘述。"
+  },
+  "basicMastery": [
+    {
+      "id": "triangle-congruence-bm-1",
+      "type": "basic-mastery",
+      "challenge": "26-1",
+      "difficulty": "easy",
+      "errorPath": "congruence-wrong-criterion",
+      "stem": "兩三角形的三組對應邊分別相等，可用哪個判準證明全等？",
+      "options": [
+        "AAS",
+        "SAS",
+        "ASA",
+        "SSS"
+      ],
+      "answer": 3,
+      "explanation": "三組對應邊相等正是 SSS（邊邊邊）全等判準。"
+    },
+    {
+      "id": "triangle-congruence-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "26-1",
+      "difficulty": "easy",
+      "errorPath": "congruence-wrong-criterion",
+      "stem": "兩三角形有兩組對應邊及其夾角分別相等，可用哪個判準？",
+      "options": [
+        "SSS",
+        "SAS",
+        "ASA",
+        "RHS"
+      ],
+      "answer": 1,
+      "explanation": "兩邊及兩邊夾角相等是 SAS（邊角邊）。"
+    },
+    {
+      "id": "triangle-congruence-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "26-1",
+      "difficulty": "medium",
+      "errorPath": "congruence-wrong-criterion",
+      "stem": "兩個直角三角形的斜邊與一組對應股分別相等，可用哪個判準？",
+      "options": [
+        "AAS",
+        "SSS",
+        "RHS",
+        "AAA"
+      ],
+      "answer": 2,
+      "explanation": "直角、斜邊與一股對應相等，符合 RHS 判準。"
+    },
+    {
+      "id": "triangle-congruence-bm-2",
+      "type": "basic-mastery",
+      "challenge": "26-2",
+      "difficulty": "easy",
+      "errorPath": "corresponding-order-mismatch",
+      "stem": "已知 △ABC≅△DEF，與邊 AB 對應的邊為何？",
+      "options": [
+        "DE",
+        "EF",
+        "DF",
+        "FD"
+      ],
+      "answer": 0,
+      "explanation": "全等式順序 A↔D、B↔E、C↔F，因此 AB↔DE。"
+    },
+    {
+      "id": "triangle-congruence-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "26-2",
+      "difficulty": "medium",
+      "errorPath": "corresponding-order-mismatch",
+      "stem": "已知 △PQR≅△XYZ，與 ∠Q 對應的角為何？",
+      "options": [
+        "∠X",
+        "∠P",
+        "∠Z",
+        "∠Y"
+      ],
+      "answer": 3,
+      "explanation": "依書寫順序 P↔X、Q↔Y、R↔Z，所以 ∠Q↔∠Y。"
+    },
+    {
+      "id": "triangle-congruence-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "26-2",
+      "difficulty": "hard",
+      "errorPath": "corresponding-order-mismatch",
+      "stem": "已知 △CAB≅△FDE，若 CA=8，哪一條邊長也是8？",
+      "options": [
+        "FE",
+        "FD",
+        "DE",
+        "AB"
+      ],
+      "answer": 1,
+      "explanation": "依順序 C↔F、A↔D、B↔E，所以 CA↔FD，故 FD=8。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "triangle-congruence-ci-1",
+      "type": "concept-id",
+      "challenge": "26-3",
+      "difficulty": "easy",
+      "errorPath": "congruence-symbol-meaning",
+      "statement": "符號 ≅ 表示兩個圖形全等，即形狀與大小都相同。",
+      "correctAnswer": true,
+      "explanation": "全等圖形可經平移、旋轉或翻轉後完全重合。"
+    },
+    {
+      "id": "triangle-congruence-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "26-3",
+      "difficulty": "easy",
+      "errorPath": "congruence-symbol-meaning",
+      "statement": "兩個三角形面積相等，就一定全等。",
+      "correctAnswer": false,
+      "explanation": "相同面積可能有不同邊長與角度，不能只靠面積判定全等。"
+    },
+    {
+      "id": "triangle-congruence-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "26-3",
+      "difficulty": "medium",
+      "errorPath": "congruence-symbol-meaning",
+      "statement": "全等三角形的所有對應邊相等、所有對應角相等。",
+      "correctAnswer": true,
+      "explanation": "能完全重合表示對應的長度與角度都相同。"
+    },
+    {
+      "id": "triangle-congruence-ci-2",
+      "type": "concept-id",
+      "challenge": "26-4",
+      "difficulty": "easy",
+      "errorPath": "insufficient-aaa-condition",
+      "statement": "AAA 只能確定兩三角形形狀相同，不能保證大小相同。",
+      "correctAnswer": true,
+      "explanation": "三角形可等比例放大縮小而三角仍相等，因此 AAA 不足以判定全等。"
+    },
+    {
+      "id": "triangle-congruence-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "26-4",
+      "difficulty": "medium",
+      "errorPath": "insufficient-aaa-condition",
+      "statement": "兩三角形有兩組對應角相等，就一定全等。",
+      "correctAnswer": false,
+      "explanation": "兩角相等可確定第三角，但仍可能大小不同，還需要對應邊條件。"
+    },
+    {
+      "id": "triangle-congruence-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "26-4",
+      "difficulty": "medium",
+      "errorPath": "insufficient-aaa-condition",
+      "statement": "兩角及其中一組非夾邊分別相等，可用 AAS 判定全等。",
+      "correctAnswer": true,
+      "explanation": "兩角確定第三角，再配合一組對應邊即可固定大小，符合 AAS。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "triangle-congruence-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "26-5",
+      "difficulty": "easy",
+      "errorPath": "ssa-false-congruence",
+      "problem": "兩三角形有兩邊及一個非夾角分別相等",
+      "wrongSolution": "小明直接以 SAS 判定兩三角形全等。",
+      "errorOptions": [
+        "只要兩邊相等即可",
+        "SAS 要求相等的是兩邊夾角；此處是 SSA，通常不足",
+        "應改用 AAA",
+        "任何三條件都能全等"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "SAS 的角必須夾在兩個已知邊之間；一般 SSA 可能形成不同三角形。"
+    },
+    {
+      "id": "triangle-congruence-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "26-5",
+      "difficulty": "medium",
+      "errorPath": "ssa-false-congruence",
+      "problem": "△ABC與△DEF中，AB=DE、AC=DF、∠B=∠E",
+      "wrongSolution": "小華說這是 SAS。",
+      "errorOptions": [
+        "兩邊相等已足夠",
+        "應用SSS",
+        "應用ASA",
+        "∠B不是 AB、AC 的夾角，現有條件是 SSA，不能直接用SAS"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "AB與AC的夾角是∠A，不是∠B，因此條件不符合SAS。"
+    },
+    {
+      "id": "triangle-congruence-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "26-5",
+      "difficulty": "hard",
+      "errorPath": "ssa-false-congruence",
+      "problem": "兩個非直角三角形各有兩邊長5、7，且一個非夾角30°",
+      "wrongSolution": "小安以RHS判定全等。",
+      "errorOptions": [
+        "RHS只適用直角三角形；此題既非直角且為SSA，資訊不足",
+        "30°可當直角",
+        "兩邊相等就是SSS",
+        "應改用AAA"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "題目沒有直角條件，不能用RHS；一般SSA也不是全等判準。"
+    },
+    {
+      "id": "triangle-congruence-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "26-6",
+      "difficulty": "easy",
+      "errorPath": "corresponding-vertex-swap",
+      "problem": "已知 △ABC≅△DEF",
+      "wrongSolution": "小哲說 ∠A 對應 ∠E。",
+      "errorOptions": [
+        "B對D",
+        "A對F",
+        "依順序A對D，所以∠A對應∠D",
+        "全等式沒有順序意義"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "全等式相同位置互相對應：A↔D、B↔E、C↔F。"
+    },
+    {
+      "id": "triangle-congruence-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "26-6",
+      "difficulty": "medium",
+      "errorPath": "corresponding-vertex-swap",
+      "problem": "已知 △PQR≅△YZX",
+      "wrongSolution": "小文說邊 PR 對應邊 YZ。",
+      "errorOptions": [
+        "P對Y、R對X，所以PR對應YX",
+        "PR對應ZX",
+        "PR對應YZ正確",
+        "PR沒有對應邊"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "依順序 P↔Y、Q↔Z、R↔X，因此 PR↔YX。"
+    },
+    {
+      "id": "triangle-congruence-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "26-6",
+      "difficulty": "hard",
+      "errorPath": "corresponding-vertex-swap",
+      "problem": "已知 △CAB≅△RSP，且∠A=65°",
+      "wrongSolution": "小傑說 ∠R=65°。",
+      "errorOptions": [
+        "所有角都65°",
+        "A對應P",
+        "R對應B",
+        "A在第二位置，對應S，所以∠S=65°"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "C↔R、A↔S、B↔P，故∠A對應∠S。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "triangle-congruence-ca-1",
+      "type": "context-application",
+      "challenge": "26-7",
+      "difficulty": "easy",
+      "errorPath": "shared-side-proof",
+      "scenario": "△ABC與△ADC共用邊AC，且AB=AD、BC=DC。",
+      "question": "可用哪個判準證明兩三角形全等？",
+      "options": [
+        "SSS",
+        "SAS",
+        "ASA",
+        "AAA"
+      ],
+      "answer": 0,
+      "explanation": "AB=AD、BC=DC、AC=AC（共用邊），三組對應邊相等，故用SSS。"
+    },
+    {
+      "id": "triangle-congruence-ca-v7-2",
+      "type": "context-application",
+      "challenge": "26-7",
+      "difficulty": "medium",
+      "errorPath": "shared-side-proof",
+      "scenario": "△PQR與△SQR共用QR，且PQ=SQ、∠PQR=∠SQR。",
+      "question": "可用哪個判準證明全等？",
+      "options": [
+        "AAS",
+        "SSS",
+        "SAS",
+        "RHS"
+      ],
+      "answer": 2,
+      "explanation": "PQ=SQ、QR=QR，且兩邊夾角∠PQR=∠SQR，符合SAS。"
+    },
+    {
+      "id": "triangle-congruence-ca-v7-3",
+      "type": "context-application",
+      "challenge": "26-7",
+      "difficulty": "hard",
+      "errorPath": "shared-side-proof",
+      "scenario": "△ABC與△DBC共用BC，且∠ABC=∠DBC、∠ACB=∠DCB。",
+      "question": "可用哪個判準證明全等？",
+      "options": [
+        "SSS",
+        "ASA",
+        "SAS",
+        "RHS"
+      ],
+      "answer": 1,
+      "explanation": "兩組角相等，且共用邊BC是兩角的夾邊，符合ASA。"
+    },
+    {
+      "id": "triangle-congruence-ca-2",
+      "type": "context-application",
+      "challenge": "26-8",
+      "difficulty": "easy",
+      "errorPath": "congruent-corresponding-deduction",
+      "scenario": "已證 △ABC≅△DEF，且BC=7公分。",
+      "question": "對應邊EF長多少公分？",
+      "options": [
+        "無法判斷",
+        "14",
+        "3.5",
+        "7"
+      ],
+      "answer": 3,
+      "explanation": "B↔E、C↔F，所以BC對應EF；全等圖形對應邊相等，EF=7。"
+    },
+    {
+      "id": "triangle-congruence-ca-v8-2",
+      "type": "context-application",
+      "challenge": "26-8",
+      "difficulty": "medium",
+      "errorPath": "congruent-corresponding-deduction",
+      "scenario": "已證 △PQR≅△XYZ，且∠R=48°。",
+      "question": "對應角∠Z為幾度？",
+      "options": [
+        "42°",
+        "48°",
+        "90°",
+        "132°"
+      ],
+      "answer": 1,
+      "explanation": "R↔Z，全等三角形對應角相等，所以∠Z=48°。"
+    },
+    {
+      "id": "triangle-congruence-ca-v8-3",
+      "type": "context-application",
+      "challenge": "26-8",
+      "difficulty": "hard",
+      "errorPath": "congruent-corresponding-deduction",
+      "scenario": "已證 △ABC≅△DEF，AB=2x+1、DE=13。",
+      "question": "x為何？",
+      "options": [
+        "5",
+        "7",
+        "6",
+        "12"
+      ],
+      "answer": 2,
+      "explanation": "AB對應DE，所以2x+1=13，2x=12，x=6。"
+    }
+  ]
+}
