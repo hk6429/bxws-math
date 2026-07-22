@@ -23,8 +23,23 @@ const allNodes = tree.strands.flatMap((strand) =>
 );
 const nodesById = Object.fromEntries(allNodes.map((node) => [node.id, node]));
 const completedThisRound = new Set([
+  "prime-factorization-app", "exponent-laws", "scientific-notation",
+  "geometry-symbols", "three-views", "perpendicular-bisector", "symmetry-properties-jhs",
+  "statistical-chart-design",
   "linear-equation-modeling", "linear-inequality-meaning", "linear-inequality-solving",
   "histogram-contingency",
+]);
+
+const pilotNodeIds = [
+  "negative-number", "linear-eq-1var",
+  "prime-factorization-app", "exponent-laws", "scientific-notation",
+  "geometry-symbols", "three-views", "perpendicular-bisector", "symmetry-properties-jhs",
+  "statistical-chart-design",
+];
+
+const textOnlyNodeIds = new Set([
+  "geometry-symbols", "three-views", "perpendicular-bisector",
+  "symmetry-properties-jhs", "statistical-chart-design",
 ]);
 
 test("七年級新增 12 節點依指定 strand 完整落位", () => {
@@ -79,8 +94,8 @@ test("全域 prereq 皆可解析且無循環，包含跨 strand 新接線", () =
   assert.deepEqual(nodesById["histogram-contingency"].prereq, ["statistical-chart-design", "median-mode"]);
 });
 
-test("七年級兩個試水節點各有 8 挑戰 × 3 自編變式", async () => {
-  for (const nodeId of ["negative-number", "linear-eq-1var"]) {
+test("七年級 10 個試水節點各有 8 挑戰 × 3 自編變式", async () => {
+  for (const nodeId of pilotNodeIds) {
     const bank = JSON.parse(await readFile(new URL(`../data/questions/${nodeId}.json`, import.meta.url), "utf8"));
     const arrays = [bank.basicMastery, bank.conceptId, bank.errorDiagnosis, bank.contextApplication];
     assert.deepEqual(arrays.map((questions) => questions.length), [6, 6, 6, 6], `${nodeId} 四題型應各 6 題`);
@@ -93,7 +108,12 @@ test("七年級兩個試水節點各有 8 挑戰 × 3 自編變式", async () =>
     assert.ok(questions.every((question) => ["easy", "medium", "hard"].includes(question.difficulty)), `${nodeId} difficulty 不完整`);
     assert.ok(questions.every((question) => typeof question.errorPath === "string" && question.errorPath.length > 0 && !/^\d+$/.test(question.errorPath)), `${nodeId} errorPath 必須是迷思標籤字串`);
     assert.ok([...groups.values()].every((group) => new Set(group.map((question) => question.errorPath)).size === 1), `${nodeId} 同挑戰應累積同一迷思`);
+    assert.ok(nodesById[nodeId].gateChallenges.every((gate) => groups.has(gate)), `${nodeId} gateChallenges 必須對應真實題組`);
     assert.equal(bank.curriculum?.sourceType, "自編", `${nodeId} 應明示自編`);
+    if (textOnlyNodeIds.has(nodeId)) {
+      assert.equal(typeof bank.note, "string", `${nodeId} 應列出未來可補圖題目`);
+      assert.ok(!questions.some((question) => /(?:如圖|下圖|看圖|圖中)/.test(JSON.stringify(question))), `${nodeId} 題目必須可純文字作答`);
+    }
   }
 });
 
@@ -101,4 +121,8 @@ test("七年級試水節點接上名稱與真實作答守門挑戰", () => {
   assert.equal(nodesById["negative-number"].name, "整數與負數");
   assert.deepEqual(nodesById["negative-number"].gateChallenges, ["13-6", "13-8"]);
   assert.deepEqual(nodesById["linear-eq-1var"].gateChallenges, ["14-6", "14-8"]);
+  for (const nodeId of pilotNodeIds) {
+    const node = nodesById[nodeId];
+    assert.equal(node.contentPending, undefined, `${nodeId} 已有題庫應上線`);
+  }
 });

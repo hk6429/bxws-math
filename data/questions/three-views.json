@@ -1,0 +1,36 @@
+{
+  "nodeId":"three-views","curriculum":{"sourceType":"自編","note":"七年級立體三視圖題庫；以文字定義觀察方向與單位方塊配置，全數自編。"},
+  "note":"日後補圖會更直觀的題目：three-views-bm-1、three-views-bm-v1-2、three-views-bm-v1-3、three-views-bm-2、three-views-bm-v2-2、three-views-bm-v2-3、three-views-ca-1、three-views-ca-v7-2、three-views-ca-v7-3、three-views-ca-2、three-views-ca-v8-2、three-views-ca-v8-3；現已用單位方塊座標、層高與行列完整敘述。",
+  "basicMastery":[
+    {"id":"three-views-bm-1","type":"basic-mastery","challenge":"8-1","difficulty":"easy","errorPath":"front-view-depth-collapse","stem":"一個長方體寬 4、高 3、深 2。正面觀察時深度方向被遮住，正視圖是哪種長方形？","options":["寬4、高3","寬4、高2","寬2、高3","寬4、高6"],"answer":0,"explanation":"正視圖保留寬與高，深度重疊。"},
+    {"id":"three-views-bm-v1-2","type":"basic-mastery","challenge":"8-1","difficulty":"easy","errorPath":"front-view-depth-collapse","stem":"一個長方體寬 5、高 2、深 4，正視圖尺寸為何？","options":["寬5、高2","寬5、高4","寬4、高2","寬20、高2"],"answer":0,"explanation":"正視圖保留寬 5 和高 2。"},
+    {"id":"three-views-bm-v1-3","type":"basic-mastery","challenge":"8-1","difficulty":"medium","errorPath":"front-view-depth-collapse","stem":"兩個單位方塊分別在座標 (x,y,z)=(1,1,1)、(1,2,1)。從 y 軸正方向看向原點的正視圖可見幾個單位方格？","options":["1","2","3","4"],"answer":0,"explanation":"兩方塊的 x、z 相同，沿 y 方向觀察時完全重疊。"},
+    {"id":"three-views-bm-2","type":"basic-mastery","challenge":"8-2","difficulty":"easy","errorPath":"top-view-height-collapse","stem":"一個長方體寬 4、高 3、深 2，從上方向下看，上視圖尺寸為何？","options":["寬4、深2","寬4、高3","深2、高3","寬4、深6"],"answer":0,"explanation":"上視圖保留寬與深，高度重疊。"},
+    {"id":"three-views-bm-v2-2","type":"basic-mastery","challenge":"8-2","difficulty":"medium","errorPath":"top-view-height-collapse","stem":"三個方塊疊在同一個底面位置，高度為 3。上視圖有幾格？","options":["1","2","3","9"],"answer":0,"explanation":"由上往下看，三個方塊重疊成一格。"},
+    {"id":"three-views-bm-v2-3","type":"basic-mastery","challenge":"8-2","difficulty":"hard","errorPath":"top-view-height-collapse","stem":"方塊位於 (1,1,1)、(1,1,2)、(2,1,1)、(2,2,1)。從 z 軸正方向向下看，上視圖占幾格？","options":["2","3","4","6"],"answer":1,"explanation":"底面 (x,y) 位置有 (1,1)、(2,1)、(2,2)，共 3 格。"}
+  ],
+  "conceptId":[
+    {"id":"three-views-ci-1","type":"concept-id","challenge":"8-3","difficulty":"easy","errorPath":"view-direction-dimension","statement":"上視圖主要顯示物體的寬與深，不直接顯示高度。","correctAnswer":true,"explanation":"高度沿觀察方向重疊。"},
+    {"id":"three-views-ci-v3-2","type":"concept-id","challenge":"8-3","difficulty":"easy","errorPath":"view-direction-dimension","statement":"右視圖通常保留物體的寬與深。","correctAnswer":false,"explanation":"右視圖保留深與高，寬方向被投影壓縮。"},
+    {"id":"three-views-ci-v3-3","type":"concept-id","challenge":"8-3","difficulty":"medium","errorPath":"view-direction-dimension","statement":"正視圖、上視圖與側視圖是從不同方向將立體投影到平面。","correctAnswer":true,"explanation":"三視圖透過三個互相垂直的觀察方向表現立體。"},
+    {"id":"three-views-ci-2","type":"concept-id","challenge":"8-4","difficulty":"medium","errorPath":"views-do-not-always-unique","statement":"三視圖有時仍可能對應不只一種方塊立體。","correctAnswer":true,"explanation":"投影會遺失前後遮擋與內部配置資訊。"},
+    {"id":"three-views-ci-v4-2","type":"concept-id","challenge":"8-4","difficulty":"medium","errorPath":"views-do-not-always-unique","statement":"只知上視圖，就一定能確定每個位置疊了幾個方塊。","correctAnswer":false,"explanation":"上視圖只告訴哪些底面位置有方塊，不告訴高度。"},
+    {"id":"three-views-ci-v4-3","type":"concept-id","challenge":"8-4","difficulty":"hard","errorPath":"views-do-not-always-unique","statement":"若兩個方塊沿某視線前後重疊，該視圖可能只顯示一格。","correctAnswer":true,"explanation":"投影只記錄該方向是否有物體，前後方塊可相互遮擋。"}
+  ],
+  "errorDiagnosis":[
+    {"id":"three-views-ed-1","type":"error-diagnosis","challenge":"8-5","difficulty":"medium","errorPath":"count-cubes-instead-of-silhouette","problem":"3 個方塊沿觀察方向排成前後一列","wrongSolution":"小宇說正視圖有 3 格。","errorOptions":["前後重疊會投影到同一格，正視圖只有 1 格","每個方塊一定各顯示一格","正視圖應有 9 格","方塊不能前後排列"],"correctErrorIndex":0,"explanation":"視圖計算輪廓投影，不是直接數方塊。"},
+    {"id":"three-views-ed-v5-2","type":"error-diagnosis","challenge":"8-5","difficulty":"medium","errorPath":"count-cubes-instead-of-silhouette","problem":"3 個方塊垂直疊高","wrongSolution":"小晴說上視圖有 3 格。","errorOptions":["高度方向重疊，上視圖只顯示 1 個底面格","上視圖會顯示高度 3","上視圖應有 9 格","只有正視圖能看方塊"],"correctErrorIndex":0,"explanation":"由上往下看，垂直疊疊重疊為一格。"},
+    {"id":"three-views-ed-v5-3","type":"error-diagnosis","challenge":"8-5","difficulty":"hard","errorPath":"count-cubes-instead-of-silhouette","problem":"方塊位於 (1,1,1)、(1,2,1)、(1,3,1)、(2,1,1)，沿 y 方向看","wrongSolution":"小哲說正視圖有 4 格。","errorOptions":["x=1 的三塊前後重疊，再加 x=2 的一格，共 2 格","所有方塊都必須數入投影","應有 3 格","應有 1 格"],"correctErrorIndex":0,"explanation":"沿視線方向重疊的方塊只留一個輪廓格。"},
+    {"id":"three-views-ed-2","type":"error-diagnosis","challenge":"8-6","difficulty":"medium","errorPath":"swap-top-side-view","problem":"長方體寬5、高2、深3 的右視圖","wrongSolution":"小安畫成寬5、高2。","errorOptions":["右視圖應保留深3與高2，不是寬5與高2","右視圖應保留寬與深","高度不會出現在右視圖","所有視圖尺寸都相同"],"correctErrorIndex":0,"explanation":"從右側看時寬度被壓縮，保留深與高。"},
+    {"id":"three-views-ed-v6-2","type":"error-diagnosis","challenge":"8-6","difficulty":"medium","errorPath":"swap-top-side-view","problem":"長方體寬6、高4、深2 的上視圖","wrongSolution":"小文畫成寬6、高4。","errorOptions":["上視圖應保留寬6與深2，高4被壓縮","上視圖應保留深與高","上視圖不能畫長方形","深度必須改成 4"],"correctErrorIndex":0,"explanation":"上視圖是寬×深。"},
+    {"id":"three-views-ed-v6-3","type":"error-diagnosis","challenge":"8-6","difficulty":"hard","errorPath":"swap-top-side-view","problem":"物體的正視圖為寬4、高3，上視圖為寬4、深2","wrongSolution":"小凱說右視圖必是寬4、高3。","errorOptions":["右視圖的水平方向應對應深2，垂直方向對應高3","右視圖一定與正視圖相同","深度只出現在正視圖","高度只出現在上視圖"],"correctErrorIndex":0,"explanation":"對應尺寸為深 2、高 3。"}
+  ],
+  "contextApplication":[
+    {"id":"three-views-ca-1","type":"context-application","challenge":"8-7","difficulty":"medium","errorPath":"derive-view-from-stack-heights","scenario":"底面有左、右兩格，左格疊 1 個方塊，右格疊 3 個；從正面看不發生前後遮擋。","question":"正視圖由左至右的列高是什麼？","options":["1、3","3、1","1、1","3、3"],"answer":0,"explanation":"兩列高度直接是各底格的疊疊高 1 與 3。"},
+    {"id":"three-views-ca-v7-2","type":"context-application","challenge":"8-7","difficulty":"medium","errorPath":"derive-view-from-stack-heights","scenario":"底面一列三格的疊疊高由左至右為 2、1、2，從正面看。","question":"正視圖列高是什麼？","options":["2、1、2","1、2、1","2、2、2","5"],"answer":0,"explanation":"沒有前後遮擋，列高依序為 2、1、2。"},
+    {"id":"three-views-ca-v7-3","type":"context-application","challenge":"8-7","difficulty":"hard","errorPath":"derive-view-from-stack-heights","scenario":"2×2 底面的四個疊疊高為：前排 1、3；後排 2、1。正面視線由前往後。","question":"正視圖左、右兩列的最大高為何？","options":["2、3","1、3","2、1","3、2"],"answer":0,"explanation":"每列取前後高度的最大值：左 max(1,2)=2，右 max(3,1)=3。"},
+    {"id":"three-views-ca-2","type":"context-application","challenge":"8-8","difficulty":"medium","errorPath":"reconstruct-minimum-cubes","scenario":"上視圖顯示並排兩格，正視圖兩列高分別為 1、2。","question":"符合這些資訊的最少方塊數是多少？","options":["2","3","4","6"],"answer":1,"explanation":"兩個底格分別疊 1 與 2，最少 3 塊。"},
+    {"id":"three-views-ca-v8-2","type":"context-application","challenge":"8-8","difficulty":"hard","errorPath":"reconstruct-minimum-cubes","scenario":"上視圖是一列三格，正視圖三列高為 2、3、1。","question":"最少需幾個方塊？","options":["3","5","6","9"],"answer":2,"explanation":"各底格必須分別疊到 2、3、1，共 6 塊。"},
+    {"id":"three-views-ca-v8-3","type":"context-application","challenge":"8-8","difficulty":"hard","errorPath":"reconstruct-minimum-cubes","scenario":"2×2 上視圖四格都有方塊；正視圖兩列最大高為 2、2，右視圖兩列最大高也為 2、2。","question":"最少可用幾個方塊達成？","options":["4","5","6","8"],"answer":2,"explanation":"四個底格先各 1 塊，再在對角的兩格各加 1 塊，可同時使每行每列最大高為 2，共 6 塊。"}
+  ]
+}

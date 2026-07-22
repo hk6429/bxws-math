@@ -1,0 +1,36 @@
+{
+  "nodeId":"exponent-laws",
+  "curriculum":{"sourceType":"自編","note":"七年級指數記法與正整數指數律題庫；題目限於正整數指數及零指數，自行編寫。"},
+  "basicMastery":[
+    {"id":"exponent-laws-bm-1","type":"basic-mastery","challenge":"2-1","difficulty":"easy","errorPath":"exponent-notation-role","stem":"5⁴ 的值是多少？","options":["20","125","625","1024"],"answer":2,"explanation":"5⁴=5×5×5×5=625。"},
+    {"id":"exponent-laws-bm-v1-2","type":"basic-mastery","challenge":"2-1","difficulty":"easy","errorPath":"exponent-notation-role","stem":"2⁶ 的值是多少？","options":["12","32","64","128"],"answer":2,"explanation":"2⁶=64。"},
+    {"id":"exponent-laws-bm-v1-3","type":"basic-mastery","challenge":"2-1","difficulty":"easy","errorPath":"exponent-notation-role","stem":"3×3×3×3×3 可寫成哪一個式子？","options":["3⁵","5³","15","3×5"],"answer":0,"explanation":"5 個 3 相乘寫成 3⁵。"},
+    {"id":"exponent-laws-bm-2","type":"basic-mastery","challenge":"2-2","difficulty":"medium","errorPath":"same-base-product-add-exponents","stem":"2³×2⁵ 簡化後是哪一個？","options":["2⁸","4⁸","2¹⁵","2²"],"answer":0,"explanation":"同底數相乘，指數相加：2³×2⁵=2⁸。"},
+    {"id":"exponent-laws-bm-v2-2","type":"basic-mastery","challenge":"2-2","difficulty":"medium","errorPath":"same-base-product-add-exponents","stem":"7²×7⁴ 簡化後是哪一個？","options":["7⁶","49⁶","7⁸","14⁶"],"answer":0,"explanation":"7²×7⁴=7²⁺⁴=7⁶。"},
+    {"id":"exponent-laws-bm-v2-3","type":"basic-mastery","challenge":"2-2","difficulty":"hard","errorPath":"same-base-product-add-exponents","stem":"3²×3³×3⁴ 簡化後是哪一個？","options":["3⁹","9⁹","3²⁴","3¹²"],"answer":0,"explanation":"同底數的指數相加：2+3+4=9。"}
+  ],
+  "conceptId":[
+    {"id":"exponent-laws-ci-1","type":"concept-id","challenge":"2-3","difficulty":"easy","errorPath":"exponent-counts-factors","statement":"a⁴ 表示 4 個 a 相乘。","correctAnswer":true,"explanation":"指數 4 表示底數 a 作為因數重複 4 次。"},
+    {"id":"exponent-laws-ci-v3-2","type":"concept-id","challenge":"2-3","difficulty":"easy","errorPath":"exponent-counts-factors","statement":"a³ 等於 3a。","correctAnswer":false,"explanation":"a³=a×a×a，3a=a+a+a，一般不相等。"},
+    {"id":"exponent-laws-ci-v3-3","type":"concept-id","challenge":"2-3","difficulty":"medium","errorPath":"exponent-counts-factors","statement":"1¹⁰ 的值仍是 1。","correctAnswer":true,"explanation":"任意正整數次的 1 都是 1。"},
+    {"id":"exponent-laws-ci-2","type":"concept-id","challenge":"2-4","difficulty":"medium","errorPath":"power-of-power-multiply-exponents","statement":"(a²)³=a⁶。","correctAnswer":true,"explanation":"冪的冪要把指數相乘：2×3=6。"},
+    {"id":"exponent-laws-ci-v4-2","type":"concept-id","challenge":"2-4","difficulty":"medium","errorPath":"power-of-power-multiply-exponents","statement":"(a³)⁴=a⁷。","correctAnswer":false,"explanation":"應為 a¹²；只有同底數相乘時才是指數相加。"},
+    {"id":"exponent-laws-ci-v4-3","type":"concept-id","challenge":"2-4","difficulty":"hard","errorPath":"power-of-power-multiply-exponents","statement":"((a²)³)⁴=a²⁴。","correctAnswer":true,"explanation":"連續的冪把指數相乘：2×3×4=24。"}
+  ],
+  "errorDiagnosis":[
+    {"id":"exponent-laws-ed-1","type":"error-diagnosis","challenge":"2-5","difficulty":"medium","errorPath":"product-law-operation","problem":"簡化 5²×5³","wrongSolution":"小宇寫成 25⁵。","errorOptions":["同底數相乘應保留底數 5，只將指數相加","指數應相減","底數與指數都要相加","乘號應改成加號"],"correctErrorIndex":0,"explanation":"5²×5³=5⁵，不把底數平方成 25。"},
+    {"id":"exponent-laws-ed-v5-2","type":"error-diagnosis","challenge":"2-5","difficulty":"medium","errorPath":"product-law-operation","problem":"簡化 2⁴×2³","wrongSolution":"小晴寫成 4⁷。","errorOptions":["底數 2 應保留不變，不是相加成 4","指數不能相加","應把兩個指數相乘","正確答案是 4⁷"],"correctErrorIndex":0,"explanation":"2⁴×2³=2⁷。"},
+    {"id":"exponent-laws-ed-v5-3","type":"error-diagnosis","challenge":"2-5","difficulty":"hard","errorPath":"product-law-operation","problem":"簡化 3²×3×3⁴","wrongSolution":"小哲寫成 3⁸。","errorOptions":["單獨的 3 指數是 1，所以總指數應是 2+1+4=7","單獨的 3 指數是 2","所有指數應相乘","底數應改成 9"],"correctErrorIndex":0,"explanation":"3=3¹，因此原式=3²⁺¹⁺⁴=3⁷。"},
+    {"id":"exponent-laws-ed-2","type":"error-diagnosis","challenge":"2-6","difficulty":"easy","errorPath":"zero-exponent-value","problem":"計算 7⁰","wrongSolution":"小安說答案是 0。","errorOptions":["非零底數的零次方是 1，不是 0","零次方等於底數本身","指數 0 表示乘上 0","只有偶數的零次方是 0"],"correctErrorIndex":0,"explanation":"7 非 0，所以 7⁰=1。"},
+    {"id":"exponent-laws-ed-v6-2","type":"error-diagnosis","challenge":"2-6","difficulty":"medium","errorPath":"zero-exponent-value","problem":"計算 3⁵×3⁰","wrongSolution":"小文說答案是 0。","errorOptions":["3⁰=1，所以原式等於 3⁵","任何式子遇到指數 0 都是 0","指數應相乘成 0","底數應相加成 6"],"correctErrorIndex":0,"explanation":"3⁰=1，也可用同底數相乘得 3⁵⁺⁰=3⁵。"},
+    {"id":"exponent-laws-ed-v6-3","type":"error-diagnosis","challenge":"2-6","difficulty":"hard","errorPath":"zero-exponent-value","problem":"簡化 (2³)⁰","wrongSolution":"小凱寫成 2³。","errorOptions":["整個非零底數 2³ 的零次方是 1","外層指數 0 可以忽略","指數應相加成 3","應計算成 0³"],"correctErrorIndex":0,"explanation":"2³=8 非 0，所以 (2³)⁰=8⁰=1。"}
+  ],
+  "contextApplication":[
+    {"id":"exponent-laws-ca-1","type":"context-application","challenge":"2-7","difficulty":"medium","errorPath":"repeated-growth-exponent","scenario":"一種細胞數量每輪變成原來的 2 倍，開始有 3 個。","question":"經過 4 輪後有幾個？","options":["24","32","48","64"],"answer":2,"explanation":"3×2⁴=3×16=48。"},
+    {"id":"exponent-laws-ca-v7-2","type":"context-application","challenge":"2-7","difficulty":"medium","errorPath":"repeated-growth-exponent","scenario":"一張紙的厚度視為 1 單位，每對摺一次厚度變 2 倍。","question":"對摺 6 次後厚度是幾單位？","options":["12","32","64","128"],"answer":2,"explanation":"厚度為 2⁶=64 單位。"},
+    {"id":"exponent-laws-ca-v7-3","type":"context-application","challenge":"2-7","difficulty":"hard","errorPath":"repeated-growth-exponent","scenario":"一個方陣每邊有 2³ 個位置。","question":"這個正方形方陣共有幾個位置？","options":["16","32","64","512"],"answer":2,"explanation":"(2³)²=2⁶=64。"},
+    {"id":"exponent-laws-ca-2","type":"context-application","challenge":"2-8","difficulty":"medium","errorPath":"combine-exponent-laws","scenario":"機器每一階段完成 3² 次操作，連續進行 3³ 個相同操作組。","question":"總操作次數可寫成哪個單一指數式？","options":["3⁵","3⁶","9⁵","3¹"],"answer":0,"explanation":"3²×3³=3⁵。"},
+    {"id":"exponent-laws-ca-v8-2","type":"context-application","challenge":"2-8","difficulty":"hard","errorPath":"combine-exponent-laws","scenario":"正方形方格每邊分成 5² 格。","question":"總格數可寫成哪個指數式？","options":["5⁴","5²","10⁴","25²⁵"],"answer":0,"explanation":"(5²)²=5⁴。"},
+    {"id":"exponent-laws-ca-v8-3","type":"context-application","challenge":"2-8","difficulty":"hard","errorPath":"combine-exponent-laws","scenario":"一個運算式是 (2²)³×2⁴。","question":"其值是多少？","options":["256","512","1024","4096"],"answer":2,"explanation":"(2²)³×2⁴=2⁶×2⁴=2¹⁰=1024。"}
+  ]
+}
