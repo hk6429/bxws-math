@@ -1,36 +1,392 @@
 {
-  "nodeId":"geometry-symbols","curriculum":{"sourceType":"自編","note":"七年級幾何基本元素與符號題庫；全數自編。"},
-  "note":"日後若補示意圖會更直觀的題目：geometry-symbols-bm-v2-3、geometry-symbols-ca-1、geometry-symbols-ca-v7-2、geometry-symbols-ca-v7-3；現均已用座標或完整文字敘述，無圖也可作答。",
-  "basicMastery":[
-    {"id":"geometry-symbols-bm-1","type":"basic-mastery","challenge":"7-1","difficulty":"easy","errorPath":"segment-ray-line-distinction","stem":"哪一個幾何對象有兩個端點，且長度可測量？","options":["直線 AB","射線 AB","線段 AB","平面 ABC"],"answer":2,"explanation":"線段有兩個端點，可測量長度。"},
-    {"id":"geometry-symbols-bm-v1-2","type":"basic-mastery","challenge":"7-1","difficulty":"easy","errorPath":"segment-ray-line-distinction","stem":"從 A 出發，經過 B 並向 B 的方向無限延伸，應稱為什麼？","options":["線段 AB","射線 AB","直線 AB","平面 AB"],"answer":1,"explanation":"只有 A 一個端點且單向延伸，是射線 AB。"},
-    {"id":"geometry-symbols-bm-v1-3","type":"basic-mastery","challenge":"7-1","difficulty":"medium","errorPath":"segment-ray-line-distinction","stem":"通過 A、B 兩點並向兩方無限延伸的對象是什麼？","options":["直線 AB","射線 AB","線段 AB","角 AB"],"answer":0,"explanation":"向兩方無限延伸的是直線。"},
-    {"id":"geometry-symbols-bm-2","type":"basic-mastery","challenge":"7-2","difficulty":"easy","errorPath":"geometry-symbol-reading","stem":"∠ABC 的頂點是哪一點？","options":["A","B","C","無法判斷"],"answer":1,"explanation":"角的三字母命名中，中間字母是頂點。"},
-    {"id":"geometry-symbols-bm-v2-2","type":"basic-mastery","challenge":"7-2","difficulty":"easy","errorPath":"geometry-symbol-reading","stem":"符號 AB∥CD 應讀成什麼？","options":["AB 垂直 CD","AB 平行 CD","AB 全等 CD","AB 交於 CD"],"answer":1,"explanation":"∥ 是平行符號。"},
-    {"id":"geometry-symbols-bm-v2-3","type":"basic-mastery","challenge":"7-2","difficulty":"medium","errorPath":"geometry-symbol-reading","stem":"在座標平面上，直線 l 為水平線，直線 m 為鉛直線，兩線相交。正確符號是哪一個？","options":["l∥m","l⊥m","l≅m","l∈m"],"answer":1,"explanation":"水平線與鉛直線交成直角，所以 l⊥m。"}
+  "nodeId": "geometry-symbols",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "七年級幾何基本元素與符號題庫；全數自編。"
+  },
+  "note": "座標關係示意圖已補齊（bm-v2-3、ca-1、ca-v7-2、ca-v7-3 均附座標平面圖）。",
+  "basicMastery": [
+    {
+      "id": "geometry-symbols-bm-1",
+      "type": "basic-mastery",
+      "challenge": "7-1",
+      "difficulty": "easy",
+      "errorPath": "segment-ray-line-distinction",
+      "stem": "哪一個幾何對象有兩個端點，且長度可測量？",
+      "options": [
+        "直線 AB",
+        "射線 AB",
+        "線段 AB",
+        "平面 ABC"
+      ],
+      "answer": 2,
+      "explanation": "線段有兩個端點，可測量長度。"
+    },
+    {
+      "id": "geometry-symbols-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "7-1",
+      "difficulty": "easy",
+      "errorPath": "segment-ray-line-distinction",
+      "stem": "從 A 出發，經過 B 並向 B 的方向無限延伸，應稱為什麼？",
+      "options": [
+        "線段 AB",
+        "射線 AB",
+        "直線 AB",
+        "平面 AB"
+      ],
+      "answer": 1,
+      "explanation": "只有 A 一個端點且單向延伸，是射線 AB。"
+    },
+    {
+      "id": "geometry-symbols-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "7-1",
+      "difficulty": "medium",
+      "errorPath": "segment-ray-line-distinction",
+      "stem": "通過 A、B 兩點並向兩方無限延伸的對象是什麼？",
+      "options": [
+        "直線 AB",
+        "射線 AB",
+        "線段 AB",
+        "角 AB"
+      ],
+      "answer": 0,
+      "explanation": "向兩方無限延伸的是直線。"
+    },
+    {
+      "id": "geometry-symbols-bm-2",
+      "type": "basic-mastery",
+      "challenge": "7-2",
+      "difficulty": "easy",
+      "errorPath": "geometry-symbol-reading",
+      "stem": "∠ABC 的頂點是哪一點？",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "無法判斷"
+      ],
+      "answer": 1,
+      "explanation": "角的三字母命名中，中間字母是頂點。"
+    },
+    {
+      "id": "geometry-symbols-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "7-2",
+      "difficulty": "easy",
+      "errorPath": "geometry-symbol-reading",
+      "stem": "符號 AB∥CD 應讀成什麼？",
+      "options": [
+        "AB 垂直 CD",
+        "AB 平行 CD",
+        "AB 全等 CD",
+        "AB 交於 CD"
+      ],
+      "answer": 1,
+      "explanation": "∥ 是平行符號。"
+    },
+    {
+      "id": "geometry-symbols-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "7-2",
+      "difficulty": "medium",
+      "errorPath": "geometry-symbol-reading",
+      "stem": "在座標平面上，直線 l 為水平線，直線 m 為鉛直線，兩線相交。正確符號是哪一個？",
+      "options": [
+        "l∥m",
+        "l⊥m",
+        "l≅m",
+        "l∈m"
+      ],
+      "answer": 1,
+      "explanation": "水平線與鉛直線交成直角，所以 l⊥m。",
+      "media": {
+        "src": "assets/diagrams/geometry-symbols-bm-v2-3.svg",
+        "alt": "座標平面：水平線 l 與鉛直線 m 相交成直角"
+      }
+    }
   ],
-  "conceptId":[
-    {"id":"geometry-symbols-ci-1","type":"concept-id","challenge":"7-3","difficulty":"easy","errorPath":"point-line-plane-dimension","statement":"點用來表示位置，不具長度、寬度或厚度。","correctAnswer":true,"explanation":"在基本幾何模型中，點只表示位置。"},
-    {"id":"geometry-symbols-ci-v3-2","type":"concept-id","challenge":"7-3","difficulty":"easy","errorPath":"point-line-plane-dimension","statement":"直線有固定長度，可用尺量出全長。","correctAnswer":false,"explanation":"直線向兩方無限延伸，沒有固定全長。"},
-    {"id":"geometry-symbols-ci-v3-3","type":"concept-id","challenge":"7-3","difficulty":"medium","errorPath":"point-line-plane-dimension","statement":"平面可視為向各方無限延展的平坦表面。","correctAnswer":true,"explanation":"這是幾何對平面的理想化描述。"},
-    {"id":"geometry-symbols-ci-2","type":"concept-id","challenge":"7-4","difficulty":"medium","errorPath":"congruence-versus-equality","statement":"全等符號 ≅ 可用來表示兩個圖形的形狀與大小完全相同。","correctAnswer":true,"explanation":"全等表示可經平移、旋轉或翻轉後完全重合。"},
-    {"id":"geometry-symbols-ci-v4-2","type":"concept-id","challenge":"7-4","difficulty":"medium","errorPath":"congruence-versus-equality","statement":"兩條線段長度相等時，必須用平行符號 ∥ 表示。","correctAnswer":false,"explanation":"長度相等用等號；∥ 表示所在直線平行。"},
-    {"id":"geometry-symbols-ci-v4-3","type":"concept-id","challenge":"7-4","difficulty":"hard","errorPath":"congruence-versus-equality","statement":"△ABC≅△DEF 的寫法表示 A、B、C 分別對應 D、E、F。","correctAnswer":true,"explanation":"全等式的字母順序用來表示對應頂點。"}
+  "conceptId": [
+    {
+      "id": "geometry-symbols-ci-1",
+      "type": "concept-id",
+      "challenge": "7-3",
+      "difficulty": "easy",
+      "errorPath": "point-line-plane-dimension",
+      "statement": "點用來表示位置，不具長度、寬度或厚度。",
+      "correctAnswer": true,
+      "explanation": "在基本幾何模型中，點只表示位置。"
+    },
+    {
+      "id": "geometry-symbols-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "7-3",
+      "difficulty": "easy",
+      "errorPath": "point-line-plane-dimension",
+      "statement": "直線有固定長度，可用尺量出全長。",
+      "correctAnswer": false,
+      "explanation": "直線向兩方無限延伸，沒有固定全長。"
+    },
+    {
+      "id": "geometry-symbols-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "7-3",
+      "difficulty": "medium",
+      "errorPath": "point-line-plane-dimension",
+      "statement": "平面可視為向各方無限延展的平坦表面。",
+      "correctAnswer": true,
+      "explanation": "這是幾何對平面的理想化描述。"
+    },
+    {
+      "id": "geometry-symbols-ci-2",
+      "type": "concept-id",
+      "challenge": "7-4",
+      "difficulty": "medium",
+      "errorPath": "congruence-versus-equality",
+      "statement": "全等符號 ≅ 可用來表示兩個圖形的形狀與大小完全相同。",
+      "correctAnswer": true,
+      "explanation": "全等表示可經平移、旋轉或翻轉後完全重合。"
+    },
+    {
+      "id": "geometry-symbols-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "7-4",
+      "difficulty": "medium",
+      "errorPath": "congruence-versus-equality",
+      "statement": "兩條線段長度相等時，必須用平行符號 ∥ 表示。",
+      "correctAnswer": false,
+      "explanation": "長度相等用等號；∥ 表示所在直線平行。"
+    },
+    {
+      "id": "geometry-symbols-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "7-4",
+      "difficulty": "hard",
+      "errorPath": "congruence-versus-equality",
+      "statement": "△ABC≅△DEF 的寫法表示 A、B、C 分別對應 D、E、F。",
+      "correctAnswer": true,
+      "explanation": "全等式的字母順序用來表示對應頂點。"
+    }
   ],
-  "errorDiagnosis":[
-    {"id":"geometry-symbols-ed-1","type":"error-diagnosis","challenge":"7-5","difficulty":"easy","errorPath":"angle-vertex-middle-letter","problem":"讀取 ∠PQR","wrongSolution":"小宇說頂點是 P。","errorOptions":["三字母角名中，中間的 Q 才是頂點","最後的 R 才是頂點","三點都是頂點","角沒有頂點"],"correctErrorIndex":0,"explanation":"∠PQR 的頂點是 Q。"},
-    {"id":"geometry-symbols-ed-v5-2","type":"error-diagnosis","challenge":"7-5","difficulty":"medium","errorPath":"angle-vertex-middle-letter","problem":"以 B 為頂點、BA 與 BC 為兩邊命名一個角","wrongSolution":"小晴寫成 ∠BAC。","errorOptions":["頂點 B 應放在三字母名稱的中間","角名一定以 A 開頭","應改用平行符號","兩邊不能用 BA 與 BC"],"correctErrorIndex":0,"explanation":"可寫成 ∠ABC 或 ∠CBA。"},
-    {"id":"geometry-symbols-ed-v5-3","type":"error-diagnosis","challenge":"7-5","difficulty":"hard","errorPath":"angle-vertex-middle-letter","problem":"讀取 ∠XYZ 與∠ZYX 的頂點","wrongSolution":"小哲說兩個角的頂點都是 X。","errorOptions":["兩個名稱的中間字母都是 Y，頂點應都是 Y","中間字母不能作頂點","頂點應都是 Z","三個字母都是頂點"],"correctErrorIndex":0,"explanation":"∠XYZ 與 ∠ZYX 的中間字母都是 Y。"},
-    {"id":"geometry-symbols-ed-2","type":"error-diagnosis","challenge":"7-6","difficulty":"medium","errorPath":"parallel-perpendicular-symbol-swap","problem":"表示直線 l 與 m 垂直","wrongSolution":"小安寫成 l∥m。","errorOptions":["∥ 是平行符號，垂直應寫 l⊥m","應用全等符號","直線不能垂直","字母必須大寫"],"correctErrorIndex":0,"explanation":"垂直符號是 ⊥。"},
-    {"id":"geometry-symbols-ed-v6-2","type":"error-diagnosis","challenge":"7-6","difficulty":"medium","errorPath":"parallel-perpendicular-symbol-swap","problem":"表示直線 AB 與 CD 平行","wrongSolution":"小文寫成 AB⊥CD。","errorOptions":["⊥ 是垂直符號，平行應用 ∥","平行應用 ≅","只有線段能平行","應寫成 A∥C"],"correctErrorIndex":0,"explanation":"正確寫法是 AB∥CD。"},
-    {"id":"geometry-symbols-ed-v6-3","type":"error-diagnosis","challenge":"7-6","difficulty":"hard","errorPath":"parallel-perpendicular-symbol-swap","problem":"已知 l∥m 與 m⊥n","wrongSolution":"小凱說 l∥n。","errorOptions":["l 與 m 同方向，m 與 n 成直角，所以 l⊥n","平行與垂直可直接相消","三條線必定互相平行","三條線必定互相垂直"],"correctErrorIndex":0,"explanation":"與同一條線平行的方向，也會與它的垂線成直角。"}
+  "errorDiagnosis": [
+    {
+      "id": "geometry-symbols-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "7-5",
+      "difficulty": "easy",
+      "errorPath": "angle-vertex-middle-letter",
+      "problem": "讀取 ∠PQR",
+      "wrongSolution": "小宇說頂點是 P。",
+      "errorOptions": [
+        "三字母角名中，中間的 Q 才是頂點",
+        "最後的 R 才是頂點",
+        "三點都是頂點",
+        "角沒有頂點"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "∠PQR 的頂點是 Q。"
+    },
+    {
+      "id": "geometry-symbols-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "7-5",
+      "difficulty": "medium",
+      "errorPath": "angle-vertex-middle-letter",
+      "problem": "以 B 為頂點、BA 與 BC 為兩邊命名一個角",
+      "wrongSolution": "小晴寫成 ∠BAC。",
+      "errorOptions": [
+        "頂點 B 應放在三字母名稱的中間",
+        "角名一定以 A 開頭",
+        "應改用平行符號",
+        "兩邊不能用 BA 與 BC"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "可寫成 ∠ABC 或 ∠CBA。"
+    },
+    {
+      "id": "geometry-symbols-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "7-5",
+      "difficulty": "hard",
+      "errorPath": "angle-vertex-middle-letter",
+      "problem": "讀取 ∠XYZ 與∠ZYX 的頂點",
+      "wrongSolution": "小哲說兩個角的頂點都是 X。",
+      "errorOptions": [
+        "兩個名稱的中間字母都是 Y，頂點應都是 Y",
+        "中間字母不能作頂點",
+        "頂點應都是 Z",
+        "三個字母都是頂點"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "∠XYZ 與 ∠ZYX 的中間字母都是 Y。"
+    },
+    {
+      "id": "geometry-symbols-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "7-6",
+      "difficulty": "medium",
+      "errorPath": "parallel-perpendicular-symbol-swap",
+      "problem": "表示直線 l 與 m 垂直",
+      "wrongSolution": "小安寫成 l∥m。",
+      "errorOptions": [
+        "∥ 是平行符號，垂直應寫 l⊥m",
+        "應用全等符號",
+        "直線不能垂直",
+        "字母必須大寫"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "垂直符號是 ⊥。"
+    },
+    {
+      "id": "geometry-symbols-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "7-6",
+      "difficulty": "medium",
+      "errorPath": "parallel-perpendicular-symbol-swap",
+      "problem": "表示直線 AB 與 CD 平行",
+      "wrongSolution": "小文寫成 AB⊥CD。",
+      "errorOptions": [
+        "⊥ 是垂直符號，平行應用 ∥",
+        "平行應用 ≅",
+        "只有線段能平行",
+        "應寫成 A∥C"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "正確寫法是 AB∥CD。"
+    },
+    {
+      "id": "geometry-symbols-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "7-6",
+      "difficulty": "hard",
+      "errorPath": "parallel-perpendicular-symbol-swap",
+      "problem": "已知 l∥m 與 m⊥n",
+      "wrongSolution": "小凱說 l∥n。",
+      "errorOptions": [
+        "l 與 m 同方向，m 與 n 成直角，所以 l⊥n",
+        "平行與垂直可直接相消",
+        "三條線必定互相平行",
+        "三條線必定互相垂直"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "與同一條線平行的方向，也會與它的垂線成直角。"
+    }
   ],
-  "contextApplication":[
-    {"id":"geometry-symbols-ca-1","type":"context-application","challenge":"7-7","difficulty":"medium","errorPath":"coordinate-line-relation","scenario":"在座標平面，A(0,2)、B(5,2)，C(1,-1)、D(1,4)。","question":"直線 AB 與 CD 的關係是什麼？","options":["平行","垂直","全等","不相交且不平行"],"answer":1,"explanation":"AB 是水平線，CD 是鉛直線，兩者垂直。"},
-    {"id":"geometry-symbols-ca-v7-2","type":"context-application","challenge":"7-7","difficulty":"medium","errorPath":"coordinate-line-relation","scenario":"在座標平面，A(0,1)、B(4,1)，C(-2,3)、D(3,3)。","question":"直線 AB 與 CD 的關係是什麼？","options":["垂直","平行","交成 45°","全等"],"answer":1,"explanation":"兩條都是水平線且不重合，所以平行。"},
-    {"id":"geometry-symbols-ca-v7-3","type":"context-application","challenge":"7-7","difficulty":"hard","errorPath":"coordinate-line-relation","scenario":"A(0,0)、B(3,0)、C(0,0)、D(0,-4)，以 A 為端點的射線 AB 與以 C 為端點的射線 CD 交於原點。","question":"兩射線的關係是什麼？","options":["平行","垂直","同一射線","全等三角形"],"answer":1,"explanation":"AB 沿正 x 軸，CD 沿負 y 軸，兩者成 90°。"},
-    {"id":"geometry-symbols-ca-2","type":"context-application","challenge":"7-8","difficulty":"medium","errorPath":"congruence-correspondence-order","scenario":"已知 △ABC≅△PQR。","question":"邊 BC 的對應邊是哪一條？","options":["PQ","PR","QR","QP"],"answer":2,"explanation":"B對應Q，C對應R，所以 BC 對應 QR。"},
-    {"id":"geometry-symbols-ca-v8-2","type":"context-application","challenge":"7-8","difficulty":"medium","errorPath":"congruence-correspondence-order","scenario":"已知 △DEF≅△XYZ。","question":"∠E 的對應角是哪一個？","options":["∠X","∠Y","∠Z","∠D"],"answer":1,"explanation":"字母順序中 E 對應 Y。"},
-    {"id":"geometry-symbols-ca-v8-3","type":"context-application","challenge":"7-8","difficulty":"hard","errorPath":"congruence-correspondence-order","scenario":"已知 △KLM≅△RST，KL=6、LM=8、KM=10。","question":"邊 ST 的長度是多少？","options":["6","8","10","24"],"answer":1,"explanation":"L對應S，M對應T，所以 ST 對應 LM，長 8。"}
+  "contextApplication": [
+    {
+      "id": "geometry-symbols-ca-1",
+      "type": "context-application",
+      "challenge": "7-7",
+      "difficulty": "medium",
+      "errorPath": "coordinate-line-relation",
+      "scenario": "在座標平面，A(0,2)、B(5,2)，C(1,-1)、D(1,4)。",
+      "question": "直線 AB 與 CD 的關係是什麼？",
+      "options": [
+        "平行",
+        "垂直",
+        "全等",
+        "不相交且不平行"
+      ],
+      "answer": 1,
+      "explanation": "AB 是水平線，CD 是鉛直線，兩者垂直。",
+      "media": {
+        "src": "assets/diagrams/geometry-symbols-ca-1.svg",
+        "alt": "座標平面：水平線 AB 與鉛直線 CD 相交成直角"
+      }
+    },
+    {
+      "id": "geometry-symbols-ca-v7-2",
+      "type": "context-application",
+      "challenge": "7-7",
+      "difficulty": "medium",
+      "errorPath": "coordinate-line-relation",
+      "scenario": "在座標平面，A(0,1)、B(4,1)，C(-2,3)、D(3,3)。",
+      "question": "直線 AB 與 CD 的關係是什麼？",
+      "options": [
+        "垂直",
+        "平行",
+        "交成 45°",
+        "全等"
+      ],
+      "answer": 1,
+      "explanation": "兩條都是水平線且不重合，所以平行。",
+      "media": {
+        "src": "assets/diagrams/geometry-symbols-ca-v7-2.svg",
+        "alt": "座標平面：AB 與 CD 兩條水平線互相平行"
+      }
+    },
+    {
+      "id": "geometry-symbols-ca-v7-3",
+      "type": "context-application",
+      "challenge": "7-7",
+      "difficulty": "hard",
+      "errorPath": "coordinate-line-relation",
+      "scenario": "A(0,0)、B(3,0)、C(0,0)、D(0,-4)，以 A 為端點的射線 AB 與以 C 為端點的射線 CD 交於原點。",
+      "question": "兩射線的關係是什麼？",
+      "options": [
+        "平行",
+        "垂直",
+        "同一射線",
+        "全等三角形"
+      ],
+      "answer": 1,
+      "explanation": "AB 沿正 x 軸，CD 沿負 y 軸，兩者成 90°。",
+      "media": {
+        "src": "assets/diagrams/geometry-symbols-ca-v7-3.svg",
+        "alt": "座標平面：射線 AB 沿 x 軸、CD 沿 y 軸，於原點成直角"
+      }
+    },
+    {
+      "id": "geometry-symbols-ca-2",
+      "type": "context-application",
+      "challenge": "7-8",
+      "difficulty": "medium",
+      "errorPath": "congruence-correspondence-order",
+      "scenario": "已知 △ABC≅△PQR。",
+      "question": "邊 BC 的對應邊是哪一條？",
+      "options": [
+        "PQ",
+        "PR",
+        "QR",
+        "QP"
+      ],
+      "answer": 2,
+      "explanation": "B對應Q，C對應R，所以 BC 對應 QR。"
+    },
+    {
+      "id": "geometry-symbols-ca-v8-2",
+      "type": "context-application",
+      "challenge": "7-8",
+      "difficulty": "medium",
+      "errorPath": "congruence-correspondence-order",
+      "scenario": "已知 △DEF≅△XYZ。",
+      "question": "∠E 的對應角是哪一個？",
+      "options": [
+        "∠X",
+        "∠Y",
+        "∠Z",
+        "∠D"
+      ],
+      "answer": 1,
+      "explanation": "字母順序中 E 對應 Y。"
+    },
+    {
+      "id": "geometry-symbols-ca-v8-3",
+      "type": "context-application",
+      "challenge": "7-8",
+      "difficulty": "hard",
+      "errorPath": "congruence-correspondence-order",
+      "scenario": "已知 △KLM≅△RST，KL=6、LM=8、KM=10。",
+      "question": "邊 ST 的長度是多少？",
+      "options": [
+        "6",
+        "8",
+        "10",
+        "24"
+      ],
+      "answer": 1,
+      "explanation": "L對應S，M對應T，所以 ST 對應 LM，長 8。"
+    }
   ]
 }
