@@ -284,7 +284,11 @@
         "y=4x+1"
       ],
       "answer": 1,
-      "explanation": "斜率=(5−1)/(2−0)=2，且(0,1)給y截距1，所以y=2x+1。"
+      "explanation": "斜率=(5−1)/(2−0)=2，且(0,1)給y截距1，所以y=2x+1。",
+      "media": {
+        "src": "assets/diagrams/linear-function-graph-ca-1.svg",
+        "alt": "座標平面標出 (0,1) 與 (2,5) 兩點"
+      }
     },
     {
       "id": "linear-function-graph-ca-v7-2",
@@ -301,7 +305,11 @@
         "y=2x+1"
       ],
       "answer": 3,
-      "explanation": "斜率=(7−3)/(3−1)=2；代(1,3)得3=2+b，所以b=1。"
+      "explanation": "斜率=(7−3)/(3−1)=2；代(1,3)得3=2+b，所以b=1。",
+      "media": {
+        "src": "assets/diagrams/linear-function-graph-ca-v7-2.svg",
+        "alt": "座標平面標出 (1,3) 與 (3,7) 兩點"
+      }
     },
     {
       "id": "linear-function-graph-ca-v7-3",
@@ -318,7 +326,11 @@
         "y=−2x+1"
       ],
       "answer": 2,
-      "explanation": "斜率=(−1−5)/(4−(−2))=−6/6=−1；代(−2,5)得5=2+b，所以b=3。"
+      "explanation": "斜率=(−1−5)/(4−(−2))=−6/6=−1；代(−2,5)得5=2+b，所以b=3。",
+      "media": {
+        "src": "assets/diagrams/linear-function-graph-ca-v7-3.svg",
+        "alt": "座標平面標出 (−2,5) 與 (4,−1) 兩點"
+      }
     },
     {
       "id": "linear-function-graph-ca-2",
@@ -371,5 +383,6 @@
       "answer": 3,
       "explanation": "7=2k−1，所以2k=8，k=4。"
     }
-  ]
+  ],
+  "note": "過兩點求一次函數的三題已標出兩點座標（ca-1、ca-v7-2、ca-v7-3，不畫直線以免洩露斜率）；代入求值、判斷點是否在線上等維持純文字。"
 }

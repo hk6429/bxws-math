@@ -19,7 +19,11 @@
         "√7"
       ],
       "answer": 2,
-      "explanation": "斜邊平方=3²+4²=9+16=25，所以斜邊=5。"
+      "explanation": "斜邊平方=3²+4²=9+16=25，所以斜邊=5。",
+      "media": {
+        "src": "assets/diagrams/pythagorean-theorem-bm-1.svg",
+        "alt": "直角三角形示意，兩股 3 與 4，斜邊標問號"
+      }
     },
     {
       "id": "pythagorean-theorem-bm-v1-2",
@@ -35,7 +39,11 @@
         "18"
       ],
       "answer": 0,
-      "explanation": "另一股平方=13²−5²=169−25=144，所以長12。"
+      "explanation": "另一股平方=13²−5²=169−25=144，所以長12。",
+      "media": {
+        "src": "assets/diagrams/pythagorean-theorem-bm-v1-2.svg",
+        "alt": "直角三角形示意，斜邊 13、一股 5，另一股標問號"
+      }
     },
     {
       "id": "pythagorean-theorem-bm-v1-3",
@@ -51,7 +59,11 @@
         "√14"
       ],
       "answer": 1,
-      "explanation": "6²+8²=36+64=100，斜邊=√100=10。"
+      "explanation": "6²+8²=36+64=100，斜邊=√100=10。",
+      "media": {
+        "src": "assets/diagrams/pythagorean-theorem-bm-v1-3.svg",
+        "alt": "直角三角形示意，兩股 6 與 8，斜邊標問號"
+      }
     },
     {
       "id": "pythagorean-theorem-bm-2",
@@ -284,7 +296,11 @@
         "10"
       ],
       "answer": 3,
-      "explanation": "對角線平方=6²+8²=100，所以長10公尺。"
+      "explanation": "對角線平方=6²+8²=100，所以長10公尺。",
+      "media": {
+        "src": "assets/diagrams/pythagorean-theorem-ca-1.svg",
+        "alt": "長方形長 6 寬 8 及其對角線，對角線標問號"
+      }
     },
     {
       "id": "pythagorean-theorem-ca-v7-2",
@@ -301,7 +317,11 @@
         "√21"
       ],
       "answer": 1,
-      "explanation": "12²+9²=144+81=225，√225=15。"
+      "explanation": "12²+9²=144+81=225，√225=15。",
+      "media": {
+        "src": "assets/diagrams/pythagorean-theorem-ca-v7-2.svg",
+        "alt": "長方形寬 12 高 9 及其對角線，對角線標問號"
+      }
     },
     {
       "id": "pythagorean-theorem-ca-v7-3",
@@ -318,7 +338,11 @@
         "40"
       ],
       "answer": 0,
-      "explanation": "長²=25²−15²=625−225=400，所以長20公尺。"
+      "explanation": "長²=25²−15²=625−225=400，所以長20公尺。",
+      "media": {
+        "src": "assets/diagrams/pythagorean-theorem-ca-v7-3.svg",
+        "alt": "長方形對角線 25、寬 15，長邊標問號"
+      }
     },
     {
       "id": "pythagorean-theorem-ca-2",
@@ -335,7 +359,11 @@
         "25"
       ],
       "answer": 2,
-      "explanation": "水平差3、垂直差4，距離=√(3²+4²)=5。"
+      "explanation": "水平差3、垂直差4，距離=√(3²+4²)=5。",
+      "media": {
+        "src": "assets/diagrams/pythagorean-theorem-ca-2.svg",
+        "alt": "座標平面上 (0,0) 與 (3,4) 兩點，虛線畫出水平股與鉛直股，斜邊標問號"
+      }
     },
     {
       "id": "pythagorean-theorem-ca-v8-2",
@@ -352,7 +380,11 @@
         "14"
       ],
       "answer": 0,
-      "explanation": "水平差6、垂直差8，距離=√(6²+8²)=√100=10。"
+      "explanation": "水平差6、垂直差8，距離=√(6²+8²)=√100=10。",
+      "media": {
+        "src": "assets/diagrams/pythagorean-theorem-ca-v8-2.svg",
+        "alt": "座標平面上 (1,2) 與 (7,10) 兩點，標 Δx=6、Δy=8，斜邊標問號"
+      }
     },
     {
       "id": "pythagorean-theorem-ca-v8-3",
@@ -369,7 +401,12 @@
         "√119"
       ],
       "answer": 1,
-      "explanation": "水平差12、垂直差5，距離=√(12²+5²)=√169=13。"
+      "explanation": "水平差12、垂直差5，距離=√(12²+5²)=√169=13。",
+      "media": {
+        "src": "assets/diagrams/pythagorean-theorem-ca-v8-3.svg",
+        "alt": "座標平面上 (−2,3) 與 (10,8) 兩點，標 Δx=12、Δy=5，斜邊標問號"
+      }
     }
-  ]
+  ],
+  "note": "直角三角形／長方形對角線／座標平面兩點距離示意已補齊（bm-1、bm-v1-2、bm-v1-3、ca-1、ca-v7-2、ca-v7-3、ca-2、ca-v8-2、ca-v8-3）；判別是否直角的分類題維持純文字，避免圖示暗示答案。"
 }

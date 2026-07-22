@@ -19,7 +19,11 @@
         "SSS"
       ],
       "answer": 3,
-      "explanation": "三組對應邊相等正是 SSS（邊邊邊）全等判準。"
+      "explanation": "三組對應邊相等正是 SSS（邊邊邊）全等判準。",
+      "media": {
+        "src": "assets/diagrams/triangle-congruence-bm-1.svg",
+        "alt": "兩個三角形 ABC 與 DEF，三組對應邊以刻記標示相等"
+      }
     },
     {
       "id": "triangle-congruence-bm-v1-2",
@@ -35,7 +39,11 @@
         "RHS"
       ],
       "answer": 1,
-      "explanation": "兩邊及兩邊夾角相等是 SAS（邊角邊）。"
+      "explanation": "兩邊及兩邊夾角相等是 SAS（邊角邊）。",
+      "media": {
+        "src": "assets/diagrams/triangle-congruence-bm-v1-2.svg",
+        "alt": "兩個三角形，各標兩邊與其夾角相等"
+      }
     },
     {
       "id": "triangle-congruence-bm-v1-3",
@@ -51,7 +59,11 @@
         "AAA"
       ],
       "answer": 2,
-      "explanation": "直角、斜邊與一股對應相等，符合 RHS 判準。"
+      "explanation": "直角、斜邊與一股對應相等，符合 RHS 判準。",
+      "media": {
+        "src": "assets/diagrams/triangle-congruence-bm-v1-3.svg",
+        "alt": "兩個直角三角形，斜邊與一股以刻記標示相等"
+      }
     },
     {
       "id": "triangle-congruence-bm-2",
@@ -284,7 +296,11 @@
         "AAA"
       ],
       "answer": 0,
-      "explanation": "AB=AD、BC=DC、AC=AC（共用邊），三組對應邊相等，故用SSS。"
+      "explanation": "AB=AD、BC=DC、AC=AC（共用邊），三組對應邊相等，故用SSS。",
+      "media": {
+        "src": "assets/diagrams/triangle-congruence-ca-1.svg",
+        "alt": "風箏形，兩三角形共用邊 AC，AB=AD、BC=DC 以刻記標示"
+      }
     },
     {
       "id": "triangle-congruence-ca-v7-2",
@@ -301,7 +317,11 @@
         "RHS"
       ],
       "answer": 2,
-      "explanation": "PQ=SQ、QR=QR，且兩邊夾角∠PQR=∠SQR，符合SAS。"
+      "explanation": "PQ=SQ、QR=QR，且兩邊夾角∠PQR=∠SQR，符合SAS。",
+      "media": {
+        "src": "assets/diagrams/triangle-congruence-ca-v7-2.svg",
+        "alt": "兩三角形共用邊 QR，PQ=SQ 且 ∠PQR=∠SQR"
+      }
     },
     {
       "id": "triangle-congruence-ca-v7-3",
@@ -318,7 +338,11 @@
         "RHS"
       ],
       "answer": 1,
-      "explanation": "兩組角相等，且共用邊BC是兩角的夾邊，符合ASA。"
+      "explanation": "兩組角相等，且共用邊BC是兩角的夾邊，符合ASA。",
+      "media": {
+        "src": "assets/diagrams/triangle-congruence-ca-v7-3.svg",
+        "alt": "兩三角形共用邊 BC，∠ABC=∠DBC 且 ∠ACB=∠DCB"
+      }
     },
     {
       "id": "triangle-congruence-ca-2",
@@ -371,5 +395,6 @@
       "answer": 2,
       "explanation": "AB對應DE，所以2x+1=13，2x=12，x=6。"
     }
-  ]
+  ],
+  "note": "全等判準與共邊組態示意已補齊（bm-1、bm-v1-2、bm-v1-3、ca-1、ca-v7-2、ca-v7-3）；讀對應關係與代數求值題維持純文字。"
 }
