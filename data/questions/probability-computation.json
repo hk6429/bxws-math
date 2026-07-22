@@ -1,0 +1,375 @@
+{
+  "nodeId": "probability-computation",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "樣本空間、古典機率、餘事件、且／或事件、骰子、撲克牌與抽球題庫；全數自編。"
+  },
+  "basicMastery": [
+    {
+      "id": "probability-computation-bm-1",
+      "type": "basic-mastery",
+      "challenge": "43-1",
+      "difficulty": "easy",
+      "errorPath": "probability-forgot-total",
+      "stem": "擲一枚公平六面骰一次，出現偶數的機率為何？",
+      "options": [
+        "1/6",
+        "1/3",
+        "1/2",
+        "2/3"
+      ],
+      "answer": 2,
+      "explanation": "樣本空間6個；偶數{2,4,6}有3個，機率3/6=1/2。"
+    },
+    {
+      "id": "probability-computation-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "43-1",
+      "difficulty": "medium",
+      "errorPath": "probability-forgot-total",
+      "stem": "從1到10的整數中等可能抽一數，抽到3的倍數機率為何？",
+      "options": [
+        "1/10",
+        "3/10",
+        "1/3",
+        "2/5"
+      ],
+      "answer": 1,
+      "explanation": "3的倍數為3、6、9，共3個；總數10，機率3/10。"
+    },
+    {
+      "id": "probability-computation-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "43-1",
+      "difficulty": "hard",
+      "errorPath": "probability-forgot-total",
+      "stem": "袋中有3紅、2藍、5白球，隨機抽1球。抽到藍球的機率為何？",
+      "options": [
+        "1/5",
+        "1/4",
+        "1/2",
+        "2/5"
+      ],
+      "answer": 0,
+      "explanation": "總球數3+2+5=10，藍球2顆，機率2/10=1/5。"
+    },
+    {
+      "id": "probability-computation-bm-2",
+      "type": "basic-mastery",
+      "challenge": "43-2",
+      "difficulty": "easy",
+      "errorPath": "sample-space-missing-outcomes",
+      "stem": "同時擲兩枚可區分的公平硬幣，樣本空間有幾個結果？",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "8"
+      ],
+      "answer": 2,
+      "explanation": "結果為正正、正反、反正、反反，共2×2=4個。"
+    },
+    {
+      "id": "probability-computation-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "43-2",
+      "difficulty": "medium",
+      "errorPath": "sample-space-missing-outcomes",
+      "stem": "擲兩枚公平六面骰，依序記錄點數，樣本空間大小為何？",
+      "options": [
+        "12",
+        "24",
+        "36",
+        "72"
+      ],
+      "answer": 2,
+      "explanation": "第一骰6種、第二骰6種，依乘法原理共6×6=36種。"
+    },
+    {
+      "id": "probability-computation-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "43-2",
+      "difficulty": "hard",
+      "errorPath": "sample-space-missing-outcomes",
+      "stem": "從數字1、2、3中抽一數後放回，再抽一次，依序記錄。樣本空間大小為何？",
+      "options": [
+        "3",
+        "6",
+        "8",
+        "9"
+      ],
+      "answer": 3,
+      "explanation": "每次3種且放回，依序結果共3×3=9種。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "probability-computation-ci-1",
+      "type": "concept-id",
+      "challenge": "43-3",
+      "difficulty": "easy",
+      "errorPath": "complement-not-one-minus",
+      "statement": "事件A的機率為0.3，則A不發生的機率為0.7。",
+      "correctAnswer": true,
+      "explanation": "餘事件機率P(Aᶜ)=1−P(A)=1−0.3=0.7。"
+    },
+    {
+      "id": "probability-computation-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "43-3",
+      "difficulty": "medium",
+      "errorPath": "complement-not-one-minus",
+      "statement": "若P(A)=2/5，則P(A不發生)=2/5。",
+      "correctAnswer": false,
+      "explanation": "餘事件為1−2/5=3/5，不一定與原事件相等。"
+    },
+    {
+      "id": "probability-computation-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "43-3",
+      "difficulty": "hard",
+      "errorPath": "complement-not-one-minus",
+      "statement": "至少一次成功的機率可用1減去一次都沒成功的機率。",
+      "correctAnswer": true,
+      "explanation": "「至少一次」的餘事件是「零次」，故P=1−P(零次)。"
+    },
+    {
+      "id": "probability-computation-ci-2",
+      "type": "concept-id",
+      "challenge": "43-4",
+      "difficulty": "easy",
+      "errorPath": "and-or-event-confusion",
+      "statement": "若兩事件互斥，則P(A或B)=P(A)+P(B)。",
+      "correctAnswer": true,
+      "explanation": "互斥事件沒有重疊，聯集機率可直接相加。"
+    },
+    {
+      "id": "probability-computation-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "43-4",
+      "difficulty": "medium",
+      "errorPath": "and-or-event-confusion",
+      "statement": "任何兩事件都可用P(A或B)=P(A)+P(B)，不需扣除重疊。",
+      "correctAnswer": false,
+      "explanation": "一般公式為P(A∪B)=P(A)+P(B)−P(A∩B)。"
+    },
+    {
+      "id": "probability-computation-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "43-4",
+      "difficulty": "hard",
+      "errorPath": "and-or-event-confusion",
+      "statement": "獨立事件A且B同時發生的機率為P(A)P(B)。",
+      "correctAnswer": true,
+      "explanation": "獨立表示彼此不影響，因此交集機率等於兩機率乘積。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "probability-computation-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "43-5",
+      "difficulty": "easy",
+      "errorPath": "favorable-outcome-miscount",
+      "problem": "擲公平骰一次，求出現大於4的機率",
+      "wrongSolution": "小明以有利結果2個，回答2。",
+      "errorOptions": [
+        "機率=有利數/總數=2/6=1/3",
+        "應為4/6",
+        "應為2/4",
+        "機率可以大於1"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "有利結果{5,6}共2個，總結果6個，故2/6=1/3。"
+    },
+    {
+      "id": "probability-computation-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "43-5",
+      "difficulty": "medium",
+      "errorPath": "favorable-outcome-miscount",
+      "problem": "袋中4紅6藍，抽到紅球",
+      "wrongSolution": "小華回答4/6。",
+      "errorOptions": [
+        "應為6/4",
+        "分母是全部球數10，故4/10=2/5",
+        "應為1/4",
+        "應為4"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "古典機率分母為總結果數4+6=10，紅球4顆，機率2/5。"
+    },
+    {
+      "id": "probability-computation-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "43-5",
+      "difficulty": "hard",
+      "errorPath": "favorable-outcome-miscount",
+      "problem": "1到12中抽一數，求偶數機率",
+      "wrongSolution": "小安只數到2、4、6，回答3/12。",
+      "errorOptions": [
+        "偶數只有3個",
+        "分母應為6",
+        "漏算8、10、12，共6個，機率6/12=1/2",
+        "答案應為9/12"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "偶數為2、4、6、8、10、12共6個，總數12，機率1/2。"
+    },
+    {
+      "id": "probability-computation-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "43-6",
+      "difficulty": "easy",
+      "errorPath": "card-deck-count-error",
+      "problem": "標準52張牌抽1張紅心",
+      "wrongSolution": "小哲說四種花色，所以紅心有4張，機率4/52。",
+      "errorOptions": [
+        "紅心有13張，機率13/52=1/4",
+        "紅心有26張",
+        "總牌數應為54",
+        "機率為1/13"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "每種花色13張；紅心13張占52張，機率1/4。"
+    },
+    {
+      "id": "probability-computation-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "43-6",
+      "difficulty": "medium",
+      "errorPath": "card-deck-count-error",
+      "problem": "標準52張牌抽1張A",
+      "wrongSolution": "小文說A只有1張，機率1/52。",
+      "errorOptions": [
+        "A有13張",
+        "四種花色各一張A，共4張，機率4/52=1/13",
+        "應為1/4",
+        "應為48/52"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "A有♠♥♦♣四張，故機率4/52=1/13。"
+    },
+    {
+      "id": "probability-computation-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "43-6",
+      "difficulty": "hard",
+      "errorPath": "card-deck-count-error",
+      "problem": "標準52張牌抽1張紅色牌",
+      "wrongSolution": "小傑說紅心13張，所以機率13/52。",
+      "errorOptions": [
+        "紅牌只有方塊",
+        "紅色牌有52張",
+        "紅色含紅心與方塊，共26張，機率26/52=1/2",
+        "答案是13/26但不能約分"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "紅心13張加方塊13張，共26張，機率26/52=1/2。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "probability-computation-ca-1",
+      "type": "context-application",
+      "challenge": "43-7",
+      "difficulty": "easy",
+      "errorPath": "draw-ball-probability",
+      "scenario": "袋中有5紅、3藍、2綠球，隨機抽1球。",
+      "question": "抽到非紅球的機率為何？",
+      "options": [
+        "1/2",
+        "1/5",
+        "3/5",
+        "4/5"
+      ],
+      "answer": 0,
+      "explanation": "總數10，非紅有3+2=5，機率5/10=1/2；亦為1−5/10。"
+    },
+    {
+      "id": "probability-computation-ca-v7-2",
+      "type": "context-application",
+      "challenge": "43-7",
+      "difficulty": "medium",
+      "errorPath": "draw-ball-probability",
+      "scenario": "袋中2白、6黑球，不放回連抽2球。",
+      "question": "兩球皆白的機率為何？",
+      "options": [
+        "1/16",
+        "1/28",
+        "1/8",
+        "1/4"
+      ],
+      "answer": 1,
+      "explanation": "不放回抽兩球，第一顆白的機率2/8，剩下1白7球，第二顆白的機率1/7，兩事件相乘=(2/8)×(1/7)=1/28。"
+    },
+    {
+      "id": "probability-computation-ca-v7-3",
+      "type": "context-application",
+      "challenge": "43-7",
+      "difficulty": "hard",
+      "errorPath": "draw-ball-probability",
+      "scenario": "袋中4紅、6藍球，抽1球後放回再抽1球。",
+      "question": "兩次皆紅的機率為何？",
+      "options": [
+        "2/5",
+        "8/25",
+        "16/25",
+        "4/25"
+      ],
+      "answer": 3,
+      "explanation": "每次紅球機率4/10=2/5，放回後獨立，兩次皆紅=(2/5)²=4/25。"
+    },
+    {
+      "id": "probability-computation-ca-2",
+      "type": "context-application",
+      "challenge": "43-8",
+      "difficulty": "easy",
+      "errorPath": "combined-event-overlap",
+      "scenario": "擲公平骰一次。",
+      "question": "出現2的倍數或3的倍數之機率為何？",
+      "options": [
+        "1/2",
+        "5/6",
+        "2/3",
+        "1"
+      ],
+      "answer": 2,
+      "explanation": "2倍數{2,4,6}，3倍數{3,6}，聯集{2,3,4,6}共4個，機率4/6=2/3。"
+    },
+    {
+      "id": "probability-computation-ca-v8-2",
+      "type": "context-application",
+      "challenge": "43-8",
+      "difficulty": "medium",
+      "errorPath": "combined-event-overlap",
+      "scenario": "從1到20等可能抽一整數。",
+      "question": "抽到偶數且為3的倍數之機率為何？",
+      "options": [
+        "1/20",
+        "3/20",
+        "1/3",
+        "3/10"
+      ],
+      "answer": 1,
+      "explanation": "同時為2與3倍數即6的倍數：6、12、18共3個，機率3/20。"
+    },
+    {
+      "id": "probability-computation-ca-v8-3",
+      "type": "context-application",
+      "challenge": "43-8",
+      "difficulty": "hard",
+      "errorPath": "combined-event-overlap",
+      "scenario": "擲兩枚公平硬幣。",
+      "question": "至少出現一次正面的機率為何？",
+      "options": [
+        "1/4",
+        "1/2",
+        "3/4",
+        "1"
+      ],
+      "answer": 2,
+      "explanation": "餘事件為兩次皆反面，機率1/4，所以至少一次正面=1−1/4=3/4。"
+    }
+  ]
+}

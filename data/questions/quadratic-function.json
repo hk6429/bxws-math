@@ -1,0 +1,375 @@
+{
+  "nodeId": "quadratic-function",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "二次函數開口與寬窄、頂點式、對稱軸、極值及一般式配方題庫；全數自編，所有圖形判讀均以文字與數值完整敘述。"
+  },
+  "basicMastery": [
+    {
+      "id": "quadratic-function-bm-1",
+      "type": "basic-mastery",
+      "challenge": "42-1",
+      "difficulty": "easy",
+      "errorPath": "opening-sign-confusion",
+      "stem": "二次函數y=3x²的圖形開口方向為何？",
+      "options": [
+        "向上",
+        "向下",
+        "向左",
+        "向右"
+      ],
+      "answer": 0,
+      "explanation": "a=3>0，所以拋物線開口向上。"
+    },
+    {
+      "id": "quadratic-function-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "42-1",
+      "difficulty": "medium",
+      "errorPath": "opening-sign-confusion",
+      "stem": "二次函數y=−2x²的圖形開口方向為何？",
+      "options": [
+        "向上",
+        "向下",
+        "無開口",
+        "由c決定"
+      ],
+      "answer": 1,
+      "explanation": "a=−2<0，所以拋物線開口向下。"
+    },
+    {
+      "id": "quadratic-function-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "42-1",
+      "difficulty": "hard",
+      "errorPath": "opening-sign-confusion",
+      "stem": "比較y=−x²與y=4x²，下列何者正確？",
+      "options": [
+        "兩者皆向上",
+        "兩者皆向下",
+        "前者向下、後者向上",
+        "前者向上、後者向下"
+      ],
+      "answer": 2,
+      "explanation": "係數−1<0故前者向下；4>0故後者向上。"
+    },
+    {
+      "id": "quadratic-function-bm-2",
+      "type": "basic-mastery",
+      "challenge": "42-2",
+      "difficulty": "easy",
+      "errorPath": "parabola-width-coefficient",
+      "stem": "在y=ax²中，y=4x²與y=x²相比，哪個圖形較窄？",
+      "options": [
+        "y=x²",
+        "y=4x²",
+        "一樣寬",
+        "無法比較"
+      ],
+      "answer": 1,
+      "explanation": "|4|>|1|，|a|越大，拋物線越窄。"
+    },
+    {
+      "id": "quadratic-function-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "42-2",
+      "difficulty": "medium",
+      "errorPath": "parabola-width-coefficient",
+      "stem": "比較y=0.25x²與y=2x²，哪個較寬？",
+      "options": [
+        "y=0.25x²",
+        "y=2x²",
+        "一樣寬",
+        "看開口方向"
+      ],
+      "answer": 0,
+      "explanation": "|0.25|<|2|，|a|較小者較寬。"
+    },
+    {
+      "id": "quadratic-function-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "42-2",
+      "difficulty": "hard",
+      "errorPath": "parabola-width-coefficient",
+      "stem": "y=−5x²與y=−0.5x²皆向下，何者較窄？",
+      "options": [
+        "y=−0.5x²",
+        "一樣寬",
+        "y=−5x²",
+        "無法比較"
+      ],
+      "answer": 2,
+      "explanation": "比較|a|：5>0.5，因此y=−5x²較窄。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "quadratic-function-ci-1",
+      "type": "concept-id",
+      "challenge": "42-3",
+      "difficulty": "easy",
+      "errorPath": "vertex-sign-flip",
+      "statement": "y=2(x−3)²+1的頂點為(3,1)。",
+      "correctAnswer": true,
+      "explanation": "頂點式y=a(x−h)²+k的頂點是(h,k)，此處h=3、k=1。"
+    },
+    {
+      "id": "quadratic-function-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "42-3",
+      "difficulty": "medium",
+      "errorPath": "vertex-sign-flip",
+      "statement": "y=(x+4)²−2的頂點為(4,−2)。",
+      "correctAnswer": false,
+      "explanation": "x+4=x−(−4)，所以頂點為(−4,−2)。"
+    },
+    {
+      "id": "quadratic-function-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "42-3",
+      "difficulty": "hard",
+      "errorPath": "vertex-sign-flip",
+      "statement": "y=−3(x−1)²+5的對稱軸是x=1。",
+      "correctAnswer": true,
+      "explanation": "頂點橫座標h=1，對稱軸為x=h=1。"
+    },
+    {
+      "id": "quadratic-function-ci-2",
+      "type": "concept-id",
+      "challenge": "42-4",
+      "difficulty": "easy",
+      "errorPath": "max-min-direction",
+      "statement": "y=2(x−3)²+1的最小值為1。",
+      "correctAnswer": true,
+      "explanation": "a=2>0向上，(x−3)²≥0，因此x=3時最小值1。"
+    },
+    {
+      "id": "quadratic-function-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "42-4",
+      "difficulty": "medium",
+      "errorPath": "max-min-direction",
+      "statement": "y=−(x+2)²+7的最小值為7。",
+      "correctAnswer": false,
+      "explanation": "a<0向下，頂點值7是最大值；函數無最小值。"
+    },
+    {
+      "id": "quadratic-function-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "42-4",
+      "difficulty": "hard",
+      "errorPath": "max-min-direction",
+      "statement": "y=−4(x−5)²−3的最大值為−3。",
+      "correctAnswer": true,
+      "explanation": "a<0，−4(x−5)²≤0，故x=5時最大值−3。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "quadratic-function-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "42-5",
+      "difficulty": "easy",
+      "errorPath": "vertex-completion-error",
+      "problem": "求y=2(x−3)²+4的頂點",
+      "wrongSolution": "小明回答(−3,4)。",
+      "errorOptions": [
+        "括號是x−h，故h=3，頂點(3,4)",
+        "k應改成−4",
+        "頂點為(2,4)",
+        "頂點為(3,−4)"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "頂點式中x−3表示h=3，k=4，所以頂點(3,4)。"
+    },
+    {
+      "id": "quadratic-function-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "42-5",
+      "difficulty": "medium",
+      "errorPath": "vertex-completion-error",
+      "problem": "求y=−(x+5)²−2的頂點",
+      "wrongSolution": "小華回答(5,−2)。",
+      "errorOptions": [
+        "係數−1要當橫座標",
+        "x+5=x−(−5)，頂點應為(−5,−2)",
+        "頂點為(−5,2)",
+        "頂點為(5,2)"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "把x+5寫成x−(−5)，故h=−5、k=−2。"
+    },
+    {
+      "id": "quadratic-function-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "42-5",
+      "difficulty": "hard",
+      "errorPath": "vertex-completion-error",
+      "problem": "求y=3(x−2)²−7的對稱軸",
+      "wrongSolution": "小安回答x=−2。",
+      "errorOptions": [
+        "應為y=−7",
+        "應為x=3",
+        "對稱軸通過頂點，為x=2",
+        "應為x=−7"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "頂點(2,−7)，垂直對稱軸為x=2。"
+    },
+    {
+      "id": "quadratic-function-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "42-6",
+      "difficulty": "easy",
+      "errorPath": "axis-formula-error",
+      "problem": "將y=x²−6x+5配方",
+      "wrongSolution": "小哲寫成y=(x−3)²+5。",
+      "errorOptions": [
+        "補了9後須減9，故y=(x−3)²−4",
+        "應為(x+3)²+5",
+        "應為(x−6)²",
+        "配方不改常數"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "x²−6x+5=(x−3)²−9+5=(x−3)²−4。"
+    },
+    {
+      "id": "quadratic-function-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "42-6",
+      "difficulty": "medium",
+      "errorPath": "axis-formula-error",
+      "problem": "求y=2x²+8x+1的頂點",
+      "wrongSolution": "小文取x=−b/a=−4。",
+      "errorOptions": [
+        "公式正確",
+        "頂點橫座標為−b/(2a)=−8/4=−2，代入得y=−7",
+        "頂點橫座標為2",
+        "頂點縱座標為1"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "a=2,b=8；xv=−8/(4)=−2，yv=2·4−16+1=−7。"
+    },
+    {
+      "id": "quadratic-function-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "42-6",
+      "difficulty": "hard",
+      "errorPath": "axis-formula-error",
+      "problem": "求y=−x²+4x−1的頂點",
+      "wrongSolution": "小傑取x=−4/(2·−1)=−2。",
+      "errorOptions": [
+        "b應取−4",
+        "分母不要乘2",
+        "−b/(2a)=−4/−2=2，代入得y=3，頂點(2,3)",
+        "頂點(−2,−13)"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "a=−1,b=4，xv=2；yv=−4+8−1=3。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "quadratic-function-ca-1",
+      "type": "context-application",
+      "challenge": "42-7",
+      "difficulty": "easy",
+      "errorPath": "quadratic-graph-interpretation",
+      "scenario": "某拋物線函數為y=(x−2)²−3。",
+      "question": "其頂點與對稱軸為何？",
+      "options": [
+        "(−2,−3)，x=−2",
+        "(2,3)，x=2",
+        "(−2,3)，x=−2",
+        "(2,−3)，x=2"
+      ],
+      "answer": 3,
+      "explanation": "由頂點式得(h,k)=(2,−3)，對稱軸x=2。"
+    },
+    {
+      "id": "quadratic-function-ca-v7-2",
+      "type": "context-application",
+      "challenge": "42-7",
+      "difficulty": "medium",
+      "errorPath": "quadratic-graph-interpretation",
+      "scenario": "函數y=−2(x+1)²+8描述一條拋物線。",
+      "question": "最大值在何處取得？",
+      "options": [
+        "x=−1時y=8",
+        "x=1時y=8",
+        "x=−1時y=−8",
+        "沒有最大值"
+      ],
+      "answer": 0,
+      "explanation": "a=−2<0向下，頂點(−1,8)，故x=−1時最大值8。"
+    },
+    {
+      "id": "quadratic-function-ca-v7-3",
+      "type": "context-application",
+      "challenge": "42-7",
+      "difficulty": "hard",
+      "errorPath": "quadratic-graph-interpretation",
+      "scenario": "函數y=x²−4x−5。",
+      "question": "頂點為何？",
+      "options": [
+        "(−2,−9)",
+        "(2,−5)",
+        "(2,−9)",
+        "(4,−5)"
+      ],
+      "answer": 2,
+      "explanation": "y=(x−2)²−9，所以頂點(2,−9)。"
+    },
+    {
+      "id": "quadratic-function-ca-2",
+      "type": "context-application",
+      "challenge": "42-8",
+      "difficulty": "easy",
+      "errorPath": "quadratic-extreme-application",
+      "scenario": "球的高度h=−5(t−2)²+20（公尺）。",
+      "question": "最高高度與發生時間為何？",
+      "options": [
+        "10公尺，2秒",
+        "20公尺，−2秒",
+        "20公尺，2秒",
+        "沒有最高點"
+      ],
+      "answer": 2,
+      "explanation": "係數−5<0，頂點(t,h)=(2,20)，故2秒時最高20公尺。"
+    },
+    {
+      "id": "quadratic-function-ca-v8-2",
+      "type": "context-application",
+      "challenge": "42-8",
+      "difficulty": "medium",
+      "errorPath": "quadratic-extreme-application",
+      "scenario": "某商品每日利潤P=−2(x−30)²+1800元。",
+      "question": "最大利潤為何？",
+      "options": [
+        "900元",
+        "1800元",
+        "3600元",
+        "無上限"
+      ],
+      "answer": 1,
+      "explanation": "平方項≤0，x=30時P最大為1800元。"
+    },
+    {
+      "id": "quadratic-function-ca-v8-3",
+      "type": "context-application",
+      "challenge": "42-8",
+      "difficulty": "hard",
+      "errorPath": "quadratic-extreme-application",
+      "scenario": "長方形面積A=x(20−x)，其中0<x<20。",
+      "question": "最大面積為何？",
+      "options": [
+        "50",
+        "100",
+        "200",
+        "400"
+      ],
+      "answer": 1,
+      "explanation": "A=−x²+20x=−(x−10)²+100，故x=10時最大面積100。"
+    }
+  ]
+}

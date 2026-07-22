@@ -1,0 +1,375 @@
+{
+  "nodeId": "quadratic-equation",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "一元二次方程式的因式分解、平方根法、配方法、公式解與判別式題庫；全數自編，未冒稱官方課綱代碼。"
+  },
+  "basicMastery": [
+    {
+      "id": "quadratic-equation-bm-1",
+      "type": "basic-mastery",
+      "challenge": "36-1",
+      "difficulty": "easy",
+      "errorPath": "sign-error-in-roots",
+      "stem": "解方程式 x²−5x+6=0。",
+      "options": [
+        "x=−2或−3",
+        "x=2或3",
+        "x=1或6",
+        "x=−1或−6"
+      ],
+      "answer": 1,
+      "explanation": "x²−5x+6=(x−2)(x−3)，零乘積性質得 x−2=0 或 x−3=0，所以 x=2 或3。"
+    },
+    {
+      "id": "quadratic-equation-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "36-1",
+      "difficulty": "medium",
+      "errorPath": "sign-error-in-roots",
+      "stem": "解方程式 x²+x−6=0。",
+      "options": [
+        "x=2或−3",
+        "x=−2或3",
+        "x=1或−6",
+        "x=−1或6"
+      ],
+      "answer": 0,
+      "explanation": "x²+x−6=(x+3)(x−2)，故 x=−3 或2。"
+    },
+    {
+      "id": "quadratic-equation-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "36-1",
+      "difficulty": "hard",
+      "errorPath": "sign-error-in-roots",
+      "stem": "解方程式 2x²−7x+3=0。",
+      "options": [
+        "x=−3或−1/2",
+        "x=3或−1/2",
+        "x=−3或1/2",
+        "x=3或1/2"
+      ],
+      "answer": 3,
+      "explanation": "2x²−7x+3=(2x−1)(x−3)，故 x=1/2 或3。"
+    },
+    {
+      "id": "quadratic-equation-bm-2",
+      "type": "basic-mastery",
+      "challenge": "36-2",
+      "difficulty": "easy",
+      "errorPath": "forgot-plus-minus",
+      "stem": "解方程式 x²=16。",
+      "options": [
+        "x=4",
+        "x=−4",
+        "x=±4",
+        "x=8"
+      ],
+      "answer": 2,
+      "explanation": "x²=16，平方根有正、負兩個，因此 x=±√16=±4。"
+    },
+    {
+      "id": "quadratic-equation-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "36-2",
+      "difficulty": "medium",
+      "errorPath": "forgot-plus-minus",
+      "stem": "解方程式 (x−2)²=9。",
+      "options": [
+        "x=5或−1",
+        "x=5",
+        "x=−1",
+        "x=11或−7"
+      ],
+      "answer": 0,
+      "explanation": "x−2=±3，所以 x=2±3，即 x=5 或−1。"
+    },
+    {
+      "id": "quadratic-equation-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "36-2",
+      "difficulty": "hard",
+      "errorPath": "forgot-plus-minus",
+      "stem": "解方程式 3x²=27。",
+      "options": [
+        "x=3",
+        "x=−3",
+        "x=±9",
+        "x=±3"
+      ],
+      "answer": 3,
+      "explanation": "3x²=27 得 x²=9，故 x=±3。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "quadratic-equation-ci-1",
+      "type": "concept-id",
+      "challenge": "36-3",
+      "difficulty": "easy",
+      "errorPath": "completing-square-balance",
+      "statement": "將 x²+6x 配成完全平方時，x²+6x+9=(x+3)²。",
+      "correctAnswer": true,
+      "explanation": "6 的一半是3，補上3²=9，故 x²+6x+9=(x+3)²。"
+    },
+    {
+      "id": "quadratic-equation-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "36-3",
+      "difficulty": "medium",
+      "errorPath": "completing-square-balance",
+      "statement": "方程式 x²+4x−5=0 可改寫成 (x+2)²=9。",
+      "correctAnswer": true,
+      "explanation": "移項得 x²+4x=5，兩邊加4，得 (x+2)²=9。"
+    },
+    {
+      "id": "quadratic-equation-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "36-3",
+      "difficulty": "hard",
+      "errorPath": "completing-square-balance",
+      "statement": "將 x²−8x 配方可寫成 (x−4)²−16。",
+      "correctAnswer": true,
+      "explanation": "(x−4)²−16=x²−8x+16−16=x²−8x。"
+    },
+    {
+      "id": "quadratic-equation-ci-2",
+      "type": "concept-id",
+      "challenge": "36-4",
+      "difficulty": "easy",
+      "errorPath": "discriminant-root-count",
+      "statement": "若一元二次方程式的判別式 b²−4ac<0，則有兩個相異實根。",
+      "correctAnswer": false,
+      "explanation": "判別式小於0時沒有實根；大於0才有兩個相異實根。"
+    },
+    {
+      "id": "quadratic-equation-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "36-4",
+      "difficulty": "medium",
+      "errorPath": "discriminant-root-count",
+      "statement": "方程式 x²−6x+9=0 的判別式為0，因此只有一個重根 x=3。",
+      "correctAnswer": true,
+      "explanation": "D=(−6)²−4·1·9=36−36=0，公式解為 x=6/2=3。"
+    },
+    {
+      "id": "quadratic-equation-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "36-4",
+      "difficulty": "hard",
+      "errorPath": "discriminant-root-count",
+      "statement": "若判別式大於0，一元二次方程式一定有兩個相異實根。",
+      "correctAnswer": true,
+      "explanation": "D=b²−4ac>0 時 √D 為正，公式中的正負號產生兩個相異實根。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "quadratic-equation-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "36-5",
+      "difficulty": "easy",
+      "errorPath": "factor-zero-product",
+      "problem": "解 x²−7x+12=0",
+      "wrongSolution": "小明寫 (x+3)(x+4)=0，所以 x=−3 或−4。",
+      "errorOptions": [
+        "常數12應改成−12",
+        "兩因數應為 (x−3)(x−4)，根為3、4",
+        "兩根應相乘為−12",
+        "方程式沒有實根"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "乘積12且和為−7的兩數是−3、−4，故 (x−3)(x−4)=0，根為3、4。"
+    },
+    {
+      "id": "quadratic-equation-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "36-5",
+      "difficulty": "medium",
+      "errorPath": "factor-zero-product",
+      "problem": "解 x²−2x−8=0",
+      "wrongSolution": "小華由 (x−4)(x+2)=0 得 x=−4 或2。",
+      "errorOptions": [
+        "因數分解錯誤",
+        "應把兩根相加",
+        "令因數為0時符號反了，根應為4或−2",
+        "只有 x=4"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "x−4=0 得 x=4；x+2=0 得 x=−2。"
+    },
+    {
+      "id": "quadratic-equation-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "36-5",
+      "difficulty": "hard",
+      "errorPath": "factor-zero-product",
+      "problem": "解 2x²+x−3=0",
+      "wrongSolution": "小安寫 (2x+3)(x−1)=0，答案 x=−3 或1。",
+      "errorOptions": [
+        "由 2x+3=0 應得 x=−3/2，不是−3；另一根為1",
+        "因式分解應為 (2x−3)(x+1)",
+        "兩根都要改正號",
+        "此式無法分解"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "(2x+3)(x−1)=2x²+x−3；2x+3=0 得−3/2，x−1=0 得1。"
+    },
+    {
+      "id": "quadratic-equation-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "36-6",
+      "difficulty": "easy",
+      "errorPath": "quadratic-formula-substitution",
+      "problem": "解 2x²−3x−2=0",
+      "wrongSolution": "小哲套公式寫 x=(3±√(9−16))/4。",
+      "errorOptions": [
+        "分母應為2",
+        "b 應代3",
+        "判別式應相加但分子不變",
+        "c=−2，所以 D=(−3)²−4·2·(−2)=25，應為 x=(3±5)/4"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "a=2、b=−3、c=−2，D=9+16=25，故 x=(3±5)/4，得2或−1/2。"
+    },
+    {
+      "id": "quadratic-equation-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "36-6",
+      "difficulty": "medium",
+      "errorPath": "quadratic-formula-substitution",
+      "problem": "解 x²+4x+1=0",
+      "wrongSolution": "小文寫 x=(−4±√12)/2=−2±√12。",
+      "errorOptions": [
+        "√12不能化簡",
+        "除以2要作用於整個分子，答案為−2±√3",
+        "分母應為1",
+        "判別式應為20"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "D=16−4=12，x=(−4±√12)/2=(−4±2√3)/2=−2±√3。"
+    },
+    {
+      "id": "quadratic-equation-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "36-6",
+      "difficulty": "hard",
+      "errorPath": "quadratic-formula-substitution",
+      "problem": "解 3x²−6x+1=0",
+      "wrongSolution": "小傑寫 x=(6±√24)/3。",
+      "errorOptions": [
+        "−b 應為−6",
+        "判別式應為48",
+        "分母應為 2a=6，故 x=(6±√24)/6=1±√6/3",
+        "答案應只有一根"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "a=3、b=−6、c=1，D=36−12=24，分母2a=6，得 x=1±√6/3。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "quadratic-equation-ca-1",
+      "type": "context-application",
+      "challenge": "36-7",
+      "difficulty": "easy",
+      "errorPath": "application-equation-setup",
+      "scenario": "一塊長方形面積為48平方公尺，長比寬多2公尺。設寬為 x 公尺。",
+      "question": "正確方程式為何？",
+      "options": [
+        "x(x+2)=48",
+        "2x+2=48",
+        "x²+2=48",
+        "x(x−2)=48"
+      ],
+      "answer": 0,
+      "explanation": "長為 x+2，面積為 x(x+2)，故 x²+2x−48=0。"
+    },
+    {
+      "id": "quadratic-equation-ca-v7-2",
+      "type": "context-application",
+      "challenge": "36-7",
+      "difficulty": "medium",
+      "errorPath": "application-equation-setup",
+      "scenario": "兩個連續正整數的乘積為72，設較小者為 x。",
+      "question": "較小的正整數為何？",
+      "options": [
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "answer": 2,
+      "explanation": "x(x+1)=72，得 x²+x−72=(x−8)(x+9)=0；取正根 x=8。"
+    },
+    {
+      "id": "quadratic-equation-ca-v7-3",
+      "type": "context-application",
+      "challenge": "36-7",
+      "difficulty": "hard",
+      "errorPath": "application-equation-setup",
+      "scenario": "某數的平方比該數的5倍多14。",
+      "question": "此數可能為何？",
+      "options": [
+        "2或7",
+        "−2或−7",
+        "7或−2",
+        "−7或2"
+      ],
+      "answer": 2,
+      "explanation": "列式 x²=5x+14，得 x²−5x−14=(x−7)(x+2)=0，所以 x=7或−2。"
+    },
+    {
+      "id": "quadratic-equation-ca-2",
+      "type": "context-application",
+      "challenge": "36-8",
+      "difficulty": "easy",
+      "errorPath": "unreasonable-root-selection",
+      "scenario": "一顆球自地面上拋，其高度 h（公尺）與時間 t（秒）的關係為 h=−5t²+20t。",
+      "question": "球落回地面時，除 t=0 外的時間為何？",
+      "options": [
+        "2秒",
+        "4秒",
+        "5秒",
+        "20秒"
+      ],
+      "answer": 1,
+      "explanation": "令 h=0：−5t²+20t=−5t(t−4)=0，得 t=0或4，故落地為4秒。"
+    },
+    {
+      "id": "quadratic-equation-ca-v8-2",
+      "type": "context-application",
+      "challenge": "36-8",
+      "difficulty": "medium",
+      "errorPath": "unreasonable-root-selection",
+      "scenario": "長方形周長為28公尺，長比寬多2公尺，設寬為 x。",
+      "question": "此情境是否需要一元二次方程式才能求寬？",
+      "options": [
+        "需要，因長方形一定用面積",
+        "需要，方程式為 x(x+2)=28",
+        "不需要，2[x+(x+2)]=28 是一次方程式",
+        "資料不足"
+      ],
+      "answer": 2,
+      "explanation": "周長列式 2[x+(x+2)]=28，化為4x+4=28，是一次方程式，x=6。"
+    },
+    {
+      "id": "quadratic-equation-ca-v8-3",
+      "type": "context-application",
+      "challenge": "36-8",
+      "difficulty": "hard",
+      "errorPath": "unreasonable-root-selection",
+      "scenario": "一張長方形卡紙面積96平方公分，長比寬多4公分。",
+      "question": "寬為多少公分？",
+      "options": [
+        "6",
+        "8",
+        "10",
+        "12"
+      ],
+      "answer": 1,
+      "explanation": "設寬 x，x(x+4)=96，得 x²+4x−96=(x−8)(x+12)=0；長度取正根 x=8。"
+    }
+  ]
+}

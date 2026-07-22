@@ -1,0 +1,375 @@
+{
+  "nodeId": "circle-angle",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "圓心角、圓周角、半圓圓周角、同弧角與圓內接四邊形題庫；全數自編。日後補圖會更直觀的題目：circle-angle-bm-1、circle-angle-bm-v2-2、circle-angle-ca-1；現已用完整文字與數值敘述。"
+  },
+  "basicMastery": [
+    {
+      "id": "circle-angle-bm-1",
+      "type": "basic-mastery",
+      "challenge": "40-1",
+      "difficulty": "easy",
+      "errorPath": "inscribed-angle-not-halved",
+      "stem": "圓心角∠AOB對弧AB為100°，同弧AB上的圓周角∠ACB為何？",
+      "options": [
+        "25°",
+        "50°",
+        "100°",
+        "200°"
+      ],
+      "answer": 1,
+      "explanation": "同弧圓周角是圓心角一半，100°÷2=50°。"
+    },
+    {
+      "id": "circle-angle-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "40-1",
+      "difficulty": "medium",
+      "errorPath": "inscribed-angle-not-halved",
+      "stem": "某弧所對的圓心角為146°，同弧圓周角為何？",
+      "options": [
+        "73°",
+        "92°",
+        "146°",
+        "292°"
+      ],
+      "answer": 0,
+      "explanation": "圓周角=圓心角÷2=146°÷2=73°。"
+    },
+    {
+      "id": "circle-angle-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "40-1",
+      "difficulty": "hard",
+      "errorPath": "inscribed-angle-not-halved",
+      "stem": "圓周角∠APB為38°，它與圓心角∠AOB同對弧AB。∠AOB為何？",
+      "options": [
+        "19°",
+        "38°",
+        "76°",
+        "142°"
+      ],
+      "answer": 2,
+      "explanation": "同弧圓心角是圓周角2倍，2×38°=76°。"
+    },
+    {
+      "id": "circle-angle-bm-2",
+      "type": "basic-mastery",
+      "challenge": "40-2",
+      "difficulty": "easy",
+      "errorPath": "semicircle-right-angle",
+      "stem": "AB為圓的直徑，C為圓上異於A、B的一點。∠ACB為何？",
+      "options": [
+        "45°",
+        "60°",
+        "90°",
+        "180°"
+      ],
+      "answer": 2,
+      "explanation": "直徑AB所對弧是半圓，半圓所對圓周角為90°。"
+    },
+    {
+      "id": "circle-angle-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "40-2",
+      "difficulty": "medium",
+      "errorPath": "semicircle-right-angle",
+      "stem": "AB為直徑，圓周角∠ACB=90°。若∠CAB=32°，求∠ABC。",
+      "options": [
+        "32°",
+        "58°",
+        "90°",
+        "148°"
+      ],
+      "answer": 1,
+      "explanation": "△ABC內角和180°，∠ABC=180°−90°−32°=58°。"
+    },
+    {
+      "id": "circle-angle-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "40-2",
+      "difficulty": "hard",
+      "errorPath": "semicircle-right-angle",
+      "stem": "AB為直徑，C為圓上一點。若AC=6、BC=8，求AB。",
+      "options": [
+        "7",
+        "10",
+        "12",
+        "14"
+      ],
+      "answer": 1,
+      "explanation": "∠ACB=90°，AB為斜邊；AB=√(6²+8²)=√100=10。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "circle-angle-ci-1",
+      "type": "concept-id",
+      "challenge": "40-3",
+      "difficulty": "easy",
+      "errorPath": "same-arc-angle-confusion",
+      "statement": "同一圓中，同弧所對的所有圓周角都相等。",
+      "correctAnswer": true,
+      "explanation": "每個同弧圓周角都等於該弧圓心角的一半，因此彼此相等。"
+    },
+    {
+      "id": "circle-angle-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "40-3",
+      "difficulty": "medium",
+      "errorPath": "same-arc-angle-confusion",
+      "statement": "兩個圓周角度數相等，就一定同對一弧。",
+      "correctAnswer": false,
+      "explanation": "角度相等不保證端點與所對弧相同；只能說同弧必等角。"
+    },
+    {
+      "id": "circle-angle-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "40-3",
+      "difficulty": "hard",
+      "errorPath": "same-arc-angle-confusion",
+      "statement": "同弧所對圓心角為120°時，任一同弧圓周角為60°。",
+      "correctAnswer": true,
+      "explanation": "圓周角=120°÷2=60°。"
+    },
+    {
+      "id": "circle-angle-ci-2",
+      "type": "concept-id",
+      "challenge": "40-4",
+      "difficulty": "easy",
+      "errorPath": "cyclic-opposite-not-supplementary",
+      "statement": "圓內接四邊形的任一組對角和為180°。",
+      "correctAnswer": true,
+      "explanation": "圓內接四邊形對角互補，例如∠A+∠C=180°。"
+    },
+    {
+      "id": "circle-angle-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "40-4",
+      "difficulty": "medium",
+      "errorPath": "cyclic-opposite-not-supplementary",
+      "statement": "圓內接四邊形若∠A=70°，則對角∠C=70°。",
+      "correctAnswer": false,
+      "explanation": "對角互補，∠C=180°−70°=110°。"
+    },
+    {
+      "id": "circle-angle-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "40-4",
+      "difficulty": "hard",
+      "errorPath": "cyclic-opposite-not-supplementary",
+      "statement": "若四邊形一組對角互補，則它可判定為圓內接四邊形。",
+      "correctAnswer": true,
+      "explanation": "四邊形若一組對角和180°，可用圓內接四邊形的逆性質判定共圓。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "circle-angle-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "40-5",
+      "difficulty": "easy",
+      "errorPath": "central-inscribed-role-swap",
+      "problem": "圓心角∠AOB=84°，圓周角∠ACB同對弧AB",
+      "wrongSolution": "小明回答∠ACB=84°。",
+      "errorOptions": [
+        "圓周角應為圓心角一半，即42°",
+        "圓周角應為168°",
+        "兩角無關",
+        "圓心角應為42°"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "同弧圓周角=84°÷2=42°。"
+    },
+    {
+      "id": "circle-angle-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "40-5",
+      "difficulty": "medium",
+      "errorPath": "central-inscribed-role-swap",
+      "problem": "圓周角∠APB=55°，圓心角∠AOB同對弧AB",
+      "wrongSolution": "小華回答∠AOB=27.5°。",
+      "errorOptions": [
+        "應再除以2",
+        "圓心角是圓周角2倍，為110°",
+        "應為55°",
+        "應為305°"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "同弧圓心角=2×55°=110°。"
+    },
+    {
+      "id": "circle-angle-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "40-5",
+      "difficulty": "hard",
+      "errorPath": "central-inscribed-role-swap",
+      "problem": "同弧AB的兩個圓周角分別為∠ACB與∠ADB，已知前者47°",
+      "wrongSolution": "小安回答∠ADB=94°。",
+      "errorOptions": [
+        "應為23.5°",
+        "應為133°",
+        "同弧圓周角相等，應為47°",
+        "資料不足"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "兩角同對弧AB，所以∠ADB=∠ACB=47°。"
+    },
+    {
+      "id": "circle-angle-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "40-6",
+      "difficulty": "easy",
+      "errorPath": "diameter-arc-confusion",
+      "problem": "AB為直徑，C在圓上",
+      "wrongSolution": "小哲說∠ACB等於180°，因為AB所對弧是半圓。",
+      "errorOptions": [
+        "應為45°",
+        "應為60°",
+        "應為360°",
+        "半圓弧度180°，其圓周角為一半90°"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "圓周角是所對弧（或圓心角）的一半，180°÷2=90°。"
+    },
+    {
+      "id": "circle-angle-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "40-6",
+      "difficulty": "medium",
+      "errorPath": "diameter-arc-confusion",
+      "problem": "AB為直徑，∠BAC=35°",
+      "wrongSolution": "小文用35°+∠ABC=180°，得145°。",
+      "errorOptions": [
+        "還有∠ACB=90°，故∠ABC=180°−90°−35°=55°",
+        "答案應為35°",
+        "應直接倍增35°",
+        "直徑不影響角度"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "半圓所對∠ACB=90°，三角形內角和給∠ABC=55°。"
+    },
+    {
+      "id": "circle-angle-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "40-6",
+      "difficulty": "hard",
+      "errorPath": "diameter-arc-confusion",
+      "problem": "直徑AB所對圓周角∠ACB",
+      "wrongSolution": "小傑說只有C在上半圓時才是90°。",
+      "errorOptions": [
+        "下半圓時為180°",
+        "只要C在圓上且不等於A、B，所對直徑的圓周角皆為90°",
+        "下半圓時為45°",
+        "需知道半徑"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "不論C位於直徑哪一側，所對弧AB均為半圓，圓周角皆90°。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "circle-angle-ca-1",
+      "type": "context-application",
+      "challenge": "40-7",
+      "difficulty": "easy",
+      "errorPath": "circle-angle-equation",
+      "scenario": "同弧AB上，圓心角∠AOB=(4x+20)°，圓周角∠ACB=(x+25)°。",
+      "question": "x為何？",
+      "options": [
+        "15",
+        "10",
+        "20",
+        "25"
+      ],
+      "answer": 0,
+      "explanation": "同弧圓心角=2×圓周角：4x+20=2x+50，2x=30，x=15。"
+    },
+    {
+      "id": "circle-angle-ca-v7-2",
+      "type": "context-application",
+      "challenge": "40-7",
+      "difficulty": "medium",
+      "errorPath": "circle-angle-equation",
+      "scenario": "同弧PQ上，圓周角∠PRQ=3x°，圓心角∠POQ=(8x−20)°。",
+      "question": "x為何？",
+      "options": [
+        "5",
+        "10",
+        "15",
+        "20"
+      ],
+      "answer": 1,
+      "explanation": "8x−20=2(3x)，得2x=20，所以x=10。"
+    },
+    {
+      "id": "circle-angle-ca-v7-3",
+      "type": "context-application",
+      "challenge": "40-7",
+      "difficulty": "hard",
+      "errorPath": "circle-angle-equation",
+      "scenario": "同弧MN的兩圓周角分別為(5x−8)°與(3x+20)°。",
+      "question": "每個角為多少度？",
+      "options": [
+        "42°",
+        "52°",
+        "62°",
+        "72°"
+      ],
+      "answer": 2,
+      "explanation": "同弧角相等：5x−8=3x+20，x=14，角=5×14−8=62°。"
+    },
+    {
+      "id": "circle-angle-ca-2",
+      "type": "context-application",
+      "challenge": "40-8",
+      "difficulty": "easy",
+      "errorPath": "cyclic-quadrilateral-angle",
+      "scenario": "圓內接四邊形ABCD中，∠A=68°。",
+      "question": "∠C為何？",
+      "options": [
+        "68°",
+        "102°",
+        "112°",
+        "122°"
+      ],
+      "answer": 2,
+      "explanation": "內接四邊形對角互補，∠C=180°−68°=112°。"
+    },
+    {
+      "id": "circle-angle-ca-v8-2",
+      "type": "context-application",
+      "challenge": "40-8",
+      "difficulty": "medium",
+      "errorPath": "cyclic-quadrilateral-angle",
+      "scenario": "圓內接四邊形中，一組對角為(2x+10)°與(3x+20)°。",
+      "question": "x為何？",
+      "options": [
+        "20",
+        "25",
+        "30",
+        "35"
+      ],
+      "answer": 2,
+      "explanation": "對角和180°：2x+10+3x+20=180，5x=150，x=30。"
+    },
+    {
+      "id": "circle-angle-ca-v8-3",
+      "type": "context-application",
+      "challenge": "40-8",
+      "difficulty": "hard",
+      "errorPath": "cyclic-quadrilateral-angle",
+      "scenario": "圓內接四邊形ABCD中，∠B=95°，∠A=70°。",
+      "question": "∠D為何？",
+      "options": [
+        "75°",
+        "85°",
+        "95°",
+        "110°"
+      ],
+      "answer": 1,
+      "explanation": "∠B與∠D為對角，互補，所以∠D=180°−95°=85°。"
+    }
+  ]
+}

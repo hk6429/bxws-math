@@ -1,0 +1,375 @@
+{
+  "nodeId": "similar-figures",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "相似形定義、AA／SAS／SSS相似判別、相似比與未知邊題庫；全數自編。日後補圖會更直觀的題目：similar-figures-bm-v1-2、similar-figures-bm-v2-2、similar-figures-bm-v2-3；現已用完整文字與數值敘述。"
+  },
+  "basicMastery": [
+    {
+      "id": "similar-figures-bm-1",
+      "type": "basic-mastery",
+      "challenge": "38-1",
+      "difficulty": "easy",
+      "errorPath": "corresponding-side-mismatch",
+      "stem": "兩相似三角形的對應邊分別為3與6、4與8，若第一個三角形第三邊為5，第二個第三邊為何？",
+      "options": [
+        "2.5",
+        "10",
+        "12",
+        "15"
+      ],
+      "answer": 1,
+      "explanation": "第二形對第一形相似比為6÷3=2，第三邊=5×2=10。"
+    },
+    {
+      "id": "similar-figures-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "38-1",
+      "difficulty": "medium",
+      "errorPath": "corresponding-side-mismatch",
+      "stem": "△ABC∼△DEF，AB=4、DE=10、BC=6，求EF。",
+      "options": [
+        "12",
+        "15",
+        "16",
+        "20"
+      ],
+      "answer": 1,
+      "explanation": "AB對DE、BC對EF，放大倍數10÷4=2.5，EF=6×2.5=15。"
+    },
+    {
+      "id": "similar-figures-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "38-1",
+      "difficulty": "hard",
+      "errorPath": "corresponding-side-mismatch",
+      "stem": "兩相似三角形對應邊比為2：3，較小三角形三邊為6、8、10，較大三角形周長為何？",
+      "options": [
+        "24",
+        "30",
+        "36",
+        "40"
+      ],
+      "answer": 2,
+      "explanation": "小形周長24；大形是3/2倍，周長=24×3/2=36。"
+    },
+    {
+      "id": "similar-figures-bm-2",
+      "type": "basic-mastery",
+      "challenge": "38-2",
+      "difficulty": "easy",
+      "errorPath": "similar-scale-factor",
+      "stem": "△ABC與△DEF中，∠A=∠D=50°、∠B=∠E=60°，兩三角形是否相似？",
+      "options": [
+        "相似，符合AA",
+        "不相似，缺邊長",
+        "只有全等",
+        "無法判斷第三角"
+      ],
+      "answer": 0,
+      "explanation": "已有兩組對應角相等，符合AA相似；第三角也同為70°。"
+    },
+    {
+      "id": "similar-figures-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "38-2",
+      "difficulty": "medium",
+      "errorPath": "similar-scale-factor",
+      "stem": "兩三角形夾角同為40°，其夾角兩邊分別為4、6與10、15。可用何種判別確認相似？",
+      "options": [
+        "AA",
+        "SAS相似",
+        "SSS相似",
+        "不能相似"
+      ],
+      "answer": 1,
+      "explanation": "4：10=6：15=2：5，且夾角相等，符合SAS相似。"
+    },
+    {
+      "id": "similar-figures-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "38-2",
+      "difficulty": "hard",
+      "errorPath": "similar-scale-factor",
+      "stem": "兩三角形邊長分別3、4、5與6、8、10。可用何種判別確認相似？",
+      "options": [
+        "只有AA",
+        "只有SAS",
+        "SSS相似",
+        "邊長不同所以不相似"
+      ],
+      "answer": 2,
+      "explanation": "3：6=4：8=5：10=1：2，三組對應邊成比例，符合SSS相似。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "similar-figures-ci-1",
+      "type": "concept-id",
+      "challenge": "38-3",
+      "difficulty": "easy",
+      "errorPath": "aa-condition-confusion",
+      "statement": "相似多邊形的所有對應角相等，所有對應邊成同一比例。",
+      "correctAnswer": true,
+      "explanation": "這正是相似形定義；角度相同、線性尺寸依固定相似比縮放。"
+    },
+    {
+      "id": "similar-figures-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "38-3",
+      "difficulty": "medium",
+      "errorPath": "aa-condition-confusion",
+      "statement": "只要兩個三角形有一組角相等，就一定相似。",
+      "correctAnswer": false,
+      "explanation": "一組角相等不足；AA至少需兩組對應角相等。"
+    },
+    {
+      "id": "similar-figures-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "38-3",
+      "difficulty": "hard",
+      "errorPath": "aa-condition-confusion",
+      "statement": "兩個直角三角形只因都有90°角便一定相似。",
+      "correctAnswer": false,
+      "explanation": "僅一組直角相等仍不足，還需另一組角相等或其他相似條件。"
+    },
+    {
+      "id": "similar-figures-ci-2",
+      "type": "concept-id",
+      "challenge": "38-4",
+      "difficulty": "easy",
+      "errorPath": "sas-sss-condition-confusion",
+      "statement": "SAS相似要求兩組對應邊成比例，且這兩邊的夾角相等。",
+      "correctAnswer": true,
+      "explanation": "比例邊之間的夾角必須對應相等，才符合SAS相似。"
+    },
+    {
+      "id": "similar-figures-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "38-4",
+      "difficulty": "medium",
+      "errorPath": "sas-sss-condition-confusion",
+      "statement": "SSS相似要求三組對應邊成同一比例，不要求邊長相等。",
+      "correctAnswer": true,
+      "explanation": "相似可大小不同；三組邊比一致即可，不必全等。"
+    },
+    {
+      "id": "similar-figures-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "38-4",
+      "difficulty": "hard",
+      "errorPath": "sas-sss-condition-confusion",
+      "statement": "兩三角形有兩邊成比例，無論哪一角相等都可判定SAS相似。",
+      "correctAnswer": false,
+      "explanation": "必須是這兩邊的夾角相等；非夾角可能形成SSA，不能保證相似。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "similar-figures-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "38-5",
+      "difficulty": "easy",
+      "errorPath": "correspondence-order-error",
+      "problem": "△ABC∼△DEF，AB=6、BC=9、DE=10，求EF",
+      "wrongSolution": "小明用 AB：DE=EF：BC，算得EF=20/3。",
+      "errorOptions": [
+        "比例方向前後不一致；應用AB：DE=BC：EF，得EF=15",
+        "應把所有邊相加",
+        "EF應等於BC",
+        "相似比只能是整數"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "6：10=9：EF，6EF=90，EF=15。"
+    },
+    {
+      "id": "similar-figures-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "38-5",
+      "difficulty": "medium",
+      "errorPath": "correspondence-order-error",
+      "problem": "△ABC∼△PQR，A對P、B對Q、C對R",
+      "wrongSolution": "小華認為AC對PQ。",
+      "errorOptions": [
+        "AC對QR",
+        "AC對PR，因端點A、C分別對P、R",
+        "AC對PQ正確",
+        "只有角有對應"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "依書寫順序A↔P、B↔Q、C↔R，因此AC↔PR。"
+    },
+    {
+      "id": "similar-figures-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "38-5",
+      "difficulty": "hard",
+      "errorPath": "correspondence-order-error",
+      "problem": "△ABC∼△DEF，AB=8、AC=12、DE=6",
+      "wrongSolution": "小安用AB對DF，算DF=4.5。",
+      "errorOptions": [
+        "答案正確",
+        "應用面積比",
+        "AB對DE，AC對DF，所以8：6=12：DF，DF=9",
+        "DF=16"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "對應順序給出AB↔DE、AC↔DF，故DF=12×6/8=9。"
+    },
+    {
+      "id": "similar-figures-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "38-6",
+      "difficulty": "easy",
+      "errorPath": "similar-ratio-direction",
+      "problem": "小三角形到大三角形相似比為2：5，小形邊長8",
+      "wrongSolution": "小哲算大形對應邊=8×2/5。",
+      "errorOptions": [
+        "應加3",
+        "比值方向倒置；大邊=8×5/2=20",
+        "應平方後相乘",
+        "大邊=8"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "2：5是小：大，從小放大到大要乘5/2，得20。"
+    },
+    {
+      "id": "similar-figures-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "38-6",
+      "difficulty": "medium",
+      "errorPath": "similar-ratio-direction",
+      "problem": "兩相似三角形大：小相似比3：2，大形對應邊18",
+      "wrongSolution": "小文算小形邊=18×3/2=27。",
+      "errorOptions": [
+        "應乘2/3，得12",
+        "應除以2",
+        "應平方比值",
+        "相似比不適用邊長"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "大縮至小乘2/3，18×2/3=12。"
+    },
+    {
+      "id": "similar-figures-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "38-6",
+      "difficulty": "hard",
+      "errorPath": "similar-ratio-direction",
+      "problem": "△ABC∼△DEF，AB：DE=4：7，EF=21",
+      "wrongSolution": "小傑算BC=21×7/4。",
+      "errorOptions": [
+        "BC=21+3",
+        "應先求角度",
+        "AB：DE=BC：EF=4：7，故BC=21×4/7=12",
+        "BC=21"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "比例方向須一致；BC/21=4/7，所以BC=12。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "similar-figures-ca-1",
+      "type": "context-application",
+      "challenge": "38-7",
+      "difficulty": "easy",
+      "errorPath": "unknown-side-proportion",
+      "scenario": "旗幟A是旗幟B的相似縮小版。A寬12公分、高8公分；B寬30公分。",
+      "question": "B的高度為多少公分？",
+      "options": [
+        "16",
+        "18",
+        "20",
+        "24"
+      ],
+      "answer": 2,
+      "explanation": "B對A倍數=30÷12=2.5，高=8×2.5=20。"
+    },
+    {
+      "id": "similar-figures-ca-v7-2",
+      "type": "context-application",
+      "challenge": "38-7",
+      "difficulty": "medium",
+      "errorPath": "unknown-side-proportion",
+      "scenario": "△ABC中AB=5、AC=7；相似的△DEF中DE=15，且AB對DE、AC對DF。",
+      "question": "DF長多少？",
+      "options": [
+        "17",
+        "19",
+        "21",
+        "23"
+      ],
+      "answer": 2,
+      "explanation": "放大倍數15÷5=3，DF=7×3=21。"
+    },
+    {
+      "id": "similar-figures-ca-v7-3",
+      "type": "context-application",
+      "challenge": "38-7",
+      "difficulty": "hard",
+      "errorPath": "unknown-side-proportion",
+      "scenario": "兩個相似長方形，小形長寬為6、4，大形長為15。",
+      "question": "大形寬為何？",
+      "options": [
+        "8",
+        "10",
+        "12",
+        "13"
+      ],
+      "answer": 1,
+      "explanation": "放大倍數15÷6=2.5，寬=4×2.5=10。"
+    },
+    {
+      "id": "similar-figures-ca-2",
+      "type": "context-application",
+      "challenge": "38-8",
+      "difficulty": "easy",
+      "errorPath": "similarity-condition-application",
+      "scenario": "三角形甲角度為40°、60°、80°，三角形乙有40°與60°兩角。",
+      "question": "兩三角形的關係為何？",
+      "options": [
+        "AA相似",
+        "一定全等",
+        "不相似",
+        "需知道三邊才可判斷"
+      ],
+      "answer": 0,
+      "explanation": "兩組角分別相等，符合AA相似；乙第三角也為80°。"
+    },
+    {
+      "id": "similar-figures-ca-v8-2",
+      "type": "context-application",
+      "challenge": "38-8",
+      "difficulty": "medium",
+      "errorPath": "similarity-condition-application",
+      "scenario": "三角形甲三邊5、7、8，乙三邊10、14、16。",
+      "question": "兩三角形的關係為何？",
+      "options": [
+        "不相似",
+        "SSS相似，相似比甲：乙=1：2",
+        "全等",
+        "只有SAS相似"
+      ],
+      "answer": 1,
+      "explanation": "5：10=7：14=8：16=1：2，符合SSS相似。"
+    },
+    {
+      "id": "similar-figures-ca-v8-3",
+      "type": "context-application",
+      "challenge": "38-8",
+      "difficulty": "hard",
+      "errorPath": "similarity-condition-application",
+      "scenario": "兩三角形各有一個60°夾角；夾角兩邊甲為6、9，乙為10、15。",
+      "question": "可判定何者？",
+      "options": [
+        "不能判定",
+        "AA相似",
+        "SAS相似，因6：10=9：15=3：5",
+        "全等"
+      ],
+      "answer": 2,
+      "explanation": "兩組夾邊比例相等且夾角同為60°，符合SAS相似。"
+    }
+  ]
+}

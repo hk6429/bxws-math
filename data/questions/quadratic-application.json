@@ -1,0 +1,375 @@
+{
+  "nodeId": "quadratic-application",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "一元二次方程式在連續整數、面積、圍籬、丟球高度與金額情境的應用題庫；全數自編，解答均檢查並取符合情境的根。"
+  },
+  "basicMastery": [
+    {
+      "id": "quadratic-application-bm-1",
+      "type": "basic-mastery",
+      "challenge": "37-1",
+      "difficulty": "easy",
+      "errorPath": "consecutive-integer-setup",
+      "stem": "兩個連續正整數乘積為56，較小者為何？",
+      "options": [
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "answer": 1,
+      "explanation": "設較小者x，x(x+1)=56，(x−7)(x+8)=0，取正根x=7。"
+    },
+    {
+      "id": "quadratic-application-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "37-1",
+      "difficulty": "medium",
+      "errorPath": "consecutive-integer-setup",
+      "stem": "兩個連續偶數乘積為120，較小的正偶數為何？",
+      "options": [
+        "8",
+        "12",
+        "14",
+        "10"
+      ],
+      "answer": 3,
+      "explanation": "設較小者x，x(x+2)=120，(x−10)(x+12)=0，取x=10。"
+    },
+    {
+      "id": "quadratic-application-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "37-1",
+      "difficulty": "hard",
+      "errorPath": "consecutive-integer-setup",
+      "stem": "兩個相鄰整數乘積為132，若兩數皆為正，兩數為何？",
+      "options": [
+        "10、11",
+        "12、13",
+        "11、12",
+        "13、14"
+      ],
+      "answer": 2,
+      "explanation": "x(x+1)=132，x²+x−132=(x−11)(x+12)=0，取x=11，兩數11、12。"
+    },
+    {
+      "id": "quadratic-application-bm-2",
+      "type": "basic-mastery",
+      "challenge": "37-2",
+      "difficulty": "easy",
+      "errorPath": "rectangle-dimension-setup",
+      "stem": "長方形面積60平方公分，長比寬多7公分，寬為何？",
+      "options": [
+        "5",
+        "6",
+        "10",
+        "12"
+      ],
+      "answer": 0,
+      "explanation": "設寬x，x(x+7)=60，(x−5)(x+12)=0，取正根x=5。"
+    },
+    {
+      "id": "quadratic-application-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "37-2",
+      "difficulty": "medium",
+      "errorPath": "rectangle-dimension-setup",
+      "stem": "長方形面積108平方公尺，長是寬的3倍，寬為何？",
+      "options": [
+        "3",
+        "6",
+        "9",
+        "18"
+      ],
+      "answer": 1,
+      "explanation": "設寬x，3x²=108，x²=36，長度取正值x=6。"
+    },
+    {
+      "id": "quadratic-application-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "37-2",
+      "difficulty": "hard",
+      "errorPath": "rectangle-dimension-setup",
+      "stem": "長方形長比寬多5公分，面積84平方公分，長為何？",
+      "options": [
+        "7",
+        "9",
+        "12",
+        "14"
+      ],
+      "answer": 2,
+      "explanation": "設寬x，x(x+5)=84，(x−7)(x+12)=0，寬7、長12。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "quadratic-application-ci-1",
+      "type": "concept-id",
+      "challenge": "37-3",
+      "difficulty": "easy",
+      "errorPath": "projectile-time-root",
+      "statement": "若球高 h=−5t²+15t，求落地時間應令 h=0。",
+      "correctAnswer": true,
+      "explanation": "落地時高度為0，解−5t(t−3)=0，除起點t=0外，t=3。"
+    },
+    {
+      "id": "quadratic-application-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "37-3",
+      "difficulty": "medium",
+      "errorPath": "projectile-time-root",
+      "statement": "高度方程式的兩個根都一定代表物理上可接受的時間。",
+      "correctAnswer": false,
+      "explanation": "時間須符合t≥0及情境區間；負根通常不合理，還要檢查起點根。"
+    },
+    {
+      "id": "quadratic-application-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "37-3",
+      "difficulty": "hard",
+      "errorPath": "projectile-time-root",
+      "statement": "若 h=−t²+6t+7，t=7 是落地時刻之一。",
+      "correctAnswer": true,
+      "explanation": "代入得−49+42+7=0；另一根−1不合t≥0。"
+    },
+    {
+      "id": "quadratic-application-ci-2",
+      "type": "concept-id",
+      "challenge": "37-4",
+      "difficulty": "easy",
+      "errorPath": "money-product-setup",
+      "statement": "每張票漲價x元會少賣10張，收入應以「新票價×新張數」列式。",
+      "correctAnswer": true,
+      "explanation": "若原價p、原銷量q，收入為(p+x)(q−10x)，展開會形成二次式。"
+    },
+    {
+      "id": "quadratic-application-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "37-4",
+      "difficulty": "medium",
+      "errorPath": "money-product-setup",
+      "statement": "本金x元與另一筆比它多100元的金額乘積為60000，可列 x(x+100)=60000。",
+      "correctAnswer": true,
+      "explanation": "兩金額為x與x+100，其乘積直接列為x(x+100)。"
+    },
+    {
+      "id": "quadratic-application-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "37-4",
+      "difficulty": "hard",
+      "errorPath": "money-product-setup",
+      "statement": "金額問題解出負根時，仍應一律保留為實際金額。",
+      "correctAnswer": false,
+      "explanation": "金額通常不可為負，須依題意捨去不合理負根並檢查正根。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "quadratic-application-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "37-5",
+      "difficulty": "easy",
+      "errorPath": "application-equation-setup",
+      "problem": "兩連續正整數乘積90",
+      "wrongSolution": "小明設較小為x，列成 x+x+1=90。",
+      "errorOptions": [
+        "連續整數應相乘，應列x(x+1)=90",
+        "應列x²+1=90",
+        "應列2x=90",
+        "應列x(x−1)=90"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "題意是乘積，正確為x(x+1)=90，解得x=9，兩數9、10。"
+    },
+    {
+      "id": "quadratic-application-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "37-5",
+      "difficulty": "medium",
+      "errorPath": "application-equation-setup",
+      "problem": "兩連續奇數乘積143",
+      "wrongSolution": "小華設較小為x，列x(x+1)=143。",
+      "errorOptions": [
+        "143不可分解",
+        "奇數相鄰差2，應列x(x+2)=143",
+        "應列2x=143",
+        "應列x²+2=143"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "連續奇數差2；x²+2x−143=(x−11)(x+13)=0，取x=11。"
+    },
+    {
+      "id": "quadratic-application-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "37-5",
+      "difficulty": "hard",
+      "errorPath": "application-equation-setup",
+      "problem": "兩相鄰正整數平方和85",
+      "wrongSolution": "小安列 x(x+1)=85。",
+      "errorOptions": [
+        "應把85開根號",
+        "應列2x+1=85",
+        "平方和應列x²+(x+1)²=85",
+        "應列x²+x+1=85"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "平方和是x²+(x+1)²=85，解得x=6，兩數6、7。"
+    },
+    {
+      "id": "quadratic-application-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "37-6",
+      "difficulty": "easy",
+      "errorPath": "unreasonable-root-selection",
+      "problem": "長方形寬x、長x+4、面積96",
+      "wrongSolution": "小哲解出x=8或−12，回答寬可能是−12。",
+      "errorOptions": [
+        "兩根都要改正",
+        "面積應為周長",
+        "−12不符合長度為正，應取x=8",
+        "應取兩根平均"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "x(x+4)=96得(x−8)(x+12)=0；寬只能取正根8。"
+    },
+    {
+      "id": "quadratic-application-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "37-6",
+      "difficulty": "medium",
+      "errorPath": "unreasonable-root-selection",
+      "problem": "球高 h=−5t²+20t，求落地時間",
+      "wrongSolution": "小文解得t=0或4，回答飛行時間有0秒與4秒兩種。",
+      "errorOptions": [
+        "t=0是拋出起點，落回地面取t=4",
+        "應取負時間",
+        "兩根都捨去",
+        "應把兩根相加"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "−5t(t−4)=0；t=0為開始，題問落回地面故取4秒。"
+    },
+    {
+      "id": "quadratic-application-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "37-6",
+      "difficulty": "hard",
+      "errorPath": "unreasonable-root-selection",
+      "problem": "票價調整後收入方程式解得漲價5元或降價30元，題目限定只能漲價。",
+      "wrongSolution": "小傑保留兩個答案。",
+      "errorOptions": [
+        "方程式不可有兩根",
+        "必須取較大絕對值",
+        "應取平均−12.5",
+        "條件限定漲價，須捨去代表降價的−30，只留5"
+      ],
+      "correctErrorIndex": 3,
+      "explanation": "代數根要回到題意檢查；x表示漲價且x>0，所以只取x=5。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "quadratic-application-ca-1",
+      "type": "context-application",
+      "challenge": "37-7",
+      "difficulty": "easy",
+      "errorPath": "fence-area-model",
+      "scenario": "三面靠牆以40公尺圍籬圍成長方形，兩條寬各x公尺，長為40−2x。",
+      "question": "面積方程式若目標為192平方公尺，應列何式？",
+      "options": [
+        "x(40−2x)=192",
+        "2x+40=192",
+        "x(40−x)=192",
+        "40x=192"
+      ],
+      "answer": 0,
+      "explanation": "三邊圍籬2x+長=40，長=40−2x，面積x(40−2x)=192。"
+    },
+    {
+      "id": "quadratic-application-ca-v7-2",
+      "type": "context-application",
+      "challenge": "37-7",
+      "difficulty": "medium",
+      "errorPath": "fence-area-model",
+      "scenario": "一塊長方形花圃長比寬多4公尺，面積96平方公尺。",
+      "question": "長是多少公尺？",
+      "options": [
+        "8",
+        "10",
+        "12",
+        "16"
+      ],
+      "answer": 2,
+      "explanation": "設寬x，x(x+4)=96，(x−8)(x+12)=0，寬8、長12。"
+    },
+    {
+      "id": "quadratic-application-ca-v7-3",
+      "type": "context-application",
+      "challenge": "37-7",
+      "difficulty": "hard",
+      "errorPath": "fence-area-model",
+      "scenario": "靠牆圍一長方形，三邊共30公尺，寬x、長30−2x。",
+      "question": "面積最大值發生在x為多少？",
+      "options": [
+        "5",
+        "7.5",
+        "10",
+        "15"
+      ],
+      "answer": 1,
+      "explanation": "A=x(30−2x)=−2(x−7.5)²+112.5，故x=7.5時最大。"
+    },
+    {
+      "id": "quadratic-application-ca-2",
+      "type": "context-application",
+      "challenge": "37-8",
+      "difficulty": "easy",
+      "errorPath": "application-answer-check",
+      "scenario": "某商品單價x元，售出數量為100−2x件，收入1200元。",
+      "question": "哪個方程式正確？",
+      "options": [
+        "x+100−2x=1200",
+        "x(100−2x)=1200",
+        "100x−2=1200",
+        "2x(100−x)=1200"
+      ],
+      "answer": 1,
+      "explanation": "收入=單價×數量，因此x(100−2x)=1200，即2x²−100x+1200=0。"
+    },
+    {
+      "id": "quadratic-application-ca-v8-2",
+      "type": "context-application",
+      "challenge": "37-8",
+      "difficulty": "medium",
+      "errorPath": "application-answer-check",
+      "scenario": "一筆金額比另一筆多200元，兩者乘積為80000元²。",
+      "question": "較小金額為多少元？",
+      "options": [
+        "100",
+        "200",
+        "300",
+        "400"
+      ],
+      "answer": 1,
+      "explanation": "設較小x，x(x+200)=80000，(x−200)(x+400)=0，取x=200。"
+    },
+    {
+      "id": "quadratic-application-ca-v8-3",
+      "type": "context-application",
+      "challenge": "37-8",
+      "difficulty": "hard",
+      "errorPath": "application-answer-check",
+      "scenario": "長方形面積180平方公分，長比寬多7公分。",
+      "question": "寬與長各為多少？",
+      "options": [
+        "8、15",
+        "9、16",
+        "10、17",
+        "12、19"
+      ],
+      "answer": 2,
+      "explanation": "x(x+7)=180，x²+7x−180=(x−10)(x+18)=0，取x=10，長17。"
+    }
+  ]
+}

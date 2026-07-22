@@ -1,0 +1,375 @@
+{
+  "nodeId": "similar-applications",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "平行線比例線段、相似比與面積比、比例尺及影長測高題庫；全數自編。日後補圖會更直觀的題目：similar-applications-bm-1、similar-applications-bm-v1-2、similar-applications-ed-1；現已用完整文字與數值敘述。"
+  },
+  "basicMastery": [
+    {
+      "id": "similar-applications-bm-1",
+      "type": "basic-mastery",
+      "challenge": "39-1",
+      "difficulty": "easy",
+      "errorPath": "parallel-line-proportion",
+      "stem": "三角形ABC中，D在AB上、E在AC上且DE∥BC。若AD=3、AB=9、AE=4，求AC。",
+      "options": [
+        "12",
+        "8",
+        "10",
+        "14"
+      ],
+      "answer": 0,
+      "explanation": "DE∥BC使△ADE∼△ABC，AD/AB=AE/AC=1/3，故AC=12。"
+    },
+    {
+      "id": "similar-applications-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "39-1",
+      "difficulty": "medium",
+      "errorPath": "parallel-line-proportion",
+      "stem": "三角形ABC中，D在AB上、E在AC上且DE∥BC。若AD=5、DB=3、AE=10，求EC。",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "8"
+      ],
+      "answer": 2,
+      "explanation": "AB=8，AD/AB=5/8=AE/AC，AC=16，故EC=16−10=6。"
+    },
+    {
+      "id": "similar-applications-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "39-1",
+      "difficulty": "hard",
+      "errorPath": "parallel-line-proportion",
+      "stem": "三條平行線截兩條截線，一截線相鄰線段長為4、6，另一截線第一段為10。另一截線第二段為何？",
+      "options": [
+        "12",
+        "15",
+        "16",
+        "20"
+      ],
+      "answer": 1,
+      "explanation": "平行線截得對應線段成比例，4：6=10：x，x=15。"
+    },
+    {
+      "id": "similar-applications-bm-2",
+      "type": "basic-mastery",
+      "challenge": "39-2",
+      "difficulty": "easy",
+      "errorPath": "area-ratio-not-squared",
+      "stem": "兩相似圖形相似比（小：大）為2：3，小形面積20平方公分。大形面積為何？",
+      "options": [
+        "30",
+        "40",
+        "45",
+        "60"
+      ],
+      "answer": 2,
+      "explanation": "面積比為2²：3²=4：9，大面積=20×9/4=45。"
+    },
+    {
+      "id": "similar-applications-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "39-2",
+      "difficulty": "medium",
+      "errorPath": "area-ratio-not-squared",
+      "stem": "兩相似三角形邊長比為3：5。面積比為何？",
+      "options": [
+        "3：5",
+        "6：10",
+        "9：25",
+        "27：125"
+      ],
+      "answer": 2,
+      "explanation": "相似圖形面積比等於相似比平方，故3²：5²=9：25。"
+    },
+    {
+      "id": "similar-applications-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "39-2",
+      "difficulty": "hard",
+      "errorPath": "area-ratio-not-squared",
+      "stem": "兩相似圖形面積比為16：81。正的相似比為何？",
+      "options": [
+        "2：3",
+        "4：9",
+        "8：9",
+        "16：81"
+      ],
+      "answer": 1,
+      "explanation": "線性相似比為面積比的正平方根，√16：√81=4：9。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "similar-applications-ci-1",
+      "type": "concept-id",
+      "challenge": "39-3",
+      "difficulty": "easy",
+      "errorPath": "map-scale-conversion",
+      "statement": "平行於三角形一邊的線段，會截出一個與原三角形相似的小三角形。",
+      "correctAnswer": true,
+      "explanation": "因平行線產生兩組對應角相等，依AA可判定相似。"
+    },
+    {
+      "id": "similar-applications-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "39-3",
+      "difficulty": "medium",
+      "errorPath": "map-scale-conversion",
+      "statement": "平行線截兩條截線時，兩截線上的對應線段成比例。",
+      "correctAnswer": true,
+      "explanation": "這是平行線截比例線段性質，可用一致的對應順序列比例。"
+    },
+    {
+      "id": "similar-applications-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "39-3",
+      "difficulty": "hard",
+      "errorPath": "map-scale-conversion",
+      "statement": "若DE∥BC，則一定有AD/DB=AE/EC。",
+      "correctAnswer": true,
+      "explanation": "平行線截三角形兩邊，分段比例相等：AD：DB=AE：EC。"
+    },
+    {
+      "id": "similar-applications-ci-2",
+      "type": "concept-id",
+      "challenge": "39-4",
+      "difficulty": "easy",
+      "errorPath": "shadow-height-proportion",
+      "statement": "比例尺1：50000表示地圖上1公分代表實際50000公尺。",
+      "correctAnswer": false,
+      "explanation": "比例尺兩邊須同單位；1公分代表50000公分=500公尺。"
+    },
+    {
+      "id": "similar-applications-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "39-4",
+      "difficulty": "medium",
+      "errorPath": "shadow-height-proportion",
+      "statement": "比例尺縮小為原來的一半時，圖上相同長度代表的實際距離也一定減半。",
+      "correctAnswer": false,
+      "explanation": "需看比例尺分母；例如1：1000改1：2000，圖上同長度代表實距加倍。"
+    },
+    {
+      "id": "similar-applications-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "39-4",
+      "difficulty": "hard",
+      "errorPath": "shadow-height-proportion",
+      "statement": "同一比例尺地圖上，圖距與實距成正比。",
+      "correctAnswer": true,
+      "explanation": "比例尺固定時，實距=圖距×比例尺分母，兩者成正比。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "similar-applications-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "39-5",
+      "difficulty": "easy",
+      "errorPath": "parallel-segment-correspondence",
+      "problem": "DE∥BC，AD=4、DB=6、AE=8，求EC",
+      "wrongSolution": "小明列4：6=EC：8，得EC=16/3。",
+      "errorOptions": [
+        "對應順序反了；應列AD：DB=AE：EC，即4：6=8：EC，得EC=12",
+        "應列4+6=8+EC",
+        "EC=8",
+        "平行線不產生比例"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "AD/DB=AE/EC，4/6=8/EC，4EC=48，所以EC=12。"
+    },
+    {
+      "id": "similar-applications-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "39-5",
+      "difficulty": "medium",
+      "errorPath": "parallel-segment-correspondence",
+      "problem": "DE∥BC，AD=3、AB=12、AE=5，求AC",
+      "wrongSolution": "小華列3：12=AC：5，得AC=1.25。",
+      "errorOptions": [
+        "答案正確",
+        "應列AD：AB=AE：AC，3：12=5：AC，得AC=20",
+        "應用面積比",
+        "AC=15"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "小三角形對大三角形之比3/12=1/4，故5/AC=1/4，AC=20。"
+    },
+    {
+      "id": "similar-applications-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "39-5",
+      "difficulty": "hard",
+      "errorPath": "parallel-segment-correspondence",
+      "problem": "平行線截兩截線，甲線兩段2、7，乙線第一段6",
+      "wrongSolution": "小安把乙線第二段算成6×2/7。",
+      "errorOptions": [
+        "應相加",
+        "應平方比值",
+        "應保持2：7=6：x，得x=21",
+        "兩截線線段必相等"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "對應段比例2/7=6/x，2x=42，故x=21。"
+    },
+    {
+      "id": "similar-applications-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "39-6",
+      "difficulty": "easy",
+      "errorPath": "similar-ratio-not-squared-for-area",
+      "problem": "相似比小：大=1：4，小形面積6",
+      "wrongSolution": "小哲說大形面積=6×4=24。",
+      "errorOptions": [
+        "應乘相似比平方4²，得96",
+        "應除以4",
+        "應乘8",
+        "面積不隨縮放改變"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "面積比1²：4²=1：16，大面積=6×16=96。"
+    },
+    {
+      "id": "similar-applications-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "39-6",
+      "difficulty": "medium",
+      "errorPath": "similar-ratio-not-squared-for-area",
+      "problem": "兩相似三角形面積比25：49",
+      "wrongSolution": "小文說相似比也是25：49。",
+      "errorOptions": [
+        "相似比為625：2401",
+        "相似比為√25：√49=5：7",
+        "相似比為24：48",
+        "無法求相似比"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "面積比是相似比平方，取正平方根得5：7。"
+    },
+    {
+      "id": "similar-applications-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "39-6",
+      "difficulty": "hard",
+      "errorPath": "similar-ratio-not-squared-for-area",
+      "problem": "相似比3：2，大形與小形對應排列為3：2",
+      "wrongSolution": "小傑說面積比=6：4=3：2。",
+      "errorOptions": [
+        "應立方為27：8",
+        "應相加為5：4",
+        "應平方為9：4",
+        "面積比為3：2正確"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "面積依線性尺度的平方縮放，所以(3/2)²=9/4。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "similar-applications-ca-1",
+      "type": "context-application",
+      "challenge": "39-7",
+      "difficulty": "easy",
+      "errorPath": "scale-unit-conversion",
+      "scenario": "地圖比例尺1：50000，兩地圖上距離6公分。",
+      "question": "實際距離為多少公里？",
+      "options": [
+        "3",
+        "0.3",
+        "30",
+        "300"
+      ],
+      "answer": 0,
+      "explanation": "6×50000=300000公分=3000公尺=3公里。"
+    },
+    {
+      "id": "similar-applications-ca-v7-2",
+      "type": "context-application",
+      "challenge": "39-7",
+      "difficulty": "medium",
+      "errorPath": "scale-unit-conversion",
+      "scenario": "地圖比例尺1：25000，實際距離2公里。",
+      "question": "地圖距離為多少公分？",
+      "options": [
+        "4",
+        "6",
+        "8",
+        "10"
+      ],
+      "answer": 2,
+      "explanation": "2公里=200000公分，圖距=200000÷25000=8公分。"
+    },
+    {
+      "id": "similar-applications-ca-v7-3",
+      "type": "context-application",
+      "challenge": "39-7",
+      "difficulty": "hard",
+      "errorPath": "scale-unit-conversion",
+      "scenario": "模型長15公分，實物長9公尺。",
+      "question": "模型與實物的比例尺為何？",
+      "options": [
+        "1：6",
+        "1：60",
+        "1：600",
+        "5：3"
+      ],
+      "answer": 1,
+      "explanation": "9公尺=900公分，15：900=1：60。"
+    },
+    {
+      "id": "similar-applications-ca-2",
+      "type": "context-application",
+      "challenge": "39-8",
+      "difficulty": "easy",
+      "errorPath": "shadow-time-condition",
+      "scenario": "同一時刻，身高1.5公尺的人影長2公尺；一棵樹影長8公尺。",
+      "question": "樹高多少公尺？",
+      "options": [
+        "4",
+        "8",
+        "12",
+        "6"
+      ],
+      "answer": 3,
+      "explanation": "同時刻物高/影長相等，1.5/2=h/8，h=6。"
+    },
+    {
+      "id": "similar-applications-ca-v8-2",
+      "type": "context-application",
+      "challenge": "39-8",
+      "difficulty": "medium",
+      "errorPath": "shadow-time-condition",
+      "scenario": "同一時刻，一根3公尺旗桿影長4公尺，建築影長20公尺。",
+      "question": "建築高多少公尺？",
+      "options": [
+        "12",
+        "15",
+        "16",
+        "18"
+      ],
+      "answer": 1,
+      "explanation": "3/4=h/20，h=20×3/4=15公尺。"
+    },
+    {
+      "id": "similar-applications-ca-v8-3",
+      "type": "context-application",
+      "challenge": "39-8",
+      "difficulty": "hard",
+      "errorPath": "shadow-time-condition",
+      "scenario": "身高1.6公尺的小華影長1.2公尺；同時刻樹影長9公尺。",
+      "question": "樹高多少公尺？",
+      "options": [
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      "answer": 2,
+      "explanation": "1.6/1.2=h/9，h=9×4/3=12公尺。"
+    }
+  ]
+}

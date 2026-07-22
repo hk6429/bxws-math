@@ -1,0 +1,375 @@
+{
+  "nodeId": "circle-chord-tangent",
+  "curriculum": {
+    "sourceType": "自編",
+    "note": "圓的弦、切線、切線長與弦切角題庫；全數自編。日後補圖會更直觀的題目：circle-chord-tangent-bm-1、circle-chord-tangent-ca-v7-3、circle-chord-tangent-ca-2；現已用完整文字與數值敘述。"
+  },
+  "basicMastery": [
+    {
+      "id": "circle-chord-tangent-bm-1",
+      "type": "basic-mastery",
+      "challenge": "41-1",
+      "difficulty": "easy",
+      "errorPath": "radius-chord-bisection",
+      "stem": "圓心O到弦AB作垂線，垂足M。若AB=14，AM為何？",
+      "options": [
+        "5",
+        "7",
+        "14",
+        "28"
+      ],
+      "answer": 1,
+      "explanation": "圓心到弦的垂線平分弦，AM=AB÷2=7。"
+    },
+    {
+      "id": "circle-chord-tangent-bm-v1-2",
+      "type": "basic-mastery",
+      "challenge": "41-1",
+      "difficulty": "medium",
+      "errorPath": "radius-chord-bisection",
+      "stem": "半徑10的圓中，圓心O到弦AB的距離為6。弦長AB為何？",
+      "options": [
+        "8",
+        "12",
+        "16",
+        "20"
+      ],
+      "answer": 2,
+      "explanation": "垂足M平分弦；AM=√(10²−6²)=8，AB=2AM=16。"
+    },
+    {
+      "id": "circle-chord-tangent-bm-v1-3",
+      "type": "basic-mastery",
+      "challenge": "41-1",
+      "difficulty": "hard",
+      "errorPath": "radius-chord-bisection",
+      "stem": "半徑13的圓中，弦AB長10，圓心到弦的距離為何？",
+      "options": [
+        "5",
+        "8",
+        "12",
+        "18"
+      ],
+      "answer": 2,
+      "explanation": "半弦5；距離d滿足d²+5²=13²，d=√144=12。"
+    },
+    {
+      "id": "circle-chord-tangent-bm-2",
+      "type": "basic-mastery",
+      "challenge": "41-2",
+      "difficulty": "easy",
+      "errorPath": "equal-chord-equal-arc",
+      "stem": "同一圓中，弦AB與弦CD等長。下列何者必相等？",
+      "options": [
+        "兩弦到圓心距離與所對劣弧",
+        "兩弦端點名稱",
+        "兩弦一定相交",
+        "兩弦一定是直徑"
+      ],
+      "answer": 0,
+      "explanation": "同圓等弦對等弧，也等距圓心；端點位置不必相同。"
+    },
+    {
+      "id": "circle-chord-tangent-bm-v2-2",
+      "type": "basic-mastery",
+      "challenge": "41-2",
+      "difficulty": "medium",
+      "errorPath": "equal-chord-equal-arc",
+      "stem": "同一圓中，弦AB與CD分別對80°與80°的圓心角。兩弦關係為何？",
+      "options": [
+        "AB較長",
+        "CD較長",
+        "AB=CD",
+        "無法比較"
+      ],
+      "answer": 2,
+      "explanation": "同圓等圓心角對等弧，等弧對等弦，所以AB=CD。"
+    },
+    {
+      "id": "circle-chord-tangent-bm-v2-3",
+      "type": "basic-mastery",
+      "challenge": "41-2",
+      "difficulty": "hard",
+      "errorPath": "equal-chord-equal-arc",
+      "stem": "同一圓中兩弦長皆12，其中一弦到圓心距離5。另一弦到圓心距離為何？",
+      "options": [
+        "5",
+        "6",
+        "7",
+        "12"
+      ],
+      "answer": 0,
+      "explanation": "同圓等弦到圓心距離相等，故也是5。"
+    }
+  ],
+  "conceptId": [
+    {
+      "id": "circle-chord-tangent-ci-1",
+      "type": "concept-id",
+      "challenge": "41-3",
+      "difficulty": "easy",
+      "errorPath": "tangent-radius-not-perpendicular",
+      "statement": "圓的切線與通過切點的半徑互相垂直。",
+      "correctAnswer": true,
+      "explanation": "若T為切點、O為圓心，則OT⊥切線，夾角90°。"
+    },
+    {
+      "id": "circle-chord-tangent-ci-v3-2",
+      "type": "concept-id",
+      "challenge": "41-3",
+      "difficulty": "medium",
+      "errorPath": "tangent-radius-not-perpendicular",
+      "statement": "一條直線若與某半徑垂直，就一定是圓的切線，無論交點在哪裡。",
+      "correctAnswer": false,
+      "explanation": "垂直點必須在圓上且為半徑端點，才可判定切線。"
+    },
+    {
+      "id": "circle-chord-tangent-ci-v3-3",
+      "type": "concept-id",
+      "challenge": "41-3",
+      "difficulty": "hard",
+      "errorPath": "tangent-radius-not-perpendicular",
+      "statement": "切線與半徑在切點形成的角是90°。",
+      "correctAnswer": true,
+      "explanation": "這是切線的基本性質。"
+    },
+    {
+      "id": "circle-chord-tangent-ci-2",
+      "type": "concept-id",
+      "challenge": "41-4",
+      "difficulty": "easy",
+      "errorPath": "equal-tangent-lengths",
+      "statement": "從同一圓外一點引出的兩條切線段長相等。",
+      "correctAnswer": true,
+      "explanation": "若P為圓外點、切點A、B，則PA=PB。"
+    },
+    {
+      "id": "circle-chord-tangent-ci-v4-2",
+      "type": "concept-id",
+      "challenge": "41-4",
+      "difficulty": "medium",
+      "errorPath": "equal-tangent-lengths",
+      "statement": "從圓外不同兩點各引一條切線，兩切線段必等長。",
+      "correctAnswer": false,
+      "explanation": "等切線長性質要求從同一圓外點出發。"
+    },
+    {
+      "id": "circle-chord-tangent-ci-v4-3",
+      "type": "concept-id",
+      "challenge": "41-4",
+      "difficulty": "hard",
+      "errorPath": "equal-tangent-lengths",
+      "statement": "同一外點P向圓作切線PA、PB，若PA=9，則PB=9。",
+      "correctAnswer": true,
+      "explanation": "同一外點引圓的兩切線段相等，故PB=PA=9。"
+    }
+  ],
+  "errorDiagnosis": [
+    {
+      "id": "circle-chord-tangent-ed-1",
+      "type": "error-diagnosis",
+      "challenge": "41-5",
+      "difficulty": "easy",
+      "errorPath": "chord-midpoint-condition",
+      "problem": "圓心O到弦AB的線段OM垂直AB，AB=18",
+      "wrongSolution": "小明說AM可為6、MB為12。",
+      "errorOptions": [
+        "垂直於弦的半徑（或圓心線）平分弦，AM=MB=9",
+        "只需AM+MB=18即可",
+        "AM=18",
+        "M不在弦上"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "OM⊥AB，所以M是AB中點，18÷2=9。"
+    },
+    {
+      "id": "circle-chord-tangent-ed-v5-2",
+      "type": "error-diagnosis",
+      "challenge": "41-5",
+      "difficulty": "medium",
+      "errorPath": "chord-midpoint-condition",
+      "problem": "半徑10，圓心到弦距離8",
+      "wrongSolution": "小華算半弦=10−8=2，弦長4。",
+      "errorOptions": [
+        "應直接10+8",
+        "半徑、距離、半弦成直角三角形；半弦=√(100−64)=6，弦長12",
+        "弦長18",
+        "弦長20"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "半弦平方=10²−8²=36，半弦6，整弦12。"
+    },
+    {
+      "id": "circle-chord-tangent-ed-v5-3",
+      "type": "error-diagnosis",
+      "challenge": "41-5",
+      "difficulty": "hard",
+      "errorPath": "chord-midpoint-condition",
+      "problem": "圓心線OM通過弦AB中點M",
+      "wrongSolution": "小安說除非另知OM⊥AB，否則不能推得垂直。",
+      "errorOptions": [
+        "說法正確",
+        "只有直徑才可",
+        "圓心到弦中點的連線垂直該弦，因此OM⊥AB",
+        "OM與AB平行"
+      ],
+      "correctErrorIndex": 2,
+      "explanation": "在圓中，連結圓心與弦中點的線段垂直該弦。"
+    },
+    {
+      "id": "circle-chord-tangent-ed-2",
+      "type": "error-diagnosis",
+      "challenge": "41-6",
+      "difficulty": "easy",
+      "errorPath": "equal-chord-converse",
+      "problem": "同圓中弦AB=弦CD",
+      "wrongSolution": "小哲說兩弦所對劣弧可能不等。",
+      "errorOptions": [
+        "等弦對等弧，所以兩劣弧相等",
+        "只有半徑相等",
+        "弧長無法比較",
+        "等弦只對等圓周角，不對等弧"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "同圓或等圓中，等弦所對的等弧及圓心角相等。"
+    },
+    {
+      "id": "circle-chord-tangent-ed-v6-2",
+      "type": "error-diagnosis",
+      "challenge": "41-6",
+      "difficulty": "medium",
+      "errorPath": "equal-chord-converse",
+      "problem": "同圓中兩劣弧度數皆70°",
+      "wrongSolution": "小文說對應弦長可能不同。",
+      "errorOptions": [
+        "半徑不同才會如此，但題為同圓；等弧對等弦",
+        "弦長必為70",
+        "弦長一定是半徑",
+        "無法判斷"
+      ],
+      "correctErrorIndex": 0,
+      "explanation": "同圓中等弧對等弦，因此兩弦長相等。"
+    },
+    {
+      "id": "circle-chord-tangent-ed-v6-3",
+      "type": "error-diagnosis",
+      "challenge": "41-6",
+      "difficulty": "hard",
+      "errorPath": "equal-chord-converse",
+      "problem": "同圓中弦AB比CD長",
+      "wrongSolution": "小傑說AB所對劣弧反而較小。",
+      "errorOptions": [
+        "弦長與弧無關",
+        "較長弦對較大劣弧，故AB所對劣弧較大",
+        "兩弧必相等",
+        "AB一定是直徑"
+      ],
+      "correctErrorIndex": 1,
+      "explanation": "同圓中較長的弦對較大的劣弧（及較大圓心角）。"
+    }
+  ],
+  "contextApplication": [
+    {
+      "id": "circle-chord-tangent-ca-1",
+      "type": "context-application",
+      "challenge": "41-7",
+      "difficulty": "easy",
+      "errorPath": "tangent-length-application",
+      "scenario": "圓外點P向同一圓作切線PA、PB，A、B為切點。PA=12。",
+      "question": "PB為何？",
+      "options": [
+        "12",
+        "6",
+        "10",
+        "24"
+      ],
+      "answer": 0,
+      "explanation": "同一外點引出的兩切線段相等，PB=PA=12。"
+    },
+    {
+      "id": "circle-chord-tangent-ca-v7-2",
+      "type": "context-application",
+      "challenge": "41-7",
+      "difficulty": "medium",
+      "errorPath": "tangent-length-application",
+      "scenario": "圓外點P引兩切線PA、PB，PA=3x−1、PB=x+7。",
+      "question": "x為何？",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "answer": 2,
+      "explanation": "PA=PB，所以3x−1=x+7，2x=8，x=4。"
+    },
+    {
+      "id": "circle-chord-tangent-ca-v7-3",
+      "type": "context-application",
+      "challenge": "41-7",
+      "difficulty": "hard",
+      "errorPath": "tangent-length-application",
+      "scenario": "圓外點P引切線PT，O為圓心、T為切點。若OP=13、OT=5。",
+      "question": "PT長多少？",
+      "options": [
+        "8",
+        "10",
+        "18",
+        "12"
+      ],
+      "answer": 3,
+      "explanation": "OT⊥PT，PT=√(OP²−OT²)=√(169−25)=12。"
+    },
+    {
+      "id": "circle-chord-tangent-ca-2",
+      "type": "context-application",
+      "challenge": "41-8",
+      "difficulty": "easy",
+      "errorPath": "tangent-chord-angle",
+      "scenario": "切線在T點與弦TA所成的弦切角為35°。",
+      "question": "同夾弧TA所對的圓周角為何？",
+      "options": [
+        "17.5°",
+        "35°",
+        "70°",
+        "145°"
+      ],
+      "answer": 1,
+      "explanation": "弦切角等於所夾弧所對的圓周角，所以為35°。"
+    },
+    {
+      "id": "circle-chord-tangent-ca-v8-2",
+      "type": "context-application",
+      "challenge": "41-8",
+      "difficulty": "medium",
+      "errorPath": "tangent-chord-angle",
+      "scenario": "弦AB所對的圓周角∠ACB=42°，在A點的切線與弦AB形成銳角。",
+      "question": "此弦切角為何？",
+      "options": [
+        "21°",
+        "42°",
+        "84°",
+        "138°"
+      ],
+      "answer": 1,
+      "explanation": "弦切角等於同夾弧AB的圓周角，故為42°。"
+    },
+    {
+      "id": "circle-chord-tangent-ca-v8-3",
+      "type": "context-application",
+      "challenge": "41-8",
+      "difficulty": "hard",
+      "errorPath": "tangent-chord-angle",
+      "scenario": "A點切線與弦AB的弦切角為(2x+5)°，同夾弧AB圓周角為(3x−10)°。",
+      "question": "x為何？",
+      "options": [
+        "10",
+        "12",
+        "15",
+        "20"
+      ],
+      "answer": 2,
+      "explanation": "兩角相等：2x+5=3x−10，得x=15；兩角皆35°。"
+    }
+  ]
+}
