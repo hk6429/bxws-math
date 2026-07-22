@@ -22,7 +22,7 @@ import {
 } from "./collection.js";
 import {
   bossFor, bossGate, newBossState, applyAnswer as applyBossAnswer, bossOutcome, recordBossOutcome,
-  reviveWithBlessing, playerDamage,
+  bossPhase, reviveWithBlessing, playerDamage,
 } from "./boss.js";
 import {
   buildSeededQuestions, newChallengeSeed, recordPvpRun, pvpChallengeFor,
@@ -30,6 +30,7 @@ import {
 import {
   SPIRIT_MAX, EQUIP_MAX, GUARDIAN_SPIRIT, HERO_SPIRITS,
   isPrime, divisors, divisorCount, isPerfect, classify, spiritName, spiritArt,
+  spiritCardData,
   canFuse, resolveFusion, getSpiritBook, ownsSpirit, captureSpirit,
   stardustBalance, spendStardust, forceSettleStardust, getEquippedSpirits, setEquippedSpirits, spiritBonusFor,
 } from "./fusion.js";
@@ -1565,12 +1566,104 @@ function renderCodexTab(body) {
     if (isPrime(n)) cell.title = `${n} 是質數：只有 1 和 ${n} 兩個因數，沒有任何兩個大於 1 的數相乘做得出它——這就是為什麼質數只能收服、不能融合誕生。`;
     if (owned.has(n)) {
       cell.appendChild(spiritBadgeEl(n));
+      const download = document.createElement("button");
+      download.type = "button";
+      download.className = "spirit-card-download";
+      download.textContent = "名片";
+      download.setAttribute("aria-label", `下載${spiritName(n)}星靈名片`);
+      download.addEventListener("click", () => downloadSpiritCard(n));
+      cell.appendChild(download);
     } else {
       cell.appendChild(Object.assign(document.createElement("span"), { className: "codex-locked-num", textContent: String(n) }));
     }
     grid.appendChild(cell);
   }
   body.appendChild(grid);
+}
+
+function downloadSpiritCard(n, onComplete = (success) => showToast(
+  success ? "星靈名片已下載" : "無法產生星靈名片，請稍後再試",
+  success ? "success" : "error",
+)) {
+  const data = spiritCardData(n);
+  if (!data) {
+    onComplete(false);
+    return;
+  }
+
+  const W = 800, H = 460;
+  const canvas = document.createElement("canvas");
+  canvas.width = W;
+  canvas.height = H;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) {
+    onComplete(false);
+    return;
+  }
+
+  ctx.fillStyle = "#f4ead2";
+  ctx.fillRect(0, 0, W, H);
+  ctx.strokeStyle = "rgba(140,110,70,0.18)";
+  for (let y = 60; y < H; y += 34) {
+    ctx.beginPath();
+    ctx.moveTo(30, y + Math.sin(y) * 1.5);
+    ctx.lineTo(W - 30, y + Math.cos(y) * 1.5);
+    ctx.stroke();
+  }
+  ctx.strokeStyle = "#6b5335";
+  ctx.lineWidth = 3;
+  ctx.strokeRect(14, 14, W - 28, H - 28);
+  ctx.lineWidth = 1;
+  ctx.strokeRect(22, 22, W - 44, H - 44);
+
+  ctx.fillStyle = "#4a3620";
+  ctx.font = "bold 28px 'Noto Sans TC', sans-serif";
+  ctx.fillText("步學吾數・星靈名片", 44, 68);
+  ctx.font = "bold 34px 'Noto Sans TC', sans-serif";
+  ctx.fillText(data.name, 44, 128);
+  ctx.fillStyle = data.rarity === "傳說" ? "#9a6200" : data.rarity === "稀有" ? "#256b7a" : "#4a3620";
+  ctx.font = "bold 76px 'Noto Sans TC', sans-serif";
+  ctx.fillText(String(data.n), 66, 254);
+
+  ctx.fillStyle = "#4a3620";
+  ctx.font = "22px 'Noto Sans TC', sans-serif";
+  const details = [
+    `質因數分解　${data.factorization}`,
+    `稀有度　　　${data.rarity}`,
+    `因數數量　　${data.divisorCount} 個`,
+    `因數共振　　+${data.bonusPct}%`,
+  ];
+  details.forEach((line, index) => ctx.fillText(line, 230, 190 + index * 46));
+
+  ctx.fillStyle = "#8a7455";
+  ctx.font = "16px 'Noto Sans TC', sans-serif";
+  ctx.fillText("加成依真實因數個數計算・單隻上限 6%", 44, H - 70);
+  const date = new Date();
+  ctx.fillText(`${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} · bxws-math`, W - 230, H - 40);
+
+  const finish = () => {
+    try {
+      const a = document.createElement("a");
+      a.download = `步學吾數星靈名片-${data.n}-${data.name}.png`;
+      a.href = canvas.toDataURL("image/png");
+      a.click();
+      onComplete(true);
+    } catch {
+      onComplete(false);
+    }
+  };
+
+  if (!data.art) {
+    finish();
+    return;
+  }
+  const img = new Image();
+  img.onload = () => {
+    ctx.drawImage(img, W - 190, 42, 140, 140);
+    finish();
+  };
+  img.onerror = finish;
+  img.src = `assets/spirits/${data.art}.png`;
 }
 
 function renderEquipTab(body) {
@@ -2504,6 +2597,7 @@ function renderGhostLine() {
 function renderBossPanel(quizArea) {
   const boss = session.boss;
   const meta = bossFor(boss.strandId);
+  const phase = bossPhase(boss);
   const panel = document.createElement("section");
   panel.className = "boss-panel";
   panel.setAttribute("aria-label", "神殿試煉血量");
@@ -2514,6 +2608,9 @@ function renderBossPanel(quizArea) {
   foeBar.className = "boss-hp";
   foeBar.innerHTML = `<span class="boss-hp-fill" style="width:${Math.round((boss.hp / boss.maxHp) * 100)}%"></span>`;
   foe.appendChild(foeBar);
+  const phaseLabel = document.createElement("p");
+  phaseLabel.className = `boss-phase boss-phase-${phase.id}`;
+  phaseLabel.textContent = `${phase.name}・${phase.attack}`;
   const me = document.createElement("div");
   me.className = "boss-side boss-player";
   me.innerHTML = "<strong>你</strong>";
@@ -2521,7 +2618,7 @@ function renderBossPanel(quizArea) {
   meBar.className = "boss-hp boss-hp-player";
   meBar.innerHTML = `<span class="boss-hp-fill" style="width:${Math.round((boss.playerHp / boss.playerMaxHp) * 100)}%"></span>`;
   me.appendChild(meBar);
-  panel.append(foe, me);
+  panel.append(foe, phaseLabel, me);
   quizArea.appendChild(panel);
 }
 
@@ -2534,16 +2631,23 @@ function updateBossFeedback(boss, isCorrect) {
   const playerFill = player.querySelector(".boss-hp-fill");
   if (foeFill) foeFill.style.width = `${Math.round((boss.hp / boss.maxHp) * 100)}%`;
   if (playerFill) playerFill.style.width = `${Math.round((boss.playerHp / boss.playerMaxHp) * 100)}%`;
-  const dmg = boss.lastEvent?.dmg ?? 0;
-  const target = isCorrect ? foe : player;
+  const event = boss.lastEvent ?? { type: isCorrect ? "hit" : "guard", dmg: 0 };
+  const target = event.type === "guard" ? player : foe;
   const float = document.createElement("span");
-  float.className = `damage-float ${isCorrect ? "damage-hit" : "damage-miss"}`;
-  float.textContent = `-${dmg}`;
+  float.className = `damage-float damage-${event.type}`;
+  float.textContent = event.type === "guard"
+    ? "🛡 守住了"
+    : event.type === "break"
+      ? `✦ 破盾 -${event.dmg}`
+      : event.type === "counter"
+        ? `↩ 反擊 -${event.dmg}`
+        : `-${event.dmg}`;
   target.appendChild(float);
-  target.classList.add("boss-flinch");
+  if (event.type !== "guard") target.classList.add("boss-flinch");
+  announce(event.type === "guard" ? `${event.attack}來襲，你守住了；看看提示再試一次` : `${event.phaseName}，造成 ${event.dmg} 點傷害`);
   const cleanup = window.setTimeout(() => {
     float.remove();
-    target.classList.remove("boss-flinch");
+    if (event.type !== "guard") target.classList.remove("boss-flinch");
     pendingTimers.delete(cleanup);
   }, 700);
   pendingTimers.add(cleanup);
@@ -2582,7 +2686,7 @@ function renderBossOutcome(outcome, quizArea) {
   card.appendChild(Object.assign(document.createElement("p"), {
     textContent: outcome === "victory"
       ? "你的正確率把守護神的血量打空了。回工坊看看神殿甦醒度吧。"
-      : "血量歸零了沒關係，這一路的作答都已經算進精熟度，再練一輪就能再挑戰。",
+      : "這一路的作答都已經算進精熟度，沒有失去任何成果；看懂提示後，再練一輪就能再挑戰。",
   }));
   if (outcome !== "victory") {
     const retryBtn = document.createElement("button");
@@ -2679,10 +2783,8 @@ function renderCurrentQuestion(focusStem = false) {
 
   if (session.index >= session.queue.length) {
     if (session.kind === "boss") {
-      // 題目用盡仍未分勝負（極罕見）：依血量占比判定，玩家占優時判定過關
-      const boss = session.boss;
-      const outcome = boss.hp / boss.maxHp <= boss.playerHp / boss.playerMaxHp ? "victory" : "defeat";
-      renderBossOutcome(outcome, quizArea);
+      // 只有真實答對累積的傷害能擊敗 Boss；題組用盡不以滿守護力送勝利，也不扣任何成果。
+      renderBossOutcome("retreat", quizArea);
       return;
     }
     if (session.kind === "pvp") {

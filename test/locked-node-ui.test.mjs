@@ -14,11 +14,11 @@ test("鎖定提示只具名列出尚未精熟的直接先備", () => {
   };
   assert.equal(
     lockedNodeMessage(node, tree, progress, nodesById),
-    "先精通「負數」才能解鎖"
+    "先精通「整數與負數」才能解鎖"
   );
   assert.equal(
     lockedNodeMessage(node, tree, {}, nodesById),
-    "先精通「一元一次方程式」、「負數」才能解鎖"
+    "先精通「一元一次方程式」、「整數與負數」才能解鎖"
   );
 });
 

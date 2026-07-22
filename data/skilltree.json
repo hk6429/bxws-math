@@ -86,7 +86,7 @@
         { "id": "time-mul-div", "name": "時間乘除", "tier": "elem-high", "prereq": ["time-add-sub", "fraction-mul"], "diagnosticPrereq": ["time-add-sub", "fraction-mul"], "gateChallenges": ["22-4", "22-6"] },
         { "id": "speed", "name": "速度", "tier": "elem-high", "prereq": ["time-mul-div", "ratio-rate"], "diagnosticPrereq": ["time-mul-div", "ratio-rate"], "gateChallenges": ["5", "7"] },
 
-        { "id": "negative-number", "name": "負數", "tier": "jhs-g7", "prereq": ["decimal-mul"], "diagnosticPrereq": ["decimal-mul"] },
+        { "id": "negative-number", "name": "整數與負數", "tier": "jhs-g7", "prereq": ["decimal-mul"], "diagnosticPrereq": ["decimal-mul"], "gateChallenges": ["13-6", "13-8"] },
         { "id": "proportion-eq", "name": "比例式", "tier": "jhs-g7", "prereq": ["ratio-rate"], "diagnosticPrereq": ["ratio-rate"] },
         { "id": "prime-factorization-app", "name": "質因數標準分解與應用", "tier": "jhs-g7", "prereq": ["prime-factor", "gcd-lcm"], "gateChallenges": ["1-6", "1-8"], "contentPending": true },
         { "id": "exponent-laws", "name": "指數與指數律", "tier": "jhs-g7", "prereq": ["prime-factor"], "gateChallenges": ["2-6", "2-7"], "contentPending": true },
@@ -98,7 +98,7 @@
       "name": "代數",
       "nodes": [
         { "id": "algebra-symbol", "name": "代數符號", "tier": "jhs-g7", "prereq": ["negative-number"], "diagnosticPrereq": ["negative-number"] },
-        { "id": "linear-eq-1var", "name": "一元一次方程式", "tier": "jhs-g7", "prereq": ["algebra-symbol"], "diagnosticPrereq": ["algebra-symbol"] },
+        { "id": "linear-eq-1var", "name": "一元一次方程式", "tier": "jhs-g7", "prereq": ["algebra-symbol"], "diagnosticPrereq": ["algebra-symbol"], "gateChallenges": ["14-6", "14-8"] },
         { "id": "linear-equation-modeling", "name": "一元一次方程式建模", "tier": "jhs-g7", "prereq": ["linear-eq-1var"], "diagnosticPrereq": ["linear-eq-1var"], "gateChallenges": ["4-6", "4-8"] },
         { "id": "linear-inequality-meaning", "name": "一元一次不等式的意義", "tier": "jhs-g7", "prereq": ["linear-eq-1var", "negative-number"], "diagnosticPrereq": ["linear-eq-1var", "negative-number"], "gateChallenges": ["5-6", "5-8"] },
         { "id": "linear-inequality-solving", "name": "一元一次不等式的解與應用", "tier": "jhs-g7", "prereq": ["linear-inequality-meaning"], "diagnosticPrereq": ["linear-inequality-meaning"], "gateChallenges": ["6-6", "6-8"] }

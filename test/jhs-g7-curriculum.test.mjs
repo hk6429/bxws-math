@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import tree from "../data/skilltree.json" with { type: "json" };
 
 const expectedByStrand = {
@@ -76,4 +77,28 @@ test("全域 prereq 皆可解析且無循環，包含跨 strand 新接線", () =
   assert.deepEqual(nodesById["linear-inequality-meaning"].prereq, ["linear-eq-1var", "negative-number"]);
   assert.deepEqual(nodesById["perpendicular-bisector"].prereq, ["geometry-symbols", "perp-parallel"]);
   assert.deepEqual(nodesById["histogram-contingency"].prereq, ["statistical-chart-design", "median-mode"]);
+});
+
+test("七年級兩個試水節點各有 8 挑戰 × 3 自編變式", async () => {
+  for (const nodeId of ["negative-number", "linear-eq-1var"]) {
+    const bank = JSON.parse(await readFile(new URL(`../data/questions/${nodeId}.json`, import.meta.url), "utf8"));
+    const arrays = [bank.basicMastery, bank.conceptId, bank.errorDiagnosis, bank.contextApplication];
+    assert.deepEqual(arrays.map((questions) => questions.length), [6, 6, 6, 6], `${nodeId} 四題型應各 6 題`);
+    const questions = arrays.flat();
+    assert.equal(questions.length, 24, `${nodeId} 應為 24 題`);
+    assert.equal(new Set(questions.map((question) => question.id)).size, 24, `${nodeId} id 應唯一`);
+    const groups = Map.groupBy(questions, (question) => question.challenge);
+    assert.equal(groups.size, 8, `${nodeId} 應有 8 項挑戰`);
+    assert.ok([...groups.values()].every((group) => group.length === 3), `${nodeId} 每項挑戰應有 3 變式`);
+    assert.ok(questions.every((question) => ["easy", "medium", "hard"].includes(question.difficulty)), `${nodeId} difficulty 不完整`);
+    assert.ok(questions.every((question) => typeof question.errorPath === "string" && question.errorPath.length > 0 && !/^\d+$/.test(question.errorPath)), `${nodeId} errorPath 必須是迷思標籤字串`);
+    assert.ok([...groups.values()].every((group) => new Set(group.map((question) => question.errorPath)).size === 1), `${nodeId} 同挑戰應累積同一迷思`);
+    assert.equal(bank.curriculum?.sourceType, "自編", `${nodeId} 應明示自編`);
+  }
+});
+
+test("七年級試水節點接上名稱與真實作答守門挑戰", () => {
+  assert.equal(nodesById["negative-number"].name, "整數與負數");
+  assert.deepEqual(nodesById["negative-number"].gateChallenges, ["13-6", "13-8"]);
+  assert.deepEqual(nodesById["linear-eq-1var"].gateChallenges, ["14-6", "14-8"]);
 });

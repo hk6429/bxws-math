@@ -54,6 +54,22 @@ export function divisorCount(n) {
   return divisors(n).length;
 }
 
+export function primeFactorization(n) {
+  if (!Number.isInteger(n) || n < SPIRIT_MIN) return "";
+  const factors = [];
+  let remaining = n;
+  for (let factor = 2; factor * factor <= remaining; factor += 1) {
+    let exponent = 0;
+    while (remaining % factor === 0) {
+      remaining /= factor;
+      exponent += 1;
+    }
+    if (exponent > 0) factors.push(exponent === 1 ? String(factor) : `${factor}${"⁰¹²³⁴⁵⁶⁷⁸⁹"[exponent] ?? `^${exponent}`}`);
+  }
+  if (remaining > 1) factors.push(String(remaining));
+  return factors.join(" × ");
+}
+
 export function isPerfect(n) {
   if (!Number.isInteger(n) || n < 2) return false;
   return divisors(n).slice(0, -1).reduce((a, b) => a + b, 0) === n;
@@ -83,6 +99,21 @@ export function spiritName(n) {
 
 export function spiritArt(n) {
   return HERO_SPIRITS[n]?.art ?? null; // null＝用程序化數字徽章
+}
+
+export function spiritCardData(n, book = getSpiritBook()) {
+  if (!book?.[String(n)]) return null;
+  const classification = classify(n);
+  return {
+    n,
+    name: spiritName(n),
+    factorization: primeFactorization(n),
+    rarity: classification.rarity,
+    kind: classification.kind,
+    divisorCount: divisorCount(n),
+    bonusPct: Math.min(6, divisorCount(n)),
+    art: spiritArt(n),
+  };
 }
 
 // 融合合法性：兩隻星靈相乘，乘積必須 ≤ SPIRIT_MAX。父方永不消耗（設計不變式）。

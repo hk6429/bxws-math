@@ -34,7 +34,7 @@ const nodeIds = [
 const questionArrays = ["basicMastery", "conceptId", "errorDiagnosis", "contextApplication"];
 const legacyNodeIds = new Set([
   "fraction-unlike-denom", "fraction-mul", "decimal-mul", "ratio-rate",
-  "negative-number", "proportion-eq", "algebra-symbol", "linear-eq-1var",
+  "proportion-eq", "algebra-symbol",
 ]);
 const newStrands = {
   "relation-pattern": new Set([
@@ -48,7 +48,7 @@ const newStrands = {
 };
 const newNodeIds = new Set(Object.values(newStrands).flatMap((ids) => [...ids]));
 const difficultyRequiredNodeIds = new Set([
-  "fraction-mul", "decimal-mul", "ratio-rate", "algebra-symbol", "linear-eq-1var",
+  "fraction-mul", "decimal-mul", "ratio-rate", "negative-number", "algebra-symbol", "linear-eq-1var",
 ]);
 const trackCNodeIds = new Set([
   "linear-equation-modeling", "linear-inequality-meaning", "linear-inequality-solving",
@@ -147,5 +147,13 @@ test("W3 17 個節點皆可建立首輪測驗", async () => {
     });
     assert.equal(queue.length, 8, `${nodeId} 首輪題數應為 8`);
     assert.ok(queue.every((question) => typeof question.challenge === "string"));
+  }
+});
+
+test("七年級兩個試水節點首輪各掃描 8 項挑戰", async () => {
+  for (const nodeId of ["negative-number", "linear-eq-1var"]) {
+    const queue = await buildSession(nodeId, 8, "slow", [], { tier: "jhs-g7" });
+    assert.equal(queue.length, 8, `${nodeId} 首輪應有 8 題`);
+    assert.equal(new Set(queue.map((question) => question.challenge)).size, 8, `${nodeId} 首輪應掃描 8 項挑戰`);
   }
 });

@@ -1,93 +1,74 @@
 {
   "nodeId": "linear-eq-1var",
+  "curriculum": {
+    "codes": ["A-7-3"],
+    "sourceType": "自編",
+    "note": "七年級一元一次方程式試水題庫；題目與解說為自編，課綱定位沿用專案已核對的 A-7-3。"
+  },
   "basicMastery": [
     {
       "id": "linear-eq-1var-bm-1",
       "type": "basic-mastery",
-      "stem": "解方程式 2x + 3 = 11",
-      "options": [
-        "4",
-        "3",
-        "5",
-        "8"
-      ],
-      "answer": 0,
-      "explanation": "2x = 11-3 = 8，x = 4",
+      "challenge": "14-1",
+      "stem": "解方程式 x + 7 = 19。",
+      "options": ["26", "12", "7", "-12"],
+      "answer": 1,
+      "explanation": "等號兩邊同減 7，得到 x = 19 - 7 = 12。驗算：12 + 7 = 19，左右相等。",
       "difficulty": "easy",
-      "errorPath": "coefficient-inverse-operation"
+      "errorPath": "equality-balance-both-sides"
     },
     {
       "id": "linear-eq-1var-bm-2",
       "type": "basic-mastery",
-      "stem": "解方程式 3x - 5 = 2x + 1",
-      "options": [
-        "-6",
-        "4",
-        "1",
-        "6"
-      ],
-      "answer": 3,
-      "explanation": "移項：3x-2x = 1+5，x = 6",
-      "difficulty": "medium",
-      "errorPath": "move-term-sign"
+      "challenge": "14-1",
+      "stem": "解方程式 x - 8 = -3。",
+      "options": ["-11", "11", "5", "-5"],
+      "answer": 2,
+      "explanation": "等號兩邊同加 8，得到 x = -3 + 8 = 5。驗算：5 - 8 = -3。",
+      "difficulty": "easy",
+      "errorPath": "equality-balance-both-sides"
     },
     {
       "id": "linear-eq-1var-bm-3",
       "type": "basic-mastery",
-      "stem": "解方程式 x - 6 = 9",
-      "options": [
-        "15",
-        "-15",
-        "54",
-        "3"
-      ],
+      "challenge": "14-1",
+      "stem": "解方程式 x ÷ 5 = -4。",
+      "options": ["-20", "-9", "1", "-4/5"],
       "answer": 0,
-      "explanation": "根據等量公理，兩邊同加 6：x = 9+6 = 15。檢驗：15-6 = 9 ✓",
-      "difficulty": "easy",
-      "errorPath": "move-term-sign"
+      "explanation": "等號兩邊同乘 5，得到 x = -4 × 5 = -20。驗算：-20 ÷ 5 = -4。",
+      "difficulty": "medium",
+      "errorPath": "equality-balance-both-sides"
     },
     {
       "id": "linear-eq-1var-bm-4",
       "type": "basic-mastery",
-      "stem": "解方程式 x÷4 = 3",
-      "options": [
-        "-1",
-        "12",
-        "3/4",
-        "7"
-      ],
-      "answer": 1,
-      "explanation": "根據等量公理，兩邊同乘 4：x = 3×4 = 12。檢驗：12÷4 = 3 ✓",
-      "difficulty": "easy",
+      "challenge": "14-2",
+      "stem": "解方程式 3x + 5 = 23。",
+      "options": ["6", "8", "9", "18"],
+      "answer": 0,
+      "explanation": "先把等號兩邊同減 5，得 3x = 18；再同除以 3，得 x = 6。驗算：3 × 6 + 5 = 23。",
+      "difficulty": "medium",
       "errorPath": "coefficient-inverse-operation"
     },
     {
       "id": "linear-eq-1var-bm-5",
       "type": "basic-mastery",
-      "stem": "解方程式 5x + 4 = 2x - 8",
-      "options": [
-        "-12",
-        "-4",
-        "4",
-        "-4/3"
-      ],
-      "answer": 1,
-      "explanation": "2x 移到左邊變 -2x，+4 移到右邊變 -4：5x-2x = -8-4，3x = -12，兩邊同除以 3 得 x = -4。檢驗：5×(-4)+4 = -16，2×(-4)-8 = -16 ✓",
+      "challenge": "14-2",
+      "stem": "解方程式 5x - 7 = 2x + 8。",
+      "options": ["-5", "1/5", "5", "15"],
+      "answer": 2,
+      "explanation": "兩邊同減 2x，再同加 7：3x = 15，所以 x = 5。驗算：左邊 5 × 5 - 7 = 18，右邊 2 × 5 + 8 = 18。",
       "difficulty": "hard",
-      "errorPath": "move-term-sign"
+      "errorPath": "coefficient-inverse-operation"
     },
     {
       "id": "linear-eq-1var-bm-6",
       "type": "basic-mastery",
-      "stem": "解方程式 (2/3)x - 1 = 5",
-      "options": [
-        "4",
-        "18",
-        "9",
-        "6"
-      ],
-      "answer": 2,
-      "explanation": "-1 移項到右邊變 +1：(2/3)x = 5+1 = 6。兩邊同乘 3/2（即除以係數 2/3）：x = 6×(3/2) = 9。檢驗：(2/3)×9-1 = 6-1 = 5 ✓",
+      "challenge": "14-2",
+      "stem": "解方程式 (2/3)x - 4 = 6。",
+      "options": ["3", "15", "10", "20/3"],
+      "answer": 1,
+      "explanation": "兩邊同加 4，得 (2/3)x = 10；再同乘 3/2，得 x = 15。驗算：(2/3) × 15 - 4 = 10 - 4 = 6。",
       "difficulty": "hard",
       "errorPath": "coefficient-inverse-operation"
     }
@@ -96,246 +77,210 @@
     {
       "id": "linear-eq-1var-ci-1",
       "type": "concept-id",
-      "statement": "解方程式時，等號兩邊同時加上或減去相同的數，等式仍然成立。",
+      "challenge": "14-3",
+      "statement": "若等號兩邊同時加上 6，原來相等的兩邊仍然相等。",
       "correctAnswer": true,
-      "explanation": "這是等量公理之一，保持等式兩邊平衡。",
-      "difficulty": "easy"
+      "explanation": "等號兩邊同時加上相同的數，不會破壞等式的平衡。",
+      "difficulty": "easy",
+      "errorPath": "equality-preservation-condition"
     },
     {
       "id": "linear-eq-1var-ci-2",
       "type": "concept-id",
-      "statement": "移項時，數字從等號一邊移到另一邊，正負號不需要改變。",
+      "challenge": "14-3",
+      "statement": "解 x + 4 = 11 時，可以只把等號左邊減 4，右邊維持不變。",
       "correctAnswer": false,
-      "explanation": "移項的本質是兩邊同加或同減，所以移過去的項要變號。",
-      "difficulty": "easy"
+      "explanation": "等量公理要求兩邊做相同操作。應在兩邊同減 4，才會得到 x = 7。",
+      "difficulty": "easy",
+      "errorPath": "equality-preservation-condition"
     },
     {
       "id": "linear-eq-1var-ci-3",
       "type": "concept-id",
-      "statement": "等號兩邊同時乘以或除以同一個不為 0 的數，等式仍然成立。",
-      "correctAnswer": true,
-      "explanation": "這也是等量公理：像天平兩邊同時放大或縮小相同倍數，仍然保持平衡。除數不能為 0。",
-      "difficulty": "easy"
+      "challenge": "14-3",
+      "statement": "等號兩邊可以同時除以任何相同的數，包括 0，等式仍然成立。",
+      "correctAnswer": false,
+      "explanation": "兩邊可以同除以相同的非零數，但除數不能是 0，因為除以 0 沒有定義。",
+      "difficulty": "medium",
+      "errorPath": "equality-preservation-condition"
     },
     {
       "id": "linear-eq-1var-ci-4",
       "type": "concept-id",
-      "statement": "要檢驗 x=5 是不是方程式 2x-3=7 的解，可以把 5 代入原方程式，看等號兩邊是否相等。",
+      "challenge": "14-4",
+      "statement": "把方程式中的 +5 移到等號另一邊，可看成等號兩邊同減 5，因此寫成 -5。",
       "correctAnswer": true,
-      "explanation": "代入檢驗是確認解的標準方法：2×5-3 = 7，左邊等於右邊，所以 x=5 是這個方程式的解。",
-      "difficulty": "medium"
+      "explanation": "移項只是等量公理的簡寫；+5 移到另一邊變成 -5，是因為兩邊同減 5。",
+      "difficulty": "medium",
+      "errorPath": "operation-role-confusion"
     },
     {
       "id": "linear-eq-1var-ci-5",
       "type": "concept-id",
-      "statement": "解方程式 x+5=12 時，只要把左邊減 5，右邊不用動，等式仍然成立。",
+      "challenge": "14-4",
+      "statement": "解 4x = 20 時，可以把係數 4 移項寫成 x = 20 - 4。",
       "correctAnswer": false,
-      "explanation": "等量公理要求等號「兩邊同時」做相同的操作。只減一邊會破壞平衡：正確做法是兩邊同減 5，得 x = 12-5 = 7。",
-      "difficulty": "medium"
+      "explanation": "4 是乘在 x 上的係數，應在兩邊同除以 4，得到 x = 5；不能把乘法關係改成減法。",
+      "difficulty": "medium",
+      "errorPath": "operation-role-confusion"
     },
     {
       "id": "linear-eq-1var-ci-6",
       "type": "concept-id",
-      "statement": "解方程式 2x=6 時，可以把係數 2 移項變成 x=6-2，所以 x=4。",
-      "correctAnswer": false,
-      "explanation": "移項（加減互換）只適用於「加減的項」；2x 中的 2 是乘在 x 上的係數，要用「兩邊同除以 2」消去：x = 6÷2 = 3。檢驗：2×3 = 6 ✓，而 2×4 = 8 ≠ 6。",
-      "difficulty": "medium"
+      "challenge": "14-4",
+      "statement": "要確認 x = -2 是否為 3x + 1 = -5 的解，可以把 -2 代回原方程式檢查。",
+      "correctAnswer": true,
+      "explanation": "代入左邊得 3 × (-2) + 1 = -6 + 1 = -5，與右邊相等，所以 x = -2 確實是解。",
+      "difficulty": "hard",
+      "errorPath": "operation-role-confusion"
     }
   ],
   "errorDiagnosis": [
     {
       "id": "linear-eq-1var-ed-1",
       "type": "error-diagnosis",
-      "problem": "解方程式 x + 7 = 15",
-      "wrongSolution": "算成 x = 15 + 7 = 22",
-      "errorOptions": [
-        "漏看等號",
-        "抄錯數字",
-        "加法算錯",
-        "移項時正負號沒有改變（應該用減法）"
-      ],
-      "correctErrorIndex": 3,
-      "explanation": "正確做法為兩邊同減 7：x = 15-7 = 8",
+      "challenge": "14-5",
+      "problem": "解方程式 x + 9 = 14",
+      "wrongSolution": "小安寫成 x = 14 + 9 = 23。",
+      "errorOptions": ["把未知數放在左邊", "移項時沒有改變正負號", "加法計算錯誤", "等號方向寫反"],
+      "correctErrorIndex": 1,
+      "explanation": "+9 移到右邊要變成 -9，也就是兩邊同減 9：x = 14 - 9 = 5。驗算：5 + 9 = 14。",
       "difficulty": "easy",
       "errorPath": "move-term-sign"
     },
     {
       "id": "linear-eq-1var-ed-2",
       "type": "error-diagnosis",
-      "problem": "解方程式 2x = 10",
-      "wrongSolution": "算成 x = 10 - 2 = 8",
-      "errorOptions": [
-        "除法算錯",
-        "消去係數時用了減法而非除法",
-        "看錯係數",
-        "抄錯數字"
-      ],
-      "correctErrorIndex": 1,
-      "explanation": "消去係數 2 應該兩邊同除以 2：x = 10÷2 = 5",
+      "challenge": "14-5",
+      "problem": "解方程式 x - 6 = 10",
+      "wrongSolution": "小文寫成 x = 10 - 6 = 4。",
+      "errorOptions": ["移項時沒有改變正負號", "把 10 看成 16", "減法直式借位錯誤", "未知數不能放在等號左邊"],
+      "correctErrorIndex": 0,
+      "explanation": "-6 移到右邊要變成 +6，也就是兩邊同加 6：x = 10 + 6 = 16。驗算：16 - 6 = 10。",
       "difficulty": "easy",
-      "errorPath": "coefficient-inverse-operation"
+      "errorPath": "move-term-sign"
     },
     {
       "id": "linear-eq-1var-ed-3",
       "type": "error-diagnosis",
-      "problem": "解方程式 x + 9 = 4",
-      "wrongSolution": "小玲算成 x = 4 + 9 = 13",
-      "errorOptions": [
-        "加法算錯",
-        "+9 移項到右邊時忘了變號（應該變成 -9）",
-        "把未知數放錯邊",
-        "抄錯數字"
-      ],
+      "challenge": "14-5",
+      "problem": "解方程式 4x - 3 = 2x + 9",
+      "wrongSolution": "小晴寫成 4x + 2x = 9 + 3，所以 6x = 12，x = 2。",
+      "errorOptions": ["-3 移到右邊時不該變號", "2x 移到左邊時沒有改變正負號", "12 除以 6 的計算錯誤", "方程式不能同時有兩個 x"],
       "correctErrorIndex": 1,
-      "explanation": "+9 移到等號右邊要變成 -9：x = 4-9 = -5。檢驗：-5+9 = 4 ✓。答案是負數也沒關係，不要因為怕負數就把減法改成加法。",
-      "difficulty": "easy",
+      "explanation": "右邊的 +2x 移到左邊要變成 -2x：4x - 2x = 9 + 3，得 2x = 12、x = 6。驗算：兩邊都等於 21。",
+      "difficulty": "hard",
       "errorPath": "move-term-sign"
     },
     {
       "id": "linear-eq-1var-ed-4",
       "type": "error-diagnosis",
-      "problem": "解方程式 x - 4 = 10",
-      "wrongSolution": "小凱算成 x = 10 - 4 = 6",
-      "errorOptions": [
-        "-4 移項到右邊時忘了變號（應該變成 +4）",
-        "抄錯題目",
-        "減法算錯",
-        "看錯等號方向"
-      ],
+      "challenge": "14-6",
+      "problem": "解方程式 2x = 14",
+      "wrongSolution": "小凱寫成 x = 14 - 2 = 12。",
+      "errorOptions": ["消去乘法係數時誤用減法", "14 減 2 的計算錯誤", "2x 應該寫成 x + 2", "答案一定要是負數"],
       "correctErrorIndex": 0,
-      "explanation": "-4 移到等號右邊要變成 +4：x = 10+4 = 14。檢驗：14-4 = 10 ✓，而 6-4 = 2 ≠ 10。",
+      "explanation": "2 是乘在 x 上的係數，應在兩邊同除以 2：x = 14 ÷ 2 = 7。驗算：2 × 7 = 14。",
       "difficulty": "easy",
-      "errorPath": "move-term-sign"
+      "errorPath": "coefficient-operation-error"
     },
     {
       "id": "linear-eq-1var-ed-5",
       "type": "error-diagnosis",
-      "problem": "解方程式 4x - 3 = 2x + 5",
-      "wrongSolution": "小威算成 4x + 2x = 5 + 3，6x = 8，x = 4/3",
-      "errorOptions": [
-        "2x 移到左邊時忘了變號（應該是 4x-2x）",
-        "係數相加算錯",
-        "-3 移項時變號錯誤",
-        "除法算錯"
-      ],
-      "correctErrorIndex": 0,
-      "explanation": "右邊的 2x 移到左邊要變成 -2x：4x-2x = 5+3，2x = 8，x = 4。檢驗：4×4-3 = 13，2×4+5 = 13 ✓。小威把 -3 的移項做對了，卻把 2x 移項時沒變號。",
-      "difficulty": "hard",
-      "errorPath": "move-term-sign"
+      "challenge": "14-6",
+      "problem": "解方程式 x ÷ 4 = 5",
+      "wrongSolution": "小潔寫成 x = 5 ÷ 4 = 1.25。",
+      "errorOptions": ["5 除以 4 的計算錯誤", "消去除法時又除以 4，應改為兩邊同乘 4", "x 不能被 4 除", "答案不能是整數"],
+      "correctErrorIndex": 1,
+      "explanation": "要消去 x ÷ 4，兩邊應同乘 4：x = 5 × 4 = 20。驗算：20 ÷ 4 = 5。",
+      "difficulty": "medium",
+      "errorPath": "coefficient-operation-error"
     },
     {
       "id": "linear-eq-1var-ed-6",
       "type": "error-diagnosis",
-      "problem": "解方程式 2(x + 3) = 10",
-      "wrongSolution": "小芸算成 2x + 3 = 10，2x = 7，x = 3.5",
-      "errorOptions": [
-        "移項忘了變號",
-        "除法算錯",
-        "用分配律去括號時，2 沒有乘到括號內的第二項 3",
-        "抄錯係數"
-      ],
-      "correctErrorIndex": 2,
-      "explanation": "分配律要把 2 乘到括號內每一項：2(x+3) = 2x+6。所以 2x+6 = 10，2x = 10-6 = 4，x = 2。檢驗：2×(2+3) = 2×5 = 10 ✓",
+      "challenge": "14-6",
+      "problem": "解方程式 -3x = 18",
+      "wrongSolution": "小哲寫成 x = 18 ÷ 3 = 6。",
+      "errorOptions": ["18 除以 3 的計算錯誤", "忽略係數 -3 的負號，應除以 -3", "未知數不能乘負數", "等號右邊應先加 3"],
+      "correctErrorIndex": 1,
+      "explanation": "係數是 -3，兩邊要同除以 -3：x = 18 ÷ (-3) = -6。驗算：-3 × (-6) = 18。",
       "difficulty": "hard",
-      "errorPath": "distribute-all-terms"
+      "errorPath": "coefficient-operation-error"
     }
   ],
   "contextApplication": [
     {
       "id": "linear-eq-1var-ca-1",
       "type": "context-application",
-      "scenario": "小美買了 3 枝相同的筆，又買了一本 20 元的筆記本，總共花了 65 元（設每枝筆 x 元）。",
-      "question": "每枝筆多少元？",
-      "options": [
-        "45 元",
-        "15 元",
-        "20 元",
-        "5 元"
-      ],
-      "answer": 1,
-      "explanation": "3x + 20 = 65 ⇒ 3x = 45 ⇒ x = 15",
+      "challenge": "14-7",
+      "scenario": "小芸買了 3 本同價的筆記本，再買一枝 40 元的筆，共付 250 元。設每本筆記本 x 元。",
+      "question": "每本筆記本多少元？",
+      "options": ["70 元", "83 元", "210 元", "630 元"],
+      "answer": 0,
+      "explanation": "依題意列式 3x + 40 = 250。兩邊同減 40 得 3x = 210，再同除以 3 得 x = 70。驗算：3 × 70 + 40 = 250。",
       "difficulty": "medium",
-      "errorPath": "coefficient-inverse-operation"
+      "errorPath": "unknown-quantity-modeling"
     },
     {
       "id": "linear-eq-1var-ca-2",
       "type": "context-application",
-      "scenario": "某數的 2 倍加上 7 等於 23。",
-      "question": "這個數是多少？",
-      "options": [
-        "8",
-        "9",
-        "16",
-        "11.5"
-      ],
-      "answer": 0,
-      "explanation": "2x + 7 = 23 ⇒ 2x = 16 ⇒ x = 8",
-      "difficulty": "medium",
-      "errorPath": "coefficient-inverse-operation"
+      "challenge": "14-7",
+      "scenario": "一桶水原有 x 公升，倒出 12 公升後還剩 35 公升。",
+      "question": "這桶水原有多少公升？",
+      "options": ["23 公升", "35 公升", "47 公升", "420 公升"],
+      "answer": 2,
+      "explanation": "依題意列式 x - 12 = 35。兩邊同加 12，得 x = 47。驗算：47 - 12 = 35。",
+      "difficulty": "easy",
+      "errorPath": "unknown-quantity-modeling"
     },
     {
       "id": "linear-eq-1var-ca-3",
       "type": "context-application",
-      "scenario": "姐姐的年齡比小林年齡的 2 倍少 3 歲，姐姐今年 15 歲（設小林今年 x 歲）。",
-      "question": "小林今年幾歲？",
-      "options": [
-        "12 歲",
-        "9 歲",
-        "6 歲",
-        "7.5 歲"
-      ],
+      "challenge": "14-7",
+      "scenario": "某數的 4 倍減去 5，結果是 27。設這個數為 x。",
+      "question": "這個數是多少？",
+      "options": ["5.5", "8", "11", "128"],
       "answer": 1,
-      "explanation": "依題意列式：2x-3 = 15。-3 移項變 +3：2x = 15+3 = 18，兩邊同除以 2：x = 9。檢驗：9 的 2 倍是 18，少 3 歲是 15 ✓。若移項忘變號算成 2x = 15-3 會誤得 6。",
+      "explanation": "依題意列式 4x - 5 = 27。兩邊同加 5 得 4x = 32，再同除以 4 得 x = 8。驗算：4 × 8 - 5 = 27。",
       "difficulty": "medium",
-      "errorPath": "move-term-sign"
+      "errorPath": "unknown-quantity-modeling"
     },
     {
       "id": "linear-eq-1var-ca-4",
       "type": "context-application",
-      "scenario": "一條繩子長 x 公分，剪掉 35 公分後，剩下 48 公分。",
-      "question": "這條繩子原來長多少公分？",
-      "options": [
-        "13 公分",
-        "48 公分",
-        "83 公分",
-        "35 公分"
-      ],
-      "answer": 2,
-      "explanation": "依題意列式：x-35 = 48。-35 移項變 +35：x = 48+35 = 83。檢驗：83-35 = 48 ✓。若誤算 48-35 = 13，剪掉 35 後會比 35 還短，不合理。",
-      "difficulty": "easy",
-      "errorPath": "move-term-sign"
+      "challenge": "14-8",
+      "scenario": "三個連續整數的和是 51。設最小的整數為 x。",
+      "question": "最小的整數是多少？",
+      "options": ["15", "16", "17", "18"],
+      "answer": 1,
+      "explanation": "三數為 x、x + 1、x + 2，列式 x + (x + 1) + (x + 2) = 51。化簡得 3x + 3 = 51，所以 3x = 48、x = 16。驗算：16 + 17 + 18 = 51。",
+      "difficulty": "hard",
+      "errorPath": "equation-modeling-structure"
     },
     {
       "id": "linear-eq-1var-ca-5",
       "type": "context-application",
-      "scenario": "門票每張 x 元，爸爸買了 4 張門票，拿 1000 元付款，店員找回 120 元。",
-      "question": "每張門票多少元？",
-      "options": [
-        "220 元",
-        "200 元",
-        "280 元",
-        "250 元"
-      ],
+      "challenge": "14-8",
+      "scenario": "一個長方形的長比寬多 5 公分，周長是 50 公分。設寬為 x 公分。",
+      "question": "這個長方形的寬是多少公分？",
+      "options": ["10 公分", "12.5 公分", "15 公分", "20 公分"],
       "answer": 0,
-      "explanation": "依題意列式：1000-4x = 120（付款減花費等於找零），或 4x = 1000-120。4x = 880，兩邊同除以 4：x = 220。檢驗：4×220 = 880，1000-880 = 120 ✓。若忘了扣找零直接算 1000÷4 會誤得 250。",
+      "explanation": "長為 x + 5。周長列式 2[x + (x + 5)] = 50，化簡得 4x + 10 = 50，所以 4x = 40、x = 10。驗算：寬 10、長 15，周長 2 × (10 + 15) = 50。",
       "difficulty": "hard",
-      "errorPath": "move-term-sign"
+      "errorPath": "equation-modeling-structure"
     },
     {
       "id": "linear-eq-1var-ca-6",
       "type": "context-application",
-      "scenario": "三個連續整數的和是 72（設最小的整數為 x）。",
-      "question": "最小的整數是多少？",
-      "options": [
-        "25",
-        "22",
-        "24",
-        "23"
-      ],
-      "answer": 3,
-      "explanation": "三個連續整數為 x、x+1、x+2，依題意列式：x+(x+1)+(x+2) = 72，合併同類項：3x+3 = 72，+3 移項變 -3：3x = 69，兩邊同除以 3：x = 23。檢驗：23+24+25 = 72 ✓",
+      "challenge": "14-8",
+      "scenario": "計程車車資包含 85 元起跳價，之後每公里加收 12 元。小廷這趟共付 181 元，設加收里程為 x 公里。",
+      "question": "這趟加收里程是多少公里？",
+      "options": ["8 公里", "12 公里", "15 公里", "22 公里"],
+      "answer": 0,
+      "explanation": "依題意列式 85 + 12x = 181。兩邊同減 85 得 12x = 96，再同除以 12 得 x = 8。驗算：85 + 12 × 8 = 181。",
       "difficulty": "hard",
-      "errorPath": "distribute-all-terms"
+      "errorPath": "equation-modeling-structure"
     }
   ]
 }

@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 
 class FakeStorage {
   constructor() { this.data = new Map(); }
@@ -13,7 +14,7 @@ class FakeStorage {
 globalThis.localStorage = new FakeStorage();
 const {
   BOSSES, BOSS_MAX_HP, PLAYER_MAX_HP, bossFor, newBossState, bossGate,
-  playerDamage, applyAnswer, bossOutcome, getBossFights, recordBossOutcome, reviveWithBlessing,
+  bossPhase, playerDamage, applyAnswer, bossOutcome, getBossFights, recordBossOutcome, reviveWithBlessing,
 } = await import("../js/boss.js");
 const { collectionBonusFor } = await import("../js/collection.js");
 
@@ -34,6 +35,19 @@ test("精熟度未達門檻不可挑戰 boss", () => {
   assert.equal(bossGate(strand, highProgress, 0.8).eligible, true);
 });
 
+test("Boss 血量跨過 67% 與 34% 時依序進入三個攻擊階段", () => {
+  const base = newBossState("algebra");
+  assert.deepEqual(bossPhase(base), {
+    id: "probe",
+    name: "試探攻勢",
+    attack: "謎語試探",
+    correctBonus: 0,
+  });
+  assert.equal(bossPhase({ ...base, hp: 66 }).id, "shield");
+  assert.equal(bossPhase({ ...base, hp: 34 }).id, "shield");
+  assert.equal(bossPhase({ ...base, hp: 33 }).id, "awakened");
+});
+
 test("答對造成的傷害隨連擊增加，血量低於 30% 時背水一戰 ×1.5", () => {
   const normal = playerDamage(0, 100, 100);
   const comboed = playerDamage(3, 100, 100);
@@ -51,7 +65,7 @@ test("收集品加成上限 15%，且能疊加進傷害計算", () => {
   assert.equal(dmgWithBonus, Math.round(12 * 1.15));
 });
 
-test("答對扣 boss 血、答錯扣玩家血，任一歸零即分出勝負", () => {
+test("答對扣 Boss 血，連續答錯只守住且不直接判定失敗", () => {
   let boss = newBossState("algebra");
   assert.equal(boss.hp, BOSS_MAX_HP);
   assert.equal(boss.playerHp, PLAYER_MAX_HP);
@@ -60,10 +74,61 @@ test("答對扣 boss 血、答錯扣玩家血，任一歸零即分出勝負", ()
   boss = applyAnswer(boss, true, 1, 0);
   assert.ok(boss.hp < BOSS_MAX_HP);
 
-  for (let i = 0; i < 20 && bossOutcome(boss) === null; i += 1) {
+  const playerHpBefore = boss.playerHp;
+  for (let i = 0; i < 20; i += 1) {
     boss = applyAnswer(boss, false, 0, 0);
   }
-  assert.equal(bossOutcome(boss), "defeat");
+  assert.equal(boss.playerHp, playerHpBefore);
+  assert.equal(bossOutcome(boss), null);
+  assert.deepEqual(boss.lastEvent, {
+    type: "guard",
+    dmg: 0,
+    phase: "probe",
+    phaseName: "試探攻勢",
+    attack: "謎語試探",
+  });
+});
+
+test("謎盾與覺醒階段只在答對時提供破盾反擊，總加成封頂 25%", () => {
+  const base = newBossState("algebra");
+  const probe = applyAnswer({ ...base, hp: 80 }, true, 0, 0);
+  const shield = applyAnswer({ ...base, hp: 60 }, true, 0, 0);
+  const awakened = applyAnswer({ ...base, hp: 30 }, true, 0, 0);
+  const capped = applyAnswer({ ...base, hp: 30 }, true, 0, 0.25);
+
+  assert.equal(probe.lastEvent.type, "hit");
+  assert.equal(probe.lastEvent.dmg, 12);
+  assert.equal(shield.lastEvent.type, "break");
+  assert.equal(shield.lastEvent.dmg, 13);
+  assert.equal(awakened.lastEvent.type, "counter");
+  assert.equal(awakened.lastEvent.dmg, 14);
+  assert.equal(capped.lastEvent.dmg, 15);
+  assert.equal(capped.lastEvent.totalBonus, 0.25);
+});
+
+test("Boss 面板顯示階段招式，答錯只呈現守住提示", async () => {
+  const [app, css] = await Promise.all([
+    readFile(new URL("../js/app.js", import.meta.url), "utf8"),
+    readFile(new URL("../css/style.css", import.meta.url), "utf8"),
+  ]);
+  assert.match(app, /bossPhase\(boss\)/);
+  assert.match(app, /className = `boss-phase boss-phase-\$\{phase\.id\}`/);
+  assert.match(app, /`\$\{phase\.name\}・\$\{phase\.attack\}`/);
+  assert.match(app, /"🛡 守住了"/);
+  assert.match(app, /event\.type === "guard"/);
+  assert.match(css, /\.boss-phase \{/);
+  assert.match(css, /\.damage-guard \{/);
+});
+
+test("Boss 題組用盡而未擊敗時只暫退，不以守護力比例送出勝利", async () => {
+  const app = await readFile(new URL("../js/app.js", import.meta.url), "utf8");
+  const queueEndBlock = app.slice(
+    app.indexOf("if (session.index >= session.queue.length)"),
+    app.indexOf("if (session.kind === \"pvp\")", app.indexOf("if (session.index >= session.queue.length)")),
+  );
+  assert.match(queueEndBlock, /renderBossOutcome\("retreat", quizArea\)/);
+  assert.doesNotMatch(queueEndBlock, /boss\.hp \/ boss\.maxHp/);
+  assert.match(app, /這一路的作答都已經算進精熟度/);
 });
 
 test("擊敗 boss 後寫入 bossFights，累計次數與最佳連擊只升不降", () => {
