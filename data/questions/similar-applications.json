@@ -19,7 +19,11 @@
         "14"
       ],
       "answer": 0,
-      "explanation": "DE∥BC使△ADE∼△ABC，AD/AB=AE/AC=1/3，故AC=12。"
+      "explanation": "DE∥BC使△ADE∼△ABC，AD/AB=AE/AC=1/3，故AC=12。",
+      "media": {
+        "src": "assets/diagrams/similar-applications-bm-1.svg",
+        "alt": "三角形 ABC 中 D 在 AB、E 在 AC 且 DE 平行 BC，AD 標 3、AB 標 9、AE 標 4、AC 標問號"
+      }
     },
     {
       "id": "similar-applications-bm-v1-2",
@@ -35,7 +39,11 @@
         "8"
       ],
       "answer": 2,
-      "explanation": "AB=8，AD/AB=5/8=AE/AC，AC=16，故EC=16−10=6。"
+      "explanation": "AB=8，AD/AB=5/8=AE/AC，AC=16，故EC=16−10=6。",
+      "media": {
+        "src": "assets/diagrams/similar-applications-bm-v1-2.svg",
+        "alt": "三角形 ABC 中 DE 平行 BC，AD 標 5、DB 標 3、AE 標 10、EC 標問號"
+      }
     },
     {
       "id": "similar-applications-bm-v1-3",
@@ -180,7 +188,11 @@
         "平行線不產生比例"
       ],
       "correctErrorIndex": 0,
-      "explanation": "AD/DB=AE/EC，4/6=8/EC，4EC=48，所以EC=12。"
+      "explanation": "AD/DB=AE/EC，4/6=8/EC，4EC=48，所以EC=12。",
+      "media": {
+        "src": "assets/diagrams/similar-applications-ed-1.svg",
+        "alt": "三角形 ABC 中 DE 平行 BC，AD 標 4、DB 標 6、AE 標 8、EC 標問號"
+      }
     },
     {
       "id": "similar-applications-ed-v5-2",
@@ -335,7 +347,11 @@
         "6"
       ],
       "answer": 3,
-      "explanation": "同時刻物高/影長相等，1.5/2=h/8，h=6。"
+      "explanation": "同時刻物高/影長相等，1.5/2=h/8，h=6。",
+      "media": {
+        "src": "assets/diagrams/similar-applications-ca-2.svg",
+        "alt": "同一時刻兩個相似直角三角形，小者高 1.5 影長 2，大者高標問號、影長 8"
+      }
     },
     {
       "id": "similar-applications-ca-v8-2",
@@ -352,7 +368,11 @@
         "18"
       ],
       "answer": 1,
-      "explanation": "3/4=h/20，h=20×3/4=15公尺。"
+      "explanation": "3/4=h/20，h=20×3/4=15公尺。",
+      "media": {
+        "src": "assets/diagrams/similar-applications-ca-v8-2.svg",
+        "alt": "同一時刻兩個相似直角三角形，旗桿高 3 影長 4，建築高標問號、影長 20"
+      }
     },
     {
       "id": "similar-applications-ca-v8-3",
@@ -371,5 +391,8 @@
       "answer": 2,
       "explanation": "1.6/1.2=h/9，h=9×4/3=12公尺。"
     }
+  ],
+  "note": [
+    "DE∥BC 截線題與影長相似三角形題附精確 SVG 示意圖，不洩答；比例尺與面積比題純文字。"
   ]
 }

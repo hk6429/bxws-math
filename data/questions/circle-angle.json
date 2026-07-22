@@ -19,7 +19,11 @@
         "200°"
       ],
       "answer": 1,
-      "explanation": "同弧圓周角是圓心角一半，100°÷2=50°。"
+      "explanation": "同弧圓周角是圓心角一半，100°÷2=50°。",
+      "media": {
+        "src": "assets/diagrams/circle-angle-bm-1.svg",
+        "alt": "圓上 A、B、C 三點，圓心 O，同對弧 AB 的圓心角標 100 度、圓周角標問號"
+      }
     },
     {
       "id": "circle-angle-bm-v1-2",
@@ -51,7 +55,11 @@
         "142°"
       ],
       "answer": 2,
-      "explanation": "同弧圓心角是圓周角2倍，2×38°=76°。"
+      "explanation": "同弧圓心角是圓周角2倍，2×38°=76°。",
+      "media": {
+        "src": "assets/diagrams/circle-angle-bm-v1-3.svg",
+        "alt": "圓上 A、B、C 三點，圓心 O，同對弧 AB 的圓周角標 38 度、圓心角標問號"
+      }
     },
     {
       "id": "circle-angle-bm-2",
@@ -67,7 +75,11 @@
         "180°"
       ],
       "answer": 2,
-      "explanation": "直徑AB所對弧是半圓，半圓所對圓周角為90°。"
+      "explanation": "直徑AB所對弧是半圓，半圓所對圓周角為90°。",
+      "media": {
+        "src": "assets/diagrams/circle-angle-bm-2.svg",
+        "alt": "圓的直徑 AB 通過圓心 O，C 為圓上一點，圓周角 ACB 標問號"
+      }
     },
     {
       "id": "circle-angle-bm-v2-2",
@@ -284,7 +296,11 @@
         "25"
       ],
       "answer": 0,
-      "explanation": "同弧圓心角=2×圓周角：4x+20=2x+50，2x=30，x=15。"
+      "explanation": "同弧圓心角=2×圓周角：4x+20=2x+50，2x=30，x=15。",
+      "media": {
+        "src": "assets/diagrams/circle-angle-ca-1.svg",
+        "alt": "圓上 A、B、C 三點，圓心 O，同弧的圓心角標 4x+20 度、圓周角標 x+25 度"
+      }
     },
     {
       "id": "circle-angle-ca-v7-2",
@@ -335,7 +351,11 @@
         "122°"
       ],
       "answer": 2,
-      "explanation": "內接四邊形對角互補，∠C=180°−68°=112°。"
+      "explanation": "內接四邊形對角互補，∠C=180°−68°=112°。",
+      "media": {
+        "src": "assets/diagrams/circle-angle-ca-2.svg",
+        "alt": "圓內接四邊形 ABCD，角 A 標 68 度、對角 C 標問號"
+      }
     },
     {
       "id": "circle-angle-ca-v8-2",
@@ -369,7 +389,14 @@
         "110°"
       ],
       "answer": 1,
-      "explanation": "∠B與∠D為對角，互補，所以∠D=180°−95°=85°。"
+      "explanation": "∠B與∠D為對角，互補，所以∠D=180°−95°=85°。",
+      "media": {
+        "src": "assets/diagrams/circle-angle-ca-v8-3.svg",
+        "alt": "圓內接四邊形 ABCD，角 A 標 70 度、角 B 標 95 度、角 D 標問號"
+      }
     }
+  ],
+  "note": [
+    "同弧圓心角/圓周角、直徑圓周角、圓內接四邊形題附精確 SVG 示意圖，不洩答；純敘述判別題維持文字。"
   ]
 }

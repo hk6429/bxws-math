@@ -19,7 +19,11 @@
         "28"
       ],
       "answer": 1,
-      "explanation": "圓心到弦的垂線平分弦，AM=AB÷2=7。"
+      "explanation": "圓心到弦的垂線平分弦，AM=AB÷2=7。",
+      "media": {
+        "src": "assets/diagrams/circle-chord-tangent-bm-1.svg",
+        "alt": "圓心 O 到弦 AB 作垂線交於 M，弦 AB 標 14，AM 標問號"
+      }
     },
     {
       "id": "circle-chord-tangent-bm-v1-2",
@@ -35,7 +39,11 @@
         "20"
       ],
       "answer": 2,
-      "explanation": "垂足M平分弦；AM=√(10²−6²)=8，AB=2AM=16。"
+      "explanation": "垂足M平分弦；AM=√(10²−6²)=8，AB=2AM=16。",
+      "media": {
+        "src": "assets/diagrams/circle-chord-tangent-bm-v1-2.svg",
+        "alt": "圓心 O 到弦 AB 作垂線交於 M，半徑 OA 標 10、OM 標 6，弦 AB 標問號"
+      }
     },
     {
       "id": "circle-chord-tangent-bm-v1-3",
@@ -51,7 +59,11 @@
         "18"
       ],
       "answer": 2,
-      "explanation": "半弦5；距離d滿足d²+5²=13²，d=√144=12。"
+      "explanation": "半弦5；距離d滿足d²+5²=13²，d=√144=12。",
+      "media": {
+        "src": "assets/diagrams/circle-chord-tangent-bm-v1-3.svg",
+        "alt": "圓心 O 到弦 AB 作垂線交於 M，半徑 OA 標 13、弦 AB 標 10，OM 標問號"
+      }
     },
     {
       "id": "circle-chord-tangent-bm-2",
@@ -284,7 +296,11 @@
         "24"
       ],
       "answer": 0,
-      "explanation": "同一外點引出的兩切線段相等，PB=PA=12。"
+      "explanation": "同一外點引出的兩切線段相等，PB=PA=12。",
+      "media": {
+        "src": "assets/diagrams/circle-chord-tangent-ca-1.svg",
+        "alt": "圓外一點 P 向圓引兩條切線切於 A、B，半徑與切線垂直，PA 標 12、PB 標問號"
+      }
     },
     {
       "id": "circle-chord-tangent-ca-v7-2",
@@ -318,7 +334,11 @@
         "12"
       ],
       "answer": 3,
-      "explanation": "OT⊥PT，PT=√(OP²−OT²)=√(169−25)=12。"
+      "explanation": "OT⊥PT，PT=√(OP²−OT²)=√(169−25)=12。",
+      "media": {
+        "src": "assets/diagrams/circle-chord-tangent-ca-v7-3.svg",
+        "alt": "圓心 O、切點 T、圓外點 P 構成直角三角形，直角在 T，OT 標 5、OP 標 13、PT 標問號"
+      }
     },
     {
       "id": "circle-chord-tangent-ca-2",
@@ -335,7 +355,11 @@
         "145°"
       ],
       "answer": 1,
-      "explanation": "弦切角等於所夾弧所對的圓周角，所以為35°。"
+      "explanation": "弦切角等於所夾弧所對的圓周角，所以為35°。",
+      "media": {
+        "src": "assets/diagrams/circle-chord-tangent-ca-2.svg",
+        "alt": "切線在 T 點與弦 TA 所成弦切角標 35 度，同夾弧 TA 所對圓周角在 C 標問號"
+      }
     },
     {
       "id": "circle-chord-tangent-ca-v8-2",
@@ -371,5 +395,8 @@
       "answer": 2,
       "explanation": "兩角相等：2x+5=3x−10，得x=15；兩角皆35°。"
     }
+  ],
+  "note": [
+    "垂徑分弦、外點兩切線、切線半徑直角、弦切角題附精確 SVG 示意圖，不洩答；純敘述判別題維持文字。"
   ]
 }

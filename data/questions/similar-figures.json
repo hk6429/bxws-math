@@ -19,7 +19,11 @@
         "15"
       ],
       "answer": 1,
-      "explanation": "第二形對第一形相似比為6÷3=2，第三邊=5×2=10。"
+      "explanation": "第二形對第一形相似比為6÷3=2，第三邊=5×2=10。",
+      "media": {
+        "src": "assets/diagrams/similar-figures-bm-1.svg",
+        "alt": "兩個形狀相同的三角形，較小者兩邊標 3、4 第三邊 4 與 5，較大者對應邊標 6、8，第三邊標問號"
+      }
     },
     {
       "id": "similar-figures-bm-v1-2",
@@ -35,7 +39,11 @@
         "20"
       ],
       "answer": 1,
-      "explanation": "AB對DE、BC對EF，放大倍數10÷4=2.5，EF=6×2.5=15。"
+      "explanation": "AB對DE、BC對EF，放大倍數10÷4=2.5，EF=6×2.5=15。",
+      "media": {
+        "src": "assets/diagrams/similar-figures-bm-v1-2.svg",
+        "alt": "△ABC 與 △DEF 兩相似三角形，AB 標 4、BC 標 6，DE 標 10、EF 標問號"
+      }
     },
     {
       "id": "similar-figures-bm-v1-3",
@@ -284,7 +292,11 @@
         "24"
       ],
       "answer": 2,
-      "explanation": "B對A倍數=30÷12=2.5，高=8×2.5=20。"
+      "explanation": "B對A倍數=30÷12=2.5，高=8×2.5=20。",
+      "media": {
+        "src": "assets/diagrams/similar-figures-ca-1.svg",
+        "alt": "兩個相似長方形旗幟，小者寬 12 高 8，大者寬 30、高標問號"
+      }
     },
     {
       "id": "similar-figures-ca-v7-2",
@@ -301,7 +313,11 @@
         "23"
       ],
       "answer": 2,
-      "explanation": "放大倍數15÷5=3，DF=7×3=21。"
+      "explanation": "放大倍數15÷5=3，DF=7×3=21。",
+      "media": {
+        "src": "assets/diagrams/similar-figures-ca-v7-2.svg",
+        "alt": "△ABC 與 △DEF 兩相似三角形，以 A、D 為對應頂點，AB 標 5、AC 標 7，DE 標 15、DF 標問號"
+      }
     },
     {
       "id": "similar-figures-ca-v7-3",
@@ -318,7 +334,11 @@
         "13"
       ],
       "answer": 1,
-      "explanation": "放大倍數15÷6=2.5，寬=4×2.5=10。"
+      "explanation": "放大倍數15÷6=2.5，寬=4×2.5=10。",
+      "media": {
+        "src": "assets/diagrams/similar-figures-ca-v7-3.svg",
+        "alt": "兩個相似長方形，小者長 6 寬 4，大者長 15、寬標問號"
+      }
     },
     {
       "id": "similar-figures-ca-2",
@@ -371,5 +391,8 @@
       "answer": 2,
       "explanation": "兩組夾邊比例相等且夾角同為60°，符合SAS相似。"
     }
+  ],
+  "note": [
+    "部分基礎與應用題附精確 SVG 示意圖（兩相似三角形/長方形對應邊），不洩答；其餘比例與判別題純文字。"
   ]
 }
